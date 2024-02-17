@@ -1,0 +1,27 @@
+class EndPoint {
+  static const String baseUrl = 'https://seesooq.com/api/';
+  static const String googleMapPlace = 'https://maps.googleapis.com/maps/api';
+  static const String userNotifications = 'user-notifications';
+  static const String signUpUser = 'register';
+  static const String getPackagesM = 'getPackages';
+  static const String getWallet = 'getWallet';
+  static const String loginUser = 'login';
+  static const String forgetPassword = 'restore-password';
+  static const String verifyOtpRestorePassword = 'validate-otp-password';
+  static const String changePassword = 'change-password';
+  static const String verifyPassword = 'validate-otp';
+  static const String category = 'categories';
+  static const String getAttributesForAds = 'attributes';
+  static const String getMyStories = 'MyStory';
+  static const String deleteMyStory = 'delete/story/{storyId}';
+  static const String getUsersStory = 'user/stories';
+  static const String getOfferAds = 'advertisement/offers/{categoryId}';
+  static const String createMyStory = 'create/story';
+  static const String viewStory = 'view/story/{storyId}';
+  static const String detailsCategory = 'sub_categories/{categoryId}';
+  static const String getAdvertisement = 'advertisement/{subCategoryId}/';
+  static const String getCities = 'cities/{id}';
+  static const String getGovernorate = 'governorate';
+  static const String searchPlaces = '/place/textsearch/json';
+  static const String editProfile = '/place/textsearch/json';
+}

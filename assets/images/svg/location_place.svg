@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="vuesax_linear_gps" data-name="vuesax/linear/gps" transform="translate(-556 -252)">
+    <g id="gps">
+      <path id="Vector" d="M15,7.5A7.5,7.5,0,1,1,7.5,0,7.5,7.5,0,0,1,15,7.5Z" transform="translate(560.5 256.5)" fill="none" stroke="#950000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <path id="Vector-2" data-name="Vector" d="M6,3A3,3,0,1,1,3,0,3,3,0,0,1,6,3Z" transform="translate(565 261)" fill="none" stroke="#950000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <path id="Vector-3" data-name="Vector" d="M0,2V0" transform="translate(568 254)" fill="none" stroke="#950000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <path id="Vector-4" data-name="Vector" d="M2,0H0" transform="translate(558 264)" fill="none" stroke="#950000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <path id="Vector-5" data-name="Vector" d="M0,0V2" transform="translate(568 272)" fill="none" stroke="#950000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <path id="Vector-6" data-name="Vector" d="M0,0H2" transform="translate(576 264)" fill="none" stroke="#950000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <path id="Vector-7" data-name="Vector" d="M0,0H24V24H0Z" transform="translate(580 276) rotate(180)" fill="none" opacity="0"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="226.219" height="249.107" viewBox="0 0 226.219 249.107">
+  <g id="Group_46796" data-name="Group 46796" transform="translate(-113.891 -147.003)">
+    <g id="Group_46795" data-name="Group 46795" transform="translate(309.088 -100.882)">
+      <circle id="Ellipse_41" data-name="Ellipse 41" cx="47.474" cy="47.474" r="47.474" transform="translate(-94.087 247.884)" fill="#6f62b1"/>
+      <circle id="Ellipse_40" data-name="Ellipse 40" cx="40.004" cy="40.004" r="40.004" transform="translate(-86.617 267.523)" fill="#d5cefc"/>
+    </g>
+    <g id="notification" transform="translate(-57.109 -18.11)">
+      <path id="Vector" d="M75.84,0A56.6,56.6,0,0,0,19.285,56.555V83.8a45.041,45.041,0,0,1-5.373,19.417l-10.84,18C-3.62,132.338,1,144.686,13.252,148.833a197.2,197.2,0,0,0,125.08,0,18.873,18.873,0,0,0,10.18-27.618l-10.84-18A46.284,46.284,0,0,1,132.394,83.8V56.555A56.721,56.721,0,0,0,75.84,0Z" transform="translate(208.458 215.429)" fill="#fff" stroke="#f90" stroke-linecap="round" stroke-width="15"/>
+      <path id="Vector-2" data-name="Vector" d="M34.875,11.877a57.066,57.066,0,0,0-9.049-1.885A63.66,63.66,0,0,0,0,11.877a18.74,18.74,0,0,1,34.875,0Z" transform="translate(266.86 206.286)" fill="none" stroke="#f90" stroke-linecap="round" stroke-linejoin="round" stroke-width="15"/>
+      <path id="Vector-3" data-name="Vector" d="M56.555,0A28.361,28.361,0,0,1,28.277,28.277,28.377,28.377,0,0,1,8.295,19.983,28.377,28.377,0,0,1,0,0" transform="translate(256.021 367.656)" fill="none" stroke="#f90" stroke-width="15"/>
+      <path id="Vector-4" data-name="Vector" d="M0,0H226.219V226.219H0Z" transform="translate(171 188)" fill="none" opacity="0"/>
+    </g>
+  </g>
+</svg>

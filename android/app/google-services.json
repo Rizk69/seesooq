@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "593158168216",
+    "project_id": "seesooq-98502",
+    "storage_bucket": "seesooq-98502.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:593158168216:android:44f038b0755bf173fb7aed",
+        "android_client_info": {
+          "package_name": "com.seesooq.opensooq"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCclsAkniTYbIFk4EhfHw6YsrmpIzIwXlg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

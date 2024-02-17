@@ -1,0 +1,63 @@
+{
+  "packages": {
+
+    "packages_data": [
+      {
+        "id": 1,
+        "package_name": "Vehicles",
+        "package_icon": "https://random.imagecdn.app/500/150",
+        "price": "500",
+        "days": "8",
+        "color": "#4C0497",
+        "attributes": [
+            {
+                "id": 1,
+                "attribute_name": "Vehicle Type",
+                "attribute_value": "Car"
+            },
+            {
+                "id": 2,
+                "attribute_name": "Vehicle Type",
+                "attribute_value": "Car"
+            },
+            {
+                "id": 3,
+                "attribute_name": "Vehicle Type",
+                "attribute_value": "Car"
+            }
+            ]
+
+      },
+      {
+        "id": 2,
+        "package_name": "Private Package",
+        "package_icon": "https://random.imagecdn.app/500/150",
+        "price": "200",
+        "days": "3",
+        "color": "#F05A35",
+
+        "attributes": [
+            {
+                "id": 1,
+                "attribute_name": "Vehicle Type",
+                "attribute_value": "Car"
+            },
+            {
+                "id": 2,
+                "attribute_name": "Vehicle Type",
+                "attribute_value": "Car"
+            },
+            {
+                "id": 3,
+                "attribute_name": "Vehicle Type",
+                "attribute_value": "Car"
+            }
+            ]
+
+      }
+
+    ]
+
+
+  }
+}

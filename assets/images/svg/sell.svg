@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="34" height="55" viewBox="0 0 34 55">
+  <g id="Group_46786" data-name="Group 46786" transform="translate(-188 -866)">
+    <text id="Sell" transform="translate(194 917)" fill="#6f62b1" font-size="14" font-family="DMSans-Regular, DM Sans"><tspan x="0" y="0">Sell</tspan></text>
+    <g id="Group_46782" data-name="Group 46782" transform="translate(-7.047 -10.047)">
+      <g id="Ellipse_858" data-name="Ellipse 858" transform="translate(195.047 876.047)" fill="#fff" stroke="#6f62b1" stroke-width="2">
+        <circle cx="17" cy="17" r="17" stroke="none"/>
+        <circle cx="17" cy="17" r="16" fill="none"/>
+      </g>
+      <g id="Group_46781" data-name="Group 46781" transform="translate(202.208 882.904)">
+        <line id="Line_401" data-name="Line 401" y2="20.286" transform="translate(9.534)" fill="none" stroke="#6f62b1" stroke-linecap="round" stroke-width="2.5"/>
+        <line id="Line_402" data-name="Line 402" y2="19.063" transform="translate(19.063 10.143) rotate(90)" fill="none" stroke="#6f62b1" stroke-linecap="round" stroke-width="2.5"/>
+      </g>
+    </g>
+  </g>
+</svg>
