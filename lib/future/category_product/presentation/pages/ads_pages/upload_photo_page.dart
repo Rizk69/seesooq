@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:go_router/go_router.dart';
 import 'package:opensooq/config/routes/app_routes.dart';
-import 'package:opensooq/core/utils/app_colors.dart';
 import 'package:opensooq/core/utils/custom_button_widget.dart';
 import 'package:opensooq/di.dart' as di;
 import 'package:opensooq/future/category_product/presentation/cubit/add_ads_cubit.dart';
@@ -39,7 +38,7 @@ class UploadPhotoPage extends StatelessWidget {
                     itemCount: state.images.length,
                   ),
                   CustomButtonWidget(
-                      color: AppColors.primary,
+                      color: Colors.white,
                       text: 'Next',
                       onPressed: () {
                         context.pushNamed(Routes.uploadAdsPage,

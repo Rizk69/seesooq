@@ -94,6 +94,7 @@ class LoginCubit extends Cubit<LoginState> with ChangeNotifier {
         ));
       },
       (r) {
+        print('sakdjklasjjdklsa${r.user?.id}');
         emit(state.copyWith(
           isHome: true,
           loginModel: LoginModel(

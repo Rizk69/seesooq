@@ -62,9 +62,15 @@ class AddAdsCubit extends Cubit<AddAdsState> {
     newAttributes = {...newAttributes, ...attributes};
 
     emit(state.copyWith(attributesForm: state.attributesForm.copyWith(attributes: newAttributes)));
+  }
 
-    print('===========sssss');
-    print(state.attributesForm.attributes);
+  void updateCityForm(String cityId) {
+    emit(state.copyWith(attributesForm: state.attributesForm.copyWith(cityId: cityId)));
+    print(state.attributesForm.attributes.length);
+  }
+
+  void updateGovernorateForm(String governorateId) {
+    emit(state.copyWith(attributesForm: state.attributesForm.copyWith(governorateId: governorateId)));
   }
 
 // end section Add Ads

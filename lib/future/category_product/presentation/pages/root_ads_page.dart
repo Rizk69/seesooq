@@ -74,16 +74,15 @@ class _RootAdsPageState extends State<RootAdsPage> {
   }
 
   void _onTap(BuildContext context, int index) {
-    // When navigating to a new branch, it's recommended to use the goBranch
-    // method, as doing so makes sure the last navigation state of the
-    // Navigator for the branch is restored.
-    widget.statefulNavigationShell.goBranch(
-      index,
-      // A common pattern when using bottom navigation bars is to support
-      // navigating to the initial location when tapping the item that is
-      // already active. This example demonstrates how to support this behavior,
-      // using the initialLocation parameter of goBranch.
-      initialLocation: index == widget.statefulNavigationShell.currentIndex,
-    );
+    if (widget.statefulNavigationShell.currentIndex != index) {
+      widget.statefulNavigationShell.goBranch(
+        index,
+        // A common pattern when using bottom navigation bars is to support
+        // navigating to the initial location when tapping the item that is
+        // already active. This example demonstrates how to support this behavior,
+        // using the initialLocation parameter of goBranch.
+        initialLocation: index == widget.statefulNavigationShell.currentIndex,
+      );
+    }
   }
 }

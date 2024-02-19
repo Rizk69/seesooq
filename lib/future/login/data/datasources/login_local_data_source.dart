@@ -17,8 +17,6 @@ class LoginLocalDataSourceImpl implements LoginLocalDataSource {
   Future<void> cacheUserModel({required UserLocalModel userLocalModel}) async {
     executeAndCatchError(() async {
       await cacheHelper.hivePutData<UserLocalModel>(userLocalModel);
-
-      getUserModel();
     });
   }
 

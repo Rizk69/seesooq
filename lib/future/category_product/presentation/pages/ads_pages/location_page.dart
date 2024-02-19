@@ -7,6 +7,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:opensooq/core/utils/media_query_values.dart';
 import 'package:opensooq/core/widget/text_translate_manager.dart';
+import 'package:opensooq/di.dart' as di;
+import 'package:opensooq/future/category_product/presentation/cubit/add_ads_cubit.dart';
 import 'package:opensooq/future/location/presentation/cubit/location_cubit.dart';
 import 'package:opensooq/future/location/presentation/cubit/location_state.dart';
 
@@ -29,6 +31,7 @@ class LocationAdsPage extends StatelessWidget {
                 CustomDropdown.search(
                     items: state.governorate.map((e) => e.title ?? '').toList(),
                     onChanged: (value) {
+                      di.sl<AddAdsCubit>().updateGovernorateForm(value);
                       context.read<LocationCubit>().getCities(id: state.governorate.firstWhere((element) => element.title == value).id?.toInt() ?? 0);
                     },
                     hideSelectedFieldWhenExpanded: true,
@@ -43,7 +46,9 @@ class LocationAdsPage extends StatelessWidget {
                     noResultFoundText: 'No Result Found',
                     validateOnChange: true,
                     items: state.cities.map((e) => e.title ?? '').toList(),
-                    onChanged: (value) {},
+                    onChanged: (value) {
+                      di.sl<AddAdsCubit>().updateCityForm(value);
+                    },
                     hideSelectedFieldWhenExpanded: true,
                     decoration: const CustomDropdownDecoration(
                       hintStyle: TextStyle(color: Colors.grey),

@@ -107,7 +107,7 @@ class StoryViewWidget extends StatelessWidget {
                                                 backgroundImage: NetworkImage(e['image'] ?? ''),
                                               ),
                                               title: Text(e['name'].toString() ?? ''),
-                                              subtitle: const Text('3 hours ago'),
+                                              subtitle: const Text('Add Time Here'),
                                               trailing: Row(
                                                 mainAxisSize: MainAxisSize.min,
                                                 children: [
