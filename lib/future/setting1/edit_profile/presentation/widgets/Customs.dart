@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:opensooq/core/utils/hex_color.dart';
@@ -40,7 +41,7 @@ class TextFormFiledCustom extends StatelessWidget {
                   imgIconSvg,
                 ),
               ),
-        hintText: hintText,
+        hintText: hintText.tr(),
         hintStyle: TextStyle(color: HexColor('#4C0497')),
         contentPadding: const EdgeInsets.all(16),
         border: OutlineInputBorder(

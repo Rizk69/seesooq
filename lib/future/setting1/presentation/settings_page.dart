@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
@@ -10,16 +11,16 @@ import '../edit_profile/presentation/widgets/header_screen.dart';
 
 class SettingsPage extends StatelessWidget {
   List<Map<String, String>> contacts = [
-    {'title': 'إدارة الحساب', 'des': 'ضع وصف الإعدادات هنا'},
-    {'title': 'الإشعارات', 'des': 'ضع وصف الإعدادات هنا'},
-    {'title': 'اللغة', 'des': 'ضع وصف الإعدادات هنا'},
-    {'title': 'الوضع', 'des': 'ضع وصف الإعدادات هنا'},
-    {'title': 'سياسة الخصوصية', 'des': 'ضع وصف الإعدادات هنا'},
-    {'title': 'الشروط والأحكام', 'des': 'ضع وصف الإعدادات هنا'},
-    {'title': 'عن شوف السوق', 'des': 'ضع وصف الإعدادات هنا'},
-    {'title': 'تواصل معنا', 'des': 'ضع وصف الإعدادات هنا'},
-    {'title': 'الأسئلة الشائعة', 'des': 'ضع وصف الإعدادات هنا'},
-    {'title': 'مشاركة التطبيق', 'des': 'ضع وصف الإعدادات هنا'},
+    {'title': 'account_management'.tr(), 'des': 'ضع وصف الإعدادات هنا'},
+    {'title': 'notifications'.tr(), 'des': 'ضع وصف الإعدادات هنا'},
+    {'title': 'language'.tr(), 'des': 'ضع وصف الإعدادات هنا'},
+    {'title': 'mode'.tr(), 'des': 'ضع وصف الإعدادات هنا'},
+    {'title': 'privacy_policy'.tr(), 'des': 'ضع وصف الإعدادات هنا'},
+    {'title': 'terms_and_conditions'.tr(), 'des': 'ضع وصف الإعدادات هنا'},
+    {'title': 'market_watch'.tr(), 'des': 'ضع وصف الإعدادات هنا'},
+    {'title': 'contact_us'.tr(), 'des': 'ضع وصف الإعدادات هنا'},
+    {'title': 'fAQs'.tr(), 'des': 'ضع وصف الإعدادات هنا'},
+    {'title': 'app_sharing'.tr(), 'des': 'ضع وصف الإعدادات هنا'},
   ];
 
   SettingsPage({Key? key}) : super(key: key);
@@ -32,7 +33,7 @@ class SettingsPage extends StatelessWidget {
         child: Column(
           children: [
             HeaderScreens(
-              title: 'الإعدادات',
+              title: 'setting',
               onPressed: () {
                 context.go(Routes.profilePage);
               },

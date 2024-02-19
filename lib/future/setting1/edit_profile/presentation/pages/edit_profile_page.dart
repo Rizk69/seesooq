@@ -1,4 +1,5 @@
 import 'package:country_flags/country_flags.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:country_picker/country_picker.dart';
@@ -33,14 +34,14 @@ class EditProfilePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   HeaderScreens(
-                      title: 'Edit Profile',
+                      title: 'edit_profile',
                       onPressed: () {
                         context.go(Routes.profilePage);
                       }),
                   const SizedBox(height: 40),
                   ProfilePhoto(img: 'edit_profile'.toSvg),
                   const SizedBox(height: 20),
-                  titleText('First Name'),
+                  titleText('first_name'),
                   const SizedBox(height: 10),
                   TextFormFiledCustom(
                     hintText: 'mohamed..',
@@ -48,7 +49,7 @@ class EditProfilePage extends StatelessWidget {
                     lines: 1,
                   ),
                   const SizedBox(height: 24),
-                  titleText('Enter Your Email'),
+                  titleText('enter_email'),
                   const SizedBox(height: 10),
                   TextFormFiledCustom(
                     hintText: 'maymohamedatef@gmail.com',
@@ -56,7 +57,7 @@ class EditProfilePage extends StatelessWidget {
                     lines: 1,
                   ),
                   const SizedBox(height: 24),
-                  titleText('Mobile Number'),
+                  titleText('mobile_number'),
                   const SizedBox(height: 10),
                   Row(
                     children: [
@@ -120,7 +121,7 @@ class EditProfilePage extends StatelessWidget {
                       const SizedBox(width: 15),
                       Expanded(
                         child: TextFormFiledCustom(
-                          hintText: 'Enter Mobile Number',
+                          hintText: 'mobile_number',
                           imgIconSvg: "assets/images/svg/phone.svg",
                           lines: 1,
                         ),
@@ -128,12 +129,12 @@ class EditProfilePage extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 24),
-                  titleText('Gender'),
+                  titleText('gender'),
                   Row(
                     children: [
                       Expanded(
                         child: ListTile(
-                          title: const Text('Male'),
+                          title: Text('male'.tr()),
                           leading: Radio(
                             value: Gender.male,
                             groupValue: state.gender,
@@ -150,7 +151,7 @@ class EditProfilePage extends StatelessWidget {
                       Expanded(
                         child: ListTile(
                           focusColor: Colors.grey,
-                          title: const Text('Female'),
+                          title: Text('female'.tr()),
                           leading: Radio(
                             value: Gender.female,
                             groupValue: state.gender,

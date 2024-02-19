@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
@@ -17,10 +18,10 @@ class AccountMangePage extends StatefulWidget {
 
 class _AccountMangePageState extends State<AccountMangePage> {
   List<Map<String, String>> contacts = [
-    {'title': 'تغيير كلمة السر', 'des': 'ضع وصف الإعدادات هنا'},
-    {'title': 'الخصوصية', 'des': 'ضع وصف الإعدادات هنا'},
-    {'title': 'العنوان', 'des': 'ضع وصف الإعدادات هنا'},
-    {'title': 'حذف الحساب', 'des': 'ضع وصف الإعدادات هنا'},
+    {'title': 'change_password'.tr(), 'des': 'ضع وصف الإعدادات هنا'},
+    {'title': 'privacy'.tr(), 'des': 'ضع وصف الإعدادات هنا'},
+    {'title': 'address'.tr(), 'des': 'ضع وصف الإعدادات هنا'},
+    {'title': 'delete_account'.tr(), 'des': 'ضع وصف الإعدادات هنا'},
   ];
 
   @override
@@ -31,7 +32,7 @@ class _AccountMangePageState extends State<AccountMangePage> {
         child: Column(
           children: [
             HeaderScreens(
-                title: 'إدارة الحساب',
+                title: 'account_management',
                 onPressed: () {
                   context.go(Routes.setting);
                 }),
