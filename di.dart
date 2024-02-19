@@ -5,8 +5,8 @@ import 'package:injectable/injectable.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'core/network/mock_interceptor.dart';
-import 'core/utils/navigator.dart';
+import 'lib/core/network/mock_interceptor.dart';
+import 'lib/core/utils/navigator.dart';
 import 'di.config.dart';
 
 final sl = GetIt.instance;

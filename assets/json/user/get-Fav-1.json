@@ -1,0 +1,18 @@
+{
+  "fav": {
+
+    "fav_data": [
+      {
+        "id": 1,
+        "item_name": "Vehicles",
+        "image": "https://random.imagecdn.app/500/150",
+        "price": "500",
+        "days": "8"
+
+      }
+
+    ]
+
+
+  }
+}

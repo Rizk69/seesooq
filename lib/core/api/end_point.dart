@@ -24,4 +24,5 @@ class EndPoint {
   static const String getGovernorate = 'governorate';
   static const String searchPlaces = '/place/textsearch/json';
   static const String editProfile = '/place/textsearch/json';
+  static const String getFav = '/place/textsearch/json';
 }
