@@ -25,7 +25,7 @@ class NotificationSettingPage extends StatelessWidget {
               return Column(
                 children: [
                   HeaderScreens(
-                    title: 'الإشعارات',
+                    title: 'notifications',
                     onPressed: () {
                       context.go(Routes.setting);
                     },

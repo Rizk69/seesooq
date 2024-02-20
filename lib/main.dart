@@ -47,7 +47,7 @@ void main() async {
     minimumFetchInterval: const Duration(seconds: 1),
   ));
 
-  await remoteConfig.fetchAndActivate();
+   // await remoteConfig.fetchAndActivate();
   print('welcome: ${remoteConfig.getString('update_app')}');
 
   // final _liveActivitiesPlugin = LiveActivities();

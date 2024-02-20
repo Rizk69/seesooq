@@ -1,5 +1,6 @@
 import 'package:country_flags/country_flags.dart';
 import 'package:country_picker/country_picker.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -36,34 +37,28 @@ class ConnectWithUsPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     HeaderScreens(
-                        title: 'تواصل معنا',
+                        title: 'contact_us',
                         onPressed: () {
                           context.go(Routes.setting);
                         }),
                     const SizedBox(height: 40),
-                    titleText('الاسم بالكامل'),
+                    titleText('full_name'),
                     const SizedBox(height: 10),
-                    Directionality(
-                      textDirection: TextDirection.rtl,
-                      child: TextFormFiledCustom(
-                        hintText: 'أدخل اسمك كاملاً',
-                        imgIconSvg: "assets/images/svg/person.svg",
-                        lines: 1,
-                      ),
+                    TextFormFiledCustom(
+                      hintText: 'enter_your_full_name'.tr(),
+                      imgIconSvg: "assets/images/svg/person.svg",
+                      lines: 1,
                     ),
                     const SizedBox(height: 24),
-                    titleText('البريد الإلكتروني'),
+                    titleText('enter_email'),
                     const SizedBox(height: 10),
-                    Directionality(
-                      textDirection: TextDirection.rtl,
-                      child: TextFormFiledCustom(
-                        hintText: 'أدخل بريدك الإلكتروني',
-                        imgIconSvg: "assets/images/svg/email.svg",
-                        lines: 1,
-                      ),
+                    TextFormFiledCustom(
+                      hintText: 'enter_email',
+                      imgIconSvg: "assets/images/svg/email.svg",
+                      lines: 1,
                     ),
                     const SizedBox(height: 24),
-                    titleText('رقم الهاتف'),
+                    titleText('mobile_number'),
                     const SizedBox(height: 10),
                     Row(
                       children: [
@@ -126,34 +121,28 @@ class ConnectWithUsPage extends StatelessWidget {
                         ),
                         const SizedBox(width: 15),
                         Expanded(
-                          child: Directionality(
-                            textDirection: TextDirection.rtl,
-                            child: TextFormFiledCustom(
-                              hintText: 'أدخل رقم هاتفك',
-                              imgIconSvg: "assets/images/svg/phone.svg",
-                              lines: 1,
-                            ),
+                          child: TextFormFiledCustom(
+                            hintText: 'mobile_number',
+                            imgIconSvg: "assets/images/svg/phone.svg",
+                            lines: 1,
                           ),
                         ),
                       ],
                     ),
                     const SizedBox(height: 24),
-                    titleText('الرسالة'),
+                    titleText('message'),
                     const SizedBox(height: 10),
-                    Directionality(
-                      textDirection: TextDirection.rtl,
-                      child: TextFormFiledCustom(
-                        hintText: 'أدخل رسالتك',
-                        imgIconSvg: "assets/images/svg/message.svg",
-                        lines: 5,
-                      ),
+                    TextFormFiledCustom(
+                      hintText: 'enter_message'.tr(),
+                      imgIconSvg: "assets/images/svg/message.svg",
+                      lines: 5,
                     ),
                     const SizedBox(height: 24),
                     SizedBox(
                         width: MediaQuery.of(context).size.width,
                         child: CustomButtonWidget(
                           color: Colors.white,
-                          text: 'إرسال',
+                          text: 'send'.tr(),
                           onPressed: () {
                             context.goNamed(Routes.sucssesConnectWithUsPage);
                           },
@@ -170,7 +159,7 @@ class ConnectWithUsPage extends StatelessWidget {
 
   Widget titleText(String title) {
     return Align(
-      alignment: Alignment.centerRight,
+      alignment: Alignment.centerLeft,
       child: TranslateText(
         styleText: StyleText.h4,
         colorText: HexColor('#200E32'),
