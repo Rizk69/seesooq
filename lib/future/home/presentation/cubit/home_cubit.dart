@@ -94,5 +94,5 @@ const List<String> titles = [
   'account_drawer',
   'help_drawer',
   'setting_drawer',
-  'Logout',
+  'logout',
 ];

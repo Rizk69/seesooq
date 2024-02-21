@@ -47,7 +47,7 @@ void main() async {
     minimumFetchInterval: const Duration(seconds: 1),
   ));
 
-   // await remoteConfig.fetchAndActivate();
+   await remoteConfig.fetchAndActivate();
   print('welcome: ${remoteConfig.getString('update_app')}');
 
   // final _liveActivitiesPlugin = LiveActivities();
@@ -68,7 +68,7 @@ void main() async {
   // print(await FirebaseDynamicLink.buildShortLink());
   runApp(
     EasyLocalization(
-        supportedLocales: const [Locale('en', 'US'), Locale('ar', 'JO')],
+        supportedLocales: const [ Locale('ar', 'JO')],
         path: 'assets/translations',
 
         // <-- change the path of the translation files

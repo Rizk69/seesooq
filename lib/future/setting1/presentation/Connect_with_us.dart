@@ -34,7 +34,7 @@ class ConnectWithUsPage extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     HeaderScreens(
                         title: 'contact_us',
@@ -158,14 +158,11 @@ class ConnectWithUsPage extends StatelessWidget {
   }
 
   Widget titleText(String title) {
-    return Align(
-      alignment: Alignment.centerLeft,
-      child: TranslateText(
-        styleText: StyleText.h4,
-        colorText: HexColor('#200E32'),
-        fontWeight: FontWeight.w500,
-        text: title,
-      ),
+    return TranslateText(
+      styleText: StyleText.h4,
+      colorText: HexColor('#200E32'),
+      fontWeight: FontWeight.w500,
+      text: title,
     );
   }
 }

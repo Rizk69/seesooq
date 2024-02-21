@@ -31,7 +31,7 @@ class EditProfilePage extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   HeaderScreens(
                       title: 'edit_profile',
@@ -39,7 +39,7 @@ class EditProfilePage extends StatelessWidget {
                         context.go(Routes.profilePage);
                       }),
                   const SizedBox(height: 40),
-                  ProfilePhoto(img: 'edit_profile'.toSvg),
+                  Center(child: ProfilePhoto(img: 'edit_profile'.toSvg)),
                   const SizedBox(height: 20),
                   titleText('first_name'),
                   const SizedBox(height: 10),
@@ -174,7 +174,7 @@ class EditProfilePage extends StatelessWidget {
                       width: MediaQuery.of(context).size.width,
                       child: CustomButtonWidget(
                         color: Colors.white,
-                        text: 'Save Changes',
+                        text: 'save_changes'.tr(),
                         onPressed: () {
                           context.go(Routes.sucsseEditProfile);
                         },
@@ -189,14 +189,11 @@ class EditProfilePage extends StatelessWidget {
   }
 
   Widget titleText(String title) {
-    return Align(
-      alignment: Alignment.centerLeft,
-      child: TranslateText(
-        styleText: StyleText.h4,
-        colorText: HexColor('#200E32'),
-        fontWeight: FontWeight.w500,
-        text: title,
-      ),
+    return TranslateText(
+      styleText: StyleText.h4,
+      colorText: HexColor('#200E32'),
+      fontWeight: FontWeight.w500,
+      text: title,
     );
   }
 }
