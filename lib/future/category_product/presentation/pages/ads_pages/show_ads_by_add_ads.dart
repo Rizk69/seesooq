@@ -21,75 +21,78 @@ class _ShowAdsByAddingScreenState extends State<ShowAdsByAddingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        BannerAdsSharedWidget(images: ['', ''], onPageChanged: (index) {}, height: 250),
-        const Gap(
-          25,
-        ),
-        TranslateText(
-          styleText: StyleText.h5,
-          fontWeight: FontWeight.w500,
-          text: 'Brown chair with modern style',
-          colorText: HexColor("#200E32"),
-        ),
-        const Gap(
-          10,
-        ),
-        TranslateText(
-          styleText: StyleText.h5,
-          maxLines: 4,
-          textAlign: TextAlign.start,
-          fontWeight: FontWeight.w400,
-          text:
-              'Place the ad description here. Place the ad description here. Place the ad description here. Place the ad description here. Place the ad description here. Place',
-          colorText: HexColor("#707070"),
-        ),
-        const Gap(
-          10,
-        ),
-        TranslateText(
-          styleText: StyleText.h3,
-          fontWeight: FontWeight.w700,
-          text: '25,000 JD',
-          colorText: HexColor("#4C0497"),
-        ),
-        const Gap(
-          20,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            SvgCustomImage(image: 'location'.toSvg, width: 20, height: 20),
-            const Gap(
-              5,
-            ),
-            TranslateText(
-              styleText: StyleText.h5,
-              fontWeight: FontWeight.w400,
-              text: 'Amman - Jordan',
-              colorText: HexColor("#200E32"),
-            ),
-          ],
-        ),
-        const Gap(
-          20,
-        ),
-        Center(
-          child: SizedBox(
-            height: 50,
-            width: context.width * 0.9,
-            child: CustomButtonWidget(
-              text: 'Publish',
-              onPressed: () {
-                context.goNamed(Routes.reviewAdsRoute);
-              },
-              color: Colors.white,
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          BannerAdsSharedWidget(
+              images: ['', ''], onPageChanged: (index) {}, height: 250),
+          const Gap(
+            25,
+          ),
+          TranslateText(
+            styleText: StyleText.h5,
+            fontWeight: FontWeight.w500,
+            text: 'Brown chair with modern style',
+            colorText: HexColor("#200E32"),
+          ),
+          const Gap(
+            10,
+          ),
+          TranslateText(
+            styleText: StyleText.h5,
+            maxLines: 4,
+            textAlign: TextAlign.start,
+            fontWeight: FontWeight.w400,
+            text:
+                'Place the ad description here. Place the ad description here. Place the ad description here. Place the ad description here. Place the ad description here. Place',
+            colorText: HexColor("#707070"),
+          ),
+          const Gap(
+            10,
+          ),
+          TranslateText(
+            styleText: StyleText.h3,
+            fontWeight: FontWeight.w700,
+            text: '25,000 JD',
+            colorText: HexColor("#4C0497"),
+          ),
+          const Gap(
+            20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SvgCustomImage(image: 'location'.toSvg, width: 20, height: 20),
+              const Gap(
+                5,
+              ),
+              TranslateText(
+                styleText: StyleText.h5,
+                fontWeight: FontWeight.w400,
+                text: 'Amman - Jordan',
+                colorText: HexColor("#200E32"),
+              ),
+            ],
+          ),
+          const Gap(
+            20,
+          ),
+          Center(
+            child: SizedBox(
+              height: 50,
+              width: context.width * 0.9,
+              child: CustomButtonWidget(
+                text: 'Publish',
+                onPressed: () {
+                  context.goNamed(Routes.reviewAdsRoute);
+                },
+                color: Colors.white,
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
