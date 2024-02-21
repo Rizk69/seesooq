@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:opensooq/config/routes/app_routes.dart';
@@ -19,7 +20,7 @@ class LookAtMarketPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               HeaderScreens(
-                title: 'عن شوف السوق',
+                title: 'market_watch',
                 onPressed: () {
                   context.go(Routes.setting);
                 },
@@ -40,8 +41,8 @@ class LookAtMarketPage extends StatelessWidget {
                 description:
                     'ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السيا',
               ),
-              const Text(
-                'تواصل معنا',
+               Text(
+                'contact_us'.tr(),
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontSize: 18,
@@ -49,13 +50,15 @@ class LookAtMarketPage extends StatelessWidget {
                   fontWeight: FontWeight.w700,
                 ),
               ),
-              SizedBox(height: 24,),
+              SizedBox(
+                height: 24,
+              ),
               Row(
                 children: [
                   _customCard(img: 'assets/images/svg/insicons.svg'),
                   _customCard(img: 'assets/images/svg/facicons.svg'),
                   _customCard(img: 'assets/images/svg/mobileicons.svg'),
-                  _customCard(img: 'assets/images/svg/emailicons.svg'),
+                  _customCard(img: 'assets/images/svg/emailicons.svg')
                 ],
               ),
             ],
@@ -102,9 +105,8 @@ class LookAtMarketPage extends StatelessWidget {
         padding: EdgeInsets.all(20),
         margin: EdgeInsets.symmetric(horizontal: 8),
         decoration: BoxDecoration(
-          color: HexColor('#F9F9F9'),
-          borderRadius: BorderRadius.circular(20)
-        ),
+            color: HexColor('#F9F9F9'),
+            borderRadius: BorderRadius.circular(20)),
         child: SvgCustomImage(
           image: img,
           width: 25,

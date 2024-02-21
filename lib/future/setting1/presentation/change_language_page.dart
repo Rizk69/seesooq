@@ -1,4 +1,5 @@
 // change_language_page.dart
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -28,7 +29,7 @@ class ChangeLanguagePage extends StatelessWidget {
             child: Column(
               children: [
                 HeaderScreens(
-                  title: 'اللغة',
+                  title: 'language',
                   onPressed: () {
                     context.go(Routes.setting);
                   },
@@ -39,7 +40,7 @@ class ChangeLanguagePage extends StatelessWidget {
                 buildRow(
                   context,
                   languageCubit,
-                  'اللغة العربية',
+                  'arabic',
                   'assets/images/svg/lan.svg',
                 ),
                 const SizedBox(
@@ -48,7 +49,7 @@ class ChangeLanguagePage extends StatelessWidget {
                 buildRow(
                   context,
                   languageCubit,
-                  'اللغة الإنجليزية',
+                  'english',
                   'assets/images/svg/lan.svg',
                 ),
               ],
@@ -79,7 +80,7 @@ class ChangeLanguagePage extends StatelessWidget {
         ),
         const Spacer(),
         Text(
-          title,
+          title.tr(),
           style: const TextStyle(
             fontSize: 18,
             color: Colors.black,
@@ -120,7 +121,7 @@ class ChangeLightDarkPage extends StatelessWidget {
             child: Column(
               children: [
                 HeaderScreens(
-                  title: 'الوضع',
+                  title: 'mode',
                   onPressed: () {
                     context.go(Routes.setting);
                   },
@@ -131,7 +132,7 @@ class ChangeLightDarkPage extends StatelessWidget {
                 buildRow(
                   context,
                   themeCubit,
-                  'الوضع النهاري',
+                  'light',
                   'assets/images/svg/lightmode.svg',
                 ),
                 const SizedBox(
@@ -140,7 +141,7 @@ class ChangeLightDarkPage extends StatelessWidget {
                 buildRow(
                   context,
                   themeCubit,
-                  'الوضع الليلي',
+                  'dark',
                   'assets/images/svg/darkmode.svg',
                 ),
               ],
@@ -173,7 +174,7 @@ class ChangeLightDarkPage extends StatelessWidget {
         ),
         const Spacer(),
         Text(
-          title,
+          title.tr(),
           style: const TextStyle(
             fontSize: 18,
             color: Colors.black,

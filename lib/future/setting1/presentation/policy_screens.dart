@@ -17,7 +17,7 @@ class PrivacyScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               HeaderScreens(
-                title: 'سياسة الخصوصية',
+                title: 'privacy_policy',
                 onPressed: () {
                   context.go(Routes.setting);
                 },
@@ -99,7 +99,7 @@ class TermsConditionsScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               HeaderScreens(
-                title: 'الشروط والأحكام',
+                title: 'terms_and_conditions',
                 onPressed: () {
                   context.go(Routes.setting);
                 },

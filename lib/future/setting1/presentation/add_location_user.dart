@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -24,7 +25,7 @@ class EmptyLocationPage extends StatelessWidget {
       child: Column(
         children: [
           HeaderScreens(
-              title: 'العنوان',
+              title: 'address',
               onPressed: () {
                 context.go(Routes.accountMangePage);
               }),
@@ -36,17 +37,16 @@ class EmptyLocationPage extends StatelessWidget {
             height: 34,
           ),
           Center(
-              child: titleText(
-                  'لا يوجد عنوان', HexColor('#4C0497'), StyleText.h4)),
+              child: titleText('no_title', HexColor('#4C0497'), StyleText.h4)),
           const SizedBox(
             height: 10,
           ),
           Center(
-              child: titleText('يبدو أنك لم تقم بإضافة أي عنوان بعد،',
-                  HexColor('#707070'), StyleText.h5)),
+              child:
+                  titleText('des_location', HexColor('#707070'), StyleText.h5)),
           Center(
               child: titleText(
-                  '...سيظهر عنوانك هنا', HexColor('#707070'), StyleText.h5)),
+                  'des_location1', HexColor('#707070'), StyleText.h5)),
           const SizedBox(
             height: 30,
           ),
@@ -78,17 +78,17 @@ class EmptyLocationPage extends StatelessWidget {
                       1,
                     ],
                   )),
-              child: const Row(
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.arrow_back_ios_new_rounded,
+                  const Icon(Icons.arrow_back_ios_new_rounded,
                       color: Colors.white, size: 15),
-                  SizedBox(
+                  const SizedBox(
                     width: 6,
                   ),
                   Text(
-                    'إضافة عنواني',
-                    style: TextStyle(
+                    'add_title'.tr(),
+                    style: const TextStyle(
                         color: Colors.white,
                         fontSize: 18,
                         fontWeight: FontWeight.w700),
@@ -124,7 +124,7 @@ class AddLocationUser extends StatelessWidget {
         child: Column(
           children: [
             HeaderScreens(
-                title: 'إضافة عنواني',
+                title: 'add_title',
                 onPressed: () {
                   context.go(Routes.accountMangePage);
                 }),
@@ -134,12 +134,13 @@ class AddLocationUser extends StatelessWidget {
             SingleChildScrollView(
               child: Expanded(
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  titleText('العنوان', Colors.black, StyleText.h3),
+                  titleText('address', Colors.black, StyleText.h3),
                   const SizedBox(height: 10),
-                  const CustomTextFormFiledApp(
+                  CustomTextFormFiledApp(
                       imgIconSvg: 'assets/images/svg/location.svg',
-                      title: 'أدخل عنوانك'),
+                      title: 'add_title1'.tr()),
                   const SizedBox(height: 10),
                   LocationSelectionWidget(),
                   SizedBox(
@@ -149,7 +150,7 @@ class AddLocationUser extends StatelessWidget {
                     onTap: () {
                       context.go(Routes.sucssesAddLocationPage);
                     },
-                    child: ButtomsCustom(title: 'إضافة عنواني'),
+                    child: ButtomsCustom(title: 'add_title'.tr()),
                   )
                 ],
               )),
@@ -162,7 +163,7 @@ class AddLocationUser extends StatelessWidget {
 
   Widget titleText(String title, Color color, StyleText styleText) {
     return Align(
-      alignment: AlignmentDirectional.centerEnd,
+      alignment: AlignmentDirectional.centerStart,
       child: TranslateText(
         styleText: styleText,
         colorText: color,
@@ -194,16 +195,16 @@ class SucssesAddLocationPage extends StatelessWidget {
         ),
         Center(
             child: titleText(
-                'تمت إضافة عنوانك بنجاح', HexColor('#4C0497'), StyleText.h4)),
+                'your_title_has_been_successfully_added', HexColor('#4C0497'), StyleText.h4)),
         const SizedBox(
           height: 10,
         ),
         Center(
-            child: titleText('قمت بإضافة العنوان الخاص بك بنجاح،',
+            child: titleText('you_have_successfully_added_your_title',
                 HexColor('#707070'), StyleText.h5)),
         Center(
             child: titleText(
-                '...يمكنك متابعة التصفح', HexColor('#707070'), StyleText.h5)),
+                'you_can_continue_browsing', HexColor('#707070'), StyleText.h5)),
         const Spacer(),
         Padding(
           padding: const EdgeInsets.all(12),
@@ -211,7 +212,7 @@ class SucssesAddLocationPage extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               child: CustomButtonWidget(
                 color: Colors.white,
-                text: 'متابعة إلى الصفحة الرئيسية',
+                text: 'continue_to_the_homepage',
                 onPressed: () {
                   context.go(Routes.home);
                 },

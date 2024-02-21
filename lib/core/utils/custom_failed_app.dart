@@ -169,13 +169,12 @@ class CustomTextFormFiledApp extends StatelessWidget {
     return TextFormField(
       onTapOutside: (event) => FocusScope.of(context).unfocus(),
       decoration: InputDecoration(
-        suffixIcon: Padding(
+        prefixIcon: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12),
           child: SvgPicture.asset(
             imgIconSvg,
           ),
         ),
-        hintTextDirection: TextDirection.rtl,
         hintText: title,
         hintStyle: const TextStyle(fontSize: 18),
         prefixIconConstraints: const BoxConstraints(maxWidth: 45),

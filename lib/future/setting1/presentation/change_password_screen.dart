@@ -1,8 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:opensooq/config/routes/app_routes.dart';
-
 
 import '../../../core/utils/custom_failed_app.dart';
 import '../../../core/utils/hex_color.dart';
@@ -19,26 +19,26 @@ class ChangePasswordPage extends StatelessWidget {
     return Scaffold(
       body: Padding(
         padding:
-        const EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 15),
+            const EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 15),
         child: Column(
           children: [
             HeaderScreens(
-                title: 'تغيير كلمة السر',
+                title: 'change_password',
                 onPressed: () {
                   context.go(Routes.accountMangePage);
                 }),
             const SizedBox(height: 20),
-            titleText('كلمة سر جديدة'),
+            titleText('new_change_password'),
             const SizedBox(height: 10),
-            const CustomTextFormFiledPasswrd(
-              title: 'أدخل كلمة سر جديدة',
+            CustomTextFormFiledPasswrd(
+              title: 'enter_new_change_password'.tr(),
               imgIconSvg: "assets/images/svg/password.svg",
             ),
             const SizedBox(height: 24),
-            titleText('تأكيد كلمة السر'),
+            titleText('confirm_password'),
             const SizedBox(height: 10),
-            const CustomTextFormFiledPasswrd(
-              title: 'أدخل كلمة السر مجددًا',
+            CustomTextFormFiledPasswrd(
+              title: 're-enter_Password'.tr(),
               imgIconSvg: "assets/images/svg/password.svg",
             ),
             Spacer(),
@@ -46,7 +46,7 @@ class ChangePasswordPage extends StatelessWidget {
               onTap: () {
                 context.go(Routes.sucssesChangePasswordPage);
               },
-              child: ButtomsCustom(title: 'حفظ كلمة السر'),
+              child: ButtomsCustom(title: 'save_Password'.tr()),
             )
           ],
         ),

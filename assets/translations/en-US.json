@@ -115,5 +115,85 @@
     "reels_drawer": "Reels",
     "help_drawer": "Help",
     "account_drawer": "Account",
-  "setting_drawer": "Settings"
+  "setting_drawer": "Settings",
+  "followers": "Followers",
+  "edit_profile": "Edit Profile",
+  "first_name": "First Name",
+  "male": "Male",
+  "female": "Female",
+  "mobile_number": "Enter Mobile Number",
+  "enter_email": "Enter Your Email",
+  "account_management": "Account Management",
+  "notifications": "Notifications",
+  "language": "Language",
+  "mode": "Mode",
+  "privacy_policy": "Privacy Policy",
+  "terms_and_conditions": "Terms and Conditions",
+  "market_watch": "Market Watch",
+  "contact_us": "Contact Us",
+  "fAQs": "Frequently Asked Questions",
+  "app_sharing": "App Sharing",
+  "change_password": "Change Password",
+  "privacy": "Privacy",
+  "address": "Address",
+  "delete_account": "Delete Account",
+  "privacy_phone": "Display Phone Number to Users",
+  "new_change_password": "New Password",
+  "enter_new_change_password": "Enter New Password",
+  "confirm_password": "Confirm Password",
+  "re-enter_Password": "Re-enter Password",
+  "save_Password": "Save Password",
+  "reason_for_deleting": "Reason for Deleting",
+  "delete_my_account": "Delete My Account",
+  "no_title": "No title",
+  "des_location": "It seems you haven't added any title yet",
+  "des_location1": "Your title will appear here...",
+  "add_title": "Add my title",
+  "add_title1": "Enter your title",
+  "your_title_has_been_successfully_added": "Your title has been successfully added.",
+  "you_have_successfully_added_your_title": "You have successfully added your title.",
+  "you_can_continue_browsing": "You can continue browsing...",
+  "continue_to_the_homepage":"Continue to the homepage.",
+  "arabic": "Arabic Language",
+  "english": "English Language",
+  "light": "Light mode",
+  "dark": "Dark mode",
+  "full_name": "Full name",
+  "message": "Message",
+  "enter_message": "Enter Message",
+  "send": "Send",
+  "country": "Country",
+  "city": "City",
+  "area": "Area",
+  "select_area": "Select Area",
+  "select_city": "Select City",
+  "save_changes": "Save Changes",
+
+
+  "select_country": "Select Country",
+
+  "enter_your_full_name": "Enter your full name."
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

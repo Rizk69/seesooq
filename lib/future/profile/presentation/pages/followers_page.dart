@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:opensooq/core/utils/custom_failed_app.dart';
 
-
 import '../../../../config/routes/app_routes.dart';
 import '../../../../core/utils/hex_color.dart';
 import '../../../../core/widget/text_translate_manager.dart';
@@ -22,7 +21,7 @@ class FollowersEmptyPage extends StatelessWidget {
         child: Column(
           children: [
             HeaderScreens(
-                title: 'المتابَعون',
+                title: 'followers',
                 onPressed: () {
                   context.go(Routes.profilePage);
                 }),
@@ -75,7 +74,7 @@ class FollowersPage extends StatelessWidget {
             child: Column(
               children: [
                 HeaderScreens(
-                    title: 'المتابَعون',
+                    title: 'followers',
                     onPressed: () {
                       context.go(Routes.profilePage);
                     }),

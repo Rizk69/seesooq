@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
@@ -10,7 +11,6 @@ import '../../../core/widget/text_translate_manager.dart';
 import '../edit_profile/presentation/widgets/anmtionsucssuffly.dart';
 import '../edit_profile/presentation/widgets/header_screen.dart';
 
-
 class RemoveAccountPage extends StatelessWidget {
   const RemoveAccountPage({super.key});
 
@@ -21,7 +21,7 @@ class RemoveAccountPage extends StatelessWidget {
       child: Column(
         children: [
           HeaderScreens(
-              title: 'سبب الحذف',
+              title: 'reason_for_deleting',
               onPressed: () {
                 context.go(Routes.accountMangePage);
               }),
@@ -34,7 +34,7 @@ class RemoveAccountPage extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               child: CustomButtonWidget(
                 color: Colors.white,
-                text: 'حذف حسابي',
+                text: 'delete_my_account'.tr(),
                 onPressed: () {
                   context.go(Routes.sucssesRemoveAccountPage);
                 },
