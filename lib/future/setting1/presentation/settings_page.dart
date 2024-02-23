@@ -47,7 +47,7 @@ class SettingsPage extends StatelessWidget {
                   itemCount: contacts.length,
                   itemBuilder: (context, index) {
                     final contact = contacts[index];
-                    return InkWell(
+                    return InkWell (
                       onTap: () {
                         switch (index) {
                           case 0:

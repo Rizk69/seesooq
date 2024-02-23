@@ -71,7 +71,7 @@ class MyStoryWidget extends StatelessWidget {
           ),
           const TranslateText(
             styleText: StyleText.h6,
-            text: 'Create Story',
+            text: 'create_story',
             fontWeight: FontWeight.w600,
             fontSize: 13,
           )

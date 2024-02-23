@@ -22,18 +22,6 @@ class CardListItems extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Icon(
-          Icons.arrow_back_ios,
-          color: AppColors.grey.withOpacity(0.7),
-        ),
-        Spacer(),
-        contactText(
-          title: title, // Use the title from the contact
-          des: des, // Use the description from the contact
-        ),
-        SizedBox(
-          width: 20,
-        ),
         CircleAvatar(
           backgroundColor: HexColor('#F9F9F9'),
           radius: 25,
@@ -42,6 +30,21 @@ class CardListItems extends StatelessWidget {
             width: 25,
             height: 25,
           ),
+        ),
+        SizedBox(
+          width: 20,
+        ),
+        contactText(
+          title: title, // Use the title from the contact
+          des: des, // Use the description from the contact
+        ),
+
+
+        Spacer(),
+
+        Icon(
+          Icons.arrow_forward_ios,
+          color: AppColors.grey.withOpacity(0.7),
         ),
       ],
     );
@@ -53,7 +56,7 @@ class CardListItems extends StatelessWidget {
   }) {
 
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           title,

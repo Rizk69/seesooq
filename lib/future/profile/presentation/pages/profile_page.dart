@@ -89,7 +89,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       styleText: StyleText.h4,
                       colorText: HexColor('#200E32'),
                       fontWeight: FontWeight.bold,
-                      text: 'Statistics Account',
+                      text: 'statistics_account',
                     ),
                   ),
                 ],
@@ -223,7 +223,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       styleText: StyleText.h4,
                       colorText: HexColor('#200E32'),
                       fontWeight: FontWeight.bold,
-                      text: 'Fast Shortcuts',
+                      text: 'fast_shortcuts',
                     ),
                   ),
                 ],
@@ -293,12 +293,12 @@ class _ProfilePageState extends State<ProfilePage> {
 
   List<String> _getTitles() {
     return [
-      'Followers',
-      'Following',
-      'Account Views',
-      'Account Rate',
-      'Ads Number',
-      'Ads Views',
+      'Followers'.tr(),
+      'Following'.tr(),
+      'Account Views'.tr(),
+      'Account Rate'.tr(),
+      'Ads Number'.tr(),
+      'Ads Views'.tr(),
     ];
   }
 

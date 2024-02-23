@@ -96,6 +96,7 @@
   "priceAdsHint": "Enter Price Ads",
   "statusAds": "Status Ads*",
   "categoryAds": "Category Ads*",
+  "category": "Category",
   "paymentMethod": "Payment Method",
   "new": "New",
   "used": "Used",
@@ -169,7 +170,15 @@
   "select_city": "Select City",
   "save_changes": "Save Changes",
   "next": "Next",
-
+  "create_story": "Create Story",
+  "statistics_account": "Statistics Account",
+  "fast_shortcuts": "Fast Shortcuts",
+  "Followers": "Followers",
+  "Following": "Following",
+  "Account Views": "Account Views",
+  "Account Rate": "Account Rate",
+  "Ads Number": "Ads Number",
+  "Ads Views": "Ads Views",
 
   "select_country": "Select Country",
 

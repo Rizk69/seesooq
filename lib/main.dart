@@ -70,7 +70,7 @@ void main() async {
     EasyLocalization(
         supportedLocales: const [ Locale('ar', 'JO')],
         path: 'assets/translations',
-
+//Locale('en', 'US'),
         // <-- change the path of the translation files
 
         child: const MyApp()),
