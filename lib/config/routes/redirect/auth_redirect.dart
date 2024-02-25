@@ -34,8 +34,9 @@ class AuthRedirect extends GoRedirect {
       return Routes.home;
     }
     if (loginState.loginStatus == LoginStatus.unAuthorized) {
-      print('loginState.loginStatus == LoginStatus.success');
-      return Routes.loginSplash;
+      Future.delayed(Duration.zero, () {
+        GoRouter.of(context).goNamed(Routes.login);
+      });
     }
 
     return null;
