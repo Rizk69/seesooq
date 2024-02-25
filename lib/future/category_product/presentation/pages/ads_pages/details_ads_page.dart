@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:opensooq/core/utils/custom_failed_app.dart';
+import 'package:opensooq/core/widget/text_translate_manager.dart';
 import 'package:opensooq/future/category_product/presentation/cubit/add_ads_cubit.dart';
 import 'package:opensooq/future/category_product/presentation/cubit/add_ads_state.dart';
 import 'package:opensooq/future/category_product/presentation/widgets/dynamic_form_widget.dart';
@@ -33,6 +35,30 @@ class _DetailsAdsPageState extends State<DetailsAdsPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const TranslateText(
+                text: 'adsName',
+                styleText: StyleText.h4,
+                fontSize: 16,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const CustomTextFormFiled(prefixIcon: false),
+              const SizedBox(
+                height: 10,
+              ),
+              const TranslateText(
+                text: 'adsDescription',
+                styleText: StyleText.h4,
+                fontSize: 16,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const CustomTextFormFiled(prefixIcon: false),
+              const SizedBox(
+                height: 20,
+              ),
               ...state.attributesAdsModel?.attributes
                       ?.map((e) => DynamicFormWidget(
                             name: e.title ?? '',

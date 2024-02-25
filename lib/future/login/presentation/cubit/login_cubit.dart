@@ -87,14 +87,12 @@ class LoginCubit extends Cubit<LoginState> with ChangeNotifier {
   Future<void> getLocalUser() async {
     final user = await loginRepository.getUserLocal();
 
-    user.fold(
-      (l) {
-        emit(state.copyWith(
-          isHome: false,
-        ));
-      },
-      (r) {
-        print('sakdjklasjjdklsa${r.user?.id}');
+    user.fold((l) {
+      emit(state.copyWith(
+        isHome: false,
+      ));
+    }, (r) {
+      if (r.token != null) {
         emit(state.copyWith(
           isHome: true,
           loginModel: LoginModel(
@@ -107,8 +105,12 @@ class LoginCubit extends Cubit<LoginState> with ChangeNotifier {
           ),
         ));
         notifyListeners();
-      },
-    );
+      } else {
+        emit(state.copyWith(
+          loginStatus: LoginStatus.unAuthorized,
+        ));
+      }
+    });
     notifyListeners();
     print('user: ${state.isHome}');
   }

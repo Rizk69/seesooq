@@ -1,5 +1,4 @@
 {
-  "title": "Hi {}",
   "home": "Home",
   "chat": "Chat",
   "more": "Show More",
@@ -132,6 +131,7 @@
   "terms_and_conditions": "Terms and Conditions",
   "market_watch": "Market Watch",
   "contact_us": "Contact Us",
+  "title": "Title",
   "fAQs": "Frequently Asked Questions",
   "app_sharing": "App Sharing",
   "change_password": "Change Password",

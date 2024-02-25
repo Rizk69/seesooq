@@ -8,6 +8,7 @@ enum LoginStatus {
   loading,
   success,
   error,
+  unAuthorized,
 }
 
 enum ForGetPasswordStatus {
