@@ -25,4 +25,6 @@ class EndPoint {
   static const String searchPlaces = '/place/textsearch/json';
   static const String editProfile = '/place/textsearch/json';
   static const String getFav = '/place/textsearch/json';
+  static const String getMyAds = '/place/textsearch/json';
+  static const String deleteMyAds = '/place/textsearch/json';
 }

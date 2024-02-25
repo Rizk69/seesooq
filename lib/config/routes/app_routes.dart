@@ -39,6 +39,7 @@ import 'package:opensooq/future/signup/presentation/cubit/signup_cubit.dart';
 import 'package:opensooq/future/splash/presentation/screens/introduction_page.dart';
 import 'package:opensooq/future/wallet/presentation/pages/route/wallet_route.dart';
 
+import '../../future/myads/routing/ads_route.dart';
 import '../../future/setting1/edit_profile/presentation/pages/sucsses_edit_profile_page.dart';
 import '../../future/setting1/presentation/Connect_with_us.dart';
 import '../../future/setting1/presentation/change_language_page.dart';
@@ -59,6 +60,7 @@ class Routes {
   static const String unLockPassword = 'unLockPassword';
   static const String storyView = '/storyView';
   static const String favorite = 'favorite';
+  static const String myAds = 'myAds';
   static const String setting = '/setting';
   static const String accountMangePage = '/accountMangePage';
   static const String changePassword = '/changePassword';
@@ -141,6 +143,7 @@ final GoRouter router = GoRouter(
                 routes: [
                   PackagesRoute(),
                   FavoriteRoute(),
+                  MyAdsRoute(),
                   WalletRoute(),
                   GoRoute(
                     path: 'view_ads_home',
