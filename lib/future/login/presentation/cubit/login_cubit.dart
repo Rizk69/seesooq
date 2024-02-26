@@ -26,6 +26,7 @@ class LoginCubit extends Cubit<LoginState> with ChangeNotifier {
   static LoginCubit get(context) => BlocProvider.of(context);
 
   Future<void> loginUserWithEmailOrPhone({required String email, required String password}) async {
+    emit(state.copyWith(loginStatus: LoginStatus.loading));
     EasyLoading.show(status: 'loading...');
     final response = await loginRepository.loginWithEmailOrPhone(
       params: LoginParams(

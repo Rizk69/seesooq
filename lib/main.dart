@@ -20,7 +20,8 @@ Future<List<ImageFile>> pickImagesUsingImagePicker(bool allowMultiple) async {
     xFiles = await picker.pickMultiImage();
   } else {
     xFiles = [];
-    final xFile = await picker.pickImage(source: ImageSource.gallery, maxHeight: 1080, maxWidth: 1080);
+    final xFile = await picker.pickImage(
+        source: ImageSource.gallery, maxHeight: 1080, maxWidth: 1080);
     if (xFile != null) {
       xFiles.add(xFile);
     }
@@ -35,7 +36,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await di.configureDependencies();
   await EasyLocalization.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform, name: 'SeeSooq');
+  await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform, name: 'SeeSooq');
   final dir = await getApplicationDocumentsDirectory();
   Hive.init(dir.path);
   Hive.registerAdapter(UserLocalModelAdapter());
@@ -47,7 +49,7 @@ void main() async {
     minimumFetchInterval: const Duration(seconds: 1),
   ));
 
-   await remoteConfig.fetchAndActivate();
+  // await remoteConfig.fetchAndActivate();
   print('welcome: ${remoteConfig.getString('update_app')}');
 
   // final _liveActivitiesPlugin = LiveActivities();
@@ -68,9 +70,8 @@ void main() async {
   // print(await FirebaseDynamicLink.buildShortLink());
   runApp(
     EasyLocalization(
-        supportedLocales: const [ Locale('ar', 'JO')],
+        supportedLocales: const [Locale('en', 'US'), Locale('ar', 'JO')],
         path: 'assets/translations',
-//Locale('en', 'US'),
         // <-- change the path of the translation files
 
         child: const MyApp()),
