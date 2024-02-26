@@ -7,13 +7,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:opensooq/core/utils/media_query_values.dart';
 import 'package:opensooq/core/widget/text_translate_manager.dart';
-import 'package:opensooq/di.dart' as di;
 import 'package:opensooq/future/category_product/presentation/cubit/add_ads_cubit.dart';
 import 'package:opensooq/future/location/presentation/cubit/location_cubit.dart';
 import 'package:opensooq/future/location/presentation/cubit/location_state.dart';
 
 class LocationAdsPage extends StatelessWidget {
-  const LocationAdsPage({super.key});
+  const LocationAdsPage({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,9 @@ class LocationAdsPage extends StatelessWidget {
                 CustomDropdown.search(
                     items: state.governorate.map((e) => e.title ?? '').toList(),
                     onChanged: (value) {
-                      di.sl<AddAdsCubit>().updateGovernorateForm(value);
+                      // get the id of the selected governorate
+                      var id = state.governorate.firstWhere((element) => element.title == value).id?.toInt() ?? 0;
+                      AddAdsCubit.get(context).updateGovernorateForm(id.toString());
                       context.read<LocationCubit>().getCities(id: state.governorate.firstWhere((element) => element.title == value).id?.toInt() ?? 0);
                     },
                     hideSelectedFieldWhenExpanded: true,
@@ -47,7 +50,10 @@ class LocationAdsPage extends StatelessWidget {
                     validateOnChange: true,
                     items: state.cities.map((e) => e.title ?? '').toList(),
                     onChanged: (value) {
-                      di.sl<AddAdsCubit>().updateCityForm(value);
+                      var id = state.cities.firstWhere((element) => element.title == value).id?.toInt() ?? 0;
+
+                      print('value $value');
+                      AddAdsCubit.get(context).updateCityForm(id.toString());
                     },
                     hideSelectedFieldWhenExpanded: true,
                     decoration: const CustomDropdownDecoration(

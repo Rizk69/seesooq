@@ -8,8 +8,7 @@ class LocationDetailsAdsRoute extends StatefulShellBranch {
             GoRoute(
               path: 'location_details_ads',
               name: 'location_details_ads',
-              pageBuilder: (context, state) =>
-                  const NoTransitionPage(child: LocationAdsPage()),
+              pageBuilder: (context, state) => const NoTransitionPage(child: LocationAdsPage()),
             ),
           ],
         );

@@ -14,10 +14,6 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-AttributesForm _$AttributesFormFromJson(Map<String, dynamic> json) {
-  return _AttributesForm.fromJson(json);
-}
-
 /// @nodoc
 mixin _$AttributesForm {
   String get title => throw _privateConstructorUsedError;
@@ -35,10 +31,10 @@ mixin _$AttributesForm {
   String get phone => throw _privateConstructorUsedError;
   String get contactMethods => throw _privateConstructorUsedError;
   Map<int, dynamic> get attributes => throw _privateConstructorUsedError;
+  List<File> get images => throw _privateConstructorUsedError;
+  File? get video => throw _privateConstructorUsedError;
   String get paymentMethods => throw _privateConstructorUsedError;
-  String get video => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $AttributesFormCopyWith<AttributesForm> get copyWith =>
       throw _privateConstructorUsedError;
@@ -66,8 +62,9 @@ abstract class $AttributesFormCopyWith<$Res> {
       String phone,
       String contactMethods,
       Map<int, dynamic> attributes,
-      String paymentMethods,
-      String video});
+      List<File> images,
+      File? video,
+      String paymentMethods});
 }
 
 /// @nodoc
@@ -98,8 +95,9 @@ class _$AttributesFormCopyWithImpl<$Res, $Val extends AttributesForm>
     Object? phone = null,
     Object? contactMethods = null,
     Object? attributes = null,
+    Object? images = null,
+    Object? video = freezed,
     Object? paymentMethods = null,
-    Object? video = null,
   }) {
     return _then(_value.copyWith(
       title: null == title
@@ -162,13 +160,17 @@ class _$AttributesFormCopyWithImpl<$Res, $Val extends AttributesForm>
           ? _value.attributes
           : attributes // ignore: cast_nullable_to_non_nullable
               as Map<int, dynamic>,
+      images: null == images
+          ? _value.images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<File>,
+      video: freezed == video
+          ? _value.video
+          : video // ignore: cast_nullable_to_non_nullable
+              as File?,
       paymentMethods: null == paymentMethods
           ? _value.paymentMethods
           : paymentMethods // ignore: cast_nullable_to_non_nullable
-              as String,
-      video: null == video
-          ? _value.video
-          : video // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -198,8 +200,9 @@ abstract class _$$AttributesFormImplCopyWith<$Res>
       String phone,
       String contactMethods,
       Map<int, dynamic> attributes,
-      String paymentMethods,
-      String video});
+      List<File> images,
+      File? video,
+      String paymentMethods});
 }
 
 /// @nodoc
@@ -228,8 +231,9 @@ class __$$AttributesFormImplCopyWithImpl<$Res>
     Object? phone = null,
     Object? contactMethods = null,
     Object? attributes = null,
+    Object? images = null,
+    Object? video = freezed,
     Object? paymentMethods = null,
-    Object? video = null,
   }) {
     return _then(_$AttributesFormImpl(
       title: null == title
@@ -292,20 +296,24 @@ class __$$AttributesFormImplCopyWithImpl<$Res>
           ? _value._attributes
           : attributes // ignore: cast_nullable_to_non_nullable
               as Map<int, dynamic>,
+      images: null == images
+          ? _value._images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<File>,
+      video: freezed == video
+          ? _value.video
+          : video // ignore: cast_nullable_to_non_nullable
+              as File?,
       paymentMethods: null == paymentMethods
           ? _value.paymentMethods
           : paymentMethods // ignore: cast_nullable_to_non_nullable
-              as String,
-      video: null == video
-          ? _value.video
-          : video // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _$AttributesFormImpl implements _AttributesForm {
   const _$AttributesFormImpl(
       {this.title = '',
@@ -323,13 +331,12 @@ class _$AttributesFormImpl implements _AttributesForm {
       this.phone = '',
       this.contactMethods = '',
       final Map<int, dynamic> attributes = const {},
-      this.paymentMethods = '',
-      this.video = ''})
+      final List<File> images = const [],
+      this.video = null,
+      this.paymentMethods = ''})
       : _albums = albums,
-        _attributes = attributes;
-
-  factory _$AttributesFormImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AttributesFormImplFromJson(json);
+        _attributes = attributes,
+        _images = images;
 
   @override
   @JsonKey()
@@ -388,16 +395,25 @@ class _$AttributesFormImpl implements _AttributesForm {
     return EqualUnmodifiableMapView(_attributes);
   }
 
+  final List<File> _images;
+  @override
+  @JsonKey()
+  List<File> get images {
+    if (_images is EqualUnmodifiableListView) return _images;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_images);
+  }
+
+  @override
+  @JsonKey()
+  final File? video;
   @override
   @JsonKey()
   final String paymentMethods;
-  @override
-  @JsonKey()
-  final String video;
 
   @override
   String toString() {
-    return 'AttributesForm(title: $title, description: $description, albums: $albums, price: $price, isOffer: $isOffer, offerPrice: $offerPrice, offerStartTime: $offerStartTime, offerStartDate: $offerStartDate, offerEndTime: $offerEndTime, offerEndDate: $offerEndDate, governorateId: $governorateId, cityId: $cityId, phone: $phone, contactMethods: $contactMethods, attributes: $attributes, paymentMethods: $paymentMethods, video: $video)';
+    return 'AttributesForm(title: $title, description: $description, albums: $albums, price: $price, isOffer: $isOffer, offerPrice: $offerPrice, offerStartTime: $offerStartTime, offerStartDate: $offerStartDate, offerEndTime: $offerEndTime, offerEndDate: $offerEndDate, governorateId: $governorateId, cityId: $cityId, phone: $phone, contactMethods: $contactMethods, attributes: $attributes, images: $images, video: $video, paymentMethods: $paymentMethods)';
   }
 
   @override
@@ -429,12 +445,12 @@ class _$AttributesFormImpl implements _AttributesForm {
                 other.contactMethods == contactMethods) &&
             const DeepCollectionEquality()
                 .equals(other._attributes, _attributes) &&
+            const DeepCollectionEquality().equals(other._images, _images) &&
+            (identical(other.video, video) || other.video == video) &&
             (identical(other.paymentMethods, paymentMethods) ||
-                other.paymentMethods == paymentMethods) &&
-            (identical(other.video, video) || other.video == video));
+                other.paymentMethods == paymentMethods));
   }
 
-  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -453,8 +469,9 @@ class _$AttributesFormImpl implements _AttributesForm {
       phone,
       contactMethods,
       const DeepCollectionEquality().hash(_attributes),
-      paymentMethods,
-      video);
+      const DeepCollectionEquality().hash(_images),
+      video,
+      paymentMethods);
 
   @JsonKey(ignore: true)
   @override
@@ -462,13 +479,6 @@ class _$AttributesFormImpl implements _AttributesForm {
   _$$AttributesFormImplCopyWith<_$AttributesFormImpl> get copyWith =>
       __$$AttributesFormImplCopyWithImpl<_$AttributesFormImpl>(
           this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$AttributesFormImplToJson(
-      this,
-    );
-  }
 }
 
 abstract class _AttributesForm implements AttributesForm {
@@ -488,11 +498,9 @@ abstract class _AttributesForm implements AttributesForm {
       final String phone,
       final String contactMethods,
       final Map<int, dynamic> attributes,
-      final String paymentMethods,
-      final String video}) = _$AttributesFormImpl;
-
-  factory _AttributesForm.fromJson(Map<String, dynamic> json) =
-      _$AttributesFormImpl.fromJson;
+      final List<File> images,
+      final File? video,
+      final String paymentMethods}) = _$AttributesFormImpl;
 
   @override
   String get title;
@@ -525,9 +533,11 @@ abstract class _AttributesForm implements AttributesForm {
   @override
   Map<int, dynamic> get attributes;
   @override
-  String get paymentMethods;
+  List<File> get images;
   @override
-  String get video;
+  File? get video;
+  @override
+  String get paymentMethods;
   @override
   @JsonKey(ignore: true)
   _$$AttributesFormImplCopyWith<_$AttributesFormImpl> get copyWith =>

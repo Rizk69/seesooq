@@ -20,7 +20,7 @@ class ContactInformation extends StatelessWidget {
         const SizedBox(
           height: 5,
         ),
-        const CustomTextFormFiled(prefixIcon: true),
+        CustomTextFormFiled(prefixIcon: true, onChanged: (value) {}),
         const SizedBox(
           height: 5,
         ),
@@ -33,7 +33,7 @@ class ContactInformation extends StatelessWidget {
         const SizedBox(
           height: 5,
         ),
-        const CustomTextFormFiled(prefixIcon: false)
+        CustomTextFormFiled(prefixIcon: false, onChanged: (value) {}),
       ],
     );
   }

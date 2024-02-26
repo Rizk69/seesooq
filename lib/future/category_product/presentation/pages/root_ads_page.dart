@@ -2,8 +2,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_stepper/easy_stepper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:opensooq/core/utils/app_colors.dart';
+import 'package:opensooq/di.dart' as di;
+import 'package:opensooq/future/category_product/presentation/cubit/add_ads_cubit.dart';
+import 'package:opensooq/future/category_product/presentation/cubit/category_product_cubit.dart';
 
 class RootAdsPage extends StatefulWidget {
   const RootAdsPage({Key? key, required this.statefulNavigationShell}) : super(key: key);
@@ -63,9 +67,14 @@ class _RootAdsPageState extends State<RootAdsPage> {
           SliverFillRemaining(
             hasScrollBody: true,
             fillOverscroll: true,
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: widget.statefulNavigationShell,
+            child: BlocProvider(
+              create: (context) => AddAdsCubit(categoryRepo: di.sl())
+                ..selectSubCategory(subCategory: CategoryProductCubit.get(context).state.selectedSubCategory)
+                ..getAttributesForAds(),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: widget.statefulNavigationShell,
+              ),
             ),
           ),
         ],

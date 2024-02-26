@@ -11,10 +11,7 @@ class DetailsAdsRoute extends StatefulShellBranch {
               name: Routes.uploadAdsPage,
               pageBuilder: (context, state) {
                 final Map<String, dynamic> extra = state.extra as Map<String, dynamic>;
-                return NoTransitionPage(
-                    child: DetailsAdsPage(
-                  cubit: extra['cubit'],
-                ));
+                return NoTransitionPage(child: DetailsAdsPage());
               },
             ),
           ],

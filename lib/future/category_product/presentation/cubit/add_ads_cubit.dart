@@ -1,13 +1,13 @@
+import 'dart:io';
+
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:injectable/injectable.dart';
 import 'package:multi_image_picker_view/multi_image_picker_view.dart';
 import 'package:opensooq/future/category_product/data/repositories/category_repo.dart';
 import 'package:opensooq/future/category_product/presentation/cubit/add_ads_state.dart';
 import 'package:opensooq/main.dart';
 
-@lazySingleton
 class AddAdsCubit extends Cubit<AddAdsState> {
   AddAdsCubit({required this.categoryRepo}) : super(const AddAdsState());
 
@@ -46,7 +46,11 @@ class AddAdsCubit extends Cubit<AddAdsState> {
   Future<void> uploadPhoto() async {
     final pickedImages = await controller.pickImages();
     if (pickedImages) {
-      emit(state.copyWith(images: controller.images as List<ImageFile>));
+      List<File> files = controller.images.map((e) => File(e.path.toString())).toList();
+
+      emit(state.copyWith(images: controller.images as List<ImageFile>, attributesForm: state.attributesForm.copyWith(images: files)));
+      print('=============');
+      print(state.attributesForm.images.length);
     }
   }
 
@@ -71,6 +75,22 @@ class AddAdsCubit extends Cubit<AddAdsState> {
 
   void updateGovernorateForm(String governorateId) {
     emit(state.copyWith(attributesForm: state.attributesForm.copyWith(governorateId: governorateId)));
+
+    print(state.attributesForm.toString());
+  }
+
+  void updateNameForm(String name) {
+    emit(state.copyWith(attributesForm: state.attributesForm.copyWith(title: name)));
+    print(state.attributesForm.title.toString());
+    print(state.attributesForm.title.toString());
+    print(state.attributesForm.title.toString());
+    print(state.attributesForm.title.toString());
+    print(state.attributesForm.title.toString());
+    print(state.attributesForm.title.toString());
+  }
+
+  void updateDescriptionForm(String description) {
+    emit(state.copyWith(attributesForm: state.attributesForm.copyWith(description: description)));
   }
 
 // end section Add Ads

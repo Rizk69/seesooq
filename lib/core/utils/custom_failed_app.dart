@@ -3,7 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:opensooq/core/utils/hex_color.dart';
 import 'package:opensooq/core/utils/media_query_values.dart';
 import 'package:opensooq/core/widget/text_translate_manager.dart';
-import 'package:opensooq/future/app/presentation/pages/app_view.dart';
 
 class TextFormFiledApp extends StatelessWidget {
   const TextFormFiledApp(
@@ -49,18 +48,15 @@ class TextFormFiledApp extends StatelessWidget {
                 ),
 
           suffixIcon: suffixIcon,
-          suffixIconConstraints: const BoxConstraints(
-              maxHeight: 30, minWidth: 40, maxWidth: 40, minHeight: 30),
+          suffixIconConstraints: const BoxConstraints(maxHeight: 30, minWidth: 40, maxWidth: 40, minHeight: 30),
           // error: error,
-          prefixIconConstraints: const BoxConstraints(
-              maxHeight: 25, minWidth: 40, maxWidth: 40, minHeight: 25),
+          prefixIconConstraints: const BoxConstraints(maxHeight: 25, minWidth: 40, maxWidth: 40, minHeight: 25),
           hintStyle: TextStyle(
             color: HexColor('#707070').withOpacity(0.7),
           ),
           fillColor: Colors.white,
           filled: true,
-          contentPadding:
-              const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
           disabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(22),
             borderSide: const BorderSide(
@@ -118,17 +114,24 @@ class TextFormFiledApp extends StatelessWidget {
   }
 }
 
-class CustomTextFormFiled extends StatelessWidget {
-  const CustomTextFormFiled({super.key, required this.prefixIcon});
+class CustomTextFormFiled extends StatefulWidget {
+  const CustomTextFormFiled({super.key, required this.prefixIcon, required this.onChanged});
 
   final bool prefixIcon;
+  final Function(String?) onChanged;
 
+  @override
+  State<CustomTextFormFiled> createState() => _CustomTextFormFiledState();
+}
+
+class _CustomTextFormFiledState extends State<CustomTextFormFiled> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       onTapOutside: (event) => FocusScope.of(context).unfocus(),
+      onChanged: widget.onChanged,
       decoration: InputDecoration(
-          prefixIcon: prefixIcon
+          prefixIcon: widget.prefixIcon
               ? Padding(
                   padding: const EdgeInsets.all(4.0),
                   child: Row(
@@ -158,8 +161,7 @@ class CustomTextFormFiled extends StatelessWidget {
 }
 
 class CustomTextFormFiledApp extends StatelessWidget {
-  const CustomTextFormFiledApp(
-      {super.key, required this.imgIconSvg, required this.title});
+  const CustomTextFormFiledApp({super.key, required this.imgIconSvg, required this.title});
 
   final String imgIconSvg;
   final String title;
@@ -186,6 +188,7 @@ class CustomTextFormFiledApp extends StatelessWidget {
     );
   }
 }
+
 class CustomTextFormFiledPasswrd extends StatefulWidget {
   const CustomTextFormFiledPasswrd({
     Key? key,
@@ -197,23 +200,19 @@ class CustomTextFormFiledPasswrd extends StatefulWidget {
   final String title;
 
   @override
-  _CustomTextFormFiledPasswrdState createState() =>
-      _CustomTextFormFiledPasswrdState();
+  _CustomTextFormFiledPasswrdState createState() => _CustomTextFormFiledPasswrdState();
 }
 
-class _CustomTextFormFiledPasswrdState
-    extends State<CustomTextFormFiledPasswrd> {
+class _CustomTextFormFiledPasswrdState extends State<CustomTextFormFiledPasswrd> {
   bool _obscureText = true;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-
       onTapOutside: (event) => FocusScope.of(context).unfocus(),
       obscureText: _obscureText,
       textAlign: TextAlign.right,
       decoration: InputDecoration(
-
         prefixIcon: InkWell(
           onTap: () {
             setState(() {
@@ -228,10 +227,7 @@ class _CustomTextFormFiledPasswrdState
             ),
           ),
         ),
-        suffixIcon:Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12),
-          child: SvgPicture.asset(widget.imgIconSvg)
-        ), 
+        suffixIcon: Padding(padding: const EdgeInsets.symmetric(horizontal: 12), child: SvgPicture.asset(widget.imgIconSvg)),
         hintTextDirection: TextDirection.rtl,
         hintText: widget.title,
         hintStyle: const TextStyle(fontSize: 18),
@@ -240,10 +236,7 @@ class _CustomTextFormFiledPasswrdState
         contentPadding: const EdgeInsets.all(16),
         border: InputBorder.none, // Remove the default border
       ),
-      style: Theme.of(context)
-          .textTheme
-          .headlineSmall!
-          .copyWith(fontSize: 14),
+      style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontSize: 14),
     );
   }
 }

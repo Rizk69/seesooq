@@ -1,7 +1,8 @@
+import 'dart:io';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'attributes_form.freezed.dart';
-part 'attributes_form.g.dart';
 
 @freezed
 class AttributesForm with _$AttributesForm {
@@ -21,11 +22,10 @@ class AttributesForm with _$AttributesForm {
     @Default('') String phone,
     @Default('') String contactMethods,
     @Default({}) Map<int, dynamic> attributes,
+    @Default([]) List<File> images,
+    @Default(null) File? video,
     @Default('') String paymentMethods,
-    @Default('') String video,
   }) = _AttributesForm;
 
   // init form
-
-  factory AttributesForm.fromJson(Map<String, dynamic> json) => _$AttributesFormFromJson(json);
 }

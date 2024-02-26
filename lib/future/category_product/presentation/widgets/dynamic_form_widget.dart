@@ -61,7 +61,7 @@ class _DynamicFormWidgetState extends State<DynamicFormWidget> {
                       fontWeight: FontWeight.w400,
                     ),
                 onChanged: (value) {
-                  var cubit = di.sl<AddAdsCubit>();
+                  var cubit = AddAdsCubit.get(context);
                   cubit.updateAttributesForm(attributes: {widget.optionId: value.id?.toInt() ?? 0});
                 },
                 hideSelectedFieldWhenExpanded: true,

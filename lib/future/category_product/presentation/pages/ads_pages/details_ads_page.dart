@@ -7,9 +7,7 @@ import 'package:opensooq/future/category_product/presentation/cubit/add_ads_stat
 import 'package:opensooq/future/category_product/presentation/widgets/dynamic_form_widget.dart';
 
 class DetailsAdsPage extends StatefulWidget {
-  const DetailsAdsPage({super.key, required this.cubit});
-
-  final AddAdsCubit cubit;
+  const DetailsAdsPage({super.key});
 
   @override
   State<DetailsAdsPage> createState() => _DetailsAdsPageState();
@@ -20,6 +18,9 @@ class _DetailsAdsPageState extends State<DetailsAdsPage> {
   int deliveryServiceIndex = -1;
   int paymentMethodIndex = -1;
 
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _descriptionController = TextEditingController();
+
   @override
   void initState() {
     super.initState();
@@ -28,7 +29,7 @@ class _DetailsAdsPageState extends State<DetailsAdsPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider.value(
-      value: widget.cubit,
+      value: AddAdsCubit.get(context),
       child: BlocBuilder<AddAdsCubit, AddAdsState>(builder: (context, state) {
         return SingleChildScrollView(
           padding: const EdgeInsets.only(bottom: 40),
@@ -43,7 +44,12 @@ class _DetailsAdsPageState extends State<DetailsAdsPage> {
               const SizedBox(
                 height: 10,
               ),
-              const CustomTextFormFiled(prefixIcon: false),
+              CustomTextFormFiled(
+                prefixIcon: false,
+                onChanged: (value) {
+                  AddAdsCubit.get(context).updateNameForm(value.toString());
+                },
+              ),
               const SizedBox(
                 height: 10,
               ),
@@ -55,7 +61,12 @@ class _DetailsAdsPageState extends State<DetailsAdsPage> {
               const SizedBox(
                 height: 10,
               ),
-              const CustomTextFormFiled(prefixIcon: false),
+              CustomTextFormFiled(
+                prefixIcon: false,
+                onChanged: (value) {
+                  AddAdsCubit.get(context).updateDescriptionForm(value.toString());
+                },
+              ),
               const SizedBox(
                 height: 20,
               ),
