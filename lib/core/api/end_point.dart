@@ -24,7 +24,9 @@ class EndPoint {
   static const String getGovernorate = 'governorate';
   static const String searchPlaces = '/place/textsearch/json';
   static const String editProfile = '/place/textsearch/json';
-  static const String getFav = '/place/textsearch/json';
+  static const String getFav = 'my-favourite';
+  static const String addFav = 'add-to-favourites/{id}';
+  static const String removeFav = 'remove-from-favourites/{id}';
   static const String getFollowers = '/api/followers';
   static const String getFollowings = '/api/followings';
   static const String makeFollow = '/api/follow/{idMF}';

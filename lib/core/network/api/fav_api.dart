@@ -5,6 +5,7 @@ import 'package:opensooq/future/favorite/data/model/fav_model.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../../api/end_point.dart';
+
 part 'fav_api.g.dart';
 
 @injectable
@@ -15,9 +16,9 @@ abstract class FavApi {
 
   @GET(EndPoint.getFav)
   Future<FavModel> getFav();
+  @GET(EndPoint.removeFav)
+  Future<String> removeFav({@Path() required String id});
 
-  @POST(EndPoint.getFav)
-  Future<bool> sendFav({@Body() required int id});
-
-
+  @GET(EndPoint.addFav)
+  Future<String> sendFav({@Path() required String id});
 }

@@ -1,109 +1,211 @@
-/// fav : {"fav_data":[{"id":1,"item_name":"Vehicles","image":"https://random.imagecdn.app/500/150","price":"500","days":"8"}]}
+// create deserializeFavModel
 FavModel deserializeFavModel(Map<String, dynamic> json) => FavModel.fromJson(json);
 
 class FavModel {
-  Fav? _fav;
-
-  Fav? get fav => _fav;
-
   FavModel({
-      Fav? fav}){
-    _fav = fav;
-}
+    this.data,
+  });
 
   FavModel.fromJson(dynamic json) {
-    _fav = json["fav"] != null ? Fav.fromJson(json["fav"]) : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    var map = <String, dynamic>{};
-    if (_fav != null) {
-      map["fav"] = _fav?.toJson();
-    }
-    return map;
-  }
-
-}
-
-/// fav_data : [{"id":1,"item_name":"Vehicles","image":"https://random.imagecdn.app/500/150","price":"500","days":"8"}]
-
-class Fav {
-  List<Fav_data>? _favData;
-
-  List<Fav_data>? get favData => _favData;
-
-  Fav({
-      List<Fav_data>? favData}){
-    _favData = favData;
-}
-
-  Fav.fromJson(dynamic json) {
-    if (json["fav_data"] != null) {
-      _favData = [];
-      json["fav_data"].forEach((v) {
-        _favData?.add(Fav_data.fromJson(v));
+    if (json['data'] != null) {
+      data = [];
+      json['data'].forEach((v) {
+        data?.add(FavData.fromJson(v));
       });
     }
   }
+  List<FavData>? data;
 
+  FavModel copyWith({
+    List<FavData>? data,
+  }) =>
+      FavModel(
+        data: data ?? this.data,
+      );
   Map<String, dynamic> toJson() {
-    var map = <String, dynamic>{};
-    if (_favData != null) {
-      map["fav_data"] = _favData?.map((v) => v.toJson()).toList();
+    final map = <String, dynamic>{};
+    if (data != null) {
+      map['data'] = data?.map((v) => v.toJson()).toList();
     }
     return map;
   }
-
 }
 
-/// id : 1
-/// item_name : "Vehicles"
-/// image : "https://random.imagecdn.app/500/150"
-/// price : "500"
-/// days : "8"
+class FavData {
+  FavData({
+    this.id,
+    this.adId,
+    this.customeId,
+    this.title,
+    this.desc,
+    this.price,
+    this.phone,
+    this.country,
+    this.category,
+    this.city,
+    this.isOffer,
+    this.offerPrice,
+    this.offerStartDatetime,
+    this.offerEndDatetime,
+    this.mainImage,
+    this.album,
+    this.user,
+    this.visits,
+    this.createdAt,
+  });
 
-class Fav_data {
-  int? _id;
-  String? _itemName;
-  String? _image;
-  String? _price;
-  String? _days;
-
-  int? get id => _id;
-  String? get itemName => _itemName;
-  String? get image => _image;
-  String? get price => _price;
-  String? get days => _days;
-
-  Fav_data({
-      int? id, 
-      String? itemName, 
-      String? image, 
-      String? price, 
-      String? days}){
-    _id = id;
-    _itemName = itemName;
-    _image = image;
-    _price = price;
-    _days = days;
-}
-
-  Fav_data.fromJson(dynamic json) {
-    _id = json["id"];
-    _itemName = json["item_name"];
-    _image = json["image"];
-    _price = json["price"];
-    _days = json["days"];
+  FavData.fromJson(dynamic json) {
+    id = json['id'];
+    adId = json['Ad_id'];
+    customeId = json['custome_id'];
+    title = json['title'];
+    desc = json['desc'];
+    price = json['price'];
+    phone = json['phone'];
+    country = json['country'];
+    category = json['category'] != null ? Category.fromJson(json['category']) : null;
+    city = json['city'];
+    isOffer = json['is_offer'];
+    offerPrice = json['offer_price'];
+    offerStartDatetime = json['offer_start_datetime'];
+    offerEndDatetime = json['offer_end_datetime'];
+    mainImage = json['main_image'];
+    if (json['album'] != null) {
+      album = [];
+      json['album'].forEach((v) {
+        album?.add(v);
+      });
+    }
+    user = json['user'];
+    visits = json['visits'];
+    createdAt = json['created_at'];
   }
-
+  num? id;
+  num? adId;
+  String? customeId;
+  String? title;
+  String? desc;
+  num? price;
+  String? phone;
+  dynamic country;
+  Category? category;
+  dynamic city;
+  String? isOffer;
+  dynamic offerPrice;
+  dynamic offerStartDatetime;
+  dynamic offerEndDatetime;
+  String? mainImage;
+  List<String>? album;
+  dynamic user;
+  dynamic visits;
+  String? createdAt;
+  FavData copyWith({
+    num? id,
+    num? adId,
+    String? customeId,
+    String? title,
+    String? desc,
+    num? price,
+    String? phone,
+    dynamic country,
+    Category? category,
+    dynamic city,
+    String? isOffer,
+    dynamic offerPrice,
+    dynamic offerStartDatetime,
+    dynamic offerEndDatetime,
+    String? mainImage,
+    List<String>? album,
+    dynamic user,
+    dynamic visits,
+    String? createdAt,
+  }) =>
+      FavData(
+        id: id ?? this.id,
+        adId: adId ?? this.adId,
+        customeId: customeId ?? this.customeId,
+        title: title ?? this.title,
+        desc: desc ?? this.desc,
+        price: price ?? this.price,
+        phone: phone ?? this.phone,
+        country: country ?? this.country,
+        category: category ?? this.category,
+        city: city ?? this.city,
+        isOffer: isOffer ?? this.isOffer,
+        offerPrice: offerPrice ?? this.offerPrice,
+        offerStartDatetime: offerStartDatetime ?? this.offerStartDatetime,
+        offerEndDatetime: offerEndDatetime ?? this.offerEndDatetime,
+        mainImage: mainImage ?? this.mainImage,
+        album: album ?? this.album,
+        user: user ?? this.user,
+        visits: visits ?? this.visits,
+        createdAt: createdAt ?? this.createdAt,
+      );
   Map<String, dynamic> toJson() {
-    var map = <String, dynamic>{};
-    map["id"] = _id;
-    map["item_name"] = _itemName;
-    map["image"] = _image;
-    map["price"] = _price;
-    map["days"] = _days;
+    final map = <String, dynamic>{};
+    map['id'] = id;
+    map['Ad_id'] = adId;
+    map['custome_id'] = customeId;
+    map['title'] = title;
+    map['desc'] = desc;
+    map['price'] = price;
+    map['phone'] = phone;
+    map['country'] = country;
+    if (category != null) {
+      map['category'] = category?.toJson();
+    }
+    map['city'] = city;
+    map['is_offer'] = isOffer;
+    map['offer_price'] = offerPrice;
+    map['offer_start_datetime'] = offerStartDatetime;
+    map['offer_end_datetime'] = offerEndDatetime;
+    map['main_image'] = mainImage;
+    if (album != null) {
+      map['album'] = album?.map((v) => v).toList();
+    }
+    map['user'] = user;
+    map['visits'] = visits;
+    map['created_at'] = createdAt;
     return map;
   }
+}
 
+class Category {
+  Category({
+    this.id,
+    this.title,
+    this.content,
+    this.logo,
+  });
+
+  Category.fromJson(dynamic json) {
+    id = json['id'];
+    title = json['title'];
+    content = json['content'];
+    logo = json['logo'];
+  }
+  num? id;
+  String? title;
+  String? content;
+  String? logo;
+  Category copyWith({
+    num? id,
+    String? title,
+    String? content,
+    String? logo,
+  }) =>
+      Category(
+        id: id ?? this.id,
+        title: title ?? this.title,
+        content: content ?? this.content,
+        logo: logo ?? this.logo,
+      );
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['id'] = id;
+    map['title'] = title;
+    map['content'] = content;
+    map['logo'] = logo;
+    return map;
+  }
 }

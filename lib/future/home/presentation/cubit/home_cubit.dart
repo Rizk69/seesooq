@@ -76,6 +76,12 @@ class HomeCubit extends Cubit<HomeState> {
     }
   }
 
+  void toggleLikeInOffer(int index) {
+    List<Data> list = List.from(state.advertisementOffer?.data ?? []);
+    list[index].checkIfFavourite = !(list[index].checkIfFavourite ?? false);
+    emit(state.copyWith(advertisementOffer: AdvertisementModel(data: list, meta: state.advertisementOffer?.meta)));
+  }
+
   resetPagination() {
     page = 1;
     hasMoreItems = true;

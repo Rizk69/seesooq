@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'fav_api.dart';
+part of 'follow_api.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'fav_api.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
-class _FavApi implements FavApi {
-  _FavApi(
+class _FollowApi implements FollowApi {
+  _FollowApi(
     this._dio, {
     this.baseUrl,
   });
@@ -19,20 +19,20 @@ class _FavApi implements FavApi {
   String? baseUrl;
 
   @override
-  Future<FavModel> getFav() async {
+  Future<FollowersModel> getFollowers() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
-    final _result =
-        await _dio.fetch<Map<String, dynamic>>(_setStreamType<FavModel>(Options(
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<FollowersModel>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              'my-favourite',
+              '/api/followers',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -41,24 +41,51 @@ class _FavApi implements FavApi {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = await compute(deserializeFavModel, _result.data!);
+    final value = await compute(deserializeFollowersModel, _result.data!);
     return value;
   }
 
   @override
-  Future<String> removeFav({required String id}) async {
+  Future<FollowersModel> getFollowings() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
-    final _result = await _dio.fetch<String>(_setStreamType<String>(Options(
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<FollowersModel>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/followings',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = await compute(deserializeFollowersModel, _result.data!);
+    return value;
+  }
+
+  @override
+  Future<void> makeFollow({required int idMF}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    await _dio.fetch<void>(_setStreamType<void>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
         .compose(
           _dio.options,
-          'remove-from-favourites/${id}',
+          '/api/follow/${idMF}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -67,24 +94,22 @@ class _FavApi implements FavApi {
           _dio.options.baseUrl,
           baseUrl,
         ))));
-    final value = _result.data!;
-    return value;
   }
 
   @override
-  Future<String> sendFav({required String id}) async {
+  Future<void> removeFollower({required int idRFR}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
-    final _result = await _dio.fetch<String>(_setStreamType<String>(Options(
+    await _dio.fetch<void>(_setStreamType<void>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
         .compose(
           _dio.options,
-          'add-to-favourites/${id}',
+          '/api/unfollow/${idRFR}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -93,8 +118,30 @@ class _FavApi implements FavApi {
           _dio.options.baseUrl,
           baseUrl,
         ))));
-    final value = _result.data!;
-    return value;
+  }
+
+  @override
+  Future<void> removeFollowing({required int idRFG}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    await _dio.fetch<void>(_setStreamType<void>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/api/followings/remove/${idRFG}',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        ))));
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {

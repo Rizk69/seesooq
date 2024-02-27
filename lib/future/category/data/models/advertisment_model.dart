@@ -251,7 +251,7 @@ class Data {
   String? video;
   User? user;
   dynamic checkFollwing;
-  dynamic checkIfFavourite;
+  bool? checkIfFavourite;
   String? visits;
   String? paymentMethods;
   String? createdAt;

@@ -11,6 +11,8 @@ import 'package:opensooq/core/utils/media_query_values.dart';
 import 'package:opensooq/core/utils/svg_custom_image.dart';
 import 'package:opensooq/core/widget/text_translate_manager.dart';
 import 'package:opensooq/future/category/data/models/advertisment_model.dart';
+import 'package:opensooq/future/favorite/data/model/fav_model.dart';
+import 'package:opensooq/future/favorite/presentation/cubit/favorite_cubit.dart';
 import 'package:opensooq/future/home/presentation/cubit/home_cubit.dart';
 import 'package:opensooq/future/home/presentation/cubit/home_state.dart';
 
@@ -70,16 +72,38 @@ class BookingPostWidget extends StatelessWidget {
                                           Positioned(
                                             right: 10,
                                             top: 10,
-                                            child: Container(
-                                              padding: const EdgeInsets.all(8),
-                                              decoration: const BoxDecoration(
-                                                color: Colors.white,
-                                                shape: BoxShape.circle,
-                                              ),
-                                              child: const Icon(
-                                                Icons.favorite_border,
-                                                color: Colors.red,
-                                                size: 20,
+                                            child: InkWell(
+                                              onTap: () {
+                                                if (item.checkIfFavourite ?? false) {
+                                                  FavoriteCubit.get(context).removeFav(
+                                                    idFav: item.id.toString(),
+                                                    isOutSide: true,
+                                                    index: key,
+                                                  );
+                                                } else {
+                                                  FavoriteCubit.get(context).addFav(
+                                                      idFav: item.id.toString(),
+                                                      index: key,
+                                                      favData: FavData(
+                                                          adId: item.id,
+                                                          title: item.title,
+                                                          price: item.price,
+                                                          createdAt: item.createdAt,
+                                                          city: item.city,
+                                                          mainImage: item.album));
+                                                }
+                                              },
+                                              child: Container(
+                                                padding: const EdgeInsets.all(8),
+                                                decoration: const BoxDecoration(
+                                                  color: Colors.white,
+                                                  shape: BoxShape.circle,
+                                                ),
+                                                child: Icon(
+                                                  (item.checkIfFavourite as bool) ? Icons.favorite : Icons.favorite_border,
+                                                  color: Colors.red,
+                                                  size: 20,
+                                                ),
                                               ),
                                             ),
                                           ),

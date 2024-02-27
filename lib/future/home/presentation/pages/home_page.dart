@@ -5,6 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:opensooq/core/utils/app_colors.dart';
 import 'package:opensooq/core/utils/hex_color.dart';
+import 'package:opensooq/future/favorite/presentation/cubit/favorite_cubit.dart';
+import 'package:opensooq/future/favorite/presentation/cubit/favorite_state.dart';
 import 'package:opensooq/future/home/presentation/cubit/home_cubit.dart';
 import 'package:opensooq/future/home/presentation/cubit/home_state.dart';
 import 'package:opensooq/future/home/presentation/widgets/appbar_home_page_widget.dart';
@@ -52,67 +54,73 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, HomeState>(builder: (context, state) {
       var cubit = HomeCubit.get(context);
-      return Scaffold(
-        key: _scaffoldKey,
-        appBar: AppBarHomePageWidget(scaffoldKey: _scaffoldKey),
-        drawer: Drawer(
-          backgroundColor: Colors.white,
-          surfaceTintColor: Colors.white,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Gap(
-                  MediaQuery.viewPaddingOf(context).top,
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: HexColor('#F5F5F5'),
+      return BlocListener<FavoriteCubit, FavoriteState>(
+        listenWhen: (previous, current) => current.addFavoriteStatus == AddFavoriteStatus.loaded,
+        listener: (context, favState) {
+          cubit.toggleLikeInOffer(favState.indexFavoriteView);
+        },
+        child: Scaffold(
+          key: _scaffoldKey,
+          appBar: AppBarHomePageWidget(scaffoldKey: _scaffoldKey),
+          drawer: Drawer(
+            backgroundColor: Colors.white,
+            surfaceTintColor: Colors.white,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Gap(
+                    MediaQuery.viewPaddingOf(context).top,
                   ),
-                  child: IconButton(
-                      icon: Icon(
-                        Icons.close,
-                        color: AppColors.primary,
-                        size: 30,
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: HexColor('#F5F5F5'),
+                    ),
+                    child: IconButton(
+                        icon: Icon(
+                          Icons.close,
+                          color: AppColors.primary,
+                          size: 30,
+                        ),
+                        onPressed: () {
+                          //close Drawer
+                          _scaffoldKey.currentState!.closeDrawer();
+                        }),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      gradient: LinearGradient(
+                        colors: AppColors.linerColors,
+                        end: Alignment.bottomCenter,
+                        begin: Alignment.topCenter,
                       ),
-                      onPressed: () {
-                        //close Drawer
-                        _scaffoldKey.currentState!.closeDrawer();
-                      }),
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    gradient: LinearGradient(
-                      colors: AppColors.linerColors,
-                      end: Alignment.bottomCenter,
-                      begin: Alignment.topCenter,
+                    ),
+                    child: CardPersonalWidget(
+                      bodyText: state.userLocalModel?.user?.phone ?? '',
+                      type: CardPersonalWidgetType.drawer,
                     ),
                   ),
-                  child: CardPersonalWidget(
-                    bodyText: state.userLocalModel?.user?.phone ?? '',
-                    type: CardPersonalWidgetType.drawer,
-                  ),
-                ),
-                const Gap(10),
-                MyOptionDrawerWidget(cubit: cubit, scaffoldKey: _scaffoldKey),
-              ],
+                  const Gap(10),
+                  MyOptionDrawerWidget(cubit: cubit, scaffoldKey: _scaffoldKey),
+                ],
+              ),
             ),
           ),
-        ),
-        body: Scrollable(
-          physics: const BouncingScrollPhysics(),
-          clipBehavior: Clip.antiAliasWithSaveLayer,
-          dragStartBehavior: DragStartBehavior.start,
-          scrollBehavior: const MaterialScrollBehavior(),
-          viewportBuilder: (context, position) => SingleChildScrollView(
-              controller: scrollController,
-              padding: const EdgeInsets.only(bottom: 10),
-              child: StoryViewComponent(
-                cubit: cubit,
-              )),
+          body: Scrollable(
+            physics: const BouncingScrollPhysics(),
+            clipBehavior: Clip.antiAliasWithSaveLayer,
+            dragStartBehavior: DragStartBehavior.start,
+            scrollBehavior: const MaterialScrollBehavior(),
+            viewportBuilder: (context, position) => SingleChildScrollView(
+                controller: scrollController,
+                padding: const EdgeInsets.only(bottom: 10),
+                child: StoryViewComponent(
+                  cubit: cubit,
+                )),
+          ),
         ),
       );
     });

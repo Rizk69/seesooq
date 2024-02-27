@@ -5,7 +5,8 @@ import '../model/fav_model.dart';
 
 abstract class FavRemoteDataSource {
   Future<FavModel> getFav();
-  Future<bool> sendFav({required int id});
+  Future<String> sendFav({required String id});
+  Future<String> removeFav({required String id});
 }
 
 @LazySingleton(as: FavRemoteDataSource)
@@ -18,7 +19,12 @@ class FavRemoteDataSourceImpl implements FavRemoteDataSource {
   }
 
   @override
-  Future<bool> sendFav({required int id}) async {
+  Future<String> sendFav({required String id}) async {
     return await api.sendFav(id: id);
+  }
+
+  @override
+  Future<String> removeFav({required String id}) async {
+    return await api.removeFav(id: id);
   }
 }

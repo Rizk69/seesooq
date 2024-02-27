@@ -77,8 +77,6 @@ class DetailsItemCategory extends StatelessWidget {
               SvgPicture.network(
                 categoryImage,
                 alignment: Alignment.center,
-                width: 50,
-                height: 50,
                 fit: BoxFit.contain,
               ),
             ],
