@@ -8,7 +8,7 @@ import '../../../../core/utils/hex_color.dart';
 import '../../../../core/widget/text_translate_manager.dart';
 import '../../../setting1/edit_profile/presentation/widgets/anmtionsucssuffly.dart';
 import '../../../setting1/edit_profile/presentation/widgets/header_screen.dart';
-import '../../cubit/follow_cubit.dart';
+import '../../../profile/cubit/follow_cubit.dart';
 
 class FollowersEmptyPage extends StatelessWidget {
   const FollowersEmptyPage({super.key});
