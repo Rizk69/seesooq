@@ -27,7 +27,7 @@ import 'package:opensooq/future/login/presentation/cubit/login_cubit.dart';
 import 'package:opensooq/future/login/presentation/pages/route/login_splash_route.dart';
 import 'package:opensooq/future/notification/presentation/pages/view/notification_page.dart';
 import 'package:opensooq/future/packages/presentation/pages/route/packages_route.dart';
-import 'package:opensooq/future/profile/presentation/pages/followers_page.dart';
+import 'package:opensooq/future/follow_section/presentation/page/followers_page.dart';
 import 'package:opensooq/future/profile/presentation/profile_route.dart';
 import 'package:opensooq/future/setting1/presentation/accoun_mange_page.dart';
 import 'package:opensooq/future/setting1/presentation/add_location_user.dart';

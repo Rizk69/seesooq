@@ -25,6 +25,11 @@ class EndPoint {
   static const String searchPlaces = '/place/textsearch/json';
   static const String editProfile = '/place/textsearch/json';
   static const String getFav = '/place/textsearch/json';
+  static const String getFollowers = '/api/followers';
+  static const String getFollowings = '/api/followings';
+  static const String makeFollow = '/api/follow/{idMF}';
+  static const String removeFollower = '/api/unfollow/{idRFR}';
+  static const String removeFollowing = '/api/followings/remove/{idRFG}';
   static const String getMyAds = '/place/textsearch/json';
   static const String deleteMyAds = '/place/textsearch/json';
 }
