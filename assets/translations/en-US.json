@@ -179,10 +179,14 @@
   "Account Rate": "Account Rate",
   "Ads Number": "Ads Number",
   "Ads Views": "Ads Views",
+  "reels": "Reels video",
 
   "select_country": "Select Country",
 
-  "enter_your_full_name": "Enter your full name."
+  "enter_your_full_name": "Enter your full name.",
+  "empty_reels_title": "There are no videos to watch",
+  "empty_reels_des": "It seems you haven't followed any users yet, it will appear",
+  "empty_reels_des1": "Videos from those you follow here..."
 
 
 

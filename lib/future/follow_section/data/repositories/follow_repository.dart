@@ -1,8 +1,6 @@
-
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:opensooq/future/favorite/data/model/fav_model.dart';
 import '../../../../core/error/error_handler.dart';
 import '../../../../core/error/failures.dart';
 import '../data_source/follow_remot_data_sorces.dart';
@@ -43,7 +41,7 @@ class FollowRepositoryImpl implements FollowRepository {
   }
 
   @override
-  Future<Either<Failures, void>> makeFollow({required int id}) async{
+  Future<Either<Failures, void>> makeFollow({required int id}) async {
     try {
       final response = await _remoteDataSource.makeFollow(id: id);
       return Right(response);
@@ -53,7 +51,7 @@ class FollowRepositoryImpl implements FollowRepository {
   }
 
   @override
-  Future<Either<Failures, void>> removeFollower({required int id}) async{
+  Future<Either<Failures, void>> removeFollower({required int id}) async {
     try {
       final response = await _remoteDataSource.removeFollower(id: id);
       return Right(response);
@@ -63,7 +61,7 @@ class FollowRepositoryImpl implements FollowRepository {
   }
 
   @override
-  Future<Either<Failures, void>> removeFollowing({required int id}) async{
+  Future<Either<Failures, void>> removeFollowing({required int id}) async {
     try {
       final response = await _remoteDataSource.removeFollowing(id: id);
       return Right(response);
