@@ -4,6 +4,7 @@ import 'package:injectable/injectable.dart';
 import 'package:opensooq/core/api/end_point.dart';
 import 'package:opensooq/future/category/data/models/advertisment_model.dart';
 import 'package:opensooq/future/home/data/models/my_story_model.dart';
+import 'package:opensooq/future/home/data/models/single_advertisment_model.dart';
 import 'package:opensooq/future/home/data/models/users_story_model.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -24,6 +25,10 @@ abstract class HomeUserApi {
   @GET(EndPoint.viewStory)
   Future<String> viewStory({
     @Path() required int storyId,
+  });
+  @GET(EndPoint.showAdvertisment)
+  Future<SingleAdvertismentModel> showAdvertisment({
+    @Path() required int id,
   });
 
   @GET(EndPoint.getMyStories)

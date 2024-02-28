@@ -42,7 +42,7 @@ class BookingPostWidget extends StatelessWidget {
                       key,
                       InkWell(
                           onTap: () {
-                            context.pushNamed('view_ads_home', extra: item);
+                            context.pushNamed('view_ads_home', extra: item.id.toString());
                           },
                           child: SizedBox(
                             width: context.width * 0.7,
@@ -72,8 +72,8 @@ class BookingPostWidget extends StatelessWidget {
                                           Positioned(
                                             right: 10,
                                             top: 10,
-                                            child: InkWell(
-                                              onTap: () {
+                                            child: IconButton(
+                                              onPressed: () {
                                                 if (item.checkIfFavourite ?? false) {
                                                   FavoriteCubit.get(context).removeFav(
                                                     idFav: item.id.toString(),
@@ -93,17 +93,14 @@ class BookingPostWidget extends StatelessWidget {
                                                           mainImage: item.album));
                                                 }
                                               },
-                                              child: Container(
-                                                padding: const EdgeInsets.all(8),
-                                                decoration: const BoxDecoration(
-                                                  color: Colors.white,
-                                                  shape: BoxShape.circle,
-                                                ),
-                                                child: Icon(
-                                                  (item.checkIfFavourite as bool) ? Icons.favorite : Icons.favorite_border,
-                                                  color: Colors.red,
-                                                  size: 20,
-                                                ),
+                                              style: ButtonStyle(
+                                                padding: MaterialStateProperty.all<EdgeInsetsGeometry>(const EdgeInsets.all(0)),
+                                                backgroundColor: MaterialStateProperty.all<Color>(Colors.red.withOpacity(0.5)),
+                                              ),
+                                              icon: Icon(
+                                                (item.checkIfFavourite as bool) ? Icons.favorite : Icons.favorite_border,
+                                                color: (item.checkIfFavourite as bool) ? Colors.red : Colors.redAccent.withOpacity(0.5),
+                                                size: 25,
                                               ),
                                             ),
                                           ),

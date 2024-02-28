@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:opensooq/config/routes/app_routes.dart';
 import 'package:opensooq/core/utils/hex_color.dart';
 import 'package:opensooq/core/utils/media_query_values.dart';
+import 'package:opensooq/core/utils/whatsapp_chat.dart';
 import 'package:opensooq/future/favorite/data/model/fav_model.dart';
 import 'package:opensooq/future/favorite/presentation/cubit/favorite_cubit.dart';
 import 'package:opensooq/future/favorite/presentation/cubit/favorite_state.dart';
@@ -98,8 +99,7 @@ class FavoritePage extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: InkWell(
                         onTap: () {
-                          print(item.mainImage);
-                          // context.pushNamed('view_ads_home', extra: item);
+                          context.pushNamed('view_ads_home', extra: item.adId.toString());
                         },
                         child: SizedBox(
                           child: Card(
@@ -242,31 +242,36 @@ class FavoritePage extends StatelessWidget {
                                         Row(
                                           children: [
                                             Expanded(
-                                              child: Container(
-                                                alignment: Alignment.center,
-                                                padding: const EdgeInsets.all(8),
-                                                decoration: BoxDecoration(
-                                                  color: HexColor('#F5F5F5'),
-                                                  borderRadius: BorderRadius.circular(10),
-                                                ),
-                                                child: Row(
-                                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                                  mainAxisAlignment: MainAxisAlignment.center,
-                                                  children: [
-                                                    SvgCustomImage(
-                                                      image: 'call_cat'.toSvg,
-                                                      width: 20,
-                                                      height: 20,
-                                                      color: HexColor('#F05A35'),
-                                                    ),
-                                                    const SizedBox(
-                                                      width: 4,
-                                                    ),
-                                                    TranslateText(
-                                                      styleText: StyleText.h5,
-                                                      text: 'call'.tr(),
-                                                    ),
-                                                  ],
+                                              child: InkWell(
+                                                onTap: () {
+                                                  callNumber(item.phone ?? '');
+                                                },
+                                                child: Container(
+                                                  alignment: Alignment.center,
+                                                  padding: const EdgeInsets.all(8),
+                                                  decoration: BoxDecoration(
+                                                    color: HexColor('#F5F5F5'),
+                                                    borderRadius: BorderRadius.circular(10),
+                                                  ),
+                                                  child: Row(
+                                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                                    mainAxisAlignment: MainAxisAlignment.center,
+                                                    children: [
+                                                      SvgCustomImage(
+                                                        image: 'call_cat'.toSvg,
+                                                        width: 20,
+                                                        height: 20,
+                                                        color: HexColor('#F05A35'),
+                                                      ),
+                                                      const SizedBox(
+                                                        width: 4,
+                                                      ),
+                                                      TranslateText(
+                                                        styleText: StyleText.h5,
+                                                        text: 'call'.tr(),
+                                                      ),
+                                                    ],
+                                                  ),
                                                 ),
                                               ),
                                             ),

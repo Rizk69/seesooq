@@ -5,6 +5,7 @@ import 'package:opensooq/core/network/network_info.dart';
 import 'package:opensooq/future/category/data/models/advertisment_model.dart';
 import 'package:opensooq/future/home/data/data_sources/home_user_remote_data_source.dart';
 import 'package:opensooq/future/home/data/models/my_story_model.dart';
+import 'package:opensooq/future/home/data/models/single_advertisment_model.dart';
 import 'package:opensooq/future/home/data/models/users_story_model.dart';
 import 'package:opensooq/future/signup/data/repositories/signup_repository.dart';
 
@@ -17,6 +18,7 @@ abstract class HomeUserRepo {
   Future<Either<Failures, AdvertisementModel>> getOfferAds({required int categoryId, required int page});
 
   Future<Either<Failures, void>> deleteMyStory({required int id});
+  Future<Either<Failures, SingleAdvertismentModel>> showAdvertisement({required int id});
 }
 
 @LazySingleton(as: HomeUserRepo)
@@ -58,6 +60,13 @@ class HomeUserRepoImpl implements HomeUserRepo {
   Future<Either<Failures, String>> viewStory({required int storyId}) async {
     return executeAndCatchError(() async => await homeUserRemoteDataSource.viewStory(
           storyId: storyId,
+        ));
+  }
+
+  @override
+  Future<Either<Failures, SingleAdvertismentModel>> showAdvertisement({required int id}) async {
+    return executeAndCatchError(() async => await homeUserRemoteDataSource.showAdvertisement(
+          id: id,
         ));
   }
 }

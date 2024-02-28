@@ -18,6 +18,7 @@ class EndPoint {
   static const String getOfferAds = 'advertisement/offers/{categoryId}';
   static const String createMyStory = 'create/story';
   static const String viewStory = 'view/story/{storyId}';
+  static const String showAdvertisment = 'advertisement/show/{id}';
   static const String detailsCategory = 'sub_categories/{categoryId}';
   static const String getAdvertisement = 'advertisement/{subCategoryId}/';
   static const String getCities = 'cities/{id}';

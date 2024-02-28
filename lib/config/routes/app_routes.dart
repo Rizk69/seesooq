@@ -4,7 +4,6 @@ import 'package:opensooq/di.dart' as di;
 import 'package:opensooq/future/app/presentation/pages/app_view.dart';
 import 'package:opensooq/future/caht/presentation/chat_massage_page.dart';
 import 'package:opensooq/future/caht/route/chat_route.dart';
-import 'package:opensooq/future/category/data/models/advertisment_model.dart';
 import 'package:opensooq/future/category/presentation/pages/routes/category_route.dart';
 import 'package:opensooq/future/category_product/presentation/pages/category_product_page.dart';
 import 'package:opensooq/future/category_product/presentation/pages/details_categoey_page.dart';
@@ -17,6 +16,7 @@ import 'package:opensooq/future/category_product/presentation/pages/route/review
 import 'package:opensooq/future/category_product/presentation/pages/route/uploade_photo_route.dart';
 import 'package:opensooq/future/category_product/presentation/pages/route/view_ads_route.dart';
 import 'package:opensooq/future/favorite/presentation/pages/route/favorite_route.dart';
+import 'package:opensooq/future/follow_section/presentation/page/followers_page.dart';
 import 'package:opensooq/future/home/data/models/users_story_model.dart';
 import 'package:opensooq/future/home/presentation/pages/advertisment_view.dart';
 import 'package:opensooq/future/home/presentation/pages/design_story_page.dart';
@@ -27,7 +27,6 @@ import 'package:opensooq/future/login/presentation/cubit/login_cubit.dart';
 import 'package:opensooq/future/login/presentation/pages/route/login_splash_route.dart';
 import 'package:opensooq/future/notification/presentation/pages/view/notification_page.dart';
 import 'package:opensooq/future/packages/presentation/pages/route/packages_route.dart';
-import 'package:opensooq/future/follow_section/presentation/page/followers_page.dart';
 import 'package:opensooq/future/profile/presentation/profile_route.dart';
 import 'package:opensooq/future/setting1/presentation/accoun_mange_page.dart';
 import 'package:opensooq/future/setting1/presentation/add_location_user.dart';
@@ -144,10 +143,10 @@ final GoRouter router = GoRouter(
                     path: 'view_ads_home',
                     name: 'view_ads_home',
                     pageBuilder: (context, state) {
-                      final data = (state.extra as Data);
+                      final id = (state.extra as String);
                       return NoTransitionPage(
                           child: ShowAdsByHomeScreen(
-                        item: data,
+                        id: id,
                       ));
                     },
                   ),

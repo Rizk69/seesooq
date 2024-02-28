@@ -5,6 +5,7 @@ import 'package:injectable/injectable.dart';
 import 'package:opensooq/core/network/api/home_user_api.dart';
 import 'package:opensooq/future/category/data/models/advertisment_model.dart';
 import 'package:opensooq/future/home/data/models/my_story_model.dart';
+import 'package:opensooq/future/home/data/models/single_advertisment_model.dart';
 import 'package:opensooq/future/home/data/models/users_story_model.dart';
 
 abstract class HomeUserRemoteDataSource {
@@ -15,6 +16,7 @@ abstract class HomeUserRemoteDataSource {
   Future<UsersStoryModel> getUsersStories();
   Future<AdvertisementModel> getOfferAds({required int categoryId, required int page});
   Future<void> deleteMyStory({required int id});
+  Future<SingleAdvertismentModel> showAdvertisement({required int id});
 }
 
 @LazySingleton(as: HomeUserRemoteDataSource)
@@ -64,5 +66,12 @@ class HomeUserRemoteDataSourceImpl implements HomeUserRemoteDataSource {
   @override
   Future<String> viewStory({required int storyId}) async {
     return homeUserApi.viewStory(storyId: storyId);
+  }
+
+  @override
+  Future<SingleAdvertismentModel> showAdvertisement({required int id}) async {
+    return homeUserApi.showAdvertisment(
+      id: id,
+    );
   }
 }
