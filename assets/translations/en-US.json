@@ -186,6 +186,9 @@
   "enter_your_full_name": "Enter your full name.",
   "empty_reels_title": "There are no videos to watch",
   "empty_reels_des": "It seems you haven't followed any users yet, it will appear",
+  "follow": "Follow +",
+  "following": "Following",
+
   "empty_reels_des1": "Videos from those you follow here..."
 
 

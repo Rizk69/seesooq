@@ -11,8 +11,8 @@ import '../../../../config/routes/app_routes.dart';
 import '../../../../core/widget/text_translate_manager.dart';
 import '../../../setting1/edit_profile/presentation/widgets/header_screen.dart';
 
-class FollowersPage extends StatelessWidget {
-  const FollowersPage({super.key});
+class FollowingPage extends StatelessWidget {
+  const FollowingPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class FollowersPage extends StatelessWidget {
               child: Column(
                 children: [
                   HeaderScreens(
-                      title: 'followers',
+                      title: 'following',
                       onPressed: () {
                         context.go(Routes.profilePage);
                       }),
@@ -45,13 +45,13 @@ class FollowersPage extends StatelessWidget {
             ),
             BlocBuilder<FollowBloc, FollowState>(builder: (context, state) {
               var cubit = FollowBloc.get(context);
-              if (state.followersStatus == FollowersStatus.loading) {
+              if (state.followingStatus == FollowingStatus.loading) {
                 return const Center(child: CircularProgressIndicator());
-              } else if (state.followersStatus == FollowersStatus.loaded) {
+              } else if (state.followingStatus == FollowingStatus.loaded) {
                 return Expanded(
                   child: ListView.builder(
                     itemBuilder: (context, index) {
-                      var user = state.followersUsers?.data?[index];
+                      var user = state.followingUsers?.data?[index];
                       return Container(
                           padding: const EdgeInsets.all(15),
                           margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),

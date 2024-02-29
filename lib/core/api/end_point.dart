@@ -29,11 +29,11 @@ class EndPoint {
   static const String getFav = 'my-favourite';
   static const String addFav = 'add-to-favourites/{id}';
   static const String removeFav = 'remove-from-favourites/{id}';
-  static const String getFollowers = '/api/followers';
-  static const String getFollowings = '/api/followings';
-  static const String makeFollow = '/api/follow/{idMF}';
-  static const String removeFollower = '/api/unfollow/{idRFR}';
-  static const String removeFollowing = '/api/followings/remove/{idRFG}';
+  static const String getFollowers = 'followers';
+  static const String getFollowings = 'followings';
+  static const String makeFollow = 'follow/{idMF}';
+  static const String removeFollower = 'unfollow/{idRFR}';
+  static const String removeFollowing = 'followings/remove/{idRFG}';
   static const String getMyAds = '/place/textsearch/json';
   static const String deleteMyAds = '/place/textsearch/json';
 }

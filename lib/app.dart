@@ -7,6 +7,8 @@ import 'package:opensooq/config/theme/dynamic_theme/model/app_theme.dart';
 import 'package:opensooq/future/category/presentation/cubit/category_cubit.dart';
 import 'package:opensooq/future/category_product/presentation/cubit/category_product_cubit.dart';
 import 'package:opensooq/future/favorite/presentation/cubit/favorite_cubit.dart';
+import 'package:opensooq/future/follow_section/presentation/bloc/follow_bloc.dart';
+import 'package:opensooq/future/follow_section/presentation/bloc/follow_event.dart';
 import 'package:opensooq/future/home/presentation/cubit/home_cubit.dart';
 import 'package:opensooq/future/home/presentation/cubit/story_user_cubit.dart';
 import 'package:opensooq/future/login/presentation/cubit/login_cubit.dart';
@@ -37,6 +39,10 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => di.sl<SignUpCubit>()),
         BlocProvider(create: (context) => FavoriteCubit()..getFav()),
         BlocProvider(create: (context) => StoryUserCubit()),
+        BlocProvider(
+            create: (context) => FollowBloc()
+              ..add(const FollowEvent.getFollowers())
+              ..add(const FollowEvent.getFollowing())),
       ],
       child: BlocBuilder<LocaleCubit, LocaleState>(builder: (context, state) {
         return MaterialApp.router(

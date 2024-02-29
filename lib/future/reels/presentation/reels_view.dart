@@ -59,6 +59,25 @@ class ReelsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        floatingActionButton: Container(
+          width: 80,
+          height: 80,
+          margin: EdgeInsets.all(13),
+          child: FloatingActionButton(
+            isExtended: true,
+            backgroundColor: Color(0XFFF05A35),
+            onPressed: () {
+              context.goNamed(Routes.myReels);
+            },
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(50),
+            ),
+            child: SvgPicture.asset(
+              'assets/images/svg/vedioreels.svg',
+              height: 40,
+            ),
+          ),
+        ),
         body: Padding(
           padding: const EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 15),
           child: Column(
@@ -198,7 +217,7 @@ class ReelsView extends StatelessWidget {
                                     fit: BoxFit.contain,
                                   ),
                                 ),
-                                SizedBox(width: 10),
+                                const SizedBox(width: 10),
                                 const Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -238,26 +257,6 @@ class ReelsView extends StatelessWidget {
                 ],
               )
             ],
-          ),
-        ),
-      ),
-      floatingActionButton: Container(
-        width: 80,
-        height: 80,
-        margin: EdgeInsets.all(13),
-        child: FloatingActionButton(
-          isExtended: true,
-          backgroundColor: Color(0XFFF05A35),
-          onPressed: () {
-            context.goNamed(Routes.myReels);
-
-          },
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(50),
-          ),
-          child: SvgPicture.asset(
-            'assets/images/svg/vedioreels.svg',
-            height: 40,
           ),
         ),
       ),

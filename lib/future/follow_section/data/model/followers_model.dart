@@ -6,10 +6,9 @@ class FollowersModel {
 
   List<Data>? get data => _data;
 
-  FollowersModel({
-      List<Data>? data}){
+  FollowersModel({List<Data>? data}) {
     _data = data;
-}
+  }
 
   FollowersModel.fromJson(dynamic json) {
     if (json["data"] != null) {
@@ -27,7 +26,6 @@ class FollowersModel {
     }
     return map;
   }
-
 }
 
 /// id : 54
@@ -42,25 +40,23 @@ class Data {
   String? _phone;
   String? _email;
   String? _image;
+  bool? _isFollow;
 
   int? get id => _id;
   String? get name => _name;
+  bool? get isFollow => _isFollow;
   String? get phone => _phone;
   String? get email => _email;
   String? get image => _image;
 
-  Data({
-      int? id, 
-      String? name, 
-      String? phone, 
-      String? email, 
-      String? image}){
+  Data({int? id, String? name, String? phone, bool? isFollow, String? email, String? image}) {
     _id = id;
     _name = name;
     _phone = phone;
+    _isFollow = isFollow;
     _email = email;
     _image = image;
-}
+  }
 
   Data.fromJson(dynamic json) {
     _id = json["id"];
@@ -68,6 +64,7 @@ class Data {
     _phone = json["phone"];
     _email = json["email"];
     _image = json["image"];
+    _isFollow = json["isFollow"];
   }
 
   Map<String, dynamic> toJson() {
@@ -79,5 +76,4 @@ class Data {
     map["image"] = _image;
     return map;
   }
-
 }

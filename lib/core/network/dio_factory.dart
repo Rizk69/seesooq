@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import '../api/dio_interceptor.dart';
 import '../api/end_point.dart';
@@ -30,7 +32,21 @@ abstract class DioFactory {
       //
       ..followRedirects = false
       ..headers = {'Content-Type': 'application/json'};
-    client.interceptors.addAll([customInterceptors, logInterceptor, mockInterceptor]);
+    client.interceptors.addAll([
+      customInterceptors,
+      logInterceptor,
+      mockInterceptor,
+      if (kDebugMode)
+        PrettyDioLogger(
+          requestHeader: false,
+          requestBody: true,
+          responseBody: true,
+          responseHeader: false,
+          error: true,
+          compact: true,
+          maxWidth: 90,
+        ),
+    ]);
     return client;
   }
 }

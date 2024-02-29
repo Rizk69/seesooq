@@ -11,3 +11,7 @@ void dismissLoading() {
 void showError(String message) {
   EasyLoading.showError(message);
 }
+
+void showSuccess(String message) {
+  EasyLoading.showSuccess(message);
+}

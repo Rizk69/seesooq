@@ -32,7 +32,7 @@ class _FollowApi implements FollowApi {
     )
             .compose(
               _dio.options,
-              '/api/followers',
+              'followers',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -59,7 +59,7 @@ class _FollowApi implements FollowApi {
     )
             .compose(
               _dio.options,
-              '/api/followings',
+              'followings',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -85,7 +85,7 @@ class _FollowApi implements FollowApi {
     )
         .compose(
           _dio.options,
-          '/api/follow/${idMF}',
+          'follow/${idMF}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -109,7 +109,7 @@ class _FollowApi implements FollowApi {
     )
         .compose(
           _dio.options,
-          '/api/unfollow/${idRFR}',
+          'unfollow/${idRFR}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -133,7 +133,7 @@ class _FollowApi implements FollowApi {
     )
         .compose(
           _dio.options,
-          '/api/followings/remove/${idRFG}',
+          'followings/remove/${idRFG}',
           queryParameters: queryParameters,
           data: _data,
         )
