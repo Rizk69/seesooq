@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import 'package:opensooq/future/signup/data/repositories/signup_repository.dart';
 import '../../../../core/error/error_handler.dart';
 import '../../../../core/error/failures.dart';
 import '../data_source/follow_remot_data_sorces.dart';
@@ -22,51 +23,31 @@ class FollowRepositoryImpl implements FollowRepository {
 
   @override
   Future<Either<Failures, FollowersModel>> getFollowers() async {
-    try {
-      final response = await _remoteDataSource.getFollowers();
-      return Right(response);
-    } on DioException catch (e) {
-      return Left(ErrorHandler.handleError(e));
-    }
+    return executeAndCatchError(
+        () async => await _remoteDataSource.getFollowers());
   }
 
   @override
   Future<Either<Failures, FollowersModel>> getFollowings() async {
-    try {
-      final response = await _remoteDataSource.getFollowings();
-      return Right(response);
-    } on DioException catch (e) {
-      return Left(ErrorHandler.handleError(e));
-    }
+    return executeAndCatchError(
+        () async => await _remoteDataSource.getFollowings());
   }
 
   @override
   Future<Either<Failures, void>> makeFollow({required int id}) async {
-    try {
-      final response = await _remoteDataSource.makeFollow(id: id);
-      return Right(response);
-    } on DioException catch (e) {
-      return Left(ErrorHandler.handleError(e));
-    }
+    return executeAndCatchError(
+        () async => await _remoteDataSource.makeFollow(id: id));
   }
 
   @override
   Future<Either<Failures, void>> removeFollower({required int id}) async {
-    try {
-      final response = await _remoteDataSource.removeFollower(id: id);
-      return Right(response);
-    } on DioException catch (e) {
-      return Left(ErrorHandler.handleError(e));
-    }
+    return executeAndCatchError(
+        () async => await _remoteDataSource.removeFollower(id: id));
   }
 
   @override
   Future<Either<Failures, void>> removeFollowing({required int id}) async {
-    try {
-      final response = await _remoteDataSource.removeFollowing(id: id);
-      return Right(response);
-    } on DioException catch (e) {
-      return Left(ErrorHandler.handleError(e));
-    }
+    return executeAndCatchError(
+        () async => await _remoteDataSource.removeFollowing(id: id));
   }
 }
