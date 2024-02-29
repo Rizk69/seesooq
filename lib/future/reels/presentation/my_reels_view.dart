@@ -8,8 +8,8 @@ import '../../../core/widget/text_translate_manager.dart';
 import '../../setting1/edit_profile/presentation/widgets/anmtionsucssuffly.dart';
 import '../../setting1/edit_profile/presentation/widgets/header_screen.dart';
 
-class EmptyReelsView extends StatelessWidget {
-  const EmptyReelsView({super.key});
+class EmptyMyReelsView extends StatelessWidget {
+  const EmptyMyReelsView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class EmptyReelsView extends StatelessWidget {
             HeaderScreens(
                 title: 'reels',
                 onPressed: () {
-                  context.go(Routes.home);
+                  context.go(Routes.reels);
                 }),
             SizedBox(
               height: MediaQuery.of(context).size.height / 4.3,
@@ -60,8 +60,8 @@ class EmptyReelsView extends StatelessWidget {
   }
 }
 
-class ReelsView extends StatelessWidget {
-  const ReelsView({Key? key});
+class MyReelsView extends StatelessWidget {
+  const MyReelsView({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +74,7 @@ class ReelsView extends StatelessWidget {
             HeaderScreens(
               title: 'reels',
               onPressed: () {
-                context.go(Routes.home);
+                context.go(Routes.reels);
               },
             ),
             SizedBox(height: 10),
@@ -113,27 +113,31 @@ class ReelsView extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(30),
-                                child: Image.asset(
-                                  'assets/images/person.jpg',
-                                  height: 50,
-                                  width: 50,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
                               SizedBox(width: 10),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'أدم يوسف',
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                  Text(
                                     '16 ثانيه',
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 10),
+                                        color: Colors.white, fontSize: 12),
+                                  ),
+                                  Row(
+                                    children: [
+                                      Icon(
+                                        Icons.remove_red_eye_outlined,
+                                        size: 15,
+                                        color: Colors.white,
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(
+                                        '66',
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 12),
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),
@@ -143,16 +147,19 @@ class ReelsView extends StatelessWidget {
                         Positioned(
                           top: 10,
                           right: 10,
-                          child: Container(
-                            padding: const EdgeInsets.all(8),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              shape: BoxShape.circle,
-                            ),
-                            child: Icon(
-                              Icons.favorite_border,
-                              color: Colors.red,
-                              size: 20,
+                          child: InkWell(
+                            onTap: () {},
+                            child: Container(
+                              padding: const EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                shape: BoxShape.circle,
+                              ),
+                              child: Icon(
+                                Icons.delete,
+                                color: Colors.red,
+                                size: 20,
+                              ),
                             ),
                           ),
                         ),
@@ -192,27 +199,31 @@ class ReelsView extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(30),
-                                child: Image.asset(
-                                  'assets/images/person.jpg',
-                                  height: 50,
-                                  width: 50,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
                               SizedBox(width: 10),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'أدم يوسف',
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                  Text(
                                     '16 ثانيه',
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 10),
+                                        color: Colors.white, fontSize: 12),
+                                  ),
+                                  Row(
+                                    children: [
+                                      Icon(
+                                        Icons.remove_red_eye_outlined,
+                                        size: 15,
+                                        color: Colors.white,
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(
+                                        '66',
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 12),
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),
@@ -229,7 +240,7 @@ class ReelsView extends StatelessWidget {
                               shape: BoxShape.circle,
                             ),
                             child: Icon(
-                              Icons.favorite_border,
+                              Icons.delete,
                               color: Colors.red,
                               size: 20,
                             ),
@@ -253,7 +264,6 @@ class ReelsView extends StatelessWidget {
           backgroundColor: Color(0XFFF05A35),
           onPressed: () {
             context.goNamed(Routes.myReels);
-
           },
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(50),
