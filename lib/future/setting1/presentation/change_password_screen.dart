@@ -18,8 +18,7 @@ class ChangePasswordPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding:
-            const EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 15),
+        padding: const EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 15),
         child: Column(
           children: [
             HeaderScreens(

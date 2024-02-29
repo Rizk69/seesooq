@@ -47,6 +47,8 @@ class MyOptionDrawerWidget extends StatelessWidget {
                 context.goNamed(Routes.favorite);
               }else if (index == 0) {
                 context.goNamed(Routes.myAds);
+              }else if (index == 1) {
+                context.goNamed(Routes.reels);
               }
             },
             leading: CircleAvatar(

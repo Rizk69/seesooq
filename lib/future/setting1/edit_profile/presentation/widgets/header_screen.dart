@@ -26,7 +26,6 @@ class HeaderScreens extends StatelessWidget {
                   Colors.grey.withOpacity(0.2))),
           onPressed: () {
             onPressed();
-            // context.go(Routes.profilePage);
           },
           icon: const Icon(
             Icons.arrow_back_outlined,
