@@ -120,11 +120,14 @@ class _ProfilePageState extends State<ProfilePage> {
                       switch (index) {
                         case 0:
                           {
-                            context.go(Routes.followersView);
+                            context.goNamed(Routes.followersView);
                           }
                           break;
                         case 1:
-                          {}
+                          {
+                            context.goNamed(Routes.followingView);
+
+                          }
                           // Handle action for index 1
                           break;
                         case 2:
