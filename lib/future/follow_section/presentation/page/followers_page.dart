@@ -65,137 +65,141 @@ class FollowersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.transparent,
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
-            child: Column(
-              children: [
-                HeaderScreens(
-                    title: 'followers',
-                    onPressed: () {
-                      context.go(Routes.profilePage);
-                    }),
-                const SizedBox(
-                  height: 25,
-                ),
-                const CustomTextFormFiledApp(
-                  title: 'ابحث ...',
-                  imgIconSvg: 'assets/images/svg/search.svg',
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-              ],
-            ),
-          ),
-          BlocProvider(
-            create: (context) => FollowCubit(),
-            child: Expanded(
-              child: ListView.builder(
-                itemBuilder: (context, index) =>
-                    BlocBuilder<FollowCubit, FollowStatus>(
-                  builder: (context, followState) {
-                    return Container(
-                      padding: const EdgeInsets.all(15),
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 10, horizontal: 20),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        // : Color(0xFF4C0497),
-                        borderRadius: BorderRadius.circular(20),
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Colors.grey,
-                            spreadRadius: 0,
-                            blurRadius: 15,
-                            offset: Offset(1, 1.1),
-                          ),
-                        ],
-                      ),
-                      child: Row(
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              BlocProvider.of<FollowCubit>(context)
-                                  .toggleFollow();
-                            },
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 27, vertical: 11),
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                    color: Color(0xFF4C0497), width: 1),
-                                borderRadius: BorderRadius.circular(50),
-                                gradient: followState == FollowStatus.following
-                                    ? const LinearGradient(
-                                        begin: Alignment.topCenter,
-                                        end: Alignment.bottomCenter,
-                                        colors: [
-                                          Color(0xFF4C0497),
-                                          Color(0xFF4C0497),
-                                          Color(0xFF4C0497),
-                                          Colors.white,
-                                          Color(0xFF4C0497),
-                                        ],
-                                        stops: [
-                                          0.0,
-                                          0.0,
-                                          0.5,
-                                          1.5,
-                                          1
-                                        ], // Stops at 0%, 50%, and 100%
-                                      )
-                                    : LinearGradient(
-                                        begin: Alignment.topCenter,
-                                        end: Alignment.bottomCenter,
-                                        colors: [
-                                          Colors.white,
-                                          Colors.white,
-                                        ],
-                                        stops: [
-                                          0.0,
-                                          0.0,
-                                        ], // Stops at 0%, 50%, and 100%
-                                      ),
-                              ),
-                              child: Text(
-                                followState == FollowStatus.following
-                                    ? 'أتابع'
-                                    : 'متابعة +',
-                                style: TextStyle(
-                                    color: followState == FollowStatus.following
-                                        ? Colors.white
-                                        : Colors.black),
-                              ),
-                            ),
-                          ),
-                          const Spacer(),
-                          Text('آدم يوسف',
-                              style:
-                                  TextStyle(fontSize: 18)), // Adjust font size
-                          const SizedBox(width: 10),
-                          Container(
-                            decoration:
-                                const BoxDecoration(shape: BoxShape.circle),
-                            child: const CircleAvatar(
-                              radius: 40,
-                              backgroundImage:
-                                  AssetImage('assets/images/person.jpeg'),
-                            ),
-                          )
-                        ],
-                      ),
-                    );
-                  },
-                ),
-                itemCount: 6,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20, top: 5),
+              child: Column(
+                children: [
+                  HeaderScreens(
+                      title: 'followers',
+                      onPressed: () {
+                        context.go(Routes.profilePage);
+                      }),
+                  const SizedBox(
+                    height: 25,
+                  ),
+                  const CustomTextFormFiledApp(
+                    title: 'ابحث ...',
+                    imgIconSvg: 'assets/images/svg/search.svg',
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                ],
               ),
             ),
-          )
-        ],
+            BlocProvider(
+              create: (context) => FollowCubit(),
+              child: Expanded(
+                child: ListView.builder(
+                  itemBuilder: (context, index) =>
+                      BlocBuilder<FollowCubit, FollowStatus>(
+                    builder: (context, followState) {
+                      return Container(
+                        padding: const EdgeInsets.all(15),
+                        margin: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 20),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          // : Color(0xFF4C0497),
+                          borderRadius: BorderRadius.circular(20),
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Colors.grey,
+                              spreadRadius: 0,
+                              blurRadius: 15,
+                              offset: Offset(1, 1.1),
+                            ),
+                          ],
+                        ),
+                        child: Row(
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                BlocProvider.of<FollowCubit>(context)
+                                    .toggleFollow();
+                              },
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 27, vertical: 11),
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: Color(0xFF4C0497), width: 1),
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient:
+                                      followState == FollowStatus.following
+                                          ? const LinearGradient(
+                                              begin: Alignment.topCenter,
+                                              end: Alignment.bottomCenter,
+                                              colors: [
+                                                Color(0xFF4C0497),
+                                                Color(0xFF4C0497),
+                                                Color(0xFF4C0497),
+                                                Colors.white,
+                                                Color(0xFF4C0497),
+                                              ],
+                                              stops: [
+                                                0.0,
+                                                0.0,
+                                                0.5,
+                                                1.5,
+                                                1
+                                              ], // Stops at 0%, 50%, and 100%
+                                            )
+                                          : LinearGradient(
+                                              begin: Alignment.topCenter,
+                                              end: Alignment.bottomCenter,
+                                              colors: [
+                                                Colors.white,
+                                                Colors.white,
+                                              ],
+                                              stops: [
+                                                0.0,
+                                                0.0,
+                                              ], // Stops at 0%, 50%, and 100%
+                                            ),
+                                ),
+                                child: Text(
+                                  followState == FollowStatus.following
+                                      ? 'أتابع'
+                                      : 'متابعة +',
+                                  style: TextStyle(
+                                      color:
+                                          followState == FollowStatus.following
+                                              ? Colors.white
+                                              : Colors.black),
+                                ),
+                              ),
+                            ),
+                            const Spacer(),
+                            Text('آدم يوسف',
+                                style: TextStyle(
+                                    fontSize: 18)), // Adjust font size
+                            const SizedBox(width: 10),
+                            Container(
+                              decoration:
+                                  const BoxDecoration(shape: BoxShape.circle),
+                              child: const CircleAvatar(
+                                radius: 40,
+                                backgroundImage:
+                                    AssetImage('assets/images/person.jpeg'),
+                              ),
+                            )
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                  itemCount: 6,
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
