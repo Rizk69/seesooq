@@ -32,8 +32,11 @@ class _OneCategoryViewState extends State<OneCategoryView> {
     // TODO: implement initState
 
     super.initState();
-    // DetailsCategoryCubit.get(context).getAdvertisementCategory(subCategory: widget.categoryId);
-    widget.cubit.getAdvertisementCategory(subCategory: widget.categoryId);
+    widget.cubit.resetFilter();
+    Future.wait([
+      widget.cubit.getAdvertisementCategory(subCategory: widget.categoryId),
+      widget.cubit.getAttributesByFilter(subCategory: widget.categoryId),
+    ]);
   }
 
   @override
@@ -58,42 +61,91 @@ class _OneCategoryViewState extends State<OneCategoryView> {
                         showCustomModalBottomSheet(
                           context: context,
                           expand: true,
-                          containerWidget: (_, animation, child) => DraggableScrollableSheet(
-                            expand: true,
-                            initialChildSize: 0.5,
-                            minChildSize: 0.5,
-                            maxChildSize: 0.9,
-                            builder: (_, controller) => Container(
-                              decoration: const BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(20),
-                                  topRight: Radius.circular(20),
+                          containerWidget: (_, animation, child) {
+                            return DraggableScrollableSheet(
+                              expand: true,
+                              initialChildSize: 0.5,
+                              minChildSize: 0.5,
+                              maxChildSize: 0.9,
+                              builder: (_, controller) => Container(
+                                decoration: const BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(20),
+                                    topRight: Radius.circular(20),
+                                  ),
+                                ),
+                                child: SingleChildScrollView(
+                                  controller: controller,
+                                  child: child,
                                 ),
                               ),
-                              child: SingleChildScrollView(
-                                controller: controller,
-                                child: child,
-                              ),
-                            ),
-                          ),
+                            );
+                          },
                           enableDrag: true,
                           bounce: true,
                           closeProgressThreshold: 0.2,
-                          settings: const RouteSettings(name: 'filter'),
+                          settings: const RouteSettings(name: 'Filter'),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.0),
                           ),
-                          builder: (context) => Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.max,
-                            children: List.generate(
-                                9,
-                                (index) => const ListTile(
-                                      title: Text('dsadjkhsajdk'),
-                                    )),
-                          ),
+                          builder: (context) {
+                            return BlocProvider.value(
+                              value: widget.cubit,
+                              child: BlocBuilder<DetailsCategoryCubit, DetailsCategoryState>(builder: (context, stateCubit) {
+                                return Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: stateCubit.filterData?.attributes
+                                          ?.where((element) => element.children?.isNotEmpty ?? false)
+                                          .toList()
+                                          .map(
+                                            (e) => ExpansionTile(
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.circular(10),
+                                              ),
+                                              title: TranslateText(
+                                                text: e.title.toString(),
+                                                styleText: StyleText.h5,
+                                              ),
+                                              children: [
+                                                Column(
+                                                  children: e.children?.map(
+                                                        (childrenItem) {
+                                                          return Row(
+                                                            children: [
+                                                              Checkbox(
+                                                                value: stateCubit.idsFilterSelected[e.id.toString()]
+                                                                        ?.contains(childrenItem.id.toString()) ??
+                                                                    false,
+                                                                onChanged: (value) {
+                                                                  cubit.selectedMultiIdsForOneQuestion(
+                                                                    e.id.toString(),
+                                                                    childrenItem.id.toString(),
+                                                                  );
+                                                                  setState(() {});
+                                                                },
+                                                              ),
+                                                              TranslateText(
+                                                                text: childrenItem.title.toString(),
+                                                                styleText: StyleText.h5,
+                                                              ),
+                                                            ],
+                                                          );
+                                                        },
+                                                      ).toList() ??
+                                                      [],
+                                                ),
+                                              ],
+                                            ),
+                                          )
+                                          .toList() ??
+                                      [],
+                                );
+                              }),
+                            );
+                          },
                         );
                       },
                       child: SvgCustomImage(

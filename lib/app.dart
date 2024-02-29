@@ -42,14 +42,16 @@ class MyApp extends StatelessWidget {
         return MaterialApp.router(
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
-          locale: Locale('en'),
+          locale: context.locale,
           localizationsDelegates: context.localizationDelegates,
           supportedLocales: context.supportedLocales,
           scaffoldMessengerKey: scaffoldMessengerKey,
           darkTheme: ThemeManager.createTheme(AppThemeDark()),
           themeMode: state.theme == 'light' ? ThemeMode.light : ThemeMode.dark,
           theme: ThemeManager.createTheme(AppThemeLight()),
-          builder: EasyLoading.init(),
+          builder: (context, child) {
+            return FlutterEasyLoading(child: child);
+          },
           routerConfig: router,
         );
       }),

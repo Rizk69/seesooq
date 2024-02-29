@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:go_router/go_router.dart';
 import 'package:opensooq/config/routes/app_routes.dart';
 import 'package:opensooq/future/home/presentation/cubit/home_cubit.dart';
 import 'package:opensooq/future/home/presentation/cubit/home_state.dart';
 
-class AppWithNavBar extends StatelessWidget {
+class AppWithNavBar extends StatefulWidget {
   const AppWithNavBar({
     required this.navigationShell,
     Key? key,
@@ -15,6 +16,17 @@ class AppWithNavBar extends StatelessWidget {
   final StatefulNavigationShell navigationShell;
 
   @override
+  State<AppWithNavBar> createState() => _AppWithNavBarState();
+}
+
+class _AppWithNavBarState extends State<AppWithNavBar> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocConsumer<HomeCubit, HomeState>(
@@ -22,24 +34,28 @@ class AppWithNavBar extends StatelessWidget {
           builder: (context, state) {
             var cubit = HomeCubit.get(context);
             return Scaffold(
-              body: navigationShell,
-              bottomNavigationBar: BottomNavigationBar(
-                elevation: 10,
-                items: const [
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.home),
-                    label: 'الرئيسية',
-                  ),
-                  BottomNavigationBarItem(icon: Icon(Icons.search), label: 'البحث'),
-                  BottomNavigationBarItem(icon: Icon(Icons.add), label: 'أضف إعلان'),
-                  BottomNavigationBarItem(icon: Icon(Icons.message), label: 'الرسائل'),
-                  BottomNavigationBarItem(icon: Icon(Icons.person), label: 'حسابي'),
-                ],
-                onTap: (index) {
-                  _onTap(context, index);
-                },
-                currentIndex: navigationShell.currentIndex,
-              ),
+              body: widget.navigationShell,
+              bottomNavigationBar: KeyboardVisibilityBuilder(builder: (context, visible) {
+                return visible
+                    ? const SizedBox.shrink()
+                    : BottomNavigationBar(
+                        elevation: 10,
+                        items: const [
+                          BottomNavigationBarItem(
+                            icon: Icon(Icons.home),
+                            label: 'الرئيسية',
+                          ),
+                          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'البحث'),
+                          BottomNavigationBarItem(icon: Icon(Icons.add), label: 'أضف إعلان'),
+                          BottomNavigationBarItem(icon: Icon(Icons.message), label: 'الرسائل'),
+                          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'حسابي'),
+                        ],
+                        onTap: (index) {
+                          _onTap(context, index);
+                        },
+                        currentIndex: widget.navigationShell.currentIndex,
+                      );
+              }),
             );
           }),
     );
@@ -51,14 +67,14 @@ class AppWithNavBar extends StatelessWidget {
     // When navigating to a new branch, it's recommended to use the goBranch
     // method, as doing so makes sure the last navigation state of the
     // Navigator for the branch is restored.
-    navigationShell.goBranch(
+    widget.navigationShell.goBranch(
       index,
 
       // A common pattern when using bottom navigation bars is to support
       // navigating to the initial location when tapping the item that is
       // already active. This example demonstrates how to support this behavior,
       // using the initialLocation parameter of goBranch.
-      initialLocation: index == navigationShell.currentIndex,
+      initialLocation: index == widget.navigationShell.currentIndex,
     );
   }
 }

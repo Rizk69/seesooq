@@ -74,6 +74,34 @@ class _CategoryApi implements CategoryApi {
   }
 
   @override
+  Future<AttributesAdsModel> getAttributesByFilter(
+      {required String subCategoryId}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = {'category_id': subCategoryId};
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<AttributesAdsModel>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'attributes',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = await compute(deserializeAttributesAdsModel, _result.data!);
+    return value;
+  }
+
+  @override
   Future<CategoryModel> getDetailsCategory({required String categoryId}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -101,12 +129,10 @@ class _CategoryApi implements CategoryApi {
   }
 
   @override
-  Future<AdvertisementModel> getAdvertisementCategory({
-    required String subCategoryId,
-    required int page,
-  }) async {
+  Future<AdvertisementModel> getAdvertisementCategory(
+      {required String subCategoryId}) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'page': page};
+    final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio

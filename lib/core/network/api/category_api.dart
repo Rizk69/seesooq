@@ -24,7 +24,10 @@ abstract class CategoryApi {
   @POST(EndPoint.getAttributesForAds)
   Future<AttributesAdsModel> getAttributesForAds({
     @Field('category_id') required String subCategoryId,
-
+  });
+  @POST(EndPoint.getAttributesByFilter)
+  Future<AttributesAdsModel> getAttributesByFilter({
+    @Field('category_id') required String subCategoryId,
   });
 
   @GET(EndPoint.detailsCategory)
@@ -34,7 +37,6 @@ abstract class CategoryApi {
   @GET(EndPoint.getAdvertisement)
   Future<AdvertisementModel> getAdvertisementCategory({
     @Path('subCategoryId') required String subCategoryId,
-    @Query('page') required int page,
   });
 
 // @POST(EndPoint.markNotificationAsRead)

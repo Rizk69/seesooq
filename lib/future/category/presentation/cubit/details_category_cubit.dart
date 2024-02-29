@@ -91,6 +91,16 @@ class DetailsCategoryCubit extends Cubit<DetailsCategoryState> {
             }));
   }
 
+  Future<void> getAttributesByFilter({required String subCategory}) async {
+    emit(state.copyWith(filterStatus: FilterStatus.loading));
+    final result = await categoryRepository.getAttributesByFilter(subCategoryId: subCategory);
+    result.fold((l) {
+      emit(state.copyWith(filterStatus: FilterStatus.error));
+    }, (r) {
+      emit(state.copyWith(filterData: r, filterStatus: FilterStatus.loaded));
+    });
+  }
+
   Future<void> paginationAdvertisement({required String subCategory}) async {
     int lastPage = state.advertisementModel?.meta?.lastPage?.toInt() ?? 0;
     int currentPage = state.advertisementModel?.meta?.currentPage?.toInt() ?? 0;
@@ -116,9 +126,30 @@ class DetailsCategoryCubit extends Cubit<DetailsCategoryState> {
     }
   }
 
+  void selectedMultiIdsForOneQuestion(String questionId, String answerId) {
+    Map<String, List<String>> idsFilterSelected = Map.from(state.idsFilterSelected); // Make a mutable copy
+    if (idsFilterSelected.containsKey(questionId)) {
+      if (idsFilterSelected[questionId]!.contains(answerId)) {
+        idsFilterSelected[questionId]!.remove(answerId);
+      } else {
+        idsFilterSelected[questionId]!.add(answerId);
+      }
+    } else {
+      idsFilterSelected[questionId] = [answerId];
+    }
+    print(idsFilterSelected);
+
+    emit(state.copyWith(idsFilterSelected: idsFilterSelected, changeRebuild: !state.changeRebuild));
+  }
+
   resetPagination() {
     page = 1;
     hasMoreItems = true;
     scrollController = ScrollController();
+  }
+
+  resetFilter() {
+    print('resetFilter');
+    emit(state.copyWith(idsFilterSelected: {}, changeRebuild: !state.changeRebuild));
   }
 }

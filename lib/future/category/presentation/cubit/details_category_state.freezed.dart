@@ -20,10 +20,15 @@ mixin _$DetailsCategoryState {
       throw _privateConstructorUsedError;
   AdvertisementModel? get advertisementModel =>
       throw _privateConstructorUsedError;
+  AttributesAdsModel? get filterData => throw _privateConstructorUsedError;
+  FilterStatus? get filterStatus => throw _privateConstructorUsedError;
   DetailsCategoryStatus get detailsCategoryStatus =>
       throw _privateConstructorUsedError;
   AdvertisemenStatus get advertisemenStatus =>
       throw _privateConstructorUsedError;
+  Map<String, List<String>> get idsFilterSelected =>
+      throw _privateConstructorUsedError;
+  bool get changeRebuild => throw _privateConstructorUsedError;
   bool get loadingMore => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -40,8 +45,12 @@ abstract class $DetailsCategoryStateCopyWith<$Res> {
   $Res call(
       {List<CategoryDataModel> detailsCategory,
       AdvertisementModel? advertisementModel,
+      AttributesAdsModel? filterData,
+      FilterStatus? filterStatus,
       DetailsCategoryStatus detailsCategoryStatus,
       AdvertisemenStatus advertisemenStatus,
+      Map<String, List<String>> idsFilterSelected,
+      bool changeRebuild,
       bool loadingMore});
 }
 
@@ -61,8 +70,12 @@ class _$DetailsCategoryStateCopyWithImpl<$Res,
   $Res call({
     Object? detailsCategory = null,
     Object? advertisementModel = freezed,
+    Object? filterData = freezed,
+    Object? filterStatus = freezed,
     Object? detailsCategoryStatus = null,
     Object? advertisemenStatus = null,
+    Object? idsFilterSelected = null,
+    Object? changeRebuild = null,
     Object? loadingMore = null,
   }) {
     return _then(_value.copyWith(
@@ -74,6 +87,14 @@ class _$DetailsCategoryStateCopyWithImpl<$Res,
           ? _value.advertisementModel
           : advertisementModel // ignore: cast_nullable_to_non_nullable
               as AdvertisementModel?,
+      filterData: freezed == filterData
+          ? _value.filterData
+          : filterData // ignore: cast_nullable_to_non_nullable
+              as AttributesAdsModel?,
+      filterStatus: freezed == filterStatus
+          ? _value.filterStatus
+          : filterStatus // ignore: cast_nullable_to_non_nullable
+              as FilterStatus?,
       detailsCategoryStatus: null == detailsCategoryStatus
           ? _value.detailsCategoryStatus
           : detailsCategoryStatus // ignore: cast_nullable_to_non_nullable
@@ -82,6 +103,14 @@ class _$DetailsCategoryStateCopyWithImpl<$Res,
           ? _value.advertisemenStatus
           : advertisemenStatus // ignore: cast_nullable_to_non_nullable
               as AdvertisemenStatus,
+      idsFilterSelected: null == idsFilterSelected
+          ? _value.idsFilterSelected
+          : idsFilterSelected // ignore: cast_nullable_to_non_nullable
+              as Map<String, List<String>>,
+      changeRebuild: null == changeRebuild
+          ? _value.changeRebuild
+          : changeRebuild // ignore: cast_nullable_to_non_nullable
+              as bool,
       loadingMore: null == loadingMore
           ? _value.loadingMore
           : loadingMore // ignore: cast_nullable_to_non_nullable
@@ -101,8 +130,12 @@ abstract class _$$DetailsCategoryStateImplCopyWith<$Res>
   $Res call(
       {List<CategoryDataModel> detailsCategory,
       AdvertisementModel? advertisementModel,
+      AttributesAdsModel? filterData,
+      FilterStatus? filterStatus,
       DetailsCategoryStatus detailsCategoryStatus,
       AdvertisemenStatus advertisemenStatus,
+      Map<String, List<String>> idsFilterSelected,
+      bool changeRebuild,
       bool loadingMore});
 }
 
@@ -119,8 +152,12 @@ class __$$DetailsCategoryStateImplCopyWithImpl<$Res>
   $Res call({
     Object? detailsCategory = null,
     Object? advertisementModel = freezed,
+    Object? filterData = freezed,
+    Object? filterStatus = freezed,
     Object? detailsCategoryStatus = null,
     Object? advertisemenStatus = null,
+    Object? idsFilterSelected = null,
+    Object? changeRebuild = null,
     Object? loadingMore = null,
   }) {
     return _then(_$DetailsCategoryStateImpl(
@@ -132,6 +169,14 @@ class __$$DetailsCategoryStateImplCopyWithImpl<$Res>
           ? _value.advertisementModel
           : advertisementModel // ignore: cast_nullable_to_non_nullable
               as AdvertisementModel?,
+      filterData: freezed == filterData
+          ? _value.filterData
+          : filterData // ignore: cast_nullable_to_non_nullable
+              as AttributesAdsModel?,
+      filterStatus: freezed == filterStatus
+          ? _value.filterStatus
+          : filterStatus // ignore: cast_nullable_to_non_nullable
+              as FilterStatus?,
       detailsCategoryStatus: null == detailsCategoryStatus
           ? _value.detailsCategoryStatus
           : detailsCategoryStatus // ignore: cast_nullable_to_non_nullable
@@ -140,6 +185,14 @@ class __$$DetailsCategoryStateImplCopyWithImpl<$Res>
           ? _value.advertisemenStatus
           : advertisemenStatus // ignore: cast_nullable_to_non_nullable
               as AdvertisemenStatus,
+      idsFilterSelected: null == idsFilterSelected
+          ? _value._idsFilterSelected
+          : idsFilterSelected // ignore: cast_nullable_to_non_nullable
+              as Map<String, List<String>>,
+      changeRebuild: null == changeRebuild
+          ? _value.changeRebuild
+          : changeRebuild // ignore: cast_nullable_to_non_nullable
+              as bool,
       loadingMore: null == loadingMore
           ? _value.loadingMore
           : loadingMore // ignore: cast_nullable_to_non_nullable
@@ -154,10 +207,15 @@ class _$DetailsCategoryStateImpl implements _DetailsCategoryState {
   const _$DetailsCategoryStateImpl(
       {final List<CategoryDataModel> detailsCategory = const [],
       this.advertisementModel = null,
+      this.filterData = null,
+      this.filterStatus = FilterStatus.initial,
       this.detailsCategoryStatus = DetailsCategoryStatus.loading,
       this.advertisemenStatus = AdvertisemenStatus.initial,
+      final Map<String, List<String>> idsFilterSelected = const {},
+      this.changeRebuild = false,
       this.loadingMore = false})
-      : _detailsCategory = detailsCategory;
+      : _detailsCategory = detailsCategory,
+        _idsFilterSelected = idsFilterSelected;
 
   final List<CategoryDataModel> _detailsCategory;
   @override
@@ -173,17 +231,36 @@ class _$DetailsCategoryStateImpl implements _DetailsCategoryState {
   final AdvertisementModel? advertisementModel;
   @override
   @JsonKey()
+  final AttributesAdsModel? filterData;
+  @override
+  @JsonKey()
+  final FilterStatus? filterStatus;
+  @override
+  @JsonKey()
   final DetailsCategoryStatus detailsCategoryStatus;
   @override
   @JsonKey()
   final AdvertisemenStatus advertisemenStatus;
+  final Map<String, List<String>> _idsFilterSelected;
+  @override
+  @JsonKey()
+  Map<String, List<String>> get idsFilterSelected {
+    if (_idsFilterSelected is EqualUnmodifiableMapView)
+      return _idsFilterSelected;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_idsFilterSelected);
+  }
+
+  @override
+  @JsonKey()
+  final bool changeRebuild;
   @override
   @JsonKey()
   final bool loadingMore;
 
   @override
   String toString() {
-    return 'DetailsCategoryState(detailsCategory: $detailsCategory, advertisementModel: $advertisementModel, detailsCategoryStatus: $detailsCategoryStatus, advertisemenStatus: $advertisemenStatus, loadingMore: $loadingMore)';
+    return 'DetailsCategoryState(detailsCategory: $detailsCategory, advertisementModel: $advertisementModel, filterData: $filterData, filterStatus: $filterStatus, detailsCategoryStatus: $detailsCategoryStatus, advertisemenStatus: $advertisemenStatus, idsFilterSelected: $idsFilterSelected, changeRebuild: $changeRebuild, loadingMore: $loadingMore)';
   }
 
   @override
@@ -195,10 +272,18 @@ class _$DetailsCategoryStateImpl implements _DetailsCategoryState {
                 .equals(other._detailsCategory, _detailsCategory) &&
             (identical(other.advertisementModel, advertisementModel) ||
                 other.advertisementModel == advertisementModel) &&
+            (identical(other.filterData, filterData) ||
+                other.filterData == filterData) &&
+            (identical(other.filterStatus, filterStatus) ||
+                other.filterStatus == filterStatus) &&
             (identical(other.detailsCategoryStatus, detailsCategoryStatus) ||
                 other.detailsCategoryStatus == detailsCategoryStatus) &&
             (identical(other.advertisemenStatus, advertisemenStatus) ||
                 other.advertisemenStatus == advertisemenStatus) &&
+            const DeepCollectionEquality()
+                .equals(other._idsFilterSelected, _idsFilterSelected) &&
+            (identical(other.changeRebuild, changeRebuild) ||
+                other.changeRebuild == changeRebuild) &&
             (identical(other.loadingMore, loadingMore) ||
                 other.loadingMore == loadingMore));
   }
@@ -208,8 +293,12 @@ class _$DetailsCategoryStateImpl implements _DetailsCategoryState {
       runtimeType,
       const DeepCollectionEquality().hash(_detailsCategory),
       advertisementModel,
+      filterData,
+      filterStatus,
       detailsCategoryStatus,
       advertisemenStatus,
+      const DeepCollectionEquality().hash(_idsFilterSelected),
+      changeRebuild,
       loadingMore);
 
   @JsonKey(ignore: true)
@@ -225,8 +314,12 @@ abstract class _DetailsCategoryState implements DetailsCategoryState {
   const factory _DetailsCategoryState(
       {final List<CategoryDataModel> detailsCategory,
       final AdvertisementModel? advertisementModel,
+      final AttributesAdsModel? filterData,
+      final FilterStatus? filterStatus,
       final DetailsCategoryStatus detailsCategoryStatus,
       final AdvertisemenStatus advertisemenStatus,
+      final Map<String, List<String>> idsFilterSelected,
+      final bool changeRebuild,
       final bool loadingMore}) = _$DetailsCategoryStateImpl;
 
   @override
@@ -234,9 +327,17 @@ abstract class _DetailsCategoryState implements DetailsCategoryState {
   @override
   AdvertisementModel? get advertisementModel;
   @override
+  AttributesAdsModel? get filterData;
+  @override
+  FilterStatus? get filterStatus;
+  @override
   DetailsCategoryStatus get detailsCategoryStatus;
   @override
   AdvertisemenStatus get advertisemenStatus;
+  @override
+  Map<String, List<String>> get idsFilterSelected;
+  @override
+  bool get changeRebuild;
   @override
   bool get loadingMore;
   @override

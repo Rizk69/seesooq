@@ -12,6 +12,7 @@ class EndPoint {
   static const String verifyPassword = 'validate-otp';
   static const String category = 'categories';
   static const String getAttributesForAds = 'attributes';
+  static const String getAttributesByFilter = 'attributes';
   static const String getMyStories = 'MyStory';
   static const String deleteMyStory = 'delete/story/{storyId}';
   static const String getUsersStory = 'user/stories';
