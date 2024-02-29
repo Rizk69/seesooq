@@ -62,6 +62,7 @@ class Routes {
   static const String favorite = 'favorite';
   static const String myAds = 'myAds';
   static const String reels = '/reels';
+  static const String myReels = 'myReels';
   static const String setting = '/setting';
   static const String accountMangePage = '/accountMangePage';
   static const String changePassword = '/changePassword';

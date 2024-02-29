@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../config/routes/app_routes.dart';
@@ -237,6 +238,26 @@ class ReelsView extends StatelessWidget {
                 ],
               )
             ],
+          ),
+        ),
+      ),
+      floatingActionButton: Container(
+        width: 80,
+        height: 80,
+        margin: EdgeInsets.all(13),
+        child: FloatingActionButton(
+          isExtended: true,
+          backgroundColor: Color(0XFFF05A35),
+          onPressed: () {
+            context.goNamed(Routes.myReels);
+
+          },
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(50),
+          ),
+          child: SvgPicture.asset(
+            'assets/images/svg/vedioreels.svg',
+            height: 40,
           ),
         ),
       ),
