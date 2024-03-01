@@ -5,8 +5,9 @@ import 'package:opensooq/core/utils/media_query_values.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class BannerAdsSharedWidget extends StatefulWidget {
-  const BannerAdsSharedWidget({super.key, required this.images, required this.onPageChanged, required this.height});
-  final List<String> images;
+  const BannerAdsSharedWidget({super.key, required this.images, required this.onPageChanged, required this.height, this.isMemoryImage = false});
+  final List<dynamic> images;
+  final bool isMemoryImage;
 
   final double height;
 
@@ -19,7 +20,6 @@ class _BannerAdsSharedWidgetState extends State<BannerAdsSharedWidget> {
   final PageController controller = PageController();
   @override
   Widget build(BuildContext context) {
-    print(widget.images);
     return Column(
       children: [
         SizedBox(
@@ -39,30 +39,41 @@ class _BannerAdsSharedWidgetState extends State<BannerAdsSharedWidget> {
                 ),
                 child: ClipRRect(
                     borderRadius: BorderRadius.circular(12),
-                    child: widget.images.toString().contains('.svg')
+                    child: widget.isMemoryImage
                         ? ClipRRect(
                             borderRadius: BorderRadius.circular(12),
-                            child: SvgPicture.network(
+                            child: Image.file(
                               widget.images[index],
                               fit: BoxFit.cover,
-                              placeholderBuilder: (BuildContext context) => const Center(
+                              errorBuilder: (BuildContext context, t, r) => const Center(
                                 child: CircularProgressIndicator(),
                               ),
                             ),
                           )
-                        : ClipRRect(
-                            borderRadius: BorderRadius.circular(12),
-                            child: Image.network(
-                              widget.images[index],
-                              fit: BoxFit.cover,
-                              loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
-                                if (loadingProgress == null) return child;
-                                return const Center(
-                                  child: CircularProgressIndicator(),
-                                );
-                              },
-                            ),
-                          )),
+                        : widget.images.toString().contains('.svg')
+                            ? ClipRRect(
+                                borderRadius: BorderRadius.circular(12),
+                                child: SvgPicture.network(
+                                  widget.images[index],
+                                  fit: BoxFit.cover,
+                                  placeholderBuilder: (BuildContext context) => const Center(
+                                    child: CircularProgressIndicator(),
+                                  ),
+                                ),
+                              )
+                            : ClipRRect(
+                                borderRadius: BorderRadius.circular(12),
+                                child: Image.network(
+                                  widget.images[index],
+                                  fit: BoxFit.cover,
+                                  loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
+                                    if (loadingProgress == null) return child;
+                                    return const Center(
+                                      child: CircularProgressIndicator(),
+                                    );
+                                  },
+                                ),
+                              )),
               );
             },
             scrollDirection: Axis.horizontal,

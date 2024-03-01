@@ -74,6 +74,30 @@ class _CategoryApi implements CategoryApi {
   }
 
   @override
+  Future<void> createAdd({required dynamic body}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = body;
+    await _dio.fetch<void>(_setStreamType<void>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'advertisement/store',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        ))));
+  }
+
+  @override
   Future<AttributesAdsModel> getAttributesByFilter(
       {required String subCategoryId}) async {
     const _extra = <String, dynamic>{};

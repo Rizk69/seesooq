@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:opensooq/core/utils/custom_failed_app.dart';
 import 'package:opensooq/core/widget/text_translate_manager.dart';
@@ -46,6 +47,8 @@ class _DetailsAdsPageState extends State<DetailsAdsPage> {
               ),
               CustomTextFormFiled(
                 prefixIcon: false,
+                textInputType: TextInputType.text,
+                textInputAction: TextInputAction.next,
                 onChanged: (value) {
                   AddAdsCubit.get(context).updateNameForm(value.toString());
                 },
@@ -63,8 +66,33 @@ class _DetailsAdsPageState extends State<DetailsAdsPage> {
               ),
               CustomTextFormFiled(
                 prefixIcon: false,
+                textInputType: TextInputType.multiline,
+                textInputAction: TextInputAction.newline,
+                maxLine: 3,
                 onChanged: (value) {
                   AddAdsCubit.get(context).updateDescriptionForm(value.toString());
+                },
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const TranslateText(
+                text: 'priceAds',
+                styleText: StyleText.h4,
+                fontSize: 16,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              CustomTextFormFiled(
+                prefixIcon: false,
+                textInputType: const TextInputType.numberWithOptions(decimal: true),
+                textInputAction: TextInputAction.done,
+                textFormatters: [FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,2}'))],
+                onChanged: (value) {
+                  if (value.toString().isNotEmpty) {
+                    AddAdsCubit.get(context).updatePriceForm(num.parse(value.toString()));
+                  }
                 },
               ),
               const SizedBox(

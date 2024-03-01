@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:opensooq/future/category/data/models/advertisment_model.dart';
 import 'package:opensooq/future/category_product/data/models/attributes_ads_model.dart';
@@ -20,6 +21,7 @@ class DetailsCategoryState with _$DetailsCategoryState {
     @Default(FilterStatus.initial) FilterStatus? filterStatus,
     @Default(DetailsCategoryStatus.loading) DetailsCategoryStatus detailsCategoryStatus,
     @Default(AdvertisemenStatus.initial) AdvertisemenStatus advertisemenStatus,
+    @Default(RangeValues(0, 10000)) RangeValues rangeValues,
     @Default({}) Map<String, List<String>> idsFilterSelected,
     @Default(false) bool changeRebuild,
     @Default(false) bool loadingMore,

@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:opensooq/core/utils/app_colors.dart';
 import 'package:opensooq/core/utils/cache_network_image.dart';
@@ -75,10 +75,12 @@ class _OneCategoryViewState extends State<OneCategoryView> {
                                     topRight: Radius.circular(20),
                                   ),
                                 ),
-                                child: SingleChildScrollView(
-                                  controller: controller,
-                                  child: child,
-                                ),
+                                child: StatefulBuilder(builder: (context, setState) {
+                                  return SingleChildScrollView(
+                                    controller: controller,
+                                    child: child,
+                                  );
+                                }),
                               ),
                             );
                           },
@@ -90,61 +92,95 @@ class _OneCategoryViewState extends State<OneCategoryView> {
                             borderRadius: BorderRadius.circular(20.0),
                           ),
                           builder: (context) {
-                            return BlocProvider.value(
-                              value: widget.cubit,
-                              child: BlocBuilder<DetailsCategoryCubit, DetailsCategoryState>(builder: (context, stateCubit) {
-                                return Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: stateCubit.filterData?.attributes
-                                          ?.where((element) => element.children?.isNotEmpty ?? false)
-                                          .toList()
-                                          .map(
-                                            (e) => ExpansionTile(
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius: BorderRadius.circular(10),
-                                              ),
-                                              title: TranslateText(
-                                                text: e.title.toString(),
-                                                styleText: StyleText.h5,
-                                              ),
-                                              children: [
-                                                Column(
-                                                  children: e.children?.map(
-                                                        (childrenItem) {
-                                                          return Row(
-                                                            children: [
-                                                              Checkbox(
-                                                                value: stateCubit.idsFilterSelected[e.id.toString()]
-                                                                        ?.contains(childrenItem.id.toString()) ??
-                                                                    false,
-                                                                onChanged: (value) {
-                                                                  cubit.selectedMultiIdsForOneQuestion(
-                                                                    e.id.toString(),
-                                                                    childrenItem.id.toString(),
-                                                                  );
-                                                                  setState(() {});
-                                                                },
-                                                              ),
-                                                              TranslateText(
-                                                                text: childrenItem.title.toString(),
-                                                                styleText: StyleText.h5,
-                                                              ),
-                                                            ],
-                                                          );
-                                                        },
-                                                      ).toList() ??
-                                                      [],
-                                                ),
-                                              ],
+                            return StatefulBuilder(builder: (context, setState) {
+                              return BlocProvider.value(
+                                value: widget.cubit,
+                                child: BlocBuilder<DetailsCategoryCubit, DetailsCategoryState>(builder: (context, stateCubit) {
+                                  return Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        ...stateCubit.filterData?.attributes
+                                                ?.where((element) => element.children?.isNotEmpty ?? false)
+                                                .toList()
+                                                .map(
+                                                  (e) => ExpansionTile(
+                                                    shape: RoundedRectangleBorder(
+                                                      borderRadius: BorderRadius.circular(10),
+                                                    ),
+                                                    title: TranslateText(
+                                                      text: e.title.toString(),
+                                                      styleText: StyleText.h5,
+                                                    ),
+                                                    children: [
+                                                      Column(
+                                                        children: e.children?.map(
+                                                              (childrenItem) {
+                                                                return Row(
+                                                                  children: [
+                                                                    Checkbox(
+                                                                      value: stateCubit.idsFilterSelected[e.id.toString()]
+                                                                              ?.contains(childrenItem.id.toString()) ??
+                                                                          false,
+                                                                      onChanged: (value) {
+                                                                        cubit.selectedMultiIdsForOneQuestion(
+                                                                          e.id.toString(),
+                                                                          childrenItem.id.toString(),
+                                                                        );
+                                                                        setState(() {});
+                                                                      },
+                                                                    ),
+                                                                    TranslateText(
+                                                                      text: childrenItem.title.toString(),
+                                                                      styleText: StyleText.h5,
+                                                                    ),
+                                                                  ],
+                                                                );
+                                                              },
+                                                            ).toList() ??
+                                                            [],
+                                                      ),
+                                                    ],
+                                                  ),
+                                                )
+                                                .toList() ??
+                                            [],
+                                        BlocSelector<DetailsCategoryCubit, DetailsCategoryState, RangeValues>(
+                                          selector: (state22) => state22.rangeValues,
+                                          builder: (context, rangeValue) => RangeSlider(
+                                            values: RangeValues(
+                                              rangeValue.start,
+                                              rangeValue.end,
                                             ),
-                                          )
-                                          .toList() ??
-                                      [],
-                                );
-                              }),
-                            );
+                                            min: 0,
+                                            max: 100000,
+                                            divisions: 100,
+                                            labels: RangeLabels(
+                                              rangeValue.start.round().toString(),
+                                              rangeValue.end.round().toString(),
+                                            ),
+                                            onChangeStart: (value) {
+                                              print(value);
+                                              cubit.updateRangeValues(value);
+                                              setState(() {});
+                                            },
+                                            onChanged: (value) {
+                                              print(value);
+                                              cubit.updateRangeValues(value);
+                                              setState(() {});
+                                            },
+                                            onChangeEnd: (value) {
+                                              print(value);
+                                              cubit.updateRangeValues(value);
+                                              setState(() {});
+                                            },
+                                          ),
+                                        ),
+                                      ]);
+                                }),
+                              );
+                            });
                           },
                         );
                       },

@@ -21,6 +21,9 @@ mixin _$AddAdsState {
   AttributesAdsModel? get attributesAdsModel =>
       throw _privateConstructorUsedError;
   String get selectedSubCategory => throw _privateConstructorUsedError;
+  String get city => throw _privateConstructorUsedError;
+  String get governorate => throw _privateConstructorUsedError;
+  num get price => throw _privateConstructorUsedError;
   List<ImageFile> get images => throw _privateConstructorUsedError;
   AttributesForm get attributesForm => throw _privateConstructorUsedError;
   bool get loadingMore => throw _privateConstructorUsedError;
@@ -40,6 +43,9 @@ abstract class $AddAdsStateCopyWith<$Res> {
       {AttributesAdsStatus attributesAdsStatus,
       AttributesAdsModel? attributesAdsModel,
       String selectedSubCategory,
+      String city,
+      String governorate,
+      num price,
       List<ImageFile> images,
       AttributesForm attributesForm,
       bool loadingMore});
@@ -63,6 +69,9 @@ class _$AddAdsStateCopyWithImpl<$Res, $Val extends AddAdsState>
     Object? attributesAdsStatus = null,
     Object? attributesAdsModel = freezed,
     Object? selectedSubCategory = null,
+    Object? city = null,
+    Object? governorate = null,
+    Object? price = null,
     Object? images = null,
     Object? attributesForm = null,
     Object? loadingMore = null,
@@ -80,6 +89,18 @@ class _$AddAdsStateCopyWithImpl<$Res, $Val extends AddAdsState>
           ? _value.selectedSubCategory
           : selectedSubCategory // ignore: cast_nullable_to_non_nullable
               as String,
+      city: null == city
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as String,
+      governorate: null == governorate
+          ? _value.governorate
+          : governorate // ignore: cast_nullable_to_non_nullable
+              as String,
+      price: null == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as num,
       images: null == images
           ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
@@ -116,6 +137,9 @@ abstract class _$$AddAdsStateImplCopyWith<$Res>
       {AttributesAdsStatus attributesAdsStatus,
       AttributesAdsModel? attributesAdsModel,
       String selectedSubCategory,
+      String city,
+      String governorate,
+      num price,
       List<ImageFile> images,
       AttributesForm attributesForm,
       bool loadingMore});
@@ -138,6 +162,9 @@ class __$$AddAdsStateImplCopyWithImpl<$Res>
     Object? attributesAdsStatus = null,
     Object? attributesAdsModel = freezed,
     Object? selectedSubCategory = null,
+    Object? city = null,
+    Object? governorate = null,
+    Object? price = null,
     Object? images = null,
     Object? attributesForm = null,
     Object? loadingMore = null,
@@ -155,6 +182,18 @@ class __$$AddAdsStateImplCopyWithImpl<$Res>
           ? _value.selectedSubCategory
           : selectedSubCategory // ignore: cast_nullable_to_non_nullable
               as String,
+      city: null == city
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as String,
+      governorate: null == governorate
+          ? _value.governorate
+          : governorate // ignore: cast_nullable_to_non_nullable
+              as String,
+      price: null == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as num,
       images: null == images
           ? _value._images
           : images // ignore: cast_nullable_to_non_nullable
@@ -178,6 +217,9 @@ class _$AddAdsStateImpl implements _AddAdsState {
       {this.attributesAdsStatus = AttributesAdsStatus.initial,
       this.attributesAdsModel = null,
       this.selectedSubCategory = '',
+      this.city = '',
+      this.governorate = '',
+      this.price = 0.0,
       final List<ImageFile> images = const [],
       this.attributesForm = const AttributesForm(),
       this.loadingMore = false})
@@ -192,6 +234,15 @@ class _$AddAdsStateImpl implements _AddAdsState {
   @override
   @JsonKey()
   final String selectedSubCategory;
+  @override
+  @JsonKey()
+  final String city;
+  @override
+  @JsonKey()
+  final String governorate;
+  @override
+  @JsonKey()
+  final num price;
   final List<ImageFile> _images;
   @override
   @JsonKey()
@@ -210,7 +261,7 @@ class _$AddAdsStateImpl implements _AddAdsState {
 
   @override
   String toString() {
-    return 'AddAdsState(attributesAdsStatus: $attributesAdsStatus, attributesAdsModel: $attributesAdsModel, selectedSubCategory: $selectedSubCategory, images: $images, attributesForm: $attributesForm, loadingMore: $loadingMore)';
+    return 'AddAdsState(attributesAdsStatus: $attributesAdsStatus, attributesAdsModel: $attributesAdsModel, selectedSubCategory: $selectedSubCategory, city: $city, governorate: $governorate, price: $price, images: $images, attributesForm: $attributesForm, loadingMore: $loadingMore)';
   }
 
   @override
@@ -224,6 +275,10 @@ class _$AddAdsStateImpl implements _AddAdsState {
                 other.attributesAdsModel == attributesAdsModel) &&
             (identical(other.selectedSubCategory, selectedSubCategory) ||
                 other.selectedSubCategory == selectedSubCategory) &&
+            (identical(other.city, city) || other.city == city) &&
+            (identical(other.governorate, governorate) ||
+                other.governorate == governorate) &&
+            (identical(other.price, price) || other.price == price) &&
             const DeepCollectionEquality().equals(other._images, _images) &&
             (identical(other.attributesForm, attributesForm) ||
                 other.attributesForm == attributesForm) &&
@@ -237,6 +292,9 @@ class _$AddAdsStateImpl implements _AddAdsState {
       attributesAdsStatus,
       attributesAdsModel,
       selectedSubCategory,
+      city,
+      governorate,
+      price,
       const DeepCollectionEquality().hash(_images),
       attributesForm,
       loadingMore);
@@ -253,6 +311,9 @@ abstract class _AddAdsState implements AddAdsState {
       {final AttributesAdsStatus attributesAdsStatus,
       final AttributesAdsModel? attributesAdsModel,
       final String selectedSubCategory,
+      final String city,
+      final String governorate,
+      final num price,
       final List<ImageFile> images,
       final AttributesForm attributesForm,
       final bool loadingMore}) = _$AddAdsStateImpl;
@@ -263,6 +324,12 @@ abstract class _AddAdsState implements AddAdsState {
   AttributesAdsModel? get attributesAdsModel;
   @override
   String get selectedSubCategory;
+  @override
+  String get city;
+  @override
+  String get governorate;
+  @override
+  num get price;
   @override
   List<ImageFile> get images;
   @override

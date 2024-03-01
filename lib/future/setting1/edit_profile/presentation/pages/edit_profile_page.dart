@@ -1,14 +1,14 @@
 import 'package:country_flags/country_flags.dart';
+import 'package:country_picker/country_picker.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:country_picker/country_picker.dart';
 import 'package:go_router/go_router.dart';
 import 'package:opensooq/core/utils/custom_button_widget.dart';
-import 'package:opensooq/core/utils/media_query_values.dart';
-
 import 'package:opensooq/core/utils/hex_color.dart';
+import 'package:opensooq/core/utils/media_query_values.dart';
 import 'package:opensooq/core/widget/text_translate_manager.dart';
+
 import '../../../../../config/routes/app_routes.dart';
 import '../../cubit/edit_profile_cubit.dart';
 import '../../cubit/edit_profile_state.dart';
@@ -44,6 +44,7 @@ class EditProfilePage extends StatelessWidget {
                   titleText('first_name'),
                   const SizedBox(height: 10),
                   TextFormFiledCustom(
+                    controller: TextEditingController(text: ''),
                     hintText: 'mohamed..',
                     imgIconSvg: "assets/images/svg/person.svg",
                     lines: 1,
@@ -52,6 +53,7 @@ class EditProfilePage extends StatelessWidget {
                   titleText('enter_email'),
                   const SizedBox(height: 10),
                   TextFormFiledCustom(
+                    controller: TextEditingController(text: ''),
                     hintText: 'maymohamedatef@gmail.com',
                     imgIconSvg: "assets/images/svg/email.svg",
                     lines: 1,
@@ -72,8 +74,7 @@ class EditProfilePage extends StatelessWidget {
                               borderRadius: BorderRadius.circular(20),
                               backgroundColor: Colors.white,
                               textStyle: const TextStyle(fontSize: 16),
-                              bottomSheetHeight:
-                                  MediaQuery.of(context).size.height * 0.7,
+                              bottomSheetHeight: MediaQuery.of(context).size.height * 0.7,
                             ),
                             favorite: [
                               '+962',
@@ -122,6 +123,7 @@ class EditProfilePage extends StatelessWidget {
                       Expanded(
                         child: TextFormFiledCustom(
                           hintText: 'mobile_number',
+                          controller: TextEditingController(text: ''),
                           imgIconSvg: "assets/images/svg/phone.svg",
                           lines: 1,
                         ),
@@ -140,9 +142,7 @@ class EditProfilePage extends StatelessWidget {
                             groupValue: state.gender,
                             onChanged: (Gender? value) {
                               if (value != null) {
-                                context
-                                    .read<EditProfileCubit>()
-                                    .selectGender(value);
+                                context.read<EditProfileCubit>().selectGender(value);
                               }
                             },
                           ),
@@ -157,9 +157,7 @@ class EditProfilePage extends StatelessWidget {
                             groupValue: state.gender,
                             onChanged: (Gender? value) {
                               if (value != null) {
-                                context
-                                    .read<EditProfileCubit>()
-                                    .selectGender(value);
+                                context.read<EditProfileCubit>().selectGender(value);
                               }
                             },
                           ),

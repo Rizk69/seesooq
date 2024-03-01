@@ -10,7 +10,6 @@ import '../../../config/routes/app_routes.dart';
 import '../../../core/utils/custom_button_widget.dart';
 import '../../../core/utils/hex_color.dart';
 import '../../../core/widget/text_translate_manager.dart';
-
 import '../cubit/connectWithUs_cubit/connect_with_us_cubit.dart';
 import '../cubit/connectWithUs_cubit/connect_with_us_state.dart';
 import '../edit_profile/presentation/widgets/Customs.dart';
@@ -31,8 +30,7 @@ class ConnectWithUsPage extends StatelessWidget {
               var cubit = ConnectWithUsCubit.get(context);
 
               return Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -45,6 +43,7 @@ class ConnectWithUsPage extends StatelessWidget {
                     titleText('full_name'),
                     const SizedBox(height: 10),
                     TextFormFiledCustom(
+                      controller: TextEditingController(text: ''),
                       hintText: 'enter_your_full_name'.tr(),
                       imgIconSvg: "assets/images/svg/person.svg",
                       lines: 1,
@@ -53,6 +52,7 @@ class ConnectWithUsPage extends StatelessWidget {
                     titleText('enter_email'),
                     const SizedBox(height: 10),
                     TextFormFiledCustom(
+                      controller: TextEditingController(text: ''),
                       hintText: 'enter_email',
                       imgIconSvg: "assets/images/svg/email.svg",
                       lines: 1,
@@ -73,8 +73,7 @@ class ConnectWithUsPage extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(20),
                                 backgroundColor: Colors.white,
                                 textStyle: const TextStyle(fontSize: 16),
-                                bottomSheetHeight:
-                                    MediaQuery.of(context).size.height * 0.7,
+                                bottomSheetHeight: MediaQuery.of(context).size.height * 0.7,
                               ),
                               favorite: [
                                 '+962',
@@ -122,6 +121,7 @@ class ConnectWithUsPage extends StatelessWidget {
                         const SizedBox(width: 15),
                         Expanded(
                           child: TextFormFiledCustom(
+                            controller: TextEditingController(text: ''),
                             hintText: 'mobile_number',
                             imgIconSvg: "assets/images/svg/phone.svg",
                             lines: 1,
@@ -133,6 +133,7 @@ class ConnectWithUsPage extends StatelessWidget {
                     titleText('message'),
                     const SizedBox(height: 10),
                     TextFormFiledCustom(
+                      controller: TextEditingController(text: ''),
                       hintText: 'enter_message'.tr(),
                       imgIconSvg: "assets/images/svg/message.svg",
                       lines: 5,
@@ -186,18 +187,12 @@ class SucssesConnectWithUsPage extends StatelessWidget {
         const SizedBox(
           height: 34,
         ),
-        Center(
-            child: titleText(
-                'تم الإرسال بنجاح', HexColor('#4C0497'), StyleText.h4)),
+        Center(child: titleText('تم الإرسال بنجاح', HexColor('#4C0497'), StyleText.h4)),
         const SizedBox(
           height: 10,
         ),
-        Center(
-            child: titleText('تم إرسال رسالتك بنجاح، سيتوصل معك',
-                HexColor('#707070'), StyleText.h5)),
-        Center(
-            child: titleText(
-                '...أحد ممثلونا للإجابة', HexColor('#707070'), StyleText.h5)),
+        Center(child: titleText('تم إرسال رسالتك بنجاح، سيتوصل معك', HexColor('#707070'), StyleText.h5)),
+        Center(child: titleText('...أحد ممثلونا للإجابة', HexColor('#707070'), StyleText.h5)),
         const Spacer(),
         Padding(
           padding: const EdgeInsets.all(12),

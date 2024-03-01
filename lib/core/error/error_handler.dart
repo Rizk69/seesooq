@@ -33,7 +33,7 @@ class ErrorHandler implements Exception {
           default:
             return error.response?.data is Map?
                 ? DefaultFailure(message: error.response?.data['message'], code: error.response?.data['code'])
-                : const DefaultFailure(message: 'Something went wrong');
+                : DefaultFailure(message: error.response?.data, code: error.response?.statusCode);
         }
 
       default:

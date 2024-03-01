@@ -111,17 +111,13 @@ class Routes {
   static const String oneCategoryView = 'oneCategoryView';
 }
 
-final GlobalKey<NavigatorState> rootNavigatorKey =
-    GlobalKey<NavigatorState>(debugLabel: 'root');
-final GlobalKey<NavigatorState> sectionANavigatorKey =
-    GlobalKey<NavigatorState>(debugLabel: 'sectionANav');
-final GlobalKey<NavigatorState> addsNavKey =
-    GlobalKey<NavigatorState>(debugLabel: 'adsNav');
+final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
+final GlobalKey<NavigatorState> sectionANavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'sectionANav');
+final GlobalKey<NavigatorState> addsNavKey = GlobalKey<NavigatorState>(debugLabel: 'adsNav');
 final GoRouter router = GoRouter(
   initialLocation: Routes.loginSplash,
   navigatorKey: rootNavigatorKey,
-  refreshListenable:
-      Listenable.merge([di.sl<LoginCubit>(), di.sl<SignUpCubit>()]),
+  refreshListenable: Listenable.merge([di.sl<LoginCubit>(), di.sl<SignUpCubit>()]),
   routes: [
     StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {
@@ -135,8 +131,7 @@ final GoRouter router = GoRouter(
                 pageBuilder: (context, state) {
                   return CustomTransitionPage(
                     child: const HomePage(),
-                    transitionsBuilder:
-                        (context, animation, secondaryAnimation, child) {
+                    transitionsBuilder: (context, animation, secondaryAnimation, child) {
                       return FadeTransition(
                         opacity: animation,
                         child: child,
@@ -168,8 +163,7 @@ final GoRouter router = GoRouter(
                     pageBuilder: (context, state) {
                       return CustomTransitionPage(
                         child: const NotificationPage(),
-                        transitionsBuilder:
-                            (context, animation, secondaryAnimation, child) {
+                        transitionsBuilder: (context, animation, secondaryAnimation, child) {
                           return FadeTransition(
                             opacity: animation,
                             child: child,
@@ -192,11 +186,8 @@ final GoRouter router = GoRouter(
           StatefulShellBranch(routes: [
             ShellRoute(
                 builder: (context, state, child) {
-                  final data = (state.extra == null)
-                      ? {'categoryName': 'category'}
-                      : state.extra as Map<String, dynamic>;
-                  return RootCategory(
-                      title: data['categoryName'] ?? '', child: child);
+                  final data = (state.extra == null) ? {'categoryName': 'category'} : state.extra as Map<String, dynamic>;
+                  return RootCategory(title: data['categoryName'] ?? '', child: child);
                 },
                 routes: [
                   GoRoute(
@@ -211,24 +202,20 @@ final GoRouter router = GoRouter(
                             path: Routes.detailsCategoryPage,
                             name: Routes.detailsCategoryPage,
                             pageBuilder: (context, state) {
-                              var data = (state.extra == null)
-                                  ? {"categoryName": '', "categoryId": ''}
-                                  : state.extra as Map<String, dynamic>;
+                              var data = (state.extra == null) ? {"categoryName": '', "categoryId": ''} : state.extra as Map<String, dynamic>;
                               return NoTransitionPage(
                                 child: DetailsCategoryProductPage(
-                                    categoryName: data['categoryName'] ?? '',
-                                    categoryId:
-                                        data['categoryId'].toString() ?? ''),
+                                    categoryName: data['categoryName'] ?? '', categoryId: data['categoryId'].toString() ?? ''),
                               );
                             },
                             routes: [
                               StatefulShellRoute.indexedStack(
                                 branches: [
-                                  UploadPhotoRoute(),
                                   DetailsAdsRoute(),
                                   LocationDetailsAdsRoute(),
                                   PersonalInfoAdsRoute(),
                                   ViewAdsRoute(),
+                                  UploadPhotoRoute(),
                                   // GoRoute(
                                   //     path: Routes.uploadPhoto,
                                   //     name: Routes.uploadPhoto,
@@ -247,8 +234,7 @@ final GoRouter router = GoRouter(
                                   //     ]),
                                 ],
                                 builder: (context, state, navigationShell) {
-                                  return RootAdsPage(
-                                      statefulNavigationShell: navigationShell);
+                                  return RootAdsPage(statefulNavigationShell: navigationShell);
                                 },
                               ),
                             ]),
@@ -274,13 +260,9 @@ final GoRouter router = GoRouter(
           final data = (state.extra as Map<String, dynamic>);
           return CustomTransitionPage(
             child: StoryViewWidget(
-                userStory:
-                    data.containsKey('userStory') ? data['userStory'] : [],
-                infoData: data.containsKey('infoData')
-                    ? data['infoData']
-                    : InfoData()),
-            transitionsBuilder:
-                (context, animation, secondaryAnimation, child) {
+                userStory: data.containsKey('userStory') ? data['userStory'] : [],
+                infoData: data.containsKey('infoData') ? data['infoData'] : InfoData()),
+            transitionsBuilder: (context, animation, secondaryAnimation, child) {
               return FadeTransition(
                 opacity: animation,
                 child: child,

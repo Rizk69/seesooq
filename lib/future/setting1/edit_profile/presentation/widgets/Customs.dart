@@ -3,45 +3,57 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:opensooq/core/utils/hex_color.dart';
 
-class TextFormFiledCustom extends StatelessWidget {
-  String imgIconSvg;
-  String hintText;
-  int lines;
-  TextFormFiledCustom({
+class TextFormFiledCustom extends StatefulWidget {
+  final String imgIconSvg;
+  final String hintText;
+  final int lines;
+  final TextEditingController controller;
+  final bool? enabled;
+
+  const TextFormFiledCustom({
     required this.hintText,
+    this.enabled,
     required this.imgIconSvg,
     required this.lines,
+    required this.controller,
     super.key,
   });
 
   @override
+  State<TextFormFiledCustom> createState() => _TextFormFiledCustomState();
+}
+
+class _TextFormFiledCustomState extends State<TextFormFiledCustom> {
+  @override
   Widget build(BuildContext context) {
     return TextFormField(
-      maxLines: lines,
+      maxLines: widget.lines,
+      controller: widget.controller,
+      enabled: widget.enabled,
       onTapOutside: (event) => FocusScope.of(context).unfocus(),
       decoration: InputDecoration(
         prefixIconConstraints: const BoxConstraints(maxWidth: 130),
-        prefixIcon: lines == 5
+        prefixIcon: widget.lines == 5
             ? null
             : Padding(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 12,
                 ),
                 child: SvgPicture.asset(
-                  imgIconSvg,
+                  widget.imgIconSvg,
                 ),
               ),
-        prefix: lines != 5
+        prefix: widget.lines != 5
             ? null
             : Padding(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 12,
                 ),
                 child: SvgPicture.asset(
-                  imgIconSvg,
+                  widget.imgIconSvg,
                 ),
               ),
-        hintText: hintText.tr(),
+        hintText: widget.hintText.tr(),
         hintStyle: TextStyle(color: HexColor('#4C0497')),
         contentPadding: const EdgeInsets.all(16),
         border: OutlineInputBorder(
@@ -89,8 +101,7 @@ class ButtomsCustom extends StatelessWidget {
       child: Center(
         child: Text(
           title,
-          style: TextStyle(
-              color: Colors.white, fontSize: 18, fontWeight: FontWeight.w700),
+          style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w700),
         ),
       ),
     );

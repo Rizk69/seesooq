@@ -26,7 +26,7 @@ extension Prices on String {
     if (this == '0') {
       return '0';
     } else {
-      return replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]}.');
+      return replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},');
     }
   }
 }

@@ -16,7 +16,7 @@ class MyAdsRemoteDataSourceImpl implements MyAdsRemoteDataSource {
 
   @override
   Future<AdvertisementModel> getMyAds() async {
-    return await api.getMyAds();
+    return await api.getMyAds(type: 1);
   }
 
   @override

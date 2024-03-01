@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:opensooq/future/category/data/models/advertisment_model.dart';
@@ -142,6 +142,12 @@ class DetailsCategoryCubit extends Cubit<DetailsCategoryState> {
     emit(state.copyWith(idsFilterSelected: idsFilterSelected, changeRebuild: !state.changeRebuild));
   }
 
+  void updateRangeValues(RangeValues values) {
+    emit(state.copyWith(rangeValues: values, changeRebuild: !state.changeRebuild));
+  }
+
+  // Debounce duration
+
   resetPagination() {
     page = 1;
     hasMoreItems = true;
@@ -149,7 +155,6 @@ class DetailsCategoryCubit extends Cubit<DetailsCategoryState> {
   }
 
   resetFilter() {
-    print('resetFilter');
     emit(state.copyWith(idsFilterSelected: {}, changeRebuild: !state.changeRebuild));
   }
 }

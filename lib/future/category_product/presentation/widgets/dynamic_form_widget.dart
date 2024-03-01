@@ -1,7 +1,6 @@
 import 'package:animated_custom_dropdown/custom_dropdown.dart';
 import 'package:flutter/material.dart';
 import 'package:opensooq/core/widget/text_translate_manager.dart';
-import 'package:opensooq/di.dart' as di;
 import 'package:opensooq/future/category_product/data/models/attributes_ads_model.dart';
 import 'package:opensooq/future/category_product/presentation/cubit/add_ads_cubit.dart';
 import 'package:opensooq/future/category_product/presentation/widgets/custom_choice_widget.dart';
@@ -82,7 +81,7 @@ class _DynamicFormWidgetState extends State<DynamicFormWidget> {
               options: widget.options,
               index: 0,
               onSelected: (optionId) {
-                var cubit = di.sl<AddAdsCubit>();
+                var cubit = AddAdsCubit.get(context);
                 // widget.optionId == QuestionId
                 cubit.updateAttributesForm(attributes: {widget.optionId: optionId});
               },

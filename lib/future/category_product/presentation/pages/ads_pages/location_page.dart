@@ -26,7 +26,7 @@ class LocationAdsPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 16),
-              TranslateText(styleText: StyleText.h4, text: 'Governorate'.tr(), colorText: Colors.black),
+              TranslateText(styleText: StyleText.h4, text: 'City'.tr(), colorText: Colors.black),
               const SizedBox(height: 16),
               if (state.governorate.isNotEmpty)
                 CustomDropdown.search(
@@ -34,7 +34,7 @@ class LocationAdsPage extends StatelessWidget {
                     onChanged: (value) {
                       // get the id of the selected governorate
                       var id = state.governorate.firstWhere((element) => element.title == value).id?.toInt() ?? 0;
-                      AddAdsCubit.get(context).updateGovernorateForm(id.toString());
+                      AddAdsCubit.get(context).updateGovernorateForm(governorateId: id.toString(), governorateName: value);
                       context.read<LocationCubit>().getCities(id: state.governorate.firstWhere((element) => element.title == value).id?.toInt() ?? 0);
                     },
                     hideSelectedFieldWhenExpanded: true,
@@ -42,7 +42,7 @@ class LocationAdsPage extends StatelessWidget {
                       hintStyle: TextStyle(color: Colors.grey),
                     )),
               const SizedBox(height: 16),
-              TranslateText(styleText: StyleText.h4, text: 'City'.tr(), colorText: Colors.black),
+              TranslateText(styleText: StyleText.h4, text: 'Governorate'.tr(), colorText: Colors.black),
               const SizedBox(height: 16),
               if (state.cities.isNotEmpty && state.locationStatus == LocationStatus.loaded)
                 CustomDropdown.search(
@@ -52,8 +52,7 @@ class LocationAdsPage extends StatelessWidget {
                     onChanged: (value) {
                       var id = state.cities.firstWhere((element) => element.title == value).id?.toInt() ?? 0;
 
-                      print('value $value');
-                      AddAdsCubit.get(context).updateCityForm(id.toString());
+                      AddAdsCubit.get(context).updateCityForm(cityId: id.toString(), cityName: value);
                     },
                     hideSelectedFieldWhenExpanded: true,
                     decoration: const CustomDropdownDecoration(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:opensooq/core/utils/hex_color.dart';
 import 'package:opensooq/core/utils/media_query_values.dart';
@@ -115,9 +116,14 @@ class TextFormFiledApp extends StatelessWidget {
 }
 
 class CustomTextFormFiled extends StatefulWidget {
-  const CustomTextFormFiled({super.key, required this.prefixIcon, required this.onChanged});
+  const CustomTextFormFiled(
+      {super.key, required this.prefixIcon, required this.onChanged, this.textInputAction, this.textFormatters, this.textInputType, this.maxLine});
 
   final bool prefixIcon;
+  final TextInputAction? textInputAction;
+  final List<TextInputFormatter>? textFormatters;
+  final TextInputType? textInputType;
+  final int? maxLine;
   final Function(String?) onChanged;
 
   @override
@@ -130,6 +136,10 @@ class _CustomTextFormFiledState extends State<CustomTextFormFiled> {
     return TextFormField(
       onTapOutside: (event) => FocusScope.of(context).unfocus(),
       onChanged: widget.onChanged,
+      textInputAction: widget.textInputAction,
+      inputFormatters: widget.textFormatters,
+      maxLines: widget.maxLine ?? 1,
+      keyboardType: widget.textInputType ?? TextInputType.text,
       decoration: InputDecoration(
           prefixIcon: widget.prefixIcon
               ? Padding(

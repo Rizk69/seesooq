@@ -26,6 +26,7 @@ mixin _$DetailsCategoryState {
       throw _privateConstructorUsedError;
   AdvertisemenStatus get advertisemenStatus =>
       throw _privateConstructorUsedError;
+  RangeValues get rangeValues => throw _privateConstructorUsedError;
   Map<String, List<String>> get idsFilterSelected =>
       throw _privateConstructorUsedError;
   bool get changeRebuild => throw _privateConstructorUsedError;
@@ -49,6 +50,7 @@ abstract class $DetailsCategoryStateCopyWith<$Res> {
       FilterStatus? filterStatus,
       DetailsCategoryStatus detailsCategoryStatus,
       AdvertisemenStatus advertisemenStatus,
+      RangeValues rangeValues,
       Map<String, List<String>> idsFilterSelected,
       bool changeRebuild,
       bool loadingMore});
@@ -74,6 +76,7 @@ class _$DetailsCategoryStateCopyWithImpl<$Res,
     Object? filterStatus = freezed,
     Object? detailsCategoryStatus = null,
     Object? advertisemenStatus = null,
+    Object? rangeValues = null,
     Object? idsFilterSelected = null,
     Object? changeRebuild = null,
     Object? loadingMore = null,
@@ -103,6 +106,10 @@ class _$DetailsCategoryStateCopyWithImpl<$Res,
           ? _value.advertisemenStatus
           : advertisemenStatus // ignore: cast_nullable_to_non_nullable
               as AdvertisemenStatus,
+      rangeValues: null == rangeValues
+          ? _value.rangeValues
+          : rangeValues // ignore: cast_nullable_to_non_nullable
+              as RangeValues,
       idsFilterSelected: null == idsFilterSelected
           ? _value.idsFilterSelected
           : idsFilterSelected // ignore: cast_nullable_to_non_nullable
@@ -134,6 +141,7 @@ abstract class _$$DetailsCategoryStateImplCopyWith<$Res>
       FilterStatus? filterStatus,
       DetailsCategoryStatus detailsCategoryStatus,
       AdvertisemenStatus advertisemenStatus,
+      RangeValues rangeValues,
       Map<String, List<String>> idsFilterSelected,
       bool changeRebuild,
       bool loadingMore});
@@ -156,6 +164,7 @@ class __$$DetailsCategoryStateImplCopyWithImpl<$Res>
     Object? filterStatus = freezed,
     Object? detailsCategoryStatus = null,
     Object? advertisemenStatus = null,
+    Object? rangeValues = null,
     Object? idsFilterSelected = null,
     Object? changeRebuild = null,
     Object? loadingMore = null,
@@ -185,6 +194,10 @@ class __$$DetailsCategoryStateImplCopyWithImpl<$Res>
           ? _value.advertisemenStatus
           : advertisemenStatus // ignore: cast_nullable_to_non_nullable
               as AdvertisemenStatus,
+      rangeValues: null == rangeValues
+          ? _value.rangeValues
+          : rangeValues // ignore: cast_nullable_to_non_nullable
+              as RangeValues,
       idsFilterSelected: null == idsFilterSelected
           ? _value._idsFilterSelected
           : idsFilterSelected // ignore: cast_nullable_to_non_nullable
@@ -211,6 +224,7 @@ class _$DetailsCategoryStateImpl implements _DetailsCategoryState {
       this.filterStatus = FilterStatus.initial,
       this.detailsCategoryStatus = DetailsCategoryStatus.loading,
       this.advertisemenStatus = AdvertisemenStatus.initial,
+      this.rangeValues = const RangeValues(0, 10000),
       final Map<String, List<String>> idsFilterSelected = const {},
       this.changeRebuild = false,
       this.loadingMore = false})
@@ -241,6 +255,9 @@ class _$DetailsCategoryStateImpl implements _DetailsCategoryState {
   @override
   @JsonKey()
   final AdvertisemenStatus advertisemenStatus;
+  @override
+  @JsonKey()
+  final RangeValues rangeValues;
   final Map<String, List<String>> _idsFilterSelected;
   @override
   @JsonKey()
@@ -260,7 +277,7 @@ class _$DetailsCategoryStateImpl implements _DetailsCategoryState {
 
   @override
   String toString() {
-    return 'DetailsCategoryState(detailsCategory: $detailsCategory, advertisementModel: $advertisementModel, filterData: $filterData, filterStatus: $filterStatus, detailsCategoryStatus: $detailsCategoryStatus, advertisemenStatus: $advertisemenStatus, idsFilterSelected: $idsFilterSelected, changeRebuild: $changeRebuild, loadingMore: $loadingMore)';
+    return 'DetailsCategoryState(detailsCategory: $detailsCategory, advertisementModel: $advertisementModel, filterData: $filterData, filterStatus: $filterStatus, detailsCategoryStatus: $detailsCategoryStatus, advertisemenStatus: $advertisemenStatus, rangeValues: $rangeValues, idsFilterSelected: $idsFilterSelected, changeRebuild: $changeRebuild, loadingMore: $loadingMore)';
   }
 
   @override
@@ -280,6 +297,8 @@ class _$DetailsCategoryStateImpl implements _DetailsCategoryState {
                 other.detailsCategoryStatus == detailsCategoryStatus) &&
             (identical(other.advertisemenStatus, advertisemenStatus) ||
                 other.advertisemenStatus == advertisemenStatus) &&
+            (identical(other.rangeValues, rangeValues) ||
+                other.rangeValues == rangeValues) &&
             const DeepCollectionEquality()
                 .equals(other._idsFilterSelected, _idsFilterSelected) &&
             (identical(other.changeRebuild, changeRebuild) ||
@@ -297,6 +316,7 @@ class _$DetailsCategoryStateImpl implements _DetailsCategoryState {
       filterStatus,
       detailsCategoryStatus,
       advertisemenStatus,
+      rangeValues,
       const DeepCollectionEquality().hash(_idsFilterSelected),
       changeRebuild,
       loadingMore);
@@ -318,6 +338,7 @@ abstract class _DetailsCategoryState implements DetailsCategoryState {
       final FilterStatus? filterStatus,
       final DetailsCategoryStatus detailsCategoryStatus,
       final AdvertisemenStatus advertisemenStatus,
+      final RangeValues rangeValues,
       final Map<String, List<String>> idsFilterSelected,
       final bool changeRebuild,
       final bool loadingMore}) = _$DetailsCategoryStateImpl;
@@ -334,6 +355,8 @@ abstract class _DetailsCategoryState implements DetailsCategoryState {
   DetailsCategoryStatus get detailsCategoryStatus;
   @override
   AdvertisemenStatus get advertisemenStatus;
+  @override
+  RangeValues get rangeValues;
   @override
   Map<String, List<String>> get idsFilterSelected;
   @override
