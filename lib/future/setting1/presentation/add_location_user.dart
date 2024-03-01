@@ -36,17 +36,12 @@ class EmptyLocationPage extends StatelessWidget {
           const SizedBox(
             height: 34,
           ),
-          Center(
-              child: titleText('no_title', HexColor('#4C0497'), StyleText.h4)),
+          Center(child: titleText('no_title', HexColor('#4C0497'), StyleText.h4)),
           const SizedBox(
             height: 10,
           ),
-          Center(
-              child:
-                  titleText('des_location', HexColor('#707070'), StyleText.h5)),
-          Center(
-              child: titleText(
-                  'des_location1', HexColor('#707070'), StyleText.h5)),
+          Center(child: titleText('des_location', HexColor('#707070'), StyleText.h5)),
+          Center(child: titleText('des_location1', HexColor('#707070'), StyleText.h5)),
           const SizedBox(
             height: 30,
           ),
@@ -81,17 +76,13 @@ class EmptyLocationPage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Icon(Icons.arrow_back_ios_new_rounded,
-                      color: Colors.white, size: 15),
+                  const Icon(Icons.arrow_back_ios_new_rounded, color: Colors.white, size: 15),
                   const SizedBox(
                     width: 6,
                   ),
                   Text(
                     'add_title'.tr(),
-                    style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w700),
+                    style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w700),
                   ),
                 ],
               ),
@@ -134,13 +125,11 @@ class AddLocationUser extends StatelessWidget {
             SingleChildScrollView(
               child: Expanded(
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   titleText('address', Colors.black, StyleText.h3),
                   const SizedBox(height: 10),
-                  CustomTextFormFiledApp(
-                      imgIconSvg: 'assets/images/svg/location.svg',
-                      title: 'add_title1'.tr()),
+                  CustomTextFormFiledApp(imgIconSvg: 'assets/images/svg/location.svg', onChanged: (value) {}, title: 'add_title1'.tr()),
                   const SizedBox(height: 10),
                   LocationSelectionWidget(),
                   SizedBox(
@@ -193,18 +182,12 @@ class SucssesAddLocationPage extends StatelessWidget {
         const SizedBox(
           height: 34,
         ),
-        Center(
-            child: titleText(
-                'your_title_has_been_successfully_added', HexColor('#4C0497'), StyleText.h4)),
+        Center(child: titleText('your_title_has_been_successfully_added', HexColor('#4C0497'), StyleText.h4)),
         const SizedBox(
           height: 10,
         ),
-        Center(
-            child: titleText('you_have_successfully_added_your_title',
-                HexColor('#707070'), StyleText.h5)),
-        Center(
-            child: titleText(
-                'you_can_continue_browsing', HexColor('#707070'), StyleText.h5)),
+        Center(child: titleText('you_have_successfully_added_your_title', HexColor('#707070'), StyleText.h5)),
+        Center(child: titleText('you_can_continue_browsing', HexColor('#707070'), StyleText.h5)),
         const Spacer(),
         Padding(
           padding: const EdgeInsets.all(12),

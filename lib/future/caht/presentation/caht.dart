@@ -11,7 +11,6 @@ import '../../../core/widget/text_translate_manager.dart';
 import '../../setting1/edit_profile/presentation/widgets/header_screen.dart';
 import '../../setting1/edit_profile/presentation/widgets/profile_photo.dart';
 
-
 class ChatPage extends StatelessWidget {
   const ChatPage({super.key});
 
@@ -26,11 +25,8 @@ class ChatPage extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.all(15),
           margin: const EdgeInsets.all(15),
-          decoration: BoxDecoration(
-              color: HexColor('F05A35'),
-              borderRadius: BorderRadius.circular(30)),
-          child: SvgPicture.asset('assets/images/svg/message_cat.svg',
-              color: Colors.white, height: 25),
+          decoration: BoxDecoration(color: HexColor('F05A35'), borderRadius: BorderRadius.circular(30)),
+          child: SvgPicture.asset('assets/images/svg/message_cat.svg', color: Colors.white, height: 25),
         ),
       ),
       body: SingleChildScrollView(
@@ -45,8 +41,9 @@ class ChatPage extends StatelessWidget {
                 },
               ),
               const SizedBox(height: 30),
-              const CustomTextFormFiledApp(
+              CustomTextFormFiledApp(
                 title: 'ابحث ...',
+                onChanged: (value) {},
                 imgIconSvg: 'assets/images/svg/search.svg',
               ),
               const SizedBox(height: 25),
@@ -63,10 +60,8 @@ class ChatPage extends StatelessWidget {
                           width: MediaQuery.of(context).size.width,
                           child: ListView.builder(
                             itemBuilder: (context, index) => Container(
-                              margin: const EdgeInsets.symmetric(
-                                  vertical: 8, horizontal: 8),
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 4, horizontal: 4),
+                              margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+                              padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 4),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(100),
                                 border: Border.all(
@@ -77,8 +72,7 @@ class ChatPage extends StatelessWidget {
                               child: const CircleAvatar(
                                 radius: 31,
                                 backgroundColor: Colors.red,
-                                backgroundImage:
-                                    AssetImage('assets/images/person.jpeg'),
+                                backgroundImage: AssetImage('assets/images/person.jpeg'),
                               ),
                             ),
                             itemCount: 8,
@@ -101,11 +95,7 @@ class ChatPage extends StatelessWidget {
                           onTap: () {
                             context.goNamed(Routes.chatMassagePage);
                           },
-                          child: ProfileChatCard(
-                              img: '',
-                              name: 'آدم يوسف',
-                              des: 'هذا مثال لنص يمكن أن يستبدل في نفس.... ',
-                              count: '1'),
+                          child: ProfileChatCard(img: '', name: 'آدم يوسف', des: 'هذا مثال لنص يمكن أن يستبدل في نفس.... ', count: '1'),
                         ),
                       ),
                       itemCount: 9,

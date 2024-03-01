@@ -34,6 +34,6 @@ class EndPoint {
   static const String makeFollow = 'follow/{idMF}';
   static const String removeFollower = 'unfollow/{idRFR}';
   static const String removeFollowing = 'followings/remove/{idRFG}';
-  static const String getMyAds = '/place/textsearch/json';
+  static const String getMyAds = 'my_advertisement';
   static const String deleteMyAds = '/place/textsearch/json';
 }

@@ -161,15 +161,21 @@ class _CustomTextFormFiledState extends State<CustomTextFormFiled> {
 }
 
 class CustomTextFormFiledApp extends StatelessWidget {
-  const CustomTextFormFiledApp({super.key, required this.imgIconSvg, required this.title});
+  const CustomTextFormFiledApp({super.key, required this.imgIconSvg, required this.title, required this.onChanged, this.onTap});
 
   final String imgIconSvg;
   final String title;
+
+  final VoidCallback? onTap;
+
+  final Function(String?) onChanged;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       onTapOutside: (event) => FocusScope.of(context).unfocus(),
+      onTap: onTap,
+      onChanged: onChanged,
       decoration: InputDecoration(
         prefixIcon: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -178,6 +184,7 @@ class CustomTextFormFiledApp extends StatelessWidget {
           ),
         ),
         hintText: title,
+
         hintStyle: const TextStyle(fontSize: 18),
         prefixIconConstraints: const BoxConstraints(maxWidth: 45),
         isDense: true,

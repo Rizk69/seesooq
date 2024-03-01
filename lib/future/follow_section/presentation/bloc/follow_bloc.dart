@@ -1,9 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:opensooq/core/utils/loadin_app.dart';
 import 'package:opensooq/di.dart' as di;
+import 'package:opensooq/future/follow_section/data/model/followers_model.dart';
 import 'package:opensooq/future/follow_section/data/repositories/follow_repository.dart';
 import 'package:opensooq/future/follow_section/presentation/bloc/follow_event.dart';
 import 'package:opensooq/future/follow_section/presentation/bloc/follow_state.dart';
+import 'package:rxdart/rxdart.dart';
 
 class FollowBloc extends Bloc<FollowEvent, FollowState> {
   FollowBloc() : super(const FollowState()) {
@@ -14,6 +16,7 @@ class FollowBloc extends Bloc<FollowEvent, FollowState> {
         addFollow: (id) => _addFollow(emit, id: id),
         removeFollowers: (id) => _removeFollowers(emit, id: id),
         removeFollowing: (id) => _removeFollowing(emit, id: id),
+        searchFollowers: (query) => _searchFollowers(emit, query: query),
       );
     });
   }
@@ -57,5 +60,24 @@ class FollowBloc extends Bloc<FollowEvent, FollowState> {
     // emit(state.copyWith(status: FollowStatus.loading));
     // final result = await followRepository.removeFollowing(id: id);
     // result.fold((error) => emit(state.copyWith(status: FollowStatus.error)), (followers) => emit(state.copyWith()));
+  }
+  final _searchQueryController = BehaviorSubject<String>();
+  Stream<String> get searchQuery => _searchQueryController.stream;
+
+  // Debounce duration
+  final Duration _debounceTime = const Duration(milliseconds: 600);
+
+  Future<void> _searchFollowers(Emitter<FollowState> emit, {required String query}) async {
+    _searchQueryController.add(query);
+
+    // check if stream is closed
+  }
+
+  _searchFollowersEmit(Emitter<FollowState> emit, {required String query}) async {
+    FollowersModel temp = state.followersUsers!;
+    if (query.isNotEmpty) {
+      final ss = temp.data!.where((element) => element.name!.contains(query)).toList();
+      emit(state.copyWith(filterFollowersUsers: FollowersModel(data: ss)));
+    }
   }
 }

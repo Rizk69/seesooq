@@ -13,6 +13,7 @@ class FollowState with _$FollowState {
     @Default(FollowersStatus.initial) FollowersStatus followersStatus,
     @Default(FollowingStatus.initial) FollowingStatus followingStatus,
     @Default(null) FollowersModel? followersUsers,
+    @Default(null) FollowersModel? filterFollowersUsers,
     @Default(null) FollowersModel? followingUsers,
   }) = _FollowState;
 }

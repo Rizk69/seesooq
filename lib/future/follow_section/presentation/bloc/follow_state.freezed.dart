@@ -19,6 +19,8 @@ mixin _$FollowState {
   FollowersStatus get followersStatus => throw _privateConstructorUsedError;
   FollowingStatus get followingStatus => throw _privateConstructorUsedError;
   FollowersModel? get followersUsers => throw _privateConstructorUsedError;
+  FollowersModel? get filterFollowersUsers =>
+      throw _privateConstructorUsedError;
   FollowersModel? get followingUsers => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -36,6 +38,7 @@ abstract class $FollowStateCopyWith<$Res> {
       {FollowersStatus followersStatus,
       FollowingStatus followingStatus,
       FollowersModel? followersUsers,
+      FollowersModel? filterFollowersUsers,
       FollowersModel? followingUsers});
 }
 
@@ -55,6 +58,7 @@ class _$FollowStateCopyWithImpl<$Res, $Val extends FollowState>
     Object? followersStatus = null,
     Object? followingStatus = null,
     Object? followersUsers = freezed,
+    Object? filterFollowersUsers = freezed,
     Object? followingUsers = freezed,
   }) {
     return _then(_value.copyWith(
@@ -69,6 +73,10 @@ class _$FollowStateCopyWithImpl<$Res, $Val extends FollowState>
       followersUsers: freezed == followersUsers
           ? _value.followersUsers
           : followersUsers // ignore: cast_nullable_to_non_nullable
+              as FollowersModel?,
+      filterFollowersUsers: freezed == filterFollowersUsers
+          ? _value.filterFollowersUsers
+          : filterFollowersUsers // ignore: cast_nullable_to_non_nullable
               as FollowersModel?,
       followingUsers: freezed == followingUsers
           ? _value.followingUsers
@@ -90,6 +98,7 @@ abstract class _$$FollowStateImplCopyWith<$Res>
       {FollowersStatus followersStatus,
       FollowingStatus followingStatus,
       FollowersModel? followersUsers,
+      FollowersModel? filterFollowersUsers,
       FollowersModel? followingUsers});
 }
 
@@ -107,6 +116,7 @@ class __$$FollowStateImplCopyWithImpl<$Res>
     Object? followersStatus = null,
     Object? followingStatus = null,
     Object? followersUsers = freezed,
+    Object? filterFollowersUsers = freezed,
     Object? followingUsers = freezed,
   }) {
     return _then(_$FollowStateImpl(
@@ -121,6 +131,10 @@ class __$$FollowStateImplCopyWithImpl<$Res>
       followersUsers: freezed == followersUsers
           ? _value.followersUsers
           : followersUsers // ignore: cast_nullable_to_non_nullable
+              as FollowersModel?,
+      filterFollowersUsers: freezed == filterFollowersUsers
+          ? _value.filterFollowersUsers
+          : filterFollowersUsers // ignore: cast_nullable_to_non_nullable
               as FollowersModel?,
       followingUsers: freezed == followingUsers
           ? _value.followingUsers
@@ -137,6 +151,7 @@ class _$FollowStateImpl implements _FollowState {
       {this.followersStatus = FollowersStatus.initial,
       this.followingStatus = FollowingStatus.initial,
       this.followersUsers = null,
+      this.filterFollowersUsers = null,
       this.followingUsers = null});
 
   @override
@@ -150,11 +165,14 @@ class _$FollowStateImpl implements _FollowState {
   final FollowersModel? followersUsers;
   @override
   @JsonKey()
+  final FollowersModel? filterFollowersUsers;
+  @override
+  @JsonKey()
   final FollowersModel? followingUsers;
 
   @override
   String toString() {
-    return 'FollowState(followersStatus: $followersStatus, followingStatus: $followingStatus, followersUsers: $followersUsers, followingUsers: $followingUsers)';
+    return 'FollowState(followersStatus: $followersStatus, followingStatus: $followingStatus, followersUsers: $followersUsers, filterFollowersUsers: $filterFollowersUsers, followingUsers: $followingUsers)';
   }
 
   @override
@@ -168,13 +186,15 @@ class _$FollowStateImpl implements _FollowState {
                 other.followingStatus == followingStatus) &&
             (identical(other.followersUsers, followersUsers) ||
                 other.followersUsers == followersUsers) &&
+            (identical(other.filterFollowersUsers, filterFollowersUsers) ||
+                other.filterFollowersUsers == filterFollowersUsers) &&
             (identical(other.followingUsers, followingUsers) ||
                 other.followingUsers == followingUsers));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, followersStatus, followingStatus,
-      followersUsers, followingUsers);
+      followersUsers, filterFollowersUsers, followingUsers);
 
   @JsonKey(ignore: true)
   @override
@@ -188,6 +208,7 @@ abstract class _FollowState implements FollowState {
       {final FollowersStatus followersStatus,
       final FollowingStatus followingStatus,
       final FollowersModel? followersUsers,
+      final FollowersModel? filterFollowersUsers,
       final FollowersModel? followingUsers}) = _$FollowStateImpl;
 
   @override
@@ -196,6 +217,8 @@ abstract class _FollowState implements FollowState {
   FollowingStatus get followingStatus;
   @override
   FollowersModel? get followersUsers;
+  @override
+  FollowersModel? get filterFollowersUsers;
   @override
   FollowersModel? get followingUsers;
   @override

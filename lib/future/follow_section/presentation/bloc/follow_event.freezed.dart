@@ -23,6 +23,7 @@ mixin _$FollowEvent {
     required TResult Function(int id) addFollow,
     required TResult Function(int id) removeFollowers,
     required TResult Function(int id) removeFollowing,
+    required TResult Function(String query) searchFollowers,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +33,7 @@ mixin _$FollowEvent {
     TResult? Function(int id)? addFollow,
     TResult? Function(int id)? removeFollowers,
     TResult? Function(int id)? removeFollowing,
+    TResult? Function(String query)? searchFollowers,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +43,7 @@ mixin _$FollowEvent {
     TResult Function(int id)? addFollow,
     TResult Function(int id)? removeFollowers,
     TResult Function(int id)? removeFollowing,
+    TResult Function(String query)? searchFollowers,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,6 +54,7 @@ mixin _$FollowEvent {
     required TResult Function(_AddFollow value) addFollow,
     required TResult Function(_RemoveFollowers value) removeFollowers,
     required TResult Function(_RemoveFollowing value) removeFollowing,
+    required TResult Function(_SearchFollowers value) searchFollowers,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +64,7 @@ mixin _$FollowEvent {
     TResult? Function(_AddFollow value)? addFollow,
     TResult? Function(_RemoveFollowers value)? removeFollowers,
     TResult? Function(_RemoveFollowing value)? removeFollowing,
+    TResult? Function(_SearchFollowers value)? searchFollowers,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +74,7 @@ mixin _$FollowEvent {
     TResult Function(_AddFollow value)? addFollow,
     TResult Function(_RemoveFollowers value)? removeFollowers,
     TResult Function(_RemoveFollowing value)? removeFollowing,
+    TResult Function(_SearchFollowers value)? searchFollowers,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -135,6 +141,7 @@ class _$FollowEventImpl implements _FollowEvent {
     required TResult Function(int id) addFollow,
     required TResult Function(int id) removeFollowers,
     required TResult Function(int id) removeFollowing,
+    required TResult Function(String query) searchFollowers,
   }) {
     return getFollowers();
   }
@@ -147,6 +154,7 @@ class _$FollowEventImpl implements _FollowEvent {
     TResult? Function(int id)? addFollow,
     TResult? Function(int id)? removeFollowers,
     TResult? Function(int id)? removeFollowing,
+    TResult? Function(String query)? searchFollowers,
   }) {
     return getFollowers?.call();
   }
@@ -159,6 +167,7 @@ class _$FollowEventImpl implements _FollowEvent {
     TResult Function(int id)? addFollow,
     TResult Function(int id)? removeFollowers,
     TResult Function(int id)? removeFollowing,
+    TResult Function(String query)? searchFollowers,
     required TResult orElse(),
   }) {
     if (getFollowers != null) {
@@ -175,6 +184,7 @@ class _$FollowEventImpl implements _FollowEvent {
     required TResult Function(_AddFollow value) addFollow,
     required TResult Function(_RemoveFollowers value) removeFollowers,
     required TResult Function(_RemoveFollowing value) removeFollowing,
+    required TResult Function(_SearchFollowers value) searchFollowers,
   }) {
     return getFollowers(this);
   }
@@ -187,6 +197,7 @@ class _$FollowEventImpl implements _FollowEvent {
     TResult? Function(_AddFollow value)? addFollow,
     TResult? Function(_RemoveFollowers value)? removeFollowers,
     TResult? Function(_RemoveFollowing value)? removeFollowing,
+    TResult? Function(_SearchFollowers value)? searchFollowers,
   }) {
     return getFollowers?.call(this);
   }
@@ -199,6 +210,7 @@ class _$FollowEventImpl implements _FollowEvent {
     TResult Function(_AddFollow value)? addFollow,
     TResult Function(_RemoveFollowers value)? removeFollowers,
     TResult Function(_RemoveFollowing value)? removeFollowing,
+    TResult Function(_SearchFollowers value)? searchFollowers,
     required TResult orElse(),
   }) {
     if (getFollowers != null) {
@@ -255,6 +267,7 @@ class _$GetFollowingImpl implements _GetFollowing {
     required TResult Function(int id) addFollow,
     required TResult Function(int id) removeFollowers,
     required TResult Function(int id) removeFollowing,
+    required TResult Function(String query) searchFollowers,
   }) {
     return getFollowing();
   }
@@ -267,6 +280,7 @@ class _$GetFollowingImpl implements _GetFollowing {
     TResult? Function(int id)? addFollow,
     TResult? Function(int id)? removeFollowers,
     TResult? Function(int id)? removeFollowing,
+    TResult? Function(String query)? searchFollowers,
   }) {
     return getFollowing?.call();
   }
@@ -279,6 +293,7 @@ class _$GetFollowingImpl implements _GetFollowing {
     TResult Function(int id)? addFollow,
     TResult Function(int id)? removeFollowers,
     TResult Function(int id)? removeFollowing,
+    TResult Function(String query)? searchFollowers,
     required TResult orElse(),
   }) {
     if (getFollowing != null) {
@@ -295,6 +310,7 @@ class _$GetFollowingImpl implements _GetFollowing {
     required TResult Function(_AddFollow value) addFollow,
     required TResult Function(_RemoveFollowers value) removeFollowers,
     required TResult Function(_RemoveFollowing value) removeFollowing,
+    required TResult Function(_SearchFollowers value) searchFollowers,
   }) {
     return getFollowing(this);
   }
@@ -307,6 +323,7 @@ class _$GetFollowingImpl implements _GetFollowing {
     TResult? Function(_AddFollow value)? addFollow,
     TResult? Function(_RemoveFollowers value)? removeFollowers,
     TResult? Function(_RemoveFollowing value)? removeFollowing,
+    TResult? Function(_SearchFollowers value)? searchFollowers,
   }) {
     return getFollowing?.call(this);
   }
@@ -319,6 +336,7 @@ class _$GetFollowingImpl implements _GetFollowing {
     TResult Function(_AddFollow value)? addFollow,
     TResult Function(_RemoveFollowers value)? removeFollowers,
     TResult Function(_RemoveFollowing value)? removeFollowing,
+    TResult Function(_SearchFollowers value)? searchFollowers,
     required TResult orElse(),
   }) {
     if (getFollowing != null) {
@@ -401,6 +419,7 @@ class _$AddFollowImpl implements _AddFollow {
     required TResult Function(int id) addFollow,
     required TResult Function(int id) removeFollowers,
     required TResult Function(int id) removeFollowing,
+    required TResult Function(String query) searchFollowers,
   }) {
     return addFollow(id);
   }
@@ -413,6 +432,7 @@ class _$AddFollowImpl implements _AddFollow {
     TResult? Function(int id)? addFollow,
     TResult? Function(int id)? removeFollowers,
     TResult? Function(int id)? removeFollowing,
+    TResult? Function(String query)? searchFollowers,
   }) {
     return addFollow?.call(id);
   }
@@ -425,6 +445,7 @@ class _$AddFollowImpl implements _AddFollow {
     TResult Function(int id)? addFollow,
     TResult Function(int id)? removeFollowers,
     TResult Function(int id)? removeFollowing,
+    TResult Function(String query)? searchFollowers,
     required TResult orElse(),
   }) {
     if (addFollow != null) {
@@ -441,6 +462,7 @@ class _$AddFollowImpl implements _AddFollow {
     required TResult Function(_AddFollow value) addFollow,
     required TResult Function(_RemoveFollowers value) removeFollowers,
     required TResult Function(_RemoveFollowing value) removeFollowing,
+    required TResult Function(_SearchFollowers value) searchFollowers,
   }) {
     return addFollow(this);
   }
@@ -453,6 +475,7 @@ class _$AddFollowImpl implements _AddFollow {
     TResult? Function(_AddFollow value)? addFollow,
     TResult? Function(_RemoveFollowers value)? removeFollowers,
     TResult? Function(_RemoveFollowing value)? removeFollowing,
+    TResult? Function(_SearchFollowers value)? searchFollowers,
   }) {
     return addFollow?.call(this);
   }
@@ -465,6 +488,7 @@ class _$AddFollowImpl implements _AddFollow {
     TResult Function(_AddFollow value)? addFollow,
     TResult Function(_RemoveFollowers value)? removeFollowers,
     TResult Function(_RemoveFollowing value)? removeFollowing,
+    TResult Function(_SearchFollowers value)? searchFollowers,
     required TResult orElse(),
   }) {
     if (addFollow != null) {
@@ -553,6 +577,7 @@ class _$RemoveFollowersImpl implements _RemoveFollowers {
     required TResult Function(int id) addFollow,
     required TResult Function(int id) removeFollowers,
     required TResult Function(int id) removeFollowing,
+    required TResult Function(String query) searchFollowers,
   }) {
     return removeFollowers(id);
   }
@@ -565,6 +590,7 @@ class _$RemoveFollowersImpl implements _RemoveFollowers {
     TResult? Function(int id)? addFollow,
     TResult? Function(int id)? removeFollowers,
     TResult? Function(int id)? removeFollowing,
+    TResult? Function(String query)? searchFollowers,
   }) {
     return removeFollowers?.call(id);
   }
@@ -577,6 +603,7 @@ class _$RemoveFollowersImpl implements _RemoveFollowers {
     TResult Function(int id)? addFollow,
     TResult Function(int id)? removeFollowers,
     TResult Function(int id)? removeFollowing,
+    TResult Function(String query)? searchFollowers,
     required TResult orElse(),
   }) {
     if (removeFollowers != null) {
@@ -593,6 +620,7 @@ class _$RemoveFollowersImpl implements _RemoveFollowers {
     required TResult Function(_AddFollow value) addFollow,
     required TResult Function(_RemoveFollowers value) removeFollowers,
     required TResult Function(_RemoveFollowing value) removeFollowing,
+    required TResult Function(_SearchFollowers value) searchFollowers,
   }) {
     return removeFollowers(this);
   }
@@ -605,6 +633,7 @@ class _$RemoveFollowersImpl implements _RemoveFollowers {
     TResult? Function(_AddFollow value)? addFollow,
     TResult? Function(_RemoveFollowers value)? removeFollowers,
     TResult? Function(_RemoveFollowing value)? removeFollowing,
+    TResult? Function(_SearchFollowers value)? searchFollowers,
   }) {
     return removeFollowers?.call(this);
   }
@@ -617,6 +646,7 @@ class _$RemoveFollowersImpl implements _RemoveFollowers {
     TResult Function(_AddFollow value)? addFollow,
     TResult Function(_RemoveFollowers value)? removeFollowers,
     TResult Function(_RemoveFollowing value)? removeFollowing,
+    TResult Function(_SearchFollowers value)? searchFollowers,
     required TResult orElse(),
   }) {
     if (removeFollowers != null) {
@@ -705,6 +735,7 @@ class _$RemoveFollowingImpl implements _RemoveFollowing {
     required TResult Function(int id) addFollow,
     required TResult Function(int id) removeFollowers,
     required TResult Function(int id) removeFollowing,
+    required TResult Function(String query) searchFollowers,
   }) {
     return removeFollowing(id);
   }
@@ -717,6 +748,7 @@ class _$RemoveFollowingImpl implements _RemoveFollowing {
     TResult? Function(int id)? addFollow,
     TResult? Function(int id)? removeFollowers,
     TResult? Function(int id)? removeFollowing,
+    TResult? Function(String query)? searchFollowers,
   }) {
     return removeFollowing?.call(id);
   }
@@ -729,6 +761,7 @@ class _$RemoveFollowingImpl implements _RemoveFollowing {
     TResult Function(int id)? addFollow,
     TResult Function(int id)? removeFollowers,
     TResult Function(int id)? removeFollowing,
+    TResult Function(String query)? searchFollowers,
     required TResult orElse(),
   }) {
     if (removeFollowing != null) {
@@ -745,6 +778,7 @@ class _$RemoveFollowingImpl implements _RemoveFollowing {
     required TResult Function(_AddFollow value) addFollow,
     required TResult Function(_RemoveFollowers value) removeFollowers,
     required TResult Function(_RemoveFollowing value) removeFollowing,
+    required TResult Function(_SearchFollowers value) searchFollowers,
   }) {
     return removeFollowing(this);
   }
@@ -757,6 +791,7 @@ class _$RemoveFollowingImpl implements _RemoveFollowing {
     TResult? Function(_AddFollow value)? addFollow,
     TResult? Function(_RemoveFollowers value)? removeFollowers,
     TResult? Function(_RemoveFollowing value)? removeFollowing,
+    TResult? Function(_SearchFollowers value)? searchFollowers,
   }) {
     return removeFollowing?.call(this);
   }
@@ -769,6 +804,7 @@ class _$RemoveFollowingImpl implements _RemoveFollowing {
     TResult Function(_AddFollow value)? addFollow,
     TResult Function(_RemoveFollowers value)? removeFollowers,
     TResult Function(_RemoveFollowing value)? removeFollowing,
+    TResult Function(_SearchFollowers value)? searchFollowers,
     required TResult orElse(),
   }) {
     if (removeFollowing != null) {
@@ -784,5 +820,163 @@ abstract class _RemoveFollowing implements FollowEvent {
   int get id;
   @JsonKey(ignore: true)
   _$$RemoveFollowingImplCopyWith<_$RemoveFollowingImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SearchFollowersImplCopyWith<$Res> {
+  factory _$$SearchFollowersImplCopyWith(_$SearchFollowersImpl value,
+          $Res Function(_$SearchFollowersImpl) then) =
+      __$$SearchFollowersImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String query});
+}
+
+/// @nodoc
+class __$$SearchFollowersImplCopyWithImpl<$Res>
+    extends _$FollowEventCopyWithImpl<$Res, _$SearchFollowersImpl>
+    implements _$$SearchFollowersImplCopyWith<$Res> {
+  __$$SearchFollowersImplCopyWithImpl(
+      _$SearchFollowersImpl _value, $Res Function(_$SearchFollowersImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? query = null,
+  }) {
+    return _then(_$SearchFollowersImpl(
+      null == query
+          ? _value.query
+          : query // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SearchFollowersImpl implements _SearchFollowers {
+  const _$SearchFollowersImpl(this.query);
+
+  @override
+  final String query;
+
+  @override
+  String toString() {
+    return 'FollowEvent.searchFollowers(query: $query)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SearchFollowersImpl &&
+            (identical(other.query, query) || other.query == query));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, query);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SearchFollowersImplCopyWith<_$SearchFollowersImpl> get copyWith =>
+      __$$SearchFollowersImplCopyWithImpl<_$SearchFollowersImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getFollowers,
+    required TResult Function() getFollowing,
+    required TResult Function(int id) addFollow,
+    required TResult Function(int id) removeFollowers,
+    required TResult Function(int id) removeFollowing,
+    required TResult Function(String query) searchFollowers,
+  }) {
+    return searchFollowers(query);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getFollowers,
+    TResult? Function()? getFollowing,
+    TResult? Function(int id)? addFollow,
+    TResult? Function(int id)? removeFollowers,
+    TResult? Function(int id)? removeFollowing,
+    TResult? Function(String query)? searchFollowers,
+  }) {
+    return searchFollowers?.call(query);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getFollowers,
+    TResult Function()? getFollowing,
+    TResult Function(int id)? addFollow,
+    TResult Function(int id)? removeFollowers,
+    TResult Function(int id)? removeFollowing,
+    TResult Function(String query)? searchFollowers,
+    required TResult orElse(),
+  }) {
+    if (searchFollowers != null) {
+      return searchFollowers(query);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FollowEvent value) getFollowers,
+    required TResult Function(_GetFollowing value) getFollowing,
+    required TResult Function(_AddFollow value) addFollow,
+    required TResult Function(_RemoveFollowers value) removeFollowers,
+    required TResult Function(_RemoveFollowing value) removeFollowing,
+    required TResult Function(_SearchFollowers value) searchFollowers,
+  }) {
+    return searchFollowers(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FollowEvent value)? getFollowers,
+    TResult? Function(_GetFollowing value)? getFollowing,
+    TResult? Function(_AddFollow value)? addFollow,
+    TResult? Function(_RemoveFollowers value)? removeFollowers,
+    TResult? Function(_RemoveFollowing value)? removeFollowing,
+    TResult? Function(_SearchFollowers value)? searchFollowers,
+  }) {
+    return searchFollowers?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FollowEvent value)? getFollowers,
+    TResult Function(_GetFollowing value)? getFollowing,
+    TResult Function(_AddFollow value)? addFollow,
+    TResult Function(_RemoveFollowers value)? removeFollowers,
+    TResult Function(_RemoveFollowing value)? removeFollowing,
+    TResult Function(_SearchFollowers value)? searchFollowers,
+    required TResult orElse(),
+  }) {
+    if (searchFollowers != null) {
+      return searchFollowers(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SearchFollowers implements FollowEvent {
+  const factory _SearchFollowers(final String query) = _$SearchFollowersImpl;
+
+  String get query;
+  @JsonKey(ignore: true)
+  _$$SearchFollowersImplCopyWith<_$SearchFollowersImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

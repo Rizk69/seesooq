@@ -1,11 +1,10 @@
 import 'package:injectable/injectable.dart';
+import 'package:opensooq/future/category/data/models/advertisment_model.dart';
 
 import '../../../../core/network/api/my_ads_api.dart';
-import '../model/my_ads_model.dart';
-
 
 abstract class MyAdsRemoteDataSource {
-  Future<MyAdsModel> getMyAds();
+  Future<AdvertisementModel> getMyAds();
   Future<bool> deleteMyAds({required int id});
 }
 
@@ -16,8 +15,7 @@ class MyAdsRemoteDataSourceImpl implements MyAdsRemoteDataSource {
   MyAdsRemoteDataSourceImpl(this.api);
 
   @override
-  Future<MyAdsModel> getMyAds(
-      ) async {
+  Future<AdvertisementModel> getMyAds() async {
     return await api.getMyAds();
   }
 

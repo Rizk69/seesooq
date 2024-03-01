@@ -9,4 +9,6 @@ class FollowEvent with _$FollowEvent {
   const factory FollowEvent.addFollow(int id) = _AddFollow;
   const factory FollowEvent.removeFollowers(int id) = _RemoveFollowers;
   const factory FollowEvent.removeFollowing(int id) = _RemoveFollowing;
+  // add search event
+  const factory FollowEvent.searchFollowers(String query) = _SearchFollowers;
 }

@@ -4,7 +4,6 @@ import 'package:opensooq/core/utils/media_query_values.dart';
 
 import '../../../config/routes/app_routes.dart';
 import '../../../core/utils/custom_failed_app.dart';
-import '../../../core/utils/hex_color.dart';
 import '../../setting1/edit_profile/presentation/widgets/header_screen.dart';
 import '../../setting1/edit_profile/presentation/widgets/profile_photo.dart';
 
@@ -24,20 +23,21 @@ class NewMassagePage extends StatelessWidget {
             },
           ),
           const SizedBox(height: 10),
-          const CustomTextFormFiledApp(
+          CustomTextFormFiledApp(
             title: 'ابحث ...',
+            onChanged: (value) {},
             imgIconSvg: 'assets/images/svg/search.svg',
           ),
           const SizedBox(height: 5),
           Expanded(
               child: ListView.builder(
-                itemBuilder: (context, index) => Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: ProfileNewChatCard(img: 'edit_profile'.toSvg, name: 'آدم يوسف'),
-                ),
-                itemCount: 8,
-                scrollDirection: Axis.vertical,
-              ))
+            itemBuilder: (context, index) => Padding(
+              padding: const EdgeInsets.all(10),
+              child: ProfileNewChatCard(img: 'edit_profile'.toSvg, name: 'آدم يوسف'),
+            ),
+            itemCount: 8,
+            scrollDirection: Axis.vertical,
+          ))
         ],
       ),
     );
