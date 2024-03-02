@@ -20,7 +20,7 @@ class _MyAdsApi implements MyAdsApi {
 
   @override
   Future<AdvertisementModel> getMyAds({required int type}) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = {'type': type};
@@ -47,7 +47,7 @@ class _MyAdsApi implements MyAdsApi {
 
   @override
   Future<bool> deleteMyAds({required int id}) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = id;

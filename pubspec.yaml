@@ -126,7 +126,7 @@ dev_dependencies:
   freezed_annotation: ^2.4.1
   flutter_launcher_icons: ^0.13.1
   #  analyzer: ^6.3.0
-  retrofit_generator: any
+  retrofit_generator: ^8.1.0
   hive_generator: 2.0.1
 
 

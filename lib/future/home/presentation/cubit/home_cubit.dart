@@ -8,7 +8,7 @@ import 'package:opensooq/future/user_local_model.dart';
 
 import 'home_state.dart';
 
-class HomeCubit extends Cubit<HomeState> {
+class HomeCubit extends Cubit<HomeState> with ChangeNotifier {
   HomeCubit() : super(const HomeState()) {
     getAdvertisementOffer();
   }
@@ -80,6 +80,19 @@ class HomeCubit extends Cubit<HomeState> {
     List<Data> list = List.from(state.advertisementOffer?.data ?? []);
     // list[index].checkIfFavourite = !(list[index].checkIfFavourite ?? false);
     emit(state.copyWith(advertisementOffer: AdvertisementModel(data: list, meta: state.advertisementOffer?.meta)));
+  }
+
+  Future<void> logout() async {
+    final response = await homeRepo.logout();
+    response.fold((l) {
+      if (kDebugMode) {
+        print(l);
+      }
+    }, (r) {
+      if (kDebugMode) {
+        print(r);
+      }
+    });
   }
 
   resetPagination() {

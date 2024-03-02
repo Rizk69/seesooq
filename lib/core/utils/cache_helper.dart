@@ -25,6 +25,16 @@ class CacheHelper {
     }
   }
 
+  Future<int> hiveClearData<T>() async {
+    try {
+      var i = await Hive.openBox<T>('user');
+      return await i.clear();
+    } catch (e) {
+      debugPrint(e.toString());
+      return 0;
+    }
+  }
+
   Future<void> clearTypeSpecificLocalData<T>() async {
     try {
       var i = await Hive.openBox<T>('user');

@@ -116,13 +116,22 @@ class TextFormFiledApp extends StatelessWidget {
 }
 
 class CustomTextFormFiled extends StatefulWidget {
-  const CustomTextFormFiled(
-      {super.key, required this.prefixIcon, required this.onChanged, this.textInputAction, this.textFormatters, this.textInputType, this.maxLine});
+  const CustomTextFormFiled({
+    super.key,
+    required this.prefixIcon,
+    required this.onChanged,
+    this.textInputAction,
+    this.textFormatters,
+    this.textInputType,
+    this.maxLine,
+    required this.textEditingController,
+  });
 
   final bool prefixIcon;
   final TextInputAction? textInputAction;
   final List<TextInputFormatter>? textFormatters;
   final TextInputType? textInputType;
+  final TextEditingController? textEditingController;
   final int? maxLine;
   final Function(String?) onChanged;
 
@@ -139,6 +148,7 @@ class _CustomTextFormFiledState extends State<CustomTextFormFiled> {
       textInputAction: widget.textInputAction,
       inputFormatters: widget.textFormatters,
       maxLines: widget.maxLine ?? 1,
+      controller: widget.textEditingController,
       keyboardType: widget.textInputType ?? TextInputType.text,
       decoration: InputDecoration(
           prefixIcon: widget.prefixIcon

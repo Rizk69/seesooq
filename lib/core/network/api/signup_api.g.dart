@@ -20,7 +20,7 @@ class _SignupApi implements SignupApi {
 
   @override
   Future<SignUpModel> signUpUser({required Map<String, dynamic> body}) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};

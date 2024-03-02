@@ -11,7 +11,7 @@ import 'package:opensooq/core/widget/text_translate_manager.dart';
 import 'package:opensooq/future/home/presentation/cubit/home_cubit.dart';
 
 class MyOptionDrawerWidget extends StatelessWidget {
-  const MyOptionDrawerWidget({Key? key, required this.cubit, required this.scaffoldKey}) : super(key: key);
+  const MyOptionDrawerWidget({super.key, required this.cubit, required this.scaffoldKey});
 
   final HomeCubit cubit;
   final GlobalKey<ScaffoldState> scaffoldKey;
@@ -45,10 +45,12 @@ class MyOptionDrawerWidget extends StatelessWidget {
                 context.goNamed(Routes.wallet);
               } else if (index == 6) {
                 context.goNamed(Routes.favorite);
-              }else if (index == 0) {
+              } else if (index == 0) {
                 context.goNamed(Routes.myAds);
-              }else if (index == 1) {
+              } else if (index == 1) {
                 context.goNamed(Routes.reels);
+              } else if (index == 10) {
+                HomeCubit.get(context).logout();
               }
             },
             leading: CircleAvatar(

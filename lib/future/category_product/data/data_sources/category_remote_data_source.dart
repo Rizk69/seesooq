@@ -45,14 +45,16 @@ class CategoryRemoteDataSourceImpl implements CategoryRemoteDataSource {
           attributesForm.images[i].path,
           filename: attributesForm.images[i].path.split('/').last,
         );
+        if (i == 0) {}
         formData.files.add(MapEntry('images[$i]', image));
       }
-      // if (attributesForm.attributes.isNotEmpty) {
-      //   for (var i = 0; i < attributesForm.attributes.length; i++) {
-      //     formData.fields.add(MapEntry(
-      //         'attributes[${attributesForm.attributes.keys.toList()[i].toString()}]', attributesForm.attributes.values.toList()[i].toString()));
-      //   }
-      // }
+      if (attributesForm.attributes.isNotEmpty) {
+        for (var i = 0; i < attributesForm.attributes.length; i++) {
+          formData.fields.add(MapEntry(
+              'attributes[${attributesForm.attributes.keys.toList()[i].toString()}]', attributesForm.attributes.values.toList()[i].toString()));
+        }
+      }
+      formData.files.add(MapEntry('main_image', MultipartFile.fromFileSync(attributesForm.images[0].path)));
     }
 
     return categoryApi.createAdd(body: formData);

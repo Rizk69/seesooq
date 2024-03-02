@@ -20,7 +20,7 @@ class _SettingApi implements SettingApi {
 
   @override
   Future<EditUserModel> editUser({required Map<String, dynamic> body}) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};

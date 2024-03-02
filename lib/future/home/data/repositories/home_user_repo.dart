@@ -3,6 +3,7 @@ import 'package:injectable/injectable.dart';
 import 'package:opensooq/core/error/failures.dart';
 import 'package:opensooq/core/network/network_info.dart';
 import 'package:opensooq/future/category/data/models/advertisment_model.dart';
+import 'package:opensooq/future/home/data/data_sources/home_user_local_data_source.dart';
 import 'package:opensooq/future/home/data/data_sources/home_user_remote_data_source.dart';
 import 'package:opensooq/future/home/data/models/my_story_model.dart';
 import 'package:opensooq/future/home/data/models/single_advertisment_model.dart';
@@ -19,14 +20,16 @@ abstract class HomeUserRepo {
 
   Future<Either<Failures, void>> deleteMyStory({required int id});
   Future<Either<Failures, SingleAdvertismentModel>> showAdvertisement({required int id});
+  Future<Either<Failures, int>> logout();
 }
 
 @LazySingleton(as: HomeUserRepo)
 class HomeUserRepoImpl implements HomeUserRepo {
   final NetworkInfo networkInfo;
   final HomeUserRemoteDataSource homeUserRemoteDataSource;
+  final HomeUserLocalDataSource homeUserLocalDataSource;
 
-  HomeUserRepoImpl(this.networkInfo, this.homeUserRemoteDataSource);
+  HomeUserRepoImpl(this.networkInfo, this.homeUserRemoteDataSource, this.homeUserLocalDataSource);
 
   @override
   Future<Either<Failures, String>> createMyStory({required String image, required String caption}) async {
@@ -68,5 +71,10 @@ class HomeUserRepoImpl implements HomeUserRepo {
     return executeAndCatchError(() async => await homeUserRemoteDataSource.showAdvertisement(
           id: id,
         ));
+  }
+
+  @override
+  Future<Either<Failures, int>> logout() {
+    return executeAndCatchError(() async => await homeUserLocalDataSource.logout());
   }
 }

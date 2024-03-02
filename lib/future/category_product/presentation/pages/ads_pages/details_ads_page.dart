@@ -15,13 +15,6 @@ class DetailsAdsPage extends StatefulWidget {
 }
 
 class _DetailsAdsPageState extends State<DetailsAdsPage> {
-  int currentStatusIndex = -1;
-  int deliveryServiceIndex = -1;
-  int paymentMethodIndex = -1;
-
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _descriptionController = TextEditingController();
-
   @override
   void initState() {
     super.initState();
@@ -29,89 +22,90 @@ class _DetailsAdsPageState extends State<DetailsAdsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider.value(
-      value: AddAdsCubit.get(context),
-      child: BlocBuilder<AddAdsCubit, AddAdsState>(builder: (context, state) {
-        return SingleChildScrollView(
-          padding: const EdgeInsets.only(bottom: 40),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const TranslateText(
-                text: 'adsName',
-                styleText: StyleText.h4,
-                fontSize: 16,
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              CustomTextFormFiled(
-                prefixIcon: false,
-                textInputType: TextInputType.text,
-                textInputAction: TextInputAction.next,
-                onChanged: (value) {
-                  AddAdsCubit.get(context).updateNameForm(value.toString());
-                },
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              const TranslateText(
-                text: 'adsDescription',
-                styleText: StyleText.h4,
-                fontSize: 16,
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              CustomTextFormFiled(
-                prefixIcon: false,
-                textInputType: TextInputType.multiline,
-                textInputAction: TextInputAction.newline,
-                maxLine: 3,
-                onChanged: (value) {
-                  AddAdsCubit.get(context).updateDescriptionForm(value.toString());
-                },
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              const TranslateText(
-                text: 'priceAds',
-                styleText: StyleText.h4,
-                fontSize: 16,
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              CustomTextFormFiled(
-                prefixIcon: false,
-                textInputType: const TextInputType.numberWithOptions(decimal: true),
-                textInputAction: TextInputAction.done,
-                textFormatters: [FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,2}'))],
-                onChanged: (value) {
-                  if (value.toString().isNotEmpty) {
-                    AddAdsCubit.get(context).updatePriceForm(num.parse(value.toString()));
-                  }
-                },
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              ...state.attributesAdsModel?.attributes
-                      ?.map((e) => DynamicFormWidget(
-                            name: e.title ?? '',
-                            type: e.type ?? '',
-                            options: e.children ?? [],
-                            optionId: e.id?.toInt() ?? 0,
-                            // optionId: e.id?.toInt() ?? 0,
-                          ))
-                      .toList() ??
-                  []
-            ],
-          ),
-        );
-      }),
-    );
+    return BlocBuilder<AddAdsCubit, AddAdsState>(builder: (context, state) {
+      var cubit = AddAdsCubit.get(context);
+      return SingleChildScrollView(
+        padding: const EdgeInsets.only(bottom: 40),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const TranslateText(
+              text: 'adsName',
+              styleText: StyleText.h4,
+              fontSize: 16,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            CustomTextFormFiled(
+              prefixIcon: false,
+              textEditingController: cubit.titleAds,
+              textInputType: TextInputType.text,
+              textInputAction: TextInputAction.next,
+              onChanged: (value) {
+                AddAdsCubit.get(context).updateNameForm(value.toString());
+              },
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const TranslateText(
+              text: 'adsDescription',
+              styleText: StyleText.h4,
+              fontSize: 16,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            CustomTextFormFiled(
+              prefixIcon: false,
+              textEditingController: cubit.descAds,
+              textInputType: TextInputType.multiline,
+              textInputAction: TextInputAction.newline,
+              maxLine: 3,
+              onChanged: (value) {
+                AddAdsCubit.get(context).updateDescriptionForm(value.toString());
+              },
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const TranslateText(
+              text: 'priceAds',
+              styleText: StyleText.h4,
+              fontSize: 16,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            CustomTextFormFiled(
+              prefixIcon: false,
+              textEditingController: cubit.price,
+              textInputType: const TextInputType.numberWithOptions(decimal: true),
+              textInputAction: TextInputAction.done,
+              textFormatters: [FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,2}'))],
+              onChanged: (value) {
+                if (value.toString().isNotEmpty) {
+                  AddAdsCubit.get(context).updatePriceForm(num.parse(value.toString()));
+                }
+              },
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            ...state.attributesAdsModel?.attributes
+                    ?.map((e) => DynamicFormWidget(
+                          name: e.title ?? '',
+                          type: e.type ?? '',
+                          options: e.children ?? [],
+                          optionId: e.id?.toInt() ?? 0,
+                          // optionId: e.id?.toInt() ?? 0,
+                        ))
+                    .toList() ??
+                []
+          ],
+        ),
+      );
+    });
   }
 }

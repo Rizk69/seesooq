@@ -20,7 +20,7 @@ class _HomeUserApi implements HomeUserApi {
 
   @override
   Future<String> createMyStory({required dynamic body}) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = body;
@@ -46,10 +46,10 @@ class _HomeUserApi implements HomeUserApi {
 
   @override
   Future<String> viewStory({required int storyId}) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<String>(_setStreamType<String>(Options(
       method: 'GET',
       headers: _headers,
@@ -72,10 +72,10 @@ class _HomeUserApi implements HomeUserApi {
 
   @override
   Future<SingleAdvertismentModel> showAdvertisment({required int id}) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<SingleAdvertismentModel>(Options(
       method: 'GET',
@@ -100,10 +100,10 @@ class _HomeUserApi implements HomeUserApi {
 
   @override
   Future<MyStoryModel> getMyStories() async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<MyStoryModel>(Options(
       method: 'GET',
@@ -127,10 +127,10 @@ class _HomeUserApi implements HomeUserApi {
 
   @override
   Future<void> deleteMyStory({required int storyId}) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     await _dio.fetch<void>(_setStreamType<void>(Options(
       method: 'GET',
       headers: _headers,
@@ -151,10 +151,10 @@ class _HomeUserApi implements HomeUserApi {
 
   @override
   Future<UsersStoryModel> getUsersStory() async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<UsersStoryModel>(Options(
       method: 'GET',
@@ -181,10 +181,10 @@ class _HomeUserApi implements HomeUserApi {
     required int categoryId,
     required int page,
   }) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'page': page};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<AdvertisementModel>(Options(
       method: 'GET',

@@ -20,7 +20,7 @@ class _LoginApi implements LoginApi {
 
   @override
   Future<LoginModel> loginUser({required Map<String, dynamic> body}) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
@@ -49,7 +49,7 @@ class _LoginApi implements LoginApi {
   @override
   Future<ForGetPasswordModel> forGetPassword(
       {required Map<String, dynamic> body}) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
@@ -78,7 +78,7 @@ class _LoginApi implements LoginApi {
   @override
   Future<ForGetPasswordModel> verifyOtpRestorePassword(
       {required Map<String, dynamic> body}) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
@@ -107,7 +107,7 @@ class _LoginApi implements LoginApi {
   @override
   Future<ChangePasswordModel> changePasswordUser(
       {required Map<String, dynamic> body}) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};

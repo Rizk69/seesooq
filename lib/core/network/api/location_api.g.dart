@@ -24,14 +24,14 @@ class _LocationApi implements LocationApi {
     required String query,
     required String language,
   }) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'key': key,
       r'query': query,
       r'language': language,
     };
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<PlaceTextModel>(Options(
       method: 'GET',
@@ -55,10 +55,10 @@ class _LocationApi implements LocationApi {
 
   @override
   Future<CitiesModel> getCities({required int id}) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<CitiesModel>(Options(
       method: 'GET',
@@ -82,10 +82,10 @@ class _LocationApi implements LocationApi {
 
   @override
   Future<CitiesModel> getGovernorate() async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<CitiesModel>(Options(
       method: 'GET',

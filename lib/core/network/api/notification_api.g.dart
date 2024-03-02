@@ -21,10 +21,10 @@ class _NotificationApi implements NotificationApi {
   @override
   Future<NotificationResponseModel> getNotificationUser(
       {required String page}) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'page': page};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<NotificationResponseModel>(Options(
       method: 'GET',

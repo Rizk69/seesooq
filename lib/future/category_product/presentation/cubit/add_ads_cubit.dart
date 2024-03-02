@@ -25,6 +25,9 @@ class AddAdsCubit extends Cubit<AddAdsState> {
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
+  TextEditingController titleAds = TextEditingController();
+  TextEditingController descAds = TextEditingController();
+  TextEditingController price = TextEditingController();
 
 // this section Add Ads
 
