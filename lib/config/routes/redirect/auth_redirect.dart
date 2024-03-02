@@ -10,13 +10,20 @@ import 'package:opensooq/future/signup/presentation/cubit/signup_cubit.dart';
 import 'package:opensooq/future/signup/presentation/cubit/signup_state.dart';
 
 class AuthRedirect extends GoRedirect {
-  final excludedPaths = [Routes.loginSplash, Routes.login, "/login/signUp", Routes.forgetPasswordPRoute, Routes.confirmCode];
+  final excludedPaths = [
+    Routes.loginSplash,
+    Routes.login,
+    "/login/signUp",
+    Routes.forgetPasswordPRoute,
+    Routes.confirmCode,
+    "/login/signUp/confirmCodeSignUp"
+  ];
 
   @override
   FutureOr<String?> call(BuildContext context, GoRouterState state) async {
     var signUpState = SignUpCubit.get(context).state;
     var loginState = LoginCubit.get(context).state;
-    final isLoggingIn = state.uri.path == '/login';
+    final isLoggingIn = excludedPaths.contains(state.uri.path);
 
     final userSaved = (loginState.isHome);
 
@@ -30,12 +37,13 @@ class AuthRedirect extends GoRedirect {
       return Routes.home;
     }
     if (loginState.loginStatus == LoginStatus.success) {
-      print('loginState.loginStatus == LoginStatus.success');
       return Routes.home;
     }
-    // if (loginState.loginStatus == LoginStatus.unAuthorized) {
-    //   return Routes.login;
-    // }
+    if (loginState.loginStatus == LoginStatus.unAuthorized && !isLoggingIn) {
+      print((state.uri.path));
+      print(excludedPaths.contains(state.uri.path));
+      return Routes.login;
+    }
 
     return null;
   }

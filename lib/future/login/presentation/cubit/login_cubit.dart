@@ -128,11 +128,11 @@ class LoginCubit extends Cubit<LoginState> with ChangeNotifier {
       (r) {
         emit(state.copyWith(
           isHome: false,
+          loginStatus: LoginStatus.unAuthorized,
         ));
         notifyListeners();
       },
     );
-    notifyListeners();
   }
 
   Future<void> changePasswordUser({required String phone, required String password}) async {

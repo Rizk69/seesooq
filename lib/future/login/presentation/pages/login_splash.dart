@@ -21,7 +21,7 @@ class _LoginSplashState extends State<LoginSplash> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 2), () {
-      context.goNamed(Routes.login);
+      context.goNamed(Routes.home);
     });
   }
 

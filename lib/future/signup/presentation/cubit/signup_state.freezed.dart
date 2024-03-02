@@ -17,7 +17,9 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$SignUpState {
   SignUpModel? get signUpModel => throw _privateConstructorUsedError;
+  LoginModel? get loginModel => throw _privateConstructorUsedError;
   SignUpStatus get signUpStatus => throw _privateConstructorUsedError;
+  String get phoneNumber => throw _privateConstructorUsedError;
   String get pinCode => throw _privateConstructorUsedError;
   Map<String, dynamic> get socialData => throw _privateConstructorUsedError;
   bool get hasErrorPinCode => throw _privateConstructorUsedError;
@@ -38,7 +40,9 @@ abstract class $SignUpStateCopyWith<$Res> {
   @useResult
   $Res call(
       {SignUpModel? signUpModel,
+      LoginModel? loginModel,
       SignUpStatus signUpStatus,
+      String phoneNumber,
       String pinCode,
       Map<String, dynamic> socialData,
       bool hasErrorPinCode,
@@ -61,7 +65,9 @@ class _$SignUpStateCopyWithImpl<$Res, $Val extends SignUpState>
   @override
   $Res call({
     Object? signUpModel = freezed,
+    Object? loginModel = freezed,
     Object? signUpStatus = null,
+    Object? phoneNumber = null,
     Object? pinCode = null,
     Object? socialData = null,
     Object? hasErrorPinCode = null,
@@ -74,10 +80,18 @@ class _$SignUpStateCopyWithImpl<$Res, $Val extends SignUpState>
           ? _value.signUpModel
           : signUpModel // ignore: cast_nullable_to_non_nullable
               as SignUpModel?,
+      loginModel: freezed == loginModel
+          ? _value.loginModel
+          : loginModel // ignore: cast_nullable_to_non_nullable
+              as LoginModel?,
       signUpStatus: null == signUpStatus
           ? _value.signUpStatus
           : signUpStatus // ignore: cast_nullable_to_non_nullable
               as SignUpStatus,
+      phoneNumber: null == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
       pinCode: null == pinCode
           ? _value.pinCode
           : pinCode // ignore: cast_nullable_to_non_nullable
@@ -116,7 +130,9 @@ abstract class _$$SignUpStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {SignUpModel? signUpModel,
+      LoginModel? loginModel,
       SignUpStatus signUpStatus,
+      String phoneNumber,
       String pinCode,
       Map<String, dynamic> socialData,
       bool hasErrorPinCode,
@@ -137,7 +153,9 @@ class __$$SignUpStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? signUpModel = freezed,
+    Object? loginModel = freezed,
     Object? signUpStatus = null,
+    Object? phoneNumber = null,
     Object? pinCode = null,
     Object? socialData = null,
     Object? hasErrorPinCode = null,
@@ -150,10 +168,18 @@ class __$$SignUpStateImplCopyWithImpl<$Res>
           ? _value.signUpModel
           : signUpModel // ignore: cast_nullable_to_non_nullable
               as SignUpModel?,
+      loginModel: freezed == loginModel
+          ? _value.loginModel
+          : loginModel // ignore: cast_nullable_to_non_nullable
+              as LoginModel?,
       signUpStatus: null == signUpStatus
           ? _value.signUpStatus
           : signUpStatus // ignore: cast_nullable_to_non_nullable
               as SignUpStatus,
+      phoneNumber: null == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
       pinCode: null == pinCode
           ? _value.pinCode
           : pinCode // ignore: cast_nullable_to_non_nullable
@@ -187,7 +213,9 @@ class __$$SignUpStateImplCopyWithImpl<$Res>
 class _$SignUpStateImpl implements _SignUpState {
   const _$SignUpStateImpl(
       {this.signUpModel = null,
+      this.loginModel = null,
       this.signUpStatus = SignUpStatus.init,
+      this.phoneNumber = '',
       this.pinCode = '',
       final Map<String, dynamic> socialData = const {},
       this.hasErrorPinCode = false,
@@ -201,7 +229,13 @@ class _$SignUpStateImpl implements _SignUpState {
   final SignUpModel? signUpModel;
   @override
   @JsonKey()
+  final LoginModel? loginModel;
+  @override
+  @JsonKey()
   final SignUpStatus signUpStatus;
+  @override
+  @JsonKey()
+  final String phoneNumber;
   @override
   @JsonKey()
   final String pinCode;
@@ -229,7 +263,7 @@ class _$SignUpStateImpl implements _SignUpState {
 
   @override
   String toString() {
-    return 'SignUpState(signUpModel: $signUpModel, signUpStatus: $signUpStatus, pinCode: $pinCode, socialData: $socialData, hasErrorPinCode: $hasErrorPinCode, confirmPrivacyAndTerms: $confirmPrivacyAndTerms, countryCode: $countryCode, countryFlag: $countryFlag)';
+    return 'SignUpState(signUpModel: $signUpModel, loginModel: $loginModel, signUpStatus: $signUpStatus, phoneNumber: $phoneNumber, pinCode: $pinCode, socialData: $socialData, hasErrorPinCode: $hasErrorPinCode, confirmPrivacyAndTerms: $confirmPrivacyAndTerms, countryCode: $countryCode, countryFlag: $countryFlag)';
   }
 
   @override
@@ -239,8 +273,12 @@ class _$SignUpStateImpl implements _SignUpState {
             other is _$SignUpStateImpl &&
             (identical(other.signUpModel, signUpModel) ||
                 other.signUpModel == signUpModel) &&
+            (identical(other.loginModel, loginModel) ||
+                other.loginModel == loginModel) &&
             (identical(other.signUpStatus, signUpStatus) ||
                 other.signUpStatus == signUpStatus) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber) &&
             (identical(other.pinCode, pinCode) || other.pinCode == pinCode) &&
             const DeepCollectionEquality()
                 .equals(other._socialData, _socialData) &&
@@ -258,7 +296,9 @@ class _$SignUpStateImpl implements _SignUpState {
   int get hashCode => Object.hash(
       runtimeType,
       signUpModel,
+      loginModel,
       signUpStatus,
+      phoneNumber,
       pinCode,
       const DeepCollectionEquality().hash(_socialData),
       hasErrorPinCode,
@@ -276,7 +316,9 @@ class _$SignUpStateImpl implements _SignUpState {
 abstract class _SignUpState implements SignUpState {
   const factory _SignUpState(
       {final SignUpModel? signUpModel,
+      final LoginModel? loginModel,
       final SignUpStatus signUpStatus,
+      final String phoneNumber,
       final String pinCode,
       final Map<String, dynamic> socialData,
       final bool hasErrorPinCode,
@@ -287,7 +329,11 @@ abstract class _SignUpState implements SignUpState {
   @override
   SignUpModel? get signUpModel;
   @override
+  LoginModel? get loginModel;
+  @override
   SignUpStatus get signUpStatus;
+  @override
+  String get phoneNumber;
   @override
   String get pinCode;
   @override

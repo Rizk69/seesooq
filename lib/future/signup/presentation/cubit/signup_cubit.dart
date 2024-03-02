@@ -8,6 +8,7 @@ import 'package:injectable/injectable.dart';
 import 'package:opensooq/future/signup/data/repositories/params/signup_params.dart';
 import 'package:opensooq/future/signup/data/repositories/signup_repository.dart';
 import 'package:opensooq/future/signup/presentation/cubit/signup_state.dart';
+import 'package:opensooq/future/user_local_model.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
@@ -21,7 +22,10 @@ class SignUpCubit extends Cubit<SignUpState> with ChangeNotifier {
 
   Future<void> signUpWithEmailAndPhone({required SignUpParams params}) async {
     EasyLoading.show(status: 'loading');
-    emit(state.copyWith(signUpStatus: SignUpStatus.loading));
+    emit(state.copyWith(
+      signUpStatus: SignUpStatus.loading,
+      phoneNumber: params.phone,
+    ));
     final result = await signUpRepository.signUpWithEmailAndPhone(params: params);
     result.fold(
       (l) {
@@ -44,10 +48,30 @@ class SignUpCubit extends Cubit<SignUpState> with ChangeNotifier {
       errorController!.add(ErrorAnimationType.shake); // Triggering error shake animation
       emit(state.copyWith(hasErrorPinCode: true));
     } else {
-      emit(state.copyWith(hasErrorPinCode: false, signUpStatus: SignUpStatus.doneOtp));
+      veryFyOtp();
 
       notifyListeners();
     }
+  }
+
+  Future<void> veryFyOtp() async {
+    final result = await signUpRepository.verifyOtp(phoneNumber: state.phoneNumber, otp: state.pinCode);
+    result.fold(
+      (l) {
+        EasyLoading.showError(l.message.toString());
+        emit(state.copyWith(signUpStatus: SignUpStatus.error));
+      },
+      (r) {
+        signUpRepository.cacheUserModel(
+            userLocalModel: UserLocalModel(
+          token: r.token,
+          user: r.user,
+        ));
+        emit(state.copyWith(signUpStatus: SignUpStatus.doneOtp));
+
+        notifyListeners();
+      },
+    );
   }
 
   void updatePinCode(String pinCode) {

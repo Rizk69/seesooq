@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:opensooq/config/routes/go_redirect.dart';
+import 'package:opensooq/config/routes/redirect/auth_redirect.dart';
 import 'package:opensooq/di.dart' as di;
 import 'package:opensooq/future/app/presentation/pages/app_view.dart';
 import 'package:opensooq/future/caht/presentation/chat_massage_page.dart';
@@ -25,6 +27,7 @@ import 'package:opensooq/future/home/presentation/pages/home_page.dart';
 import 'package:opensooq/future/home/presentation/widgets/story_view_widget.dart';
 import 'package:opensooq/future/location/presentation/pages/location_route.dart';
 import 'package:opensooq/future/login/presentation/cubit/login_cubit.dart';
+import 'package:opensooq/future/login/presentation/pages/route/login_route.dart';
 import 'package:opensooq/future/login/presentation/pages/route/login_splash_route.dart';
 import 'package:opensooq/future/notification/presentation/pages/view/notification_page.dart';
 import 'package:opensooq/future/packages/presentation/pages/route/packages_route.dart';
@@ -50,7 +53,7 @@ import '../../future/setting1/presentation/securty_page.dart';
 import '../../future/setting1/presentation/sucsse_cahnge_password.dart';
 
 class Routes {
-  static const String login = 'login';
+  static const String login = '/login';
   static const String home = '/home';
   static const String signUp = 'signUp';
   static const String packages = 'packages';
@@ -128,6 +131,7 @@ final GoRouter router = GoRouter(
             GoRoute(
                 path: Routes.home,
                 name: Routes.home,
+                redirect: GoRedirect.compose([AuthRedirect()]),
                 pageBuilder: (context, state) {
                   return CustomTransitionPage(
                     child: const HomePage(),
@@ -247,6 +251,7 @@ final GoRouter router = GoRouter(
           ]),
         ]),
     LoginSplashRoute(),
+    LoginRoute(),
     ReelsRoute(),
     GoRoute(
       path: Routes.introductionPage,

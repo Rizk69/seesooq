@@ -13,8 +13,6 @@ class LoginRoute extends GoRoute {
             path: Routes.login,
             redirect: GoRedirect.compose([AuthRedirect()]),
             name: Routes.login,
-            pageBuilder: (context, state) => const NoTransitionPage(
-                  child: LoginPage(),
-                ),
+            builder: (context, state) => const LoginPage(),
             routes: [SignupRoute(), ForgetPasswordPRoute()]);
 }

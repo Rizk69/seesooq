@@ -9,6 +9,7 @@ enum LoginStatus {
   success,
   error,
   unAuthorized,
+  logout,
 }
 
 enum ForGetPasswordStatus {

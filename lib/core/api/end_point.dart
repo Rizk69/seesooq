@@ -9,7 +9,7 @@ class EndPoint {
   static const String forgetPassword = 'restore-password';
   static const String verifyOtpRestorePassword = 'validate-otp-password';
   static const String changePassword = 'change-password';
-  static const String verifyPassword = 'validate-otp';
+  static const String verifyOtp = 'validate-otp';
   static const String category = 'categories';
   static const String getAttributesForAds = 'attributes';
   static const String getAttributesByFilter = 'attributes';

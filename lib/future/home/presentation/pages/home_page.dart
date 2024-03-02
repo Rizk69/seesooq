@@ -9,6 +9,7 @@ import 'package:opensooq/future/favorite/presentation/cubit/favorite_cubit.dart'
 import 'package:opensooq/future/favorite/presentation/cubit/favorite_state.dart';
 import 'package:opensooq/future/home/presentation/cubit/home_cubit.dart';
 import 'package:opensooq/future/home/presentation/cubit/home_state.dart';
+import 'package:opensooq/future/home/presentation/cubit/story_user_cubit.dart';
 import 'package:opensooq/future/home/presentation/widgets/appbar_home_page_widget.dart';
 import 'package:opensooq/future/home/presentation/widgets/card_personal_widget.dart';
 import 'package:opensooq/future/home/presentation/widgets/my_option_drawer_widget.dart';
@@ -114,12 +115,18 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             clipBehavior: Clip.antiAliasWithSaveLayer,
             dragStartBehavior: DragStartBehavior.start,
             scrollBehavior: const MaterialScrollBehavior(),
-            viewportBuilder: (context, position) => SingleChildScrollView(
-                controller: scrollController,
-                padding: const EdgeInsets.only(bottom: 10),
-                child: StoryViewComponent(
-                  cubit: cubit,
-                )),
+            viewportBuilder: (context, position) => RefreshIndicator(
+              onRefresh: () async {
+                StoryUserCubit.get(context).getUsersStories();
+              },
+              child: SingleChildScrollView(
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  controller: scrollController,
+                  padding: const EdgeInsets.only(bottom: 10),
+                  child: StoryViewComponent(
+                    cubit: cubit,
+                  )),
+            ),
           ),
         ),
       );

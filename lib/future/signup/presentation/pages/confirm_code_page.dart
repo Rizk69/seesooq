@@ -5,6 +5,7 @@ import 'package:opensooq/core/utils/custom_button_widget.dart';
 import 'package:opensooq/core/utils/hex_color.dart';
 import 'package:opensooq/core/utils/media_query_values.dart';
 import 'package:opensooq/core/widget/text_translate_manager.dart';
+import 'package:opensooq/future/login/presentation/cubit/login_cubit.dart';
 import 'package:opensooq/future/signup/presentation/cubit/signup_cubit.dart';
 import 'package:opensooq/future/signup/presentation/cubit/signup_state.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -24,7 +25,11 @@ class _ConfirmCodePageState extends State<ConfirmCodePage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SignUpCubit, SignUpState>(builder: (context, state) {
+    return BlocConsumer<SignUpCubit, SignUpState>(listener: (context, state) {
+      if (state.signUpStatus == SignUpStatus.doneOtp) {
+        LoginCubit.get(context).getLocalUser();
+      }
+    }, builder: (context, state) {
       var cubit = SignUpCubit.get(context);
       return Scaffold(
         appBar: AppBar(

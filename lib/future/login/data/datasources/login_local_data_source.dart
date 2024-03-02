@@ -29,7 +29,6 @@ class LoginLocalDataSourceImpl implements LoginLocalDataSource {
 
   @override
   Future<void> deleteUserLocalModel() async {
-    // TODO: implement deleteUserLocalModel
-    // return await cacheHelper.hiveClearData<UserLocalModel>(1);
+    await cacheHelper.hiveClearData<UserLocalModel>();
   }
 }

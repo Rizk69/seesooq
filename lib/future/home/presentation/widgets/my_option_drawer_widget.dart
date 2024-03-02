@@ -9,6 +9,7 @@ import 'package:opensooq/core/utils/media_query_values.dart';
 import 'package:opensooq/core/utils/svg_custom_image.dart';
 import 'package:opensooq/core/widget/text_translate_manager.dart';
 import 'package:opensooq/future/home/presentation/cubit/home_cubit.dart';
+import 'package:opensooq/future/login/presentation/cubit/login_cubit.dart';
 
 class MyOptionDrawerWidget extends StatelessWidget {
   const MyOptionDrawerWidget({super.key, required this.cubit, required this.scaffoldKey});
@@ -50,7 +51,7 @@ class MyOptionDrawerWidget extends StatelessWidget {
               } else if (index == 1) {
                 context.goNamed(Routes.reels);
               } else if (index == 10) {
-                HomeCubit.get(context).logout();
+                LoginCubit.get(context).deleteLocalUser();
               }
             },
             leading: CircleAvatar(

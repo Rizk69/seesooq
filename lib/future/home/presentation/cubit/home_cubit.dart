@@ -82,19 +82,6 @@ class HomeCubit extends Cubit<HomeState> with ChangeNotifier {
     emit(state.copyWith(advertisementOffer: AdvertisementModel(data: list, meta: state.advertisementOffer?.meta)));
   }
 
-  Future<void> logout() async {
-    final response = await homeRepo.logout();
-    response.fold((l) {
-      if (kDebugMode) {
-        print(l);
-      }
-    }, (r) {
-      if (kDebugMode) {
-        print(r);
-      }
-    });
-  }
-
   resetPagination() {
     page = 1;
     hasMoreItems = true;
