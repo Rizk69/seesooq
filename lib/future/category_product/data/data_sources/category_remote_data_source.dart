@@ -35,7 +35,7 @@ class CategoryRemoteDataSourceImpl implements CategoryRemoteDataSource {
       "governorate_id": attributesForm.governorateId,
       "city_id": attributesForm.cityId,
       "is_offer": '0',
-      "payment_methods": 'installment',
+      "payment_methods[0]": 'installment',
       "contact_methods": '1',
     });
 
