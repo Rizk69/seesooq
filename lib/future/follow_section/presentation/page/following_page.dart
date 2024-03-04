@@ -121,7 +121,7 @@ class FollowingPage extends StatelessWidget {
                                         ),
                                 ),
                                 child: TranslateText(
-                                  text: (user?.isFollow ?? false) ? 'following' : 'follow',
+                                  text: (user?.isFollow ?? false) ? '${user?.isFollow}' : '${user?.isFollow}',
                                   styleText: StyleText.h5,
                                   colorText: (user?.isFollow ?? false) ? Colors.white : const Color(0xFF4C0497),
                                   fontWeight: FontWeight.w500,

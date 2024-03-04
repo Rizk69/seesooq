@@ -4,7 +4,6 @@ import 'package:injectable/injectable.dart';
 import 'package:opensooq/future/category/data/models/advertisment_model.dart';
 import 'package:retrofit/retrofit.dart';
 
-import '../../../future/myads/data/model/my_ads_model.dart';
 import '../../api/end_point.dart';
 
 part 'my_ads_api.g.dart';
@@ -18,7 +17,7 @@ abstract class MyAdsApi {
   @GET(EndPoint.getMyAds)
   Future<AdvertisementModel> getMyAds({
     @Field('type') required int type,
-    //TODO: all,active,inactive,pending,accepted
+    // TODO: all,active,inactive,pending,accepted
   });
 
   @POST(EndPoint.deleteMyAds)
