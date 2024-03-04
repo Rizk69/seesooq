@@ -1,19 +1,12 @@
-part of 'myads_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:opensooq/future/category/data/models/advertisment_model.dart';
 
-abstract class MyadsState {}
+part 'myads_state.freezed.dart';
 
-class MyadsInitial extends MyadsState {}
-
-class MyadsLoaded extends MyadsState {
-  final AdvertisementModel advertisementModel;
-
-  MyadsLoaded({required this.advertisementModel});
-}
-
-class MyadsLoading extends MyadsState {}
-
-class MyadsError extends MyadsState {
-  final String message;
-
-  MyadsError({required this.message});
+@freezed
+class MyAdsState with _$MyAdsState {
+  const factory MyAdsState.initState() = _InitState;
+  const factory MyAdsState.loading() = _Loading;
+  const factory MyAdsState.loaded({required AdvertisementModel advertisementModel}) = _Loaded;
+  const factory MyAdsState.error({required String message}) = _Error;
 }
