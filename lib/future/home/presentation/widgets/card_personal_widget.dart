@@ -7,13 +7,12 @@ import 'package:opensooq/core/utils/media_query_values.dart';
 import 'package:opensooq/core/widget/text_translate_manager.dart';
 import 'package:opensooq/future/home/presentation/cubit/home_cubit.dart';
 import 'package:opensooq/future/home/presentation/cubit/home_state.dart';
-
 import '../../../../config/routes/app_routes.dart';
 
 enum CardPersonalWidgetType { home, drawer }
 
 class CardPersonalWidget extends StatelessWidget {
-  const CardPersonalWidget({Key? key, required this.bodyText, required this.type}) : super(key: key);
+  const CardPersonalWidget({super.key, required this.bodyText, required this.type});
 
   final String bodyText;
 
@@ -27,7 +26,7 @@ class CardPersonalWidget extends StatelessWidget {
         children: [
           Row(
             children: [
-              const Padding(
+               const Padding(
                 padding: EdgeInsets.all(8.0),
                 child: CircleAvatar(
                   radius: 37,

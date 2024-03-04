@@ -24,7 +24,7 @@ class FollowersEmptyPage extends StatelessWidget {
             SizedBox(
               height: MediaQuery.of(context).size.height / 4.3,
             ),
-            Center(child: AnimatedCheck(img: "assets/images/followers.png")),
+            const Center(child: AnimatedCheck(img: "assets/images/followers.png")),
             const SizedBox(
               height: 34,
             ),
