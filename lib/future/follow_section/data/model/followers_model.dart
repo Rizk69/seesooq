@@ -40,11 +40,11 @@ class Data {
   String? _phone;
   String? _email;
   String? _image;
-  bool? _isFollow;
+  bool? _checkFollwing;
 
   int? get id => _id;
   String? get name => _name;
-  bool? get isFollow => _isFollow;
+  bool? get isFollow => _checkFollwing;
   String? get phone => _phone;
   String? get email => _email;
   String? get image => _image;
@@ -53,18 +53,19 @@ class Data {
     _id = id;
     _name = name;
     _phone = phone;
-    _isFollow = isFollow;
+    _checkFollwing = isFollow;
     _email = email;
     _image = image;
   }
 
   Data.fromJson(dynamic json) {
+    print(json);
     _id = json["id"];
     _name = json["name"];
     _phone = json["phone"];
     _email = json["email"];
     _image = json["image"];
-    _isFollow = json["isFollow"];
+    _checkFollwing = json["checkFollwing"];
   }
 
   Map<String, dynamic> toJson() {
