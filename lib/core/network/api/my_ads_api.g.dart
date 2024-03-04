@@ -19,14 +19,14 @@ class _MyAdsApi implements MyAdsApi {
   String? baseUrl;
 
   @override
-  Future<AdvertisementModel> getMyAds({required int type}) async {
+  Future<AdvertisementModel> getMyAds({required String type}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = {'type': type};
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<AdvertisementModel>(Options(
-      method: 'GET',
+      method: 'POST',
       headers: _headers,
       extra: _extra,
     )
