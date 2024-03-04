@@ -14,9 +14,9 @@ abstract class MyAdsApi {
   @factoryMethod
   factory MyAdsApi(Dio dio) = _MyAdsApi;
 
-  @GET(EndPoint.getMyAds)
+  @POST(EndPoint.getMyAds)
   Future<AdvertisementModel> getMyAds({
-    @Field('type') required int type,
+    @Field('type') required String type,
     // TODO: all,active,inactive,pending,accepted
   });
 

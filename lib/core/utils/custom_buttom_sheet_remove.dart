@@ -26,7 +26,7 @@ class CustomButtomSheetRemove extends StatelessWidget {
               titleText('Delete Video', HexColor('4C0497'), StyleText.h4)
             ],
           ),
-          Center(child: AnimatedCheck(img: "assets/images/remove.png")),
+          const Center(child: AnimatedCheck(img: "assets/images/remove.png")),
           const SizedBox(
             height: 25,
           ),
@@ -42,7 +42,7 @@ class CustomButtomSheetRemove extends StatelessWidget {
           Center(
               child: titleText('متأكد أنك تود حذف الفيديو ؟',
                   HexColor('#707070'), StyleText.h5)),
-          Spacer(),
+          const Spacer(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -52,7 +52,7 @@ class CustomButtomSheetRemove extends StatelessWidget {
                       Navigator.pop(context);
                     },
                     child: Container(
-                      padding: EdgeInsets.symmetric(
+                      padding: const EdgeInsets.symmetric(
                         vertical: 10,
                       ),
                       decoration: BoxDecoration(
@@ -64,14 +64,14 @@ class CustomButtomSheetRemove extends StatelessWidget {
                       ),
                     )),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               Expanded(
                 child: InkWell(
                   onTap: () {},
                   child: Container(
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                       vertical: 10,
                     ),
                     decoration: BoxDecoration(
