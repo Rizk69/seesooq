@@ -16,28 +16,24 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AddAdsState {
-  AttributesAdsStatus get attributesAdsStatus =>
-      throw _privateConstructorUsedError;
-  AttributesAdsModel? get attributesAdsModel =>
-      throw _privateConstructorUsedError;
+  AttributesAdsStatus get attributesAdsStatus => throw _privateConstructorUsedError;
+  AttributesAdsModel? get attributesAdsModel => throw _privateConstructorUsedError;
   String get selectedSubCategory => throw _privateConstructorUsedError;
   String get city => throw _privateConstructorUsedError;
   String get governorate => throw _privateConstructorUsedError;
+  bool get isOffer => throw _privateConstructorUsedError;
   num get price => throw _privateConstructorUsedError;
   List<ImageFile> get images => throw _privateConstructorUsedError;
   AttributesForm get attributesForm => throw _privateConstructorUsedError;
   bool get loadingMore => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $AddAdsStateCopyWith<AddAdsState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $AddAdsStateCopyWith<AddAdsState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $AddAdsStateCopyWith<$Res> {
-  factory $AddAdsStateCopyWith(
-          AddAdsState value, $Res Function(AddAdsState) then) =
-      _$AddAdsStateCopyWithImpl<$Res, AddAdsState>;
+  factory $AddAdsStateCopyWith(AddAdsState value, $Res Function(AddAdsState) then) = _$AddAdsStateCopyWithImpl<$Res, AddAdsState>;
   @useResult
   $Res call(
       {AttributesAdsStatus attributesAdsStatus,
@@ -45,6 +41,7 @@ abstract class $AddAdsStateCopyWith<$Res> {
       String selectedSubCategory,
       String city,
       String governorate,
+      bool isOffer,
       num price,
       List<ImageFile> images,
       AttributesForm attributesForm,
@@ -54,8 +51,7 @@ abstract class $AddAdsStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AddAdsStateCopyWithImpl<$Res, $Val extends AddAdsState>
-    implements $AddAdsStateCopyWith<$Res> {
+class _$AddAdsStateCopyWithImpl<$Res, $Val extends AddAdsState> implements $AddAdsStateCopyWith<$Res> {
   _$AddAdsStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -71,6 +67,7 @@ class _$AddAdsStateCopyWithImpl<$Res, $Val extends AddAdsState>
     Object? selectedSubCategory = null,
     Object? city = null,
     Object? governorate = null,
+    Object? isOffer = null,
     Object? price = null,
     Object? images = null,
     Object? attributesForm = null,
@@ -97,6 +94,10 @@ class _$AddAdsStateCopyWithImpl<$Res, $Val extends AddAdsState>
           ? _value.governorate
           : governorate // ignore: cast_nullable_to_non_nullable
               as String,
+      isOffer: null == isOffer
+          ? _value.isOffer
+          : isOffer // ignore: cast_nullable_to_non_nullable
+              as bool,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -126,11 +127,8 @@ class _$AddAdsStateCopyWithImpl<$Res, $Val extends AddAdsState>
 }
 
 /// @nodoc
-abstract class _$$AddAdsStateImplCopyWith<$Res>
-    implements $AddAdsStateCopyWith<$Res> {
-  factory _$$AddAdsStateImplCopyWith(
-          _$AddAdsStateImpl value, $Res Function(_$AddAdsStateImpl) then) =
-      __$$AddAdsStateImplCopyWithImpl<$Res>;
+abstract class _$$AddAdsStateImplCopyWith<$Res> implements $AddAdsStateCopyWith<$Res> {
+  factory _$$AddAdsStateImplCopyWith(_$AddAdsStateImpl value, $Res Function(_$AddAdsStateImpl) then) = __$$AddAdsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -139,6 +137,7 @@ abstract class _$$AddAdsStateImplCopyWith<$Res>
       String selectedSubCategory,
       String city,
       String governorate,
+      bool isOffer,
       num price,
       List<ImageFile> images,
       AttributesForm attributesForm,
@@ -149,12 +148,8 @@ abstract class _$$AddAdsStateImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$AddAdsStateImplCopyWithImpl<$Res>
-    extends _$AddAdsStateCopyWithImpl<$Res, _$AddAdsStateImpl>
-    implements _$$AddAdsStateImplCopyWith<$Res> {
-  __$$AddAdsStateImplCopyWithImpl(
-      _$AddAdsStateImpl _value, $Res Function(_$AddAdsStateImpl) _then)
-      : super(_value, _then);
+class __$$AddAdsStateImplCopyWithImpl<$Res> extends _$AddAdsStateCopyWithImpl<$Res, _$AddAdsStateImpl> implements _$$AddAdsStateImplCopyWith<$Res> {
+  __$$AddAdsStateImplCopyWithImpl(_$AddAdsStateImpl _value, $Res Function(_$AddAdsStateImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -164,6 +159,7 @@ class __$$AddAdsStateImplCopyWithImpl<$Res>
     Object? selectedSubCategory = null,
     Object? city = null,
     Object? governorate = null,
+    Object? isOffer = null,
     Object? price = null,
     Object? images = null,
     Object? attributesForm = null,
@@ -190,6 +186,10 @@ class __$$AddAdsStateImplCopyWithImpl<$Res>
           ? _value.governorate
           : governorate // ignore: cast_nullable_to_non_nullable
               as String,
+      isOffer: null == isOffer
+          ? _value.isOffer
+          : isOffer // ignore: cast_nullable_to_non_nullable
+              as bool,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -219,6 +219,7 @@ class _$AddAdsStateImpl implements _AddAdsState {
       this.selectedSubCategory = '',
       this.city = '',
       this.governorate = '',
+      this.isOffer = false,
       this.price = 0.0,
       final List<ImageFile> images = const [],
       this.attributesForm = const AttributesForm(),
@@ -242,6 +243,9 @@ class _$AddAdsStateImpl implements _AddAdsState {
   final String governorate;
   @override
   @JsonKey()
+  final bool isOffer;
+  @override
+  @JsonKey()
   final num price;
   final List<ImageFile> _images;
   @override
@@ -261,7 +265,7 @@ class _$AddAdsStateImpl implements _AddAdsState {
 
   @override
   String toString() {
-    return 'AddAdsState(attributesAdsStatus: $attributesAdsStatus, attributesAdsModel: $attributesAdsModel, selectedSubCategory: $selectedSubCategory, city: $city, governorate: $governorate, price: $price, images: $images, attributesForm: $attributesForm, loadingMore: $loadingMore)';
+    return 'AddAdsState(attributesAdsStatus: $attributesAdsStatus, attributesAdsModel: $attributesAdsModel, selectedSubCategory: $selectedSubCategory, city: $city, governorate: $governorate, isOffer: $isOffer, price: $price, images: $images, attributesForm: $attributesForm, loadingMore: $loadingMore)';
   }
 
   @override
@@ -269,41 +273,26 @@ class _$AddAdsStateImpl implements _AddAdsState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddAdsStateImpl &&
-            (identical(other.attributesAdsStatus, attributesAdsStatus) ||
-                other.attributesAdsStatus == attributesAdsStatus) &&
-            (identical(other.attributesAdsModel, attributesAdsModel) ||
-                other.attributesAdsModel == attributesAdsModel) &&
-            (identical(other.selectedSubCategory, selectedSubCategory) ||
-                other.selectedSubCategory == selectedSubCategory) &&
+            (identical(other.attributesAdsStatus, attributesAdsStatus) || other.attributesAdsStatus == attributesAdsStatus) &&
+            (identical(other.attributesAdsModel, attributesAdsModel) || other.attributesAdsModel == attributesAdsModel) &&
+            (identical(other.selectedSubCategory, selectedSubCategory) || other.selectedSubCategory == selectedSubCategory) &&
             (identical(other.city, city) || other.city == city) &&
-            (identical(other.governorate, governorate) ||
-                other.governorate == governorate) &&
+            (identical(other.governorate, governorate) || other.governorate == governorate) &&
+            (identical(other.isOffer, isOffer) || other.isOffer == isOffer) &&
             (identical(other.price, price) || other.price == price) &&
             const DeepCollectionEquality().equals(other._images, _images) &&
-            (identical(other.attributesForm, attributesForm) ||
-                other.attributesForm == attributesForm) &&
-            (identical(other.loadingMore, loadingMore) ||
-                other.loadingMore == loadingMore));
+            (identical(other.attributesForm, attributesForm) || other.attributesForm == attributesForm) &&
+            (identical(other.loadingMore, loadingMore) || other.loadingMore == loadingMore));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      attributesAdsStatus,
-      attributesAdsModel,
-      selectedSubCategory,
-      city,
-      governorate,
-      price,
-      const DeepCollectionEquality().hash(_images),
-      attributesForm,
-      loadingMore);
+  int get hashCode => Object.hash(runtimeType, attributesAdsStatus, attributesAdsModel, selectedSubCategory, city, governorate, isOffer, price,
+      const DeepCollectionEquality().hash(_images), attributesForm, loadingMore);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$AddAdsStateImplCopyWith<_$AddAdsStateImpl> get copyWith =>
-      __$$AddAdsStateImplCopyWithImpl<_$AddAdsStateImpl>(this, _$identity);
+  _$$AddAdsStateImplCopyWith<_$AddAdsStateImpl> get copyWith => __$$AddAdsStateImplCopyWithImpl<_$AddAdsStateImpl>(this, _$identity);
 }
 
 abstract class _AddAdsState implements AddAdsState {
@@ -313,6 +302,7 @@ abstract class _AddAdsState implements AddAdsState {
       final String selectedSubCategory,
       final String city,
       final String governorate,
+      final bool isOffer,
       final num price,
       final List<ImageFile> images,
       final AttributesForm attributesForm,
@@ -329,6 +319,8 @@ abstract class _AddAdsState implements AddAdsState {
   @override
   String get governorate;
   @override
+  bool get isOffer;
+  @override
   num get price;
   @override
   List<ImageFile> get images;
@@ -338,6 +330,5 @@ abstract class _AddAdsState implements AddAdsState {
   bool get loadingMore;
   @override
   @JsonKey(ignore: true)
-  _$$AddAdsStateImplCopyWith<_$AddAdsStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$AddAdsStateImplCopyWith<_$AddAdsStateImpl> get copyWith => throw _privateConstructorUsedError;
 }

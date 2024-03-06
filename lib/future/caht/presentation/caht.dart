@@ -3,7 +3,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:opensooq/config/routes/app_routes.dart';
 import 'package:opensooq/core/utils/hex_color.dart';
-import 'package:opensooq/core/utils/media_query_values.dart';
 import 'package:opensooq/future/caht/widget/empty_screen.dart';
 
 import '../../../core/utils/custom_failed_app.dart';
@@ -18,8 +17,7 @@ class ChatPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        floatingActionButtonLocation:
-            FloatingActionButtonLocation.miniStartFloat,
+        floatingActionButtonLocation: FloatingActionButtonLocation.miniStartFloat,
         floatingActionButton: InkWell(
           onTap: () {
             context.goNamed(Routes.newChatPage);
@@ -27,11 +25,8 @@ class ChatPage extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.all(15),
             margin: const EdgeInsets.all(15),
-            decoration: BoxDecoration(
-                color: HexColor('F05A35'),
-                borderRadius: BorderRadius.circular(30)),
-            child: SvgPicture.asset('assets/images/svg/message_cat.svg',
-                color: Colors.white, height: 25),
+            decoration: BoxDecoration(color: HexColor('F05A35'), borderRadius: BorderRadius.circular(30)),
+            child: SvgPicture.asset('assets/images/svg/message_cat.svg', color: Colors.white, height: 25),
           ),
         ),
         body: SingleChildScrollView(
@@ -51,11 +46,9 @@ class ChatPage extends StatelessWidget {
                   onChanged: (value) {},
                   imgIconSvg: 'assets/images/svg/search.svg',
                 ),
-
-
                 ListView.builder(
                   shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   scrollDirection: Axis.vertical,
                   itemBuilder: (context, index) => Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -63,11 +56,7 @@ class ChatPage extends StatelessWidget {
                       onTap: () {
                         context.goNamed(Routes.chatMassagePage);
                       },
-                      child: ProfileChatCard(
-                          img: '',
-                          name: 'آدم يوسف',
-                          des: 'هذا مثال لنص يمكن أن يستبدل في نفس.... ',
-                          count: '1'),
+                      child: ProfileChatCard(img: '', name: 'آدم يوسف', des: 'هذا مثال لنص يمكن أن يستبدل في نفس.... ', count: '1'),
                     ),
                   ),
                   itemCount: 9,

@@ -102,6 +102,28 @@ class AddAdsCubit extends Cubit<AddAdsState> {
     emit(state.copyWith(attributesForm: state.attributesForm.copyWith(description: description)));
   }
 
+  void updateOfferAds({
+    required String offerPrice,
+    required String startOfferDate,
+    required String endOfferDate,
+    required String startOfferTime,
+    required String endOfferTime,
+  }) {
+    emit(state.copyWith(
+      attributesForm: state.attributesForm.copyWith(
+        offerPrice: offerPrice,
+        offerEndDate: endOfferDate,
+        offerEndTime: endOfferTime,
+        offerStartDate: startOfferDate,
+        offerStartTime: startOfferTime,
+      ),
+    ));
+  }
+
+  void updateIsOffer(bool isOffer) {
+    emit(state.copyWith(isOffer: isOffer));
+  }
+
   Future<void> getLocalUser() async {
     final user = await di.sl<CacheHelper>().hiveGetDataById<UserLocalModel>(0);
 

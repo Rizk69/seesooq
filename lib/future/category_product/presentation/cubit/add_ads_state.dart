@@ -15,6 +15,7 @@ class AddAdsState with _$AddAdsState {
     @Default('') String selectedSubCategory,
     @Default('') String city,
     @Default('') String governorate,
+    @Default(false) bool isOffer,
     @Default(0.0) num price,
     @Default([]) List<ImageFile> images,
     @Default(AttributesForm()) AttributesForm attributesForm,

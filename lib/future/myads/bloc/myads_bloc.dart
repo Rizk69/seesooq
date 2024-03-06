@@ -41,3 +41,23 @@ class MyadsBloc extends Bloc<MyadsEvent, MyAdsState> {
     );
   }
 }
+// https://fcm.googleapis.com/fcm/send
+//{
+//   "to":"c86M0G3m3EDFhh9_bFD9Zh:APA91bEBLI4cDRsoBkhKu-f58Hm0Covp4ZsNOriM7HO-J8OyM1eKtg0TEdnL7ffoMNEnCctTNoHsx5_FzbRr6G6bQ_wsnck2PZbC5-h3BNcwMB2PFkdxoBymTIu6Xv-OFB-hTw31SoKD",
+//   "notification": {
+//     "title": "New Job Assign",
+//     "body":"AHmad"
+//   },
+//
+//
+//
+//    "aps" : {
+//       "alert": {
+//           "uuid": "982cf533-7b1b-4cf6-a6e0-004aab68c503",
+//           "incoming_caller_id": "1",
+//           "incoming_caller_name": "yaseen"
+//         }
+//
+//    }
+//
+// }

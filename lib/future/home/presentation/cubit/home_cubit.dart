@@ -97,6 +97,7 @@ const List<String> titles = [
   'wallet_drawer',
   'package_drawer',
   'favorite_drawer',
+  'blogs_drawer',
   'account_drawer',
   'help_drawer',
   'setting_drawer',

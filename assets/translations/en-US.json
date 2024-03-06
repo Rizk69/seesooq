@@ -188,6 +188,8 @@
   "empty_reels_des": "It seems you haven't followed any users yet, it will appear",
   "follow": "Follow +",
   "following": "Following",
+  "adsName": "Title",
+  "adsDescription": "Description",
 
   "empty_reels_des1": "Videos from those you follow here..."
 

@@ -1,11 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:multi_image_picker_view/multi_image_picker_view.dart';
 import 'package:opensooq/app.dart';
+import 'package:opensooq/core/utils/notification_service.dart';
 import 'package:opensooq/firebase_options.dart';
 import 'package:opensooq/future/user_local_model.dart';
 import 'package:path_provider/path_provider.dart';
@@ -40,6 +42,15 @@ void main() async {
   Hive.registerAdapter(UserLocalModelAdapter());
   Hive.registerAdapter(UserDataModelAdapter());
   Bloc.observer = MyBlocObserver();
+
+  FirebaseMessaging.instance.requestPermission(
+    alert: true,
+    badge: true,
+    provisional: false,
+    sound: true,
+  );
+  LocalNotificationService.preStart();
+  print(await FirebaseMessaging.instance.getToken());
 
   runApp(
     EasyLocalization(

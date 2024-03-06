@@ -29,29 +29,33 @@ class StoryViewComponent extends StatefulWidget {
 class _StoryViewComponentState extends State<StoryViewComponent> {
   @override
   Widget build(BuildContext context) {
-    print(HomeCubit.get(context).state.userLocalModel?.user?.id.toString());
     return BlocProvider.value(
       value: widget.cubit,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CardPersonalWidget(
-              bodyText: 'lookingToday'.tr(), type: CardPersonalWidgetType.home),
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 10),
-            height: 50,
-            child: TextFormFiledApp(
-              hintText: 'search'.tr(),
-              prefixIcon: 'search_bar',
-              suffixIcon: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image.asset(
-                  'jordan'.toPng,
-                  width: 20,
-                  height: 20,
+          CardPersonalWidget(bodyText: 'lookingToday'.tr(), type: CardPersonalWidgetType.home),
+          Hero(
+            tag: 'search',
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 10),
+              height: 50,
+              child: TextFormFiledApp(
+                onTap: () {
+                  context.goNamed(Routes.search);
+                },
+                hintText: 'search'.tr(),
+                prefixIcon: 'search_bar',
+                suffixIcon: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Image.asset(
+                    'jordan'.toPng,
+                    width: 20,
+                    height: 20,
+                  ),
                 ),
+                textEditingController: TextEditingController(),
               ),
-              textEditingController: TextEditingController(),
             ),
           ),
           const SizedBox(
@@ -69,8 +73,7 @@ class _StoryViewComponentState extends State<StoryViewComponent> {
           const SizedBox(
             height: 10,
           ),
-          BlocBuilder<StoryUserCubit, StoryUserState>(
-              builder: (context, state) {
+          BlocBuilder<StoryUserCubit, StoryUserState>(builder: (context, state) {
             var cubit = StoryUserCubit.get(context);
             return SingleChildScrollView(
               padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -81,14 +84,8 @@ class _StoryViewComponentState extends State<StoryViewComponent> {
                   ...List.generate(
                     state.usersStories?.info?.length ?? 0,
                     (index) {
-                      if (HomeCubit.get(context)
-                              .state
-                              .userLocalModel
-                              ?.user
-                              ?.id
-                              .toString() !=
-                          (state.usersStories?.info?[index].userId.toString() ??
-                              0)) {
+                      if (HomeCubit.get(context).state.userLocalModel?.user?.id.toString() !=
+                          (state.usersStories?.info?[index].userId.toString() ?? 0)) {
                         return Row(
                           children: [
                             const SizedBox(
@@ -97,16 +94,11 @@ class _StoryViewComponentState extends State<StoryViewComponent> {
                             InkWell(
                               borderRadius: BorderRadius.circular(100),
                               hoverColor: Colors.transparent,
-                              overlayColor:
-                                  MaterialStateProperty.all(Colors.transparent),
+                              overlayColor: MaterialStateProperty.all(Colors.transparent),
                               onTap: () {
-                                cubit.updateStatusOpening(
-                                    statusOpening: StatusOpening.others,
-                                    index: index);
+                                cubit.updateStatusOpening(statusOpening: StatusOpening.others, index: index);
                                 context.goNamed(Routes.storyView, extra: {
-                                  'userStory': state
-                                          .usersStories?.info?[index].stories ??
-                                      [],
+                                  'userStory': state.usersStories?.info?[index].stories ?? [],
                                   'infoData': state.usersStories?.info?[index]
                                 });
                               },
@@ -116,9 +108,7 @@ class _StoryViewComponentState extends State<StoryViewComponent> {
                                     alignment: Alignment.center,
                                     children: [
                                       DottedBorderExample(
-                                        story: state.usersStories?.info?[index]
-                                                .stories ??
-                                            [],
+                                        story: state.usersStories?.info?[index].stories ?? [],
                                         index: index,
                                         state: state,
                                       ),
@@ -127,9 +117,7 @@ class _StoryViewComponentState extends State<StoryViewComponent> {
                                         child: CircleAvatar(
                                           radius: kRadialReactionRadius + 10,
                                           backgroundImage: NetworkImage(
-                                            state.usersStories?.info?[index]
-                                                    .image ??
-                                                '',
+                                            state.usersStories?.info?[index].image ?? '',
                                           ),
                                         ),
                                       ),
@@ -142,9 +130,7 @@ class _StoryViewComponentState extends State<StoryViewComponent> {
                                     width: 80,
                                     child: TranslateText(
                                       styleText: StyleText.h6,
-                                      text: state.usersStories?.info?[index]
-                                              .name ??
-                                          ' ',
+                                      text: state.usersStories?.info?[index].name ?? ' ',
                                       fontWeight: FontWeight.w600,
                                       textAlign: TextAlign.center,
                                     ),
@@ -174,12 +160,10 @@ class _StoryViewComponentState extends State<StoryViewComponent> {
             const SizedBox(
               height: 15,
             ),
-            const Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CategoryWidget(),
-                  BookingPostWidget(),
-                ])
+            const Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              CategoryWidget(),
+              BookingPostWidget(),
+            ])
           ]
         ],
       ),

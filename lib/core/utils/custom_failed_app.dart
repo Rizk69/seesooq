@@ -17,11 +17,17 @@ class TextFormFiledApp extends StatelessWidget {
       this.suffixIcon,
       this.obscureText,
       this.textInputAction,
+      this.onTap,
+      this.autoFocus,
       this.keyBoardType});
 
   final TextEditingController textEditingController;
   final String hintText;
   final int? maxLine;
+
+  final bool? autoFocus;
+
+  final VoidCallback? onTap;
   final TextInputAction? textInputAction;
   final TextInputType? keyBoardType;
   final String? prefixIcon;
@@ -34,6 +40,8 @@ class TextFormFiledApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
         controller: textEditingController,
+        onTap: onTap,
+        autofocus: autoFocus ?? false,
         onTapOutside: (event) => FocusScope.of(context).unfocus(),
         textAlign: TextAlign.start,
         obscureText: obscureText ?? false,

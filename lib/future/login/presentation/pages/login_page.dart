@@ -54,6 +54,8 @@ class _LoginPageState extends State<LoginPage> {
                 height: 50,
                 child: TextFormFiledApp(
                   prefixIcon: 'email',
+                  keyBoardType: TextInputType.emailAddress,
+                  textInputAction: TextInputAction.next,
                   textEditingController: email,
                   hintText: 'emailHint'.tr(),
                 ),

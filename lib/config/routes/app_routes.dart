@@ -4,6 +4,7 @@ import 'package:opensooq/config/routes/go_redirect.dart';
 import 'package:opensooq/config/routes/redirect/auth_redirect.dart';
 import 'package:opensooq/di.dart' as di;
 import 'package:opensooq/future/app/presentation/pages/app_view.dart';
+import 'package:opensooq/future/blogs/presentatin/pages/route/blogs_route.dart';
 import 'package:opensooq/future/caht/presentation/chat_massage_page.dart';
 import 'package:opensooq/future/caht/route/chat_route.dart';
 import 'package:opensooq/future/category/presentation/pages/routes/category_route.dart';
@@ -32,6 +33,7 @@ import 'package:opensooq/future/login/presentation/pages/route/login_splash_rout
 import 'package:opensooq/future/notification/presentation/pages/view/notification_page.dart';
 import 'package:opensooq/future/packages/presentation/pages/route/packages_route.dart';
 import 'package:opensooq/future/profile/presentation/profile_route.dart';
+import 'package:opensooq/future/search/presentation/pages/search_page.dart';
 import 'package:opensooq/future/setting1/presentation/accoun_mange_page.dart';
 import 'package:opensooq/future/setting1/presentation/add_location_user.dart';
 import 'package:opensooq/future/setting1/presentation/change_password_screen.dart';
@@ -66,6 +68,7 @@ class Routes {
   static const String favorite = 'favorite';
   static const String myAds = 'myAds';
   static const String reels = '/reels';
+  static const String search = '/search';
   static const String myReels = 'myReels';
   static const String setting = '/setting';
   static const String accountMangePage = '/accountMangePage';
@@ -101,6 +104,8 @@ class Routes {
   static const String notification = 'notification';
   static const String rootCategoey = '/rootCategory';
   static const String uploadAdsPage = 'uploadAdsPage';
+  static const String blogsRoute = 'blogsRoute';
+  static const String blogRoute = 'blogRoute';
   static const String getAdsViewRoute = 'getAdsViewRoute';
   static const String reviewAdsRoute = 'reviewAdsRoute';
   static const String uploadPhoto = 'uploadPhoto';
@@ -148,6 +153,7 @@ final GoRouter router = GoRouter(
                   FavoriteRoute(),
                   MyAdsRoute(),
                   WalletRoute(),
+                  BlogsRoute(),
                   GoRoute(
                     path: 'view_ads_home',
                     name: 'view_ads_home',
@@ -180,11 +186,21 @@ final GoRouter router = GoRouter(
           ]),
           StatefulShellBranch(routes: [
             GoRoute(
-              path: '/a',
-              name: '/a',
-              builder: (context, state) => Container(
-                color: Colors.red,
-              ),
+              path: Routes.search,
+              name: Routes.search,
+              pageBuilder: (context, state) {
+                return CustomTransitionPage(
+                  child: const SearchPage(),
+                  transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                    return RotationTransition(
+                      turns: animation,
+                      alignment: Alignment.center,
+                      filterQuality: FilterQuality.high,
+                      child: child,
+                    );
+                  },
+                );
+              },
             ),
           ]),
           StatefulShellBranch(routes: [
@@ -617,7 +633,7 @@ final GoRouter router = GoRouter(
       name: Routes.chatMassagePage,
       pageBuilder: (context, state) {
         return CustomTransitionPage(
-          child: ChatMassagePage(),
+          child: const ChatMassagePage(),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             return FadeTransition(
               opacity: animation,

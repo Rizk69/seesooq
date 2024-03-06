@@ -7,6 +7,7 @@ import 'package:opensooq/core/utils/media_query_values.dart';
 import 'package:opensooq/core/widget/text_translate_manager.dart';
 import 'package:opensooq/future/home/presentation/cubit/home_cubit.dart';
 import 'package:opensooq/future/home/presentation/cubit/home_state.dart';
+
 import '../../../../config/routes/app_routes.dart';
 
 enum CardPersonalWidgetType { home, drawer }
@@ -26,7 +27,7 @@ class CardPersonalWidget extends StatelessWidget {
         children: [
           Row(
             children: [
-               const Padding(
+              const Padding(
                 padding: EdgeInsets.all(8.0),
                 child: CircleAvatar(
                   radius: 37,
@@ -73,26 +74,28 @@ class CardPersonalWidget extends StatelessWidget {
             ],
           ),
           if (type == CardPersonalWidgetType.drawer)
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      context.goNamed(Routes.editProfile);
-                    },
-                    icon: SvgPicture.asset(
-                      'edit_profile'.toSvg,
-                      width: 20,
-                      height: 20,
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        context.goNamed(Routes.editProfile);
+                      },
+                      icon: SvgPicture.asset(
+                        'edit_profile'.toSvg,
+                        width: 20,
+                        height: 20,
+                      ),
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(Colors.white),
+                      ),
                     ),
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.white),
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
         ],

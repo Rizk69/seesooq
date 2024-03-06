@@ -107,6 +107,7 @@ dependencies:
   dotted_border: ^2.1.0
   flutter_stripe: ^10.0.0
   pretty_dio_logger: ^1.3.1
+  flutter_local_notifications: ^16.3.3
   rxdart: ^0.27.7
   flutter_chat_ui: ^1.6.12
   open_file: ^3.0.1
@@ -185,6 +186,7 @@ flutter:
     - assets/images/svg/
     - assets/images/svg/icons_ads/
     - assets/images/
+    - assets/
     - assets/images/lottie/
     - assets/json/user/
     - shorebird.yaml
