@@ -37,4 +37,6 @@ class EndPoint {
   static const String removeFollowing = 'followings/remove/{idRFG}';
   static const String getMyAds = 'my_advertisement';
   static const String deleteMyAds = '/place/textsearch/json';
+  static const String getAllBlogs = 'blogs';
+  static const String getDetailsBlog = 'blog/show/{id}';
 }
