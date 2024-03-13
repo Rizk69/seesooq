@@ -99,6 +99,19 @@
   "follow": "متابعة +",
   "following": "أتابع",
   "empty_reels_des": "يبدو أنك لم تتابع أي مستخدم بعد، ستظهر",
-  "empty_reels_des1": "فيديوهات من تتابعهم هنا...."
+  "empty_reels_des1": "فيديوهات من تتابعهم هنا....",
+  "subscribed_successfully": "تم الاشتراك بنجاح",
+  "successfully_subscribed_to_the_exclusive": "قمت بالاشتراك في الباقة الخاصة بنجاح، ",
+  "des_successfully_subscribed": "يمكنك الاستمتاع بكافة مميزاتها...",
+  "add_money": "إضافة الأموال",
+  "charge_wallet": "شحن المحفظة",
+  "transactions": "المعاملات"
+
+
+
+
+
+
+
 
 }

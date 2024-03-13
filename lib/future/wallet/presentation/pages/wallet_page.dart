@@ -32,7 +32,7 @@ class WalletPage extends StatelessWidget {
               actions: [
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: TranslateText(styleText: StyleText.h4, text: 'Wallet', colorText: AppColors.primary),
+                  child: TranslateText(styleText: StyleText.h4, text: 'wallet_drawer', colorText: AppColors.primary),
                 ),
               ],
             ),
@@ -152,7 +152,7 @@ class WalletPage extends StatelessWidget {
                       children: [
                         Expanded(
                             child: CustomButtonWidget(
-                          text: 'Add Money',
+                          text: 'add_money',
                           onPressed: () {
                             context.pushNamed(
                               Routes.paymentGateway,
@@ -165,7 +165,7 @@ class WalletPage extends StatelessWidget {
                         const Gap(20),
                         Expanded(
                             child: CustomButtonWidget(
-                          text: 'Charge Wallet',
+                          text: 'charge_wallet',
                           onPressed: () {},
                           color: HexColor('#200E32'),
                           disableBorder: Border.all(

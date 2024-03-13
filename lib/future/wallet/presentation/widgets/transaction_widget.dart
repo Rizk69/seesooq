@@ -26,7 +26,7 @@ class _TransactionWidgetState extends State<TransactionWidget> {
             children: [
               const TranslateText(
                 styleText: StyleText.h4,
-                text: 'Transactions',
+                text: 'transactions',
               ),
               InkWell(
                 onTap: () {
