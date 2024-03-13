@@ -20,7 +20,7 @@ mixin _$MyAdsState {
   TResult when<TResult extends Object?>({
     required TResult Function() initState,
     required TResult Function() loading,
-    required TResult Function(AdvertisementModel advertisementModel) loaded,
+    required TResult Function(MyAdsModel advertisementModel) loaded,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$MyAdsState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initState,
     TResult? Function()? loading,
-    TResult? Function(AdvertisementModel advertisementModel)? loaded,
+    TResult? Function(MyAdsModel advertisementModel)? loaded,
     TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$MyAdsState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initState,
     TResult Function()? loading,
-    TResult Function(AdvertisementModel advertisementModel)? loaded,
+    TResult Function(MyAdsModel advertisementModel)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -126,7 +126,7 @@ class _$InitStateImpl implements _InitState {
   TResult when<TResult extends Object?>({
     required TResult Function() initState,
     required TResult Function() loading,
-    required TResult Function(AdvertisementModel advertisementModel) loaded,
+    required TResult Function(MyAdsModel advertisementModel) loaded,
     required TResult Function(String message) error,
   }) {
     return initState();
@@ -137,7 +137,7 @@ class _$InitStateImpl implements _InitState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initState,
     TResult? Function()? loading,
-    TResult? Function(AdvertisementModel advertisementModel)? loaded,
+    TResult? Function(MyAdsModel advertisementModel)? loaded,
     TResult? Function(String message)? error,
   }) {
     return initState?.call();
@@ -148,7 +148,7 @@ class _$InitStateImpl implements _InitState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initState,
     TResult Function()? loading,
-    TResult Function(AdvertisementModel advertisementModel)? loaded,
+    TResult Function(MyAdsModel advertisementModel)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -240,7 +240,7 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initState,
     required TResult Function() loading,
-    required TResult Function(AdvertisementModel advertisementModel) loaded,
+    required TResult Function(MyAdsModel advertisementModel) loaded,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -251,7 +251,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initState,
     TResult? Function()? loading,
-    TResult? Function(AdvertisementModel advertisementModel)? loaded,
+    TResult? Function(MyAdsModel advertisementModel)? loaded,
     TResult? Function(String message)? error,
   }) {
     return loading?.call();
@@ -262,7 +262,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initState,
     TResult Function()? loading,
-    TResult Function(AdvertisementModel advertisementModel)? loaded,
+    TResult Function(MyAdsModel advertisementModel)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -320,7 +320,7 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({AdvertisementModel advertisementModel});
+  $Res call({MyAdsModel advertisementModel});
 }
 
 /// @nodoc
@@ -340,7 +340,7 @@ class __$$LoadedImplCopyWithImpl<$Res>
       advertisementModel: null == advertisementModel
           ? _value.advertisementModel
           : advertisementModel // ignore: cast_nullable_to_non_nullable
-              as AdvertisementModel,
+              as MyAdsModel,
     ));
   }
 }
@@ -351,7 +351,7 @@ class _$LoadedImpl implements _Loaded {
   const _$LoadedImpl({required this.advertisementModel});
 
   @override
-  final AdvertisementModel advertisementModel;
+  final MyAdsModel advertisementModel;
 
   @override
   String toString() {
@@ -381,7 +381,7 @@ class _$LoadedImpl implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initState,
     required TResult Function() loading,
-    required TResult Function(AdvertisementModel advertisementModel) loaded,
+    required TResult Function(MyAdsModel advertisementModel) loaded,
     required TResult Function(String message) error,
   }) {
     return loaded(advertisementModel);
@@ -392,7 +392,7 @@ class _$LoadedImpl implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initState,
     TResult? Function()? loading,
-    TResult? Function(AdvertisementModel advertisementModel)? loaded,
+    TResult? Function(MyAdsModel advertisementModel)? loaded,
     TResult? Function(String message)? error,
   }) {
     return loaded?.call(advertisementModel);
@@ -403,7 +403,7 @@ class _$LoadedImpl implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initState,
     TResult Function()? loading,
-    TResult Function(AdvertisementModel advertisementModel)? loaded,
+    TResult Function(MyAdsModel advertisementModel)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -452,10 +452,10 @@ class _$LoadedImpl implements _Loaded {
 }
 
 abstract class _Loaded implements MyAdsState {
-  const factory _Loaded(
-      {required final AdvertisementModel advertisementModel}) = _$LoadedImpl;
+  const factory _Loaded({required final MyAdsModel advertisementModel}) =
+      _$LoadedImpl;
 
-  AdvertisementModel get advertisementModel;
+  MyAdsModel get advertisementModel;
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -527,7 +527,7 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initState,
     required TResult Function() loading,
-    required TResult Function(AdvertisementModel advertisementModel) loaded,
+    required TResult Function(MyAdsModel advertisementModel) loaded,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -538,7 +538,7 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initState,
     TResult? Function()? loading,
-    TResult? Function(AdvertisementModel advertisementModel)? loaded,
+    TResult? Function(MyAdsModel advertisementModel)? loaded,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -549,7 +549,7 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initState,
     TResult Function()? loading,
-    TResult Function(AdvertisementModel advertisementModel)? loaded,
+    TResult Function(MyAdsModel advertisementModel)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {

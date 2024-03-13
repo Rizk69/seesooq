@@ -41,6 +41,8 @@ class CategoryRemoteDataSourceImpl implements CategoryRemoteDataSource {
 
     if (attributesForm.images.isNotEmpty) {
       for (var i = 0; i < attributesForm.images.length; i++) {
+        // compress image
+
         var image = await MultipartFile.fromFile(
           attributesForm.images[i].path,
           filename: attributesForm.images[i].path.split('/').last,

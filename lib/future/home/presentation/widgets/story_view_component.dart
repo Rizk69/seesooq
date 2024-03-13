@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,6 +16,7 @@ import 'package:opensooq/future/home/presentation/widgets/banner_widget.dart';
 import 'package:opensooq/future/home/presentation/widgets/booking_post_widget.dart';
 import 'package:opensooq/future/home/presentation/widgets/card_personal_widget.dart';
 import 'package:opensooq/future/home/presentation/widgets/category_widget.dart';
+import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 
 import 'my_story_widget.dart';
 
@@ -27,6 +30,21 @@ class StoryViewComponent extends StatefulWidget {
 }
 
 class _StoryViewComponentState extends State<StoryViewComponent> {
+  late TutorialCoachMark tutorialCoachMark;
+
+  GlobalKey keyButton = GlobalKey();
+  GlobalKey keyButton1 = GlobalKey();
+
+  @override
+  void initState() {
+    Future.delayed(const Duration(seconds: 2), () {
+      createTutorial();
+      showTutorial();
+    });
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider.value(
@@ -36,6 +54,7 @@ class _StoryViewComponentState extends State<StoryViewComponent> {
         children: [
           CardPersonalWidget(bodyText: 'lookingToday'.tr(), type: CardPersonalWidgetType.home),
           Hero(
+            key: keyButton,
             tag: 'search',
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 10),
@@ -76,6 +95,7 @@ class _StoryViewComponentState extends State<StoryViewComponent> {
           BlocBuilder<StoryUserCubit, StoryUserState>(builder: (context, state) {
             var cubit = StoryUserCubit.get(context);
             return SingleChildScrollView(
+              key: keyButton1,
               padding: const EdgeInsets.symmetric(horizontal: 10),
               scrollDirection: Axis.horizontal,
               child: Row(
@@ -168,5 +188,128 @@ class _StoryViewComponentState extends State<StoryViewComponent> {
         ],
       ),
     );
+  }
+
+  void showTutorial() {
+    tutorialCoachMark.show(context: context);
+  }
+
+  void createTutorial() {
+    tutorialCoachMark = TutorialCoachMark(
+      targets: _createTargets(),
+      colorShadow: Colors.red,
+      textSkip: "SKIP",
+      paddingFocus: 10,
+      opacityShadow: 0.5,
+      imageFilter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+      onFinish: () {
+        print("finish");
+      },
+      onClickTarget: (target) {
+        print('onClickTarget: $target');
+      },
+      onClickTargetWithTapPosition: (target, tapDetails) {
+        print("target: $target");
+        print("clicked at position local: ${tapDetails.localPosition} - global: ${tapDetails.globalPosition}");
+      },
+      onClickOverlay: (target) {
+        print('onClickOverlay: $target');
+      },
+      onSkip: () {
+        print("skip");
+        return true;
+      },
+    );
+  }
+
+  List<TargetFocus> _createTargets() {
+    List<TargetFocus> targets = [];
+    targets.add(
+      TargetFocus(
+        identify: "Target 0",
+        keyTarget: keyButton,
+        color: Colors.purple,
+        contents: [
+          TargetContent(
+            align: ContentAlign.bottom,
+            builder: (context, controller) {
+              return Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  const Text(
+                    "Search",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      fontSize: 20.0,
+                    ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(top: 10.0),
+                    child: Text(
+                      "here you can search for anything you want to buy or sell.",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      controller.next();
+                    },
+                    child: const Icon(
+                      Icons.chevron_right_rounded,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              );
+            },
+          )
+        ],
+        shape: ShapeLightFocus.RRect,
+        radius: 5,
+      ),
+    );
+    targets.add(
+      TargetFocus(
+        identify: "Target 1",
+        keyTarget: keyButton1,
+        contents: [
+          TargetContent(
+            align: ContentAlign.bottom,
+            builder: (context, controller) {
+              return Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  const Text(
+                    "Create Story",
+                    style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 20.0),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(top: 10.0),
+                    child: Text(
+                      "here you can create your story and share it with your friends.",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      controller.previous();
+                    },
+                    child: const Icon(
+                      Icons.chevron_left,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
+        ],
+      ),
+    );
+
+    return targets;
   }
 }

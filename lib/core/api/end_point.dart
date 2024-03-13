@@ -28,6 +28,8 @@ class EndPoint {
   static const String searchPlaces = '/place/textsearch/json';
   static const String editProfile = '/place/textsearch/json';
   static const String getFav = 'my-favourite';
+  static const String subscriptionPackage = 'payment/store';
+  // subscription
   static const String addFav = 'add-to-favourites/{id}';
   static const String removeFav = 'remove-from-favourites/{id}';
   static const String getFollowers = 'followers';
@@ -39,4 +41,6 @@ class EndPoint {
   static const String deleteMyAds = '/place/textsearch/json';
   static const String getAllBlogs = 'blogs';
   static const String getDetailsBlog = 'blog/show/{id}';
+  static const String getReels = 'get-reels';
+  static const String getMyReels = 'get-my-reels';
 }

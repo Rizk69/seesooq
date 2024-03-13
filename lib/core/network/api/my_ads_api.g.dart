@@ -19,13 +19,13 @@ class _MyAdsApi implements MyAdsApi {
   String? baseUrl;
 
   @override
-  Future<AdvertisementModel> getMyAds({required String type}) async {
+  Future<MyAdsModel> getMyAds({required String type}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = {'type': type};
     final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<AdvertisementModel>(Options(
+        .fetch<Map<String, dynamic>>(_setStreamType<MyAdsModel>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -41,7 +41,7 @@ class _MyAdsApi implements MyAdsApi {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = await compute(deserializeAdvertisementModel, _result.data!);
+    final value = await compute(deserializeMyAdsModel, _result.data!);
     return value;
   }
 

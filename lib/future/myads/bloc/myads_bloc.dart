@@ -30,14 +30,20 @@ class MyadsBloc extends Bloc<MyadsEvent, MyAdsState> {
   Future<void> _getMyads(Emitter emit) async {
     final response = await myAdsRepository.getMyAds();
     response.fold(
-      (l) => emit(
-        MyAdsState.error(
-          message: l.message.toString(),
-        ),
-      ),
-      (r) => emit(
-        MyAdsState.loaded(advertisementModel: r),
-      ),
+      (l) {
+        print('Error: ${l.message}');
+        emit(
+          MyAdsState.error(
+            message: l.message.toString(),
+          ),
+        );
+      },
+      (r) {
+        print('dsadsadsadasd: ${r.advertisementModel?.data?.length}');
+        emit(
+          MyAdsState.loaded(advertisementModel: r),
+        );
+      },
     );
   }
 }

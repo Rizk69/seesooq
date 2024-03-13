@@ -134,7 +134,7 @@ class BookingPostWidget extends StatelessWidget {
                                                       fontWeight: FontWeight.w500,
                                                       fontSize: 14,
                                                       colorText: AppColors.primary,
-                                                      text: "JD ${item.price.toString().price}",
+                                                      text: "${item.price.toString().price} JD",
                                                     ),
                                                   ],
                                                 ),

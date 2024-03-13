@@ -47,6 +47,6 @@ class SignUpRemoteDataSourceImpl implements SignUpRemoteDataSource {
 
   @override
   Future<void> cacheUserModel({required UserLocalModel userLocalModel}) {
-    return _cacheHelper.hivePutData<UserLocalModel>(userLocalModel);
+    return _cacheHelper.hivePutData<UserLocalModel>(userLocalModel, 'user');
   }
 }

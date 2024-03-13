@@ -8,7 +8,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:multi_image_picker_view/multi_image_picker_view.dart';
 import 'package:opensooq/app.dart';
 import 'package:opensooq/core/utils/notification_service.dart';
-import 'package:opensooq/firebase_options.dart';
 import 'package:opensooq/future/user_local_model.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -36,7 +35,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await di.configureDependencies();
   await EasyLocalization.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform, name: 'SeeSooq');
+  await Firebase.initializeApp();
+
   final dir = await getApplicationDocumentsDirectory();
   Hive.init(dir.path);
   Hive.registerAdapter(UserLocalModelAdapter());
@@ -49,6 +49,12 @@ void main() async {
     provisional: false,
     sound: true,
   );
+  final apnsToken = await FirebaseMessaging.instance.getAPNSToken();
+  if (apnsToken != null) {
+    print('APNS token: $apnsToken');
+    // APNS token is available, make FCM plugin API requests...
+  }
+
   LocalNotificationService.preStart();
   print(await FirebaseMessaging.instance.getToken());
 

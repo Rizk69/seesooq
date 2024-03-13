@@ -6,7 +6,6 @@ import 'package:opensooq/core/widget/text_translate_manager.dart';
 import 'package:opensooq/future/category_product/presentation/cubit/add_ads_cubit.dart';
 import 'package:opensooq/future/category_product/presentation/cubit/add_ads_state.dart';
 import 'package:opensooq/future/category_product/presentation/widgets/dynamic_form_widget.dart';
-import 'package:opensooq/future/category_product/presentation/widgets/offer_ads_widget.dart';
 
 class DetailsAdsPage extends StatefulWidget {
   const DetailsAdsPage({super.key});
@@ -94,7 +93,6 @@ class _DetailsAdsPageState extends State<DetailsAdsPage> {
             const SizedBox(
               height: 20,
             ),
-            const OfferAdsWidget(),
             ...state.attributesAdsModel?.attributes
                     ?.map((e) => DynamicFormWidget(
                           name: e.title ?? '',

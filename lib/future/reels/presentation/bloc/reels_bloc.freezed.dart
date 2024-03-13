@@ -1,0 +1,1527 @@
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+
+part of 'reels_bloc.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
+/// @nodoc
+mixin _$ReelsEvent {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getReels,
+    required TResult Function() refreshReels,
+    required TResult Function() loadMoreReels,
+    required TResult Function(String id) deleteReel,
+    required TResult Function(String id) likeReel,
+    required TResult Function(String id) unlikeReel,
+    required TResult Function(String id, String comment) replyReel,
+    required TResult Function(String id) shareReel,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getReels,
+    TResult? Function()? refreshReels,
+    TResult? Function()? loadMoreReels,
+    TResult? Function(String id)? deleteReel,
+    TResult? Function(String id)? likeReel,
+    TResult? Function(String id)? unlikeReel,
+    TResult? Function(String id, String comment)? replyReel,
+    TResult? Function(String id)? shareReel,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getReels,
+    TResult Function()? refreshReels,
+    TResult Function()? loadMoreReels,
+    TResult Function(String id)? deleteReel,
+    TResult Function(String id)? likeReel,
+    TResult Function(String id)? unlikeReel,
+    TResult Function(String id, String comment)? replyReel,
+    TResult Function(String id)? shareReel,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetReels value) getReels,
+    required TResult Function(_RefreshReels value) refreshReels,
+    required TResult Function(_LoadMoreReels value) loadMoreReels,
+    required TResult Function(_DeleteReel value) deleteReel,
+    required TResult Function(_LikeReel value) likeReel,
+    required TResult Function(_UnlikeReel value) unlikeReel,
+    required TResult Function(_ReplyReel value) replyReel,
+    required TResult Function(_ShareReel value) shareReel,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetReels value)? getReels,
+    TResult? Function(_RefreshReels value)? refreshReels,
+    TResult? Function(_LoadMoreReels value)? loadMoreReels,
+    TResult? Function(_DeleteReel value)? deleteReel,
+    TResult? Function(_LikeReel value)? likeReel,
+    TResult? Function(_UnlikeReel value)? unlikeReel,
+    TResult? Function(_ReplyReel value)? replyReel,
+    TResult? Function(_ShareReel value)? shareReel,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetReels value)? getReels,
+    TResult Function(_RefreshReels value)? refreshReels,
+    TResult Function(_LoadMoreReels value)? loadMoreReels,
+    TResult Function(_DeleteReel value)? deleteReel,
+    TResult Function(_LikeReel value)? likeReel,
+    TResult Function(_UnlikeReel value)? unlikeReel,
+    TResult Function(_ReplyReel value)? replyReel,
+    TResult Function(_ShareReel value)? shareReel,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ReelsEventCopyWith<$Res> {
+  factory $ReelsEventCopyWith(
+          ReelsEvent value, $Res Function(ReelsEvent) then) =
+      _$ReelsEventCopyWithImpl<$Res, ReelsEvent>;
+}
+
+/// @nodoc
+class _$ReelsEventCopyWithImpl<$Res, $Val extends ReelsEvent>
+    implements $ReelsEventCopyWith<$Res> {
+  _$ReelsEventCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$GetReelsImplCopyWith<$Res> {
+  factory _$$GetReelsImplCopyWith(
+          _$GetReelsImpl value, $Res Function(_$GetReelsImpl) then) =
+      __$$GetReelsImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetReelsImplCopyWithImpl<$Res>
+    extends _$ReelsEventCopyWithImpl<$Res, _$GetReelsImpl>
+    implements _$$GetReelsImplCopyWith<$Res> {
+  __$$GetReelsImplCopyWithImpl(
+      _$GetReelsImpl _value, $Res Function(_$GetReelsImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GetReelsImpl implements _GetReels {
+  const _$GetReelsImpl();
+
+  @override
+  String toString() {
+    return 'ReelsEvent.getReels()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GetReelsImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getReels,
+    required TResult Function() refreshReels,
+    required TResult Function() loadMoreReels,
+    required TResult Function(String id) deleteReel,
+    required TResult Function(String id) likeReel,
+    required TResult Function(String id) unlikeReel,
+    required TResult Function(String id, String comment) replyReel,
+    required TResult Function(String id) shareReel,
+  }) {
+    return getReels();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getReels,
+    TResult? Function()? refreshReels,
+    TResult? Function()? loadMoreReels,
+    TResult? Function(String id)? deleteReel,
+    TResult? Function(String id)? likeReel,
+    TResult? Function(String id)? unlikeReel,
+    TResult? Function(String id, String comment)? replyReel,
+    TResult? Function(String id)? shareReel,
+  }) {
+    return getReels?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getReels,
+    TResult Function()? refreshReels,
+    TResult Function()? loadMoreReels,
+    TResult Function(String id)? deleteReel,
+    TResult Function(String id)? likeReel,
+    TResult Function(String id)? unlikeReel,
+    TResult Function(String id, String comment)? replyReel,
+    TResult Function(String id)? shareReel,
+    required TResult orElse(),
+  }) {
+    if (getReels != null) {
+      return getReels();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetReels value) getReels,
+    required TResult Function(_RefreshReels value) refreshReels,
+    required TResult Function(_LoadMoreReels value) loadMoreReels,
+    required TResult Function(_DeleteReel value) deleteReel,
+    required TResult Function(_LikeReel value) likeReel,
+    required TResult Function(_UnlikeReel value) unlikeReel,
+    required TResult Function(_ReplyReel value) replyReel,
+    required TResult Function(_ShareReel value) shareReel,
+  }) {
+    return getReels(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetReels value)? getReels,
+    TResult? Function(_RefreshReels value)? refreshReels,
+    TResult? Function(_LoadMoreReels value)? loadMoreReels,
+    TResult? Function(_DeleteReel value)? deleteReel,
+    TResult? Function(_LikeReel value)? likeReel,
+    TResult? Function(_UnlikeReel value)? unlikeReel,
+    TResult? Function(_ReplyReel value)? replyReel,
+    TResult? Function(_ShareReel value)? shareReel,
+  }) {
+    return getReels?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetReels value)? getReels,
+    TResult Function(_RefreshReels value)? refreshReels,
+    TResult Function(_LoadMoreReels value)? loadMoreReels,
+    TResult Function(_DeleteReel value)? deleteReel,
+    TResult Function(_LikeReel value)? likeReel,
+    TResult Function(_UnlikeReel value)? unlikeReel,
+    TResult Function(_ReplyReel value)? replyReel,
+    TResult Function(_ShareReel value)? shareReel,
+    required TResult orElse(),
+  }) {
+    if (getReels != null) {
+      return getReels(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetReels implements ReelsEvent {
+  const factory _GetReels() = _$GetReelsImpl;
+}
+
+/// @nodoc
+abstract class _$$RefreshReelsImplCopyWith<$Res> {
+  factory _$$RefreshReelsImplCopyWith(
+          _$RefreshReelsImpl value, $Res Function(_$RefreshReelsImpl) then) =
+      __$$RefreshReelsImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$RefreshReelsImplCopyWithImpl<$Res>
+    extends _$ReelsEventCopyWithImpl<$Res, _$RefreshReelsImpl>
+    implements _$$RefreshReelsImplCopyWith<$Res> {
+  __$$RefreshReelsImplCopyWithImpl(
+      _$RefreshReelsImpl _value, $Res Function(_$RefreshReelsImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$RefreshReelsImpl implements _RefreshReels {
+  const _$RefreshReelsImpl();
+
+  @override
+  String toString() {
+    return 'ReelsEvent.refreshReels()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$RefreshReelsImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getReels,
+    required TResult Function() refreshReels,
+    required TResult Function() loadMoreReels,
+    required TResult Function(String id) deleteReel,
+    required TResult Function(String id) likeReel,
+    required TResult Function(String id) unlikeReel,
+    required TResult Function(String id, String comment) replyReel,
+    required TResult Function(String id) shareReel,
+  }) {
+    return refreshReels();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getReels,
+    TResult? Function()? refreshReels,
+    TResult? Function()? loadMoreReels,
+    TResult? Function(String id)? deleteReel,
+    TResult? Function(String id)? likeReel,
+    TResult? Function(String id)? unlikeReel,
+    TResult? Function(String id, String comment)? replyReel,
+    TResult? Function(String id)? shareReel,
+  }) {
+    return refreshReels?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getReels,
+    TResult Function()? refreshReels,
+    TResult Function()? loadMoreReels,
+    TResult Function(String id)? deleteReel,
+    TResult Function(String id)? likeReel,
+    TResult Function(String id)? unlikeReel,
+    TResult Function(String id, String comment)? replyReel,
+    TResult Function(String id)? shareReel,
+    required TResult orElse(),
+  }) {
+    if (refreshReels != null) {
+      return refreshReels();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetReels value) getReels,
+    required TResult Function(_RefreshReels value) refreshReels,
+    required TResult Function(_LoadMoreReels value) loadMoreReels,
+    required TResult Function(_DeleteReel value) deleteReel,
+    required TResult Function(_LikeReel value) likeReel,
+    required TResult Function(_UnlikeReel value) unlikeReel,
+    required TResult Function(_ReplyReel value) replyReel,
+    required TResult Function(_ShareReel value) shareReel,
+  }) {
+    return refreshReels(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetReels value)? getReels,
+    TResult? Function(_RefreshReels value)? refreshReels,
+    TResult? Function(_LoadMoreReels value)? loadMoreReels,
+    TResult? Function(_DeleteReel value)? deleteReel,
+    TResult? Function(_LikeReel value)? likeReel,
+    TResult? Function(_UnlikeReel value)? unlikeReel,
+    TResult? Function(_ReplyReel value)? replyReel,
+    TResult? Function(_ShareReel value)? shareReel,
+  }) {
+    return refreshReels?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetReels value)? getReels,
+    TResult Function(_RefreshReels value)? refreshReels,
+    TResult Function(_LoadMoreReels value)? loadMoreReels,
+    TResult Function(_DeleteReel value)? deleteReel,
+    TResult Function(_LikeReel value)? likeReel,
+    TResult Function(_UnlikeReel value)? unlikeReel,
+    TResult Function(_ReplyReel value)? replyReel,
+    TResult Function(_ShareReel value)? shareReel,
+    required TResult orElse(),
+  }) {
+    if (refreshReels != null) {
+      return refreshReels(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RefreshReels implements ReelsEvent {
+  const factory _RefreshReels() = _$RefreshReelsImpl;
+}
+
+/// @nodoc
+abstract class _$$LoadMoreReelsImplCopyWith<$Res> {
+  factory _$$LoadMoreReelsImplCopyWith(
+          _$LoadMoreReelsImpl value, $Res Function(_$LoadMoreReelsImpl) then) =
+      __$$LoadMoreReelsImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadMoreReelsImplCopyWithImpl<$Res>
+    extends _$ReelsEventCopyWithImpl<$Res, _$LoadMoreReelsImpl>
+    implements _$$LoadMoreReelsImplCopyWith<$Res> {
+  __$$LoadMoreReelsImplCopyWithImpl(
+      _$LoadMoreReelsImpl _value, $Res Function(_$LoadMoreReelsImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoadMoreReelsImpl implements _LoadMoreReels {
+  const _$LoadMoreReelsImpl();
+
+  @override
+  String toString() {
+    return 'ReelsEvent.loadMoreReels()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadMoreReelsImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getReels,
+    required TResult Function() refreshReels,
+    required TResult Function() loadMoreReels,
+    required TResult Function(String id) deleteReel,
+    required TResult Function(String id) likeReel,
+    required TResult Function(String id) unlikeReel,
+    required TResult Function(String id, String comment) replyReel,
+    required TResult Function(String id) shareReel,
+  }) {
+    return loadMoreReels();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getReels,
+    TResult? Function()? refreshReels,
+    TResult? Function()? loadMoreReels,
+    TResult? Function(String id)? deleteReel,
+    TResult? Function(String id)? likeReel,
+    TResult? Function(String id)? unlikeReel,
+    TResult? Function(String id, String comment)? replyReel,
+    TResult? Function(String id)? shareReel,
+  }) {
+    return loadMoreReels?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getReels,
+    TResult Function()? refreshReels,
+    TResult Function()? loadMoreReels,
+    TResult Function(String id)? deleteReel,
+    TResult Function(String id)? likeReel,
+    TResult Function(String id)? unlikeReel,
+    TResult Function(String id, String comment)? replyReel,
+    TResult Function(String id)? shareReel,
+    required TResult orElse(),
+  }) {
+    if (loadMoreReels != null) {
+      return loadMoreReels();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetReels value) getReels,
+    required TResult Function(_RefreshReels value) refreshReels,
+    required TResult Function(_LoadMoreReels value) loadMoreReels,
+    required TResult Function(_DeleteReel value) deleteReel,
+    required TResult Function(_LikeReel value) likeReel,
+    required TResult Function(_UnlikeReel value) unlikeReel,
+    required TResult Function(_ReplyReel value) replyReel,
+    required TResult Function(_ShareReel value) shareReel,
+  }) {
+    return loadMoreReels(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetReels value)? getReels,
+    TResult? Function(_RefreshReels value)? refreshReels,
+    TResult? Function(_LoadMoreReels value)? loadMoreReels,
+    TResult? Function(_DeleteReel value)? deleteReel,
+    TResult? Function(_LikeReel value)? likeReel,
+    TResult? Function(_UnlikeReel value)? unlikeReel,
+    TResult? Function(_ReplyReel value)? replyReel,
+    TResult? Function(_ShareReel value)? shareReel,
+  }) {
+    return loadMoreReels?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetReels value)? getReels,
+    TResult Function(_RefreshReels value)? refreshReels,
+    TResult Function(_LoadMoreReels value)? loadMoreReels,
+    TResult Function(_DeleteReel value)? deleteReel,
+    TResult Function(_LikeReel value)? likeReel,
+    TResult Function(_UnlikeReel value)? unlikeReel,
+    TResult Function(_ReplyReel value)? replyReel,
+    TResult Function(_ShareReel value)? shareReel,
+    required TResult orElse(),
+  }) {
+    if (loadMoreReels != null) {
+      return loadMoreReels(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadMoreReels implements ReelsEvent {
+  const factory _LoadMoreReels() = _$LoadMoreReelsImpl;
+}
+
+/// @nodoc
+abstract class _$$DeleteReelImplCopyWith<$Res> {
+  factory _$$DeleteReelImplCopyWith(
+          _$DeleteReelImpl value, $Res Function(_$DeleteReelImpl) then) =
+      __$$DeleteReelImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id});
+}
+
+/// @nodoc
+class __$$DeleteReelImplCopyWithImpl<$Res>
+    extends _$ReelsEventCopyWithImpl<$Res, _$DeleteReelImpl>
+    implements _$$DeleteReelImplCopyWith<$Res> {
+  __$$DeleteReelImplCopyWithImpl(
+      _$DeleteReelImpl _value, $Res Function(_$DeleteReelImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$DeleteReelImpl(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DeleteReelImpl implements _DeleteReel {
+  const _$DeleteReelImpl(this.id);
+
+  @override
+  final String id;
+
+  @override
+  String toString() {
+    return 'ReelsEvent.deleteReel(id: $id)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteReelImpl &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteReelImplCopyWith<_$DeleteReelImpl> get copyWith =>
+      __$$DeleteReelImplCopyWithImpl<_$DeleteReelImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getReels,
+    required TResult Function() refreshReels,
+    required TResult Function() loadMoreReels,
+    required TResult Function(String id) deleteReel,
+    required TResult Function(String id) likeReel,
+    required TResult Function(String id) unlikeReel,
+    required TResult Function(String id, String comment) replyReel,
+    required TResult Function(String id) shareReel,
+  }) {
+    return deleteReel(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getReels,
+    TResult? Function()? refreshReels,
+    TResult? Function()? loadMoreReels,
+    TResult? Function(String id)? deleteReel,
+    TResult? Function(String id)? likeReel,
+    TResult? Function(String id)? unlikeReel,
+    TResult? Function(String id, String comment)? replyReel,
+    TResult? Function(String id)? shareReel,
+  }) {
+    return deleteReel?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getReels,
+    TResult Function()? refreshReels,
+    TResult Function()? loadMoreReels,
+    TResult Function(String id)? deleteReel,
+    TResult Function(String id)? likeReel,
+    TResult Function(String id)? unlikeReel,
+    TResult Function(String id, String comment)? replyReel,
+    TResult Function(String id)? shareReel,
+    required TResult orElse(),
+  }) {
+    if (deleteReel != null) {
+      return deleteReel(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetReels value) getReels,
+    required TResult Function(_RefreshReels value) refreshReels,
+    required TResult Function(_LoadMoreReels value) loadMoreReels,
+    required TResult Function(_DeleteReel value) deleteReel,
+    required TResult Function(_LikeReel value) likeReel,
+    required TResult Function(_UnlikeReel value) unlikeReel,
+    required TResult Function(_ReplyReel value) replyReel,
+    required TResult Function(_ShareReel value) shareReel,
+  }) {
+    return deleteReel(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetReels value)? getReels,
+    TResult? Function(_RefreshReels value)? refreshReels,
+    TResult? Function(_LoadMoreReels value)? loadMoreReels,
+    TResult? Function(_DeleteReel value)? deleteReel,
+    TResult? Function(_LikeReel value)? likeReel,
+    TResult? Function(_UnlikeReel value)? unlikeReel,
+    TResult? Function(_ReplyReel value)? replyReel,
+    TResult? Function(_ShareReel value)? shareReel,
+  }) {
+    return deleteReel?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetReels value)? getReels,
+    TResult Function(_RefreshReels value)? refreshReels,
+    TResult Function(_LoadMoreReels value)? loadMoreReels,
+    TResult Function(_DeleteReel value)? deleteReel,
+    TResult Function(_LikeReel value)? likeReel,
+    TResult Function(_UnlikeReel value)? unlikeReel,
+    TResult Function(_ReplyReel value)? replyReel,
+    TResult Function(_ShareReel value)? shareReel,
+    required TResult orElse(),
+  }) {
+    if (deleteReel != null) {
+      return deleteReel(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteReel implements ReelsEvent {
+  const factory _DeleteReel(final String id) = _$DeleteReelImpl;
+
+  String get id;
+  @JsonKey(ignore: true)
+  _$$DeleteReelImplCopyWith<_$DeleteReelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LikeReelImplCopyWith<$Res> {
+  factory _$$LikeReelImplCopyWith(
+          _$LikeReelImpl value, $Res Function(_$LikeReelImpl) then) =
+      __$$LikeReelImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id});
+}
+
+/// @nodoc
+class __$$LikeReelImplCopyWithImpl<$Res>
+    extends _$ReelsEventCopyWithImpl<$Res, _$LikeReelImpl>
+    implements _$$LikeReelImplCopyWith<$Res> {
+  __$$LikeReelImplCopyWithImpl(
+      _$LikeReelImpl _value, $Res Function(_$LikeReelImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$LikeReelImpl(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LikeReelImpl implements _LikeReel {
+  const _$LikeReelImpl(this.id);
+
+  @override
+  final String id;
+
+  @override
+  String toString() {
+    return 'ReelsEvent.likeReel(id: $id)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LikeReelImpl &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LikeReelImplCopyWith<_$LikeReelImpl> get copyWith =>
+      __$$LikeReelImplCopyWithImpl<_$LikeReelImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getReels,
+    required TResult Function() refreshReels,
+    required TResult Function() loadMoreReels,
+    required TResult Function(String id) deleteReel,
+    required TResult Function(String id) likeReel,
+    required TResult Function(String id) unlikeReel,
+    required TResult Function(String id, String comment) replyReel,
+    required TResult Function(String id) shareReel,
+  }) {
+    return likeReel(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getReels,
+    TResult? Function()? refreshReels,
+    TResult? Function()? loadMoreReels,
+    TResult? Function(String id)? deleteReel,
+    TResult? Function(String id)? likeReel,
+    TResult? Function(String id)? unlikeReel,
+    TResult? Function(String id, String comment)? replyReel,
+    TResult? Function(String id)? shareReel,
+  }) {
+    return likeReel?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getReels,
+    TResult Function()? refreshReels,
+    TResult Function()? loadMoreReels,
+    TResult Function(String id)? deleteReel,
+    TResult Function(String id)? likeReel,
+    TResult Function(String id)? unlikeReel,
+    TResult Function(String id, String comment)? replyReel,
+    TResult Function(String id)? shareReel,
+    required TResult orElse(),
+  }) {
+    if (likeReel != null) {
+      return likeReel(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetReels value) getReels,
+    required TResult Function(_RefreshReels value) refreshReels,
+    required TResult Function(_LoadMoreReels value) loadMoreReels,
+    required TResult Function(_DeleteReel value) deleteReel,
+    required TResult Function(_LikeReel value) likeReel,
+    required TResult Function(_UnlikeReel value) unlikeReel,
+    required TResult Function(_ReplyReel value) replyReel,
+    required TResult Function(_ShareReel value) shareReel,
+  }) {
+    return likeReel(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetReels value)? getReels,
+    TResult? Function(_RefreshReels value)? refreshReels,
+    TResult? Function(_LoadMoreReels value)? loadMoreReels,
+    TResult? Function(_DeleteReel value)? deleteReel,
+    TResult? Function(_LikeReel value)? likeReel,
+    TResult? Function(_UnlikeReel value)? unlikeReel,
+    TResult? Function(_ReplyReel value)? replyReel,
+    TResult? Function(_ShareReel value)? shareReel,
+  }) {
+    return likeReel?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetReels value)? getReels,
+    TResult Function(_RefreshReels value)? refreshReels,
+    TResult Function(_LoadMoreReels value)? loadMoreReels,
+    TResult Function(_DeleteReel value)? deleteReel,
+    TResult Function(_LikeReel value)? likeReel,
+    TResult Function(_UnlikeReel value)? unlikeReel,
+    TResult Function(_ReplyReel value)? replyReel,
+    TResult Function(_ShareReel value)? shareReel,
+    required TResult orElse(),
+  }) {
+    if (likeReel != null) {
+      return likeReel(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LikeReel implements ReelsEvent {
+  const factory _LikeReel(final String id) = _$LikeReelImpl;
+
+  String get id;
+  @JsonKey(ignore: true)
+  _$$LikeReelImplCopyWith<_$LikeReelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UnlikeReelImplCopyWith<$Res> {
+  factory _$$UnlikeReelImplCopyWith(
+          _$UnlikeReelImpl value, $Res Function(_$UnlikeReelImpl) then) =
+      __$$UnlikeReelImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id});
+}
+
+/// @nodoc
+class __$$UnlikeReelImplCopyWithImpl<$Res>
+    extends _$ReelsEventCopyWithImpl<$Res, _$UnlikeReelImpl>
+    implements _$$UnlikeReelImplCopyWith<$Res> {
+  __$$UnlikeReelImplCopyWithImpl(
+      _$UnlikeReelImpl _value, $Res Function(_$UnlikeReelImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$UnlikeReelImpl(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UnlikeReelImpl implements _UnlikeReel {
+  const _$UnlikeReelImpl(this.id);
+
+  @override
+  final String id;
+
+  @override
+  String toString() {
+    return 'ReelsEvent.unlikeReel(id: $id)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UnlikeReelImpl &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UnlikeReelImplCopyWith<_$UnlikeReelImpl> get copyWith =>
+      __$$UnlikeReelImplCopyWithImpl<_$UnlikeReelImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getReels,
+    required TResult Function() refreshReels,
+    required TResult Function() loadMoreReels,
+    required TResult Function(String id) deleteReel,
+    required TResult Function(String id) likeReel,
+    required TResult Function(String id) unlikeReel,
+    required TResult Function(String id, String comment) replyReel,
+    required TResult Function(String id) shareReel,
+  }) {
+    return unlikeReel(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getReels,
+    TResult? Function()? refreshReels,
+    TResult? Function()? loadMoreReels,
+    TResult? Function(String id)? deleteReel,
+    TResult? Function(String id)? likeReel,
+    TResult? Function(String id)? unlikeReel,
+    TResult? Function(String id, String comment)? replyReel,
+    TResult? Function(String id)? shareReel,
+  }) {
+    return unlikeReel?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getReels,
+    TResult Function()? refreshReels,
+    TResult Function()? loadMoreReels,
+    TResult Function(String id)? deleteReel,
+    TResult Function(String id)? likeReel,
+    TResult Function(String id)? unlikeReel,
+    TResult Function(String id, String comment)? replyReel,
+    TResult Function(String id)? shareReel,
+    required TResult orElse(),
+  }) {
+    if (unlikeReel != null) {
+      return unlikeReel(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetReels value) getReels,
+    required TResult Function(_RefreshReels value) refreshReels,
+    required TResult Function(_LoadMoreReels value) loadMoreReels,
+    required TResult Function(_DeleteReel value) deleteReel,
+    required TResult Function(_LikeReel value) likeReel,
+    required TResult Function(_UnlikeReel value) unlikeReel,
+    required TResult Function(_ReplyReel value) replyReel,
+    required TResult Function(_ShareReel value) shareReel,
+  }) {
+    return unlikeReel(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetReels value)? getReels,
+    TResult? Function(_RefreshReels value)? refreshReels,
+    TResult? Function(_LoadMoreReels value)? loadMoreReels,
+    TResult? Function(_DeleteReel value)? deleteReel,
+    TResult? Function(_LikeReel value)? likeReel,
+    TResult? Function(_UnlikeReel value)? unlikeReel,
+    TResult? Function(_ReplyReel value)? replyReel,
+    TResult? Function(_ShareReel value)? shareReel,
+  }) {
+    return unlikeReel?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetReels value)? getReels,
+    TResult Function(_RefreshReels value)? refreshReels,
+    TResult Function(_LoadMoreReels value)? loadMoreReels,
+    TResult Function(_DeleteReel value)? deleteReel,
+    TResult Function(_LikeReel value)? likeReel,
+    TResult Function(_UnlikeReel value)? unlikeReel,
+    TResult Function(_ReplyReel value)? replyReel,
+    TResult Function(_ShareReel value)? shareReel,
+    required TResult orElse(),
+  }) {
+    if (unlikeReel != null) {
+      return unlikeReel(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UnlikeReel implements ReelsEvent {
+  const factory _UnlikeReel(final String id) = _$UnlikeReelImpl;
+
+  String get id;
+  @JsonKey(ignore: true)
+  _$$UnlikeReelImplCopyWith<_$UnlikeReelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ReplyReelImplCopyWith<$Res> {
+  factory _$$ReplyReelImplCopyWith(
+          _$ReplyReelImpl value, $Res Function(_$ReplyReelImpl) then) =
+      __$$ReplyReelImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id, String comment});
+}
+
+/// @nodoc
+class __$$ReplyReelImplCopyWithImpl<$Res>
+    extends _$ReelsEventCopyWithImpl<$Res, _$ReplyReelImpl>
+    implements _$$ReplyReelImplCopyWith<$Res> {
+  __$$ReplyReelImplCopyWithImpl(
+      _$ReplyReelImpl _value, $Res Function(_$ReplyReelImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? comment = null,
+  }) {
+    return _then(_$ReplyReelImpl(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == comment
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ReplyReelImpl implements _ReplyReel {
+  const _$ReplyReelImpl(this.id, this.comment);
+
+  @override
+  final String id;
+  @override
+  final String comment;
+
+  @override
+  String toString() {
+    return 'ReelsEvent.replyReel(id: $id, comment: $comment)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ReplyReelImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.comment, comment) || other.comment == comment));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id, comment);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ReplyReelImplCopyWith<_$ReplyReelImpl> get copyWith =>
+      __$$ReplyReelImplCopyWithImpl<_$ReplyReelImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getReels,
+    required TResult Function() refreshReels,
+    required TResult Function() loadMoreReels,
+    required TResult Function(String id) deleteReel,
+    required TResult Function(String id) likeReel,
+    required TResult Function(String id) unlikeReel,
+    required TResult Function(String id, String comment) replyReel,
+    required TResult Function(String id) shareReel,
+  }) {
+    return replyReel(id, comment);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getReels,
+    TResult? Function()? refreshReels,
+    TResult? Function()? loadMoreReels,
+    TResult? Function(String id)? deleteReel,
+    TResult? Function(String id)? likeReel,
+    TResult? Function(String id)? unlikeReel,
+    TResult? Function(String id, String comment)? replyReel,
+    TResult? Function(String id)? shareReel,
+  }) {
+    return replyReel?.call(id, comment);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getReels,
+    TResult Function()? refreshReels,
+    TResult Function()? loadMoreReels,
+    TResult Function(String id)? deleteReel,
+    TResult Function(String id)? likeReel,
+    TResult Function(String id)? unlikeReel,
+    TResult Function(String id, String comment)? replyReel,
+    TResult Function(String id)? shareReel,
+    required TResult orElse(),
+  }) {
+    if (replyReel != null) {
+      return replyReel(id, comment);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetReels value) getReels,
+    required TResult Function(_RefreshReels value) refreshReels,
+    required TResult Function(_LoadMoreReels value) loadMoreReels,
+    required TResult Function(_DeleteReel value) deleteReel,
+    required TResult Function(_LikeReel value) likeReel,
+    required TResult Function(_UnlikeReel value) unlikeReel,
+    required TResult Function(_ReplyReel value) replyReel,
+    required TResult Function(_ShareReel value) shareReel,
+  }) {
+    return replyReel(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetReels value)? getReels,
+    TResult? Function(_RefreshReels value)? refreshReels,
+    TResult? Function(_LoadMoreReels value)? loadMoreReels,
+    TResult? Function(_DeleteReel value)? deleteReel,
+    TResult? Function(_LikeReel value)? likeReel,
+    TResult? Function(_UnlikeReel value)? unlikeReel,
+    TResult? Function(_ReplyReel value)? replyReel,
+    TResult? Function(_ShareReel value)? shareReel,
+  }) {
+    return replyReel?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetReels value)? getReels,
+    TResult Function(_RefreshReels value)? refreshReels,
+    TResult Function(_LoadMoreReels value)? loadMoreReels,
+    TResult Function(_DeleteReel value)? deleteReel,
+    TResult Function(_LikeReel value)? likeReel,
+    TResult Function(_UnlikeReel value)? unlikeReel,
+    TResult Function(_ReplyReel value)? replyReel,
+    TResult Function(_ShareReel value)? shareReel,
+    required TResult orElse(),
+  }) {
+    if (replyReel != null) {
+      return replyReel(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ReplyReel implements ReelsEvent {
+  const factory _ReplyReel(final String id, final String comment) =
+      _$ReplyReelImpl;
+
+  String get id;
+  String get comment;
+  @JsonKey(ignore: true)
+  _$$ReplyReelImplCopyWith<_$ReplyReelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ShareReelImplCopyWith<$Res> {
+  factory _$$ShareReelImplCopyWith(
+          _$ShareReelImpl value, $Res Function(_$ShareReelImpl) then) =
+      __$$ShareReelImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id});
+}
+
+/// @nodoc
+class __$$ShareReelImplCopyWithImpl<$Res>
+    extends _$ReelsEventCopyWithImpl<$Res, _$ShareReelImpl>
+    implements _$$ShareReelImplCopyWith<$Res> {
+  __$$ShareReelImplCopyWithImpl(
+      _$ShareReelImpl _value, $Res Function(_$ShareReelImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$ShareReelImpl(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ShareReelImpl implements _ShareReel {
+  const _$ShareReelImpl(this.id);
+
+  @override
+  final String id;
+
+  @override
+  String toString() {
+    return 'ReelsEvent.shareReel(id: $id)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ShareReelImpl &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ShareReelImplCopyWith<_$ShareReelImpl> get copyWith =>
+      __$$ShareReelImplCopyWithImpl<_$ShareReelImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getReels,
+    required TResult Function() refreshReels,
+    required TResult Function() loadMoreReels,
+    required TResult Function(String id) deleteReel,
+    required TResult Function(String id) likeReel,
+    required TResult Function(String id) unlikeReel,
+    required TResult Function(String id, String comment) replyReel,
+    required TResult Function(String id) shareReel,
+  }) {
+    return shareReel(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getReels,
+    TResult? Function()? refreshReels,
+    TResult? Function()? loadMoreReels,
+    TResult? Function(String id)? deleteReel,
+    TResult? Function(String id)? likeReel,
+    TResult? Function(String id)? unlikeReel,
+    TResult? Function(String id, String comment)? replyReel,
+    TResult? Function(String id)? shareReel,
+  }) {
+    return shareReel?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getReels,
+    TResult Function()? refreshReels,
+    TResult Function()? loadMoreReels,
+    TResult Function(String id)? deleteReel,
+    TResult Function(String id)? likeReel,
+    TResult Function(String id)? unlikeReel,
+    TResult Function(String id, String comment)? replyReel,
+    TResult Function(String id)? shareReel,
+    required TResult orElse(),
+  }) {
+    if (shareReel != null) {
+      return shareReel(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetReels value) getReels,
+    required TResult Function(_RefreshReels value) refreshReels,
+    required TResult Function(_LoadMoreReels value) loadMoreReels,
+    required TResult Function(_DeleteReel value) deleteReel,
+    required TResult Function(_LikeReel value) likeReel,
+    required TResult Function(_UnlikeReel value) unlikeReel,
+    required TResult Function(_ReplyReel value) replyReel,
+    required TResult Function(_ShareReel value) shareReel,
+  }) {
+    return shareReel(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetReels value)? getReels,
+    TResult? Function(_RefreshReels value)? refreshReels,
+    TResult? Function(_LoadMoreReels value)? loadMoreReels,
+    TResult? Function(_DeleteReel value)? deleteReel,
+    TResult? Function(_LikeReel value)? likeReel,
+    TResult? Function(_UnlikeReel value)? unlikeReel,
+    TResult? Function(_ReplyReel value)? replyReel,
+    TResult? Function(_ShareReel value)? shareReel,
+  }) {
+    return shareReel?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetReels value)? getReels,
+    TResult Function(_RefreshReels value)? refreshReels,
+    TResult Function(_LoadMoreReels value)? loadMoreReels,
+    TResult Function(_DeleteReel value)? deleteReel,
+    TResult Function(_LikeReel value)? likeReel,
+    TResult Function(_UnlikeReel value)? unlikeReel,
+    TResult Function(_ReplyReel value)? replyReel,
+    TResult Function(_ShareReel value)? shareReel,
+    required TResult orElse(),
+  }) {
+    if (shareReel != null) {
+      return shareReel(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ShareReel implements ReelsEvent {
+  const factory _ShareReel(final String id) = _$ShareReelImpl;
+
+  String get id;
+  @JsonKey(ignore: true)
+  _$$ShareReelImplCopyWith<_$ShareReelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$ReelsState {
+  List<ReelsModel> get reels => throw _privateConstructorUsedError;
+  ReelsStatus get status => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $ReelsStateCopyWith<ReelsState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ReelsStateCopyWith<$Res> {
+  factory $ReelsStateCopyWith(
+          ReelsState value, $Res Function(ReelsState) then) =
+      _$ReelsStateCopyWithImpl<$Res, ReelsState>;
+  @useResult
+  $Res call({List<ReelsModel> reels, ReelsStatus status});
+}
+
+/// @nodoc
+class _$ReelsStateCopyWithImpl<$Res, $Val extends ReelsState>
+    implements $ReelsStateCopyWith<$Res> {
+  _$ReelsStateCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? reels = null,
+    Object? status = null,
+  }) {
+    return _then(_value.copyWith(
+      reels: null == reels
+          ? _value.reels
+          : reels // ignore: cast_nullable_to_non_nullable
+              as List<ReelsModel>,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as ReelsStatus,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$ReelsStateImplCopyWith<$Res>
+    implements $ReelsStateCopyWith<$Res> {
+  factory _$$ReelsStateImplCopyWith(
+          _$ReelsStateImpl value, $Res Function(_$ReelsStateImpl) then) =
+      __$$ReelsStateImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<ReelsModel> reels, ReelsStatus status});
+}
+
+/// @nodoc
+class __$$ReelsStateImplCopyWithImpl<$Res>
+    extends _$ReelsStateCopyWithImpl<$Res, _$ReelsStateImpl>
+    implements _$$ReelsStateImplCopyWith<$Res> {
+  __$$ReelsStateImplCopyWithImpl(
+      _$ReelsStateImpl _value, $Res Function(_$ReelsStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? reels = null,
+    Object? status = null,
+  }) {
+    return _then(_$ReelsStateImpl(
+      reels: null == reels
+          ? _value._reels
+          : reels // ignore: cast_nullable_to_non_nullable
+              as List<ReelsModel>,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as ReelsStatus,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ReelsStateImpl implements _ReelsState {
+  const _$ReelsStateImpl(
+      {final List<ReelsModel> reels = const [],
+      this.status = ReelsStatus.initial})
+      : _reels = reels;
+
+  final List<ReelsModel> _reels;
+  @override
+  @JsonKey()
+  List<ReelsModel> get reels {
+    if (_reels is EqualUnmodifiableListView) return _reels;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_reels);
+  }
+
+  @override
+  @JsonKey()
+  final ReelsStatus status;
+
+  @override
+  String toString() {
+    return 'ReelsState(reels: $reels, status: $status)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ReelsStateImpl &&
+            const DeepCollectionEquality().equals(other._reels, _reels) &&
+            (identical(other.status, status) || other.status == status));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_reels), status);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ReelsStateImplCopyWith<_$ReelsStateImpl> get copyWith =>
+      __$$ReelsStateImplCopyWithImpl<_$ReelsStateImpl>(this, _$identity);
+}
+
+abstract class _ReelsState implements ReelsState {
+  const factory _ReelsState(
+      {final List<ReelsModel> reels,
+      final ReelsStatus status}) = _$ReelsStateImpl;
+
+  @override
+  List<ReelsModel> get reels;
+  @override
+  ReelsStatus get status;
+  @override
+  @JsonKey(ignore: true)
+  _$$ReelsStateImplCopyWith<_$ReelsStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

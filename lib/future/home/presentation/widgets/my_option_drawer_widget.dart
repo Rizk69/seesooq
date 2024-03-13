@@ -38,8 +38,6 @@ class MyOptionDrawerWidget extends StatelessWidget {
             onTap: () {
               cubit.updateIndex(index);
 
-              print(titles[index]);
-
               scaffoldKey.currentState!.closeDrawer();
 
               if (titles[index].toString() == 'ads_drawer') {
@@ -48,13 +46,13 @@ class MyOptionDrawerWidget extends StatelessWidget {
                 context.goNamed(Routes.reels);
               } else if (titles[index].toString() == 'wallet_drawer') {
                 context.goNamed(Routes.wallet);
-              } else if (titles[index].toString() == 'packages_drawer') {
+              } else if (titles[index].toString() == 'package_drawer') {
                 context.goNamed(Routes.packages);
               } else if (titles[index].toString() == 'favorite_drawer') {
                 context.goNamed(Routes.favorite);
               } else if (titles[index].toString() == 'blogs_drawer') {
                 context.goNamed(Routes.blogsRoute);
-              } else if (titles[index].toString() == 'logout_drawer') {
+              } else if (titles[index].toString() == 'logout') {
                 LoginCubit.get(context).deleteLocalUser();
               }
             },

@@ -117,6 +117,7 @@ class LoginCubit extends Cubit<LoginState> with ChangeNotifier {
   }
 
   Future<void> deleteLocalUser() async {
+    print('deleteLocalUser');
     final user = await loginRepository.deleteUserLocal();
 
     user.fold(

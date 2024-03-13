@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../config/routes/app_routes.dart';
-import '../../../core/utils/hex_color.dart';
-import '../../../core/widget/text_translate_manager.dart';
-import '../../setting1/edit_profile/presentation/widgets/anmtionsucssuffly.dart';
-import '../../setting1/edit_profile/presentation/widgets/header_screen.dart';
+import '../../../../config/routes/app_routes.dart';
+import '../../../../core/utils/hex_color.dart';
+import '../../../../core/widget/text_translate_manager.dart';
+import '../../../setting1/edit_profile/presentation/widgets/anmtionsucssuffly.dart';
+import '../../../setting1/edit_profile/presentation/widgets/header_screen.dart';
 
 class EmptyMyReelsView extends StatelessWidget {
   const EmptyMyReelsView({super.key});
@@ -15,35 +15,27 @@ class EmptyMyReelsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding:
-            const EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 15),
+        padding: const EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 15),
         child: Column(
           children: [
             HeaderScreens(
                 title: 'reels',
                 onPressed: () {
-                  context.go(Routes.reels);
+                  context.goNamed(Routes.reels);
                 }),
             SizedBox(
               height: MediaQuery.of(context).size.height / 4.3,
             ),
-            const Center(
-                child: AnimatedCheck(img: "assets/images/videoreels.png")),
+            const Center(child: AnimatedCheck(img: "assets/images/videoreels.png")),
             const SizedBox(
               height: 34,
             ),
-            Center(
-                child: titleText(
-                    'empty_reels_title', HexColor('#4C0497'), StyleText.h4)),
+            Center(child: titleText('empty_reels_title', HexColor('#4C0497'), StyleText.h4)),
             const SizedBox(
               height: 10,
             ),
-            Center(
-                child: titleText(
-                    'des_location', HexColor('#707070'), StyleText.h5)),
-            Center(
-                child: titleText(
-                    'des_location1', HexColor('#707070'), StyleText.h5)),
+            Center(child: titleText('des_location', HexColor('#707070'), StyleText.h5)),
+            Center(child: titleText('des_location1', HexColor('#707070'), StyleText.h5)),
           ],
         ),
       ),
@@ -61,14 +53,13 @@ class EmptyMyReelsView extends StatelessWidget {
 }
 
 class MyReelsView extends StatelessWidget {
-  const MyReelsView({Key? key});
+  const MyReelsView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding:
-            const EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 15),
+        padding: const EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 15),
         child: Column(
           children: [
             HeaderScreens(
@@ -77,13 +68,13 @@ class MyReelsView extends StatelessWidget {
                 context.go(Routes.reels);
               },
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                         color: Colors.grey,
                         offset: Offset(1, 2),
@@ -106,7 +97,7 @@ class MyReelsView extends StatelessWidget {
                           width: MediaQuery.of(context).size.width / 2.4,
                           height: 280,
                         ),
-                        Positioned(
+                        const Positioned(
                           bottom: 15,
                           right: 10,
                           child: Row(
@@ -119,8 +110,7 @@ class MyReelsView extends StatelessWidget {
                                 children: [
                                   Text(
                                     '16 ثانيه',
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 12),
+                                    style: TextStyle(color: Colors.white, fontSize: 12),
                                   ),
                                   Row(
                                     children: [
@@ -134,8 +124,7 @@ class MyReelsView extends StatelessWidget {
                                       ),
                                       Text(
                                         '66',
-                                        style: TextStyle(
-                                            color: Colors.white, fontSize: 12),
+                                        style: TextStyle(color: Colors.white, fontSize: 12),
                                       ),
                                     ],
                                   ),
@@ -151,11 +140,11 @@ class MyReelsView extends StatelessWidget {
                             onTap: () {},
                             child: Container(
                               padding: const EdgeInsets.all(8),
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Colors.white,
                                 shape: BoxShape.circle,
                               ),
-                              child: Icon(
+                              child: const Icon(
                                 Icons.delete,
                                 color: Colors.red,
                                 size: 20,
@@ -192,7 +181,7 @@ class MyReelsView extends StatelessWidget {
                           width: MediaQuery.of(context).size.width / 2.4,
                           height: 280,
                         ),
-                        Positioned(
+                        const Positioned(
                           bottom: 15,
                           right: 10,
                           child: Row(
@@ -205,8 +194,7 @@ class MyReelsView extends StatelessWidget {
                                 children: [
                                   Text(
                                     '16 ثانيه',
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 12),
+                                    style: TextStyle(color: Colors.white, fontSize: 12),
                                   ),
                                   Row(
                                     children: [
@@ -220,8 +208,7 @@ class MyReelsView extends StatelessWidget {
                                       ),
                                       Text(
                                         '66',
-                                        style: TextStyle(
-                                            color: Colors.white, fontSize: 12),
+                                        style: TextStyle(color: Colors.white, fontSize: 12),
                                       ),
                                     ],
                                   ),
@@ -235,7 +222,7 @@ class MyReelsView extends StatelessWidget {
                           right: 10,
                           child: Container(
                             padding: const EdgeInsets.all(8),
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: Colors.white,
                               shape: BoxShape.circle,
                             ),

@@ -1,4 +1,9 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'advertisment_model.g.dart';
+
 AdvertisementModel deserializeAdvertisementModel(Map<String, dynamic> json) => AdvertisementModel.fromJson(json);
+MyAdsModel deserializeMyAdsModel(Map<String, dynamic> json) => MyAdsModel.fromJson(json);
 Map<String, dynamic> serializeAdvertisementModel(AdvertisementModel object) => object.toJson();
 List<AdvertisementModel> deserializeAdvertisementModelList(List<Map<String, dynamic>> json) =>
     json.map((e) => AdvertisementModel.fromJson(e)).toList();
@@ -527,4 +532,15 @@ class Category {
     map['logo'] = logo;
     return map;
   }
+}
+
+@JsonSerializable()
+class MyAdsModel {
+  @JsonKey(name: 'ads')
+  final AdvertisementModel? advertisementModel;
+
+  MyAdsModel({this.advertisementModel});
+
+  factory MyAdsModel.fromJson(Map<String, dynamic> json) => _$MyAdsModelFromJson(json);
+  Map<String, dynamic> toJson() => _$MyAdsModelToJson(this);
 }

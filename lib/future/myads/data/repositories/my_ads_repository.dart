@@ -7,7 +7,7 @@ import 'package:opensooq/future/signup/data/repositories/signup_repository.dart'
 import '../data_sorces/my_ads_remot_data_sorces.dart';
 
 abstract class MyAdsRepository {
-  Future<Either<Failures, AdvertisementModel>> getMyAds();
+  Future<Either<Failures, MyAdsModel>> getMyAds();
   Future<Either<Failures, bool>> deleteMyAds({required int id});
 }
 
@@ -18,8 +18,9 @@ class MyAdsRepositoryImpl implements MyAdsRepository {
   MyAdsRepositoryImpl(this.myAdsRemoteDataSource);
 
   @override
-  Future<Either<Failures, AdvertisementModel>> getMyAds() async {
-    return executeAndCatchError<AdvertisementModel>(() async => await myAdsRemoteDataSource.getMyAds());
+  Future<Either<Failures, MyAdsModel>> getMyAds() async {
+    final response = await myAdsRemoteDataSource.getMyAds();
+    return Right(response);
   }
 
   @override

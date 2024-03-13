@@ -16,9 +16,9 @@ class CacheHelper {
     return i.get(id);
   }
 
-  Future<void> hivePutData<T>(T object) async {
+  Future<void> hivePutData<T>(T object, String boxName) async {
     try {
-      var i = await Hive.openBox<T>('user');
+      var i = await Hive.openBox<T>(boxName);
       await i.put(0, object);
     } catch (e) {
       debugPrint(e.toString());

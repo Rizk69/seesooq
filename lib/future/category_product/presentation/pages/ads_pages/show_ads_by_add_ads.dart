@@ -117,7 +117,7 @@ class _ShowAdsByAddingScreenState extends State<ShowAdsByAddingScreen> {
                     child: TranslateText(
                       styleText: StyleText.h5,
                       fontWeight: FontWeight.w500,
-                      text: "${state.attributesAdsModel?.attributes?[e.key].title}" ?? '',
+                      text: "${e.value}" ?? '',
                       colorText: HexColor("#200E32"),
                     ),
                   );

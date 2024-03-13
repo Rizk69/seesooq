@@ -14,7 +14,7 @@ class MockInterceptor extends Interceptor {
       newDirectory = '$newDirectory${options.headers['user_type']}/';
     }
     var resourcePath = newDirectory + options.path;
-    print('sadasdasdasd$resourcePath');
+    print('$resourcePath');
     if (options.queryParameters['id'] != null) {
       resourcePath = '$resourcePath-${options.queryParameters['id']}';
     }
