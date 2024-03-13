@@ -37,10 +37,10 @@ class _StoryViewComponentState extends State<StoryViewComponent> {
 
   @override
   void initState() {
-    Future.delayed(const Duration(seconds: 2), () {
-      createTutorial();
-      showTutorial();
-    });
+    // Future.delayed(const Duration(seconds: 2), () {
+    //   createTutorial();
+    //   showTutorial();
+    // });
 
     super.initState();
   }

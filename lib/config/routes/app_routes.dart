@@ -61,6 +61,7 @@ class Routes {
   static const String packages = 'packages';
   static const String wallet = 'wallet';
   static const String paymentGateway = 'paymentGateway';
+  static const String paymentSuccess = 'paymentSuccess';
   static const String confirmCode = 'confirmCode';
   static const String confirmCodeSignUp = 'confirmCodeSignUp';
   static const String unLockPassword = 'unLockPassword';

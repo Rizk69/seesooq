@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
+import 'package:opensooq/config/routes/app_routes.dart';
 import 'package:opensooq/core/utils/app_colors.dart';
 import 'package:opensooq/core/utils/custom_button_widget.dart';
 import 'package:opensooq/core/utils/hex_color.dart';
@@ -11,6 +13,8 @@ import 'package:opensooq/core/widget/text_translate_manager.dart';
 import 'package:opensooq/future/wallet/presentation/cubit/wallet_cubit.dart';
 import 'package:opensooq/future/wallet/presentation/cubit/wallet_state.dart';
 import 'package:opensooq/future/wallet/presentation/widgets/transaction_widget.dart';
+
+enum TypeTransaction { wallet, package }
 
 class WalletPage extends StatelessWidget {
   const WalletPage({super.key});
@@ -149,7 +153,13 @@ class WalletPage extends StatelessWidget {
                         Expanded(
                             child: CustomButtonWidget(
                           text: 'Add Money',
-                          onPressed: () {},
+                          onPressed: () {
+                            context.pushNamed(
+                              Routes.paymentGateway,
+                              extra: '100',
+                              queryParameters: {'type': 'wallet'},
+                            );
+                          },
                           color: Colors.white,
                         )),
                         const Gap(20),

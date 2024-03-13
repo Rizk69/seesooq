@@ -13,6 +13,7 @@ class PaymentGatewayCubit extends Cubit<PaymentGatewayState> {
 
   void getPaymentGateway(String price) async {
     EasyLoading.show(status: 'loading...');
+    print('price: $price');
     Stripe.publishableKey = AppConstants.publishableKey;
     Stripe.merchantIdentifier = '';
     Stripe.urlScheme = Stripe.urlScheme;

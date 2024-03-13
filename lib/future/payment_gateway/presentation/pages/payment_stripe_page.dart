@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:opensooq/config/routes/app_routes.dart';
 import 'package:opensooq/future/payment_gateway/presentation/cubit/payment_gatway_cubit.dart';
 import 'package:opensooq/future/payment_gateway/presentation/cubit/payment_gatway_state.dart';
+import 'package:opensooq/future/wallet/presentation/pages/wallet_page.dart';
 
 class PaymentStripePage extends StatefulWidget {
-  const PaymentStripePage({super.key, required this.price});
+  const PaymentStripePage({super.key, required this.price, required this.typeTransaction});
   final String? price;
+  final TypeTransaction typeTransaction;
 
   @override
   State<PaymentStripePage> createState() => _PaymentStripePageState();
@@ -34,21 +37,17 @@ class _PaymentStripePageState extends State<PaymentStripePage> {
         child: BlocConsumer<PaymentGatewayCubit, PaymentGatewayState>(listener: (context, state) {
           if (state.paymentStatus == PaymentStatus.failure) {
             context.pop();
+          } else if (state.paymentStatus == PaymentStatus.success) {
+            GoRouter.of(context).goNamed(Routes.paymentSuccess, extra: widget.typeTransaction.toString());
           }
         }, builder: (context, state) {
           var cubit = PaymentGatewayCubit();
           return Scaffold(
-              appBar: AppBar(
-                title: const Text('PaymentStripePage'),
-              ),
-              body: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    if (state.paymentStatus == PaymentStatus.success) const Text('Payment Success'),
-                  ],
-                ),
-              ));
+            appBar: AppBar(
+              title: const Text('PaymentStripePage'),
+            ),
+            body: null,
+          );
         }));
   }
 }

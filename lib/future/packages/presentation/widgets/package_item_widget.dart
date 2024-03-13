@@ -109,7 +109,11 @@ class PackageItemWidget extends StatelessWidget {
                 backgroundColor: HexColor(packagesData.color.toString()),
                 color: Colors.white,
                 onPressed: () {
-                  context.goNamed(Routes.paymentGateway, extra: packagesData.price);
+                  context.goNamed(
+                    Routes.paymentGateway,
+                    extra: packagesData.price,
+                    queryParameters: {'type': 'package'},
+                  );
                 },
               ),
             ),
