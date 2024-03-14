@@ -13,6 +13,8 @@ import 'package:opensooq/future/category_product/presentation/cubit/add_ads_stat
 import 'package:opensooq/future/user_local_model.dart';
 import 'package:opensooq/main.dart';
 
+import '../../data/models/attributes_form.dart';
+
 class AddAdsCubit extends Cubit<AddAdsState> {
   AddAdsCubit({required this.categoryRepo}) : super(const AddAdsState()) {
     getLocalUser();
@@ -56,7 +58,6 @@ class AddAdsCubit extends Cubit<AddAdsState> {
     },
     maxImages: 20,
   );
-
   Future<void> uploadPhoto() async {
     final pickedImages = await controller.pickImages();
     if (pickedImages) {
@@ -67,9 +68,14 @@ class AddAdsCubit extends Cubit<AddAdsState> {
   }
 
   void removePhoto({required int index}) async {
+    AttributesForm temp=state.attributesForm;
+    List<File> tempImages=List.from(temp.images);
     List<ImageFile> list = List.from(state.images);
     list.removeAt(index);
-    emit(state.copyWith(images: list));
+    tempImages.removeAt(index);
+   temp= temp.copyWith(images: tempImages);
+
+    emit(state.copyWith(images: list,attributesForm: temp));
   }
 
   void updateAttributesForm({required Map<int, dynamic> attributes}) {
