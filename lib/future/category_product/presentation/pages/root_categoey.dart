@@ -3,11 +3,16 @@ import 'package:go_router/go_router.dart';
 import 'package:opensooq/config/routes/app_routes.dart';
 import 'package:opensooq/core/utils/hex_color.dart';
 
-class RootCategory extends StatelessWidget {
+class RootCategory extends StatefulWidget {
   const RootCategory({super.key, required this.child, required this.title});
   final Widget child;
   final String title;
 
+  @override
+  State<RootCategory> createState() => _RootCategoryState();
+}
+
+class _RootCategoryState extends State<RootCategory> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +37,7 @@ class RootCategory extends StatelessWidget {
               if (context.canPop()) {
                 context.pop();
               } else {
-                context.goNamed(Routes.home);
+                context.go(Routes.home);
               }
             },
             icon: const Icon(
@@ -50,7 +55,7 @@ class RootCategory extends StatelessWidget {
             visualDensity: VisualDensity.compact,
           ),
         ),
-        body: child);
+        body: widget.child);
   }
 }
 

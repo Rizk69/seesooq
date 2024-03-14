@@ -19,6 +19,8 @@ mixin _$CategoryState {
   List<CategoryDataModel> get category => throw _privateConstructorUsedError;
   CategoryStatus get categoryStatus => throw _privateConstructorUsedError;
   List<XFile?> get images => throw _privateConstructorUsedError;
+  StatefulNavigationShell? get statefulNavigationShell =>
+      throw _privateConstructorUsedError;
   bool get loadingMore => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -36,6 +38,7 @@ abstract class $CategoryStateCopyWith<$Res> {
       {List<CategoryDataModel> category,
       CategoryStatus categoryStatus,
       List<XFile?> images,
+      StatefulNavigationShell? statefulNavigationShell,
       bool loadingMore});
 }
 
@@ -55,6 +58,7 @@ class _$CategoryStateCopyWithImpl<$Res, $Val extends CategoryState>
     Object? category = null,
     Object? categoryStatus = null,
     Object? images = null,
+    Object? statefulNavigationShell = freezed,
     Object? loadingMore = null,
   }) {
     return _then(_value.copyWith(
@@ -70,6 +74,10 @@ class _$CategoryStateCopyWithImpl<$Res, $Val extends CategoryState>
           ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
               as List<XFile?>,
+      statefulNavigationShell: freezed == statefulNavigationShell
+          ? _value.statefulNavigationShell
+          : statefulNavigationShell // ignore: cast_nullable_to_non_nullable
+              as StatefulNavigationShell?,
       loadingMore: null == loadingMore
           ? _value.loadingMore
           : loadingMore // ignore: cast_nullable_to_non_nullable
@@ -90,6 +98,7 @@ abstract class _$$CategoryStateImplCopyWith<$Res>
       {List<CategoryDataModel> category,
       CategoryStatus categoryStatus,
       List<XFile?> images,
+      StatefulNavigationShell? statefulNavigationShell,
       bool loadingMore});
 }
 
@@ -107,6 +116,7 @@ class __$$CategoryStateImplCopyWithImpl<$Res>
     Object? category = null,
     Object? categoryStatus = null,
     Object? images = null,
+    Object? statefulNavigationShell = freezed,
     Object? loadingMore = null,
   }) {
     return _then(_$CategoryStateImpl(
@@ -122,6 +132,10 @@ class __$$CategoryStateImplCopyWithImpl<$Res>
           ? _value._images
           : images // ignore: cast_nullable_to_non_nullable
               as List<XFile?>,
+      statefulNavigationShell: freezed == statefulNavigationShell
+          ? _value.statefulNavigationShell
+          : statefulNavigationShell // ignore: cast_nullable_to_non_nullable
+              as StatefulNavigationShell?,
       loadingMore: null == loadingMore
           ? _value.loadingMore
           : loadingMore // ignore: cast_nullable_to_non_nullable
@@ -137,6 +151,7 @@ class _$CategoryStateImpl implements _CategoryState {
       {final List<CategoryDataModel> category = const [],
       this.categoryStatus = CategoryStatus.initial,
       final List<XFile?> images = const [],
+      this.statefulNavigationShell = null,
       this.loadingMore = false})
       : _category = category,
         _images = images;
@@ -164,11 +179,14 @@ class _$CategoryStateImpl implements _CategoryState {
 
   @override
   @JsonKey()
+  final StatefulNavigationShell? statefulNavigationShell;
+  @override
+  @JsonKey()
   final bool loadingMore;
 
   @override
   String toString() {
-    return 'CategoryState(category: $category, categoryStatus: $categoryStatus, images: $images, loadingMore: $loadingMore)';
+    return 'CategoryState(category: $category, categoryStatus: $categoryStatus, images: $images, statefulNavigationShell: $statefulNavigationShell, loadingMore: $loadingMore)';
   }
 
   @override
@@ -180,6 +198,9 @@ class _$CategoryStateImpl implements _CategoryState {
             (identical(other.categoryStatus, categoryStatus) ||
                 other.categoryStatus == categoryStatus) &&
             const DeepCollectionEquality().equals(other._images, _images) &&
+            (identical(
+                    other.statefulNavigationShell, statefulNavigationShell) ||
+                other.statefulNavigationShell == statefulNavigationShell) &&
             (identical(other.loadingMore, loadingMore) ||
                 other.loadingMore == loadingMore));
   }
@@ -190,6 +211,7 @@ class _$CategoryStateImpl implements _CategoryState {
       const DeepCollectionEquality().hash(_category),
       categoryStatus,
       const DeepCollectionEquality().hash(_images),
+      statefulNavigationShell,
       loadingMore);
 
   @JsonKey(ignore: true)
@@ -204,6 +226,7 @@ abstract class _CategoryState implements CategoryState {
       {final List<CategoryDataModel> category,
       final CategoryStatus categoryStatus,
       final List<XFile?> images,
+      final StatefulNavigationShell? statefulNavigationShell,
       final bool loadingMore}) = _$CategoryStateImpl;
 
   @override
@@ -212,6 +235,8 @@ abstract class _CategoryState implements CategoryState {
   CategoryStatus get categoryStatus;
   @override
   List<XFile?> get images;
+  @override
+  StatefulNavigationShell? get statefulNavigationShell;
   @override
   bool get loadingMore;
   @override

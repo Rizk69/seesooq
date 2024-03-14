@@ -93,6 +93,11 @@ class _DetailsAdsPageState extends State<DetailsAdsPage> {
             const SizedBox(
               height: 20,
             ),
+            DropdownButton(
+              items: const [DropdownMenuItem(child: Text('1'))],
+              onChanged: (value) {},
+              isExpanded: true,
+            ),
             ...state.attributesAdsModel?.attributes
                     ?.map((e) => DynamicFormWidget(
                           name: e.title ?? '',

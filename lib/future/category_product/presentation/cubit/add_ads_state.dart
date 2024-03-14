@@ -7,6 +7,8 @@ part 'add_ads_state.freezed.dart';
 
 enum AttributesAdsStatus { initial, loading, loaded, error }
 
+enum StatusBrand { initial, loading, loaded, error }
+
 @freezed
 class AddAdsState with _$AddAdsState {
   const factory AddAdsState({

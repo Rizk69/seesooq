@@ -20,6 +20,7 @@ class AttributesForm with _$AttributesForm {
     @Default('') String governorateId,
     @Default('') String cityId,
     @Default('') String phone,
+    @Default('') String brandId,
     @Default('') String contactMethods,
     @Default({}) Map<int, dynamic> attributes,
     @Default([]) List<File> images,

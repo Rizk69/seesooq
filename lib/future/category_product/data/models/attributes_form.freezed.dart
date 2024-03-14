@@ -29,6 +29,7 @@ mixin _$AttributesForm {
   String get governorateId => throw _privateConstructorUsedError;
   String get cityId => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
+  String get brandId => throw _privateConstructorUsedError;
   String get contactMethods => throw _privateConstructorUsedError;
   Map<int, dynamic> get attributes => throw _privateConstructorUsedError;
   List<File> get images => throw _privateConstructorUsedError;
@@ -60,6 +61,7 @@ abstract class $AttributesFormCopyWith<$Res> {
       String governorateId,
       String cityId,
       String phone,
+      String brandId,
       String contactMethods,
       Map<int, dynamic> attributes,
       List<File> images,
@@ -93,6 +95,7 @@ class _$AttributesFormCopyWithImpl<$Res, $Val extends AttributesForm>
     Object? governorateId = null,
     Object? cityId = null,
     Object? phone = null,
+    Object? brandId = null,
     Object? contactMethods = null,
     Object? attributes = null,
     Object? images = null,
@@ -152,6 +155,10 @@ class _$AttributesFormCopyWithImpl<$Res, $Val extends AttributesForm>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
+      brandId: null == brandId
+          ? _value.brandId
+          : brandId // ignore: cast_nullable_to_non_nullable
+              as String,
       contactMethods: null == contactMethods
           ? _value.contactMethods
           : contactMethods // ignore: cast_nullable_to_non_nullable
@@ -198,6 +205,7 @@ abstract class _$$AttributesFormImplCopyWith<$Res>
       String governorateId,
       String cityId,
       String phone,
+      String brandId,
       String contactMethods,
       Map<int, dynamic> attributes,
       List<File> images,
@@ -229,6 +237,7 @@ class __$$AttributesFormImplCopyWithImpl<$Res>
     Object? governorateId = null,
     Object? cityId = null,
     Object? phone = null,
+    Object? brandId = null,
     Object? contactMethods = null,
     Object? attributes = null,
     Object? images = null,
@@ -288,6 +297,10 @@ class __$$AttributesFormImplCopyWithImpl<$Res>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
+      brandId: null == brandId
+          ? _value.brandId
+          : brandId // ignore: cast_nullable_to_non_nullable
+              as String,
       contactMethods: null == contactMethods
           ? _value.contactMethods
           : contactMethods // ignore: cast_nullable_to_non_nullable
@@ -329,6 +342,7 @@ class _$AttributesFormImpl implements _AttributesForm {
       this.governorateId = '',
       this.cityId = '',
       this.phone = '',
+      this.brandId = '',
       this.contactMethods = '',
       final Map<int, dynamic> attributes = const {},
       final List<File> images = const [],
@@ -385,6 +399,9 @@ class _$AttributesFormImpl implements _AttributesForm {
   final String phone;
   @override
   @JsonKey()
+  final String brandId;
+  @override
+  @JsonKey()
   final String contactMethods;
   final Map<int, dynamic> _attributes;
   @override
@@ -413,7 +430,7 @@ class _$AttributesFormImpl implements _AttributesForm {
 
   @override
   String toString() {
-    return 'AttributesForm(title: $title, description: $description, albums: $albums, price: $price, isOffer: $isOffer, offerPrice: $offerPrice, offerStartTime: $offerStartTime, offerStartDate: $offerStartDate, offerEndTime: $offerEndTime, offerEndDate: $offerEndDate, governorateId: $governorateId, cityId: $cityId, phone: $phone, contactMethods: $contactMethods, attributes: $attributes, images: $images, video: $video, paymentMethods: $paymentMethods)';
+    return 'AttributesForm(title: $title, description: $description, albums: $albums, price: $price, isOffer: $isOffer, offerPrice: $offerPrice, offerStartTime: $offerStartTime, offerStartDate: $offerStartDate, offerEndTime: $offerEndTime, offerEndDate: $offerEndDate, governorateId: $governorateId, cityId: $cityId, phone: $phone, brandId: $brandId, contactMethods: $contactMethods, attributes: $attributes, images: $images, video: $video, paymentMethods: $paymentMethods)';
   }
 
   @override
@@ -441,6 +458,7 @@ class _$AttributesFormImpl implements _AttributesForm {
                 other.governorateId == governorateId) &&
             (identical(other.cityId, cityId) || other.cityId == cityId) &&
             (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.brandId, brandId) || other.brandId == brandId) &&
             (identical(other.contactMethods, contactMethods) ||
                 other.contactMethods == contactMethods) &&
             const DeepCollectionEquality()
@@ -452,26 +470,28 @@ class _$AttributesFormImpl implements _AttributesForm {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      title,
-      description,
-      const DeepCollectionEquality().hash(_albums),
-      price,
-      isOffer,
-      offerPrice,
-      offerStartTime,
-      offerStartDate,
-      offerEndTime,
-      offerEndDate,
-      governorateId,
-      cityId,
-      phone,
-      contactMethods,
-      const DeepCollectionEquality().hash(_attributes),
-      const DeepCollectionEquality().hash(_images),
-      video,
-      paymentMethods);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        title,
+        description,
+        const DeepCollectionEquality().hash(_albums),
+        price,
+        isOffer,
+        offerPrice,
+        offerStartTime,
+        offerStartDate,
+        offerEndTime,
+        offerEndDate,
+        governorateId,
+        cityId,
+        phone,
+        brandId,
+        contactMethods,
+        const DeepCollectionEquality().hash(_attributes),
+        const DeepCollectionEquality().hash(_images),
+        video,
+        paymentMethods
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -496,6 +516,7 @@ abstract class _AttributesForm implements AttributesForm {
       final String governorateId,
       final String cityId,
       final String phone,
+      final String brandId,
       final String contactMethods,
       final Map<int, dynamic> attributes,
       final List<File> images,
@@ -528,6 +549,8 @@ abstract class _AttributesForm implements AttributesForm {
   String get cityId;
   @override
   String get phone;
+  @override
+  String get brandId;
   @override
   String get contactMethods;
   @override

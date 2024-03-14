@@ -68,14 +68,16 @@ class AddAdsCubit extends Cubit<AddAdsState> {
   }
 
   void removePhoto({required int index}) async {
-    AttributesForm temp=state.attributesForm;
-    List<File> tempImages=List.from(temp.images);
+    AttributesForm temp = state.attributesForm;
+    List<File> tempImages = List.from(temp.images);
     List<ImageFile> list = List.from(state.images);
     list.removeAt(index);
     tempImages.removeAt(index);
-   temp= temp.copyWith(images: tempImages);
+    temp = temp.copyWith(images: tempImages);
 
-    emit(state.copyWith(images: list,attributesForm: temp));
+    (controller.images as List).removeAt(index);
+
+    emit(state.copyWith(images: list, attributesForm: temp));
   }
 
   void updateAttributesForm({required Map<int, dynamic> attributes}) {
