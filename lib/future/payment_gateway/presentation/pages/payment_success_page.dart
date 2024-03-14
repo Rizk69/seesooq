@@ -24,22 +24,16 @@ class PaymentSuccessPage extends StatelessWidget {
         SizedBox(
           height: MediaQuery.of(context).size.height / 4.3,
         ),
-        Center(child: AnimatedCheck(img: "assets/images/Group 448.png")),
+        const Center(child: AnimatedCheck(img: "assets/images/Group 448.png")),
         const SizedBox(
           height: 34,
         ),
-        Center(
-            child: titleText(
-                'subscribed_successfully', HexColor('#4C0497'), StyleText.h4)),
+        Center(child: titleText('subscribed_successfully', HexColor('#4C0497'), StyleText.h4)),
         const SizedBox(
           height: 10,
         ),
-        Center(
-            child: titleText("successfully_subscribed_to_the_exclusive",
-                HexColor('#707070'), StyleText.h5)),
-        Center(
-            child: titleText("des_successfully_subscribed",
-                HexColor('#707070'), StyleText.h5)),
+        Center(child: titleText("successfully_subscribed_to_the_exclusive", HexColor('#707070'), StyleText.h5)),
+        Center(child: titleText("des_successfully_subscribed", HexColor('#707070'), StyleText.h5)),
         const Spacer(),
         Padding(
           padding: const EdgeInsets.all(12),
@@ -56,6 +50,7 @@ class PaymentSuccessPage extends StatelessWidget {
       ],
     );
   }
+
   Widget titleText(String title, Color color, StyleText styleText) {
     return TranslateText(
       styleText: styleText,
@@ -64,5 +59,4 @@ class PaymentSuccessPage extends StatelessWidget {
       text: title,
     );
   }
-
 }
