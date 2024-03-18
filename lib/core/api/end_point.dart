@@ -14,6 +14,7 @@ class EndPoint {
   static const String getAttributesForAds = 'attributes';
   static const String getAttributesByFilter = 'attributes';
   static const String getMyStories = 'MyStory';
+  static const String filterUser = 'filter/';
   static const String deleteMyStory = 'delete/story/{storyId}';
   static const String getUsersStory = 'user/stories';
   static const String getOfferAds = 'advertisement/offers/{categoryId}';

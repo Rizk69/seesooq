@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -57,6 +58,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    print(context.locale);
     return BlocBuilder<HomeCubit, HomeState>(builder: (context, state) {
       var cubit = HomeCubit.get(context);
       return BlocListener<FavoriteCubit, FavoriteState>(
