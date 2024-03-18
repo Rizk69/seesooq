@@ -5,10 +5,13 @@ import 'package:opensooq/future/category_product/data/models/attributes_ads_mode
 import 'package:opensooq/future/category_product/data/models/attributes_form.dart';
 import 'package:opensooq/future/category_product/data/models/category_model.dart';
 
+import '../models/brand_ads_model.dart';
+
 abstract class CategoryRemoteDataSource {
   Future<CategoryModel> getCategory();
   Future<AttributesAdsModel> getAttributesForAds({required String subCategory});
   Future<void> createAdd({required AttributesForm attributesForm});
+  Future<BrandAdsModel> getBrands({required String subCategory});
 }
 
 @LazySingleton(as: CategoryRemoteDataSource)
@@ -61,4 +64,11 @@ class CategoryRemoteDataSourceImpl implements CategoryRemoteDataSource {
 
     return categoryApi.createAdd(body: formData);
   }
+
+  @override
+  Future<BrandAdsModel> getBrands({required String subCategory}) {
+    return categoryApi.getBrands(subCategoryId: subCategory);
+  }
+
+
 }
