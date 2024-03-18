@@ -7,6 +7,8 @@ import 'package:opensooq/future/category_product/data/models/attributes_ads_mode
 import 'package:opensooq/future/category_product/data/models/category_model.dart';
 import 'package:retrofit/retrofit.dart';
 
+import '../../../future/category_product/data/models/brand_ads_model.dart';
+
 part 'category_api.g.dart';
 
 @injectable
@@ -42,7 +44,10 @@ abstract class CategoryApi {
   Future<AdvertisementModel> getAdvertisementCategory({
     @Path('subCategoryId') required String subCategoryId,
   });
-
+  @POST(EndPoint.getBrands)
+  Future<BrandAdsModel> getBrands({
+    @Field('category_id') required String subCategoryId,
+  });
 // @POST(EndPoint.markNotificationAsRead)
 // Future<NotificationResponseModel> markNotificationAsRead({
 //   @Field('id') required String id,

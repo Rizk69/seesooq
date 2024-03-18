@@ -16,7 +16,7 @@ import 'package:opensooq/main.dart';
 import '../../data/models/attributes_form.dart';
 
 class AddAdsCubit extends Cubit<AddAdsState> {
-  AddAdsCubit({required this.categoryRepo}) : super(const AddAdsState()) {
+  AddAdsCubit({required this.categoryRepo}) : super(AddAdsState()) {
     getLocalUser();
   }
 
@@ -39,14 +39,19 @@ class AddAdsCubit extends Cubit<AddAdsState> {
 
   Future<void> getAttributesForAds() async {
     emit(state.copyWith(attributesAdsStatus: AttributesAdsStatus.loading));
-    await categoryRepo.getAttributesForAds(subCategory: state.selectedSubCategory).then((value) => value.fold((l) {
-          if (kDebugMode) {
-            emit(state.copyWith(attributesAdsStatus: AttributesAdsStatus.error));
-            print(l);
-          }
-        }, (r) {
-          emit(state.copyWith(attributesAdsModel: r, attributesAdsStatus: AttributesAdsStatus.loaded));
-        }));
+    await categoryRepo
+        .getAttributesForAds(subCategory: state.selectedSubCategory)
+        .then((value) => value.fold((l) {
+              if (kDebugMode) {
+                emit(state.copyWith(
+                    attributesAdsStatus: AttributesAdsStatus.error));
+                print(l);
+              }
+            }, (r) {
+              emit(state.copyWith(
+                  attributesAdsModel: r,
+                  attributesAdsStatus: AttributesAdsStatus.loaded));
+            }));
   }
 
   final controller = MultiImagePickerController(
@@ -61,9 +66,12 @@ class AddAdsCubit extends Cubit<AddAdsState> {
   Future<void> uploadPhoto() async {
     final pickedImages = await controller.pickImages();
     if (pickedImages) {
-      List<File> files = controller.images.map((e) => File(e.path.toString())).toList();
+      List<File> files =
+          controller.images.map((e) => File(e.path.toString())).toList();
 
-      emit(state.copyWith(images: controller.images as List<ImageFile>, attributesForm: state.attributesForm.copyWith(images: files)));
+      emit(state.copyWith(
+          images: controller.images as List<ImageFile>,
+          attributesForm: state.attributesForm.copyWith(images: files)));
     }
   }
 
@@ -85,29 +93,42 @@ class AddAdsCubit extends Cubit<AddAdsState> {
 
     newAttributes = {...newAttributes, ...attributes};
 
-    emit(state.copyWith(attributesForm: state.attributesForm.copyWith(attributes: newAttributes)));
+    emit(state.copyWith(
+        attributesForm:
+            state.attributesForm.copyWith(attributes: newAttributes)));
   }
 
   void updateCityForm({required String cityId, required String cityName}) {
-    emit(state.copyWith(attributesForm: state.attributesForm.copyWith(cityId: cityId), city: cityName));
+    emit(state.copyWith(
+        attributesForm: state.attributesForm.copyWith(cityId: cityId),
+        city: cityName));
   }
 
-  void updateGovernorateForm({required String governorateId, required String governorateName}) {
+  void updateGovernorateForm(
+      {required String governorateId, required String governorateName}) {
     emit(
-      state.copyWith(attributesForm: state.attributesForm.copyWith(governorateId: governorateId), governorate: governorateName),
+      state.copyWith(
+          attributesForm:
+              state.attributesForm.copyWith(governorateId: governorateId),
+          governorate: governorateName),
     );
   }
 
   void updateNameForm(String name) {
-    emit(state.copyWith(attributesForm: state.attributesForm.copyWith(title: name)));
+    emit(state.copyWith(
+        attributesForm: state.attributesForm.copyWith(title: name)));
   }
 
   void updatePriceForm(num price) {
-    emit(state.copyWith(attributesForm: state.attributesForm.copyWith(price: price.toString())));
+    emit(state.copyWith(
+        attributesForm:
+            state.attributesForm.copyWith(price: price.toString())));
   }
 
   void updateDescriptionForm(String description) {
-    emit(state.copyWith(attributesForm: state.attributesForm.copyWith(description: description)));
+    emit(state.copyWith(
+        attributesForm:
+            state.attributesForm.copyWith(description: description)));
   }
 
   void updateOfferAds({
@@ -142,9 +163,22 @@ class AddAdsCubit extends Cubit<AddAdsState> {
 
   Future<void> createAdd() async {
     emit(state.copyWith(attributesAdsStatus: AttributesAdsStatus.loading));
-    await categoryRepo.createAds(attributesForm: state.attributesForm).then((value) => value.fold((l) {
-          showError(l.message.toString());
-        }, (r) {}));
+    await categoryRepo
+        .createAds(attributesForm: state.attributesForm)
+        .then((value) => value.fold((l) {
+              showError(l.message.toString());
+            }, (r) {}));
+  }
+
+  Future<void> getBrands({required String subCategory}) async {
+    await categoryRepo
+        .getBrands(subCategory: subCategory)
+        .then((value) => value.fold((l) {
+              showError(l.message.toString());
+            }, (brands) {
+          print('___________${brands.data?.length}');
+              emit(state.copyWith(brandAdsModel: brands));
+            }));
   }
 
 // end section Add Ads

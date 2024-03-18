@@ -180,6 +180,33 @@ class _CategoryApi implements CategoryApi {
     return value;
   }
 
+  @override
+  Future<BrandAdsModel> getBrands({required String subCategoryId}) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = {'category_id': subCategoryId};
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<BrandAdsModel>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'brands',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = await compute(deserializeBrandAdsModel, _result.data!);
+    return value;
+  }
+
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
         !(requestOptions.responseType == ResponseType.bytes ||

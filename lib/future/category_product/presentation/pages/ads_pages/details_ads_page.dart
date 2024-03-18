@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:opensooq/core/utils/custom_failed_app.dart';
 import 'package:opensooq/core/widget/text_translate_manager.dart';
+import 'package:opensooq/future/category_product/data/models/brand_ads_model.dart';
 import 'package:opensooq/future/category_product/presentation/cubit/add_ads_cubit.dart';
 import 'package:opensooq/future/category_product/presentation/cubit/add_ads_state.dart';
 import 'package:opensooq/future/category_product/presentation/widgets/dynamic_form_widget.dart';
@@ -93,10 +94,12 @@ class _DetailsAdsPageState extends State<DetailsAdsPage> {
             const SizedBox(
               height: 20,
             ),
-            DropdownButton(
-              items: const [DropdownMenuItem(child: Text('1'))],
+           if( state.brandAdsModel!=null)
+            DropdownButton<BrandAdsModel>(
+              items: state.brandAdsModel?.data?.map((e) =>DropdownMenuItem<BrandAdsModel>(child: Text(e.title??'',),) ).toList()??[] ,
               onChanged: (value) {},
               isExpanded: true,
+              value: state.brandAdsModel,
             ),
             ...state.attributesAdsModel?.attributes
                     ?.map((e) => DynamicFormWidget(
