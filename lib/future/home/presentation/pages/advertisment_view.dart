@@ -45,10 +45,11 @@ class _ShowAdsByHomeScreenState extends State<ShowAdsByHomeScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  // Text(state.advertisementModel?.data???'empty',style: TextStyle(color: Colors.black)),
                   Padding(
                     padding: const EdgeInsets.only(left: 16, top: 16),
                     child: BannerAdsSharedWidget(
-                        images: const ['https://img.huffingtonpost.com/asset/63e54b2b2400006e006f69c7.png?ops=scalefit_720_noupscale'],
+                        images: state.advertisementModel?.data?.album?? ['https://img.huffingtonpost.com/asset/63e54b2b2400006e006f69c7.png?ops=scalefit_720_noupscale'],
                         onPageChanged: (index) {},
                         height: 250),
                   ),
