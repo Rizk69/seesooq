@@ -14,6 +14,6 @@ abstract class PaymentApi {
   @factoryMethod
   factory PaymentApi(Dio dio) = _PaymentApi;
 
-  @GET(EndPoint.subscriptionPackage)
+  @GET(EndPoint.storePayment)
   Future<SendPaymentModel> subscriptionPackage();
 }

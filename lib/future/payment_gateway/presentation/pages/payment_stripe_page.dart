@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:opensooq/config/routes/app_routes.dart';
 import 'package:opensooq/future/payment_gateway/presentation/cubit/payment_gatway_cubit.dart';
 import 'package:opensooq/future/payment_gateway/presentation/cubit/payment_gatway_state.dart';
+import 'package:opensooq/future/wallet/presentation/cubit/wallet_cubit.dart';
 import 'package:opensooq/future/wallet/presentation/pages/wallet_page.dart';
 
 class PaymentStripePage extends StatefulWidget {
@@ -38,7 +39,10 @@ class _PaymentStripePageState extends State<PaymentStripePage> {
           if (state.paymentStatus == PaymentStatus.failure) {
             context.pop();
           } else if (state.paymentStatus == PaymentStatus.success) {
-            GoRouter.of(context).goNamed(Routes.paymentSuccess, extra: widget.typeTransaction.toString());
+            if (widget.typeTransaction == TypeTransaction.wallet) {
+              WalletCubit.get(context).storePayment(amount: widget.price.toString(), transactionId: state.paymentIntent?.id.toString() ?? '');
+            }
+            context.goNamed(Routes.paymentSuccess, extra: widget.typeTransaction.toString());
           }
         }, builder: (context, state) {
           var cubit = PaymentGatewayCubit();

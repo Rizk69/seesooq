@@ -13,13 +13,11 @@
   "edit_profile": "تعديل الحساب",
   "profile": "حسابي",
   "welcomeName": "مرحبا {}",
-   "statusToday": "حالات اليوم",
-     "furnitureOffers": "العروض",
-
-   "departments": "الاقسام",
-   "more": "المزيد",
-   "next": "التالي",
-
+  "statusToday": "حالات اليوم",
+  "furnitureOffers": "العروض",
+  "departments": "الاقسام",
+  "more": "المزيد",
+  "next": "التالي",
   "first_name": "الاسم الاول",
   "male": "ذكر",
   "ads_drawer": "اعلاناتي",
@@ -32,7 +30,6 @@
   "help_drawer": "المساعده",
   "account_drawer": "الحساب",
   "setting_drawer": "الاعدادت",
-
   "female": "أنثى",
   "mobile_number": "رقم الهاتف",
   "gender": "النوع",
@@ -67,7 +64,7 @@
   "your_title_has_been_successfully_added": "تمت إضافة عنوانك بنجاح",
   "you_have_successfully_added_your_title": "قمت بإضافة العنوان الخاص بك بنجاح،",
   "you_can_continue_browsing": "...يمكنك متابعة التصفح",
-  "continue_to_the_homepage":"متابعة إلى الصفحة الرئيسية",
+  "continue_to_the_homepage": "متابعة إلى الصفحة الرئيسية",
   "arabic": "اللغة العربية",
   "english": "اللغة الإنجليزية",
   "light": "الوضع النهاري",
@@ -106,12 +103,4 @@
   "add_money": "إضافة الأموال",
   "charge_wallet": "شحن المحفظة",
   "transactions": "المعاملات"
-
-
-
-
-
-
-
-
 }

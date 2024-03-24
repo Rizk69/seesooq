@@ -7,11 +7,20 @@ WalletModel deserializeWalletModel(Map<String, dynamic> json) => _$WalletModelFr
 @JsonSerializable()
 class WalletModel {
   WalletModel({
-    this.wallet,
+    this.balance,
   });
 
-  String? wallet;
+  String? balance;
 
   factory WalletModel.fromJson(Map<String, dynamic> json) => _$WalletModelFromJson(json);
   Map<String, dynamic> toJson() => _$WalletModelToJson(this);
+
+  //copyWith
+  WalletModel copyWith({
+    String? balance,
+  }) {
+    return WalletModel(
+      balance: balance ?? this.balance,
+    );
+  }
 }

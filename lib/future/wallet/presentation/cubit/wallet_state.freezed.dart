@@ -17,6 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$WalletState {
   WalletModel? get walletModel => throw _privateConstructorUsedError;
+  StorePaymentModel? get storePaymentModel =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $WalletStateCopyWith<WalletState> get copyWith =>
@@ -29,7 +31,7 @@ abstract class $WalletStateCopyWith<$Res> {
           WalletState value, $Res Function(WalletState) then) =
       _$WalletStateCopyWithImpl<$Res, WalletState>;
   @useResult
-  $Res call({WalletModel? walletModel});
+  $Res call({WalletModel? walletModel, StorePaymentModel? storePaymentModel});
 }
 
 /// @nodoc
@@ -46,12 +48,17 @@ class _$WalletStateCopyWithImpl<$Res, $Val extends WalletState>
   @override
   $Res call({
     Object? walletModel = freezed,
+    Object? storePaymentModel = freezed,
   }) {
     return _then(_value.copyWith(
       walletModel: freezed == walletModel
           ? _value.walletModel
           : walletModel // ignore: cast_nullable_to_non_nullable
               as WalletModel?,
+      storePaymentModel: freezed == storePaymentModel
+          ? _value.storePaymentModel
+          : storePaymentModel // ignore: cast_nullable_to_non_nullable
+              as StorePaymentModel?,
     ) as $Val);
   }
 }
@@ -64,7 +71,7 @@ abstract class _$$WalletStateImplCopyWith<$Res>
       __$$WalletStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({WalletModel? walletModel});
+  $Res call({WalletModel? walletModel, StorePaymentModel? storePaymentModel});
 }
 
 /// @nodoc
@@ -79,12 +86,17 @@ class __$$WalletStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? walletModel = freezed,
+    Object? storePaymentModel = freezed,
   }) {
     return _then(_$WalletStateImpl(
       walletModel: freezed == walletModel
           ? _value.walletModel
           : walletModel // ignore: cast_nullable_to_non_nullable
               as WalletModel?,
+      storePaymentModel: freezed == storePaymentModel
+          ? _value.storePaymentModel
+          : storePaymentModel // ignore: cast_nullable_to_non_nullable
+              as StorePaymentModel?,
     ));
   }
 }
@@ -92,15 +104,19 @@ class __$$WalletStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$WalletStateImpl implements _WalletState {
-  const _$WalletStateImpl({this.walletModel = null});
+  const _$WalletStateImpl(
+      {this.walletModel = null, this.storePaymentModel = null});
 
   @override
   @JsonKey()
   final WalletModel? walletModel;
+  @override
+  @JsonKey()
+  final StorePaymentModel? storePaymentModel;
 
   @override
   String toString() {
-    return 'WalletState(walletModel: $walletModel)';
+    return 'WalletState(walletModel: $walletModel, storePaymentModel: $storePaymentModel)';
   }
 
   @override
@@ -109,11 +125,13 @@ class _$WalletStateImpl implements _WalletState {
         (other.runtimeType == runtimeType &&
             other is _$WalletStateImpl &&
             (identical(other.walletModel, walletModel) ||
-                other.walletModel == walletModel));
+                other.walletModel == walletModel) &&
+            (identical(other.storePaymentModel, storePaymentModel) ||
+                other.storePaymentModel == storePaymentModel));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, walletModel);
+  int get hashCode => Object.hash(runtimeType, walletModel, storePaymentModel);
 
   @JsonKey(ignore: true)
   @override
@@ -123,11 +141,14 @@ class _$WalletStateImpl implements _WalletState {
 }
 
 abstract class _WalletState implements WalletState {
-  const factory _WalletState({final WalletModel? walletModel}) =
-      _$WalletStateImpl;
+  const factory _WalletState(
+      {final WalletModel? walletModel,
+      final StorePaymentModel? storePaymentModel}) = _$WalletStateImpl;
 
   @override
   WalletModel? get walletModel;
+  @override
+  StorePaymentModel? get storePaymentModel;
   @override
   @JsonKey(ignore: true)
   _$$WalletStateImplCopyWith<_$WalletStateImpl> get copyWith =>

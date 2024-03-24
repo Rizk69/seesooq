@@ -4,7 +4,7 @@ class EndPoint {
   static const String userNotifications = 'user-notifications';
   static const String signUpUser = 'register';
   static const String getPackagesM = 'getPackages';
-  static const String getWallet = 'getWallet';
+  static const String getWallet = 'users/{userId}/wallet/balance';
   static const String loginUser = 'login';
   static const String forgetPassword = 'restore-password';
   static const String verifyOtpRestorePassword = 'validate-otp-password';
@@ -29,7 +29,7 @@ class EndPoint {
   static const String searchPlaces = '/place/textsearch/json';
   static const String editProfile = '/place/textsearch/json';
   static const String getFav = 'my-favourite';
-  static const String subscriptionPackage = 'payment/store';
+  static const String storePayment = 'payment/store';
   // subscription
   static const String addFav = 'add-to-favourites/{id}';
   static const String getBrands = 'brands';

@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:opensooq/core/api/end_point.dart';
+import 'package:opensooq/future/wallet/data/models/store_payment_model.dart';
 import 'package:opensooq/future/wallet/data/models/wallet_model.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -16,5 +17,11 @@ abstract class WalletApi {
   ) = _WalletApi;
 
   @GET(EndPoint.getWallet)
-  Future<WalletModel> getWallet();
+  Future<WalletModel> getWallet({
+    @Path('userId') required String userId,
+  });
+  @POST(EndPoint.storePayment)
+  Future<StorePaymentModel> storePayment({
+    @Body() required Map<String, dynamic> body,
+  });
 }

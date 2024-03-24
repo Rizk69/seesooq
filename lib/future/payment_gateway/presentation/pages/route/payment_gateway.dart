@@ -16,7 +16,7 @@ class PaymentGateway extends GoRoute {
               bool isNumber = int.tryParse(args) != null;
               return NoTransitionPage(
                   child: PaymentStripePage(
-                price: isNumber ? ((int.tryParse(args.toString())! * 100)).toString() ?? '0' : '0',
+                price: isNumber ? ((int.tryParse(args.toString()))).toString() : '0',
                 typeTransaction: type == 'wallet' ? TypeTransaction.wallet : TypeTransaction.package,
               ));
             },

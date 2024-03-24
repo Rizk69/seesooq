@@ -94,13 +94,21 @@ class _DetailsAdsPageState extends State<DetailsAdsPage> {
             const SizedBox(
               height: 20,
             ),
-           if( state.brandAdsModel!=null)
-            DropdownButton<BrandAdsModel>(
-              items: state.brandAdsModel?.data?.map((e) =>DropdownMenuItem<BrandAdsModel>(child: Text(e.title??'',),) ).toList()??[] ,
-              onChanged: (value) {},
-              isExpanded: true,
-              value: state.brandAdsModel,
-            ),
+            if (state.brandAdsModel?.data?.isNotEmpty ?? false)
+              DropdownButton<String>(
+                items: [
+                  for (DataBrandAds item in (state.brandAdsModel?.data ?? []))
+                    DropdownMenuItem(
+                      value: item.id.toString(),
+                      child: Text(item.title ?? ''),
+                    )
+                ],
+                onChanged: (value) {
+                  cubit.updateBrandForm(brandId: value.toString());
+                },
+                isExpanded: true,
+                value: '1',
+              ),
             ...state.attributesAdsModel?.attributes
                     ?.map((e) => DynamicFormWidget(
                           name: e.title ?? '',

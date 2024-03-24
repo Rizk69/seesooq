@@ -103,18 +103,18 @@
   "noDelivery": "No Delivery",
   "cash": "Cash",
   "installment": "Installment",
-  "viewedPeople" : "Viewed by {} people",
+  "viewedPeople": "Viewed by {} people",
   "both": "Both",
   "logout": "LogOut",
-    "ads_drawer": "My Ads",
-    "favorite_drawer": "Favourites",
-    "wallet_drawer": "Wallet",
-    "package_drawer": "Packages",
-    "auction_drawer": "Auctions",
-    "booking_drawer": "Booking",
-    "reels_drawer": "Reels",
-    "help_drawer": "Help",
-    "account_drawer": "Account",
+  "ads_drawer": "My Ads",
+  "favorite_drawer": "Favourites",
+  "wallet_drawer": "Wallet",
+  "package_drawer": "Packages",
+  "auction_drawer": "Auctions",
+  "booking_drawer": "Booking",
+  "reels_drawer": "Reels",
+  "help_drawer": "Help",
+  "account_drawer": "Account",
   "setting_drawer": "Settings",
   "followers": "Followers",
   "edit_profile": "Edit Profile",
@@ -154,7 +154,7 @@
   "your_title_has_been_successfully_added": "Your title has been successfully added.",
   "you_have_successfully_added_your_title": "You have successfully added your title.",
   "you_can_continue_browsing": "You can continue browsing...",
-  "continue_to_the_homepage":"Continue to the homepage.",
+  "continue_to_the_homepage": "Continue to the homepage.",
   "arabic": "Arabic Language",
   "english": "English Language",
   "light": "Light mode",
@@ -180,9 +180,7 @@
   "Ads Number": "Ads Number",
   "Ads Views": "Ads Views",
   "reels": "Reels video",
-
   "select_country": "Select Country",
-
   "enter_your_full_name": "Enter your full name.",
   "empty_reels_title": "There are no videos to watch",
   "empty_reels_des": "It seems you haven't followed any users yet, it will appear",
@@ -190,46 +188,10 @@
   "following": "Following",
   "adsName": "Title",
   "adsDescription": "Description",
-
   "empty_reels_des1": "Videos from those you follow here...",
   "successfully_subscribed_to_the_exclusive": "You have successfully subscribed to the exclusive package.",
   "des_successfully_subscribed": "You can enjoy all its features...",
   "add_money": "Add Money",
   "charge_wallet": "Charge Wallet",
   "transactions": "Transactions"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

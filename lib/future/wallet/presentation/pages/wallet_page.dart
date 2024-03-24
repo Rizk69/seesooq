@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -16,172 +17,214 @@ import 'package:opensooq/future/wallet/presentation/widgets/transaction_widget.d
 
 enum TypeTransaction { wallet, package }
 
-class WalletPage extends StatelessWidget {
+class WalletPage extends StatefulWidget {
   const WalletPage({super.key});
 
   @override
+  State<WalletPage> createState() => _WalletPageState();
+}
+
+class _WalletPageState extends State<WalletPage> {
+  final TextEditingController _amountController = TextEditingController();
+  @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-        create: (_) => WalletCubit()..getWallet(),
-        child: BlocBuilder<WalletCubit, WalletState>(builder: (context, state) {
-          bool isOrientation = MediaQuery.of(context).orientation == Orientation.landscape;
-          return Scaffold(
-            appBar: CustomAppBar(
-              title: '',
-              centerTitle: true,
-              actions: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: TranslateText(styleText: StyleText.h4, text: 'wallet_drawer', colorText: AppColors.primary),
-                ),
-              ],
+    return BlocBuilder<WalletCubit, WalletState>(builder: (context, state) {
+      bool isOrientation = MediaQuery.of(context).orientation == Orientation.landscape;
+      return Scaffold(
+        appBar: CustomAppBar(
+          title: '',
+          centerTitle: true,
+          actions: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: TranslateText(styleText: StyleText.h4, text: 'wallet_drawer', colorText: AppColors.primary),
             ),
-            body: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 16),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      gradient: LinearGradient(
-                        begin: Alignment.bottomCenter,
-                        end: Alignment.topCenter,
-                        colors: [
-                          HexColor('#8676FB'),
-                          HexColor('#AB7BFF'),
-                        ],
+          ],
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 16),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  gradient: LinearGradient(
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
+                    colors: [
+                      HexColor('#8676FB'),
+                      HexColor('#AB7BFF'),
+                    ],
+                  ),
+                ),
+                height: isOrientation ? context.width * 0.2 : context.height * 0.2,
+                width: context.width,
+                child: Stack(
+                  children: [
+                    Positioned(
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(12),
+                        child: SvgPicture.asset(
+                          'wallet_shape'.toSvg,
+                          width: context.width,
+                          height: context.height * 0.1,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
-                    height: isOrientation ? context.width * 0.2 : context.height * 0.2,
-                    width: context.width,
-                    child: Stack(
-                      children: [
-                        Positioned(
-                          bottom: 0,
-                          left: 0,
-                          right: 0,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(12),
-                            child: SvgPicture.asset(
-                              'wallet_shape'.toSvg,
-                              width: context.width,
-                              height: context.height * 0.1,
-                              fit: BoxFit.cover,
+                    Positioned(
+                        top:
+                            isOrientation ? (context.width * 0.2) - (context.width * 0.23 / 2) : (context.height * 0.2) - (context.height * 0.23 / 2),
+                        child: Container(
+                          width: 45,
+                          height: 25,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              bottomRight: Radius.circular(12),
+                              topRight: Radius.circular(12),
                             ),
+                            color: Colors.white,
                           ),
-                        ),
-                        Positioned(
-                            top: isOrientation
-                                ? (context.width * 0.2) - (context.width * 0.23 / 2)
-                                : (context.height * 0.2) - (context.height * 0.23 / 2),
-                            child: Container(
-                              width: 45,
-                              height: 25,
-                              decoration: const BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                  bottomRight: Radius.circular(12),
-                                  topRight: Radius.circular(12),
+                          child: Stack(
+                            alignment: Alignment.centerRight,
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.all(20.0),
+                                margin: const EdgeInsets.only(right: 10),
+                                width: 15,
+                                height: 15,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  gradient: LinearGradient(
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                    colors: [
+                                      HexColor('#4C0497'),
+                                      HexColor('#D9D9D9').withOpacity(0.5),
+                                    ],
+                                  ),
                                 ),
+                              ),
+                            ],
+                          ),
+                        )),
+                    Positioned(
+                        right: 30,
+                        top: 35,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              height: 6,
+                              width: context.width * 0.2,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12),
                                 color: Colors.white,
                               ),
-                              child: Stack(
-                                alignment: Alignment.centerRight,
-                                children: [
-                                  Container(
-                                    padding: const EdgeInsets.all(20.0),
-                                    margin: const EdgeInsets.only(right: 10),
-                                    width: 15,
-                                    height: 15,
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      gradient: LinearGradient(
-                                        begin: Alignment.topCenter,
-                                        end: Alignment.bottomCenter,
-                                        colors: [
-                                          HexColor('#4C0497'),
-                                          HexColor('#D9D9D9').withOpacity(0.5),
-                                        ],
-                                      ),
+                            ),
+                            const SizedBox(
+                              height: 26,
+                            ),
+                            const TranslateText(
+                              styleText: StyleText.h4,
+                              text: 'Balance Now',
+                              colorText: Colors.white,
+                            ),
+                            const SizedBox(
+                              height: 8,
+                            ),
+                            TranslateText(
+                              styleText: StyleText.h4,
+                              text: '${state.walletModel?.balance.toString().price} JD',
+                              colorText: Colors.white,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ],
+                        ))
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                        child: CustomButtonWidget(
+                      text: 'add_money',
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (dialogContext) => AlertDialog.adaptive(
+                            title: const TranslateText(
+                              styleText: StyleText.h4,
+                              text: 'add_money',
+                              colorText: Colors.black,
+                            ),
+                            content: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                TextFormField(
+                                  controller: _amountController,
+                                  decoration: InputDecoration(
+                                    labelText: 'amount'.tr(),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(12),
+                                      borderSide: const BorderSide(),
                                     ),
                                   ),
-                                ],
-                              ),
-                            )),
-                        Positioned(
-                            right: 30,
-                            top: 35,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  height: 6,
-                                  width: context.width * 0.2,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(12),
-                                    color: Colors.white,
+                                ),
+                                const Gap(20),
+                                CustomButtonWidget(
+                                  text: 'charge_wallet',
+                                  onPressed: () {
+                                    Navigator.of(dialogContext).pop();
+
+                                    context.pushNamed(
+                                      Routes.paymentGateway,
+                                      extra: _amountController.text,
+                                      queryParameters: {'type': 'wallet'},
+                                    );
+                                  },
+                                  color: HexColor('#200E32'),
+                                  disableBorder: Border.all(
+                                    color: HexColor('#4C0497'),
+                                    width: 1,
                                   ),
-                                ),
-                                const SizedBox(
-                                  height: 26,
-                                ),
-                                const TranslateText(
-                                  styleText: StyleText.h4,
-                                  text: 'Balance Now',
-                                  colorText: Colors.white,
-                                ),
-                                const SizedBox(
-                                  height: 8,
-                                ),
-                                TranslateText(
-                                  styleText: StyleText.h4,
-                                  text: '${state.walletModel?.wallet.toString().price} JD',
-                                  colorText: Colors.white,
-                                  fontWeight: FontWeight.w500,
+                                  backgroundColor: Colors.white,
                                 ),
                               ],
-                            ))
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                            child: CustomButtonWidget(
-                          text: 'add_money',
-                          onPressed: () {
-                            context.pushNamed(
-                              Routes.paymentGateway,
-                              extra: '100',
-                              queryParameters: {'type': 'wallet'},
-                            );
-                          },
-                          color: Colors.white,
-                        )),
-                        const Gap(20),
-                        Expanded(
-                            child: CustomButtonWidget(
-                          text: 'charge_wallet',
-                          onPressed: () {},
-                          color: HexColor('#200E32'),
-                          disableBorder: Border.all(
-                            color: HexColor('#4C0497'),
-                            width: 1,
+                            ),
                           ),
-                          backgroundColor: Colors.white,
-                        )),
-                      ],
-                    ),
-                  ),
-                  const TransactionWidget(),
-                ],
+                        );
+                      },
+                      color: Colors.white,
+                    )),
+                    const Gap(20),
+                    Expanded(
+                        child: CustomButtonWidget(
+                      text: 'charge_wallet',
+                      onPressed: () {},
+                      color: HexColor('#200E32'),
+                      disableBorder: Border.all(
+                        color: HexColor('#4C0497'),
+                        width: 1,
+                      ),
+                      backgroundColor: Colors.white,
+                    )),
+                  ],
+                ),
               ),
-            ),
-          );
-        }));
+              const TransactionWidget(),
+            ],
+          ),
+        ),
+      );
+    });
   }
 }

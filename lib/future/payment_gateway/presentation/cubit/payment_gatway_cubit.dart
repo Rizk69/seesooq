@@ -13,7 +13,7 @@ class PaymentGatewayCubit extends Cubit<PaymentGatewayState> {
 
   void getPaymentGateway(String price) async {
     EasyLoading.show(status: 'loading...');
-    print('price: $price');
+
     Stripe.publishableKey = AppConstants.publishableKey;
     Stripe.merchantIdentifier = '';
     Stripe.urlScheme = Stripe.urlScheme;
@@ -51,10 +51,12 @@ class PaymentGatewayCubit extends Cubit<PaymentGatewayState> {
   }
 
   Future createPaymentIntent(String amount, String currency) async {
+    print('createPaymentIntent');
+    print('amount: $amount');
     try {
       //Request body
       Map<String, dynamic> body = {
-        'amount': amount,
+        'amount': (int.parse(amount) * 100).toString(),
         'currency': currency,
       };
 

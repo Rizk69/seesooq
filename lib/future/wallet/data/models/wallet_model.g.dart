@@ -7,10 +7,10 @@ part of 'wallet_model.dart';
 // **************************************************************************
 
 WalletModel _$WalletModelFromJson(Map<String, dynamic> json) => WalletModel(
-      wallet: json['wallet'] as String?,
+      balance: json['balance'] as String?,
     );
 
 Map<String, dynamic> _$WalletModelToJson(WalletModel instance) =>
     <String, dynamic>{
-      'wallet': instance.wallet,
+      'balance': instance.balance,
     };
