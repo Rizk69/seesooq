@@ -302,7 +302,7 @@ class MyAdsPage extends StatelessWidget {
                                                         child: TranslateText(
                                                           styleText: StyleText.h4,
                                                           fontSize: 16,
-                                                          text: 'تم القبول',
+                                                          text: item.status??'',
                                                           colorText: HexColor('7CA73C'),
                                                         ),
                                                       ),
@@ -322,7 +322,7 @@ class MyAdsPage extends StatelessWidget {
                                                         child: TranslateText(
                                                           styleText: StyleText.h4,
                                                           fontSize: 16,
-                                                          text: 'نشط',
+                                                          text: item.active??'',
                                                           colorText: HexColor('7CA73C'),
                                                         ),
                                                       ),

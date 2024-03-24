@@ -41,7 +41,7 @@ import 'package:opensooq/future/blogs/data/data_sorces/blogs_remote_data_sorces.
 import 'package:opensooq/future/blogs/data/repositories/blogs_repository.dart'
     as _i67;
 import 'package:opensooq/future/category/data/data_sources/category_remote_data_source.dart'
-    as _i70;
+    as _i69;
 import 'package:opensooq/future/category/data/repositories/category_repository.dart'
     as _i72;
 import 'package:opensooq/future/category/presentation/cubit/category_cubit.dart'
@@ -49,7 +49,7 @@ import 'package:opensooq/future/category/presentation/cubit/category_cubit.dart'
 import 'package:opensooq/future/category/presentation/cubit/details_category_cubit.dart'
     as _i77;
 import 'package:opensooq/future/category_product/data/data_sources/category_remote_data_source.dart'
-    as _i69;
+    as _i70;
 import 'package:opensooq/future/category_product/data/repositories/category_repo.dart'
     as _i71;
 import 'package:opensooq/future/category_product/presentation/cubit/category_product_cubit.dart'
@@ -316,10 +316,10 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i70.CategoryRemoteDataSourceImpl(gh<_i68.CategoryApi>()));
     gh.lazySingleton<_i71.CategoryRepo>(() => _i71.CategoryRepoImpl(
           gh<_i8.NetworkInfo>(),
-          gh<_i69.CategoryRemoteDataSource>(),
+          gh<_i70.CategoryRemoteDataSource>(),
         ));
     gh.lazySingleton<_i72.CategoryRepository>(
-        () => _i72.CategoryRepositoryImpl(gh<_i70.CategoryRemoteDataSource>()));
+        () => _i72.CategoryRepositoryImpl(gh<_i69.CategoryRemoteDataSource>()));
     gh.lazySingleton<_i73.ChangeLangUseCase>(() =>
         _i73.ChangeLangUseCase(langRepository: gh<_i24.LocaleRepository>()));
     gh.lazySingleton<_i74.ChangePasswordUserUseCase>(() =>

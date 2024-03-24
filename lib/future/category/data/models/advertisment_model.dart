@@ -197,6 +197,8 @@ class Data {
     this.checkFollwing,
     this.checkIfFavourite,
     this.visits,
+    this.status,
+    this.active,
     this.paymentMethods,
     this.createdAt,
   });
@@ -231,6 +233,8 @@ class Data {
     checkFollwing = json['checkFollwing'];
     checkIfFavourite = json['checkIfFavourite'];
     visits = json['visits'];
+    active = json['active'];
+    status = json['status'];
     paymentMethods = json['payment_methods'];
     createdAt = json['created_at'];
   }
@@ -258,6 +262,8 @@ class Data {
   dynamic checkFollwing;
   bool? checkIfFavourite;
   String? visits;
+  String? status;
+  String? active;
   String? paymentMethods;
   String? createdAt;
   Data copyWith({
@@ -285,6 +291,8 @@ class Data {
     bool? checkFollwing,
     bool? checkIfFavourite,
     String? visits,
+    String? status,
+    String? active,
     String? paymentMethods,
     String? createdAt,
   }) =>
@@ -313,6 +321,8 @@ class Data {
         checkFollwing: checkFollwing ?? this.checkFollwing,
         checkIfFavourite: checkIfFavourite ?? this.checkIfFavourite,
         visits: visits ?? this.visits,
+        status: status ?? this.status,
+        active: active ?? this.active,
         paymentMethods: paymentMethods ?? this.paymentMethods,
         createdAt: createdAt ?? this.createdAt,
       );
@@ -348,6 +358,8 @@ class Data {
     map['checkFollwing'] = checkFollwing;
     map['checkIfFavourite'] = checkIfFavourite;
     map['visits'] = visits;
+    map['status'] = status;
+    map['active'] = active;
     map['payment_methods'] = paymentMethods;
     map['created_at'] = createdAt;
     return map;
