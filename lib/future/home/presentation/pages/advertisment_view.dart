@@ -8,6 +8,8 @@ import 'package:opensooq/core/utils/svg_custom_image.dart';
 import 'package:opensooq/core/widget/text_translate_manager.dart';
 import 'package:opensooq/future/home/presentation/cubit/show_advertisment_cubit.dart';
 import 'package:opensooq/future/home/presentation/cubit/show_advertisment_state.dart';
+import 'package:opensooq/future/home/presentation/widgets/call_orchat_button_widget.dart';
+import 'package:opensooq/future/home/presentation/widgets/show_attributes_widget.dart';
 
 class ShowAdsByHomeScreen extends StatefulWidget {
   const ShowAdsByHomeScreen({super.key, required this.id});
@@ -40,19 +42,13 @@ class _ShowAdsByHomeScreenState extends State<ShowAdsByHomeScreen> {
             );
           }
           return Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(16.0),
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Text(state.advertisementModel?.data???'empty',style: TextStyle(color: Colors.black)),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 16, top: 16),
-                    child: BannerAdsSharedWidget(
-                        images: state.advertisementModel?.data?.album?? ['https://img.huffingtonpost.com/asset/63e54b2b2400006e006f69c7.png?ops=scalefit_720_noupscale'],
-                        onPageChanged: (index) {},
-                        height: 250),
-                  ),
+                  BannerAdsSharedWidget(images: [state.advertisementModel?.data?.mainImage ?? ' '], onPageChanged: (index) {}, height: 250),
                   const Gap(
                     25,
                   ),
@@ -102,8 +98,15 @@ class _ShowAdsByHomeScreenState extends State<ShowAdsByHomeScreen> {
                         ),
                       ],
                     ),
+
+                  CallOrChatButtonWidget(
+                    state: state,
+                  ),
                   const Gap(
                     20,
+                  ),
+                  ShowAttributesWidget(
+                    state: state,
                   ),
                 ],
               ),

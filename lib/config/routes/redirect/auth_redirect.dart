@@ -28,21 +28,16 @@ class AuthRedirect extends GoRedirect {
     final userSaved = (loginState.isHome);
 
     if (isLoggingIn && userSaved) {
-      print('isLoggingIn && userSaved');
       return Routes.home;
     }
 
-    if (signUpState.signUpStatus == SignUpStatus.doneOtp) {
-      print('signUpState.signUpStatus == SignUpStatus.doneOtp');
+    if (signUpState.signUpStatus == SignUpStatus.doneOtp && !isLoggingIn) {
       return Routes.home;
     }
-    if (loginState.loginStatus == LoginStatus.success) {
-      print('loginState.loginStatus == LoginStatus.success');
+    if (loginState.loginStatus == LoginStatus.success && isLoggingIn) {
       return Routes.home;
     }
     if (loginState.loginStatus == LoginStatus.unAuthorized && !isLoggingIn) {
-      print((state.uri.path));
-      print(excludedPaths.contains(state.uri.path));
       return Routes.login;
     }
 

@@ -1,5 +1,8 @@
 import 'package:dio/dio.dart';
+import 'package:go_router/go_router.dart';
 import 'package:injectable/injectable.dart';
+import 'package:opensooq/config/routes/app_routes.dart';
+import 'package:opensooq/future/login/presentation/cubit/login_cubit.dart';
 import 'package:opensooq/future/user_local_model.dart';
 
 import '../utils/app_strings.dart';
@@ -33,12 +36,12 @@ class CustomInterceptors extends Interceptor {
 
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) async {
-    // if (err.response?.data['error'].toString() == 'Unauthorized ') {
-    //   LoginCubit.get(rootNavigatorKey.currentContext!).deleteLocalUser();
-    //   rootNavigatorKey.currentState?.context.goNamed(
-    //     Routes.login,
-    //   );
-    // }
+    if (err.response?.statusCode == 401) {
+      LoginCubit.get(rootNavigatorKey.currentContext!).deleteLocalUser();
+      rootNavigatorKey.currentState?.context.goNamed(
+        Routes.login,
+      );
+    }
 
     return super.onError(err, handler);
   }

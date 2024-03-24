@@ -81,6 +81,9 @@ class SingleAdvertisment {
     twitter = json['twitter'];
     instagram = json['instagram'];
     mainImage = json['main_image'];
+    print('asddddd${json['attributes']}');
+
+    attributes = json['attributes'];
 
     video = json['video'];
     user = json['user'] != null ? SingleAdvertismentUser.fromJson(json['user']) : null;
