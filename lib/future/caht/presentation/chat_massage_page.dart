@@ -117,6 +117,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
+import 'package:go_router/go_router.dart';
 import 'package:http/http.dart' as http;
 import 'package:open_file/open_file.dart';
 import 'package:image_picker/image_picker.dart';
@@ -124,6 +125,8 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:mime/mime.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:uuid/uuid.dart';
+
+import '../../../config/routes/app_routes.dart';
 
 class ChatMassagePage extends StatefulWidget {
   const ChatMassagePage({super.key});
@@ -246,9 +249,9 @@ class _ChatMassagePageState extends State<ChatMassagePage> {
       if (message.uri.startsWith('http')) {
         try {
           final index =
-          _messages.indexWhere((element) => element.id == message.id);
+              _messages.indexWhere((element) => element.id == message.id);
           final updatedMessage =
-          (_messages[index] as types.FileMessage).copyWith(
+              (_messages[index] as types.FileMessage).copyWith(
             isLoading: true,
           );
 
@@ -268,9 +271,9 @@ class _ChatMassagePageState extends State<ChatMassagePage> {
           }
         } finally {
           final index =
-          _messages.indexWhere((element) => element.id == message.id);
+              _messages.indexWhere((element) => element.id == message.id);
           final updatedMessage =
-          (_messages[index] as types.FileMessage).copyWith(
+              (_messages[index] as types.FileMessage).copyWith(
             isLoading: null,
           );
 
@@ -286,9 +289,9 @@ class _ChatMassagePageState extends State<ChatMassagePage> {
   }
 
   void _handlePreviewDataFetched(
-      types.TextMessage message,
-      types.PreviewData previewData,
-      ) {
+    types.TextMessage message,
+    types.PreviewData previewData,
+  ) {
     final index = _messages.indexWhere((element) => element.id == message.id);
     final updatedMessage = (_messages[index] as types.TextMessage).copyWith(
       previewData: previewData,
@@ -323,23 +326,47 @@ class _ChatMassagePageState extends State<ChatMassagePage> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-    body: Chat(
-      messages: _messages,
-      onAttachmentPressed: _handleAttachmentPressed,
-      onMessageTap: _handleMessageTap,
-      onPreviewDataFetched: _handlePreviewDataFetched,
-      onSendPressed: _handleSendPressed,
-      showUserAvatars: true,
-      showUserNames: true,
-      user: _user,
-      theme: const DefaultChatTheme(
-        seenIcon: Text(
-          'read',
-          style: TextStyle(
-            fontSize: 10.0,
+        appBar: AppBar(
+          backgroundColor: Colors.black54,
+          leading: IconButton(
+            padding: EdgeInsets.symmetric(vertical: 9, horizontal: 14),
+
+            style: ButtonStyle(
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                backgroundColor: MaterialStatePropertyAll<Color>(
+                    Colors.grey.withOpacity(0.2))),
+            onPressed: () {
+              context.goNamed(Routes.chatPage);
+            },
+            icon: const Icon(
+              Icons.arrow_back_outlined,
+              size: 28,
+              color: Color(0Xff4C0497),
+            ),
+          ),
+
+        ),
+        body: Chat(
+          messages: _messages,
+          onAttachmentPressed: _handleAttachmentPressed,
+          onMessageTap: _handleMessageTap,
+          onPreviewDataFetched: _handlePreviewDataFetched,
+          onSendPressed: _handleSendPressed,
+          showUserAvatars: true,
+          showUserNames: true,
+          user: _user,
+          theme: const DefaultChatTheme(
+            seenIcon: Text(
+              'read',
+              style: TextStyle(
+                fontSize: 10.0,
+              ),
+            ),
           ),
         ),
-      ),
-    ),
-  );
+      );
 }
