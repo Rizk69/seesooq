@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:opensooq/core/api/end_point.dart';
 import 'package:opensooq/future/category/data/models/advertisment_model.dart';
+import 'package:opensooq/future/home/data/models/banners_model.dart';
 import 'package:opensooq/future/home/data/models/my_story_model.dart';
 import 'package:opensooq/future/home/data/models/single_advertisment_model.dart';
 import 'package:opensooq/future/home/data/models/users_story_model.dart';
@@ -44,6 +45,8 @@ abstract class HomeUserApi {
 
   @GET(EndPoint.getOfferAds)
   Future<AdvertisementModel> getOfferAds({@Path() required int categoryId, @Query('page') required int page});
+  @GET(EndPoint.getBanners)
+  Future<BannersModel> getBanners({@Query('page') required int page});
 
 // @POST(EndPoint.markNotificationAsRead)
 // Future<NotificationResponseModel> markNotificationAsRead({

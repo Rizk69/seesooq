@@ -4,6 +4,7 @@ import 'package:opensooq/core/error/failures.dart';
 import 'package:opensooq/core/network/network_info.dart';
 import 'package:opensooq/future/category/data/models/advertisment_model.dart';
 import 'package:opensooq/future/home/data/data_sources/home_user_remote_data_source.dart';
+import 'package:opensooq/future/home/data/models/banners_model.dart';
 import 'package:opensooq/future/home/data/models/my_story_model.dart';
 import 'package:opensooq/future/home/data/models/single_advertisment_model.dart';
 import 'package:opensooq/future/home/data/models/users_story_model.dart';
@@ -19,6 +20,7 @@ abstract class HomeUserRepo {
   Future<Either<Failures, UsersStoryModel>> getUsersStory();
 
   Future<Either<Failures, AdvertisementModel>> getOfferAds({required int categoryId, required int page});
+  Future<Either<Failures, BannersModel>> getBanners({ required int page});
 
   Future<Either<Failures, void>> deleteMyStory({required int id});
 
@@ -75,5 +77,12 @@ class HomeUserRepoImpl implements HomeUserRepo {
     return executeAndCatchError(() async => await homeUserRemoteDataSource.showAdvertisement(
           id: id,
         ));
+  }
+
+  @override
+  Future<Either<Failures, BannersModel>> getBanners({required int page}) {
+    return executeAndCatchError(() async => await homeUserRemoteDataSource.getBanners(
+      page: page,
+    ));
   }
 }

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:opensooq/core/utils/custom_button_widget.dart';
 import 'package:opensooq/core/utils/hex_color.dart';
 import 'package:opensooq/core/utils/media_query_values.dart';
 import 'package:opensooq/core/widget/text_translate_manager.dart';
+import 'package:opensooq/future/home/presentation/cubit/home_cubit.dart';
+import 'package:opensooq/future/home/presentation/cubit/home_state.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class BannerSharedWidget extends StatefulWidget {
@@ -20,6 +24,9 @@ class _BannerSharedWidgetState extends State<BannerSharedWidget> {
   final PageController controller = PageController();
   @override
   Widget build(BuildContext context) {
+    return BlocBuilder<HomeCubit, HomeState>(
+
+  builder: (context, state) {
     return Column(
       children: [
         SizedBox(
@@ -43,16 +50,16 @@ class _BannerSharedWidgetState extends State<BannerSharedWidget> {
                     SizedBox(
                       width: context.width,
                       height: widget.height,
-                      child: Image.asset(
-                        'banner'.toPng,
+                      child: Image.network(
+                        state.bannersModel!.data![index].album ??'' ,
                         fit: BoxFit.cover,
                       ),
                     ),
-                    const Positioned(
+                     Positioned(
                       right: 20,
                       top: 25,
                       child: TranslateText(
-                        text: 'Cars  on the ssss',
+                        text:  state.bannersModel!.data![index].title ??'Cars  on the ssss',
                         styleText: StyleText.h4,
                         colorText: Colors.white,
                       ),
@@ -63,7 +70,10 @@ class _BannerSharedWidgetState extends State<BannerSharedWidget> {
                       child: SizedBox(
                         width: 140,
                         height: 50,
-                        child: CustomButtonWidget(color: Colors.white, text: 'Explore', onPressed: () {}),
+                        child: CustomButtonWidget(color: Colors.white, text: 'Explore', onPressed: () {
+                          context.pushNamed('view_ads_home', extra: state.bannersModel!.data![index].id.toString());
+
+                        }),
                       ),
                     ),
                   ],
@@ -100,5 +110,7 @@ class _BannerSharedWidgetState extends State<BannerSharedWidget> {
         ),
       ],
     );
+  },
+);
   }
 }

@@ -19,6 +19,7 @@ class EndPoint {
   static const String getUsersStory = 'user/stories';
   static const String getOfferAds = 'advertisement/offers/{categoryId}';
   static const String createMyStory = 'create/story';
+  static const String getBanners = 'advertisement/offers/1';
   static const String createAdd = 'advertisement/store';
   static const String viewStory = 'view/story/{storyId}';
   static const String showAdvertisment = 'advertisement/show/{id}';

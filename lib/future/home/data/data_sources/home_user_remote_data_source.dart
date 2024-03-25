@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:opensooq/core/network/api/home_user_api.dart';
 import 'package:opensooq/future/category/data/models/advertisment_model.dart';
+import 'package:opensooq/future/home/data/models/banners_model.dart';
 import 'package:opensooq/future/home/data/models/my_story_model.dart';
 import 'package:opensooq/future/home/data/models/single_advertisment_model.dart';
 import 'package:opensooq/future/home/data/models/users_story_model.dart';
@@ -15,6 +16,7 @@ abstract class HomeUserRemoteDataSource {
   Future<MyStoryModel> getMyStories();
   Future<UsersStoryModel> getUsersStories();
   Future<AdvertisementModel> getOfferAds({required int categoryId, required int page});
+  Future<BannersModel> getBanners({ required int page});
   Future<void> deleteMyStory({required int id});
   Future<SingleAdvertismentModel> showAdvertisement({required int id});
 }
@@ -73,5 +75,10 @@ class HomeUserRemoteDataSourceImpl implements HomeUserRemoteDataSource {
     return homeUserApi.showAdvertisment(
       id: id,
     );
+  }
+
+  @override
+  Future<BannersModel> getBanners({required int page}) {
+    return homeUserApi.getBanners(page: page);
   }
 }

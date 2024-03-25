@@ -21,6 +21,7 @@ mixin _$HomeState {
   UserLocalModel? get userLocalModel => throw _privateConstructorUsedError;
   AdvertisementModel? get advertisementOffer =>
       throw _privateConstructorUsedError;
+  BannersModel? get bannersModel => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HomeStateCopyWith<HomeState> get copyWith =>
@@ -36,7 +37,8 @@ abstract class $HomeStateCopyWith<$Res> {
       {int index,
       DirectionUser directionUser,
       UserLocalModel? userLocalModel,
-      AdvertisementModel? advertisementOffer});
+      AdvertisementModel? advertisementOffer,
+      BannersModel? bannersModel});
 }
 
 /// @nodoc
@@ -56,6 +58,7 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
     Object? directionUser = null,
     Object? userLocalModel = freezed,
     Object? advertisementOffer = freezed,
+    Object? bannersModel = freezed,
   }) {
     return _then(_value.copyWith(
       index: null == index
@@ -74,6 +77,10 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
           ? _value.advertisementOffer
           : advertisementOffer // ignore: cast_nullable_to_non_nullable
               as AdvertisementModel?,
+      bannersModel: freezed == bannersModel
+          ? _value.bannersModel
+          : bannersModel // ignore: cast_nullable_to_non_nullable
+              as BannersModel?,
     ) as $Val);
   }
 }
@@ -90,7 +97,8 @@ abstract class _$$HomeStateImplCopyWith<$Res>
       {int index,
       DirectionUser directionUser,
       UserLocalModel? userLocalModel,
-      AdvertisementModel? advertisementOffer});
+      AdvertisementModel? advertisementOffer,
+      BannersModel? bannersModel});
 }
 
 /// @nodoc
@@ -108,6 +116,7 @@ class __$$HomeStateImplCopyWithImpl<$Res>
     Object? directionUser = null,
     Object? userLocalModel = freezed,
     Object? advertisementOffer = freezed,
+    Object? bannersModel = freezed,
   }) {
     return _then(_$HomeStateImpl(
       index: null == index
@@ -126,6 +135,10 @@ class __$$HomeStateImplCopyWithImpl<$Res>
           ? _value.advertisementOffer
           : advertisementOffer // ignore: cast_nullable_to_non_nullable
               as AdvertisementModel?,
+      bannersModel: freezed == bannersModel
+          ? _value.bannersModel
+          : bannersModel // ignore: cast_nullable_to_non_nullable
+              as BannersModel?,
     ));
   }
 }
@@ -137,7 +150,8 @@ class _$HomeStateImpl implements _HomeState {
       {this.index = 0,
       this.directionUser = DirectionUser.reverse,
       this.userLocalModel = null,
-      this.advertisementOffer = null});
+      this.advertisementOffer = null,
+      this.bannersModel = null});
 
   @override
   @JsonKey()
@@ -151,10 +165,13 @@ class _$HomeStateImpl implements _HomeState {
   @override
   @JsonKey()
   final AdvertisementModel? advertisementOffer;
+  @override
+  @JsonKey()
+  final BannersModel? bannersModel;
 
   @override
   String toString() {
-    return 'HomeState(index: $index, directionUser: $directionUser, userLocalModel: $userLocalModel, advertisementOffer: $advertisementOffer)';
+    return 'HomeState(index: $index, directionUser: $directionUser, userLocalModel: $userLocalModel, advertisementOffer: $advertisementOffer, bannersModel: $bannersModel)';
   }
 
   @override
@@ -168,12 +185,14 @@ class _$HomeStateImpl implements _HomeState {
             (identical(other.userLocalModel, userLocalModel) ||
                 other.userLocalModel == userLocalModel) &&
             (identical(other.advertisementOffer, advertisementOffer) ||
-                other.advertisementOffer == advertisementOffer));
+                other.advertisementOffer == advertisementOffer) &&
+            (identical(other.bannersModel, bannersModel) ||
+                other.bannersModel == bannersModel));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, index, directionUser, userLocalModel, advertisementOffer);
+  int get hashCode => Object.hash(runtimeType, index, directionUser,
+      userLocalModel, advertisementOffer, bannersModel);
 
   @JsonKey(ignore: true)
   @override
@@ -187,7 +206,8 @@ abstract class _HomeState implements HomeState {
       {final int index,
       final DirectionUser directionUser,
       final UserLocalModel? userLocalModel,
-      final AdvertisementModel? advertisementOffer}) = _$HomeStateImpl;
+      final AdvertisementModel? advertisementOffer,
+      final BannersModel? bannersModel}) = _$HomeStateImpl;
 
   @override
   int get index;
@@ -197,6 +217,8 @@ abstract class _HomeState implements HomeState {
   UserLocalModel? get userLocalModel;
   @override
   AdvertisementModel? get advertisementOffer;
+  @override
+  BannersModel? get bannersModel;
   @override
   @JsonKey(ignore: true)
   _$$HomeStateImplCopyWith<_$HomeStateImpl> get copyWith =>

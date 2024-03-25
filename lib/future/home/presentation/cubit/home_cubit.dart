@@ -11,6 +11,7 @@ import 'home_state.dart';
 class HomeCubit extends Cubit<HomeState> with ChangeNotifier {
   HomeCubit() : super(const HomeState()) {
     getAdvertisementOffer();
+    getBanners();
   }
 
   HomeUserRepo homeRepo = di.sl<HomeUserRepo>();
@@ -50,6 +51,23 @@ class HomeCubit extends Cubit<HomeState> with ChangeNotifier {
               });
             }));
   }
+  Future<void> getBanners() async {
+    await homeRepo
+        .getBanners(
+          page: page,
+        )
+        .then((value) => value.fold((l) {}, (r) {
+          print('getBanners ${r.data?[0].title}');
+              emit(state.copyWith(bannersModel:  r));
+              scrollController = ScrollController();
+              scrollController.addListener(() {
+                if (scrollController.position.pixels == scrollController.position.maxScrollExtent) {
+                  if (hasMoreItems) {
+                  }
+                }
+              });
+            }));
+  }
 
   Future<void> paginationAdvertisement({required String subCategory}) async {
     int lastPage = state.advertisementOffer?.meta?.lastPage?.toInt() ?? 0;
@@ -75,6 +93,30 @@ class HomeCubit extends Cubit<HomeState> with ChangeNotifier {
               }));
     }
   }
+  // Future<void> paginationBanners({required String subCategory}) async {
+  //   int lastPage = state.bannersModel?.data?.lastPage?.toInt() ?? 0;
+  //   int currentPage = state.advertisementOffer?.meta?.currentPage?.toInt() ?? 0;
+  //   if (currentPage <= lastPage) {
+  //     currentPage++;
+  //     await homeRepo
+  //         .getOfferAds(
+  //           categoryId: 1,
+  //           page: currentPage,
+  //         )
+  //         .then((value) => value.fold((l) {
+  //               if (kDebugMode) {
+  //                 print(l);
+  //               }
+  //             }, (r) {
+  //               emit(state.copyWith(
+  //                 advertisementOffer: AdvertisementModel(
+  //                   data: [...state.advertisementOffer?.data ?? [], ...r.data ?? []],
+  //                   meta: r.meta,
+  //                 ),
+  //               ));
+  //             }));
+  //   }
+  // }
 
   void toggleLikeInOffer(int index) {
     List<Data> list = List.from(state.advertisementOffer?.data ?? []);
