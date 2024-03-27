@@ -10,6 +10,7 @@ import 'package:opensooq/future/home/presentation/cubit/show_advertisment_cubit.
 import 'package:opensooq/future/home/presentation/cubit/show_advertisment_state.dart';
 import 'package:opensooq/future/home/presentation/widgets/call_orchat_button_widget.dart';
 import 'package:opensooq/future/home/presentation/widgets/show_attributes_widget.dart';
+import 'package:opensooq/future/home/presentation/widgets/show_owner_ads_widget.dart';
 
 class ShowAdsByHomeScreen extends StatefulWidget {
   const ShowAdsByHomeScreen({super.key, required this.id});
@@ -34,8 +35,10 @@ class _ShowAdsByHomeScreenState extends State<ShowAdsByHomeScreen> {
         centerTitle: true,
       ),
       body: BlocProvider(
-        create: (context) => ShowAdvertismentCubit()..getAdvertisment(widget.id),
-        child: BlocBuilder<ShowAdvertismentCubit, ShowAdvertismentState>(builder: (context, state) {
+        create: (context) =>
+            ShowAdvertismentCubit()..getAdvertisment(widget.id),
+        child: BlocBuilder<ShowAdvertismentCubit, ShowAdvertismentState>(
+            builder: (context, state) {
           if (state.storyStatus == ShowAdvertismentStatus.loading) {
             return const Center(
               child: CircularProgressIndicator(),
@@ -48,7 +51,9 @@ class _ShowAdsByHomeScreenState extends State<ShowAdsByHomeScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Text(state.advertisementModel?.data???'empty',style: TextStyle(color: Colors.black)),
-                  BannerAdsSharedWidget(images: [state.advertisementModel?.data?.mainImage ?? ' '], onPageChanged: (index) {}, height: 250),
+                  BannerAdsSharedWidget(images: [
+                    state.advertisementModel?.data?.mainImage ?? ' '
+                  ], onPageChanged: (index) {}, height: 250),
                   const Gap(
                     25,
                   ),
@@ -75,7 +80,8 @@ class _ShowAdsByHomeScreenState extends State<ShowAdsByHomeScreen> {
                   TranslateText(
                     styleText: StyleText.h3,
                     fontWeight: FontWeight.w700,
-                    text: '${state.advertisementModel?.data?.price.toString().price} JD',
+                    text:
+                        '${state.advertisementModel?.data?.price.toString().price} JD',
                     colorText: HexColor("#4C0497"),
                   ),
                   const Gap(
@@ -85,7 +91,8 @@ class _ShowAdsByHomeScreenState extends State<ShowAdsByHomeScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        SvgCustomImage(image: 'location'.toSvg, width: 20, height: 20),
+                        SvgCustomImage(
+                            image: 'location'.toSvg, width: 20, height: 20),
                         const Gap(
                           5,
                         ),
@@ -108,6 +115,10 @@ class _ShowAdsByHomeScreenState extends State<ShowAdsByHomeScreen> {
                   ShowAttributesWidget(
                     state: state,
                   ),
+                  const Gap(
+                    20,
+                  ),
+                  ShowOwnerAdsWidget(state: state)
                 ],
               ),
             ),

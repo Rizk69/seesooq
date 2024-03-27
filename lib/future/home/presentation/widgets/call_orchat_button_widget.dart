@@ -55,3 +55,52 @@ class CallOrChatButtonWidget extends StatelessWidget {
     );
   }
 }
+
+class CallOrChatButtonOwnerAdsSectionWidget extends StatelessWidget {
+  const CallOrChatButtonOwnerAdsSectionWidget({super.key, required this.state});
+  final ShowAdvertismentState state;
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(
+          child: CustomButtonWidget(
+            onPressed: () {},
+            text: 'message',
+            color: HexColor('200E32'),
+            icon: SvgPicture.asset(
+              'message_cat'.toSvg,
+              width: 25,
+              height: 25,
+              color: HexColor('#F05A35'),
+            ),
+            backgroundColor: HexColor("#F5F5F5"),
+          ),
+        ),
+        const Gap(10),
+        Expanded(
+          child: CustomButtonWidget(
+            onPressed: () {
+              var number = state.advertisementModel?.data?.user?.phone ?? '';
+              if (!number.startsWith('0')) {
+                number = '0$number';
+              }
+              callNumber(number);
+            },
+            text: 'call',
+            color: HexColor('200E32'),
+            icon: SvgPicture.asset(
+              'call_cat'.toSvg,
+              width: 25,
+              height: 25,
+              color: HexColor('#F05A35'),
+            ),
+            backgroundColor:  HexColor("#F5F5F5"),
+          ),
+        ),
+      ],
+    );
+  }
+}
