@@ -13,7 +13,8 @@ import '../../../../config/routes/app_routes.dart';
 enum CardPersonalWidgetType { home, drawer }
 
 class CardPersonalWidget extends StatelessWidget {
-  const CardPersonalWidget({super.key, required this.bodyText, required this.type});
+  const CardPersonalWidget(
+      {super.key, required this.bodyText, required this.type});
 
   final String bodyText;
 
@@ -39,19 +40,29 @@ class CardPersonalWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      TranslateText(
-                          styleText: StyleText.h4,
-                          colorText: type == CardPersonalWidgetType.drawer ? Colors.white : null,
-                          text: 'welcomeName'.tr(args: [state.userLocalModel?.user?.name ?? ''])),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      if (type == CardPersonalWidgetType.home) SvgPicture.asset('hey'.toSvg),
-                    ],
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 2.9,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Flexible(
+                          child: TranslateText(
+                              maxLines: 1,
+                              styleText: StyleText.h4,
+                              colorText: type == CardPersonalWidgetType.drawer
+                                  ? Colors.white
+                                  : null,
+                              text: 'welcomeName'.tr(args: [
+                                "${state.userLocalModel?.user?.name}" ?? ''
+                              ])),
+                        ),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        if (type == CardPersonalWidgetType.home)
+                          SvgPicture.asset('hey'.toSvg),
+                      ],
+                    ),
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,13 +70,18 @@ class CardPersonalWidget extends StatelessWidget {
                       TranslateText(
                         styleText: StyleText.h5,
                         text: bodyText.tr(),
-                        colorText: type == CardPersonalWidgetType.drawer ? Colors.white : null,
+                        colorText: type == CardPersonalWidgetType.drawer
+                            ? Colors.white
+                            : null,
                       ),
                       if (type == CardPersonalWidgetType.drawer) ...[
                         const SizedBox(
                           width: 5,
                         ),
-                        Align(alignment: Alignment.topCenter, child: Image.asset('gold'.toPng, width: 16, height: 16)),
+                        Align(
+                            alignment: Alignment.topCenter,
+                            child: Image.asset('gold'.toPng,
+                                width: 16, height: 16)),
                       ],
                     ],
                   ),
@@ -91,7 +107,8 @@ class CardPersonalWidget extends StatelessWidget {
                         height: 20,
                       ),
                       style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(Colors.white),
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.white),
                       ),
                     ),
                   ],

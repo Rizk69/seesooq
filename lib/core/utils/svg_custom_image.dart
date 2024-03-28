@@ -16,7 +16,6 @@ class SvgCustomImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // chose one of the following ways to load svg image
     return SvgPicture.asset(image,
         width: width.toDouble(),
         height: height.toDouble(),
