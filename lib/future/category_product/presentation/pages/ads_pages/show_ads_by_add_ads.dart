@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
+import 'package:opensooq/config/routes/app_routes.dart';
 import 'package:opensooq/core/utils/banner_ads_shared_widget.dart';
 import 'package:opensooq/core/utils/custom_button_widget.dart';
 import 'package:opensooq/core/utils/hex_color.dart';
@@ -22,7 +24,12 @@ class _ShowAdsByAddingScreenState extends State<ShowAdsByAddingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AddAdsCubit, AddAdsState>(builder: (context, state) {
+    return BlocConsumer<AddAdsCubit, AddAdsState>(listenWhen: (previous, current) {
+      return current.createAdsStatus == CreateAdsStatus.success;
+    }, listener: (context, state) {
+      context.goNamed(Routes.reviewAdsRoute);
+      AddAdsCubit.get(context).resetCreateAds();
+    }, builder: (context, state) {
       return SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

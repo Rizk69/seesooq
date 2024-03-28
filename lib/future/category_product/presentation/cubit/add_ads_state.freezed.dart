@@ -26,6 +26,7 @@ mixin _$AddAdsState {
   String get selectedSubCategoryBrands => throw _privateConstructorUsedError;
   String get city => throw _privateConstructorUsedError;
   String get governorate => throw _privateConstructorUsedError;
+  CreateAdsStatus get createAdsStatus => throw _privateConstructorUsedError;
   bool get isOffer => throw _privateConstructorUsedError;
   num get price => throw _privateConstructorUsedError;
   List<ImageFile> get images => throw _privateConstructorUsedError;
@@ -52,6 +53,7 @@ abstract class $AddAdsStateCopyWith<$Res> {
       String selectedSubCategoryBrands,
       String city,
       String governorate,
+      CreateAdsStatus createAdsStatus,
       bool isOffer,
       num price,
       List<ImageFile> images,
@@ -82,6 +84,7 @@ class _$AddAdsStateCopyWithImpl<$Res, $Val extends AddAdsState>
     Object? selectedSubCategoryBrands = null,
     Object? city = null,
     Object? governorate = null,
+    Object? createAdsStatus = null,
     Object? isOffer = null,
     Object? price = null,
     Object? images = null,
@@ -121,6 +124,10 @@ class _$AddAdsStateCopyWithImpl<$Res, $Val extends AddAdsState>
           ? _value.governorate
           : governorate // ignore: cast_nullable_to_non_nullable
               as String,
+      createAdsStatus: null == createAdsStatus
+          ? _value.createAdsStatus
+          : createAdsStatus // ignore: cast_nullable_to_non_nullable
+              as CreateAdsStatus,
       isOffer: null == isOffer
           ? _value.isOffer
           : isOffer // ignore: cast_nullable_to_non_nullable
@@ -170,6 +177,7 @@ abstract class _$$AddAdsStateImplCopyWith<$Res>
       String selectedSubCategoryBrands,
       String city,
       String governorate,
+      CreateAdsStatus createAdsStatus,
       bool isOffer,
       num price,
       List<ImageFile> images,
@@ -199,6 +207,7 @@ class __$$AddAdsStateImplCopyWithImpl<$Res>
     Object? selectedSubCategoryBrands = null,
     Object? city = null,
     Object? governorate = null,
+    Object? createAdsStatus = null,
     Object? isOffer = null,
     Object? price = null,
     Object? images = null,
@@ -238,6 +247,10 @@ class __$$AddAdsStateImplCopyWithImpl<$Res>
           ? _value.governorate
           : governorate // ignore: cast_nullable_to_non_nullable
               as String,
+      createAdsStatus: null == createAdsStatus
+          ? _value.createAdsStatus
+          : createAdsStatus // ignore: cast_nullable_to_non_nullable
+              as CreateAdsStatus,
       isOffer: null == isOffer
           ? _value.isOffer
           : isOffer // ignore: cast_nullable_to_non_nullable
@@ -274,6 +287,7 @@ class _$AddAdsStateImpl implements _AddAdsState {
       this.selectedSubCategoryBrands = '',
       this.city = '',
       this.governorate = '',
+      this.createAdsStatus = CreateAdsStatus.initial,
       this.isOffer = false,
       this.price = 0.0,
       final List<ImageFile> images = const [],
@@ -307,6 +321,9 @@ class _$AddAdsStateImpl implements _AddAdsState {
   final String governorate;
   @override
   @JsonKey()
+  final CreateAdsStatus createAdsStatus;
+  @override
+  @JsonKey()
   final bool isOffer;
   @override
   @JsonKey()
@@ -329,7 +346,7 @@ class _$AddAdsStateImpl implements _AddAdsState {
 
   @override
   String toString() {
-    return 'AddAdsState(attributesAdsStatus: $attributesAdsStatus, statusBrand: $statusBrand, attributesAdsModel: $attributesAdsModel, brandAdsModel: $brandAdsModel, selectedSubCategory: $selectedSubCategory, selectedSubCategoryBrands: $selectedSubCategoryBrands, city: $city, governorate: $governorate, isOffer: $isOffer, price: $price, images: $images, attributesForm: $attributesForm, loadingMore: $loadingMore)';
+    return 'AddAdsState(attributesAdsStatus: $attributesAdsStatus, statusBrand: $statusBrand, attributesAdsModel: $attributesAdsModel, brandAdsModel: $brandAdsModel, selectedSubCategory: $selectedSubCategory, selectedSubCategoryBrands: $selectedSubCategoryBrands, city: $city, governorate: $governorate, createAdsStatus: $createAdsStatus, isOffer: $isOffer, price: $price, images: $images, attributesForm: $attributesForm, loadingMore: $loadingMore)';
   }
 
   @override
@@ -353,6 +370,8 @@ class _$AddAdsStateImpl implements _AddAdsState {
             (identical(other.city, city) || other.city == city) &&
             (identical(other.governorate, governorate) ||
                 other.governorate == governorate) &&
+            (identical(other.createAdsStatus, createAdsStatus) ||
+                other.createAdsStatus == createAdsStatus) &&
             (identical(other.isOffer, isOffer) || other.isOffer == isOffer) &&
             (identical(other.price, price) || other.price == price) &&
             const DeepCollectionEquality().equals(other._images, _images) &&
@@ -373,6 +392,7 @@ class _$AddAdsStateImpl implements _AddAdsState {
       selectedSubCategoryBrands,
       city,
       governorate,
+      createAdsStatus,
       isOffer,
       price,
       const DeepCollectionEquality().hash(_images),
@@ -396,6 +416,7 @@ abstract class _AddAdsState implements AddAdsState {
       final String selectedSubCategoryBrands,
       final String city,
       final String governorate,
+      final CreateAdsStatus createAdsStatus,
       final bool isOffer,
       final num price,
       final List<ImageFile> images,
@@ -418,6 +439,8 @@ abstract class _AddAdsState implements AddAdsState {
   String get city;
   @override
   String get governorate;
+  @override
+  CreateAdsStatus get createAdsStatus;
   @override
   bool get isOffer;
   @override

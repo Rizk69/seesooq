@@ -152,7 +152,14 @@ class AddAdsCubit extends Cubit<AddAdsState> {
     emit(state.copyWith(attributesAdsStatus: AttributesAdsStatus.loading));
     await categoryRepo.createAds(attributesForm: state.attributesForm).then((value) => value.fold((l) {
           showError(l.message.toString());
-        }, (r) {}));
+        }, (r) {
+          emit(state.copyWith(createAdsStatus: CreateAdsStatus.success));
+          showSuccess('Ads created successfully');
+        }));
+  }
+
+  void resetCreateAds() {
+    emit(state.copyWith(createAdsStatus: CreateAdsStatus.initial));
   }
 
   Future<void> getBrands({required String subCategory}) async {

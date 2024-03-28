@@ -25,92 +25,100 @@ class _BannerSharedWidgetState extends State<BannerSharedWidget> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, HomeState>(
-
-  builder: (context, state) {
-    return Column(
-      children: [
-        SizedBox(
-          height: widget.height,
-          width: context.width,
-          child: PageView.builder(
-            pageSnapping: true,
-            clipBehavior: Clip.antiAliasWithSaveLayer,
-            controller: controller,
-            padEnds: true,
-            onPageChanged: widget.onPageChanged,
-            itemBuilder: (context, index) {
-              return Container(
-                margin: const EdgeInsets.symmetric(horizontal: 6),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  image: DecorationImage(image: AssetImage('car'.toPng), fit: BoxFit.cover),
-                ),
-                child: Stack(
-                  children: [
-                    SizedBox(
-                      width: context.width,
-                      height: widget.height,
-                      child: Image.network(
-                        state.bannersModel!.data![index].album ??'' ,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                     Positioned(
-                      right: 20,
-                      top: 25,
-                      child: TranslateText(
-                        text:  state.bannersModel!.data![index].title ??'Cars  on the ssss',
-                        styleText: StyleText.h4,
-                        colorText: Colors.white,
-                      ),
-                    ),
-                    Positioned(
-                      right: 20,
-                      bottom: 15,
-                      child: SizedBox(
-                        width: 140,
-                        height: 50,
-                        child: CustomButtonWidget(color: Colors.white, text: 'Explore', onPressed: () {
-                          context.pushNamed('view_ads_home', extra: state.bannersModel!.data![index].id.toString());
-
-                        }),
-                      ),
-                    ),
-                  ],
-                ),
-              );
-            },
-            scrollDirection: Axis.horizontal,
-            allowImplicitScrolling: false,
-            itemCount: widget.length,
-          ),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
+      builder: (context, state) {
+        return Column(
           children: [
-            SmoothPageIndicator(
-              count: widget.length,
-              onDotClicked: (index) {
-                controller.animateToPage(index, duration: const Duration(milliseconds: 500), curve: Curves.ease);
-              },
-              effect: WormEffect(
-                  dotHeight: 8,
-                  dotWidth: 8,
-                  activeDotColor: HexColor('#545FDD'),
-                  paintStyle: PaintingStyle.stroke,
-                  dotColor: Colors.grey,
-                  spacing: 5),
-              controller: controller,
+            if (state.bannersModel?.data?.isEmpty ?? true)
+              const SizedBox(
+                height: 250,
+                child: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              ),
+            if (state.bannersModel?.data?.isNotEmpty ?? false)
+              SizedBox(
+                height: widget.height,
+                width: context.width,
+                child: PageView.builder(
+                  pageSnapping: true,
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  controller: controller,
+                  padEnds: true,
+                  onPageChanged: widget.onPageChanged,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 6),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Stack(
+                        children: [
+                          SizedBox(
+                            width: context.width,
+                            height: widget.height,
+                            child: Image.network(
+                              state.bannersModel?.data?[index].album ?? '',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          Positioned(
+                            right: 20,
+                            top: 25,
+                            child: TranslateText(
+                              text: state.bannersModel?.data?[index].title ?? 'Cars  on the ssss',
+                              styleText: StyleText.h4,
+                              colorText: Colors.white,
+                            ),
+                          ),
+                          Positioned(
+                            right: 20,
+                            bottom: 15,
+                            child: SizedBox(
+                              width: 140,
+                              height: 50,
+                              child: CustomButtonWidget(
+                                  color: Colors.white,
+                                  text: 'Explore',
+                                  onPressed: () {
+                                    context.pushNamed('view_ads_home', extra: state.bannersModel?.data?[index].id.toString());
+                                  }),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                  scrollDirection: Axis.horizontal,
+                  allowImplicitScrolling: false,
+                  itemCount: widget.length,
+                ),
+              ),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SmoothPageIndicator(
+                  count: widget.length,
+                  onDotClicked: (index) {
+                    controller.animateToPage(index, duration: const Duration(milliseconds: 500), curve: Curves.ease);
+                  },
+                  effect: WormEffect(
+                      dotHeight: 8,
+                      dotWidth: 8,
+                      activeDotColor: HexColor('#545FDD'),
+                      paintStyle: PaintingStyle.stroke,
+                      dotColor: Colors.grey,
+                      spacing: 5),
+                  controller: controller,
+                ),
+              ],
             ),
           ],
-        ),
-      ],
+        );
+      },
     );
-  },
-);
   }
 }

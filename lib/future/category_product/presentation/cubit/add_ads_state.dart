@@ -11,6 +11,8 @@ enum AttributesAdsStatus { initial, loading, loaded, error }
 
 enum StatusBrand { initial, loading, loaded, error }
 
+enum CreateAdsStatus { initial, success, error }
+
 @freezed
 class AddAdsState with _$AddAdsState {
   const factory AddAdsState({
@@ -22,6 +24,7 @@ class AddAdsState with _$AddAdsState {
     @Default('') String selectedSubCategoryBrands,
     @Default('') String city,
     @Default('') String governorate,
+    @Default(CreateAdsStatus.initial) CreateAdsStatus createAdsStatus,
     @Default(false) bool isOffer,
     @Default(0.0) num price,
     @Default([]) List<ImageFile> images,

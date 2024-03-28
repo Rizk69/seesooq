@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:opensooq/future/home/presentation/widgets/call_orchat_button_widget.dart';
 
 import '../../../../core/utils/cache_network_image.dart';
 import '../../../../core/utils/hex_color.dart';
@@ -26,12 +25,13 @@ class ShowOwnerAdsWidget extends StatelessWidget {
           text: 'Owner Ads',
           colorText: HexColor("#200E32"),
         ),
-        Gap(20),
+        const Gap(20),
         ListTile(
           contentPadding: const EdgeInsets.all(0),
           horizontalTitleGap: 0,
           leading: CircleAvatar(
             radius: 35,
+            backgroundColor: Colors.white,
             child: CacheNetworkImageApp(
               urlImage: user?.image ?? '',
               fit: BoxFit.cover,
@@ -64,48 +64,36 @@ class ShowOwnerAdsWidget extends StatelessWidget {
               decoration: BoxDecoration(
                 border: Border.all(color: const Color(0xFF4C0497), width: 1),
                 borderRadius: BorderRadius.circular(50),
-                gradient:
-                    (cubit.advertisementModel?.data?.checkFollwing ?? true)
-                        ? const LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [
-                              Color(0xFF4C0497),
-                              Color(0xFF4C0497),
-                              Color(0xFF4C0497),
-                              Colors.white,
-                              Color(0xFF4C0497),
-                            ],
-                            stops: [
-                              0.0,
-                              0.0,
-                              0.5,
-                              1.5,
-                              1
-                            ], // Stops at 0%, 50%, and 100%
-                          )
-                        : const LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [
-                              Colors.white,
-                              Colors.white,
-                            ],
-                            stops: [
-                              0.0,
-                              0.0,
-                            ], // Stops at 0%, 50%, and 100%
-                          ),
+                gradient: (cubit.advertisementModel?.data?.checkFollwing ?? true)
+                    ? const LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Color(0xFF4C0497),
+                          Color(0xFF4C0497),
+                          Color(0xFF4C0497),
+                          Colors.white,
+                          Color(0xFF4C0497),
+                        ],
+                        stops: [0.0, 0.0, 0.5, 1.5, 1], // Stops at 0%, 50%, and 100%
+                      )
+                    : const LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Colors.white,
+                          Colors.white,
+                        ],
+                        stops: [
+                          0.0,
+                          0.0,
+                        ], // Stops at 0%, 50%, and 100%
+                      ),
               ),
               child: TranslateText(
-                text: (cubit.advertisementModel?.data?.checkFollwing ?? true)
-                    ? 'following'
-                    : 'follow',
+                text: (cubit.advertisementModel?.data?.checkFollwing ?? true) ? 'following' : 'follow',
                 styleText: StyleText.h5,
-                colorText:
-                    (cubit.advertisementModel?.data?.checkFollwing ?? false)
-                        ? Colors.white
-                        : const Color(0xFF4C0497),
+                colorText: (cubit.advertisementModel?.data?.checkFollwing ?? false) ? Colors.white : const Color(0xFF4C0497),
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -118,33 +106,38 @@ class ShowOwnerAdsWidget extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  itemsRow(title:cubit.advertisementModel?.data?.offerStartDatetime ??'' , icon: Icons.date_range),
-                  itemsRow(title:cubit.advertisementModel?.data?.createdAt ??'' , icon: Icons.access_time_rounded),
+                  itemsRow(title: cubit.advertisementModel?.data?.offerStartDatetime ?? '', icon: Icons.date_range),
+                  itemsRow(title: cubit.advertisementModel?.data?.createdAt ?? '', icon: Icons.access_time_rounded),
                 ],
               ),
-              Gap(15),
+              const Gap(15),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  itemsRow(title:cubit.advertisementModel?.data?.offerStartDatetime ??'' , icon: Icons.call),
-                  itemsRow(title:cubit.advertisementModel?.data?.createdAt ??'' , icon: Icons.remove_red_eye_outlined),
+                  itemsRow(title: cubit.advertisementModel?.data?.offerStartDatetime ?? '', icon: Icons.call),
+                  itemsRow(title: cubit.advertisementModel?.data?.createdAt ?? '', icon: Icons.remove_red_eye_outlined),
                 ],
               ),
             ],
           ),
         ),
 
-
-        Gap(20),
-        CallOrChatButtonOwnerAdsSectionWidget(state: state)
+        const Gap(20),
+        // CallOrChatButtonOwnerAdsSectionWidget(state: state)
       ],
     );
   }
-  Widget itemsRow({required String title,required ,required IconData icon}){
+
+  Widget itemsRow({required String title, required, required IconData icon}) {
     return Row(
       children: [
-        Icon(icon,color: HexColor('#4C0497'),),
-        SizedBox(width: 10,),
+        Icon(
+          icon,
+          color: HexColor('#4C0497'),
+        ),
+        const SizedBox(
+          width: 10,
+        ),
         TranslateText(
           styleText: StyleText.h5,
           fontWeight: FontWeight.w400,
