@@ -68,6 +68,15 @@ class DetailsCategoryCubit extends Cubit<DetailsCategoryState> {
 
   ScrollController scrollController = ScrollController();
 
+  Future<void> sendFilter() async {
+    await categoryRepository.sendFilter(
+      subCategoryId: state.detailsCategory.first.id.toString(),
+      filter: state.idsFilterSelected,
+      fromPrice: state.rangeValues.start.toString(),
+      toPrice: state.rangeValues.end.toString(),
+    );
+  }
+
   Future<void> getAdvertisementCategory({required String subCategory}) async {
     await categoryRepository
         .getAdvertisementCategory(

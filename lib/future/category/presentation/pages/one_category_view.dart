@@ -146,6 +146,11 @@ class _OneCategoryViewState extends State<OneCategoryView> {
                                                 )
                                                 .toList() ??
                                             [],
+                                        InkWell(
+                                            onTap: () {
+                                              cubit.sendFilter();
+                                            },
+                                            child: Text('sendFilter')),
                                         BlocSelector<DetailsCategoryCubit, DetailsCategoryState, RangeValues>(
                                           selector: (state22) => state22.rangeValues,
                                           builder: (context, rangeValue) => RangeSlider(
@@ -161,17 +166,14 @@ class _OneCategoryViewState extends State<OneCategoryView> {
                                               rangeValue.end.round().toString(),
                                             ),
                                             onChangeStart: (value) {
-                                              print(value);
                                               cubit.updateRangeValues(value);
                                               setState(() {});
                                             },
                                             onChanged: (value) {
-                                              print(value);
                                               cubit.updateRangeValues(value);
                                               setState(() {});
                                             },
                                             onChangeEnd: (value) {
-                                              print(value);
                                               cubit.updateRangeValues(value);
                                               setState(() {});
                                             },

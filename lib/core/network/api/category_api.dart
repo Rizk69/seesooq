@@ -35,6 +35,10 @@ abstract class CategoryApi {
   Future<AttributesAdsModel> getAttributesByFilter({
     @Field('category_id') required String subCategoryId,
   });
+  @POST(EndPoint.sendFilter)
+  Future<AttributesAdsModel> sendFilter({
+    @Body() required Map<String, dynamic> body,
+  });
 
   @GET(EndPoint.detailsCategory)
   Future<CategoryModel> getDetailsCategory({

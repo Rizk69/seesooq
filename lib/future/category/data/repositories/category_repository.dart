@@ -16,6 +16,8 @@ abstract class CategoryRepository {
 
   Future<Either<Failures, AdvertisementModel>> getAdvertisementCategory({required String subCategoryId, required int page});
   Future<Either<Failures, AttributesAdsModel>> getAttributesByFilter({required String subCategoryId});
+  Future<Either<Failures, AttributesAdsModel>> sendFilter(
+      {required String subCategoryId, required Map<String, dynamic> filter, required String fromPrice, required String toPrice});
 }
 
 @LazySingleton(as: CategoryRepository)
@@ -50,5 +52,16 @@ class CategoryRepositoryImpl implements CategoryRepository {
   @override
   Future<Either<Failures, AttributesAdsModel>> getAttributesByFilter({required String subCategoryId}) {
     return executeAndCatchError(() async => await _remoteDataSource.getAttributesByFilter(subCategoryId: subCategoryId));
+  }
+
+  @override
+  Future<Either<Failures, AttributesAdsModel>> sendFilter(
+      {required String subCategoryId, required Map<String, dynamic> filter, required String fromPrice, required String toPrice}) {
+    return executeAndCatchError(() async => await _remoteDataSource.sendFilter(
+          subCategoryId: subCategoryId,
+          filter: filter,
+          fromPrice: fromPrice,
+          toPrice: toPrice,
+        ));
   }
 }

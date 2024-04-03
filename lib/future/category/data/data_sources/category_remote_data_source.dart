@@ -12,6 +12,8 @@ abstract class CategoryRemoteDataSource {
   Future<AdvertisementModel> getAdvertisementCategory({required String subCategoryId, required int page});
 
   Future<AttributesAdsModel> getAttributesByFilter({required String subCategoryId});
+  Future<AttributesAdsModel> sendFilter(
+      {required String subCategoryId, required Map<String, dynamic> filter, required String fromPrice, required String toPrice});
 }
 
 @LazySingleton(as: CategoryRemoteDataSource)
@@ -40,6 +42,30 @@ class CategoryRemoteDataSourceImpl implements CategoryRemoteDataSource {
   Future<AttributesAdsModel> getAttributesByFilter({required String subCategoryId}) async {
     return await _api.getAttributesByFilter(
       subCategoryId: subCategoryId,
+    );
+  }
+
+  @override
+  Future<AttributesAdsModel> sendFilter(
+      {required String subCategoryId, required Map<String, dynamic> filter, required String fromPrice, required String toPrice}) async {
+    Map<String, dynamic> formData = {};
+    // add toprice and fromprice to the filter
+
+    filter.map((key, value) {
+      if (value is List) {
+        for (int i = 0; i < value.length; i++) {
+          //formData.addEntries(MapEntry('attributes[$key][$i]', value[i]));
+          formData['attributes[$key][${value[i]}]'] = value[i];
+        }
+      }
+      return MapEntry(key, value);
+    });
+    //..addAll({'fromPrice': fromPrice, 'toPrice': toPrice, 'category_id': subCategoryId})
+    //add this without clear previous data
+    formData.addAll({'fromPrice': fromPrice, 'toPrice': toPrice, 'category_id': 14});
+
+    return await _api.sendFilter(
+      body: formData,
     );
   }
 }
