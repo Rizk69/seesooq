@@ -41,7 +41,7 @@ import 'package:opensooq/future/blogs/data/data_sorces/blogs_remote_data_sorces.
 import 'package:opensooq/future/blogs/data/repositories/blogs_repository.dart'
     as _i67;
 import 'package:opensooq/future/category/data/data_sources/category_remote_data_source.dart'
-    as _i70;
+    as _i69;
 import 'package:opensooq/future/category/data/repositories/category_repository.dart'
     as _i72;
 import 'package:opensooq/future/category/presentation/cubit/category_cubit.dart'
@@ -49,7 +49,7 @@ import 'package:opensooq/future/category/presentation/cubit/category_cubit.dart'
 import 'package:opensooq/future/category/presentation/cubit/details_category_cubit.dart'
     as _i77;
 import 'package:opensooq/future/category_product/data/data_sources/category_remote_data_source.dart'
-    as _i69;
+    as _i70;
 import 'package:opensooq/future/category_product/data/repositories/category_repo.dart'
     as _i71;
 import 'package:opensooq/future/category_product/presentation/cubit/category_product_cubit.dart'
@@ -131,9 +131,9 @@ import 'package:opensooq/future/reels/data/reels_repository/reels_repository.dar
 import 'package:opensooq/future/setting/data/local/data_sources/setting_local_data_source.dart'
     as _i53;
 import 'package:opensooq/future/setting/data/repositories/setting_repository_impl.dart'
-    as _i56;
+    as _i57;
 import 'package:opensooq/future/setting/domain/repositories/setting_repository.dart'
-    as _i55;
+    as _i56;
 import 'package:opensooq/future/setting/domain/use_cases/get_fingerprint_usecase.dart'
     as _i79;
 import 'package:opensooq/future/setting/domain/use_cases/save_fingerprint_usecase.dart'
@@ -143,7 +143,7 @@ import 'package:opensooq/future/setting/presentation/cubit/setting_cubit.dart'
 import 'package:opensooq/future/setting1/data/data_sources/setting_remote_data_source.dart'
     as _i54;
 import 'package:opensooq/future/setting1/data/repositories/setting_repository.dart'
-    as _i57;
+    as _i55;
 import 'package:opensooq/future/signup/data/data_sources/signup_remote_data_source.dart'
     as _i91;
 import 'package:opensooq/future/signup/data/repositories/signup_repository.dart'
@@ -287,12 +287,12 @@ extension GetItInjectableX on _i1.GetIt {
         _i53.SettingLocalDataSourceImpl(cacheHelper: gh<_i10.CacheHelper>()));
     gh.lazySingleton<_i54.SettingRemoteDataSource>(
         () => _i54.SettingRemoteDataSourceImpl(gh<_i52.SettingApi>()));
-    gh.factory<_i55.SettingRepository>(() => _i56.SettingRepositoryImpl(
+    gh.lazySingleton<_i55.SettingRepository>(
+        () => _i55.SettingRepositoryImpl(gh<_i54.SettingRemoteDataSource>()));
+    gh.factory<_i56.SettingRepository>(() => _i57.SettingRepositoryImpl(
           networkInfo: gh<_i8.NetworkInfo>(),
           settingLocalDataSource: gh<_i53.SettingLocalDataSource>(),
         ));
-    gh.lazySingleton<_i57.SettingRepository>(
-        () => _i57.SettingRepositoryImpl(gh<_i54.SettingRemoteDataSource>()));
     gh.factory<_i58.SignupApi>(() => _i58.SignupApi(gh<_i5.Dio>()));
     gh.lazySingleton<_i59.VerifyForGetPasswordUserUseCase>(() =>
         _i59.VerifyForGetPasswordUserUseCase(
@@ -316,10 +316,10 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i70.CategoryRemoteDataSourceImpl(gh<_i68.CategoryApi>()));
     gh.lazySingleton<_i71.CategoryRepo>(() => _i71.CategoryRepoImpl(
           gh<_i8.NetworkInfo>(),
-          gh<_i69.CategoryRemoteDataSource>(),
+          gh<_i70.CategoryRemoteDataSource>(),
         ));
     gh.lazySingleton<_i72.CategoryRepository>(
-        () => _i72.CategoryRepositoryImpl(gh<_i70.CategoryRemoteDataSource>()));
+        () => _i72.CategoryRepositoryImpl(gh<_i69.CategoryRemoteDataSource>()));
     gh.lazySingleton<_i73.ChangeLangUseCase>(() =>
         _i73.ChangeLangUseCase(langRepository: gh<_i24.LocaleRepository>()));
     gh.lazySingleton<_i74.ChangePasswordUserUseCase>(() =>
@@ -336,7 +336,7 @@ extension GetItInjectableX on _i1.GetIt {
             loginRepository: gh<_i32.LoginRepository>()));
     gh.lazySingleton<_i79.GetFingerPrintUseCase>(() =>
         _i79.GetFingerPrintUseCase(
-            settingRepository: gh<_i55.SettingRepository>()));
+            settingRepository: gh<_i56.SettingRepository>()));
     gh.lazySingleton<_i80.GetPackagesUseCase>(() => _i80.GetPackagesUseCase(
         packagesRepository: gh<_i43.PackagesRepository>()));
     gh.lazySingleton<_i81.GetSavedLangUseCase>(() =>
@@ -365,7 +365,7 @@ extension GetItInjectableX on _i1.GetIt {
         getUserNotificationsUseCase: gh<_i84.GetUserNotificationsUseCase>()));
     gh.lazySingleton<_i89.SaveFingerPrintUseCase>(() =>
         _i89.SaveFingerPrintUseCase(
-            settingRepository: gh<_i55.SettingRepository>()));
+            settingRepository: gh<_i56.SettingRepository>()));
     gh.factory<_i90.SettingCubit>(() => _i90.SettingCubit(
           gh<_i79.GetFingerPrintUseCase>(),
           gh<_i89.SaveFingerPrintUseCase>(),

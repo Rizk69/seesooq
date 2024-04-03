@@ -60,7 +60,7 @@ class ReviewAdsPage extends StatelessWidget {
               color: HexColor('4C0497'),
               text: 'Home Page',
               onPressed: () {
-                context.goNamed(
+                context.pushReplacement(
                   Routes.home,
                 );
               },

@@ -126,6 +126,35 @@ class _CategoryApi implements CategoryApi {
   }
 
   @override
+  Future<AttributesAdsModel> sendFilter(
+      {required Map<String, dynamic> body}) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body);
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<AttributesAdsModel>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'filter/',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = await compute(deserializeAttributesAdsModel, _result.data!);
+    return value;
+  }
+
+  @override
   Future<CategoryModel> getDetailsCategory({required String categoryId}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
