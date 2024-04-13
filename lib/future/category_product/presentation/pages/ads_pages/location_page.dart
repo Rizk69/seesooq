@@ -59,26 +59,26 @@ class LocationAdsPage extends StatelessWidget {
                       hintStyle: TextStyle(color: Colors.grey),
                     )),
               const SizedBox(height: 16),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: SizedBox(
-                  height: context.height * 0.4,
-                  child: GoogleMap(
-                    initialCameraPosition: const CameraPosition(
-                      target: LatLng(24.7136, 46.6753),
-                      zoom: 14.4746,
-                    ),
-                    myLocationButtonEnabled: true,
-                    myLocationEnabled: true,
-                    gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>{
-                      Factory<OneSequenceGestureRecognizer>(
-                        () => EagerGestureRecognizer(),
-                      ),
-                    },
-                    onMapCreated: (GoogleMapController controller) {},
-                  ),
-                ),
-              ),
+              // ClipRRect(
+              //   borderRadius: BorderRadius.circular(8),
+              //   child: SizedBox(
+              //     height: context.height * 0.4,
+              //     child: GoogleMap(
+              //       initialCameraPosition: const CameraPosition(
+              //         target: LatLng(24.7136, 46.6753),
+              //         zoom: 14.4746,
+              //       ),
+              //       myLocationButtonEnabled: true,
+              //       myLocationEnabled: true,
+              //       gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>{
+              //         Factory<OneSequenceGestureRecognizer>(
+              //           () => EagerGestureRecognizer(),
+              //         ),
+              //       },
+              //       onMapCreated: (GoogleMapController controller) {},
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         );

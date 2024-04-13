@@ -35,6 +35,10 @@
   "IdUser": "ID : {}",
   "name": "Name",
   "dob": "Date of birth",
+  "classification": "Classification",
+  "resetting": "Resetting",
+  "search classification": "Search Classification",
+
   "search": "Search for cars, real estate, stores...",
   "gender": "Gender",
   "selectGender": "Select your gender",
