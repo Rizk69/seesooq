@@ -30,30 +30,31 @@ import 'package:opensooq/core/network/api/reels_api.dart' as _i49;
 import 'package:opensooq/core/network/api/setting_api.dart' as _i52;
 import 'package:opensooq/core/network/api/signup_api.dart' as _i58;
 import 'package:opensooq/core/network/api/wallet_api.dart' as _i60;
-import 'package:opensooq/core/network/dio_factory.dart' as _i98;
+import 'package:opensooq/core/network/dio_factory.dart' as _i99;
 import 'package:opensooq/core/network/mock_interceptor.dart' as _i6;
 import 'package:opensooq/core/network/network_info.dart' as _i8;
 import 'package:opensooq/core/utils/cache_helper.dart' as _i10;
 import 'package:opensooq/core/utils/navigator.dart' as _i7;
-import 'package:opensooq/di.dart' as _i97;
+import 'package:opensooq/di.dart' as _i98;
 import 'package:opensooq/future/blogs/data/data_sorces/blogs_remote_data_sorces.dart'
     as _i66;
 import 'package:opensooq/future/blogs/data/repositories/blogs_repository.dart'
     as _i67;
 import 'package:opensooq/future/category/data/data_sources/category_remote_data_source.dart'
-    as _i69;
+    as _i70;
 import 'package:opensooq/future/category/data/repositories/category_repository.dart'
     as _i72;
+import 'package:opensooq/future/category/domain/filter_usecase.dart' as _i78;
 import 'package:opensooq/future/category/presentation/cubit/category_cubit.dart'
-    as _i94;
+    as _i95;
 import 'package:opensooq/future/category/presentation/cubit/details_category_cubit.dart'
     as _i77;
 import 'package:opensooq/future/category_product/data/data_sources/category_remote_data_source.dart'
-    as _i70;
+    as _i69;
 import 'package:opensooq/future/category_product/data/repositories/category_repo.dart'
     as _i71;
 import 'package:opensooq/future/category_product/presentation/cubit/category_product_cubit.dart'
-    as _i95;
+    as _i96;
 import 'package:opensooq/future/favorite/data/data_sorces/fav_remot_data_sorces.dart'
     as _i13;
 import 'package:opensooq/future/favorite/data/repositories/fav_repository.dart'
@@ -89,13 +90,13 @@ import 'package:opensooq/future/login/domain/repositories/login_repo.dart'
 import 'package:opensooq/future/login/domain/usecase/change_password.dart'
     as _i74;
 import 'package:opensooq/future/login/domain/usecase/forget_password.dart'
-    as _i78;
+    as _i79;
 import 'package:opensooq/future/login/domain/usecase/get_user_local.dart'
-    as _i83;
+    as _i84;
 import 'package:opensooq/future/login/domain/usecase/verfy_forget_otp.dart'
     as _i59;
 import 'package:opensooq/future/login/presentation/cubit/login_cubit.dart'
-    as _i87;
+    as _i88;
 import 'package:opensooq/future/myads/data/data_sorces/my_ads_remot_data_sorces.dart'
     as _i35;
 import 'package:opensooq/future/myads/data/repositories/my_ads_repository.dart'
@@ -107,9 +108,9 @@ import 'package:opensooq/future/notification/data/repositories/notification_repo
 import 'package:opensooq/future/notification/domain/repositories/notification_repository.dart'
     as _i39;
 import 'package:opensooq/future/notification/domain/usecases/get_notification_usecase.dart'
-    as _i84;
+    as _i85;
 import 'package:opensooq/future/notification/presentation/cubit/notification_cubit.dart'
-    as _i88;
+    as _i89;
 import 'package:opensooq/future/packages/data/data_sources/packages_remote_data_source.dart'
     as _i42;
 import 'package:opensooq/future/packages/data/repositories/packages_repo_impl.dart'
@@ -117,11 +118,11 @@ import 'package:opensooq/future/packages/data/repositories/packages_repo_impl.da
 import 'package:opensooq/future/packages/domain/repositories/packages_repo.dart'
     as _i43;
 import 'package:opensooq/future/packages/domain/use_cases/get_package_usecase.dart'
-    as _i80;
+    as _i81;
 import 'package:opensooq/future/payment_gateway/data/data_sources/payment_gateway_local_data_source.dart'
-    as _i47;
-import 'package:opensooq/future/payment_gateway/data/data_sources/payment_gateway_remote_data_source.dart'
     as _i46;
+import 'package:opensooq/future/payment_gateway/data/data_sources/payment_gateway_remote_data_source.dart'
+    as _i47;
 import 'package:opensooq/future/payment_gateway/data/repositories/payment_repository.dart'
     as _i48;
 import 'package:opensooq/future/reels/data/data_source/reels_remote_data_source.dart'
@@ -135,21 +136,21 @@ import 'package:opensooq/future/setting/data/repositories/setting_repository_imp
 import 'package:opensooq/future/setting/domain/repositories/setting_repository.dart'
     as _i56;
 import 'package:opensooq/future/setting/domain/use_cases/get_fingerprint_usecase.dart'
-    as _i79;
+    as _i80;
 import 'package:opensooq/future/setting/domain/use_cases/save_fingerprint_usecase.dart'
-    as _i89;
-import 'package:opensooq/future/setting/presentation/cubit/setting_cubit.dart'
     as _i90;
+import 'package:opensooq/future/setting/presentation/cubit/setting_cubit.dart'
+    as _i91;
 import 'package:opensooq/future/setting1/data/data_sources/setting_remote_data_source.dart'
     as _i54;
 import 'package:opensooq/future/setting1/data/repositories/setting_repository.dart'
     as _i55;
 import 'package:opensooq/future/signup/data/data_sources/signup_remote_data_source.dart'
-    as _i91;
-import 'package:opensooq/future/signup/data/repositories/signup_repository.dart'
     as _i92;
+import 'package:opensooq/future/signup/data/repositories/signup_repository.dart'
+    as _i93;
 import 'package:opensooq/future/signup/presentation/cubit/signup_cubit.dart'
-    as _i96;
+    as _i97;
 import 'package:opensooq/future/splash/data/datasources/lang_local_data_sourece.dart'
     as _i23;
 import 'package:opensooq/future/splash/data/repositories/locale_repository_impl.dart'
@@ -161,11 +162,11 @@ import 'package:opensooq/future/splash/domain/usecases/change_lang.dart'
 import 'package:opensooq/future/splash/domain/usecases/change_theme.dart'
     as _i75;
 import 'package:opensooq/future/splash/domain/usecases/get_saved_lang.dart'
-    as _i81;
-import 'package:opensooq/future/splash/domain/usecases/get_theme_usecase.dart'
     as _i82;
+import 'package:opensooq/future/splash/domain/usecases/get_theme_usecase.dart'
+    as _i83;
 import 'package:opensooq/future/splash/presentation/cubit/lcoale_cubit.dart'
-    as _i86;
+    as _i87;
 import 'package:opensooq/future/wallet/data/data_sources/wallet_remote_data_source.dart'
     as _i61;
 import 'package:opensooq/future/wallet/data/repositories/wallet_repo_impl.dart'
@@ -173,9 +174,9 @@ import 'package:opensooq/future/wallet/data/repositories/wallet_repo_impl.dart'
 import 'package:opensooq/future/wallet/domain/repositories/wallet_repo.dart'
     as _i62;
 import 'package:opensooq/future/wallet/domain/use_cases/get_wallet_usecase.dart'
-    as _i85;
+    as _i86;
 import 'package:opensooq/future/wallet/domain/use_cases/store_payment_wallet_usecase.dart'
-    as _i93;
+    as _i94;
 import 'package:shared_preferences/shared_preferences.dart' as _i9;
 
 extension GetItInjectableX on _i1.GetIt {
@@ -272,11 +273,11 @@ extension GetItInjectableX on _i1.GetIt {
         packagesRemoteDataSource: gh<_i42.PackagesRemoteDataSource>()));
     gh.factory<_i45.PaymentApi>(() => _i45.PaymentApi(gh<_i5.Dio>()));
     gh.lazySingleton<_i46.PaymentRemoteDataSource>(
-        () => _i46.PaymentRemoteDataSourceImpl(gh<_i45.PaymentApi>()));
+        () => _i46.PaymentRemoteDataSourceImpl(gh<_i10.CacheHelper>()));
     gh.lazySingleton<_i47.PaymentRemoteDataSource>(
-        () => _i47.PaymentRemoteDataSourceImpl(gh<_i10.CacheHelper>()));
+        () => _i47.PaymentRemoteDataSourceImpl(gh<_i45.PaymentApi>()));
     gh.lazySingleton<_i48.PaymentRepository>(
-        () => _i48.PaymentRepositoryImpl(gh<_i46.PaymentRemoteDataSource>()));
+        () => _i48.PaymentRepositoryImpl(gh<_i47.PaymentRemoteDataSource>()));
     gh.factory<_i49.ReelsApi>(() => _i49.ReelsApi(gh<_i5.Dio>()));
     gh.lazySingleton<_i50.ReelsRemoteDataSource>(
         () => _i50.ReelsRemoteDataSourceImpl(gh<_i49.ReelsApi>()));
@@ -316,10 +317,10 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i70.CategoryRemoteDataSourceImpl(gh<_i68.CategoryApi>()));
     gh.lazySingleton<_i71.CategoryRepo>(() => _i71.CategoryRepoImpl(
           gh<_i8.NetworkInfo>(),
-          gh<_i70.CategoryRemoteDataSource>(),
+          gh<_i69.CategoryRemoteDataSource>(),
         ));
     gh.lazySingleton<_i72.CategoryRepository>(
-        () => _i72.CategoryRepositoryImpl(gh<_i69.CategoryRemoteDataSource>()));
+        () => _i72.CategoryRepositoryImpl(gh<_i70.CategoryRemoteDataSource>()));
     gh.lazySingleton<_i73.ChangeLangUseCase>(() =>
         _i73.ChangeLangUseCase(langRepository: gh<_i24.LocaleRepository>()));
     gh.lazySingleton<_i74.ChangePasswordUserUseCase>(() =>
@@ -331,65 +332,67 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i76.DeleteFavUseCase(gh<_i14.FavRepository>()));
     gh.lazySingleton<_i77.DetailsCategoryCubit>(() => _i77.DetailsCategoryCubit(
         categoryRepository: gh<_i72.CategoryRepository>()));
-    gh.lazySingleton<_i78.ForGetPasswordUserUseCase>(() =>
-        _i78.ForGetPasswordUserUseCase(
+    gh.lazySingleton<_i78.FilterUseCase>(
+        () => _i78.FilterUseCase(gh<_i71.CategoryRepo>()));
+    gh.lazySingleton<_i79.ForGetPasswordUserUseCase>(() =>
+        _i79.ForGetPasswordUserUseCase(
             loginRepository: gh<_i32.LoginRepository>()));
-    gh.lazySingleton<_i79.GetFingerPrintUseCase>(() =>
-        _i79.GetFingerPrintUseCase(
+    gh.lazySingleton<_i80.GetFingerPrintUseCase>(() =>
+        _i80.GetFingerPrintUseCase(
             settingRepository: gh<_i56.SettingRepository>()));
-    gh.lazySingleton<_i80.GetPackagesUseCase>(() => _i80.GetPackagesUseCase(
+    gh.lazySingleton<_i81.GetPackagesUseCase>(() => _i81.GetPackagesUseCase(
         packagesRepository: gh<_i43.PackagesRepository>()));
-    gh.lazySingleton<_i81.GetSavedLangUseCase>(() =>
-        _i81.GetSavedLangUseCase(langRepository: gh<_i24.LocaleRepository>()));
-    gh.lazySingleton<_i82.GetThemeUseCase>(() =>
-        _i82.GetThemeUseCase(langRepository: gh<_i24.LocaleRepository>()));
-    gh.lazySingleton<_i83.GetUserLocalUseCase>(() =>
-        _i83.GetUserLocalUseCase(loginRepository: gh<_i32.LoginRepository>()));
-    gh.factory<_i84.GetUserNotificationsUseCase>(() =>
-        _i84.GetUserNotificationsUseCase(
+    gh.lazySingleton<_i82.GetSavedLangUseCase>(() =>
+        _i82.GetSavedLangUseCase(langRepository: gh<_i24.LocaleRepository>()));
+    gh.lazySingleton<_i83.GetThemeUseCase>(() =>
+        _i83.GetThemeUseCase(langRepository: gh<_i24.LocaleRepository>()));
+    gh.lazySingleton<_i84.GetUserLocalUseCase>(() =>
+        _i84.GetUserLocalUseCase(loginRepository: gh<_i32.LoginRepository>()));
+    gh.factory<_i85.GetUserNotificationsUseCase>(() =>
+        _i85.GetUserNotificationsUseCase(
             notificationRepository: gh<_i39.NotificationRepository>()));
-    gh.lazySingleton<_i85.GetWalletUseCase>(() =>
-        _i85.GetWalletUseCase(walletRepository: gh<_i62.WalletRepository>()));
-    gh.factory<_i86.LocaleCubit>(() => _i86.LocaleCubit(
-          getSavedLangUseCase: gh<_i81.GetSavedLangUseCase>(),
+    gh.lazySingleton<_i86.GetWalletUseCase>(() =>
+        _i86.GetWalletUseCase(walletRepository: gh<_i62.WalletRepository>()));
+    gh.factory<_i87.LocaleCubit>(() => _i87.LocaleCubit(
+          getSavedLangUseCase: gh<_i82.GetSavedLangUseCase>(),
           changeLangUseCase: gh<_i73.ChangeLangUseCase>(),
           changeThemeUseCase: gh<_i75.ChangeThemeUseCase>(),
-          getThemeUseCase: gh<_i82.GetThemeUseCase>(),
+          getThemeUseCase: gh<_i83.GetThemeUseCase>(),
         ));
-    gh.lazySingleton<_i87.LoginCubit>(() => _i87.LoginCubit(
+    gh.lazySingleton<_i88.LoginCubit>(() => _i88.LoginCubit(
           gh<_i32.LoginRepository>(),
-          gh<_i78.ForGetPasswordUserUseCase>(),
+          gh<_i79.ForGetPasswordUserUseCase>(),
           gh<_i74.ChangePasswordUserUseCase>(),
         ));
-    gh.factory<_i88.NotificationCubit>(() => _i88.NotificationCubit(
-        getUserNotificationsUseCase: gh<_i84.GetUserNotificationsUseCase>()));
-    gh.lazySingleton<_i89.SaveFingerPrintUseCase>(() =>
-        _i89.SaveFingerPrintUseCase(
+    gh.factory<_i89.NotificationCubit>(() => _i89.NotificationCubit(
+        getUserNotificationsUseCase: gh<_i85.GetUserNotificationsUseCase>()));
+    gh.lazySingleton<_i90.SaveFingerPrintUseCase>(() =>
+        _i90.SaveFingerPrintUseCase(
             settingRepository: gh<_i56.SettingRepository>()));
-    gh.factory<_i90.SettingCubit>(() => _i90.SettingCubit(
-          gh<_i79.GetFingerPrintUseCase>(),
-          gh<_i89.SaveFingerPrintUseCase>(),
+    gh.factory<_i91.SettingCubit>(() => _i91.SettingCubit(
+          gh<_i80.GetFingerPrintUseCase>(),
+          gh<_i90.SaveFingerPrintUseCase>(),
         ));
-    gh.lazySingleton<_i91.SignUpRemoteDataSource>(
-        () => _i91.SignUpRemoteDataSourceImpl(
+    gh.lazySingleton<_i92.SignUpRemoteDataSource>(
+        () => _i92.SignUpRemoteDataSourceImpl(
               gh<_i10.CacheHelper>(),
               gh<_i58.SignupApi>(),
             ));
-    gh.lazySingleton<_i92.SignUpRepository>(
-        () => _i92.SignUpRepositoryImpl(gh<_i91.SignUpRemoteDataSource>()));
-    gh.lazySingleton<_i93.StorePaymentWalletUseCase>(() =>
-        _i93.StorePaymentWalletUseCase(
+    gh.lazySingleton<_i93.SignUpRepository>(
+        () => _i93.SignUpRepositoryImpl(gh<_i92.SignUpRemoteDataSource>()));
+    gh.lazySingleton<_i94.StorePaymentWalletUseCase>(() =>
+        _i94.StorePaymentWalletUseCase(
             walletRepository: gh<_i62.WalletRepository>()));
-    gh.factory<_i94.CategoryCubit>(
-        () => _i94.CategoryCubit(categoryRepo: gh<_i71.CategoryRepo>()));
-    gh.factory<_i95.CategoryProductCubit>(
-        () => _i95.CategoryProductCubit(categoryRepo: gh<_i71.CategoryRepo>()));
-    gh.lazySingleton<_i96.SignUpCubit>(
-        () => _i96.SignUpCubit(gh<_i92.SignUpRepository>()));
+    gh.factory<_i95.CategoryCubit>(
+        () => _i95.CategoryCubit(categoryRepo: gh<_i71.CategoryRepo>()));
+    gh.factory<_i96.CategoryProductCubit>(
+        () => _i96.CategoryProductCubit(categoryRepo: gh<_i71.CategoryRepo>()));
+    gh.lazySingleton<_i97.SignUpCubit>(
+        () => _i97.SignUpCubit(gh<_i93.SignUpRepository>()));
     return this;
   }
 }
 
-class _$RegisterModule extends _i97.RegisterModule {}
+class _$RegisterModule extends _i98.RegisterModule {}
 
-class _$DioFactory extends _i98.DioFactory {}
+class _$DioFactory extends _i99.DioFactory {}

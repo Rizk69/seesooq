@@ -36,8 +36,9 @@ abstract class CategoryApi {
     @Field('category_id') required String subCategoryId,
   });
   @POST(EndPoint.sendFilter)
-  Future<AttributesAdsModel> sendFilter({
+  Future<AdvertisementModel> sendFilter({
     @Body() required Map<String, dynamic> body,
+    @Query('page') required int page,
   });
 
   @GET(EndPoint.detailsCategory)
@@ -47,6 +48,7 @@ abstract class CategoryApi {
   @GET(EndPoint.getAdvertisement)
   Future<AdvertisementModel> getAdvertisementCategory({
     @Path('subCategoryId') required String subCategoryId,
+    @Query('page') required int page,
   });
   @POST(EndPoint.getBrands)
   Future<BrandAdsModel> getBrands({

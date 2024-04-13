@@ -19,68 +19,69 @@ class CategoryWidget extends StatelessWidget {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    TranslateText(
-                      styleText: StyleText.h5,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      text: 'departments'.tr(),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        context.goNamed(Routes.categoryView);
-                      },
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          TranslateText(
-                            styleText: StyleText.h6,
-                            fontSize: 16,
-                            fontWeight: FontWeight.normal,
-                            text: 'more'.tr(),
-                          ),
-                          const SizedBox(
-                            width: 2,
-                          ),
-                          Icon(
-                            Icons.arrow_forward_ios,
-                            size: 16,
-                            color: AppColors.primaryColorText,
-                          ),
+          if (state.category.isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      TranslateText(
+                        styleText: StyleText.h5,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                        text: 'departments'.tr(),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          context.goNamed(Routes.categoryView);
+                        },
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            TranslateText(
+                              styleText: StyleText.h6,
+                              fontSize: 16,
+                              fontWeight: FontWeight.normal,
+                              text: 'more'.tr(),
+                            ),
+                            const SizedBox(
+                              width: 2,
+                            ),
+                            Icon(
+                              Icons.arrow_forward_ios,
+                              size: 16,
+                              color: AppColors.primaryColorText,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  const Gap(5),
+                  Container(
+                    height: 5,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                        tileMode: TileMode.repeated,
+                        stops: const [0.01, 2, 0],
+                        colors: [
+                          Colors.white,
+                          AppColors.primary.withOpacity(0.8),
+                          AppColors.primary,
                         ],
                       ),
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                  ],
-                ),
-                const Gap(5),
-                Container(
-                  height: 5,
-                  width: 50,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
-                      tileMode: TileMode.repeated,
-                      stops: const [0.01, 2, 0],
-                      colors: [
-                        Colors.white,
-                        AppColors.primary.withOpacity(0.8),
-                        AppColors.primary,
-                      ],
-                    ),
-                    borderRadius: BorderRadius.circular(10),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
           const SizedBox(
             height: 10,
           ),

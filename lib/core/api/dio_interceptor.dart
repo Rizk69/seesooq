@@ -36,12 +36,12 @@ class CustomInterceptors extends Interceptor {
 
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) async {
-    if (err.response?.statusCode == 401) {
-      LoginCubit.get(rootNavigatorKey.currentContext!).deleteLocalUser();
-      rootNavigatorKey.currentState?.context.goNamed(
-        Routes.login,
-      );
-    }
+    // if (err.response?.statusCode == 401) {
+    //   LoginCubit.get(rootNavigatorKey.currentContext!).deleteLocalUser();
+    //   rootNavigatorKey.currentState?.context.goNamed(
+    //     Routes.login,
+    //   );
+    // }
 
     return super.onError(err, handler);
   }

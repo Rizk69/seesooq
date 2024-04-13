@@ -5,6 +5,7 @@ import 'package:opensooq/core/error/error_handler.dart';
 import 'package:opensooq/core/error/failures.dart';
 import 'package:opensooq/future/category/data/data_sources/category_remote_data_source.dart';
 import 'package:opensooq/future/category/data/models/advertisment_model.dart';
+import 'package:opensooq/future/category/domain/filter_usecase.dart';
 import 'package:opensooq/future/category_product/data/models/attributes_ads_model.dart';
 import 'package:opensooq/future/category_product/data/models/category_model.dart';
 import 'package:opensooq/future/signup/data/repositories/signup_repository.dart';
@@ -15,9 +16,10 @@ abstract class CategoryRepository {
   Future<Either<Failures, List<CategoryDataModel>>> getDetailsCategories({required String categoryId});
 
   Future<Either<Failures, AdvertisementModel>> getAdvertisementCategory({required String subCategoryId, required int page});
+
   Future<Either<Failures, AttributesAdsModel>> getAttributesByFilter({required String subCategoryId});
-  Future<Either<Failures, AttributesAdsModel>> sendFilter(
-      {required String subCategoryId, required Map<String, dynamic> filter, required String fromPrice, required String toPrice});
+
+  Future<Either<Failures, AdvertisementModel>> sendFilter({required FilterParams params});
 }
 
 @LazySingleton(as: CategoryRepository)
@@ -51,17 +53,17 @@ class CategoryRepositoryImpl implements CategoryRepository {
 
   @override
   Future<Either<Failures, AttributesAdsModel>> getAttributesByFilter({required String subCategoryId}) {
-    return executeAndCatchError(() async => await _remoteDataSource.getAttributesByFilter(subCategoryId: subCategoryId));
+    return executeAndCatchError(() async => await _remoteDataSource.getAttributesByFilter(
+          subCategoryId: subCategoryId,
+        ));
   }
 
   @override
-  Future<Either<Failures, AttributesAdsModel>> sendFilter(
-      {required String subCategoryId, required Map<String, dynamic> filter, required String fromPrice, required String toPrice}) {
-    return executeAndCatchError(() async => await _remoteDataSource.sendFilter(
-          subCategoryId: subCategoryId,
-          filter: filter,
-          fromPrice: fromPrice,
-          toPrice: toPrice,
-        ));
+  Future<Either<Failures, AdvertisementModel>> sendFilter({required FilterParams params}) {
+    return executeAndCatchError(
+      () async => await _remoteDataSource.sendFilter(
+        params: params,
+      ),
+    );
   }
 }

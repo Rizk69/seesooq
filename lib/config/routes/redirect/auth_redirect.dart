@@ -14,7 +14,7 @@ class AuthRedirect extends GoRedirect {
     Routes.loginSplash,
     Routes.login,
     "/login/signUp",
-    Routes.forgetPasswordPRoute,
+    '/login/forgetPasswordPage',
     Routes.confirmCode,
     "/login/signUp/confirmCodeSignUp"
   ];
@@ -38,6 +38,8 @@ class AuthRedirect extends GoRedirect {
       return Routes.home;
     }
     if (loginState.loginStatus == LoginStatus.unAuthorized && !isLoggingIn) {
+      print(isLoggingIn);
+      print(state.uri.path);
       return Routes.login;
     }
 

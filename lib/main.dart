@@ -7,6 +7,7 @@ import 'package:hive/hive.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:multi_image_picker_view/multi_image_picker_view.dart';
 import 'package:opensooq/app.dart';
+import 'package:opensooq/core/utils/bloc_observe.dart';
 import 'package:opensooq/core/utils/notification_service.dart';
 import 'package:opensooq/future/user_local_model.dart';
 import 'package:path_provider/path_provider.dart';
@@ -49,14 +50,9 @@ void main() async {
     provisional: false,
     sound: true,
   );
-  final apnsToken = await FirebaseMessaging.instance.getAPNSToken();
-  if (apnsToken != null) {
-    print('APNS token: $apnsToken');
-    // APNS token is available, make FCM plugin API requests...
-  }
+  
 
-  LocalNotificationService.preStart();
-  print(await FirebaseMessaging.instance.getToken());
+  
 
   runApp(
     EasyLocalization(
@@ -69,28 +65,4 @@ void main() async {
   );
 }
 
-class MyBlocObserver extends BlocObserver {
-  @override
-  void onCreate(BlocBase bloc) {
-    super.onCreate(bloc);
-    print('onCreate -- ${bloc.runtimeType}');
-  }
 
-  @override
-  void onChange(BlocBase bloc, Change change) {
-    super.onChange(bloc, change);
-    print('onChange -- ${bloc.runtimeType}, $change');
-  }
-
-  @override
-  void onError(BlocBase bloc, Object error, StackTrace stackTrace) {
-    print('onError -- ${bloc.runtimeType}, $error');
-    super.onError(bloc, error, stackTrace);
-  }
-
-  @override
-  void onClose(BlocBase bloc) {
-    super.onClose(bloc);
-    print('onClose -- ${bloc.runtimeType}');
-  }
-}

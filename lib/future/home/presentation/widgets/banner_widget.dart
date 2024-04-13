@@ -11,18 +11,20 @@ class BannerWidget extends StatefulWidget {
   State<BannerWidget> createState() => _BannerWidgetState();
 }
 
-class _BannerWidgetState extends State<BannerWidget> with SingleTickerProviderStateMixin {
+class _BannerWidgetState extends State<BannerWidget>
+    with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        BannerSharedWidget(
-          length: 5,
-          onPageChanged: (value) {
-            widget.cubit.updateIndex(value);
-          },
-          height: 160,
-        ),
+        if (widget.cubit.state.bannersModel?.data?.isNotEmpty ?? false)
+          BannerSharedWidget(
+            length: 5,
+            onPageChanged: (value) {
+              widget.cubit.updateIndex(value);
+            },
+            height: 160,
+          ),
       ],
     );
   }

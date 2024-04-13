@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:opensooq/future/category/data/models/advertisment_model.dart';
 import 'package:opensooq/future/category/data/repositories/category_repository.dart';
+import 'package:opensooq/future/category/domain/filter_usecase.dart';
 import 'package:opensooq/future/category/presentation/cubit/details_category_state.dart';
 
 import '../../../../core/utils/app_constants.dart';
@@ -67,17 +68,40 @@ class DetailsCategoryCubit extends Cubit<DetailsCategoryState> {
   }
 
   ScrollController scrollController = ScrollController();
+  int filterPage = 1;
+  bool hasFilterMoreItems = true;
 
   Future<void> sendFilter() async {
-    await categoryRepository.sendFilter(
+    emit(state.copyWith(viewData: ViewData.filters));
+    FilterParams filterParams = FilterParams(
       subCategoryId: state.detailsCategory.first.id.toString(),
       filter: state.idsFilterSelected,
       fromPrice: state.rangeValues.start.toString(),
       toPrice: state.rangeValues.end.toString(),
+      page: filterPage,
     );
+    emit(state.copyWith(filterStatus: FilterStatus.loading));
+
+    // emit(const ViewState.loading());
+    await categoryRepository
+        .sendFilter(
+          params: filterParams,
+        )
+        .then((value) => value.fold((l) {
+              if (kDebugMode) {
+                print(l);
+              }
+              emit(state.copyWith(detailsCategoryStatus: DetailsCategoryStatus.error));
+            }, (r) {
+              emit(state.copyWith(filterAdvertisementModel: r, filterStatus: FilterStatus.loaded));
+              if ((r.meta?.total ?? 0) < AppConstants.itemsPerPage) {
+                hasFilterMoreItems = false;
+              }
+            }));
   }
 
   Future<void> getAdvertisementCategory({required String subCategory}) async {
+    emit(state.copyWith(advertisemenStatus: AdvertisemenStatus.loading, viewData: ViewData.normal));
     await categoryRepository
         .getAdvertisementCategory(
           subCategoryId: subCategory,
@@ -92,8 +116,10 @@ class DetailsCategoryCubit extends Cubit<DetailsCategoryState> {
               scrollController = ScrollController();
               scrollController.addListener(() {
                 if (scrollController.position.pixels == scrollController.position.maxScrollExtent) {
-                  if (hasMoreItems) {
+                  if (hasMoreItems && state.viewData == ViewData.normal) {
                     paginationAdvertisement(subCategory: subCategory);
+                  } else if (hasFilterMoreItems && state.viewData == ViewData.filters) {
+                    paginationFilterAdvertisement(subCategory: subCategory);
                   }
                 }
               });
@@ -128,6 +154,36 @@ class DetailsCategoryCubit extends Cubit<DetailsCategoryState> {
                 emit(state.copyWith(
                   advertisementModel: AdvertisementModel(
                     data: [...state.advertisementModel?.data ?? [], ...r.data ?? []],
+                    meta: r.meta,
+                  ),
+                ));
+              }));
+    }
+  }
+
+  Future<void> paginationFilterAdvertisement({required String subCategory}) async {
+    int lastPage = state.filterAdvertisementModel?.meta?.lastPage?.toInt() ?? 0;
+    int currentPage = state.filterAdvertisementModel?.meta?.currentPage?.toInt() ?? 0;
+    if (currentPage <= lastPage) {
+      currentPage++;
+      await categoryRepository
+          .sendFilter(
+            params: FilterParams(
+              subCategoryId: subCategory,
+              filter: state.idsFilterSelected,
+              fromPrice: state.rangeValues.start.toString(),
+              toPrice: state.rangeValues.end.toString(),
+              page: currentPage,
+            ),
+          )
+          .then((value) => value.fold((l) {
+                if (kDebugMode) {
+                  print(l);
+                }
+              }, (r) {
+                emit(state.copyWith(
+                  filterAdvertisementModel: AdvertisementModel(
+                    data: [...state.filterAdvertisementModel?.data ?? [], ...r.data ?? []],
                     meta: r.meta,
                   ),
                 ));

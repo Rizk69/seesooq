@@ -126,15 +126,17 @@ class _CategoryApi implements CategoryApi {
   }
 
   @override
-  Future<AttributesAdsModel> sendFilter(
-      {required Map<String, dynamic> body}) async {
+  Future<AdvertisementModel> sendFilter({
+    required Map<String, dynamic> body,
+    required int page,
+  }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'page': page};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body);
     final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<AttributesAdsModel>(Options(
+        .fetch<Map<String, dynamic>>(_setStreamType<AdvertisementModel>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -150,7 +152,7 @@ class _CategoryApi implements CategoryApi {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = await compute(deserializeAttributesAdsModel, _result.data!);
+    final value = await compute(deserializeAdvertisementModel, _result.data!);
     return value;
   }
 
@@ -182,10 +184,12 @@ class _CategoryApi implements CategoryApi {
   }
 
   @override
-  Future<AdvertisementModel> getAdvertisementCategory(
-      {required String subCategoryId}) async {
+  Future<AdvertisementModel> getAdvertisementCategory({
+    required String subCategoryId,
+    required int page,
+  }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'page': page};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result = await _dio

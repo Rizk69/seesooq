@@ -87,15 +87,7 @@ class _ConfirmCodeLoginPageState extends State<ConfirmCodeLoginPage> {
                 maxLines: 2,
                 colorText: Theme.of(context).colorScheme.primary,
               ),
-              TranslateText(
-                styleText: StyleText.h6,
-                text: state.responseOtpCode.toString() ?? '',
-                maxLines: 2,
-                colorText: Theme.of(context).colorScheme.primary,
-              ),
-              const SizedBox(
-                height: 15,
-              ),
+            
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 32.0),
                 child: Row(

@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:opensooq/core/utils/app_colors.dart';
 import 'package:opensooq/core/utils/cache_network_image.dart';
@@ -198,258 +199,524 @@ class _OneCategoryViewState extends State<OneCategoryView> {
                   ),
                 ),
               ),
-              SliverToBoxAdapter(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Row(
-                        children: [
-                          TranslateText(
-                            styleText: StyleText.h5,
-                            text: 'Jordan',
-                          ),
-                        ],
-                      ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          TranslateText(
-                            styleText: StyleText.h5,
-                            text: state.advertisementModel?.meta?.total.toString() ?? '',
-                          ),
-                          SvgCustomImage(
-                            image: 'number_ads'.toSvg,
-                            width: 20,
-                            height: 20,
-                          ),
-                        ],
-                      ),
-                    ],
+              if (state.viewData == ViewData.normal) ...[
+                SliverToBoxAdapter(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Row(
+                          children: [
+                            TranslateText(
+                              styleText: StyleText.h5,
+                              text: 'Jordan',
+                            ),
+                          ],
+                        ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            TranslateText(
+                              styleText: StyleText.h5,
+                              text: state.advertisementModel?.meta?.total.toString() ?? '',
+                            ),
+                            SvgCustomImage(
+                              image: 'number_ads'.toSvg,
+                              width: 20,
+                              height: 20,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              SliverPadding(
-                padding: const EdgeInsets.symmetric(vertical: 0.0, horizontal: 4),
-                sliver: SliverList.separated(
-                  itemBuilder: (context, index) {
-                    var item = state.advertisementModel!.data![index];
+                SliverPadding(
+                  padding: const EdgeInsets.symmetric(vertical: 0.0, horizontal: 4),
+                  sliver: SliverList.separated(
+                    itemBuilder: (context, index) {
+                      var item = state.advertisementModel!.data![index];
 
-                    return Card(
-                      color: Colors.white,
-                      elevation: 3,
-                      shadowColor: Colors.grey.withOpacity(0.5),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8),
-                        child: Column(
-                          children: [
-                            SizedBox(
-                              height: context.height * 0.2,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                ),
-                                child: Stack(
-                                  fit: StackFit.expand,
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(15),
-                                      child: item.album?.split('.').last == 'svg'
-                                          ? SvgPicture.network(
-                                              item.album.toString() ?? '',
-                                              height: 100,
-                                              fit: BoxFit.cover,
-                                            )
-                                          : CacheNetworkImageApp(
-                                              urlImage: item.album.toString() ?? '',
-                                              fit: BoxFit.cover,
-                                              height: context.height,
-                                            ),
-                                    ),
-                                    Positioned(
-                                      right: 0,
-                                      top: 5,
-                                      child: Container(
-                                        padding: const EdgeInsets.all(6),
-                                        decoration: const BoxDecoration(
-                                          color: Colors.white,
-                                          shape: BoxShape.circle,
-                                        ),
-                                        child: const Icon(
-                                          Icons.favorite,
-                                          color: Colors.red,
-                                          size: 20,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                      return InkWell(
+                        onTap: () {
+                          context.pushNamed('view_ads_home', extra: item.id.toString());
+                        },
+                        child: Card(
+                          color: Colors.white,
+                          elevation: 3,
+                          shadowColor: Colors.grey.withOpacity(0.5),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8),
+                            child: Column(
                               children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Expanded(
-                                      child: TranslateText(
-                                        styleText: StyleText.h5,
-                                        text: item.title ?? '',
-                                      ),
+                                SizedBox(
+                                  height: context.height * 0.2,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15),
                                     ),
-                                    InkWell(
-                                      onTap: () async {
-                                        // File file = await urlToFile(
-                                        //     'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Tux.svg/1012px-Tux.svg.png');
-                                        // onShareWithFileOrImage('Car Model 2020', files: [file.path, file.path]);
-                                      },
-                                      child: SvgCustomImage(
-                                        image: 'share'.toSvg,
-                                        width: 20,
-                                        height: 20,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                TranslateText(
-                                  styleText: StyleText.h5,
-                                  text: '${item.price} JD',
-                                  fontWeight: FontWeight.bold,
-                                  colorText: AppColors.primary,
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Row(
+                                    child: Stack(
+                                      fit: StackFit.expand,
                                       children: [
-                                        SvgCustomImage(
-                                          image: 'location'.toSvg,
-                                          width: 20,
-                                          height: 20,
+                                        ClipRRect(
+                                          borderRadius: BorderRadius.circular(15),
+                                          child: item.album?.split('.').last == 'svg'
+                                              ? SvgPicture.network(
+                                                  item.album.toString() ?? '',
+                                                  height: 100,
+                                                  fit: BoxFit.cover,
+                                                )
+                                              : CacheNetworkImageApp(
+                                                  urlImage: item.album.toString() ?? '',
+                                                  fit: BoxFit.cover,
+                                                  height: context.height,
+                                                ),
                                         ),
-                                        const SizedBox(
-                                          width: 4,
-                                        ),
-                                        TranslateText(
-                                          styleText: StyleText.h5,
-                                          text: item.city ?? '--',
+                                        Positioned(
+                                          right: 0,
+                                          top: 5,
+                                          child: Container(
+                                            padding: const EdgeInsets.all(6),
+                                            decoration: const BoxDecoration(
+                                              color: Colors.white,
+                                              shape: BoxShape.circle,
+                                            ),
+                                            child: const Icon(
+                                              Icons.favorite,
+                                              color: Colors.red,
+                                              size: 20,
+                                            ),
+                                          ),
                                         ),
                                       ],
                                     ),
-                                    Row(
-                                      children: [
-                                        SvgCustomImage(
-                                          image: 'time_booking'.toSvg,
-                                          width: 20,
-                                          height: 20,
-                                        ),
-                                        const SizedBox(
-                                          width: 4,
-                                        ),
-                                        TranslateText(
-                                          styleText: StyleText.h5,
-                                          text: item.createdAt?.removeAgo ?? '',
-                                        ),
-                                      ],
-                                    )
-                                  ],
+                                  ),
                                 ),
                                 const SizedBox(
                                   height: 10,
                                 ),
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Expanded(
-                                      child: Container(
-                                        alignment: Alignment.center,
-                                        padding: const EdgeInsets.all(8),
-                                        decoration: BoxDecoration(
-                                          color: HexColor('#F5F5F5'),
-                                          borderRadius: BorderRadius.circular(10),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Expanded(
+                                          child: TranslateText(
+                                            styleText: StyleText.h5,
+                                            text: item.title ?? '',
+                                          ),
                                         ),
-                                        child: Row(
-                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: [
-                                            SvgCustomImage(
-                                              image: 'message_cat'.toSvg,
-                                              width: 20,
-                                              height: 20,
-                                              color: HexColor('#F05A35'),
-                                            ),
-                                            const SizedBox(
-                                              width: 4,
-                                            ),
-                                            TranslateText(
-                                              styleText: StyleText.h5,
-                                              text: 'message'.tr(),
-                                            ),
-                                          ],
+                                        InkWell(
+                                          onTap: () async {
+                                            // File file = await urlToFile(
+                                            //     'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Tux.svg/1012px-Tux.svg.png');
+                                            // onShareWithFileOrImage('Car Model 2020', files: [file.path, file.path]);
+                                          },
+                                          child: SvgCustomImage(
+                                            image: 'share'.toSvg,
+                                            width: 20,
+                                            height: 20,
+                                          ),
                                         ),
-                                      ),
+                                      ],
                                     ),
                                     const SizedBox(
-                                      width: 20,
+                                      height: 10,
                                     ),
-                                    Expanded(
-                                      child: Container(
-                                        alignment: Alignment.center,
-                                        padding: const EdgeInsets.all(8),
-                                        decoration: BoxDecoration(
-                                          color: HexColor('#F5F5F5'),
-                                          borderRadius: BorderRadius.circular(10),
-                                        ),
-                                        child: Row(
-                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                          mainAxisAlignment: MainAxisAlignment.center,
+                                    TranslateText(
+                                      styleText: StyleText.h5,
+                                      text: '${item.price} JD',
+                                      fontWeight: FontWeight.bold,
+                                      colorText: AppColors.primary,
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
                                           children: [
                                             SvgCustomImage(
-                                              image: 'call_cat'.toSvg,
+                                              image: 'location'.toSvg,
                                               width: 20,
                                               height: 20,
-                                              color: HexColor('#F05A35'),
                                             ),
                                             const SizedBox(
                                               width: 4,
                                             ),
                                             TranslateText(
                                               styleText: StyleText.h5,
-                                              text: 'call'.tr(),
+                                              text: item.city ?? '--',
                                             ),
                                           ],
                                         ),
-                                      ),
+                                        Row(
+                                          children: [
+                                            SvgCustomImage(
+                                              image: 'time_booking'.toSvg,
+                                              width: 20,
+                                              height: 20,
+                                            ),
+                                            const SizedBox(
+                                              width: 4,
+                                            ),
+                                            TranslateText(
+                                              styleText: StyleText.h5,
+                                              text: item.createdAt?.removeAgo ?? '',
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      crossAxisAlignment: CrossAxisAlignment.end,
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Expanded(
+                                          child: Container(
+                                            alignment: Alignment.center,
+                                            padding: const EdgeInsets.all(8),
+                                            decoration: BoxDecoration(
+                                              color: HexColor('#F5F5F5'),
+                                              borderRadius: BorderRadius.circular(10),
+                                            ),
+                                            child: Row(
+                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                SvgCustomImage(
+                                                  image: 'message_cat'.toSvg,
+                                                  width: 20,
+                                                  height: 20,
+                                                  color: HexColor('#F05A35'),
+                                                ),
+                                                const SizedBox(
+                                                  width: 4,
+                                                ),
+                                                TranslateText(
+                                                  styleText: StyleText.h5,
+                                                  text: 'message'.tr(),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          width: 20,
+                                        ),
+                                        Expanded(
+                                          child: Container(
+                                            alignment: Alignment.center,
+                                            padding: const EdgeInsets.all(8),
+                                            decoration: BoxDecoration(
+                                              color: HexColor('#F5F5F5'),
+                                              borderRadius: BorderRadius.circular(10),
+                                            ),
+                                            child: Row(
+                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                SvgCustomImage(
+                                                  image: 'call_cat'.toSvg,
+                                                  width: 20,
+                                                  height: 20,
+                                                  color: HexColor('#F05A35'),
+                                                ),
+                                                const SizedBox(
+                                                  width: 4,
+                                                ),
+                                                TranslateText(
+                                                  styleText: StyleText.h5,
+                                                  text: 'call'.tr(),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
                               ],
                             ),
+                          ),
+                        ),
+                      );
+                    },
+                    separatorBuilder: (context, index) => const SizedBox(
+                      height: 10,
+                    ),
+                    itemCount: state.advertisementModel?.data?.length ?? 0,
+                  ),
+                ),
+              ],
+              if (state.viewData == ViewData.filters) ...[
+                SliverToBoxAdapter(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Row(
+                          children: [
+                            TranslateText(
+                              styleText: StyleText.h5,
+                              text: 'Jordan',
+                            ),
                           ],
                         ),
-                      ),
-                    );
-                  },
-                  separatorBuilder: (context, index) => const SizedBox(
-                    height: 10,
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            TranslateText(
+                              styleText: StyleText.h5,
+                              text: state.filterAdvertisementModel?.meta?.total.toString() ?? '',
+                            ),
+                            SvgCustomImage(
+                              image: 'number_ads'.toSvg,
+                              width: 20,
+                              height: 20,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                  itemCount: state.advertisementModel?.data?.length ?? 0,
                 ),
-              ),
+                SliverPadding(
+                  padding: const EdgeInsets.symmetric(vertical: 0.0, horizontal: 4),
+                  sliver: SliverList.separated(
+                    itemBuilder: (context, index) {
+                      var item = state.filterAdvertisementModel!.data![index];
+
+                      return InkWell(
+                        onTap: () {
+                          context.pushNamed('view_ads_home', extra: item.id.toString());
+                        },
+                        child: Card(
+                          color: Colors.white,
+                          elevation: 3,
+                          shadowColor: Colors.grey.withOpacity(0.5),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8),
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  height: context.height * 0.2,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                    child: Stack(
+                                      fit: StackFit.expand,
+                                      children: [
+                                        ClipRRect(
+                                          borderRadius: BorderRadius.circular(15),
+                                          child: item.album?.split('.').last == 'svg'
+                                              ? SvgPicture.network(
+                                                  item.album.toString() ?? '',
+                                                  height: 100,
+                                                  fit: BoxFit.cover,
+                                                )
+                                              : CacheNetworkImageApp(
+                                                  urlImage: item.album.toString() ?? '',
+                                                  fit: BoxFit.cover,
+                                                  height: context.height,
+                                                ),
+                                        ),
+                                        Positioned(
+                                          right: 0,
+                                          top: 5,
+                                          child: Container(
+                                            padding: const EdgeInsets.all(6),
+                                            decoration: const BoxDecoration(
+                                              color: Colors.white,
+                                              shape: BoxShape.circle,
+                                            ),
+                                            child: const Icon(
+                                              Icons.favorite,
+                                              color: Colors.red,
+                                              size: 20,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Expanded(
+                                          child: TranslateText(
+                                            styleText: StyleText.h5,
+                                            text: item.title ?? '',
+                                          ),
+                                        ),
+                                        InkWell(
+                                          onTap: () async {
+                                            // File file = await urlToFile(
+                                            //     'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Tux.svg/1012px-Tux.svg.png');
+                                            // onShareWithFileOrImage('Car Model 2020', files: [file.path, file.path]);
+                                          },
+                                          child: SvgCustomImage(
+                                            image: 'share'.toSvg,
+                                            width: 20,
+                                            height: 20,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    TranslateText(
+                                      styleText: StyleText.h5,
+                                      text: '${item.price} JD',
+                                      fontWeight: FontWeight.bold,
+                                      colorText: AppColors.primary,
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            SvgCustomImage(
+                                              image: 'location'.toSvg,
+                                              width: 20,
+                                              height: 20,
+                                            ),
+                                            const SizedBox(
+                                              width: 4,
+                                            ),
+                                            TranslateText(
+                                              styleText: StyleText.h5,
+                                              text: item.city ?? '--',
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            SvgCustomImage(
+                                              image: 'time_booking'.toSvg,
+                                              width: 20,
+                                              height: 20,
+                                            ),
+                                            const SizedBox(
+                                              width: 4,
+                                            ),
+                                            TranslateText(
+                                              styleText: StyleText.h5,
+                                              text: item.createdAt?.removeAgo ?? '',
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      crossAxisAlignment: CrossAxisAlignment.end,
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Expanded(
+                                          child: Container(
+                                            alignment: Alignment.center,
+                                            padding: const EdgeInsets.all(8),
+                                            decoration: BoxDecoration(
+                                              color: HexColor('#F5F5F5'),
+                                              borderRadius: BorderRadius.circular(10),
+                                            ),
+                                            child: Row(
+                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                SvgCustomImage(
+                                                  image: 'message_cat'.toSvg,
+                                                  width: 20,
+                                                  height: 20,
+                                                  color: HexColor('#F05A35'),
+                                                ),
+                                                const SizedBox(
+                                                  width: 4,
+                                                ),
+                                                TranslateText(
+                                                  styleText: StyleText.h5,
+                                                  text: 'message'.tr(),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          width: 20,
+                                        ),
+                                        Expanded(
+                                          child: Container(
+                                            alignment: Alignment.center,
+                                            padding: const EdgeInsets.all(8),
+                                            decoration: BoxDecoration(
+                                              color: HexColor('#F5F5F5'),
+                                              borderRadius: BorderRadius.circular(10),
+                                            ),
+                                            child: Row(
+                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                SvgCustomImage(
+                                                  image: 'call_cat'.toSvg,
+                                                  width: 20,
+                                                  height: 20,
+                                                  color: HexColor('#F05A35'),
+                                                ),
+                                                const SizedBox(
+                                                  width: 4,
+                                                ),
+                                                TranslateText(
+                                                  styleText: StyleText.h5,
+                                                  text: 'call'.tr(),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                    separatorBuilder: (context, index) => const SizedBox(
+                      height: 10,
+                    ),
+                    itemCount: state.filterAdvertisementModel?.data?.length ?? 0,
+                  ),
+                ),
+              ]
             ],
           ),
         );
