@@ -26,17 +26,18 @@ class DarkColors implements IColors {
   Color? tabbarSelectedColor;
 
   DarkColors() {
-    appBarColor = colors.darkGrey;
-    scaffoldBackgroundColor = colors.darkGrey;
+    appBarColor = colors.backgroundColorDarkMode;
+    scaffoldBackgroundColor = colors.backgroundColorDarkMode;
     tabBarColor = colors.green;
     tabbarNormalColor = colors.lighterGrey;
     tabbarSelectedColor = colors.green;
     colorScheme = const ColorScheme.dark().copyWith(
-        primary: colors.white,
+        primary: colors.primary,
         primaryContainer: colors.white,
         onPrimary: Colors.white,
         onSecondary: colors.white,
-        error: colors.white);
+        error: Colors.red,
+        background: Colors.white);
     brightness = Brightness.dark;
   }
 
@@ -47,4 +48,7 @@ class DarkColors implements IColors {
 
   @override
   List? onBoarding;
+
+  @override
+  ButtonThemeData? buttonThemeData;
 }

@@ -24,11 +24,9 @@ abstract class ThemeManager {
       listTileTheme: ListTileThemeData(
         iconColor: theme.colors.colorScheme!.primary,
       ),
-
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
         selectedIconTheme: const IconThemeData(),
-        selectedLabelStyle: theme.textTheme.data.titleLarge!
-            .copyWith(color: Colors.black, fontWeight: FontWeight.w600),
+        selectedLabelStyle: theme.textTheme.data.titleLarge!.copyWith(color: Colors.black, fontWeight: FontWeight.w600),
         elevation: 0.0,
         backgroundColor: Colors.white,
         selectedItemColor: Colors.black,
@@ -36,20 +34,15 @@ abstract class ThemeManager {
           color: Colors.grey,
         ),
         unselectedItemColor: Colors.grey,
-        unselectedLabelStyle: theme.textTheme.data.titleLarge!
-            .copyWith(color: Colors.grey, fontWeight: FontWeight.w100),
+        unselectedLabelStyle: theme.textTheme.data.titleLarge!.copyWith(color: Colors.grey, fontWeight: FontWeight.w100),
         showUnselectedLabels: true,
         type: BottomNavigationBarType.fixed,
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
           style: ButtonStyle(
-        backgroundColor:
-            MaterialStateProperty.all(theme.colors.colorScheme!.primary),
+        backgroundColor: MaterialStateProperty.all(theme.colors.colorScheme!.primary),
         elevation: MaterialStateProperty.all(0.0),
-        side: MaterialStateProperty.all(BorderSide(
-            color: theme.colors.colorScheme!.primary,
-            width: 1,
-            style: BorderStyle.solid)),
+        side: MaterialStateProperty.all(BorderSide(color: theme.colors.colorScheme!.primary, width: 1, style: BorderStyle.solid)),
         shape: MaterialStateProperty.all(
           const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
@@ -59,9 +52,7 @@ abstract class ThemeManager {
         ),
       )),
       inputDecorationTheme: InputDecorationTheme(
-          enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8),
-              borderSide: BorderSide.none),
+          enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(8), borderSide: BorderSide.none),
           disabledBorder: OutlineInputBorder(
             borderSide: BorderSide.none,
             borderRadius: BorderRadius.circular(8),
@@ -82,15 +73,12 @@ abstract class ThemeManager {
           ),
           errorMaxLines: 1,
           fillColor: AppColors.inputFillColor,
-          hintStyle:
-              theme.textTheme.data.titleLarge?.copyWith(color: Colors.grey),
+          hintStyle: theme.textTheme.data.titleLarge?.copyWith(color: Colors.grey),
           suffixIconColor: Colors.grey,
           iconColor: Colors.grey,
           filled: true),
       floatingActionButtonTheme: FloatingActionButtonThemeData(
-          foregroundColor: theme.colors.colorScheme?.onError,
-          elevation: 0.0,
-          backgroundColor: theme.colors.colorScheme?.primary),
+          foregroundColor: theme.colors.colorScheme?.onError, elevation: 0.0, backgroundColor: theme.colors.colorScheme?.primary),
       appBarTheme: AppBarTheme(
           iconTheme: IconThemeData(
             color: theme.colors.colorScheme!.primary,
@@ -100,13 +88,10 @@ abstract class ThemeManager {
       tabBarTheme: TabBarTheme(
         indicatorColor: AppColors.tabBarIndicator,
         labelColor: Colors.black,
-        labelStyle: theme.textTheme.data.headlineMedium!
-            .copyWith(color: Colors.black, fontWeight: FontWeight.bold),
+        labelStyle: theme.textTheme.data.headlineMedium!.copyWith(color: Colors.black, fontWeight: FontWeight.bold),
         indicatorSize: TabBarIndicatorSize.label,
         unselectedLabelColor: Colors.grey,
-        unselectedLabelStyle: theme.textTheme.data.headlineMedium!
-            .copyWith(color: Colors.grey, fontWeight: FontWeight.normal),
-
+        unselectedLabelStyle: theme.textTheme.data.headlineMedium!.copyWith(color: Colors.grey, fontWeight: FontWeight.normal),
       ),
       scaffoldBackgroundColor: theme.colors.scaffoldBackgroundColor,
       colorScheme: theme.colors.colorScheme,
@@ -149,38 +134,38 @@ class AppThemeLight extends ITheme {
   IColors get colors => LightColors();
 }
 
-class AppThemeMarketPlace extends ITheme {
-  @override
-  late final ITextTheme textTheme;
-
-  AppThemeMarketPlace() {
-    textTheme = TextThemeLight(AppColors.primaryMarketPlace);
-  }
-
-  @override
-  IColors get colors => LightColorMarketPlace();
-}
-
-class AppThemeServiceProvider extends ITheme {
-  @override
-  late final ITextTheme textTheme;
-
-  AppThemeServiceProvider() {
-    textTheme = TextThemeLight(AppColors.primaryServiceProvider);
-  }
-
-  @override
-  IColors get colors => LightColorServiceProvider();
-}
-
-class AppThemeBusinessDirectory extends ITheme {
-  @override
-  late final ITextTheme textTheme;
-
-  AppThemeBusinessDirectory() {
-    textTheme = TextThemeLight(AppColors.primaryBusinessDirectory);
-  }
-
-  @override
-  IColors get colors => LightColorBusinessDirectory();
-}
+// class AppThemeMarketPlace extends ITheme {
+//   @override
+//   late final ITextTheme textTheme;
+//
+//   AppThemeMarketPlace() {
+//     textTheme = TextThemeLight(AppColors.primaryMarketPlace);
+//   }
+//
+//   @override
+//   IColors get colors => LightColorMarketPlace();
+// }
+//
+// class AppThemeServiceProvider extends ITheme {
+//   @override
+//   late final ITextTheme textTheme;
+//
+//   AppThemeServiceProvider() {
+//     textTheme = TextThemeLight(AppColors.primaryServiceProvider);
+//   }
+//
+//   @override
+//   IColors get colors => LightColorServiceProvider();
+// }
+//
+// class AppThemeBusinessDirectory extends ITheme {
+//   @override
+//   late final ITextTheme textTheme;
+//
+//   AppThemeBusinessDirectory() {
+//     textTheme = TextThemeLight(AppColors.primaryBusinessDirectory);
+//   }
+//
+//   @override
+//   IColors get colors => LightColorBusinessDirectory();
+// }

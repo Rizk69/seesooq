@@ -47,6 +47,7 @@ class TextFormFiledApp extends StatelessWidget {
         obscureText: obscureText ?? false,
         decoration: InputDecoration(
           hintText: hintText,
+
           prefixIcon: prefixIcon == null
               ? null
               : Padding(
@@ -61,37 +62,37 @@ class TextFormFiledApp extends StatelessWidget {
           // error: error,
           prefixIconConstraints: const BoxConstraints(maxHeight: 25, minWidth: 40, maxWidth: 40, minHeight: 25),
           hintStyle: TextStyle(
-            color: HexColor('#707070').withOpacity(0.7),
+            color: Theme.of(context).textTheme.headlineMedium!.color,
           ),
-          fillColor: Colors.white,
+          fillColor: Theme.of(context).colorScheme.background,
           filled: true,
-          contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
           disabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(22),
+            borderRadius: BorderRadius.circular(12),
             borderSide: const BorderSide(
               color: Colors.white,
             ),
           ),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(22),
+            borderRadius: BorderRadius.circular(12),
             borderSide: const BorderSide(
               color: Colors.white,
             ),
           ),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(22),
-            borderSide: BorderSide(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: const BorderSide(
               color: Colors.white,
             ),
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(22),
-            borderSide: BorderSide(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: const BorderSide(
               color: Colors.white,
             ),
           ),
           focusedErrorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(22),
+            borderRadius: BorderRadius.circular(12),
             borderSide: BorderSide(
               color: HexColor('#707070').withOpacity(0.7),
             ),
@@ -99,7 +100,7 @@ class TextFormFiledApp extends StatelessWidget {
           errorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: BorderSide(
-              color: Colors.red,
+              color: Theme.of(context).colorScheme.error,
             ),
           ),
 
