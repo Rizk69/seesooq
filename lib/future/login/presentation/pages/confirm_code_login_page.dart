@@ -43,9 +43,7 @@ class _ConfirmCodeLoginPageState extends State<ConfirmCodeLoginPage> {
     }, builder: (context, state) {
       var cubit = LoginCubit.get(context);
       return Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-        ),
+        appBar: AppBar(),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -87,7 +85,7 @@ class _ConfirmCodeLoginPageState extends State<ConfirmCodeLoginPage> {
                 maxLines: 2,
                 colorText: Theme.of(context).colorScheme.primary,
               ),
-            
+
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 32.0),
                 child: Row(

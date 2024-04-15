@@ -53,7 +53,9 @@ class MyOptionDrawerWidget extends StatelessWidget {
               } else if (titles[index].toString() == 'blogs_drawer') {
                 context.goNamed(Routes.blogsRoute);
               } else if (titles[index].toString() == 'logout') {
-                LoginCubit.get(context).deleteLocalUser();
+                LoginCubit.get(context).deleteLocalUser().then((value) {
+                  context.goNamed(Routes.login);
+                });
               }
             },
             leading: CircleAvatar(

@@ -15,8 +15,9 @@ class AuthRedirect extends GoRedirect {
     Routes.login,
     "/login/signUp",
     '/login/forgetPasswordPage',
-    Routes.confirmCode,
-    "/login/signUp/confirmCodeSignUp"
+    '/login/forgetPasswordPage/confirmCode',
+    "/login/signUp/confirmCodeSignUp",
+    "/login/forgetPasswordPage/confirmCode/unLockPassword"
   ];
 
   @override

@@ -11,7 +11,6 @@ import 'package:opensooq/core/utils/media_query_values.dart';
 import 'package:opensooq/core/widget/text_translate_manager.dart';
 import 'package:opensooq/future/login/presentation/cubit/login_cubit.dart';
 import 'package:opensooq/future/login/presentation/cubit/login_state.dart';
-import 'package:opensooq/future/signup/presentation/widgets/sign_up_with_social_media_widget.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -80,33 +79,33 @@ class _LoginPageState extends State<LoginPage> {
               ),
               SizedBox(height: context.height * 0.012),
               Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  SizedBox(
-                    width: 26,
-                    height: 26,
-                    child: Checkbox(
-                      value: false,
-                      visualDensity: VisualDensity.comfortable,
-                      fillColor: MaterialStateProperty.all(Colors.white),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(3), side: const BorderSide(color: Colors.white, strokeAlign: 1, width: 1)),
-                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      activeColor: Colors.white,
-                      focusColor: Colors.white,
-                      hoverColor: Colors.white,
-                      side: BorderSide(color: HexColor('#70707080').withOpacity(0.5)),
-                      onChanged: (value) {},
-                    ),
-                  ),
-                  TranslateText(
-                    styleText: StyleText.h6,
-                    text: 'rememberMe'.tr(),
-                    colorText: Colors.black,
-                    fontWeight: FontWeight.normal,
-                    fontSize: 14,
-                  ),
-                  const Spacer(),
+                  // SizedBox(
+                  //   width: 26,
+                  //   height: 26,
+                  //   child: Checkbox(
+                  //     value: false,
+                  //     visualDensity: VisualDensity.comfortable,
+                  //     fillColor: MaterialStateProperty.all(Colors.white),
+                  //     shape: RoundedRectangleBorder(
+                  //         borderRadius: BorderRadius.circular(3), side: const BorderSide(color: Colors.white, strokeAlign: 1, width: 1)),
+                  //     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  //     activeColor: Colors.white,
+                  //     focusColor: Colors.white,
+                  //     hoverColor: Colors.white,
+                  //     side: BorderSide(color: HexColor('#70707080').withOpacity(0.5)),
+                  //     onChanged: (value) {},
+                  //   ),
+                  // ),
+                  // TranslateText(
+                  //   styleText: StyleText.h6,
+                  //   text: 'rememberMe'.tr(),
+                  //   colorText: Colors.black,
+                  //   fontWeight: FontWeight.normal,
+                  //   fontSize: 14,
+                  // ),
+                  // const Spacer(),
                   InkWell(
                     onTap: () => context.goNamed(Routes.forgetPasswordPRoute, extra: email.text),
                     child: TranslateText(
@@ -132,31 +131,31 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               SizedBox(height: context.height * 0.02),
-              const SignUpWithSocialMediaWidget(text: 'Or log in with'),
-              SizedBox(height: context.height * 0.02),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  TranslateText(
-                    styleText: StyleText.h6,
-                    text: 'newUser'.tr(),
-                    colorText: Colors.grey,
-                    fontWeight: FontWeight.normal,
-                    fontSize: 14,
-                  ),
-                  InkWell(
-                    onTap: () => context.goNamed(Routes.signUp),
-                    child: TranslateText(
-                      styleText: StyleText.h6,
-                      text: 'signUp'.tr(),
-                      colorText: Theme.of(context).colorScheme.primary,
-                      fontWeight: FontWeight.normal,
-                      textDecoration: TextDecoration.underline,
-                      fontSize: 14,
-                    ),
-                  ),
-                ],
-              ),
+              // const SignUpWithSocialMediaWidget(text: 'Or log in with'),
+              // SizedBox(height: context.height * 0.02),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.center,
+              //   children: [
+              //     TranslateText(
+              //       styleText: StyleText.h6,
+              //       text: 'newUser'.tr(),
+              //       colorText: Colors.grey,
+              //       fontWeight: FontWeight.normal,
+              //       fontSize: 14,
+              //     ),
+              //     InkWell(
+              //       onTap: () => context.goNamed(Routes.signUp),
+              //       child: TranslateText(
+              //         styleText: StyleText.h6,
+              //         text: 'signUp'.tr(),
+              //         colorText: Theme.of(context).colorScheme.primary,
+              //         fontWeight: FontWeight.normal,
+              //         textDecoration: TextDecoration.underline,
+              //         fontSize: 14,
+              //       ),
+              //     ),
+              //   ],
+              // ),
             ]),
           ),
         ),
