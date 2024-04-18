@@ -9,11 +9,9 @@ class PrivacyPolicyCubit extends Cubit<PrivacyPolicyState> {
   static PrivacyPolicyCubit get(context) => BlocProvider.of(context);
 
   Future<void> _getPrivacyPolicy() async {
-    // emit(PrivacyPolicyLoading());
     final result = await settingRepository.getPrivacyPolicy();
     result.fold((error) {
       print('error ${error.message}');
-      // emit(PrivacyPolicyError(error));
     }, (privacyPolicy) {});
   }
 }

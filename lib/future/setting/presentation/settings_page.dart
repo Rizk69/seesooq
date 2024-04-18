@@ -110,16 +110,10 @@ class _SettingsPageState extends State<SettingsPage> {
                             break;
                           case 8:
                             {
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return const AlertDialog(
-                                    backgroundColor: Colors.black,
-                                    content: Text('8'),
-                                    // Add AlertDialog content here for index 0
-                                  );
-                                },
-                              );
+                            context.goNamed(
+                            Routes.frequentlyAskedQuestions,
+                            );
+
                             }
                             break;
 

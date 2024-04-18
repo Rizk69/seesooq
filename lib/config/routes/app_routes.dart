@@ -38,6 +38,7 @@ import 'package:opensooq/future/setting/presentation/accoun_mange_page.dart';
 import 'package:opensooq/future/setting/presentation/add_location_user.dart';
 import 'package:opensooq/future/setting/presentation/change_password_screen.dart';
 import 'package:opensooq/future/setting/presentation/edit_profile/presentation/pages/sucsses_edit_profile_page.dart';
+import 'package:opensooq/future/setting/presentation/frequently_Asked_Questions.dart';
 import 'package:opensooq/future/setting/presentation/look_at_market_page.dart';
 import 'package:opensooq/future/setting/presentation/notfication_page.dart';
 import 'package:opensooq/future/setting/presentation/settings_page.dart';
@@ -86,6 +87,7 @@ class Routes {
   static const String termsConditionsScreen = '/termsConditionsScreen';
   static const String lookAtMarket = '/lookAtMarket';
   static const String connectWithUsPage = '/connectWithUsPage';
+  static const String frequentlyAskedQuestions = '/frequentlyAskedQuestions';
   static const String sucssesConnectWithUsPage = '/sucssesConnectWithUsPage';
   static const String securityPage = '/securityPage';
   static const String emptyLocationPage = '/emptyLocationPage';
@@ -616,11 +618,26 @@ final GoRouter router = GoRouter(
       },
     ),
     GoRoute(
+      path: Routes.frequentlyAskedQuestions,
+      name: Routes.frequentlyAskedQuestions,
+      pageBuilder: (context, state) {
+        return CustomTransitionPage(
+          child: const FrequentlyAskedQuestionsPage(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return FadeTransition(
+              opacity: animation,
+              child: child,
+            );
+          },
+        );
+      },
+    ),
+    GoRoute(
       path: Routes.sucssesConnectWithUsPage,
       name: Routes.sucssesConnectWithUsPage,
       pageBuilder: (context, state) {
         return CustomTransitionPage(
-          child: const SucssesConnectWithUsPage(),
+          child:  SucssesConnectWithUsPage(),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             return FadeTransition(
               opacity: animation,
