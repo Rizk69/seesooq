@@ -28,10 +28,11 @@ class FrequentlyAskedQuestionsPage extends StatelessWidget {
                       context.go(Routes.setting);
                     }),
                 const SizedBox(height: 40),
-                Theme(
+                ListView.builder(itemBuilder: (context, index) =>                 Theme(
                   data: Theme.of(context)
                       .copyWith(dividerColor: Colors.transparent),
                   child: Container(
+                    margin: EdgeInsets.symmetric(vertical: 10),
                     decoration: BoxDecoration(
                       color: Colors.grey.shade100,
                       borderRadius: BorderRadius.circular(10),
@@ -39,7 +40,7 @@ class FrequentlyAskedQuestionsPage extends StatelessWidget {
                     child: ExpansionTile(
                       title: titleText('ضع السؤال هنا'),
                       leading:
-                          SvgPicture.asset('assets/images/svg/qestion.svg'),
+                      SvgPicture.asset('assets/images/svg/qestion.svg'),
                       backgroundColor: Colors.transparent,
                       collapsedBackgroundColor: Colors.transparent,
                       children: const [
@@ -52,6 +53,7 @@ class FrequentlyAskedQuestionsPage extends StatelessWidget {
                     ),
                   ),
                 )
+                  ,itemCount: 5,shrinkWrap: true,)
               ],
             ),
           ),
