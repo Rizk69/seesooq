@@ -33,6 +33,10 @@ class EndPoint {
   static const String privacyPolicy = 'privacy-policy';
   static const String termsOfUse = 'terms-of-use';
   static const String reasonsForDeletion = 'reasons-for-deletion';
+  static const String frequentlyAskQuestion = 'frequently-ask-question';
+  static const String contactUs = 'contact-us';
+  static const String aboutUs = 'about-us';
+
   static const String getFav = 'my-favourite';
   static const String storePayment = 'payment/store';
   // subscription

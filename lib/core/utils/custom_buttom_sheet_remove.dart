@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:opensooq/core/utils/hex_color.dart';
-import 'package:opensooq/future/setting1/edit_profile/presentation/widgets/header_screen.dart';
+import 'package:opensooq/future/setting/presentation/edit_profile/presentation/widgets/anmtionsucssuffly.dart';
+import 'package:opensooq/future/setting/presentation/edit_profile/presentation/widgets/header_screen.dart';
 
-import '../../future/setting1/edit_profile/presentation/widgets/anmtionsucssuffly.dart';
 import '../widget/text_translate_manager.dart';
 
 class CustomButtonSheetRemove extends StatelessWidget {

@@ -71,8 +71,7 @@ class _ProfilePageState extends State<ProfilePage> {
             children: [
               const SizedBox(height: 10),
               Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
@@ -110,8 +109,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         color: Colors.grey.withOpacity(0.5),
                         spreadRadius: 0.5,
                         blurRadius: 0.5,
-                        offset:
-                            const Offset(0, 0.5), // changes position of shadow
+                        offset: const Offset(0, 0.5), // changes position of shadow
                       ),
                     ],
                   ),
@@ -126,7 +124,6 @@ class _ProfilePageState extends State<ProfilePage> {
                         case 1:
                           {
                             context.goNamed(Routes.followingView);
-
                           }
                           // Handle action for index 1
                           break;
@@ -260,8 +257,8 @@ class _ProfilePageState extends State<ProfilePage> {
                         context.goNamed(Routes.wallet);
                       } else if (index == 6) {
                         context.goNamed(Routes.favorite);
-                      }else if (index == 9) {
-                        context.go(Routes.setting);
+                      } else if (index == 9) {
+                        context.goNamed(Routes.setting);
                       }
                     },
                     leading: CircleAvatar(

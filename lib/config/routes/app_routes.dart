@@ -34,25 +34,25 @@ import 'package:opensooq/future/notification/presentation/pages/view/notificatio
 import 'package:opensooq/future/packages/presentation/pages/route/packages_route.dart';
 import 'package:opensooq/future/profile/presentation/profile_route.dart';
 import 'package:opensooq/future/search/presentation/pages/search_page.dart';
-import 'package:opensooq/future/setting1/presentation/accoun_mange_page.dart';
-import 'package:opensooq/future/setting1/presentation/add_location_user.dart';
-import 'package:opensooq/future/setting1/presentation/change_password_screen.dart';
-import 'package:opensooq/future/setting1/presentation/look_at_market_page.dart';
-import 'package:opensooq/future/setting1/presentation/notfication_page.dart';
-import 'package:opensooq/future/setting1/presentation/settings_page.dart';
+import 'package:opensooq/future/setting/presentation/accoun_mange_page.dart';
+import 'package:opensooq/future/setting/presentation/add_location_user.dart';
+import 'package:opensooq/future/setting/presentation/change_password_screen.dart';
+import 'package:opensooq/future/setting/presentation/edit_profile/presentation/pages/sucsses_edit_profile_page.dart';
+import 'package:opensooq/future/setting/presentation/look_at_market_page.dart';
+import 'package:opensooq/future/setting/presentation/notfication_page.dart';
+import 'package:opensooq/future/setting/presentation/settings_page.dart';
 import 'package:opensooq/future/signup/presentation/cubit/signup_cubit.dart';
 import 'package:opensooq/future/splash/presentation/screens/introduction_page.dart';
 import 'package:opensooq/future/wallet/presentation/pages/route/wallet_route.dart';
 
 import '../../future/myads/routing/ads_route.dart';
 import '../../future/reels/routing/reels_route.dart';
-import '../../future/setting1/edit_profile/presentation/pages/sucsses_edit_profile_page.dart';
-import '../../future/setting1/presentation/Connect_with_us.dart';
-import '../../future/setting1/presentation/change_language_page.dart';
-import '../../future/setting1/presentation/policy_screens.dart';
-import '../../future/setting1/presentation/remove_account.dart';
-import '../../future/setting1/presentation/securty_page.dart';
-import '../../future/setting1/presentation/sucsse_cahnge_password.dart';
+import '../../future/setting/presentation/Connect_with_us.dart';
+import '../../future/setting/presentation/change_language_page.dart';
+import '../../future/setting/presentation/policy_screens.dart';
+import '../../future/setting/presentation/remove_account.dart';
+import '../../future/setting/presentation/securty_page.dart';
+import '../../future/setting/presentation/sucsse_cahnge_password.dart';
 
 class Routes {
   static const String login = '/login';

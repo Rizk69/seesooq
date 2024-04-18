@@ -6,7 +6,7 @@
 // import 'dart:io';
 //
 // import '../../../config/routes/app_routes.dart';
-// import '../../setting1/edit_profile/presentation/widgets/profile_photo.dart';
+// import '../../setting/edit_profile/presentation/widgets/profile_photo.dart';
 //
 // class ChatMassagePage extends StatelessWidget {
 //   final ImagePicker _picker = ImagePicker();
@@ -119,10 +119,9 @@ import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:go_router/go_router.dart';
 import 'package:http/http.dart' as http;
-import 'package:open_file/open_file.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:intl/date_symbol_data_local.dart';
 import 'package:mime/mime.dart';
+import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:uuid/uuid.dart';
 
@@ -248,10 +247,8 @@ class _ChatMassagePageState extends State<ChatMassagePage> {
 
       if (message.uri.startsWith('http')) {
         try {
-          final index =
-              _messages.indexWhere((element) => element.id == message.id);
-          final updatedMessage =
-              (_messages[index] as types.FileMessage).copyWith(
+          final index = _messages.indexWhere((element) => element.id == message.id);
+          final updatedMessage = (_messages[index] as types.FileMessage).copyWith(
             isLoading: true,
           );
 
@@ -270,10 +267,8 @@ class _ChatMassagePageState extends State<ChatMassagePage> {
             await file.writeAsBytes(bytes);
           }
         } finally {
-          final index =
-              _messages.indexWhere((element) => element.id == message.id);
-          final updatedMessage =
-              (_messages[index] as types.FileMessage).copyWith(
+          final index = _messages.indexWhere((element) => element.id == message.id);
+          final updatedMessage = (_messages[index] as types.FileMessage).copyWith(
             isLoading: null,
           );
 
@@ -315,9 +310,7 @@ class _ChatMassagePageState extends State<ChatMassagePage> {
 
   void _loadMessages() async {
     final response = await rootBundle.loadString('assets/messages.json');
-    final messages = (jsonDecode(response) as List)
-        .map((e) => types.Message.fromJson(e as Map<String, dynamic>))
-        .toList();
+    final messages = (jsonDecode(response) as List).map((e) => types.Message.fromJson(e as Map<String, dynamic>)).toList();
 
     setState(() {
       _messages = messages;
@@ -330,15 +323,13 @@ class _ChatMassagePageState extends State<ChatMassagePage> {
           backgroundColor: Colors.black54,
           leading: IconButton(
             padding: EdgeInsets.symmetric(vertical: 9, horizontal: 14),
-
             style: ButtonStyle(
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                   RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
                 ),
-                backgroundColor: MaterialStatePropertyAll<Color>(
-                    Colors.grey.withOpacity(0.2))),
+                backgroundColor: MaterialStatePropertyAll<Color>(Colors.grey.withOpacity(0.2))),
             onPressed: () {
               context.goNamed(Routes.chatPage);
             },
@@ -348,7 +339,6 @@ class _ChatMassagePageState extends State<ChatMassagePage> {
               color: Color(0Xff4C0497),
             ),
           ),
-
         ),
         body: Chat(
           messages: _messages,

@@ -5,11 +5,11 @@ import 'package:go_router/go_router.dart';
 import 'package:opensooq/core/utils/media_query_values.dart';
 import 'package:opensooq/future/category_product/presentation/cubit/add_ads_cubit.dart';
 import 'package:opensooq/future/category_product/presentation/cubit/add_ads_state.dart';
+import 'package:opensooq/future/setting/presentation/edit_profile/presentation/widgets/Customs.dart';
 
 import '../../../../../core/utils/custom_button_widget.dart';
 import '../../../../../core/utils/hex_color.dart';
 import '../../../../../core/widget/text_translate_manager.dart';
-import '../../../../setting1/edit_profile/presentation/widgets/Customs.dart';
 
 class PersonalInfoAds extends StatefulWidget {
   const PersonalInfoAds({super.key});

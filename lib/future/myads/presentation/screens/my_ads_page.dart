@@ -7,7 +7,7 @@ import 'package:opensooq/core/utils/custom_buttom_sheet_remove.dart';
 import 'package:opensooq/core/utils/hex_color.dart';
 import 'package:opensooq/core/utils/media_query_values.dart';
 import 'package:opensooq/future/myads/bloc/myads_state.dart';
-import 'package:opensooq/future/setting1/edit_profile/presentation/widgets/header_screen.dart';
+import 'package:opensooq/future/setting/presentation/edit_profile/presentation/widgets/header_screen.dart';
 
 import '../../../../config/routes/app_routes.dart';
 import '../../../../core/widget/text_translate_manager.dart';
@@ -302,7 +302,7 @@ class MyAdsPage extends StatelessWidget {
                                                         child: TranslateText(
                                                           styleText: StyleText.h4,
                                                           fontSize: 16,
-                                                          text: item.status??'',
+                                                          text: item.status ?? '',
                                                           colorText: HexColor('7CA73C'),
                                                         ),
                                                       ),
@@ -322,7 +322,7 @@ class MyAdsPage extends StatelessWidget {
                                                         child: TranslateText(
                                                           styleText: StyleText.h4,
                                                           fontSize: 16,
-                                                          text: item.active??'',
+                                                          text: item.active ?? '',
                                                           colorText: HexColor('7CA73C'),
                                                         ),
                                                       ),

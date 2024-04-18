@@ -3,8 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:opensooq/config/routes/app_routes.dart';
 import 'package:opensooq/core/utils/hex_color.dart';
 import 'package:opensooq/core/widget/text_translate_manager.dart';
-import 'package:opensooq/future/setting1/edit_profile/presentation/widgets/anmtionsucssuffly.dart';
-import 'package:opensooq/future/setting1/edit_profile/presentation/widgets/header_screen.dart';
+import 'package:opensooq/future/setting/presentation/edit_profile/presentation/widgets/anmtionsucssuffly.dart';
+import 'package:opensooq/future/setting/presentation/edit_profile/presentation/widgets/header_screen.dart';
 
 class FollowersEmptyPage extends StatelessWidget {
   const FollowersEmptyPage({super.key});

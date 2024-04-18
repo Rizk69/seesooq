@@ -4,12 +4,12 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:opensooq/future/reels/presentation/bloc/reels_bloc.dart';
 import 'package:opensooq/future/reels/presentation/pages/widget/reels_list_widget.dart';
+import 'package:opensooq/future/setting/presentation/edit_profile/presentation/widgets/anmtionsucssuffly.dart';
+import 'package:opensooq/future/setting/presentation/edit_profile/presentation/widgets/header_screen.dart';
 
 import '../../../../config/routes/app_routes.dart';
 import '../../../../core/utils/hex_color.dart';
 import '../../../../core/widget/text_translate_manager.dart';
-import '../../../setting1/edit_profile/presentation/widgets/anmtionsucssuffly.dart';
-import '../../../setting1/edit_profile/presentation/widgets/header_screen.dart';
 
 class EmptyReelsView extends StatelessWidget {
   const EmptyReelsView({super.key});

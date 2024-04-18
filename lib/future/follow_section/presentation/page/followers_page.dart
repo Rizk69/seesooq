@@ -6,10 +6,10 @@ import 'package:opensooq/core/utils/custom_failed_app.dart';
 import 'package:opensooq/future/follow_section/presentation/bloc/follow_bloc.dart';
 import 'package:opensooq/future/follow_section/presentation/bloc/follow_event.dart';
 import 'package:opensooq/future/follow_section/presentation/bloc/follow_state.dart';
+import 'package:opensooq/future/setting/presentation/edit_profile/presentation/widgets/header_screen.dart';
 
 import '../../../../config/routes/app_routes.dart';
 import '../../../../core/widget/text_translate_manager.dart';
-import '../../../setting1/edit_profile/presentation/widgets/header_screen.dart';
 
 class FollowersPage extends StatelessWidget {
   const FollowersPage({super.key});

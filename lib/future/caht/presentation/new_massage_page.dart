@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:opensooq/core/utils/media_query_values.dart';
+import 'package:opensooq/future/setting/presentation/edit_profile/presentation/widgets/header_screen.dart';
+import 'package:opensooq/future/setting/presentation/edit_profile/presentation/widgets/profile_photo.dart';
 
 import '../../../config/routes/app_routes.dart';
 import '../../../core/utils/custom_failed_app.dart';
-import '../../setting1/edit_profile/presentation/widgets/header_screen.dart';
-import '../../setting1/edit_profile/presentation/widgets/profile_photo.dart';
 
 class NewMassagePage extends StatelessWidget {
   const NewMassagePage({super.key});

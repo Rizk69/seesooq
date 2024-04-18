@@ -13,7 +13,6 @@ import 'package:opensooq/future/home/presentation/cubit/home_cubit.dart';
 import 'package:opensooq/future/home/presentation/cubit/story_user_cubit.dart';
 import 'package:opensooq/future/login/presentation/cubit/login_cubit.dart';
 import 'package:opensooq/future/notification/presentation/cubit/notification_cubit.dart';
-import 'package:opensooq/future/setting/presentation/cubit/setting_cubit.dart';
 import 'package:opensooq/future/signup/presentation/cubit/signup_cubit.dart';
 import 'package:opensooq/future/splash/presentation/cubit/lcoale_cubit.dart';
 import 'package:opensooq/future/wallet/presentation/cubit/wallet_cubit.dart';
@@ -33,7 +32,6 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => di.sl<LocaleCubit>()..init()),
         BlocProvider(create: (context) => HomeCubit()),
         BlocProvider(create: (context) => di.sl<NotificationCubit>()..initialize()),
-        BlocProvider(create: (context) => di.sl<SettingCubit>()),
         BlocProvider(create: (context) => di.sl<LoginCubit>()),
         BlocProvider(create: (context) => di.sl<CategoryProductCubit>()),
         BlocProvider(create: (context) => di.sl<CategoryCubit>()),
@@ -55,7 +53,7 @@ class MyApp extends StatelessWidget {
           supportedLocales: context.supportedLocales,
           scaffoldMessengerKey: scaffoldMessengerKey,
           darkTheme: ThemeManager.createTheme(AppThemeDark()),
-          themeMode: state.theme == 'light' ? ThemeMode.dark : ThemeMode.dark,
+          themeMode: state.theme == 'light' ? ThemeMode.light : ThemeMode.dark,
           theme: ThemeManager.createTheme(AppThemeLight()),
           builder: (context, child) {
             return FlutterEasyLoading(child: child);

@@ -47,13 +47,13 @@ class _SettingApi implements SettingApi {
   }
 
   @override
-  Future<PrivacyPolicyModel> privacyPolicy() async {
+  Future<GeneralSettingModel> privacyPolicy() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<PrivacyPolicyModel>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<GeneralSettingModel>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -69,18 +69,18 @@ class _SettingApi implements SettingApi {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = await compute(deserializePrivacyPolicyModel, _result.data!);
+    final value = await compute(deserializeGeneralSettingModel, _result.data!);
     return value;
   }
 
   @override
-  Future<TermsOfUseModel> termsOfUse() async {
+  Future<GeneralSettingModel> termsOfUse() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<TermsOfUseModel>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<GeneralSettingModel>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -96,18 +96,18 @@ class _SettingApi implements SettingApi {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = await compute(deserializeTermsOfUseModel, _result.data!);
+    final value = await compute(deserializeGeneralSettingModel, _result.data!);
     return value;
   }
 
   @override
-  Future<ReasonsForDeletionModel> reasonsForDeletion() async {
+  Future<GeneralSettingModel> reasonsForDeletion() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ReasonsForDeletionModel>(Options(
+        _setStreamType<GeneralSettingModel>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -123,8 +123,88 @@ class _SettingApi implements SettingApi {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value =
-        await compute(deserializeReasonsForDeletionModel, _result.data!);
+    final value = await compute(deserializeGeneralSettingModel, _result.data!);
+    return value;
+  }
+
+  @override
+  Future<GeneralSettingModel> getFrequentlyAskQuestion() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<GeneralSettingModel>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'frequently-ask-question',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = await compute(deserializeGeneralSettingModel, _result.data!);
+    return value;
+  }
+
+  @override
+  Future<GeneralSettingModel> getContactUs() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<GeneralSettingModel>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'contact-us',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = await compute(deserializeGeneralSettingModel, _result.data!);
+    return value;
+  }
+
+  @override
+  Future<GeneralSettingModel> getAboutUs() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<GeneralSettingModel>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'about-us',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = await compute(deserializeGeneralSettingModel, _result.data!);
     return value;
   }
 

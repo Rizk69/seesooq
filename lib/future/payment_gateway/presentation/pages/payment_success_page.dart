@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:opensooq/future/setting/presentation/edit_profile/presentation/widgets/anmtionsucssuffly.dart';
 
 import '../../../../config/routes/app_routes.dart';
 import '../../../../core/utils/custom_button_widget.dart';
 import '../../../../core/utils/hex_color.dart';
 import '../../../../core/widget/text_translate_manager.dart';
-import '../../../setting1/edit_profile/presentation/widgets/anmtionsucssuffly.dart';
 
 class PaymentSuccessPage extends StatelessWidget {
   const PaymentSuccessPage({super.key, this.type});

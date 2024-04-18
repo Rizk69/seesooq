@@ -50,6 +50,8 @@ class MyOptionDrawerWidget extends StatelessWidget {
                 context.goNamed(Routes.packages);
               } else if (titles[index].toString() == 'favorite_drawer') {
                 context.goNamed(Routes.favorite);
+              } else if (titles[index].toString() == 'setting_drawer') {
+                context.goNamed(Routes.setting);
               } else if (titles[index].toString() == 'blogs_drawer') {
                 context.goNamed(Routes.blogsRoute);
               } else if (titles[index].toString() == 'logout') {
