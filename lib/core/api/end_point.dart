@@ -30,6 +30,9 @@ class EndPoint {
   static const String getGovernorate = 'governorate';
   static const String searchPlaces = '/place/textsearch/json';
   static const String editProfile = '/place/textsearch/json';
+  static const String privacyPolicy = 'privacy-policy';
+  static const String termsOfUse = 'terms-of-use';
+  static const String reasonsForDeletion = 'reasons-for-deletion';
   static const String getFav = 'my-favourite';
   static const String storePayment = 'payment/store';
   // subscription
