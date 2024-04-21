@@ -108,7 +108,7 @@ class TermsConditionsScreen extends StatelessWidget {
               ),
               const SizedBox(height: 25),
               BlocProvider(
-                create: (context) => TermsOfUseCubit()..getTermsOfUse(),
+                create: (context) => TermsOfUseCubit(),
                 child: BlocBuilder<TermsOfUseCubit, TermsOfUseState>(builder: (context, state) {
                   if (state.termsOfUseStatus == TermsOfUseStatus.loading) {
                     return const Center(child: CircularProgressIndicator());

@@ -4,12 +4,14 @@ import 'package:opensooq/future/setting/data/repositories/setting_repository.dar
 import 'package:opensooq/future/setting/presentation/cubit/terms_of_use_cubit/terms_of_use_state.dart';
 
 class TermsOfUseCubit extends Cubit<TermsOfUseState> {
-  TermsOfUseCubit() : super(const TermsOfUseState());
+  TermsOfUseCubit() : super(const TermsOfUseState()) {
+    _getTermsOfUse();
+  }
   final SettingRepository settingRepository = di.sl();
 
   static TermsOfUseCubit get(context) => BlocProvider.of(context);
 
-  Future<void> getTermsOfUse() async {
+  Future<void> _getTermsOfUse() async {
     emit(state.copyWith(termsOfUseStatus: TermsOfUseStatus.loading));
     final result = await settingRepository.getTermsOfUse();
     result.fold((error) {
