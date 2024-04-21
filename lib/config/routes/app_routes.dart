@@ -50,7 +50,7 @@ import '../../future/myads/routing/ads_route.dart';
 import '../../future/reels/routing/reels_route.dart';
 import '../../future/setting/presentation/Connect_with_us.dart';
 import '../../future/setting/presentation/change_language_page.dart';
-import '../../future/setting/presentation/policy_screens.dart';
+import '../../future/setting/presentation/terms_screens.dart';
 import '../../future/setting/presentation/remove_account.dart';
 import '../../future/setting/presentation/securty_page.dart';
 import '../../future/setting/presentation/sucsse_cahnge_password.dart';
@@ -562,7 +562,7 @@ final GoRouter router = GoRouter(
       name: Routes.privacyScreen,
       pageBuilder: (context, state) {
         return CustomTransitionPage(
-          child: const PrivacyScreen(),
+          child: const TermsScreen(),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             return FadeTransition(
               opacity: animation,

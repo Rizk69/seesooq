@@ -4,14 +4,16 @@ import 'package:go_router/go_router.dart';
 import 'package:opensooq/core/utils/hex_color.dart';
 import 'package:opensooq/core/widget/text_translate_manager.dart';
 import 'package:opensooq/future/setting/data/models/general_setting_model.dart';
+import 'package:opensooq/future/setting/presentation/cubit/privacy_policy_cubit/privacy_policy_cubit.dart';
+import 'package:opensooq/future/setting/presentation/cubit/privacy_policy_cubit/privacy_policy_state.dart';
 import 'package:opensooq/future/setting/presentation/cubit/terms_of_use_cubit/terms_of_use_cubit.dart';
 import 'package:opensooq/future/setting/presentation/cubit/terms_of_use_cubit/terms_of_use_state.dart';
 import 'package:opensooq/future/setting/presentation/edit_profile/presentation/widgets/header_screen.dart';
 
 import '../../../config/routes/app_routes.dart';
 
-class PrivacyScreen extends StatelessWidget {
-  const PrivacyScreen({Key? key}) : super(key: key);
+class TermsScreen extends StatelessWidget {
+  const TermsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,26 +31,29 @@ class PrivacyScreen extends StatelessWidget {
                 },
               ),
               const SizedBox(height: 25),
-              _customPolicy(
-                title: 'ضع عنوان السياسة هنا',
-                description: 'ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السيا',
-              ),
-              _customPolicy(
-                title: 'ضع عنوان السياسة هنا',
-                description: 'ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السيا',
-              ),
-              _customPolicy(
-                title: 'ضع عنوان السياسة هنا',
-                description: 'ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السيا',
-              ),
-              _customPolicy(
-                title: 'ضع عنوان السياسة هنا',
-                description: 'ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السيا',
-              ),
-              _customPolicy(
-                title: 'ضع عنوان السياسة هنا',
-                description: 'ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السيا',
-              ),
+              BlocProvider(
+                create: (context) => PrivacyPolicyCubit()..getPrivacyPolicy(),
+                child: BlocBuilder<PrivacyPolicyCubit, PrivacyPolicyState>(builder: (context, state) {
+                  if (state.privacyPolicyStatus == PrivacyPolicyStatus.loading) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+
+                  if (state.privacyPolicyStatus == PrivacyPolicyStatus.error) {
+                    return const Center(child: Text('Error'));
+                  }
+                  if (state.privacyPolicyStatus == PrivacyPolicyStatus.loaded && state.privacyPolicyModel != null) {
+                    return ListView.builder(
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        DataOfSetting items = state.privacyPolicyModel!.data!.data![index];
+                        return _customPolicy(title: items.title ?? '', description: items.description ?? '');
+                      },
+                      itemCount: state.privacyPolicyModel!.data!.data!.length,
+                    );
+                  }
+                  return const SizedBox();
+                }),
+              )
             ],
           ),
         ),
@@ -89,7 +94,7 @@ class PrivacyScreen extends StatelessWidget {
 }
 
 class TermsConditionsScreen extends StatelessWidget {
-  const TermsConditionsScreen({Key? key}) : super(key: key);
+  const TermsConditionsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

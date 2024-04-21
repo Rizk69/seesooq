@@ -30,12 +30,12 @@ class EndPoint {
   static const String getGovernorate = 'governorate';
   static const String searchPlaces = '/place/textsearch/json';
   static const String editProfile = '/place/textsearch/json';
-  static const String privacyPolicy = 'privacy-policy';
+  static const String privacyPolicy = 'pages/privacy-policy';
   static const String termsOfUse = 'pages/terms-of-use';
-  static const String reasonsForDeletion = 'reasons-for-deletion';
-  static const String frequentlyAskQuestion = 'frequently-ask-question';
+  static const String reasonsForDeletion = 'pages/reasons-for-deletion';
+  static const String frequentlyAskQuestion = 'pages/frequently-asked-questions';
   static const String contactUs = 'contact-us';
-  static const String aboutUs = 'about-us';
+  static const String aboutUs = 'pages/about-us';
 
   static const String getFav = 'my-favourite';
   static const String storePayment = 'payment/store';

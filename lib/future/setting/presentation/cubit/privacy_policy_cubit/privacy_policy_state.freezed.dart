@@ -18,6 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$PrivacyPolicyState {
   PrivacyPolicyStatus get privacyPolicyStatus =>
       throw _privateConstructorUsedError;
+  GeneralSettingModel? get privacyPolicyModel =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PrivacyPolicyStateCopyWith<PrivacyPolicyState> get copyWith =>
@@ -30,7 +32,9 @@ abstract class $PrivacyPolicyStateCopyWith<$Res> {
           PrivacyPolicyState value, $Res Function(PrivacyPolicyState) then) =
       _$PrivacyPolicyStateCopyWithImpl<$Res, PrivacyPolicyState>;
   @useResult
-  $Res call({PrivacyPolicyStatus privacyPolicyStatus});
+  $Res call(
+      {PrivacyPolicyStatus privacyPolicyStatus,
+      GeneralSettingModel? privacyPolicyModel});
 }
 
 /// @nodoc
@@ -47,12 +51,17 @@ class _$PrivacyPolicyStateCopyWithImpl<$Res, $Val extends PrivacyPolicyState>
   @override
   $Res call({
     Object? privacyPolicyStatus = null,
+    Object? privacyPolicyModel = freezed,
   }) {
     return _then(_value.copyWith(
       privacyPolicyStatus: null == privacyPolicyStatus
           ? _value.privacyPolicyStatus
           : privacyPolicyStatus // ignore: cast_nullable_to_non_nullable
               as PrivacyPolicyStatus,
+      privacyPolicyModel: freezed == privacyPolicyModel
+          ? _value.privacyPolicyModel
+          : privacyPolicyModel // ignore: cast_nullable_to_non_nullable
+              as GeneralSettingModel?,
     ) as $Val);
   }
 }
@@ -65,7 +74,9 @@ abstract class _$$PrivacyPolicyStateImplCopyWith<$Res>
       __$$PrivacyPolicyStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({PrivacyPolicyStatus privacyPolicyStatus});
+  $Res call(
+      {PrivacyPolicyStatus privacyPolicyStatus,
+      GeneralSettingModel? privacyPolicyModel});
 }
 
 /// @nodoc
@@ -80,12 +91,17 @@ class __$$PrivacyPolicyStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? privacyPolicyStatus = null,
+    Object? privacyPolicyModel = freezed,
   }) {
     return _then(_$PrivacyPolicyStateImpl(
       privacyPolicyStatus: null == privacyPolicyStatus
           ? _value.privacyPolicyStatus
           : privacyPolicyStatus // ignore: cast_nullable_to_non_nullable
               as PrivacyPolicyStatus,
+      privacyPolicyModel: freezed == privacyPolicyModel
+          ? _value.privacyPolicyModel
+          : privacyPolicyModel // ignore: cast_nullable_to_non_nullable
+              as GeneralSettingModel?,
     ));
   }
 }
@@ -94,15 +110,19 @@ class __$$PrivacyPolicyStateImplCopyWithImpl<$Res>
 
 class _$PrivacyPolicyStateImpl implements _PrivacyPolicyState {
   const _$PrivacyPolicyStateImpl(
-      {this.privacyPolicyStatus = PrivacyPolicyStatus.initial});
+      {this.privacyPolicyStatus = PrivacyPolicyStatus.initial,
+      this.privacyPolicyModel = null});
 
   @override
   @JsonKey()
   final PrivacyPolicyStatus privacyPolicyStatus;
+  @override
+  @JsonKey()
+  final GeneralSettingModel? privacyPolicyModel;
 
   @override
   String toString() {
-    return 'PrivacyPolicyState(privacyPolicyStatus: $privacyPolicyStatus)';
+    return 'PrivacyPolicyState(privacyPolicyStatus: $privacyPolicyStatus, privacyPolicyModel: $privacyPolicyModel)';
   }
 
   @override
@@ -111,11 +131,14 @@ class _$PrivacyPolicyStateImpl implements _PrivacyPolicyState {
         (other.runtimeType == runtimeType &&
             other is _$PrivacyPolicyStateImpl &&
             (identical(other.privacyPolicyStatus, privacyPolicyStatus) ||
-                other.privacyPolicyStatus == privacyPolicyStatus));
+                other.privacyPolicyStatus == privacyPolicyStatus) &&
+            (identical(other.privacyPolicyModel, privacyPolicyModel) ||
+                other.privacyPolicyModel == privacyPolicyModel));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, privacyPolicyStatus);
+  int get hashCode =>
+      Object.hash(runtimeType, privacyPolicyStatus, privacyPolicyModel);
 
   @JsonKey(ignore: true)
   @override
@@ -127,11 +150,14 @@ class _$PrivacyPolicyStateImpl implements _PrivacyPolicyState {
 
 abstract class _PrivacyPolicyState implements PrivacyPolicyState {
   const factory _PrivacyPolicyState(
-          {final PrivacyPolicyStatus privacyPolicyStatus}) =
+          {final PrivacyPolicyStatus privacyPolicyStatus,
+          final GeneralSettingModel? privacyPolicyModel}) =
       _$PrivacyPolicyStateImpl;
 
   @override
   PrivacyPolicyStatus get privacyPolicyStatus;
+  @override
+  GeneralSettingModel? get privacyPolicyModel;
   @override
   @JsonKey(ignore: true)
   _$$PrivacyPolicyStateImplCopyWith<_$PrivacyPolicyStateImpl> get copyWith =>

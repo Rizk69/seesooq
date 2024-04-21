@@ -18,6 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ReasonDeletionsState {
   ReasonDeletionsStatus get reasonDeletionsStatus =>
       throw _privateConstructorUsedError;
+  GeneralSettingModel? get reasonDeletionsModel =>
+      throw _privateConstructorUsedError;
+  int? get selectedReason => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ReasonDeletionsStateCopyWith<ReasonDeletionsState> get copyWith =>
@@ -30,7 +33,10 @@ abstract class $ReasonDeletionsStateCopyWith<$Res> {
           $Res Function(ReasonDeletionsState) then) =
       _$ReasonDeletionsStateCopyWithImpl<$Res, ReasonDeletionsState>;
   @useResult
-  $Res call({ReasonDeletionsStatus reasonDeletionsStatus});
+  $Res call(
+      {ReasonDeletionsStatus reasonDeletionsStatus,
+      GeneralSettingModel? reasonDeletionsModel,
+      int? selectedReason});
 }
 
 /// @nodoc
@@ -48,12 +54,22 @@ class _$ReasonDeletionsStateCopyWithImpl<$Res,
   @override
   $Res call({
     Object? reasonDeletionsStatus = null,
+    Object? reasonDeletionsModel = freezed,
+    Object? selectedReason = freezed,
   }) {
     return _then(_value.copyWith(
       reasonDeletionsStatus: null == reasonDeletionsStatus
           ? _value.reasonDeletionsStatus
           : reasonDeletionsStatus // ignore: cast_nullable_to_non_nullable
               as ReasonDeletionsStatus,
+      reasonDeletionsModel: freezed == reasonDeletionsModel
+          ? _value.reasonDeletionsModel
+          : reasonDeletionsModel // ignore: cast_nullable_to_non_nullable
+              as GeneralSettingModel?,
+      selectedReason: freezed == selectedReason
+          ? _value.selectedReason
+          : selectedReason // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -66,7 +82,10 @@ abstract class _$$ReasonDeletionsStateImplCopyWith<$Res>
       __$$ReasonDeletionsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ReasonDeletionsStatus reasonDeletionsStatus});
+  $Res call(
+      {ReasonDeletionsStatus reasonDeletionsStatus,
+      GeneralSettingModel? reasonDeletionsModel,
+      int? selectedReason});
 }
 
 /// @nodoc
@@ -81,12 +100,22 @@ class __$$ReasonDeletionsStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? reasonDeletionsStatus = null,
+    Object? reasonDeletionsModel = freezed,
+    Object? selectedReason = freezed,
   }) {
     return _then(_$ReasonDeletionsStateImpl(
       reasonDeletionsStatus: null == reasonDeletionsStatus
           ? _value.reasonDeletionsStatus
           : reasonDeletionsStatus // ignore: cast_nullable_to_non_nullable
               as ReasonDeletionsStatus,
+      reasonDeletionsModel: freezed == reasonDeletionsModel
+          ? _value.reasonDeletionsModel
+          : reasonDeletionsModel // ignore: cast_nullable_to_non_nullable
+              as GeneralSettingModel?,
+      selectedReason: freezed == selectedReason
+          ? _value.selectedReason
+          : selectedReason // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -95,15 +124,21 @@ class __$$ReasonDeletionsStateImplCopyWithImpl<$Res>
 
 class _$ReasonDeletionsStateImpl implements _ReasonDeletionsState {
   const _$ReasonDeletionsStateImpl(
-      {this.reasonDeletionsStatus = ReasonDeletionsStatus.initial});
+      {this.reasonDeletionsStatus = ReasonDeletionsStatus.initial,
+      this.reasonDeletionsModel,
+      this.selectedReason});
 
   @override
   @JsonKey()
   final ReasonDeletionsStatus reasonDeletionsStatus;
+  @override
+  final GeneralSettingModel? reasonDeletionsModel;
+  @override
+  final int? selectedReason;
 
   @override
   String toString() {
-    return 'ReasonDeletionsState(reasonDeletionsStatus: $reasonDeletionsStatus)';
+    return 'ReasonDeletionsState(reasonDeletionsStatus: $reasonDeletionsStatus, reasonDeletionsModel: $reasonDeletionsModel, selectedReason: $selectedReason)';
   }
 
   @override
@@ -112,11 +147,16 @@ class _$ReasonDeletionsStateImpl implements _ReasonDeletionsState {
         (other.runtimeType == runtimeType &&
             other is _$ReasonDeletionsStateImpl &&
             (identical(other.reasonDeletionsStatus, reasonDeletionsStatus) ||
-                other.reasonDeletionsStatus == reasonDeletionsStatus));
+                other.reasonDeletionsStatus == reasonDeletionsStatus) &&
+            (identical(other.reasonDeletionsModel, reasonDeletionsModel) ||
+                other.reasonDeletionsModel == reasonDeletionsModel) &&
+            (identical(other.selectedReason, selectedReason) ||
+                other.selectedReason == selectedReason));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, reasonDeletionsStatus);
+  int get hashCode => Object.hash(
+      runtimeType, reasonDeletionsStatus, reasonDeletionsModel, selectedReason);
 
   @JsonKey(ignore: true)
   @override
@@ -129,11 +169,16 @@ class _$ReasonDeletionsStateImpl implements _ReasonDeletionsState {
 
 abstract class _ReasonDeletionsState implements ReasonDeletionsState {
   const factory _ReasonDeletionsState(
-          {final ReasonDeletionsStatus reasonDeletionsStatus}) =
-      _$ReasonDeletionsStateImpl;
+      {final ReasonDeletionsStatus reasonDeletionsStatus,
+      final GeneralSettingModel? reasonDeletionsModel,
+      final int? selectedReason}) = _$ReasonDeletionsStateImpl;
 
   @override
   ReasonDeletionsStatus get reasonDeletionsStatus;
+  @override
+  GeneralSettingModel? get reasonDeletionsModel;
+  @override
+  int? get selectedReason;
   @override
   @JsonKey(ignore: true)
   _$$ReasonDeletionsStateImplCopyWith<_$ReasonDeletionsStateImpl>

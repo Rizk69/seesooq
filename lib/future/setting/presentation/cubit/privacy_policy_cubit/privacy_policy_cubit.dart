@@ -8,10 +8,17 @@ class PrivacyPolicyCubit extends Cubit<PrivacyPolicyState> {
   final SettingRepository settingRepository = di.sl();
   static PrivacyPolicyCubit get(context) => BlocProvider.of(context);
 
-  Future<void> _getPrivacyPolicy() async {
+  Future<void> getPrivacyPolicy() async {
+    emit(state.copyWith(privacyPolicyStatus: PrivacyPolicyStatus.loading));
+
     final result = await settingRepository.getPrivacyPolicy();
     result.fold((error) {
-      print('error ${error.message}');
-    }, (privacyPolicy) {});
+      emit(state.copyWith(privacyPolicyStatus: PrivacyPolicyStatus.error));
+
+    }, (privacyPolicy) {
+      emit(state.copyWith(privacyPolicyStatus: PrivacyPolicyStatus.loaded,privacyPolicyModel:privacyPolicy));
+
+
+    });
   }
 }

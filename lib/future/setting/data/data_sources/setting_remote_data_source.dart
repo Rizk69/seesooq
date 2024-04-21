@@ -41,20 +41,20 @@ class SettingRemoteDataSourceImpl implements SettingRemoteDataSource {
   }
 
   @override
-  Future<GeneralSettingModel> getAboutUs() {
-    // TODO: implement getAboutUs
-    throw UnimplementedError();
+  Future<GeneralSettingModel> getAboutUs()async {
+    return await api.getAboutUs();
+
   }
 
   @override
-  Future<GeneralSettingModel> getContactUs() {
-    // TODO: implement getContactUs
-    throw UnimplementedError();
+  Future<GeneralSettingModel> getContactUs()async {
+    return await api.getContactUs();
+
   }
 
   @override
-  Future<GeneralSettingModel> getFrequentlyAskQuestion() {
-    // TODO: implement getFrequentlyAskQuestion
-    throw UnimplementedError();
+  Future<GeneralSettingModel> getFrequentlyAskQuestion() async{
+    return await api.getFrequentlyAskQuestion();
+
   }
 }
