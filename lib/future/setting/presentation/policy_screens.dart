@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:opensooq/core/utils/hex_color.dart';
+import 'package:opensooq/core/widget/text_translate_manager.dart';
+import 'package:opensooq/future/setting/data/models/general_setting_model.dart';
+import 'package:opensooq/future/setting/presentation/cubit/terms_of_use_cubit/terms_of_use_cubit.dart';
+import 'package:opensooq/future/setting/presentation/cubit/terms_of_use_cubit/terms_of_use_state.dart';
 import 'package:opensooq/future/setting/presentation/edit_profile/presentation/widgets/header_screen.dart';
 
 import '../../../config/routes/app_routes.dart';
@@ -88,9 +93,9 @@ class TermsConditionsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Padding(
+    return SafeArea(
+      child: Scaffold(
+        body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -102,26 +107,30 @@ class TermsConditionsScreen extends StatelessWidget {
                 },
               ),
               const SizedBox(height: 25),
-              _customPolicy(
-                title: 'ضع عنوان السياسة هنا',
-                description: 'ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السيا',
-              ),
-              _customPolicy(
-                title: 'ضع عنوان السياسة هنا',
-                description: 'ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السيا',
-              ),
-              _customPolicy(
-                title: 'ضع عنوان السياسة هنا',
-                description: 'ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السيا',
-              ),
-              _customPolicy(
-                title: 'ضع عنوان السياسة هنا',
-                description: 'ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السيا',
-              ),
-              _customPolicy(
-                title: 'ضع عنوان السياسة هنا',
-                description: 'ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السياسة هنا ضع وصف السيا',
-              ),
+              BlocProvider(
+                create: (context) => TermsOfUseCubit()..getTermsOfUse(),
+                child: BlocBuilder<TermsOfUseCubit, TermsOfUseState>(builder: (context, state) {
+                  if (state.termsOfUseStatus == TermsOfUseStatus.loading) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+
+                  if (state.termsOfUseStatus == TermsOfUseStatus.error) {
+                    return const Center(child: Text('Error'));
+                  }
+                  if (state.termsOfUseStatus == TermsOfUseStatus.loaded && state.termsOfUse != null) {
+                    return Expanded(
+                      child: ListView.builder(
+                        itemBuilder: (context, index) {
+                          DataOfSetting items = state.termsOfUse!.data!.data![index];
+                          return _customPolicy(title: items.title ?? '', description: items.description ?? '');
+                        },
+                        itemCount: state.termsOfUse!.data!.data!.length,
+                      ),
+                    );
+                  }
+                  return const SizedBox();
+                }),
+              )
             ],
           ),
         ),
@@ -134,26 +143,18 @@ class TermsConditionsScreen extends StatelessWidget {
     required String description,
   }) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          title,
-          textAlign: TextAlign.end,
-          style: TextStyle(
-            fontSize: 18,
-            color: Colors.black,
-            fontWeight: FontWeight.w700,
-          ),
+        TranslateText(
+          text: title,
+          styleText: StyleText.h4,
         ),
-        SizedBox(height: 4),
-        Text(
-          description,
-          textAlign: TextAlign.end,
-          style: TextStyle(
-            fontSize: 16,
-            color: HexColor('707070'),
-            fontWeight: FontWeight.w400,
-          ),
+        const SizedBox(height: 4),
+        TranslateText(
+          text: description,
+          styleText: StyleText.h5,
+          maxLines: 10,
+          textAlign: TextAlign.start,
         ),
         const SizedBox(height: 24),
       ],

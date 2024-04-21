@@ -87,7 +87,7 @@ class _SettingApi implements SettingApi {
     )
             .compose(
               _dio.options,
-              'terms-of-use',
+              'pages/terms-of-use',
               queryParameters: queryParameters,
               data: _data,
             )

@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:opensooq/core/utils/custom_button_widget.dart';
 import 'package:opensooq/core/utils/hex_color.dart';
 import 'package:opensooq/core/utils/media_query_values.dart';
+import 'package:opensooq/core/utils/something_went_wrong.dart';
 import 'package:opensooq/core/widget/text_translate_manager.dart';
 import 'package:opensooq/future/home/presentation/cubit/home_cubit.dart';
 import 'package:opensooq/future/home/presentation/cubit/home_state.dart';
@@ -56,10 +57,13 @@ class _BannerSharedWidgetState extends State<BannerSharedWidget> {
                           SizedBox(
                             width: context.width,
                             height: widget.height,
-                            child: Image.network(
-                              state.bannersModel?.data?[index].album ?? '',
-                              fit: BoxFit.cover,
-                            ),
+                            child: Image.network(state.bannersModel?.data?[index].album ?? '', fit: BoxFit.cover,
+                                errorBuilder: (context, error, stackTrace) {
+                              return const SomThingWentWrongWidget(
+                                height: 100,
+                                width: 100,
+                              );
+                            }),
                           ),
                           Positioned(
                             right: 20,
@@ -70,20 +74,21 @@ class _BannerSharedWidgetState extends State<BannerSharedWidget> {
                               colorText: Colors.white,
                             ),
                           ),
-                          Positioned(
-                            right: 20,
-                            bottom: 15,
-                            child: SizedBox(
-                              width: 140,
-                              height: 50,
-                              child: CustomButtonWidget(
-                                  color: Colors.white,
-                                  text: 'Explore',
-                                  onPressed: () {
-                                    context.pushNamed('view_ads_home', extra: state.bannersModel?.data?[index].id.toString());
-                                  }),
+                          if (state.bannersModel?.data?[index].id != null)
+                            Positioned(
+                              right: 20,
+                              bottom: 15,
+                              child: SizedBox(
+                                width: 140,
+                                height: 50,
+                                child: CustomButtonWidget(
+                                    color: Colors.white,
+                                    text: 'Explore',
+                                    onPressed: () {
+                                      context.pushNamed('view_ads_home', extra: state.bannersModel?.data?[index].id.toString());
+                                    }),
+                              ),
                             ),
-                          ),
                         ],
                       ),
                     );

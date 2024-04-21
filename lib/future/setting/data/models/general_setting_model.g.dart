@@ -8,23 +8,16 @@ part of 'general_setting_model.dart';
 
 GeneralSettingModel _$GeneralSettingModelFromJson(Map<String, dynamic> json) =>
     GeneralSettingModel(
-      slug: json['slug'] as String?,
-      type: json['type'] as String?,
-      createdAt: json['createdAt'] as String?,
-      updatedAt: json['updatedAt'] as String?,
-      deletedAt: json['deletedAt'] as String?,
-    )..data = (json['data'] as List<dynamic>?)
-        ?.map((e) => DataOfSetting.fromJson(e as Map<String, dynamic>))
-        .toList();
+      result: json['result'] as String?,
+      data: json['data'] == null
+          ? null
+          : DataSettingObject.fromJson(json['data'] as Map<String, dynamic>),
+    );
 
 Map<String, dynamic> _$GeneralSettingModelToJson(
         GeneralSettingModel instance) =>
     <String, dynamic>{
-      'slug': instance.slug,
-      'type': instance.type,
-      'createdAt': instance.createdAt,
-      'updatedAt': instance.updatedAt,
-      'deletedAt': instance.deletedAt,
+      'result': instance.result,
       'data': instance.data,
     };
 
@@ -40,4 +33,18 @@ Map<String, dynamic> _$DataOfSettingToJson(DataOfSetting instance) =>
       'id': instance.id,
       'title': instance.title,
       'description': instance.description,
+    };
+
+DataSettingObject _$DataSettingObjectFromJson(Map<String, dynamic> json) =>
+    DataSettingObject(
+      message: json['message'] as String?,
+      data: (json['data'] as List<dynamic>?)
+          ?.map((e) => DataOfSetting.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$DataSettingObjectToJson(DataSettingObject instance) =>
+    <String, dynamic>{
+      'message': instance.message,
+      'data': instance.data,
     };

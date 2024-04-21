@@ -41,7 +41,7 @@ extension ShortMonthDateFromUTC on DateTime {
 extension ImagePath on String {
   String get toPng => 'assets/images/$this.png';
 
-  String get toLottie => 'assets/images/lottie/$this.json';
+  String get toLottie => 'assets/json/$this.json';
 
   String get toSvg => 'assets/images/svg/$this.svg';
   String get detailsToSvg => 'assets/images/svg/icons_ads/$this.svg';

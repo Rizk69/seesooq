@@ -31,7 +31,7 @@ class EndPoint {
   static const String searchPlaces = '/place/textsearch/json';
   static const String editProfile = '/place/textsearch/json';
   static const String privacyPolicy = 'privacy-policy';
-  static const String termsOfUse = 'terms-of-use';
+  static const String termsOfUse = 'pages/terms-of-use';
   static const String reasonsForDeletion = 'reasons-for-deletion';
   static const String frequentlyAskQuestion = 'frequently-ask-question';
   static const String contactUs = 'contact-us';

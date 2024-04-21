@@ -6,21 +6,16 @@ GeneralSettingModel deserializeGeneralSettingModel(Map<String, dynamic> json) =>
 
 @JsonSerializable()
 class GeneralSettingModel {
-  String? slug;
-  String? type;
-  String? createdAt;
-  String? updatedAt;
-  String? deletedAt;
-
-  List<DataOfSetting>? data;
+  String? result;
+  DataSettingObject? data;
 
   GeneralSettingModel({
-    this.slug,
-    this.type,
-    this.createdAt,
-    this.updatedAt,
-    this.deletedAt,
+    this.result,
+    this.data,
   });
+
+  // empty constructor
+  GeneralSettingModel.empty();
 
   factory GeneralSettingModel.fromJson(Map<String, dynamic> json) => _$GeneralSettingModelFromJson(json);
 
@@ -40,4 +35,17 @@ class DataOfSetting {
   });
 
   factory DataOfSetting.fromJson(Map<String, dynamic> json) => _$DataOfSettingFromJson(json);
+}
+
+@JsonSerializable()
+class DataSettingObject {
+  String? message;
+  List<DataOfSetting>? data;
+
+  DataSettingObject({
+    this.message,
+    this.data,
+  });
+
+  factory DataSettingObject.fromJson(Map<String, dynamic> json) => _$DataSettingObjectFromJson(json);
 }

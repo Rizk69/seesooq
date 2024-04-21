@@ -14,7 +14,10 @@ class ShowAdvertismentCubit extends Cubit<ShowAdvertismentState> {
     final result = await homeUserRepo.showAdvertisement(id: int.parse(id));
     result.fold(
       (l) => emit(state.copyWith(storyStatus: ShowAdvertismentStatus.error)),
-      (r) => emit(state.copyWith(storyStatus: ShowAdvertismentStatus.loaded, advertisementModel: r)),
+      (r) {
+        print(r);
+        emit(state.copyWith(storyStatus: ShowAdvertismentStatus.loaded, advertisementModel: r));
+      },
     );
   }
 }

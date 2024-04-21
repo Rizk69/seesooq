@@ -6,7 +6,8 @@ import 'package:opensooq/config/routes/app_routes.dart';
 import 'package:opensooq/core/utils/media_query_values.dart';
 import 'package:opensooq/future/home/presentation/cubit/home_cubit.dart';
 import 'package:opensooq/future/profile/presentation/widgets/card_list_items.dart';
-import 'package:opensooq/future/setting/presentation/edit_profile/presentation/widgets/header_screen.dart';
+
+import 'edit_profile/presentation/widgets/header_screen.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -31,112 +32,117 @@ class _SettingsPageState extends State<SettingsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
-        child: Column(
-          children: [
-            HeaderScreens(
-              title: 'setting',
-              onPressed: () {
-                context.go(Routes.profilePage);
-              },
-            ),
-            Expanded(
-              child: SingleChildScrollView(
-                child: ListView.separated(
-                  scrollDirection: Axis.vertical,
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: contacts.length,
-                  itemBuilder: (context, index) {
-                    final contact = contacts[index];
-                    return InkWell(
-                      onTap: () {
-                        switch (index) {
-                          case 0:
-                            {
-                              context.goNamed(Routes.accountMangePage);
-                            }
-                            break;
-                          case 1:
-                            {
-                              context.goNamed(
-                                Routes.notificationPage,
-                              );
-                            }
-                            break;
-                          case 2:
-                            {
-                              context.goNamed(
-                                Routes.changeLanguagePage,
-                              );
-                            }
-                            break;
-                          case 3:
-                            {
-                              context.goNamed(
-                                Routes.changeThemePage,
-                              );
-                            }
-                            break;
-                          case 4:
-                            {
-                              context.goNamed(
-                                Routes.privacyScreen,
-                              );
-                            }
-                            break;
-                          case 5:
-                            {
-                              context.goNamed(
-                                Routes.termsConditionsScreen,
-                              );
-                            }
-                            break;
-                          case 6:
-                            {
-                              context.goNamed(
-                                Routes.lookAtMarket,
-                              );
-                            }
-                            break;
-                          case 7:
-                            {
-                              context.goNamed(
-                                Routes.connectWithUsPage,
-                              );
-                            }
-                            break;
-                          case 8:
-                            {
-                            context.goNamed(
-                            Routes.frequentlyAskedQuestions,
-                            );
+    return SafeArea(
+      child: Scaffold(
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              HeaderScreens(
+                title: 'setting',
+                onPressed: () {
+                  context.go(Routes.profilePage);
+                },
+              ),
+              const Gap(24),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Expanded(
+                  child: SingleChildScrollView(
+                    child: ListView.separated(
+                      scrollDirection: Axis.vertical,
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: contacts.length,
+                      itemBuilder: (context, index) {
+                        final contact = contacts[index];
+                        return InkWell(
+                          onTap: () {
+                            switch (index) {
+                              case 0:
+                                {
+                                  context.goNamed(Routes.accountMangePage);
+                                }
+                                break;
+                              case 1:
+                                {
+                                  context.goNamed(
+                                    Routes.notificationPage,
+                                  );
+                                }
+                                break;
+                              case 2:
+                                {
+                                  context.goNamed(
+                                    Routes.changeLanguagePage,
+                                  );
+                                }
+                                break;
+                              case 3:
+                                {
+                                  context.goNamed(
+                                    Routes.changeThemePage,
+                                  );
+                                }
+                                break;
+                              case 4:
+                                {
+                                  context.goNamed(
+                                    Routes.privacyScreen,
+                                  );
+                                }
+                                break;
+                              case 5:
+                                {
+                                  context.goNamed(
+                                    Routes.termsConditionsScreen,
+                                  );
+                                }
+                                break;
+                              case 6:
+                                {
+                                  context.goNamed(
+                                    Routes.lookAtMarket,
+                                  );
+                                }
+                                break;
+                              case 7:
+                                {
+                                  context.goNamed(
+                                    Routes.connectWithUsPage,
+                                  );
+                                }
+                                break;
+                              case 8:
+                                {
+                                  context.goNamed(
+                                    Routes.frequentlyAskedQuestions,
+                                  );
+                                }
+                                break;
 
+                              default:
+                                Container();
                             }
-                            break;
-
-                          default:
-                            Container();
-                        }
+                          },
+                          child: CardListItems(
+                            index: index,
+                            title: contact['title']!,
+                            des: contact['des']!,
+                            img: titles[index].toSvg,
+                            indexActive: false,
+                          ),
+                        );
                       },
-                      child: CardListItems(
-                        index: index,
-                        title: contact['title']!,
-                        des: contact['des']!,
-                        img: titles[index].toSvg,
-                        indexActive: false,
-                      ),
-                    );
-                  },
-                  separatorBuilder: (context, index) {
-                    return const Gap(24);
-                  },
+                      separatorBuilder: (context, index) {
+                        return const Gap(24);
+                      },
+                    ),
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

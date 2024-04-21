@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import 'package:go_router/go_router.dart';
-
 import 'package:opensooq/future/setting/presentation/edit_profile/presentation/widgets/header_screen.dart';
 
 import '../../../config/routes/app_routes.dart';
@@ -28,32 +26,32 @@ class FrequentlyAskedQuestionsPage extends StatelessWidget {
                       context.go(Routes.setting);
                     }),
                 const SizedBox(height: 40),
-                ListView.builder(itemBuilder: (context, index) =>                 Theme(
-                  data: Theme.of(context)
-                      .copyWith(dividerColor: Colors.transparent),
-                  child: Container(
-                    margin: EdgeInsets.symmetric(vertical: 10),
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade100,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: ExpansionTile(
-                      title: titleText('ضع السؤال هنا'),
-                      leading:
-                      SvgPicture.asset('assets/images/svg/qestion.svg'),
-                      backgroundColor: Colors.transparent,
-                      collapsedBackgroundColor: Colors.transparent,
-                      children: const [
-                        Padding(
-                          padding: EdgeInsets.all(12),
-                          child: Text(
-                              'ضع إجابة السؤال هنا ضع إجابة السؤال هنا ضع إجابة السؤال هنا ضع إجابة السؤال ضع إجابة السؤال هنا'),
-                        )
-                      ],
+                ListView.builder(
+                  itemBuilder: (context, index) => Theme(
+                    data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(vertical: 10),
+                      decoration: BoxDecoration(
+                        color: Colors.grey.shade100,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: ExpansionTile(
+                        title: titleText('ضع السؤال هنا'),
+                        leading: SvgPicture.asset('assets/images/svg/qestion.svg'),
+                        backgroundColor: Colors.transparent,
+                        collapsedBackgroundColor: Colors.transparent,
+                        children: const [
+                          Padding(
+                            padding: EdgeInsets.all(12),
+                            child: Text('ضع إجابة السؤال هنا ضع إجابة السؤال هنا ضع إجابة السؤال هنا ضع إجابة السؤال ضع إجابة السؤال هنا'),
+                          )
+                        ],
+                      ),
                     ),
                   ),
+                  itemCount: 5,
+                  shrinkWrap: true,
                 )
-                  ,itemCount: 5,shrinkWrap: true,)
               ],
             ),
           ),

@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$TermsOfUseState {
   TermsOfUseStatus get termsOfUseStatus => throw _privateConstructorUsedError;
+  GeneralSettingModel? get termsOfUse => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TermsOfUseStateCopyWith<TermsOfUseState> get copyWith =>
@@ -29,7 +30,8 @@ abstract class $TermsOfUseStateCopyWith<$Res> {
           TermsOfUseState value, $Res Function(TermsOfUseState) then) =
       _$TermsOfUseStateCopyWithImpl<$Res, TermsOfUseState>;
   @useResult
-  $Res call({TermsOfUseStatus termsOfUseStatus});
+  $Res call(
+      {TermsOfUseStatus termsOfUseStatus, GeneralSettingModel? termsOfUse});
 }
 
 /// @nodoc
@@ -46,12 +48,17 @@ class _$TermsOfUseStateCopyWithImpl<$Res, $Val extends TermsOfUseState>
   @override
   $Res call({
     Object? termsOfUseStatus = null,
+    Object? termsOfUse = freezed,
   }) {
     return _then(_value.copyWith(
       termsOfUseStatus: null == termsOfUseStatus
           ? _value.termsOfUseStatus
           : termsOfUseStatus // ignore: cast_nullable_to_non_nullable
               as TermsOfUseStatus,
+      termsOfUse: freezed == termsOfUse
+          ? _value.termsOfUse
+          : termsOfUse // ignore: cast_nullable_to_non_nullable
+              as GeneralSettingModel?,
     ) as $Val);
   }
 }
@@ -64,7 +71,8 @@ abstract class _$$TermsOfUseStateImplCopyWith<$Res>
       __$$TermsOfUseStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({TermsOfUseStatus termsOfUseStatus});
+  $Res call(
+      {TermsOfUseStatus termsOfUseStatus, GeneralSettingModel? termsOfUse});
 }
 
 /// @nodoc
@@ -79,12 +87,17 @@ class __$$TermsOfUseStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? termsOfUseStatus = null,
+    Object? termsOfUse = freezed,
   }) {
     return _then(_$TermsOfUseStateImpl(
       termsOfUseStatus: null == termsOfUseStatus
           ? _value.termsOfUseStatus
           : termsOfUseStatus // ignore: cast_nullable_to_non_nullable
               as TermsOfUseStatus,
+      termsOfUse: freezed == termsOfUse
+          ? _value.termsOfUse
+          : termsOfUse // ignore: cast_nullable_to_non_nullable
+              as GeneralSettingModel?,
     ));
   }
 }
@@ -93,15 +106,19 @@ class __$$TermsOfUseStateImplCopyWithImpl<$Res>
 
 class _$TermsOfUseStateImpl implements _TermsOfUseState {
   const _$TermsOfUseStateImpl(
-      {this.termsOfUseStatus = TermsOfUseStatus.initial});
+      {this.termsOfUseStatus = TermsOfUseStatus.initial,
+      this.termsOfUse = null});
 
   @override
   @JsonKey()
   final TermsOfUseStatus termsOfUseStatus;
+  @override
+  @JsonKey()
+  final GeneralSettingModel? termsOfUse;
 
   @override
   String toString() {
-    return 'TermsOfUseState(termsOfUseStatus: $termsOfUseStatus)';
+    return 'TermsOfUseState(termsOfUseStatus: $termsOfUseStatus, termsOfUse: $termsOfUse)';
   }
 
   @override
@@ -110,11 +127,13 @@ class _$TermsOfUseStateImpl implements _TermsOfUseState {
         (other.runtimeType == runtimeType &&
             other is _$TermsOfUseStateImpl &&
             (identical(other.termsOfUseStatus, termsOfUseStatus) ||
-                other.termsOfUseStatus == termsOfUseStatus));
+                other.termsOfUseStatus == termsOfUseStatus) &&
+            (identical(other.termsOfUse, termsOfUse) ||
+                other.termsOfUse == termsOfUse));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, termsOfUseStatus);
+  int get hashCode => Object.hash(runtimeType, termsOfUseStatus, termsOfUse);
 
   @JsonKey(ignore: true)
   @override
@@ -125,11 +144,14 @@ class _$TermsOfUseStateImpl implements _TermsOfUseState {
 }
 
 abstract class _TermsOfUseState implements TermsOfUseState {
-  const factory _TermsOfUseState({final TermsOfUseStatus termsOfUseStatus}) =
-      _$TermsOfUseStateImpl;
+  const factory _TermsOfUseState(
+      {final TermsOfUseStatus termsOfUseStatus,
+      final GeneralSettingModel? termsOfUse}) = _$TermsOfUseStateImpl;
 
   @override
   TermsOfUseStatus get termsOfUseStatus;
+  @override
+  GeneralSettingModel? get termsOfUse;
   @override
   @JsonKey(ignore: true)
   _$$TermsOfUseStateImplCopyWith<_$TermsOfUseStateImpl> get copyWith =>
