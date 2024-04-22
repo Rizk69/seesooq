@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AboutUsState {
   AboutUsStatus get aboutUsStatus => throw _privateConstructorUsedError;
+  GeneralSettingModel? get aboutUs => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AboutUsStateCopyWith<AboutUsState> get copyWith =>
@@ -29,7 +30,7 @@ abstract class $AboutUsStateCopyWith<$Res> {
           AboutUsState value, $Res Function(AboutUsState) then) =
       _$AboutUsStateCopyWithImpl<$Res, AboutUsState>;
   @useResult
-  $Res call({AboutUsStatus aboutUsStatus});
+  $Res call({AboutUsStatus aboutUsStatus, GeneralSettingModel? aboutUs});
 }
 
 /// @nodoc
@@ -46,12 +47,17 @@ class _$AboutUsStateCopyWithImpl<$Res, $Val extends AboutUsState>
   @override
   $Res call({
     Object? aboutUsStatus = null,
+    Object? aboutUs = freezed,
   }) {
     return _then(_value.copyWith(
       aboutUsStatus: null == aboutUsStatus
           ? _value.aboutUsStatus
           : aboutUsStatus // ignore: cast_nullable_to_non_nullable
               as AboutUsStatus,
+      aboutUs: freezed == aboutUs
+          ? _value.aboutUs
+          : aboutUs // ignore: cast_nullable_to_non_nullable
+              as GeneralSettingModel?,
     ) as $Val);
   }
 }
@@ -64,7 +70,7 @@ abstract class _$$AboutUsStateImplCopyWith<$Res>
       __$$AboutUsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({AboutUsStatus aboutUsStatus});
+  $Res call({AboutUsStatus aboutUsStatus, GeneralSettingModel? aboutUs});
 }
 
 /// @nodoc
@@ -79,12 +85,17 @@ class __$$AboutUsStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? aboutUsStatus = null,
+    Object? aboutUs = freezed,
   }) {
     return _then(_$AboutUsStateImpl(
       aboutUsStatus: null == aboutUsStatus
           ? _value.aboutUsStatus
           : aboutUsStatus // ignore: cast_nullable_to_non_nullable
               as AboutUsStatus,
+      aboutUs: freezed == aboutUs
+          ? _value.aboutUs
+          : aboutUs // ignore: cast_nullable_to_non_nullable
+              as GeneralSettingModel?,
     ));
   }
 }
@@ -92,15 +103,19 @@ class __$$AboutUsStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AboutUsStateImpl implements _AboutUsState {
-  const _$AboutUsStateImpl({this.aboutUsStatus = AboutUsStatus.initial});
+  const _$AboutUsStateImpl(
+      {this.aboutUsStatus = AboutUsStatus.initial, this.aboutUs = null});
 
   @override
   @JsonKey()
   final AboutUsStatus aboutUsStatus;
+  @override
+  @JsonKey()
+  final GeneralSettingModel? aboutUs;
 
   @override
   String toString() {
-    return 'AboutUsState(aboutUsStatus: $aboutUsStatus)';
+    return 'AboutUsState(aboutUsStatus: $aboutUsStatus, aboutUs: $aboutUs)';
   }
 
   @override
@@ -109,11 +124,12 @@ class _$AboutUsStateImpl implements _AboutUsState {
         (other.runtimeType == runtimeType &&
             other is _$AboutUsStateImpl &&
             (identical(other.aboutUsStatus, aboutUsStatus) ||
-                other.aboutUsStatus == aboutUsStatus));
+                other.aboutUsStatus == aboutUsStatus) &&
+            (identical(other.aboutUs, aboutUs) || other.aboutUs == aboutUs));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, aboutUsStatus);
+  int get hashCode => Object.hash(runtimeType, aboutUsStatus, aboutUs);
 
   @JsonKey(ignore: true)
   @override
@@ -123,11 +139,14 @@ class _$AboutUsStateImpl implements _AboutUsState {
 }
 
 abstract class _AboutUsState implements AboutUsState {
-  const factory _AboutUsState({final AboutUsStatus aboutUsStatus}) =
-      _$AboutUsStateImpl;
+  const factory _AboutUsState(
+      {final AboutUsStatus aboutUsStatus,
+      final GeneralSettingModel? aboutUs}) = _$AboutUsStateImpl;
 
   @override
   AboutUsStatus get aboutUsStatus;
+  @override
+  GeneralSettingModel? get aboutUs;
   @override
   @JsonKey(ignore: true)
   _$$AboutUsStateImplCopyWith<_$AboutUsStateImpl> get copyWith =>

@@ -8,13 +8,26 @@ class ReasonDeletionsCubit extends Cubit<ReasonDeletionsState> {
   static ReasonDeletionsCubit get(context) => BlocProvider.of(context);
 
   final SettingRepository settingRepository = di.sl();
+  void selectReason(int reason) {
 
-  Future<void> _getReasonsForDeletion() async {
-    // emit(ReasonsForDeletionLoading());
+    emit(state.copyWith(selectedReason: reason));
+  }
+  Future<void> getReasonsForDeletion() async {
+    emit(state.copyWith(reasonDeletionsStatus: ReasonDeletionsStatus.loading));
     final result = await settingRepository.getReasonsForDeletion();
     result.fold((error) {
-      print('error ${error.message}');
-      // emit(ReasonsForDeletionError(error));
-    }, (privacyPolicy) {});
+      print('Error loading reasons: ${error.message}');
+      emit(state.copyWith(reasonDeletionsStatus: ReasonDeletionsStatus.error));
+    }, (reasonDeletionsModel) {
+      if (reasonDeletionsModel.data?.data?.isEmpty ?? true) {
+        print('No reasons available');
+        emit(state.copyWith(reasonDeletionsStatus: ReasonDeletionsStatus.error));
+      } else {
+        print('Loaded reasons: ${reasonDeletionsModel.data?.data?.length}');
+        emit(state.copyWith(
+            reasonDeletionsStatus: ReasonDeletionsStatus.loaded,
+            reasonDeletionsModel: reasonDeletionsModel));
+      }
+    });
   }
 }

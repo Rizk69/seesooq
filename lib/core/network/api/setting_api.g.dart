@@ -60,7 +60,7 @@ class _SettingApi implements SettingApi {
     )
             .compose(
               _dio.options,
-              'privacy-policy',
+              'pages/privacy-policy',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -114,7 +114,7 @@ class _SettingApi implements SettingApi {
     )
             .compose(
               _dio.options,
-              'reasons-for-deletion',
+              'pages/reasons-for-deletion',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -141,7 +141,7 @@ class _SettingApi implements SettingApi {
     )
             .compose(
               _dio.options,
-              'frequently-ask-question',
+              'pages/frequently-asked-questions',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -195,7 +195,7 @@ class _SettingApi implements SettingApi {
     )
             .compose(
               _dio.options,
-              'about-us',
+              'pages/about-us',
               queryParameters: queryParameters,
               data: _data,
             )

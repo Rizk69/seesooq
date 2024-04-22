@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:opensooq/future/setting/presentation/cubit/frequently-asked-questions_cubit/frequently-asked-questions_cubit.dart';
+import 'package:opensooq/future/setting/presentation/cubit/frequently-asked-questions_cubit/frequently-asked-questions_state.dart';
 import 'package:opensooq/future/setting/presentation/edit_profile/presentation/widgets/header_screen.dart';
 
 import '../../../config/routes/app_routes.dart';
@@ -26,31 +29,66 @@ class FrequentlyAskedQuestionsPage extends StatelessWidget {
                       context.go(Routes.setting);
                     }),
                 const SizedBox(height: 40),
-                ListView.builder(
-                  itemBuilder: (context, index) => Theme(
-                    data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
-                    child: Container(
-                      margin: const EdgeInsets.symmetric(vertical: 10),
-                      decoration: BoxDecoration(
-                        color: Colors.grey.shade100,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: ExpansionTile(
-                        title: titleText('ضع السؤال هنا'),
-                        leading: SvgPicture.asset('assets/images/svg/qestion.svg'),
-                        backgroundColor: Colors.transparent,
-                        collapsedBackgroundColor: Colors.transparent,
-                        children: const [
-                          Padding(
-                            padding: EdgeInsets.all(12),
-                            child: Text('ضع إجابة السؤال هنا ضع إجابة السؤال هنا ضع إجابة السؤال هنا ضع إجابة السؤال ضع إجابة السؤال هنا'),
-                          )
-                        ],
-                      ),
-                    ),
+                BlocProvider(
+                  create: (context) =>
+                      FrequentlyAskedCubit()..getFrequentlyAsked(),
+                  child:
+                      BlocBuilder<FrequentlyAskedCubit, FrequentlyAskedState>(
+                    builder: (context, state) {
+                      if (state.frequentlyAskedStatus ==
+                          FrequentlyAskedStatus.loading) {
+                        return const Center(child: CircularProgressIndicator());
+                      }
+
+                      if (state.frequentlyAskedStatus ==
+                          FrequentlyAskedStatus.error) {
+                        return const Center(child: Text('Error'));
+                      }
+                      if (state.frequentlyAskedStatus ==
+                              FrequentlyAskedStatus.loaded &&
+                          state.frequentlyAskedModel != null) {
+                        return ListView.builder(
+                          itemBuilder: (context, index) {
+                            var frequentlyAskedModel =
+                                state.frequentlyAskedModel?.data!.data?[index];
+
+                            return Theme(
+                              data: Theme.of(context)
+                                  .copyWith(dividerColor: Colors.transparent),
+                              child: Container(
+                                margin:
+                                    const EdgeInsets.symmetric(vertical: 10),
+                                decoration: BoxDecoration(
+                                  color: Colors.grey.shade100,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: ExpansionTile(
+                                  title: titleText(
+                                      frequentlyAskedModel?.title ?? ''),
+                                  leading: SvgPicture.asset(
+                                      'assets/images/svg/qestion.svg'),
+                                  backgroundColor: Colors.transparent,
+                                  collapsedBackgroundColor: Colors.transparent,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.all(12),
+                                      child: Text(
+                                          frequentlyAskedModel?.description ??
+                                              ''),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                          itemCount:
+                              state.frequentlyAskedModel?.data!.data?.length,
+                          shrinkWrap: true,
+                        );
+                      }
+                      return const SizedBox();
+                    },
                   ),
-                  itemCount: 5,
-                  shrinkWrap: true,
                 )
               ],
             ),
