@@ -33,6 +33,7 @@ class LoginRepoImpl implements LoginRepository {
                   id: response.user?.id,
                   name: response.user?.name,
                   phone: response.user?.phone,
+                  email: response.user?.email,
                 )));
         return (response);
       } else {

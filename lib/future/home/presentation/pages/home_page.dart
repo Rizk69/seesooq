@@ -38,17 +38,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         user: UserDataModel(
             id: LoginCubit.get(context).state.loginModel?.user?.id,
             name: LoginCubit.get(context).state.loginModel?.user?.name,
-            phone:
-                LoginCubit.get(context).state.loginModel?.user?.phone ?? '')));
-    customAnimationController = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 100));
+            email: LoginCubit.get(context).state.loginModel?.user?.email,
+            phone: LoginCubit.get(context).state.loginModel?.user?.phone ?? '')));
+    customAnimationController = AnimationController(vsync: this, duration: const Duration(milliseconds: 100));
     scrollController = ScrollController()
       ..addListener(() {
-        if (scrollController.position.userScrollDirection ==
-            ScrollDirection.forward) {
+        if (scrollController.position.userScrollDirection == ScrollDirection.forward) {
           HomeCubit.get(context).streamController(DirectionUser.forward);
-        } else if (scrollController.position.userScrollDirection ==
-            ScrollDirection.reverse) {
+        } else if (scrollController.position.userScrollDirection == ScrollDirection.reverse) {
           HomeCubit.get(context).streamController(DirectionUser.reverse);
         }
       });
@@ -62,8 +59,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     return BlocBuilder<HomeCubit, HomeState>(builder: (context, state) {
       var cubit = HomeCubit.get(context);
       return BlocListener<FavoriteCubit, FavoriteState>(
-        listenWhen: (previous, current) =>
-            current.addFavoriteStatus == AddFavoriteStatus.loaded,
+        listenWhen: (previous, current) => current.addFavoriteStatus == AddFavoriteStatus.loaded,
         listener: (context, favState) {
           cubit.toggleLikeInOffer(favState.indexFavoriteView);
         },

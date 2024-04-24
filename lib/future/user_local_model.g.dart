@@ -57,19 +57,22 @@ class UserDataModelAdapter extends TypeAdapter<UserDataModel> {
       id: fields[0] as int?,
       name: fields[1] as String?,
       phone: fields[2] as String?,
+      email: fields[3] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, UserDataModel obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
       ..write(obj.name)
       ..writeByte(2)
-      ..write(obj.phone);
+      ..write(obj.phone)
+      ..writeByte(3)
+      ..write(obj.email);
   }
 
   @override
@@ -106,6 +109,7 @@ UserDataModel _$UserDataModelFromJson(Map<String, dynamic> json) =>
       id: json['id'] as int?,
       name: json['name'] as String?,
       phone: json['phone'] as String?,
+      email: json['email'] as String?,
     );
 
 Map<String, dynamic> _$UserDataModelToJson(UserDataModel instance) =>
@@ -113,4 +117,5 @@ Map<String, dynamic> _$UserDataModelToJson(UserDataModel instance) =>
       'id': instance.id,
       'name': instance.name,
       'phone': instance.phone,
+      'email': instance.email,
     };

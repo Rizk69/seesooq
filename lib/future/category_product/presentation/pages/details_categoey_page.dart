@@ -34,7 +34,10 @@ class DetailsCategoryProductPage extends StatelessWidget {
                       onTap: () {
                         Future.microtask(
                             () => context.read<CategoryProductCubit>().selectCategory(subCategory: state.detailsCategory[index].id.toString()));
-                        context.pushNamed(Routes.uploadPhoto, extra: {'categoryName': categoryName, 'details': "Cars For Sales"});
+                        context.pushNamed(Routes.uploadPhoto, extra: {
+                          'categoryName': categoryName,
+                          'details': "Cars For Sales",
+                        });
                         // context.pushNamed(Routes.uploadAdsPage, extra: {"categoryName": categoryName, "details": 'details', "model": "10"});
                       },
                       numberOfAds: state.detailsCategory[index].id.toString(),

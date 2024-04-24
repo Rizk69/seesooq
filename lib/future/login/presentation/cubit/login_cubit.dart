@@ -102,6 +102,7 @@ class LoginCubit extends Cubit<LoginState> with ChangeNotifier {
               id: r.user?.id,
               name: r.user?.name,
               phone: r.user?.phone,
+              email: r.user?.email,
             ),
           ),
         ));

@@ -120,9 +120,9 @@ import 'package:opensooq/future/packages/domain/repositories/packages_repo.dart'
 import 'package:opensooq/future/packages/domain/use_cases/get_package_usecase.dart'
     as _i77;
 import 'package:opensooq/future/payment_gateway/data/data_sources/payment_gateway_local_data_source.dart'
-    as _i46;
-import 'package:opensooq/future/payment_gateway/data/data_sources/payment_gateway_remote_data_source.dart'
     as _i47;
+import 'package:opensooq/future/payment_gateway/data/data_sources/payment_gateway_remote_data_source.dart'
+    as _i46;
 import 'package:opensooq/future/payment_gateway/data/repositories/payment_repository.dart'
     as _i48;
 import 'package:opensooq/future/reels/data/data_source/reels_remote_data_source.dart'
@@ -261,11 +261,11 @@ extension GetItInjectableX on _i1.GetIt {
         packagesRemoteDataSource: gh<_i42.PackagesRemoteDataSource>()));
     gh.factory<_i45.PaymentApi>(() => _i45.PaymentApi(gh<_i5.Dio>()));
     gh.lazySingleton<_i46.PaymentRemoteDataSource>(
-        () => _i46.PaymentRemoteDataSourceImpl(gh<_i10.CacheHelper>()));
+        () => _i46.PaymentRemoteDataSourceImpl(gh<_i45.PaymentApi>()));
     gh.lazySingleton<_i47.PaymentRemoteDataSource>(
-        () => _i47.PaymentRemoteDataSourceImpl(gh<_i45.PaymentApi>()));
+        () => _i47.PaymentRemoteDataSourceImpl(gh<_i10.CacheHelper>()));
     gh.lazySingleton<_i48.PaymentRepository>(
-        () => _i48.PaymentRepositoryImpl(gh<_i47.PaymentRemoteDataSource>()));
+        () => _i48.PaymentRepositoryImpl(gh<_i46.PaymentRemoteDataSource>()));
     gh.factory<_i49.ReelsApi>(() => _i49.ReelsApi(gh<_i5.Dio>()));
     gh.lazySingleton<_i50.ReelsRemoteDataSource>(
         () => _i50.ReelsRemoteDataSourceImpl(gh<_i49.ReelsApi>()));

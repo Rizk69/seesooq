@@ -44,7 +44,7 @@ class _PersonalInfoAdsState extends State<PersonalInfoAds> {
               hintText: 'enter_email',
               controller: cubit.emailController,
               enabled: false,
-              imgIconSvg: "email.svg".toSvg,
+              imgIconSvg: "email".toSvg,
               lines: 1,
             ),
             const SizedBox(height: 24),

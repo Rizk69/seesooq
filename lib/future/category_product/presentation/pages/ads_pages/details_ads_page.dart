@@ -107,7 +107,7 @@ class _DetailsAdsPageState extends State<DetailsAdsPage> {
                   cubit.updateBrandForm(brandId: value.toString());
                 },
                 isExpanded: true,
-                value: '1',
+                value: state.attributesForm.brandId.isEmpty ? '1' : state.attributesForm.brandId,
               ),
             ...state.attributesAdsModel?.attributes
                     ?.map((e) => DynamicFormWidget(

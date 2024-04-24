@@ -8,6 +8,7 @@ import 'package:multi_image_picker_view/multi_image_picker_view.dart';
 import 'package:opensooq/core/utils/cache_helper.dart';
 import 'package:opensooq/core/utils/loadin_app.dart';
 import 'package:opensooq/di.dart' as di;
+import 'package:opensooq/future/category/data/models/advertisment_model.dart';
 import 'package:opensooq/future/category_product/data/repositories/category_repo.dart';
 import 'package:opensooq/future/category_product/presentation/cubit/add_ads_state.dart';
 import 'package:opensooq/future/user_local_model.dart';
@@ -16,7 +17,7 @@ import 'package:opensooq/main.dart';
 import '../../data/models/attributes_form.dart';
 
 class AddAdsCubit extends Cubit<AddAdsState> {
-  AddAdsCubit({required this.categoryRepo}) : super(AddAdsState()) {
+  AddAdsCubit({required this.categoryRepo}) : super(const AddAdsState()) {
     getLocalUser();
   }
 
@@ -58,6 +59,7 @@ class AddAdsCubit extends Cubit<AddAdsState> {
     },
     maxImages: 20,
   );
+
   Future<void> uploadPhoto() async {
     final pickedImages = await controller.pickImages();
     if (pickedImages) {
@@ -78,6 +80,40 @@ class AddAdsCubit extends Cubit<AddAdsState> {
     (controller.images as List).removeAt(index);
 
     emit(state.copyWith(images: list, attributesForm: temp));
+  }
+
+  File convertUrlToFile(String url) {
+    Directory tempDir = Directory.systemTemp;
+    String tempPath = tempDir.path;
+    File file = File('$tempPath/image.jpg');
+    file.writeAsBytesSync(url.codeUnits);
+    return file;
+  }
+
+  void putSelectedAttributesForm(Data data) {
+    titleAds.text = data.title ?? '';
+    descAds.text = data.desc ?? '';
+    price.text = data.price.toString();
+
+    Map<int, dynamic> attributes = {};
+
+    for (var element in data.attributes!) {
+      attributes.addAll({1: '2'});
+    }
+
+    emit(
+      state.copyWith(
+        attributesForm: state.attributesForm.copyWith(
+          images: [convertUrlToFile(data.album ?? '')],
+          title: data.title ?? '',
+          price: data.price.toString(),
+          attributes: attributes,
+        ),
+        images: [ImageFile(UniqueKey().toString(), path: convertUrlToFile(data.album.toString()).path ?? '', name: 'image.jpg', extension: 'jpg')],
+      ),
+    );
+
+    print('dskadhjksahdjkas${state.attributesForm.cityId}');
   }
 
   void updateAttributesForm({required Map<int, dynamic> attributes}) {
@@ -142,9 +178,8 @@ class AddAdsCubit extends Cubit<AddAdsState> {
 
   Future<void> getLocalUser() async {
     final user = await di.sl<CacheHelper>().hiveGetDataById<UserLocalModel>(0);
-
     nameController.text = user?.user?.name ?? '';
-    emailController.text = user?.user?.phone ?? '';
+    emailController.text = user?.user?.email ?? '';
     phoneController.text = user?.user?.phone ?? '';
   }
 

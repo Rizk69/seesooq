@@ -39,6 +39,10 @@ class CategoryRemoteDataSourceImpl implements CategoryRemoteDataSource {
       "city_id": attributesForm.cityId,
       "is_offer": '0',
       "payment_methods[0]": 'installment',
+      "offer_start_date": '',
+      "offer_end_date": '',
+      "offer_start_time": '',
+      "offer_end_time": '',
       "contact_methods": '1',
     });
 
@@ -69,6 +73,4 @@ class CategoryRemoteDataSourceImpl implements CategoryRemoteDataSource {
   Future<BrandAdsModel> getBrands({required String subCategory}) {
     return categoryApi.getBrands(subCategoryId: subCategory);
   }
-
-
 }

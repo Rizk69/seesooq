@@ -34,20 +34,26 @@ class UserDataModel {
   @HiveField(2)
   String? phone;
 
+  @HiveField(3)
+  String? email;
+
   UserDataModel({
     this.id,
     this.name,
     this.phone,
+    this.email,
   });
   // create copywith
   UserDataModel copyWith({
     int? id,
     String? name,
     String? phone,
+    String? email,
   }) {
     return UserDataModel(
       id: id ?? this.id,
       name: name ?? this.name,
+      email: email ?? this.email,
       phone: phone ?? this.phone,
     );
   }

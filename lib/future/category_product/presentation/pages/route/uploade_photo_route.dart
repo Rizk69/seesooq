@@ -11,7 +11,7 @@ class UploadPhotoRoute extends StatefulShellBranch {
               name: Routes.uploadPhoto,
               pageBuilder: (context, state) {
                 final Map<String, dynamic> extra = state.extra as Map<String, dynamic>;
-                return NoTransitionPage(child: UploadPhotoPage(categoryName: extra['categoryName'], details: extra['details']));
+                return NoTransitionPage(child: UploadPhotoPage(categoryName: extra['categoryName'], details: extra['details'], data: extra['data']));
               },
             ),
           ],

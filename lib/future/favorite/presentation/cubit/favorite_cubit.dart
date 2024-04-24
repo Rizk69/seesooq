@@ -62,7 +62,6 @@ class FavoriteCubit extends Cubit<FavoriteState> {
   }
 
   Future<void> addFav({required String idFav, required FavData favData, required int index}) async {
-    print('lksjhahdsajkhdjksa${index}');
     loadingWidget();
     emit(state.copyWith(addFavoriteStatus: AddFavoriteStatus.loading));
     final result = await addFavUseCase(idFav);

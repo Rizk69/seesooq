@@ -9,20 +9,36 @@ import 'package:opensooq/config/routes/app_routes.dart';
 import 'package:opensooq/core/utils/app_colors.dart';
 import 'package:opensooq/core/utils/custom_button_widget.dart';
 import 'package:opensooq/core/utils/media_query_values.dart';
+import 'package:opensooq/future/category/data/models/advertisment_model.dart';
 import 'package:opensooq/future/category_product/presentation/cubit/add_ads_cubit.dart';
 import 'package:opensooq/future/category_product/presentation/cubit/add_ads_state.dart';
 import 'package:opensooq/future/category_product/presentation/widgets/custom_image_selected_widget.dart';
 
-class UploadPhotoPage extends StatelessWidget {
+class UploadPhotoPage extends StatefulWidget {
   final String categoryName;
   final String details;
+  final Data? data;
 
-  const UploadPhotoPage({super.key, required this.categoryName, required this.details});
+  const UploadPhotoPage({super.key, required this.categoryName, required this.details, this.data});
+
+  @override
+  State<UploadPhotoPage> createState() => _UploadPhotoPageState();
+}
+
+class _UploadPhotoPageState extends State<UploadPhotoPage> {
+  @override
+  initState() {
+    super.initState();
+    if (widget.data != null) {
+      AddAdsCubit.get(context).putSelectedAttributesForm(widget.data!);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AddAdsCubit, AddAdsState>(builder: (context, state) {
       var cubit = AddAdsCubit.get(context);
+
       return state.images.isEmpty
           ? MasonryGridView.count(
               itemBuilder: (context, index) => CustomImageSelectedWidget(
@@ -124,7 +140,7 @@ class UploadPhotoPage extends StatelessWidget {
                     text: 'Next',
                     onPressed: () {
                       context.pushNamed(Routes.uploadAdsPage,
-                          extra: {"categoryName": categoryName, "details": details, "model": "10", "cubit": AddAdsCubit.get(context)});
+                          extra: {"categoryName": widget.categoryName, "details": widget.details, "model": "10", "cubit": AddAdsCubit.get(context)});
                     })
               ],
             );

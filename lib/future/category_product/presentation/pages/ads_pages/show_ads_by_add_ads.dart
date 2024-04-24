@@ -9,6 +9,7 @@ import 'package:opensooq/core/utils/hex_color.dart';
 import 'package:opensooq/core/utils/media_query_values.dart';
 import 'package:opensooq/core/utils/svg_custom_image.dart';
 import 'package:opensooq/core/widget/text_translate_manager.dart';
+import 'package:opensooq/future/category_product/data/models/attributes_ads_model.dart';
 import 'package:opensooq/future/category_product/presentation/cubit/add_ads_cubit.dart';
 import 'package:opensooq/future/category_product/presentation/cubit/add_ads_state.dart';
 
@@ -124,7 +125,7 @@ class _ShowAdsByAddingScreenState extends State<ShowAdsByAddingScreen> {
                     child: TranslateText(
                       styleText: StyleText.h5,
                       fontWeight: FontWeight.w500,
-                      text: "${e.value}" ?? '',
+                      text: getTitleAttributes(attributesForm: state.attributesAdsModel?.attributes, data: e.value.toString() ?? ''),
                       colorText: HexColor("#200E32"),
                     ),
                   );
@@ -152,5 +153,20 @@ class _ShowAdsByAddingScreenState extends State<ShowAdsByAddingScreen> {
         ),
       );
     });
+  }
+
+  String getTitleAttributes({
+    required List<Attributes>? attributesForm,
+    required String data,
+  }) {
+    String title = '';
+    for (Attributes item in attributesForm ?? []) {
+      item.children?.forEach((element) {
+        if (element.id.toString() == data) {
+          title = element.title ?? '';
+        }
+      });
+    }
+    return title;
   }
 }

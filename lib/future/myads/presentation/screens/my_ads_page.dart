@@ -225,12 +225,20 @@ class MyAdsPage extends StatelessWidget {
                                                     children: [
                                                       IconButton(
                                                         padding: const EdgeInsets.all(0),
-                                                        style: ButtonStyle(
+                                                        style: const ButtonStyle(
                                                           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                                                         ),
-                                                        onPressed: () {},
+                                                        onPressed: () {
+                                                          // CategoryProductCubit.get(context)
+                                                          //     .selectCategory(subCategory: item.category?.id.toString() ?? '');
+                                                          // context.pushNamed(Routes.uploadPhoto, extra: {
+                                                          //   'categoryName': data.advertisementModel?.data?[index].category?.id.toString(),
+                                                          //   'details': "Cars For Sales",
+                                                          //   'data': data.advertisementModel?.data?[index],
+                                                          // });
+                                                        },
                                                         icon: SvgPicture.asset(
-                                                          'assets/images/svg/edit_profile.svg',
+                                                          'edit_profile'.toSvg,
                                                           height: 20,
                                                           color: Colors.red,
                                                         ),
