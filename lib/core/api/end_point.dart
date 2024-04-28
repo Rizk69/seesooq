@@ -52,6 +52,9 @@ class EndPoint {
   static const String deleteMyAds = '/place/textsearch/json';
   static const String getAllBlogs = 'blogs';
   static const String getDetailsBlog = 'blog/show/{id}';
-  static const String getReels = 'get-reels';
-  static const String getMyReels = 'get-my-reels';
+  static const String getReels = 'user/reels';
+  static const String viewReel = 'view/reel/{id}';
+  static const String getMyReels = 'my-reels';
+  static const String createReel = 'create/reel';
+  static const String deleteReel = 'delete/reel/{id}';
 }

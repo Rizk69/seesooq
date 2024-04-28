@@ -8,7 +8,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:multi_image_picker_view/multi_image_picker_view.dart';
 import 'package:opensooq/app.dart';
 import 'package:opensooq/core/utils/bloc_observe.dart';
-import 'package:opensooq/core/utils/notification_service.dart';
+import 'package:opensooq/firebase_options.dart';
 import 'package:opensooq/future/user_local_model.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -36,7 +36,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await di.configureDependencies();
   await EasyLocalization.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   final dir = await getApplicationDocumentsDirectory();
   Hive.init(dir.path);
@@ -50,9 +50,8 @@ void main() async {
     provisional: false,
     sound: true,
   );
-  
 
-  
+  print('${await FirebaseMessaging.instance.getToken()}');
 
   runApp(
     EasyLocalization(
@@ -64,5 +63,3 @@ void main() async {
         child: const MyApp()),
   );
 }
-
-

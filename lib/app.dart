@@ -13,6 +13,7 @@ import 'package:opensooq/future/home/presentation/cubit/home_cubit.dart';
 import 'package:opensooq/future/home/presentation/cubit/story_user_cubit.dart';
 import 'package:opensooq/future/login/presentation/cubit/login_cubit.dart';
 import 'package:opensooq/future/notification/presentation/cubit/notification_cubit.dart';
+import 'package:opensooq/future/reels/presentation/bloc/reels_bloc.dart';
 import 'package:opensooq/future/signup/presentation/cubit/signup_cubit.dart';
 import 'package:opensooq/future/splash/presentation/cubit/lcoale_cubit.dart';
 import 'package:opensooq/future/wallet/presentation/cubit/wallet_cubit.dart';
@@ -38,6 +39,10 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => di.sl<SignUpCubit>()),
         BlocProvider(create: (context) => FavoriteCubit()..getFav()),
         BlocProvider(create: (context) => WalletCubit()..getWallet(userId: HomeCubit.get(context).state.userLocalModel?.user?.id.toString() ?? '')),
+        BlocProvider(
+            create: (context) => ReelsBloc()
+              ..add(const ReelsEvent.getReels())
+              ..add(const ReelsEvent.getMyReels())),
         BlocProvider(create: (context) => StoryUserCubit()),
         BlocProvider(
             create: (context) => FollowBloc()

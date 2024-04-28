@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:go_router/go_router.dart';
 import 'package:opensooq/config/routes/app_routes.dart';
+import 'package:opensooq/core/utils/cache_network_image.dart';
 import 'package:opensooq/core/widget/text_translate_manager.dart';
 import 'package:opensooq/future/reels/data/model/reels_model.dart';
 
 class ReelsListWidget extends StatefulWidget {
   const ReelsListWidget({super.key, required this.reels});
 
-  final List<ReelsModel> reels;
+  final List<UserReels> reels;
 
   @override
   _ReelsListWidgetState createState() => _ReelsListWidgetState();
@@ -26,7 +27,7 @@ class _ReelsListWidgetState extends State<ReelsListWidget> {
         itemBuilder: (context, index) {
           return InkWell(
             onTap: () {
-              context.goNamed(Routes.reelView, extra: widget.reels[index]);
+              context.goNamed(Routes.reelView, extra: widget.reels[index].reels);
             },
             child: Container(
               decoration: BoxDecoration(
@@ -49,10 +50,17 @@ class _ReelsListWidgetState extends State<ReelsListWidget> {
                   children: [
                     Container(
                       width: MediaQuery.of(context).size.width / 2.4,
-                      height: 280,
-                      decoration: const BoxDecoration(
+                      height: MediaQuery.of(context).size.height / 3.5,
+                      decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage('assets/images/person.jpg'),
+                          colorFilter: ColorFilter.mode(
+                            Colors.black.withOpacity(0.5),
+                            BlendMode.darken,
+                          ),
+                          filterQuality: FilterQuality.high,
+                          image: NetworkImage(
+                            widget.reels[index].image ?? ' ',
+                          ),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -67,11 +75,10 @@ class _ReelsListWidgetState extends State<ReelsListWidget> {
                           children: [
                             ClipRRect(
                               borderRadius: BorderRadius.circular(30),
-                              child: Image.asset(
-                                'assets/images/person.jpg',
-                                height: 50,
+                              child: CacheNetworkImageApp(
+                                urlImage: widget.reels[index].image ?? ' ',
                                 width: 50,
-                                fit: BoxFit.contain,
+                                height: 50,
                               ),
                             ),
                             const SizedBox(width: 10),
@@ -79,21 +86,21 @@ class _ReelsListWidgetState extends State<ReelsListWidget> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 TranslateText(
-                                  text: widget.reels[index].userReels?.userName ?? '',
+                                  text: widget.reels[index].name ?? ' ',
                                   styleText: StyleText.h6,
                                   colorText: Colors.white,
                                   textDecoration: TextDecoration.none,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 14,
                                 ),
-                                TranslateText(
-                                  text: widget.reels[index].userReels?.createAt ?? '',
-                                  styleText: StyleText.h6,
-                                  colorText: Colors.white,
-                                  textDecoration: TextDecoration.none,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 14,
-                                ),
+                                // TranslateText(
+                                //   text: 'widget.reels[index].userReels?.name ?? ' '',
+                                //   styleText: StyleText.h6,
+                                //   colorText: Colors.white,
+                                //   textDecoration: TextDecoration.none,
+                                //   fontWeight: FontWeight.bold,
+                                //   fontSize: 14,
+                                // ),
                               ],
                             ),
                           ],

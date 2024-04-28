@@ -9,18 +9,13 @@ List<ReelsModel> deserializeReelsModelList(List<dynamic> data) =>
 
 @JsonSerializable()
 class ReelsModel {
-  final String? id;
-  final UserReels? userReels;
-
-  final String? videoReel;
-
-  final String? description;
+  final int? id;
+  @JsonKey(name: 'data')
+  final List<UserReels>? userReels;
 
   ReelsModel({
     this.id,
     this.userReels,
-    this.videoReel,
-    this.description,
   });
 
   factory ReelsModel.fromJson(Map<String, dynamic> json) => _$ReelsModelFromJson(json);
@@ -29,18 +24,36 @@ class ReelsModel {
 
 @JsonSerializable()
 class UserReels {
-  final String? userId;
-  final String? userName;
-  final String? userImage;
-  final String? createAt;
+  final int? id;
+  final String? image;
+  final String? name;
+
+  final List<Reels>? reels;
 
   UserReels({
-    this.userId,
-    this.userName,
-    this.userImage,
-    this.createAt,
+    this.id,
+    this.image,
+    this.name,
+    this.reels,
   });
 
   factory UserReels.fromJson(Map<String, dynamic> json) => _$UserReelsFromJson(json);
   Map<String, dynamic> toJson() => _$UserReelsToJson(this);
+}
+
+@JsonSerializable()
+class Reels {
+  final int? id;
+  final String? video;
+  @JsonKey(name: 'create_at')
+  final String? createAt;
+
+  Reels({
+    this.id,
+    this.video,
+    this.createAt,
+  });
+
+  factory Reels.fromJson(Map<String, dynamic> json) => _$ReelsFromJson(json);
+  Map<String, dynamic> toJson() => _$ReelsToJson(this);
 }

@@ -19,20 +19,20 @@ class _ReelsApi implements ReelsApi {
   String? baseUrl;
 
   @override
-  Future<List<ReelsModel>> getReels() async {
+  Future<ReelsModel> getReels() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result = await _dio
-        .fetch<List<dynamic>>(_setStreamType<List<ReelsModel>>(Options(
+        .fetch<Map<String, dynamic>>(_setStreamType<ReelsModel>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              'get-reels',
+              'user/reels',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -41,28 +41,25 @@ class _ReelsApi implements ReelsApi {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    var value = await compute(
-      deserializeReelsModelList,
-      _result.data!.cast<Map<String, dynamic>>(),
-    );
+    final value = await compute(deserializeReelsModel, _result.data!);
     return value;
   }
 
   @override
-  Future<List<ReelsModel>> getMyReels() async {
+  Future<MyReelsModel> getMyReels() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result = await _dio
-        .fetch<List<dynamic>>(_setStreamType<List<ReelsModel>>(Options(
+        .fetch<Map<String, dynamic>>(_setStreamType<MyReelsModel>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              'get-my-reels',
+              'my-reels',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -71,11 +68,80 @@ class _ReelsApi implements ReelsApi {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    var value = await compute(
-      deserializeReelsModelList,
-      _result.data!.cast<Map<String, dynamic>>(),
-    );
+    final value = await compute(deserializeMyReelsModel, _result.data!);
     return value;
+  }
+
+  @override
+  Future<void> createReel({required dynamic body}) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = body;
+    await _dio.fetch<void>(_setStreamType<void>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'create/reel',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        ))));
+  }
+
+  @override
+  Future<void> deleteReel({required String id}) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    await _dio.fetch<void>(_setStreamType<void>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'delete/reel/${id}',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        ))));
+  }
+
+  @override
+  Future<void> viewReel({required String id}) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    await _dio.fetch<void>(_setStreamType<void>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'view/reel/${id}',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        ))));
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {

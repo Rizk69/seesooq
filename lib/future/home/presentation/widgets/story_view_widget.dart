@@ -41,7 +41,7 @@ class StoryViewWidget extends StatelessWidget {
               inline: true,
 
               // should the stories be slid forever
-              onStoryShow: (s) {
+              onStoryShow: (s, a) {
                 if (state.statusOpening == StatusOpening.me) {
                   cubit.selectStory(state.storyItems.indexOf(s));
                 } else {

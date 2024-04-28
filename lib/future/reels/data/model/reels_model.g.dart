@@ -7,32 +7,42 @@ part of 'reels_model.dart';
 // **************************************************************************
 
 ReelsModel _$ReelsModelFromJson(Map<String, dynamic> json) => ReelsModel(
-      id: json['id'] as String?,
-      userReels: json['userReels'] == null
-          ? null
-          : UserReels.fromJson(json['userReels'] as Map<String, dynamic>),
-      videoReel: json['videoReel'] as String?,
-      description: json['description'] as String?,
+      id: json['id'] as int?,
+      userReels: (json['data'] as List<dynamic>?)
+          ?.map((e) => UserReels.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$ReelsModelToJson(ReelsModel instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'userReels': instance.userReels,
-      'videoReel': instance.videoReel,
-      'description': instance.description,
+      'data': instance.userReels,
     };
 
 UserReels _$UserReelsFromJson(Map<String, dynamic> json) => UserReels(
-      userId: json['userId'] as String?,
-      userName: json['userName'] as String?,
-      userImage: json['userImage'] as String?,
-      createAt: json['createAt'] as String?,
+      id: json['id'] as int?,
+      image: json['image'] as String?,
+      name: json['name'] as String?,
+      reels: (json['reels'] as List<dynamic>?)
+          ?.map((e) => Reels.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$UserReelsToJson(UserReels instance) => <String, dynamic>{
-      'userId': instance.userId,
-      'userName': instance.userName,
-      'userImage': instance.userImage,
-      'createAt': instance.createAt,
+      'id': instance.id,
+      'image': instance.image,
+      'name': instance.name,
+      'reels': instance.reels,
+    };
+
+Reels _$ReelsFromJson(Map<String, dynamic> json) => Reels(
+      id: json['id'] as int?,
+      video: json['video'] as String?,
+      createAt: json['create_at'] as String?,
+    );
+
+Map<String, dynamic> _$ReelsToJson(Reels instance) => <String, dynamic>{
+      'id': instance.id,
+      'video': instance.video,
+      'create_at': instance.createAt,
     };

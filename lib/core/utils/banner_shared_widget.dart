@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:opensooq/core/utils/custom_button_widget.dart';
 import 'package:opensooq/core/utils/hex_color.dart';
 import 'package:opensooq/core/utils/media_query_values.dart';
@@ -9,6 +8,7 @@ import 'package:opensooq/core/widget/text_translate_manager.dart';
 import 'package:opensooq/future/home/presentation/cubit/home_cubit.dart';
 import 'package:opensooq/future/home/presentation/cubit/home_state.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class BannerSharedWidget extends StatefulWidget {
   const BannerSharedWidget({super.key, required this.length, required this.onPageChanged, required this.height});
@@ -85,7 +85,8 @@ class _BannerSharedWidgetState extends State<BannerSharedWidget> {
                                     color: Colors.white,
                                     text: 'Explore',
                                     onPressed: () {
-                                      context.pushNamed('view_ads_home', extra: state.bannersModel?.data?[index].id.toString());
+                                      launchUrl(Uri.parse('https://google.com'));
+                                      // context.pushNamed('view_ads_home', extra: state.bannersModel?.data?[index].id.toString());
                                     }),
                               ),
                             ),

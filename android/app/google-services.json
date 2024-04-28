@@ -1,26 +1,36 @@
 {
   "project_info": {
-    "project_number": "593158168216",
-    "project_id": "seesooq-98502",
-    "storage_bucket": "seesooq-98502.appspot.com"
+    "project_number": "646090745856",
+    "project_id": "see-sooq",
+    "storage_bucket": "see-sooq.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:593158168216:android:44f038b0755bf173fb7aed",
+        "mobilesdk_app_id": "1:646090745856:android:11ab4703f28ac27abc50e5",
         "android_client_info": {
-          "package_name": "com.seesooq.opensooq"
+          "package_name": "com.seesooq.seesooqapp"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "646090745856-rtc2bn9dk2ukj9kba0r8laneq3c3p1f6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyCclsAkniTYbIFk4EhfHw6YsrmpIzIwXlg"
+          "current_key": "AIzaSyDmMGkmI84zEqsoSamg6brgCEDwA7cmuXA"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "646090745856-rtc2bn9dk2ukj9kba0r8laneq3c3p1f6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

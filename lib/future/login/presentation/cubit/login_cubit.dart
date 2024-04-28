@@ -32,6 +32,9 @@ class LoginCubit extends Cubit<LoginState> with ChangeNotifier {
       params: LoginParams(
         email: email,
         password: password,
+        device: 'android',
+        deviceId: '123456',
+        token: '123456',
       ),
     );
     response.fold(

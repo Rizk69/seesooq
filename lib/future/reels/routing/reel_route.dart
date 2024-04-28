@@ -7,20 +7,22 @@ import 'package:opensooq/future/reels/presentation/pages/view_all_reels.dart';
 class ReelRoute extends GoRoute {
   ReelRoute()
       : super(
-          path: Routes.reelView,
-          name: Routes.reelView,
-          pageBuilder: (context, state) => CustomTransitionPage(
-              transitionsBuilder: (context, animation, secondaryAnimation, child) {
-                // open from top
+            path: Routes.reelView,
+            name: Routes.reelView,
+            pageBuilder: (context, state) => CustomTransitionPage(
+                  transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                    // open from top
 
-                return SlideTransition(
-                  position: Tween<Offset>(
-                    begin: const Offset(0.0, -1.0),
-                    end: Offset.zero,
-                  ).animate(animation),
-                  child: child,
-                );
-              },
-              child: ViewReel(reel: state.extra as ReelsModel)),
-        );
+                    return SlideTransition(
+                      position: Tween<Offset>(
+                        begin: const Offset(0.0, -1.0),
+                        end: Offset.zero,
+                      ).animate(animation),
+                      child: child,
+                    );
+                  },
+                  child: ViewReel(
+                    reels: state.extra as List<Reels>,
+                  ),
+                ));
 }

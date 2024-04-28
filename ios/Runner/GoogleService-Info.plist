@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>593158168216-mq1a2kl90uk8i2tegk3ng49v8us31n5c.apps.googleusercontent.com</string>
+	<string>646090745856-m3p4fceiuu4ao29hjiagrvoncg1vkqt1.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.593158168216-mq1a2kl90uk8i2tegk3ng49v8us31n5c</string>
+	<string>com.googleusercontent.apps.646090745856-m3p4fceiuu4ao29hjiagrvoncg1vkqt1</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDK2ks4GY3dUwBccI1uqgeIVll2dYBCb0E</string>
+	<string>AIzaSyBww4hxDHfbDqUOnZW2TocHeO0ET7Pie7E</string>
 	<key>GCM_SENDER_ID</key>
-	<string>593158168216</string>
+	<string>646090745856</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.seesooq.opensooq</string>
+	<string>com.seesooq.seesooqapp</string>
 	<key>PROJECT_ID</key>
-	<string>seesooq-98502</string>
+	<string>see-sooq</string>
 	<key>STORAGE_BUCKET</key>
-	<string>seesooq-98502.appspot.com</string>
+	<string>see-sooq.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:593158168216:ios:86e5585456dbece8fb7aed</string>
+	<string>1:646090745856:ios:f113d55b38dc6096bc50e5</string>
 </dict>
 </plist>

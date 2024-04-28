@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:opensooq/core/utils/media_query_values.dart';
 import 'package:opensooq/future/reels/presentation/bloc/reels_bloc.dart';
 import 'package:opensooq/future/reels/presentation/pages/widget/reels_list_widget.dart';
 import 'package:opensooq/future/setting/presentation/edit_profile/presentation/widgets/anmtionsucssuffly.dart';
@@ -68,7 +69,7 @@ class ReelsView extends StatelessWidget {
           margin: const EdgeInsets.all(13),
           child: FloatingActionButton(
             isExtended: true,
-            backgroundColor: Color(0XFFF05A35),
+            backgroundColor: const Color(0XFFF05A35),
             onPressed: () {
               context.goNamed(Routes.myReels);
             },
@@ -76,7 +77,7 @@ class ReelsView extends StatelessWidget {
               borderRadius: BorderRadius.circular(50),
             ),
             child: SvgPicture.asset(
-              'assets/images/svg/vedioreels.svg',
+              'vedioreels'.toSvg,
               height: 40,
             ),
           ),
@@ -92,15 +93,12 @@ class ReelsView extends StatelessWidget {
                 },
               ),
               const SizedBox(height: 10),
-              BlocProvider(
-                create: (context) => ReelsBloc()..add(const ReelsEvent.getReels()),
-                child: BlocBuilder<ReelsBloc, ReelsState>(
-                  builder: (context, state) {
-                    return ReelsListWidget(
-                      reels: state.reels,
-                    );
-                  },
-                ),
+              BlocBuilder<ReelsBloc, ReelsState>(
+                builder: (context, state) {
+                  return ReelsListWidget(
+                    reels: state.reels?.userReels ?? [],
+                  );
+                },
               ),
             ],
           ),

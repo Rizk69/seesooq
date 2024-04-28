@@ -5,7 +5,8 @@ enum ReelsStatus { initial, loading, loaded, error, loadMore }
 @freezed
 class ReelsState with _$ReelsState {
   const factory ReelsState({
-    @Default([]) List<ReelsModel> reels,
+    @Default(null) ReelsModel? reels,
+    @Default(null) MyReelsModel? myReels,
     @Default(ReelsStatus.initial) ReelsStatus status,
   }) = _ReelsState;
 }

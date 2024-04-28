@@ -53,20 +53,20 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCclsAkniTYbIFk4EhfHw6YsrmpIzIwXlg',
-    appId: '1:593158168216:android:44f038b0755bf173fb7aed',
-    messagingSenderId: '593158168216',
-    projectId: 'seesooq-98502',
-    storageBucket: 'seesooq-98502.appspot.com',
+    apiKey: 'AIzaSyDmMGkmI84zEqsoSamg6brgCEDwA7cmuXA',
+    appId: '1:646090745856:android:11ab4703f28ac27abc50e5',
+    messagingSenderId: '646090745856',
+    projectId: 'see-sooq',
+    storageBucket: 'see-sooq.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCclsAkniTYbIFk4EhfHw6YsrmpIzIwXlg',
-    appId: '1:593158168216:ios:86e5585456dbece8fb7aed',
-    messagingSenderId: '593158168216',
-    projectId: 'seesooq-98502',
-    storageBucket: 'seesooq-98502.appspot.com',
-    iosBundleId: 'com.seesooq.opensooq',
+    apiKey: 'AIzaSyBww4hxDHfbDqUOnZW2TocHeO0ET7Pie7E',
+    appId: '1:646090745856:ios:f113d55b38dc6096bc50e5',
+    messagingSenderId: '646090745856',
+    projectId: 'see-sooq',
+    storageBucket: 'see-sooq.appspot.com',
+    iosBundleId: 'com.seesooq.seesooqapp',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(

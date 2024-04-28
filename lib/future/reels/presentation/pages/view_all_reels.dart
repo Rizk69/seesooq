@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:opensooq/future/reels/data/model/reels_model.dart';
+import 'package:opensooq/future/reels/presentation/bloc/reels_bloc.dart';
 import 'package:story_view/story_view.dart';
 
 class ViewReel extends StatefulWidget {
-  const ViewReel({super.key, required this.reel});
+  const ViewReel({super.key, required this.reels});
 
-  final ReelsModel reel;
+  final List<Reels> reels;
   @override
   _ViewReelState createState() => _ViewReelState();
 }
@@ -15,25 +17,33 @@ class _ViewReelState extends State<ViewReel> {
   final PageController pageController = PageController();
   @override
   Widget build(BuildContext context) {
-    return StoryView(
-      controller: controller,
-      onStoryShow: (value) {
-        // error in this line
-      },
-      progressPosition: ProgressPosition.top,
-      inline: false,
-      onComplete: () {
-        Navigator.pop(context);
-      },
-      storyItems: [
-        StoryItem.pageVideo(
-          widget.reel.videoReel!,
-          controller: controller,
-          duration: const Duration(seconds: 10),
-          caption: widget.reel.description!,
-          imageFit: BoxFit.contain,
+    return BlocBuilder<ReelsBloc, ReelsState>(builder: (context, state) {
+      return SafeArea(
+        child: Scaffold(
+          body: StoryView(
+            controller: controller,
+            inline: false,
+            onVerticalSwipeComplete: (direction) {
+              if (direction == Direction.down) {
+                Navigator.pop(context);
+              }
+            },
+            onStoryShow: (value, index) {
+              ReelsBloc.get(context).add(ReelsEvent.viewReel(widget.reels[index].id.toString()));
+            },
+            progressPosition: ProgressPosition.top,
+            onComplete: () {
+              Navigator.pop(context);
+            },
+            storyItems: widget.reels
+                .map((e) => StoryItem.pageVideo(
+                      e.video!,
+                      controller: controller,
+                    ))
+                .toList(),
+          ),
         ),
-      ],
-    );
+      );
+    });
   }
 }
