@@ -17,7 +17,7 @@ class AuthRedirect extends GoRedirect {
     '/login/forgetPasswordPage',
     '/login/forgetPasswordPage/confirmCode',
     "/login/signUp/confirmCodeSignUp",
-    "/login/forgetPasswordPage/confirmCode/unLockPassword"
+    "/login/forgetPasswordPage/confirmCode/unLockPassword",
   ];
 
   @override
@@ -40,9 +40,17 @@ class AuthRedirect extends GoRedirect {
     }
     if (loginState.loginStatus == LoginStatus.unAuthorized && !isLoggingIn) {
       print(isLoggingIn);
+      print('r');
       print(state.uri.path);
       return Routes.login;
     }
+    if (loginState.loginStatus == LoginStatus.asGust) {
+      return Routes.home;
+    }
+
+
+
+
 
     return null;
   }

@@ -27,12 +27,18 @@ class SucssesChangePasswordPage extends StatelessWidget {
         const SizedBox(
           height: 34,
         ),
-        Center(child: titleText('تم تغيير كلمة السر بنجاح', HexColor('#4C0497'), StyleText.h4)),
+        Center(
+            child: titleText(
+                'تم تغيير كلمة السر بنجاح', HexColor('#4C0497'), StyleText.h4)),
         const SizedBox(
           height: 10,
         ),
-        Center(child: titleText('قمت بتغيير كلمة السر الخاصة بحسابك', HexColor('#707070'), StyleText.h5)),
-        Center(child: titleText('...بنجاح، يمكنك متابعة التصفح', HexColor('#707070'), StyleText.h5)),
+        Center(
+            child: titleText('قمت بتغيير كلمة السر الخاصة بحسابك',
+                HexColor('#707070'), StyleText.h5)),
+        Center(
+            child: titleText('...بنجاح، يمكنك متابعة التصفح',
+                HexColor('#707070'), StyleText.h5)),
         const Spacer(),
         Padding(
           padding: const EdgeInsets.all(12),

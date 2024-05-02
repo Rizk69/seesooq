@@ -9,6 +9,7 @@ enum LoginStatus {
   success,
   error,
   unAuthorized,
+  asGust,
   logout,
 }
 

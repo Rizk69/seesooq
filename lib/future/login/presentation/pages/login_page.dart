@@ -60,129 +60,185 @@ class _LoginPageState extends State<LoginPage> {
           child: SingleChildScrollView(
             child: Form(
               key: _formKey,
-              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                SizedBox(height: context.height * 0.15),
-                Hero(
-                  tag: 'logo',
-                  child: Center(
-                    child: SvgPicture.asset(
-                      'logo-app'.toSvg,
-                      height: 150,
-                    ),
-                  ),
-                ),
-                SizedBox(height: context.height * 0.05),
-                SizedBox(
-                  height: 50,
-                  child: TextFormFiledApp(
-                    validator: emailValidator,
-                    prefixIcon: 'email',
-                    keyBoardType: TextInputType.emailAddress,
-                    textInputAction: TextInputAction.next,
-                    textEditingController: email,
-                    hintText: 'emailHint'.tr(),
-                  ),
-                ),
-                SizedBox(height: context.height * 0.01),
-                SizedBox(
-                  height: 50,
-                  child: TextFormFiledApp(
-                      validator: passwordValidator,
-                      prefixIcon: 'password',
-                      textEditingController: password,
-                      hintText: 'passwordHint'.tr(),
-                      obscureText: state.togglePassword,
-                      suffixIcon: IconButton(
-                        padding: EdgeInsets.zero,
-                        onPressed: () {
-                          context.read<LoginCubit>().updateTogglePassword();
-                        },
-                        icon: Icon(
-                          state.togglePassword ? Icons.visibility : Icons.visibility_off,
-                        ),
-                      )),
-                ),
-                SizedBox(height: context.height * 0.004),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // SizedBox(
-                    //   width: 26,
-                    //   height: 26,
-                    //   child: Checkbox(
-                    //     value: false,
-                    //     visualDensity: VisualDensity.comfortable,
-                    //     fillColor: MaterialStateProperty.all(Colors.white),
-                    //     shape: RoundedRectangleBorder(
-                    //         borderRadius: BorderRadius.circular(3), side: const BorderSide(color: Colors.white, strokeAlign: 1, width: 1)),
-                    //     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    //     activeColor: Colors.white,
-                    //     focusColor: Colors.white,
-                    //     hoverColor: Colors.white,
-                    //     side: BorderSide(color: HexColor('#70707080').withOpacity(0.5)),
-                    //     onChanged: (value) {},
-                    //   ),
-                    // ),
-                    // TranslateText(
-                    //   styleText: StyleText.h6,
-                    //   text: 'rememberMe'.tr(),
-                    //   colorText: Colors.black,
-                    //   fontWeight: FontWeight.normal,
-                    //   fontSize: 14,
-                    // ),
-                    // const Spacer(),
-                    InkWell(
-                      onTap: () => context.goNamed(Routes.forgetPasswordPRoute, extra: email.text),
-                      child: TranslateText(
-                        styleText: StyleText.h6,
-                        text: 'forgetPassword'.tr(),
-                        fontWeight: FontWeight.normal,
-                        fontSize: 14,
+                    SizedBox(height: context.height * 0.15),
+                    Hero(
+                      tag: 'logo',
+                      child: Center(
+                        child: SvgPicture.asset(
+                          'logo-app'.toSvg,
+                          height: 150,
+                        ),
                       ),
                     ),
-                  ],
-                ),
-                SizedBox(height: context.height * 0.01),
-                SizedBox(
-                  width: context.width,
-                  child: CustomButtonWidget(
-                    color: Colors.white,
-                    backgroundColor: Theme.of(context).colorScheme.primary,
-                    text: 'login'.tr(),
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        context.read<LoginCubit>().loginUserWithEmailOrPhone(email: email.text, password: password.text);
-                      }
-                    },
-                  ),
-                ),
-                SizedBox(height: context.height * 0.02),
-                // const SignUpWithSocialMediaWidget(text: 'Or log in with'),
-                // SizedBox(height: context.height * 0.02),
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.center,
-                //   children: [
-                //     TranslateText(
-                //       styleText: StyleText.h6,
-                //       text: 'newUser'.tr(),
-                //       colorText: Colors.grey,
-                //       fontWeight: FontWeight.normal,
-                //       fontSize: 14,
-                //     ),
-                //     InkWell(
-                //       onTap: () => context.goNamed(Routes.signUp),
-                //       child: TranslateText(
-                //         styleText: StyleText.h6,
-                //         text: 'signUp'.tr(),
-                //         colorText: Theme.of(context).colorScheme.primary,
-                //         fontWeight: FontWeight.normal,
-                //         textDecoration: TextDecoration.underline,
-                //         fontSize: 14,
-                //       ),
-                //     ),
-                //   ],
-                // ),
-              ]),
+                    SizedBox(height: context.height * 0.05),
+                    SizedBox(
+                      height: 50,
+                      child: TextFormFiledApp(
+                        validator: emailValidator,
+                        prefixIcon: 'email',
+                        keyBoardType: TextInputType.emailAddress,
+                        textInputAction: TextInputAction.next,
+                        textEditingController: email,
+                        hintText: 'emailHint'.tr(),
+                      ),
+                    ),
+                    SizedBox(height: context.height * 0.01),
+                    SizedBox(
+                      height: 50,
+                      child: TextFormFiledApp(
+                          validator: passwordValidator,
+                          prefixIcon: 'password',
+                          textEditingController: password,
+                          hintText: 'passwordHint'.tr(),
+                          obscureText: state.togglePassword,
+                          suffixIcon: IconButton(
+                            padding: EdgeInsets.zero,
+                            onPressed: () {
+                              context.read<LoginCubit>().updateTogglePassword();
+                            },
+                            icon: Icon(
+                              state.togglePassword
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                            ),
+                          )),
+                    ),
+                    SizedBox(height: context.height * 0.004),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        // SizedBox(
+                        //   width: 26,
+                        //   height: 26,
+                        //   child: Checkbox(
+                        //     value: false,
+                        //     visualDensity: VisualDensity.comfortable,
+                        //     fillColor: MaterialStateProperty.all(Colors.white),
+                        //     shape: RoundedRectangleBorder(
+                        //         borderRadius: BorderRadius.circular(3), side: const BorderSide(color: Colors.white, strokeAlign: 1, width: 1)),
+                        //     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                        //     activeColor: Colors.white,
+                        //     focusColor: Colors.white,
+                        //     hoverColor: Colors.white,
+                        //     side: BorderSide(color: HexColor('#70707080').withOpacity(0.5)),
+                        //     onChanged: (value) {},
+                        //   ),
+                        // ),
+                        // TranslateText(
+                        //   styleText: StyleText.h6,
+                        //   text: 'rememberMe'.tr(),
+                        //   colorText: Colors.black,
+                        //   fontWeight: FontWeight.normal,
+                        //   fontSize: 14,
+                        // ),
+                        // const Spacer(),
+                        InkWell(
+                          onTap: () => context.goNamed(
+                              Routes.forgetPasswordPRoute,
+                              extra: email.text),
+                          child: TranslateText(
+                            styleText: StyleText.h6,
+                            text: 'forgetPassword'.tr(),
+                            fontWeight: FontWeight.normal,
+                            fontSize: 14,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: context.height * 0.01),
+                    SizedBox(
+                      width: context.width,
+                      child: CustomButtonWidget(
+                        color: Colors.white,
+                        backgroundColor: Theme.of(context).colorScheme.primary,
+                        text: 'login'.tr(),
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            context
+                                .read<LoginCubit>()
+                                .loginUserWithEmailOrPhone(
+                                    email: email.text, password: password.text);
+                          }
+                        },
+                      ),
+                    ),
+                    SizedBox(height: context.height * 0.02),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        // SizedBox(
+                        //   width: 26,
+                        //   height: 26,
+                        //   child: Checkbox(
+                        //     value: false,
+                        //     visualDensity: VisualDensity.comfortable,
+                        //     fillColor: MaterialStateProperty.all(Colors.white),
+                        //     shape: RoundedRectangleBorder(
+                        //         borderRadius: BorderRadius.circular(3), side: const BorderSide(color: Colors.white, strokeAlign: 1, width: 1)),
+                        //     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                        //     activeColor: Colors.white,
+                        //     focusColor: Colors.white,
+                        //     hoverColor: Colors.white,
+                        //     side: BorderSide(color: HexColor('#70707080').withOpacity(0.5)),
+                        //     onChanged: (value) {},
+                        //   ),
+                        // ),
+                        // TranslateText(
+                        //   styleText: StyleText.h6,
+                        //   text: 'rememberMe'.tr(),
+                        //   colorText: Colors.black,
+                        //   fontWeight: FontWeight.normal,
+                        //   fontSize: 14,
+                        // ),
+                        // const Spacer(),
+                        InkWell(
+                          onTap: () {
+                            context.read<LoginCubit>().loginAsGuest();
+                          },
+                          splashColor: Theme.of(context).colorScheme.secondary,
+                          child: Semantics(
+                            label: 'Continue as Guest',
+                            button: true,
+                            child: TranslateText(
+                              styleText: StyleText.h6,
+                              text: 'Continue as a Guest'.tr(),
+                              fontWeight: FontWeight.normal,
+                              fontSize: 14,
+                            ),
+                          ),
+                        )
+
+                      ],
+                    ),
+                    // const SignUpWithSocialMediaWidget(text: 'Or log in with'),
+                    // SizedBox(height: context.height * 0.02),
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.center,
+                    //   children: [
+                    //     TranslateText(
+                    //       styleText: StyleText.h6,
+                    //       text: 'newUser'.tr(),
+                    //       colorText: Colors.grey,
+                    //       fontWeight: FontWeight.normal,
+                    //       fontSize: 14,
+                    //     ),
+                    //     InkWell(
+                    //       onTap: () => context.goNamed(Routes.signUp),
+                    //       child: TranslateText(
+                    //         styleText: StyleText.h6,
+                    //         text: 'signUp'.tr(),
+                    //         colorText: Theme.of(context).colorScheme.primary,
+                    //         fontWeight: FontWeight.normal,
+                    //         textDecoration: TextDecoration.underline,
+                    //         fontSize: 14,
+                    //       ),
+                    //     ),
+                    //   ],
+                    // ),
+                  ]),
             ),
           ),
         ),

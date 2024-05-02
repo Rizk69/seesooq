@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,6 +24,10 @@ class CardPersonalWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, HomeState>(builder: (context, state) {
+      print("Rizk ${state.userLocalModel?.user?.name?.isEmpty}");
+      bool isGuest = state.userLocalModel?.user?.name?.isEmpty ?? true;
+      String userName = isGuest ? "Guest" : state.userLocalModel!.user!.name!;
+
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -52,9 +57,7 @@ class CardPersonalWidget extends StatelessWidget {
                               colorText: type == CardPersonalWidgetType.drawer
                                   ? Colors.white
                                   : null,
-                              text: 'welcomeName'.tr(args: [
-                                "${state.userLocalModel?.user?.name}" ?? ''
-                              ])),
+                              text: 'welcomeName'.tr(args: [userName])),
                         ),
                         const SizedBox(
                           width: 5,

@@ -14,6 +14,7 @@ abstract class SettingRepository {
   Future<Either<Failures, GeneralSettingModel>> getFrequentlyAskQuestion();
   Future<Either<Failures, GeneralSettingModel>> getContactUs();
   Future<Either<Failures, GeneralSettingModel>> getAboutUs();
+  Future<Either<Failures, GeneralSettingModel>> deleteAccount();
 }
 
 @LazySingleton(as: SettingRepository)
@@ -55,5 +56,11 @@ class SettingRepositoryImpl implements SettingRepository {
   @override
   Future<Either<Failures, GeneralSettingModel>> getFrequentlyAskQuestion() {
     return executeAndCatchError(() async => await settingRemoteDataSource.getFrequentlyAskQuestion());
+  }
+
+  @override
+  Future<Either<Failures, GeneralSettingModel>> deleteAccount() {
+    return executeAndCatchError(() async => await settingRemoteDataSource.deleteAccount());
+
   }
 }

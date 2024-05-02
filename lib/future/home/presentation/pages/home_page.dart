@@ -51,6 +51,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       });
 
     super.initState();
+
   }
 
   @override
@@ -122,7 +123,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               onRefresh: () async {
                 StoryUserCubit.get(context).getUsersStories();
               },
-              child: SingleChildScrollView(
+              child:
+
+              SingleChildScrollView(
                   physics: const AlwaysScrollableScrollPhysics(),
                   controller: scrollController,
                   padding: const EdgeInsets.only(bottom: 10),
