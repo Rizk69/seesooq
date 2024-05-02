@@ -1,4 +1,4 @@
-package com.seesooq.opensooq
+package com.seesooq.seesooqapp
 
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.android.FlutterFragmentActivity

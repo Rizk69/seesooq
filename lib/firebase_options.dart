@@ -75,6 +75,6 @@ class DefaultFirebaseOptions {
     messagingSenderId: '593158168216',
     projectId: 'seesooq-98502',
     storageBucket: 'seesooq-98502.appspot.com',
-    iosBundleId: 'com.seesooq.opensooq',
+    iosBundleId: 'com.seesooq.seesooqapp',
   );
 }

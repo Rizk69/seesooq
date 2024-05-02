@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:opensooq/core/error/failures.dart';
 import 'package:opensooq/future/login/data/models/change_password_model.dart';
 import 'package:opensooq/future/login/data/models/forget_password_model.dart';

@@ -58,6 +58,7 @@ class StoryUserCubit extends Cubit<StoryUserState> {
         emit(state.copyWith(storyStatus: StoryStatus.error));
       },
       (data) {
+        print('data.stories${data.stories}');
         emit(state.copyWith(
             storyStatus: StoryStatus.loaded,
             storyModel: data,
@@ -65,7 +66,7 @@ class StoryUserCubit extends Cubit<StoryUserState> {
                     ?.map((e) => StoryItem.pageImage(
                           url: e.story ?? '',
                           controller: StoryController(),
-                          caption: e.description ?? '',
+                          caption: Text(e.description ?? ''),
                           shown: true,
                           key: UniqueKey(),
                         ))

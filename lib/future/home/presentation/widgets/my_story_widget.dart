@@ -27,6 +27,7 @@ class MyStoryWidget extends StatelessWidget {
                     StoryUserCubit.get(context).updateStatusOpening(statusOpening: StatusOpening.me);
                     context.goNamed(Routes.storyView, extra: {'': ""});
                   } else {
+                    print('pick image${state.storyItems.isNotEmpty}');
                     StoryUserCubit.get(context).pickImage();
                   }
                 },
