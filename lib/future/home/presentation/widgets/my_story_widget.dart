@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:opensooq/config/routes/app_routes.dart';
-import 'package:opensooq/core/utils/alert_gust.dart';
 import 'package:opensooq/core/utils/hex_color.dart';
 import 'package:opensooq/core/widget/text_translate_manager.dart';
 import 'package:opensooq/future/home/presentation/cubit/story_user_cubit.dart';
@@ -25,19 +24,18 @@ class MyStoryWidget extends StatelessWidget {
             children: [
               InkWell(
                 onTap: () {
-               if(!isGust) {
+                  if (!isGust) {
                     if (state.storyItems.isNotEmpty) {
-                      StoryUserCubit.get(context)
-                          .updateStatusOpening(statusOpening: StatusOpening.me);
+                      StoryUserCubit.get(context).updateStatusOpening(statusOpening: StatusOpening.me);
                       context.goNamed(Routes.storyView, extra: {'': ""});
                     } else {
                       print('pick image${state.storyItems.isNotEmpty}');
                       StoryUserCubit.get(context).pickImage();
                     }
-                  }{
-                 showLoginOrGuestDialog(context);
-
-               }
+                  }
+                  {
+                    // showLoginOrGuestDialog(context);
+                  }
                 },
                 child: Container(
                   decoration: BoxDecoration(

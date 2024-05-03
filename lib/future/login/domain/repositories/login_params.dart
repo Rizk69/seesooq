@@ -17,9 +17,9 @@ class LoginParams extends Equatable {
     return {
       'email_or_phone': email,
       'password': password,
-      'token': '777777',
-      'device': 'Iphone 12 Pro Max',
-      'device_id': '1111',
+      'token': token,
+      'device': device,
+      'device_id': deviceId,
     };
   }
 }

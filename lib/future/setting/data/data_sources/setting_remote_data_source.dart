@@ -12,7 +12,7 @@ abstract class SettingRemoteDataSource {
   Future<GeneralSettingModel> getFrequentlyAskQuestion();
   Future<GeneralSettingModel> getContactUs();
   Future<GeneralSettingModel> getAboutUs();
-  Future<GeneralSettingModel> deleteAccount();
+  Future<GeneralSettingModel> deleteAccount({required String reason});
 }
 
 @LazySingleton(as: SettingRemoteDataSource)
@@ -22,8 +22,7 @@ class SettingRemoteDataSourceImpl implements SettingRemoteDataSource {
   SettingRemoteDataSourceImpl(this.api);
 
   @override
-  Future<EditUserModel> editUser(
-      {required String name, required String email}) async {
+  Future<EditUserModel> editUser({required String name, required String email}) async {
     return await api.editUser(body: {'name': name, 'email': email});
   }
 
@@ -58,7 +57,7 @@ class SettingRemoteDataSourceImpl implements SettingRemoteDataSource {
   }
 
   @override
-  Future<GeneralSettingModel> deleteAccount() async {
-    return await api.deleteAccount();
+  Future<GeneralSettingModel> deleteAccount({required String reason}) async {
+    return await api.deleteAccount(reason: reason);
   }
 }

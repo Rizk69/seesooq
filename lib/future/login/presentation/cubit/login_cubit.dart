@@ -16,9 +16,7 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 
 @LazySingleton()
 class LoginCubit extends Cubit<LoginState> with ChangeNotifier {
-  LoginCubit(this.loginRepository, this.forGetPasswordUserUseCase,
-      this.changePasswordUserUseCase)
-      : super(const LoginState()) {
+  LoginCubit(this.loginRepository, this.forGetPasswordUserUseCase, this.changePasswordUserUseCase) : super(const LoginState()) {
     getLocalUser();
   }
   final LoginRepository loginRepository;
@@ -27,18 +25,11 @@ class LoginCubit extends Cubit<LoginState> with ChangeNotifier {
 
   static LoginCubit get(context) => BlocProvider.of(context);
 
-  Future<void> loginUserWithEmailOrPhone(
-      {required String email, required String password}) async {
+  Future<void> loginUserWithEmailOrPhone({required LoginParams params}) async {
     emit(state.copyWith(loginStatus: LoginStatus.loading));
     EasyLoading.show(status: 'loading...');
     final response = await loginRepository.loginWithEmailOrPhone(
-      params: LoginParams(
-        email: email,
-        password: password,
-        device: 'android',
-        deviceId: '123456',
-        token: '123456',
-      ),
+      params: params,
     );
     response.fold(
       (l) {
@@ -69,6 +60,13 @@ class LoginCubit extends Cubit<LoginState> with ChangeNotifier {
     ));
     notifyListeners();
     EasyLoading.showSuccess('Logged in as Guest');
+  }
+
+  void goToLogin() {
+    emit(state.copyWith(
+      loginStatus: LoginStatus.unAuthorized,
+    ));
+    notifyListeners();
   }
 
   Future<void> forgetPassword({required String email}) async {
@@ -152,8 +150,7 @@ class LoginCubit extends Cubit<LoginState> with ChangeNotifier {
     );
   }
 
-  Future<void> changePasswordUser(
-      {required String phone, required String password}) async {
+  Future<void> changePasswordUser({required String phone, required String password}) async {
     EasyLoading.show(status: 'loading...');
     final response = await changePasswordUserUseCase(
       ChangePasswordUserParams(
@@ -187,15 +184,11 @@ class LoginCubit extends Cubit<LoginState> with ChangeNotifier {
   }
 
   Future<void> checkCodeVerify() async {
-    if (state.otpCode.length != 6 ||
-        (state.otpCode) != state.responseOtpCode.toString()) {
-      errorController!
-          .add(ErrorAnimationType.shake); // Triggering error shake animation
+    if (state.otpCode.length != 6 || (state.otpCode) != state.responseOtpCode.toString()) {
+      errorController!.add(ErrorAnimationType.shake); // Triggering error shake animation
       emit(state.copyWith(hasErrorPinCode: true));
     } else {
-      emit(state.copyWith(
-          hasErrorPinCode: false,
-          forGetPasswordStatus: ForGetPasswordStatus.otpSuccess));
+      emit(state.copyWith(hasErrorPinCode: false, forGetPasswordStatus: ForGetPasswordStatus.otpSuccess));
 
       notifyListeners();
     }
@@ -230,7 +223,6 @@ class LoginCubit extends Cubit<LoginState> with ChangeNotifier {
     notifyListeners();
   }
 
-  StreamController<ErrorAnimationType>? errorController =
-      StreamController<ErrorAnimationType>();
+  StreamController<ErrorAnimationType>? errorController = StreamController<ErrorAnimationType>();
   bool hasError = false;
 }

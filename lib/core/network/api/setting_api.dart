@@ -29,6 +29,6 @@ abstract class SettingApi {
   Future<GeneralSettingModel> getContactUs();
   @GET(EndPoint.aboutUs)
   Future<GeneralSettingModel> getAboutUs();
-  @GET(EndPoint.deleteAccount)
-  Future<GeneralSettingModel> deleteAccount();
+  @DELETE(EndPoint.deleteAccount)
+  Future<GeneralSettingModel> deleteAccount({@Field('reason_delete') required String reason});
 }

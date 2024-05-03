@@ -36,7 +36,7 @@ class EndPoint {
   static const String frequentlyAskQuestion = 'pages/frequently-asked-questions';
   static const String contactUs = 'contact-us';
   static const String aboutUs = 'pages/about-us';
-  static const String deleteAccount = 'pages/deleteAccount';
+  static const String deleteAccount = 'delete_profile';
 
   static const String getFav = 'my-favourite';
   static const String storePayment = 'payment/store';

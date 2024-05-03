@@ -209,20 +209,20 @@ class _SettingApi implements SettingApi {
   }
 
   @override
-  Future<GeneralSettingModel> deleteAccount() async {
+  Future<GeneralSettingModel> deleteAccount({required String reason}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
+    final _data = {'reason_delete': reason};
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<GeneralSettingModel>(Options(
-      method: 'GET',
+      method: 'DELETE',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              'pages/deleteAccount',
+              'delete_profile',
               queryParameters: queryParameters,
               data: _data,
             )
