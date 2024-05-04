@@ -51,19 +51,18 @@ class HomeCubit extends Cubit<HomeState> with ChangeNotifier {
               });
             }));
   }
+
   Future<void> getBanners() async {
     await homeRepo
         .getBanners(
           page: page,
         )
         .then((value) => value.fold((l) {}, (r) {
-          print('getBanners ${r.data?[0].title}');
-              emit(state.copyWith(bannersModel:  r));
+              emit(state.copyWith(bannersModel: r));
               scrollController = ScrollController();
               scrollController.addListener(() {
                 if (scrollController.position.pixels == scrollController.position.maxScrollExtent) {
-                  if (hasMoreItems) {
-                  }
+                  if (hasMoreItems) {}
                 }
               });
             }));

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:opensooq/core/utils/custom_button_widget.dart';
 import 'package:opensooq/core/utils/hex_color.dart';
 import 'package:opensooq/core/utils/media_query_values.dart';
 import 'package:opensooq/core/utils/something_went_wrong.dart';
@@ -8,7 +7,6 @@ import 'package:opensooq/core/widget/text_translate_manager.dart';
 import 'package:opensooq/future/home/presentation/cubit/home_cubit.dart';
 import 'package:opensooq/future/home/presentation/cubit/home_state.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class BannerSharedWidget extends StatefulWidget {
   const BannerSharedWidget({super.key, required this.length, required this.onPageChanged, required this.height});
@@ -29,14 +27,14 @@ class _BannerSharedWidgetState extends State<BannerSharedWidget> {
       builder: (context, state) {
         return Column(
           children: [
-            if (state.bannersModel?.data?.isEmpty ?? true)
+            if (state.bannersModel?.data?.banners?.isEmpty ?? true)
               const SizedBox(
                 height: 250,
                 child: Center(
                   child: CircularProgressIndicator(),
                 ),
               ),
-            if (state.bannersModel?.data?.isNotEmpty ?? false)
+            if (state.bannersModel?.data?.banners?.isNotEmpty ?? false)
               SizedBox(
                 height: widget.height,
                 width: context.width,
@@ -57,7 +55,7 @@ class _BannerSharedWidgetState extends State<BannerSharedWidget> {
                           SizedBox(
                             width: context.width,
                             height: widget.height,
-                            child: Image.network(state.bannersModel?.data?[index].album ?? '', fit: BoxFit.cover,
+                            child: Image.network(state.bannersModel?.data?.banners?[index].image ?? '', fit: BoxFit.cover,
                                 errorBuilder: (context, error, stackTrace) {
                               return const SomThingWentWrongWidget(
                                 height: 100,
@@ -69,27 +67,27 @@ class _BannerSharedWidgetState extends State<BannerSharedWidget> {
                             right: 20,
                             top: 25,
                             child: TranslateText(
-                              text: state.bannersModel?.data?[index].title ?? 'Cars  on the ssss',
+                              text: state.bannersModel?.data?.banners?[index].title ?? 'Cars  on the ssss',
                               styleText: StyleText.h4,
                               colorText: Colors.white,
                             ),
                           ),
-                          if (state.bannersModel?.data?[index].id != null)
-                            Positioned(
-                              right: 20,
-                              bottom: 15,
-                              child: SizedBox(
-                                width: 140,
-                                height: 50,
-                                child: CustomButtonWidget(
-                                    color: Colors.white,
-                                    text: 'Explore',
-                                    onPressed: () {
-                                      launchUrl(Uri.parse('https://google.com'));
-                                      // context.pushNamed('view_ads_home', extra: state.bannersModel?.data?[index].id.toString());
-                                    }),
-                              ),
-                            ),
+                          // if (state.bannersModel?.data?.banners?[index].id != null)
+                          //   Positioned(
+                          //     right: 20,
+                          //     bottom: 15,
+                          //     child: SizedBox(
+                          //       width: 140,
+                          //       height: 50,
+                          //       child: CustomButtonWidget(
+                          //           color: Colors.white,
+                          //           text: 'Explore',
+                          //           onPressed: () {
+                          //             launchUrl(Uri.parse('https://google.com'));
+                          //             // context.pushNamed('view_ads_home', extra: state.bannersModel?.data?[index].id.toString());
+                          //           }),
+                          //     ),
+                          //   ),
                         ],
                       ),
                     );

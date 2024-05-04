@@ -251,30 +251,30 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
                 // const SignUpWithSocialMediaWidget(text: 'Or log in with'),
-                // SizedBox(height: context.height * 0.02),
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.center,
-                //   children: [
-                //     TranslateText(
-                //       styleText: StyleText.h6,
-                //       text: 'newUser'.tr(),
-                //       colorText: Colors.grey,
-                //       fontWeight: FontWeight.normal,
-                //       fontSize: 14,
-                //     ),
-                //     InkWell(
-                //       onTap: () => context.goNamed(Routes.signUp),
-                //       child: TranslateText(
-                //         styleText: StyleText.h6,
-                //         text: 'signUp'.tr(),
-                //         colorText: Theme.of(context).colorScheme.primary,
-                //         fontWeight: FontWeight.normal,
-                //         textDecoration: TextDecoration.underline,
-                //         fontSize: 14,
-                //       ),
-                //     ),
-                //   ],
-                // ),
+                SizedBox(height: context.height * 0.02),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TranslateText(
+                      styleText: StyleText.h6,
+                      text: 'newUser'.tr(),
+                      colorText: Colors.grey,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 14,
+                    ),
+                    InkWell(
+                      onTap: () => context.goNamed(Routes.signUp),
+                      child: TranslateText(
+                        styleText: StyleText.h6,
+                        text: 'signUp'.tr(),
+                        colorText: Theme.of(context).colorScheme.primary,
+                        fontWeight: FontWeight.normal,
+                        textDecoration: TextDecoration.underline,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ],
+                ),
               ]),
             ),
           ),

@@ -220,7 +220,7 @@ class _HomeUserApi implements HomeUserApi {
     )
             .compose(
               _dio.options,
-              'advertisement/offers/1',
+              'banners',
               queryParameters: queryParameters,
               data: _data,
             )
