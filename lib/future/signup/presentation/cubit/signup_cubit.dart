@@ -97,6 +97,7 @@ class SignUpCubit extends Cubit<SignUpState> with ChangeNotifier {
   Future<void> signUpFromGoogle() async {
     try {
       final user = await _googleSignIn.signIn();
+
       if (user != null) {
         emit(state.copyWith(signUpStatus: SignUpStatus.social, socialData: {
           'name': user.displayName,

@@ -46,7 +46,7 @@ class _BlogsPageState extends State<BlogsPage> {
                       );
                     },
                     separatorBuilder: (context, index) => Gap(10),
-                    itemCount: 10,
+                    itemCount: state.allBlogs?.blogs?.blogsData?.length ?? 0,
                   );
           }),
         ),

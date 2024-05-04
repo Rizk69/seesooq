@@ -17,7 +17,7 @@ class BlogsData {
   String? title;
   String? shortDescription;
   String? description;
-  String? visits;
+  int? visits;
   BlogsData(this.title, this.id, this.shortDescription, this.description, this.visits);
   factory BlogsData.fromJson(Map<String, dynamic> json) => _$BlogsDataFromJson(json);
   Map<String, dynamic> toJson() => _$BlogsDataToJson(this);

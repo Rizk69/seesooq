@@ -9,7 +9,7 @@ class OneBlog {
   @JsonKey(name: 'brief_description')
   String? shortDescription;
   String? description;
-  String? visits;
+  int? visits;
   OneBlog(this.title, this.id, this.shortDescription, this.description, this.visits);
   factory OneBlog.fromJson(Map<String, dynamic> json) => _$OneBlogFromJson(json);
   Map<String, dynamic> toJson() => _$OneBlogToJson(this);

@@ -11,7 +11,7 @@ OneBlog _$OneBlogFromJson(Map<String, dynamic> json) => OneBlog(
       json['id'] as int?,
       json['brief_description'] as String?,
       json['description'] as String?,
-      json['visits'] as String?,
+      json['visits'] as int?,
     );
 
 Map<String, dynamic> _$OneBlogToJson(OneBlog instance) => <String, dynamic>{

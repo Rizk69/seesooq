@@ -21,7 +21,7 @@ BlogsData _$BlogsDataFromJson(Map<String, dynamic> json) => BlogsData(
       json['id'] as int?,
       json['shortDescription'] as String?,
       json['description'] as String?,
-      json['visits'] as String?,
+      json['visits'] as int?,
     );
 
 Map<String, dynamic> _$BlogsDataToJson(BlogsData instance) => <String, dynamic>{
