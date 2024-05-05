@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -97,18 +98,25 @@ class SignUpCubit extends Cubit<SignUpState> with ChangeNotifier {
   Future<void> signUpFromGoogle() async {
     try {
       final user = await _googleSignIn.signIn();
+      final GoogleSignInAuthentication googleAuth = await user!.authentication;
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
 
-      if (user != null) {
+      final userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
+
+      if (userCredential.user != null) {
         emit(state.copyWith(signUpStatus: SignUpStatus.social, socialData: {
           'name': user.displayName,
           'email': user.email,
+          'image': user.photoUrl ?? '',
         }));
       }
 
-      print(user);
-    } catch (error) {
-      print(error);
-    }
+      print(userCredential.additionalUserInfo.toString());
+      print(userCredential.additionalUserInfo?.isNewUser);
+    } catch (error) {}
   }
 
   Future<void> signUpFromApple() async {
@@ -127,6 +135,14 @@ class SignUpCubit extends Cubit<SignUpState> with ChangeNotifier {
           'email': user.email,
         }));
       }
+
+      final userApple = await FirebaseAuth.instance.signInWithCredential(
+        OAuthProvider('apple.com').credential(
+          idToken: credential.identityToken,
+          accessToken: credential.authorizationCode,
+        ),
+      );
+      print(userApple.additionalUserInfo?.isNewUser);
 
       print(user);
     } catch (error) {

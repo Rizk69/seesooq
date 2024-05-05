@@ -14,6 +14,8 @@ import 'package:opensooq/core/utils/media_query_values.dart';
 import 'package:opensooq/core/widget/text_translate_manager.dart';
 import 'package:opensooq/future/login/presentation/cubit/login_cubit.dart';
 import 'package:opensooq/future/login/presentation/cubit/login_state.dart';
+import 'package:opensooq/future/signup/presentation/cubit/signup_cubit.dart';
+import 'package:opensooq/future/signup/presentation/cubit/signup_state.dart';
 import 'package:opensooq/future/signup/presentation/widgets/sign_up_with_social_media_widget.dart';
 
 import '../../domain/repositories/login_params.dart';
@@ -251,7 +253,13 @@ class _LoginPageState extends State<LoginPage> {
                     )
                   ],
                 ),
-                const SignUpWithSocialMediaWidget(text: 'Or log in with'),
+                BlocListener<SignUpCubit, SignUpState>(
+                    listener: (context, state) {
+                      if (state.socialData.isNotEmpty) {
+                        context.goNamed(Routes.signUp, extra: state.socialData);
+                      }
+                    },
+                    child: const SignUpWithSocialMediaWidget(text: 'Or log in with')),
                 SizedBox(height: context.height * 0.02),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

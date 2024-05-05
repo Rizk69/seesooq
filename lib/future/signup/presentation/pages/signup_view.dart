@@ -20,7 +20,9 @@ import 'package:opensooq/future/signup/presentation/widgets/privacy_and_terms_wi
 import 'package:opensooq/future/signup/presentation/widgets/sign_up_with_social_media_widget.dart';
 
 class SignUpView extends StatefulWidget {
-  const SignUpView({super.key});
+  const SignUpView({super.key, required this.socialData});
+
+  final Object? socialData;
 
   @override
   State<SignUpView> createState() => _SignUpViewState();
@@ -48,15 +50,20 @@ class _SignUpViewState extends State<SignUpView> {
   }
 
   @override
+  initState() {
+    super.initState();
+    if (widget.socialData != null) {
+      email.text = (widget.socialData as Map<String, dynamic>)['email'];
+      fullName.text = (widget.socialData as Map<String, dynamic>)['name'];
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocConsumer<SignUpCubit, SignUpState>(listener: (context, state) {
       var cubit = SignUpCubit.get(context);
       if (state.signUpStatus == SignUpStatus.otp) {
         context.goNamed(Routes.confirmCodeSignUp);
-      }
-      if (state.signUpStatus == SignUpStatus.social) {
-        email.text = state.socialData['email'];
-        fullName.text = state.socialData['name'];
       }
     }, builder: (context, state) {
       var cubit = SignUpCubit.get(context);

@@ -11,7 +11,7 @@ class SignupRoute extends GoRoute {
             path: Routes.signUp,
             name: Routes.signUp,
             redirect: GoRedirect.compose([AuthRedirect()]),
-            pageBuilder: (context, state) => const NoTransitionPage(child: SignUpView()),
+            pageBuilder: (context, state) => NoTransitionPage(child: SignUpView(socialData: state.extra)),
             routes: [
               GoRoute(
                 path: Routes.confirmCodeSignUp,
