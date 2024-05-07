@@ -17,31 +17,22 @@ class EmptyReelsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 15),
-        child: Column(
-          children: [
-            HeaderScreens(
-                title: 'reels',
-                onPressed: () {
-                  context.go(Routes.home);
-                }),
-            SizedBox(
-              height: MediaQuery.of(context).size.height / 4.3,
-            ),
-            const Center(child: AnimatedCheck(img: "assets/images/videoreels.png")),
-            const SizedBox(
-              height: 34,
-            ),
-            Center(child: titleText('empty_reels_title', HexColor('#4C0497'), StyleText.h4)),
-            const SizedBox(
-              height: 10,
-            ),
-            Center(child: titleText('des_location', HexColor('#707070'), StyleText.h5)),
-            Center(child: titleText('des_location1', HexColor('#707070'), StyleText.h5)),
-          ],
-        ),
+    return Center(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Center(child: AnimatedCheck(img: "assets/images/videoreels.png")),
+          const SizedBox(
+            height: 34,
+          ),
+          Center(child: titleText('empty_reels_title', HexColor('#4C0497'), StyleText.h4)),
+          const SizedBox(
+            height: 10,
+          ),
+          Center(child: titleText('des_location', HexColor('#707070'), StyleText.h5)),
+          Center(child: titleText('des_location1', HexColor('#707070'), StyleText.h5)),
+        ],
       ),
     );
   }
@@ -83,8 +74,9 @@ class ReelsView extends StatelessWidget {
           ),
         ),
         body: Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 15),
+          padding: const EdgeInsets.all(8.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               HeaderScreens(
                 title: 'reels',
@@ -92,9 +84,11 @@ class ReelsView extends StatelessWidget {
                   context.go(Routes.home);
                 },
               ),
-              const SizedBox(height: 10),
               BlocBuilder<ReelsBloc, ReelsState>(
                 builder: (context, state) {
+                  if (state.reels?.userReels?.isEmpty ?? true) {
+                    return const EmptyReelsView();
+                  }
                   return ReelsListWidget(
                     reels: state.reels?.userReels ?? [],
                   );

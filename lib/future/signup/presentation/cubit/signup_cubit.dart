@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,8 +16,9 @@ import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 @lazySingleton
 class SignUpCubit extends Cubit<SignUpState> with ChangeNotifier {
-  SignUpCubit(this.signUpRepository) : super(const SignUpState());
+  SignUpCubit(this.signUpRepository) : super(const SignUpState()) {}
 
+  DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
   final SignUpRepository signUpRepository;
 
   static SignUpCubit get(context) => BlocProvider.of(context);
@@ -44,6 +46,7 @@ class SignUpCubit extends Cubit<SignUpState> with ChangeNotifier {
 
   StreamController<ErrorAnimationType>? errorController = StreamController<ErrorAnimationType>();
   bool hasError = false;
+
   Future<void> checkCodeVerify() async {
     if (state.pinCode.length != 6 || int.parse(state.pinCode) != state.signUpModel?.data?.otp) {
       errorController!.add(ErrorAnimationType.shake); // Triggering error shake animation
@@ -95,6 +98,7 @@ class SignUpCubit extends Cubit<SignUpState> with ChangeNotifier {
     // clientId: 'your-client_id.apps.googleusercontent.com',
     scopes: scopes,
   );
+
   Future<void> signUpFromGoogle() async {
     try {
       final user = await _googleSignIn.signIn();
@@ -106,17 +110,50 @@ class SignUpCubit extends Cubit<SignUpState> with ChangeNotifier {
 
       final userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
 
-      if (userCredential.user != null) {
-        emit(state.copyWith(signUpStatus: SignUpStatus.social, socialData: {
-          'name': user.displayName,
-          'email': user.email,
-          'image': user.photoUrl ?? '',
-        }));
-      }
+      if (userCredential.additionalUserInfo?.isNewUser ?? false) {
+        final response = await signUpRepository.signUpFromSocial(
+            socialId: userCredential.credential?.accessToken ?? '',
+            email: userCredential.user?.email ?? '',
+            name: userCredential.user?.displayName ?? '');
 
-      print(userCredential.additionalUserInfo.toString());
-      print(userCredential.additionalUserInfo?.isNewUser);
+        response.fold(
+          (l) {
+            emit(state.copyWith(signUpStatus: SignUpStatus.error));
+          },
+          (r) {
+            loginWithSocial(userCredential.credential?.accessToken ?? '');
+          },
+        );
+      } else {
+        loginWithSocial(userCredential.credential?.accessToken ?? '');
+      }
     } catch (error) {}
+  }
+
+  Future<void> loginWithSocial(String socialId) async {
+    final response = await signUpRepository.loginInFromSocial(
+      token: 'sadsad11',
+      deviceId: '111221',
+      device: 'android11',
+      socialId: socialId,
+    );
+
+    response.fold(
+      (l) {
+        emit(state.copyWith(signUpStatus: SignUpStatus.error));
+      },
+      (r) {
+        emit(state.copyWith(
+          signUpStatus: SignUpStatus.social,
+        ));
+        signUpRepository.cacheUserModel(
+            userLocalModel: UserLocalModel(
+          token: r.token,
+          user: r.user,
+        ));
+        notifyListeners();
+      },
+    );
   }
 
   Future<void> signUpFromApple() async {
@@ -129,12 +166,7 @@ class SignUpCubit extends Cubit<SignUpState> with ChangeNotifier {
       );
 
       final user = credential;
-      if (user.familyName?.isNotEmpty ?? false) {
-        emit(state.copyWith(signUpStatus: SignUpStatus.social, socialData: {
-          'name': user.givenName,
-          'email': user.email,
-        }));
-      }
+      if (user.familyName?.isNotEmpty ?? false) {}
 
       final userApple = await FirebaseAuth.instance.signInWithCredential(
         OAuthProvider('apple.com').credential(

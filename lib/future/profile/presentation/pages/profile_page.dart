@@ -254,7 +254,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       if (index == 5) {
                         context.goNamed(Routes.packages);
                       } else if (index == 4) {
-                        context.goNamed(Routes.wallet);
+                        context.pushNamed(Routes.wallet);
                       } else if (index == 6) {
                         context.goNamed(Routes.favorite);
                       } else if (index == 9) {

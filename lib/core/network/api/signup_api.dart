@@ -24,4 +24,13 @@ abstract class SignupApi {
   Future<LoginModel> verifyOtp({
     @Body() required Map<String, dynamic> body,
   });
+
+  @POST(EndPoint.loginWithSocial)
+  Future<LoginModel> loginWithSocial({
+    @Body() required Map<String, dynamic> body,
+  });
+  @POST(EndPoint.registerWithSocial)
+  Future<LoginModel> registerWithSocial({
+    @Body() required Map<String, dynamic> body,
+  });
 }

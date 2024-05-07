@@ -10,6 +10,8 @@ class EndPoint {
   static const String verifyOtpRestorePassword = 'validate-otp-password';
   static const String changePassword = 'change-password';
   static const String verifyOtp = 'validate-otp';
+  static const String loginWithSocial = 'login-with-social';
+  static const String registerWithSocial = 'register-with-social';
   static const String category = 'categories';
   static const String getAttributesForAds = 'attributes';
   static const String getAttributesByFilter = 'attributes';

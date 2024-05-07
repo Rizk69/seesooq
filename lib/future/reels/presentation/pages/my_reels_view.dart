@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
-import 'package:opensooq/core/utils/media_query_values.dart';
 import 'package:opensooq/future/reels/data/model/my_reels_model.dart';
 import 'package:opensooq/future/reels/presentation/bloc/reels_bloc.dart';
 import 'package:opensooq/future/setting/presentation/edit_profile/presentation/widgets/anmtionsucssuffly.dart';
@@ -18,30 +17,15 @@ class EmptyMyReelsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 15),
-          child: Column(
-            children: [
-              HeaderScreens(
-                  title: 'reels',
-                  onPressed: () {
-                    context.goNamed(Routes.reels);
-                  }),
-              Gap(
-                context.height / 4.3,
-              ),
-              const Center(child: AnimatedCheck(img: "assets/images/videoreels.png")),
-              const Gap(20),
-              Center(child: titleText('empty_reels_title', HexColor('#4C0497'), StyleText.h4)),
-              const Gap(10),
-              Center(child: titleText('des_location', HexColor('#707070'), StyleText.h5)),
-              Center(child: titleText('des_location1', HexColor('#707070'), StyleText.h5)),
-            ],
-          ),
-        ),
-      ),
+    return Column(
+      children: [
+        const Center(child: AnimatedCheck(img: "assets/images/videoreels.png")),
+        const Gap(20),
+        Center(child: titleText('empty_reels_title', HexColor('#4C0497'), StyleText.h4)),
+        const Gap(10),
+        Center(child: titleText('des_location', HexColor('#707070'), StyleText.h5)),
+        Center(child: titleText('des_location1', HexColor('#707070'), StyleText.h5)),
+      ],
     );
   }
 
@@ -63,7 +47,7 @@ class MyReelsView extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 15),
+          padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
               HeaderScreens(
@@ -74,6 +58,9 @@ class MyReelsView extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               BlocBuilder<ReelsBloc, ReelsState>(builder: (context, state) {
+                if (state.myReels?.myReels?.isEmpty ?? true) {
+                  return const EmptyMyReelsView();
+                }
                 return Expanded(
                   child: GridView.builder(
                     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

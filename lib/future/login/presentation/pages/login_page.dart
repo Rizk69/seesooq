@@ -255,8 +255,10 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 BlocListener<SignUpCubit, SignUpState>(
                     listener: (context, state) {
-                      if (state.socialData.isNotEmpty) {
-                        context.goNamed(Routes.signUp, extra: state.socialData);
+                      if (state.signUpStatus == SignUpStatus.social) {
+                        context.goNamed(
+                          Routes.home,
+                        );
                       }
                     },
                     child: const SignUpWithSocialMediaWidget(text: 'Or log in with')),
