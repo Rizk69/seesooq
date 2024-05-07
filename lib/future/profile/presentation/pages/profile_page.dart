@@ -57,7 +57,7 @@ class _ProfilePageState extends State<ProfilePage> {
           elevation: 0,
           leading: IconButton(
             onPressed: () {
-              context.go(Routes.home);
+              context.pushNamed(Routes.home);
             },
             icon: const Icon(
               Icons.arrow_back_ios,
@@ -71,7 +71,8 @@ class _ProfilePageState extends State<ProfilePage> {
             children: [
               const SizedBox(height: 10),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
@@ -109,7 +110,8 @@ class _ProfilePageState extends State<ProfilePage> {
                         color: Colors.grey.withOpacity(0.5),
                         spreadRadius: 0.5,
                         blurRadius: 0.5,
-                        offset: const Offset(0, 0.5), // changes position of shadow
+                        offset:
+                            const Offset(0, 0.5), // changes position of shadow
                       ),
                     ],
                   ),
@@ -118,14 +120,13 @@ class _ProfilePageState extends State<ProfilePage> {
                       switch (index) {
                         case 0:
                           {
-                            context.goNamed(Routes.followersView);
+                            context.pushNamed(Routes.followersView);
                           }
                           break;
                         case 1:
                           {
-                            context.goNamed(Routes.followingView);
+                            context.pushNamed(Routes.followingView);
                           }
-                          // Handle action for index 1
                           break;
                         case 2:
                           {
@@ -247,18 +248,25 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                     ),
                     onTap: () {
-                      // cubit.updateIndex(index);
-                      //
-                      // scaffoldKey.currentState!.closeDrawer();
-
-                      if (index == 5) {
-                        context.goNamed(Routes.packages);
-                      } else if (index == 4) {
+                      if (titles[index].toString() == 'ads_drawer') {
+                        context.pushNamed(Routes.myAds);
+                      } else if (titles[index].toString() == 'reels_drawer') {
+                        context.pushNamed(Routes.reels);
+                      } else if (titles[index].toString() == 'wallet_drawer') {
                         context.pushNamed(Routes.wallet);
-                      } else if (index == 6) {
-                        context.goNamed(Routes.favorite);
-                      } else if (index == 9) {
-                        context.goNamed(Routes.setting);
+                      } else if (titles[index].toString() == 'package_drawer') {
+                        context.pushNamed(Routes.packages);
+                      } else if (titles[index].toString() ==
+                          'favorite_drawer') {
+                        context.pushNamed(Routes.favorite);
+                      } else if (titles[index].toString() == 'setting_drawer') {
+                        context.pushNamed(Routes.setting);
+                      } else if (titles[index].toString() == 'blogs_drawer') {
+                        context.pushNamed(Routes.blogsRoute);
+                      } else if (titles[index].toString() == 'logout') {
+                        LoginCubit.get(context).deleteLocalUser().then((value) {
+                          context.pushNamed(Routes.login);
+                        });
                       }
                     },
                     leading: CircleAvatar(

@@ -24,10 +24,8 @@ class CardPersonalWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, HomeState>(builder: (context, state) {
-      print("Rizk ${state.userLocalModel?.user?.name?.isEmpty}");
       bool isGuest = state.userLocalModel?.user?.name?.isEmpty ?? true;
       String userName = isGuest ? "Guest" : state.userLocalModel!.user!.name!;
-
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -92,6 +90,115 @@ class CardPersonalWidget extends StatelessWidget {
               ),
             ],
           ),
+          if (type == CardPersonalWidgetType.drawer)
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        context.goNamed(Routes.editProfile);
+                      },
+                      icon: SvgPicture.asset(
+                        'edit_profile'.toSvg,
+                        width: 20,
+                        height: 20,
+                      ),
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.white),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+        ],
+      );
+    });
+  }
+}
+class CardPersonalProfileWidget extends StatelessWidget {
+  const CardPersonalProfileWidget(
+      {super.key, required this.bodyText, required this.type});
+
+  final String bodyText;
+
+  final CardPersonalWidgetType type;
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<HomeCubit, HomeState>(builder: (context, state) {
+      bool isGuest = state.userLocalModel?.user?.name?.isEmpty ?? true;
+      String userName = isGuest ? "Guest" : state.userLocalModel!.user!.name!;
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: [
+              const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: CircleAvatar(
+                  radius: 37,
+                  backgroundColor: Colors.red,
+                  backgroundImage: AssetImage('assets/images/person.jpeg'),
+                ),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 2.9,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Flexible(
+                          child: TranslateText(
+                              maxLines: 1,
+                              styleText: StyleText.h4,
+                              colorText: type == CardPersonalWidgetType.drawer
+                                  ? Colors.white
+                                  : null,
+                              text: 'welcomeName'.tr(args: [userName])),
+                        ),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        if (type == CardPersonalWidgetType.home)
+                          SvgPicture.asset('hey'.toSvg),
+                      ],
+                    ),
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TranslateText(
+                        styleText: StyleText.h5,
+                        text: bodyText.tr(),
+                        colorText: type == CardPersonalWidgetType.drawer
+                            ? Colors.white
+                            : null,
+                      ),
+                      if (type == CardPersonalWidgetType.drawer) ...[
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        Align(
+                            alignment: Alignment.topCenter,
+                            child: Image.asset('gold'.toPng,
+                                width: 16, height: 16)),
+                      ],
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
+          Spacer(),
           if (type == CardPersonalWidgetType.drawer)
             Expanded(
               child: Padding(
