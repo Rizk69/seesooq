@@ -44,7 +44,7 @@ abstract class DioFactory {
           responseHeader: false,
           error: true,
           compact: true,
-          maxWidth: 90,
+          maxWidth: 20,
         ),
     ]);
     return client;

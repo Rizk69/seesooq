@@ -119,15 +119,12 @@ class LoginCubit extends Cubit<LoginState> with ChangeNotifier {
             ),
           ),
         ));
-        notifyListeners();
       } else {
         emit(state.copyWith(
           loginStatus: LoginStatus.unAuthorized,
         ));
       }
     });
-    notifyListeners();
-    print('user: ${state.isHome}');
   }
 
   Future<void> deleteLocalUser() async {

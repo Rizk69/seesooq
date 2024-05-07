@@ -42,7 +42,7 @@ class _PaymentStripePageState extends State<PaymentStripePage> {
             if (widget.typeTransaction == TypeTransaction.wallet) {
               WalletCubit.get(context).storePayment(amount: widget.price.toString(), transactionId: state.paymentIntent?.id.toString() ?? '');
             }
-            context.goNamed(Routes.paymentSuccess, extra: widget.typeTransaction.toString());
+            context.pushNamed(Routes.paymentSuccess, extra: widget.typeTransaction.toString());
           }
         }, builder: (context, state) {
           var cubit = PaymentGatewayCubit();

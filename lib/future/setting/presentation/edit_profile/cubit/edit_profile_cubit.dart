@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:opensooq/di.dart' as di;
 import 'package:opensooq/future/setting/data/repositories/setting_repository.dart';
@@ -8,8 +9,14 @@ enum Gender { male, female }
 
 class EditProfileCubit extends Cubit<EditProfileState> {
   EditProfileCubit() : super(EditProfileState());
+
   static EditProfileCubit get(context) => BlocProvider.of(context);
   final SettingRepository settingRepository = di.sl<SettingRepository>();
+
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+
+  final TextEditingController phoneController = TextEditingController();
 
   void selectGender(Gender gender) {
     emit(state.copyWith(gender: gender));
@@ -22,13 +29,17 @@ class EditProfileCubit extends Cubit<EditProfileState> {
     ));
   }
 
-  Future<void> editUser() async {
+  Future<void> editUser(String name, String email, String phone) async {
     emit(
       state.copyWith(
         statusEditUser: StatusEditUser.loading,
       ),
     );
-    final response = await settingRepository.editUser(name: '', email: 'email');
+    final response = await settingRepository.editUser(
+      name: nameController.text.isEmpty ? name : nameController.text,
+      email: emailController.text.isEmpty ? email : emailController.text,
+      phone: phoneController.text.isEmpty ? phone : phoneController.text,
+    );
     response.fold(
       (left) => emit(
         state.copyWith(

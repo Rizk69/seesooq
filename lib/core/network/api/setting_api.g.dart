@@ -33,7 +33,7 @@ class _SettingApi implements SettingApi {
     )
             .compose(
               _dio.options,
-              '/place/textsearch/json',
+              'update_profile',
               queryParameters: queryParameters,
               data: _data,
             )

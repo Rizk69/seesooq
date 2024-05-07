@@ -1,6 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:opensooq/config/routes/app_routes.dart';
 import 'package:opensooq/core/utils/custom_button_widget.dart';
 import 'package:opensooq/core/utils/hex_color.dart';
 import 'package:opensooq/core/utils/media_query_values.dart';
@@ -28,6 +30,9 @@ class _ConfirmCodePageState extends State<ConfirmCodePage> {
     return BlocConsumer<SignUpCubit, SignUpState>(listener: (context, state) {
       if (state.signUpStatus == SignUpStatus.doneOtp) {
         LoginCubit.get(context).getLocalUser();
+        context.goNamed(
+          Routes.home,
+        );
       }
     }, builder: (context, state) {
       var cubit = SignUpCubit.get(context);
@@ -60,8 +65,7 @@ class _ConfirmCodePageState extends State<ConfirmCodePage> {
                     Expanded(
                       child: TranslateText(
                         styleText: StyleText.h5,
-                        text: 'hintConfirmCode'
-                            .tr(args: [(widget.recoveryEmail)]),
+                        text: 'hintConfirmCode'.tr(args: [(widget.recoveryEmail)]),
                         colorText: Theme.of(context).colorScheme.primary,
                         textAlign: TextAlign.center,
                         maxLines: 2,
@@ -75,10 +79,7 @@ class _ConfirmCodePageState extends State<ConfirmCodePage> {
               ),
               Center(
                 child: CircleAvatar(
-                    radius: 80,
-                    backgroundColor: HexColor('4C0497').withOpacity(0.1),
-                    child:
-                        Image.asset('pin_code'.toPng, width: 100, height: 100)),
+                    radius: 80, backgroundColor: HexColor('4C0497').withOpacity(0.1), child: Image.asset('pin_code'.toPng, width: 100, height: 100)),
               ),
               Padding(
                 padding: const EdgeInsets.all(16.0),
@@ -112,12 +113,10 @@ class _ConfirmCodePageState extends State<ConfirmCodePage> {
                           activeFillColor: HexColor('#F5F5F5').withOpacity(1),
                           disabledBorderWidth: 2,
                           inactiveColor: Colors.black38,
-                          inactiveFillColor:
-                              HexColor('#F5F5F5').withOpacity(0.6),
+                          inactiveFillColor: HexColor('#F5F5F5').withOpacity(0.6),
                           activeColor: HexColor('#F5F5F5').withOpacity(0.6),
                           selectedColor: Colors.black,
-                          selectedFillColor:
-                              HexColor('#F5F5F5').withOpacity(0.6),
+                          selectedFillColor: HexColor('#F5F5F5').withOpacity(0.6),
                           disabledColor: Colors.grey),
                       onChanged: (value) {
                         setState(() {
@@ -142,8 +141,7 @@ class _ConfirmCodePageState extends State<ConfirmCodePage> {
                         width: context.width,
                         child: CustomButtonWidget(
                           color: Colors.white,
-                          backgroundColor:
-                              Theme.of(context).colorScheme.primary,
+                          backgroundColor: Theme.of(context).colorScheme.primary,
                           text: 'submitTheCode'.tr(),
                           onPressed: () {
                             cubit.checkCodeVerify();

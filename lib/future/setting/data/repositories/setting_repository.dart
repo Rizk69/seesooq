@@ -7,7 +7,7 @@ import 'package:opensooq/future/setting/data/models/general_setting_model.dart';
 import 'package:opensooq/future/signup/data/repositories/signup_repository.dart';
 
 abstract class SettingRepository {
-  Future<Either<Failures, EditUserModel>> editUser({required String name, required String email});
+  Future<Either<Failures, EditUserModel>> editUser({required String name, required String email, required String phone});
   Future<Either<Failures, GeneralSettingModel>> getPrivacyPolicy();
   Future<Either<Failures, GeneralSettingModel>> getTermsOfUse();
   Future<Either<Failures, GeneralSettingModel>> getReasonsForDeletion();
@@ -24,8 +24,8 @@ class SettingRepositoryImpl implements SettingRepository {
   SettingRepositoryImpl(this.settingRemoteDataSource);
 
   @override
-  Future<Either<Failures, EditUserModel>> editUser({required String name, required String email}) async {
-    return executeAndCatchError<EditUserModel>(() async => await settingRemoteDataSource.editUser(name: name, email: email));
+  Future<Either<Failures, EditUserModel>> editUser({required String name, required String email, required String phone}) async {
+    return executeAndCatchError<EditUserModel>(() async => await settingRemoteDataSource.editUser(name: name, email: email, phone: phone));
   }
 
   @override

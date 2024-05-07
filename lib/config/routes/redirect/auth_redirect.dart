@@ -36,13 +36,14 @@ class AuthRedirect extends GoRedirect {
       return Routes.home;
     }
 
-    if (signUpState.signUpStatus == SignUpStatus.doneOtp && !isLoggingIn) {
+    if (signUpState.signUpStatus == SignUpStatus.doneOtp && !isLoggingIn && !userSaved) {
       return Routes.home;
     }
     if (loginState.loginStatus == LoginStatus.success && isLoggingIn) {
       return Routes.home;
     }
     if (loginState.loginStatus == LoginStatus.unAuthorized && !isLoggingIn) {
+      print('loginState.loginStatus: ${state.uri.path}');
       return Routes.login;
     }
 

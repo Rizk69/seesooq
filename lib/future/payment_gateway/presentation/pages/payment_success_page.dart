@@ -43,7 +43,12 @@ class PaymentSuccessPage extends StatelessWidget {
                 color: Colors.white,
                 text: 'continue_to_the_homepage',
                 onPressed: () {
-                  context.go(Routes.home);
+                  print('type: $type');
+                  if (type.toString() == 'TypeTransaction.wallet') {
+                    context.goNamed(Routes.wallet);
+                  } else {
+                    context.goNamed(Routes.home);
+                  }
                 },
               )),
         )

@@ -29,7 +29,7 @@ class EndPoint {
   static const String getCities = 'cities/{id}';
   static const String getGovernorate = 'governorate';
   static const String searchPlaces = '/place/textsearch/json';
-  static const String editProfile = '/place/textsearch/json';
+  static const String editProfile = 'update_profile';
   static const String privacyPolicy = 'pages/privacy-policy';
   static const String termsOfUse = 'pages/terms-of-use';
   static const String reasonsForDeletion = 'pages/reasons-for-deletion';
