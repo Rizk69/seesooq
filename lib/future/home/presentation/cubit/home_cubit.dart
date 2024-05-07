@@ -132,8 +132,8 @@ class HomeCubit extends Cubit<HomeState> with ChangeNotifier {
 
 const List<String> titles = [
   'ads_drawer',
-  // 'reels_drawer',
-  'booking_drawer',
+  'reels_drawer',
+  // 'booking_drawer',
   // 'auction_drawer',
   'wallet_drawer',
   'package_drawer',
