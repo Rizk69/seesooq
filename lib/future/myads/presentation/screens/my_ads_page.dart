@@ -28,7 +28,7 @@ class MyAdsPage extends StatelessWidget {
               HeaderScreens(
                 title: 'ads_drawer',
                 onPressed: () {
-                  context.goNamed(Routes.home);
+                  context.pop();
                 },
               ),
               const SizedBox(height: 20),

@@ -41,22 +41,22 @@ class MyOptionDrawerWidget extends StatelessWidget {
               scaffoldKey.currentState!.closeDrawer();
 
               if (titles[index].toString() == 'ads_drawer') {
-                context.goNamed(Routes.myAds);
+                context.pushNamed(Routes.myAds);
               } else if (titles[index].toString() == 'reels_drawer') {
-                context.goNamed(Routes.reels);
+                context.pushNamed(Routes.reels);
               } else if (titles[index].toString() == 'wallet_drawer') {
-                context.goNamed(Routes.wallet);
+                context.pushNamed(Routes.wallet);
               } else if (titles[index].toString() == 'package_drawer') {
-                context.goNamed(Routes.packages);
+                context.pushNamed(Routes.packages);
               } else if (titles[index].toString() == 'favorite_drawer') {
-                context.goNamed(Routes.favorite);
+                context.pushNamed(Routes.favorite);
               } else if (titles[index].toString() == 'setting_drawer') {
-                context.goNamed(Routes.setting);
+                context.pushNamed(Routes.setting);
               } else if (titles[index].toString() == 'blogs_drawer') {
-                context.goNamed(Routes.blogsRoute);
+                context.pushNamed(Routes.blogsRoute);
               } else if (titles[index].toString() == 'logout') {
                 LoginCubit.get(context).deleteLocalUser().then((value) {
-                  context.goNamed(Routes.login);
+                  context.pushNamed(Routes.login);
                 });
               }
             },

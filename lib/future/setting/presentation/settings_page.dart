@@ -42,7 +42,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 HeaderScreens(
                   title: 'setting',
                   onPressed: () {
-                    context.go(Routes.profilePage);
+                    context.pop();
                   },
                 ),
                 const Gap(24),
