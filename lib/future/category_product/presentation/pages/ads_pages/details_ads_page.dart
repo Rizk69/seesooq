@@ -1,6 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:opensooq/core/utils/custom_button_widget.dart';
 import 'package:opensooq/core/utils/custom_failed_app.dart';
 import 'package:opensooq/core/widget/text_translate_manager.dart';
 import 'package:opensooq/future/category_product/data/models/brand_ads_model.dart';
@@ -118,7 +121,17 @@ class _DetailsAdsPageState extends State<DetailsAdsPage> {
                           // optionId: e.id?.toInt() ?? 0,
                         ))
                     .toList() ??
-                []
+                [],
+            const SizedBox(height: 24),
+            SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child: CustomButtonWidget(
+                  color: Colors.white,
+                  text: 'next'.tr(),
+                  onPressed: () {
+                    context.goNamed('location_details_ads');
+                  },
+                ))
           ],
         ),
       );

@@ -4,7 +4,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:opensooq/core/utils/custom_button_widget.dart';
 import 'package:opensooq/core/utils/media_query_values.dart';
 import 'package:opensooq/core/widget/text_translate_manager.dart';
 import 'package:opensooq/future/category_product/presentation/cubit/add_ads_cubit.dart';
@@ -79,6 +81,16 @@ class LocationAdsPage extends StatelessWidget {
               //     ),
               //   ),
               // ),
+              const SizedBox(height: 24),
+              SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  child: CustomButtonWidget(
+                    color: Colors.white,
+                    text: 'next'.tr(),
+                    onPressed: () {
+                      context.goNamed('personal_info_ads');
+                    },
+                  ))
             ],
           ),
         );
