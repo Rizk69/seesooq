@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -137,7 +138,7 @@ class _UploadPhotoPageState extends State<UploadPhotoPage> {
                 ),
                 CustomButtonWidget(
                     color: Colors.white,
-                    text: 'Next',
+                    text: 'next'.tr(),
                     onPressed: () {
                       context.pushNamed(Routes.uploadAdsPage,
                           extra: {"categoryName": widget.categoryName, "details": widget.details, "model": "10", "cubit": AddAdsCubit.get(context)});

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -62,7 +63,7 @@ class _ShowAdsByAddingScreenState extends State<ShowAdsByAddingScreen> {
             TranslateText(
               styleText: StyleText.h3,
               fontWeight: FontWeight.w700,
-              text: '${state.attributesForm.price.price} JD',
+              text: '${state.attributesForm.price.price}${'jd'.tr()}',
               colorText: HexColor("#4C0497"),
             ),
             const Gap(
@@ -101,7 +102,7 @@ class _ShowAdsByAddingScreenState extends State<ShowAdsByAddingScreen> {
             TranslateText(
               styleText: StyleText.h4,
               fontWeight: FontWeight.w500,
-              text: 'Attributes',
+              text: 'attributes',
               colorText: HexColor("#200E32"),
             ),
             const Gap(
@@ -140,7 +141,7 @@ class _ShowAdsByAddingScreenState extends State<ShowAdsByAddingScreen> {
                 height: 50,
                 width: context.width * 0.9,
                 child: CustomButtonWidget(
-                  text: 'Publish',
+                  text: 'publish'.tr(),
                   onPressed: () {
                     // context.goNamed(Routes.reviewAdsRoute);
                     AddAdsCubit.get(context).createAdd();

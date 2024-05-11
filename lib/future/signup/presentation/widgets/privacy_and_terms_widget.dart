@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:opensooq/core/utils/hex_color.dart';
 
@@ -9,14 +10,14 @@ class PrivacyAndTermsWidget extends StatelessWidget {
     return Expanded(
       child: Text.rich(TextSpan(children: [
         TextSpan(
-            text: 'By creating an account, you have read and agree to the ',
+            text: 'textPrivacy1'.tr(),
             style: TextStyle(color: HexColor('#707070B2'))),
         TextSpan(
-            text: 'Privacy Policy',
+            text: 'textPrivacy2'.tr(),
             style: TextStyle(color: HexColor('#F05A35'))),
-        TextSpan(text: ' and ', style: TextStyle(color: HexColor('#707070B2'))),
+        TextSpan(text: 'textPrivacy3'.tr(), style: TextStyle(color: HexColor('#707070B2'))),
         TextSpan(
-            text: 'Terms of Use', style: TextStyle(color: HexColor('#F05A35'))),
+            text: 'textPrivacy4'.tr(), style: TextStyle(color: HexColor('#F05A35'))),
       ])),
     );
   }

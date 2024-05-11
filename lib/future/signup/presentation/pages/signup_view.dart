@@ -71,7 +71,10 @@ class _SignUpViewState extends State<SignUpView> {
         padding: const EdgeInsets.only(bottom: 30),
         child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
           SizedBox(height: context.height * 0.1),
-          Hero(tag: 'logo', child: SvgPicture.asset('logo-app'.toSvg, width: 300, height: 150)),
+          Hero(
+              tag: 'logo',
+              child:
+                  SvgPicture.asset('logo-app'.toSvg, width: 300, height: 150)),
           // TranslateText(
           //   styleText: StyleText.h4,
           //   text: 'createAnAccount'.tr(),
@@ -104,10 +107,10 @@ class _SignUpViewState extends State<SignUpView> {
                     child: TextFormFiledApp(
                       textEditingController: email,
                       prefixIcon: 'email',
-                      hintText: 'email'.tr(),
+                      hintText: 'enter_email'.tr(),
                       validator: (value) {
                         if (value.isEmpty) {
-                          return 'email'.tr();
+                          return 'enter_email'.tr();
                         }
                       },
                     ),
@@ -231,15 +234,24 @@ class _SignUpViewState extends State<SignUpView> {
                                 value: state.confirmPrivacyAndTerms,
                                 visualDensity: VisualDensity.comfortable,
                                 fillColor: state.confirmPrivacyAndTerms
-                                    ? MaterialStateProperty.all(AppColors.primary)
-                                    : MaterialStateProperty.all(Colors.transparent),
+                                    ? MaterialStateProperty.all(
+                                        AppColors.primary)
+                                    : MaterialStateProperty.all(
+                                        Colors.transparent),
                                 shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(3), side: const BorderSide(color: Colors.white, strokeAlign: 1, width: 1)),
-                                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                                    borderRadius: BorderRadius.circular(3),
+                                    side: const BorderSide(
+                                        color: Colors.white,
+                                        strokeAlign: 1,
+                                        width: 1)),
+                                materialTapTargetSize:
+                                    MaterialTapTargetSize.shrinkWrap,
                                 activeColor: AppColors.primary,
                                 focusColor: Colors.white,
                                 hoverColor: Colors.white,
-                                side: BorderSide(color: HexColor('#70707080').withOpacity(0.5)),
+                                side: BorderSide(
+                                    color:
+                                        HexColor('#70707080').withOpacity(0.5)),
                                 onChanged: (value) {
                                   cubit.confirmTermAndCondition(value!);
                                 },
@@ -264,7 +276,7 @@ class _SignUpViewState extends State<SignUpView> {
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
                           if (!state.confirmPrivacyAndTerms) {
-                            EasyLoading.showError('Please confirm the terms and conditions');
+                            EasyLoading.showError('confirmTerms'.tr());
                           } else {
                             cubit.signUpWithEmailAndPhone(
                               params: SignUpParams(
@@ -282,7 +294,7 @@ class _SignUpViewState extends State<SignUpView> {
                     ),
                   ),
                   SizedBox(height: context.height * 0.02),
-                  const SignUpWithSocialMediaWidget(text: 'Or create your account with'),
+                  SignUpWithSocialMediaWidget(text: 'textSingUp'.tr()),
                   SizedBox(height: context.height * 0.02),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

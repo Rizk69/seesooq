@@ -245,7 +245,7 @@ class _LoginPageState extends State<LoginPage> {
                         button: true,
                         child: TranslateText(
                           styleText: StyleText.h6,
-                          text: 'Continue as a Guest'.tr(),
+                          text: 'continueAsGuest'.tr(),
                           fontWeight: FontWeight.normal,
                           fontSize: 14,
                         ),
@@ -261,7 +261,7 @@ class _LoginPageState extends State<LoginPage> {
                         );
                       }
                     },
-                    child: const SignUpWithSocialMediaWidget(text: 'Or log in with')),
+                    child:  SignUpWithSocialMediaWidget(text: 'textLogin'.tr())),
                 SizedBox(height: context.height * 0.02),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

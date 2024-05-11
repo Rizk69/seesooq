@@ -28,7 +28,7 @@ class LocationAdsPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 16),
-              TranslateText(styleText: StyleText.h4, text: 'City'.tr(), colorText: Colors.black),
+              TranslateText(styleText: StyleText.h4, text: 'city'.tr(), colorText: Colors.black),
               const SizedBox(height: 16),
               if (state.governorate.isNotEmpty)
                 CustomDropdown.search(
@@ -44,7 +44,7 @@ class LocationAdsPage extends StatelessWidget {
                       hintStyle: TextStyle(color: Colors.grey),
                     )),
               const SizedBox(height: 16),
-              TranslateText(styleText: StyleText.h4, text: 'Governorate'.tr(), colorText: Colors.black),
+              TranslateText(styleText: StyleText.h4, text: 'governorate'.tr(), colorText: Colors.black),
               const SizedBox(height: 16),
               if (state.cities.isNotEmpty && state.locationStatus == LocationStatus.loaded)
                 CustomDropdown.search(

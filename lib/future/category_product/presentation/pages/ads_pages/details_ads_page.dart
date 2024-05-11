@@ -33,7 +33,7 @@ class _DetailsAdsPageState extends State<DetailsAdsPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const TranslateText(
+             TranslateText(
               text: 'adsName',
               styleText: StyleText.h4,
               fontSize: 16,

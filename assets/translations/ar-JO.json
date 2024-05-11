@@ -4,8 +4,19 @@
   "setting": "الاعدادات",
   "fav": "المفضلة",
   "search": "البحث",
+  "login": "تسجيل الدخول",
+  "emailHint": "البريد الإلكتروني أو رقم الهاتف المحمول",
+  "forgetPassword": "نسيت كلمة السر؟",
+  "continueAsGuest": "المتابعة كضيف",
+  "newUser": "إنشاء حساب جديد",
+  "signUp": "إنشاء حساب",
+  "fullName": "الاسم الكامل",
+
+  "hintForgetPassword": "ادخل بريدك الالكتروني حتى نتمكن من إرسال رمز لتغيير كلمة السر",
   "classification": "التصنيف",
   "search classification": "تصنيف البحث",
+  "confirmPasswordHint": "تأكيد كلمة المرور",
+  "passwordHint": "كلمة المرور",
   "resetting": "إعادة ضبط",
   "fingerPrint": "تفعيل بصمة الاصبع",
   "security": "الحماية",
@@ -37,6 +48,8 @@
   "mobile_number": "رقم الهاتف",
   "gender": "النوع",
   "enter_email": "البريد الالكتروني",
+  "phoneHint": "رقم الهاتف",
+
   "account_management": "إدارة الحساب",
   "notifications": "الإشعارات",
   "language": "اللغة",
@@ -105,5 +118,34 @@
   "des_successfully_subscribed": "يمكنك الاستمتاع بكافة مميزاتها...",
   "add_money": "إضافة الأموال",
   "charge_wallet": "شحن المحفظة",
-  "transactions": "المعاملات"
+  "transactions": "المعاملات",
+  "textPrivacy1": "بإنشاء حساب، فإنك تقرأ وتوافق على ",
+  "textPrivacy2": "سياسة الخصوصية",
+  "textPrivacy3": " و",
+  "textPrivacy4": "شروط الاستخدام",
+  "textLogin": "أو قم بتسجيل الدخول باستخدام",
+  "textSingUp":  "أو أنشئ حسابك باستخدام",
+  "alreadyUser": "هل لديك حساب بالفعل؟",
+  "signIn": "تسجيل الدخول",
+  "confirmTerms": "يرجى تأكيد الشروط والأحكام",
+  "blogs_drawer": "مدونات",
+  "adsName": "اسم الإعلانات",
+  "adsDescription": "وصف الإعلانات",
+  "priceAds": "سعر الإعلانات",
+  "uploadPhoto": "رفع صور",
+  "adDetails": "تفاصيل الإعلان",
+  "locationDetails": "تفاصيل الموقع",
+  "info": "معلومات",
+  "showAd": "عرض الإعلان",
+  "governorate": "محافظة",
+  "jd": "دينار الأردني",
+  "location": "الموقع",
+  "attributes": "السمات",
+  "publish": "نشر"
+
+
+
+
+
+
 }

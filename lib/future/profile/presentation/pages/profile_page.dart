@@ -341,12 +341,12 @@ class _ProfilePageState extends State<ProfilePage> {
 
   List<String> _valueTitles(GeneralStatisticModel statisticModel) {
     return [
-      '${statisticModel.countFollowers} Followers',
-      '${statisticModel.countFollowing} Following',
-      '${statisticModel.countAccountView} Views',
+      '${statisticModel.countFollowers}',
+      '${statisticModel.countFollowing}',
+      '${statisticModel.countAccountView}',
       '${statisticModel.countAccountRatings}',
-      '${statisticModel.countAdvertisementNumbers} Ads',
-      '${statisticModel.countAdvertisementViews} Views',
+      '${statisticModel.countAdvertisementNumbers}',
+      '${statisticModel.countAdvertisementViews}',
     ];
   }
 

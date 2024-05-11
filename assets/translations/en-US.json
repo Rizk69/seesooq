@@ -14,6 +14,8 @@
   "accepting": "If you continue, you are accepting\n",
   "conditionAndTerms": "shopping terms and condition ",
   "and": "and ",
+  "continueAsGuest": "Continue as Guest",
+
   "privacyPolicy": "privacy policy",
   "closeDeal": "To close deals, you will receive shats. let shopping notify you",
   "skip": "Skip",
@@ -197,5 +199,18 @@
   "des_successfully_subscribed": "You can enjoy all its features...",
   "add_money": "Add Money",
   "charge_wallet": "Charge Wallet",
-  "transactions": "Transactions"
+  "transactions": "Transactions",
+  "textPrivacy1": "By creating an account, you have read and agree to the ",
+  "textPrivacy2": "Privacy Policy",
+  "textPrivacy3": " and ",
+  "textPrivacy4": "Terms of Use",
+  "textLogin": "Or log in with",
+  "textSingUp":  "Or create your account with",
+  "confirmTerms": "Please confirm the terms and conditions",
+  "blogs_drawer": "Blogs",
+  "governorate": "Governorate",
+  "jd": "JD",
+  "location": "Location",
+  "attributes": "Attributes",
+  "publish": "Publish"
 }
