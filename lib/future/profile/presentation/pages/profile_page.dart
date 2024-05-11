@@ -15,7 +15,10 @@ import 'package:opensooq/future/home/presentation/cubit/home_cubit.dart';
 import 'package:opensooq/future/home/presentation/widgets/my_option_drawer_widget.dart';
 import 'package:opensooq/future/login/presentation/cubit/login_cubit.dart';
 import 'package:opensooq/future/login/presentation/cubit/login_state.dart';
+import 'package:opensooq/future/profile/cubit/profile_cubit/profile_cubit.dart';
+import 'package:opensooq/future/profile/cubit/profile_cubit/profile_state.dart';
 import 'package:opensooq/future/profile/presentation/widgets/header_profile.dart';
+import 'package:opensooq/future/setting/data/models/general_statistic_model.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -37,9 +40,12 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LoginCubit, LoginState>(builder: (context, state) {
-      var user = FirebaseAuth.instance.currentUser;
-      return Scaffold(
+    var user = FirebaseAuth.instance.currentUser;
+
+    // return BlocBuilder<LoginCubit, LoginState>(builder: (context, state) {
+    return BlocProvider(
+      create: (context) => ProfileCubit()..getStatistic(),
+      child: Scaffold(
         appBar: AppBar(
           actions: [
             Padding(
@@ -94,126 +100,147 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ],
               ),
-              AlignedGridView.count(
-                shrinkWrap: true,
-                crossAxisCount: 2,
-                mainAxisSpacing: 10,
-                crossAxisSpacing: 10,
-                physics: const NeverScrollableScrollPhysics(),
-                padding: const EdgeInsets.all(8),
-                itemBuilder: (context, index) => Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 0.5,
-                        blurRadius: 0.5,
-                        offset:
-                            const Offset(0, 0.5), // changes position of shadow
-                      ),
-                    ],
-                  ),
-                  child: ListTile(
-                    onTap: () {
-                      switch (index) {
-                        case 0:
-                          {
-                            context.pushNamed(Routes.followersView);
-                          }
-                          break;
-                        case 1:
-                          {
-                            context.pushNamed(Routes.followingView);
-                          }
-                          break;
-                        case 2:
-                          {
-                            showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return const AlertDialog(
-                                  backgroundColor: Colors.black,
-                                  content: Text('2'),
-                                  // Add AlertDialog content here for index 0
-                                );
-                              },
-                            );
-                          }
-                          // Handle action for index 2
-                          break;
-                        case 3:
-                          {
-                            showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return const AlertDialog(
-                                  backgroundColor: Colors.black,
-                                  content: Text('3'),
-                                  // Add AlertDialog content here for index 0
-                                );
-                              },
-                            );
-                          }
-                          break;
-                        case 4:
-                          {
-                            showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return const AlertDialog(
-                                  backgroundColor: Colors.black,
-                                  content: Text('4'),
-                                  // Add AlertDialog content here for index 0
-                                );
-                              },
-                            );
-                          }
-                          break;
-                        case 5:
-                          {
-                            showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return const AlertDialog(
-                                  backgroundColor: Colors.black,
-                                  content: Text('5'),
-                                  // Add AlertDialog content here for index 0
-                                );
-                              },
-                            );
-                          }
-                          break;
+              BlocBuilder<ProfileCubit, ProfileState>(
+                builder: (context, state) {
+                  if (state.profileStatus == ProfileStatus.loading) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
 
-                        default:
-                          Container();
-                      }
-                    },
-                    title: TranslateText(
-                      styleText: StyleText.h6,
-                      colorText: AppColors.grey,
-                      fontWeight: FontWeight.normal,
-                      text: _getTitles()[index],
-                    ),
-                    subtitle: TranslateText(
-                      styleText: StyleText.h6,
-                      colorText: HexColor('#200E32'),
-                      fontWeight: FontWeight.w500,
-                      text: _valueTitles()[index],
-                    ),
-                    leading: CircleAvatar(
-                      radius: 25,
-                      backgroundColor: HexColor('#4C0497').withOpacity(0.1),
-                      child: Image.asset(
-                        _iconTitles()[index],
-                        width: 35,
-                        height: 35,
-                      ),
-                    ),
-                  ),
-                ),
-                itemCount: 6,
+                  if (state.profileStatus == ProfileStatus.error) {
+                    return const Center(child: Text('Error'));
+                  }
+                  if (state.profileStatus == ProfileStatus.loaded) {
+                    var model = state.statisticModel;
+                    if (model != null) {
+                      return AlignedGridView.count(
+                        shrinkWrap: true,
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 10,
+                        crossAxisSpacing: 10,
+                        physics: const NeverScrollableScrollPhysics(),
+                        padding: const EdgeInsets.all(8),
+                        itemBuilder: (context, index) => Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 0.5,
+                                blurRadius: 0.5,
+                                offset: const Offset(
+                                    0, 0.5), // changes position of shadow
+                              ),
+                            ],
+                          ),
+                          child: ListTile(
+                            onTap: () {
+                              switch (index) {
+                                case 0:
+                                  {
+                                    context.pushNamed(Routes.followersView);
+                                  }
+                                  break;
+                                case 1:
+                                  {
+                                    context.pushNamed(Routes.followingView);
+                                  }
+                                  break;
+                                case 2:
+                                  {
+                                    showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return const AlertDialog(
+                                          backgroundColor: Colors.black,
+                                          content: Text('2'),
+                                          // Add AlertDialog content here for index 0
+                                        );
+                                      },
+                                    );
+                                  }
+                                  // Handle action for index 2
+                                  break;
+                                case 3:
+                                  {
+                                    showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return const AlertDialog(
+                                          backgroundColor: Colors.black,
+                                          content: Text('3'),
+                                          // Add AlertDialog content here for index 0
+                                        );
+                                      },
+                                    );
+                                  }
+                                  break;
+                                case 4:
+                                  {
+                                    showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return const AlertDialog(
+                                          backgroundColor: Colors.black,
+                                          content: Text('4'),
+                                          // Add AlertDialog content here for index 0
+                                        );
+                                      },
+                                    );
+                                  }
+                                  break;
+                                case 5:
+                                  {
+                                    showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return const AlertDialog(
+                                          backgroundColor: Colors.black,
+                                          content: Text('5'),
+                                          // Add AlertDialog content here for index 0
+                                        );
+                                      },
+                                    );
+                                  }
+                                  break;
+
+                                default:
+                                  Container();
+                              }
+                            },
+                            title: TranslateText(
+                              styleText: StyleText.h6,
+                              colorText: AppColors.grey,
+                              fontWeight: FontWeight.normal,
+                              text: _getTitles()[index],
+                            ),
+                            subtitle: TranslateText(
+                              styleText: StyleText.h6,
+                              colorText: HexColor('#200E32'),
+                              fontWeight: FontWeight.w500,
+                              text: _valueTitles(model)[index],
+                            ),
+                            leading: CircleAvatar(
+                              radius: 25,
+                              backgroundColor:
+                                  HexColor('#4C0497').withOpacity(0.1),
+                              child: Image.asset(
+                                _iconTitles()[index],
+                                width: 35,
+                                height: 35,
+                              ),
+                            ),
+                          ),
+                        ),
+                        itemCount: 6,
+                      );
+                    } else {
+                      return const Center(child: Text('no data'));
+                    }
+                  } else {
+                    return const Center(child: Text('something error'));
+                  }
+                },
               ),
               const Gap(10),
               Row(
@@ -295,8 +322,10 @@ class _ProfilePageState extends State<ProfilePage> {
             ],
           ),
         ),
-      );
-    });
+      ),
+    );
+    // }
+    // );
   }
 
   List<String> _getTitles() {
@@ -310,14 +339,14 @@ class _ProfilePageState extends State<ProfilePage> {
     ];
   }
 
-  List<String> _valueTitles() {
+  List<String> _valueTitles(GeneralStatisticModel statisticModel) {
     return [
-      '100 Followers',
-      '100 Following',
-      '200 Views',
-      '4.5',
-      '100 Ads',
-      '2000 Views',
+      '${statisticModel.countFollowers} Followers',
+      '${statisticModel.countFollowing} Following',
+      '${statisticModel.countAccountView} Views',
+      '${statisticModel.countAccountRatings}',
+      '${statisticModel.countAdvertisementNumbers} Ads',
+      '${statisticModel.countAdvertisementViews} Views',
     ];
   }
 

@@ -4,6 +4,7 @@ import 'package:injectable/injectable.dart';
 import 'package:opensooq/core/api/end_point.dart';
 import 'package:opensooq/future/setting/data/models/edit_user_model.dart';
 import 'package:opensooq/future/setting/data/models/general_setting_model.dart';
+import 'package:opensooq/future/setting/data/models/general_statistic_model.dart';
 import 'package:retrofit/retrofit.dart';
 
 part 'setting_api.g.dart';
@@ -29,6 +30,9 @@ abstract class SettingApi {
   Future<GeneralSettingModel> getContactUs();
   @GET(EndPoint.aboutUs)
   Future<GeneralSettingModel> getAboutUs();
+  @GET(EndPoint.getStatistic)
+  Future<GeneralStatisticModel> getStatistic();
   @DELETE(EndPoint.deleteAccount)
-  Future<GeneralSettingModel> deleteAccount({@Field('reason_delete') required String reason});
+  Future<GeneralSettingModel> deleteAccount(
+      {@Field('reason_delete') required String reason});
 }

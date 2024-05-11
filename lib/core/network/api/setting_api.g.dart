@@ -209,6 +209,34 @@ class _SettingApi implements SettingApi {
   }
 
   @override
+  Future<GeneralStatisticModel> getStatistic() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<GeneralStatisticModel>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'user/statistic',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value =
+        await compute(deserializeGeneralStatisticModel, _result.data!);
+    return value;
+  }
+
+  @override
   Future<GeneralSettingModel> deleteAccount({required String reason}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};

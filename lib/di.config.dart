@@ -41,7 +41,7 @@ import 'package:opensooq/future/blogs/data/data_sorces/blogs_remote_data_sorces.
 import 'package:opensooq/future/blogs/data/repositories/blogs_repository.dart'
     as _i64;
 import 'package:opensooq/future/category/data/data_sources/category_remote_data_source.dart'
-    as _i67;
+    as _i66;
 import 'package:opensooq/future/category/data/repositories/category_repository.dart'
     as _i69;
 import 'package:opensooq/future/category/domain/filter_usecase.dart' as _i75;
@@ -50,7 +50,7 @@ import 'package:opensooq/future/category/presentation/cubit/category_cubit.dart'
 import 'package:opensooq/future/category/presentation/cubit/details_category_cubit.dart'
     as _i74;
 import 'package:opensooq/future/category_product/data/data_sources/category_remote_data_source.dart'
-    as _i66;
+    as _i67;
 import 'package:opensooq/future/category_product/data/repositories/category_repo.dart'
     as _i68;
 import 'package:opensooq/future/category_product/presentation/cubit/category_product_cubit.dart'
@@ -120,9 +120,9 @@ import 'package:opensooq/future/packages/domain/repositories/packages_repo.dart'
 import 'package:opensooq/future/packages/domain/use_cases/get_package_usecase.dart'
     as _i77;
 import 'package:opensooq/future/payment_gateway/data/data_sources/payment_gateway_local_data_source.dart'
-    as _i46;
-import 'package:opensooq/future/payment_gateway/data/data_sources/payment_gateway_remote_data_source.dart'
     as _i47;
+import 'package:opensooq/future/payment_gateway/data/data_sources/payment_gateway_remote_data_source.dart'
+    as _i46;
 import 'package:opensooq/future/payment_gateway/data/repositories/payment_repository.dart'
     as _i48;
 import 'package:opensooq/future/reels/data/data_source/reels_remote_data_source.dart'
@@ -261,11 +261,11 @@ extension GetItInjectableX on _i1.GetIt {
         packagesRemoteDataSource: gh<_i42.PackagesRemoteDataSource>()));
     gh.factory<_i45.PaymentApi>(() => _i45.PaymentApi(gh<_i5.Dio>()));
     gh.lazySingleton<_i46.PaymentRemoteDataSource>(
-        () => _i46.PaymentRemoteDataSourceImpl(gh<_i10.CacheHelper>()));
+        () => _i46.PaymentRemoteDataSourceImpl(gh<_i45.PaymentApi>()));
     gh.lazySingleton<_i47.PaymentRemoteDataSource>(
-        () => _i47.PaymentRemoteDataSourceImpl(gh<_i45.PaymentApi>()));
+        () => _i47.PaymentRemoteDataSourceImpl(gh<_i10.CacheHelper>()));
     gh.lazySingleton<_i48.PaymentRepository>(
-        () => _i48.PaymentRepositoryImpl(gh<_i47.PaymentRemoteDataSource>()));
+        () => _i48.PaymentRepositoryImpl(gh<_i46.PaymentRemoteDataSource>()));
     gh.factory<_i49.ReelsApi>(() => _i49.ReelsApi(gh<_i5.Dio>()));
     gh.lazySingleton<_i50.ReelsRemoteDataSource>(
         () => _i50.ReelsRemoteDataSourceImpl(gh<_i49.ReelsApi>()));
@@ -299,10 +299,10 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i67.CategoryRemoteDataSourceImpl(gh<_i65.CategoryApi>()));
     gh.lazySingleton<_i68.CategoryRepo>(() => _i68.CategoryRepoImpl(
           gh<_i8.NetworkInfo>(),
-          gh<_i66.CategoryRemoteDataSource>(),
+          gh<_i67.CategoryRemoteDataSource>(),
         ));
     gh.lazySingleton<_i69.CategoryRepository>(
-        () => _i69.CategoryRepositoryImpl(gh<_i67.CategoryRemoteDataSource>()));
+        () => _i69.CategoryRepositoryImpl(gh<_i66.CategoryRemoteDataSource>()));
     gh.lazySingleton<_i70.ChangeLangUseCase>(() =>
         _i70.ChangeLangUseCase(langRepository: gh<_i24.LocaleRepository>()));
     gh.lazySingleton<_i71.ChangePasswordUserUseCase>(() =>
