@@ -97,7 +97,8 @@ class StoryUserCubit extends Cubit<StoryUserState> {
               ?.map((e) => StoryItem.pageImage(
                     url: e.story ?? '',
                     controller: StoryController(),
-                    caption: e.description ?? '',
+                    duration: const Duration(seconds: 10),
+                    caption: Text(e.description ?? ''),
                     shown: true,
                   ))
               .toList() ??

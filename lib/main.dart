@@ -55,7 +55,7 @@ void main() async {
 
   runApp(
     EasyLocalization(
-        supportedLocales: const [ Locale('ar', 'JO')],
+        supportedLocales: const [Locale('ar', 'JO')],
         path: 'assets/translations',
 
         // <-- change the path of the translation files

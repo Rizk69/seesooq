@@ -17,6 +17,7 @@ abstract class MyAdsApi {
   @POST(EndPoint.getMyAds)
   Future<MyAdsModel> getMyAds({
     @Field('type') required String type,
+    @Query('page') int? page,
     // TODO: all,active,inactive,pending,accepted
   });
 

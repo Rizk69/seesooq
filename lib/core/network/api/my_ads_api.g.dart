@@ -19,9 +19,13 @@ class _MyAdsApi implements MyAdsApi {
   String? baseUrl;
 
   @override
-  Future<MyAdsModel> getMyAds({required String type}) async {
+  Future<MyAdsModel> getMyAds({
+    required String type,
+    int? page,
+  }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'page': page};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = {'type': type};
     final _result = await _dio
