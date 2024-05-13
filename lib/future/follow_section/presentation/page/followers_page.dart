@@ -36,7 +36,9 @@ class FollowersPage extends StatelessWidget {
                   CustomTextFormFiledApp(
                     title: 'ابحث ...',
                     onChanged: (value) {
-                      context.read<FollowBloc>().add(FollowEvent.searchFollowers(value.toString()));
+                      context
+                          .read<FollowBloc>()
+                          .add(FollowEvent.searchFollowers(value.toString()));
                     },
                     imgIconSvg: 'assets/images/svg/search.svg',
                   ),
@@ -61,7 +63,8 @@ class FollowersPage extends StatelessWidget {
                               var user = state.followersUsers?.data?[index];
                               return Container(
                                   padding: const EdgeInsets.all(15),
-                                  margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                                  margin: const EdgeInsets.symmetric(
+                                      vertical: 10, horizontal: 20),
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     // : Color(0xFF4C0497),
@@ -85,21 +88,29 @@ class FollowersPage extends StatelessWidget {
                                         fit: BoxFit.cover,
                                       ),
                                     ),
-                                    title: Text(user?.name.toString() ?? '', style: const TextStyle(fontSize: 18)), // Adjust font size
+                                    title: Text(user?.name.toString() ?? '',
+                                        style: const TextStyle(
+                                            fontSize: 18)), // Adjust font size
 
                                     trailing: GestureDetector(
                                       onTap: () {
                                         if (user?.isFollow ?? false) {
-                                          cubit.add(FollowEvent.removeFollowers(user?.id ?? 0));
+                                          cubit.add(FollowEvent.removeFollowers(
+                                              user?.id ?? 0));
                                         } else {
-                                          cubit.add(FollowEvent.addFollow(user?.id ?? 0));
+                                          cubit.add(FollowEvent.addFollow(
+                                              user?.id ?? 0));
                                         }
                                       },
                                       child: Container(
-                                        padding: const EdgeInsets.symmetric(horizontal: 27, vertical: 11),
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 27, vertical: 11),
                                         decoration: BoxDecoration(
-                                          border: Border.all(color: const Color(0xFF4C0497), width: 1),
-                                          borderRadius: BorderRadius.circular(50),
+                                          border: Border.all(
+                                              color: const Color(0xFF4C0497),
+                                              width: 1),
+                                          borderRadius:
+                                              BorderRadius.circular(50),
                                           gradient: (user?.isFollow ?? false)
                                               ? const LinearGradient(
                                                   begin: Alignment.topCenter,
@@ -111,7 +122,13 @@ class FollowersPage extends StatelessWidget {
                                                     Colors.white,
                                                     Color(0xFF4C0497),
                                                   ],
-                                                  stops: [0.0, 0.0, 0.5, 1.5, 1], // Stops at 0%, 50%, and 100%
+                                                  stops: [
+                                                    0.0,
+                                                    0.0,
+                                                    0.5,
+                                                    1.5,
+                                                    1
+                                                  ], // Stops at 0%, 50%, and 100%
                                                 )
                                               : const LinearGradient(
                                                   begin: Alignment.topCenter,
@@ -127,9 +144,13 @@ class FollowersPage extends StatelessWidget {
                                                 ),
                                         ),
                                         child: TranslateText(
-                                          text: (user?.isFollow ?? false) ? 'following' : 'follow',
+                                          text: (user?.isFollow ?? false)
+                                              ? 'following'
+                                              : 'follow',
                                           styleText: StyleText.h5,
-                                          colorText: (user?.isFollow ?? false) ? Colors.white : const Color(0xFF4C0497),
+                                          colorText: (user?.isFollow ?? false)
+                                              ? Colors.white
+                                              : const Color(0xFF4C0497),
                                           fontWeight: FontWeight.w500,
                                         ),
                                       ),
@@ -137,11 +158,17 @@ class FollowersPage extends StatelessWidget {
                                   ));
                             } else {
                               var user = state.followersUsers?.data
-                                  ?.where((element) => element.name!.toString().toLowerCase().contains(snapshot.data.toString().toLowerCase()))
+                                  ?.where((element) => element.name!
+                                      .toString()
+                                      .toLowerCase()
+                                      .contains(snapshot.data
+                                          .toString()
+                                          .toLowerCase()))
                                   .toList()[index];
                               return Container(
                                   padding: const EdgeInsets.all(15),
-                                  margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                                  margin: const EdgeInsets.symmetric(
+                                      vertical: 10, horizontal: 20),
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     // : Color(0xFF4C0497),
@@ -165,21 +192,29 @@ class FollowersPage extends StatelessWidget {
                                         fit: BoxFit.cover,
                                       ),
                                     ),
-                                    title: Text(user?.name.toString() ?? '', style: const TextStyle(fontSize: 18)), // Adjust font size
+                                    title: Text(user?.name.toString() ?? '',
+                                        style: const TextStyle(
+                                            fontSize: 18)), // Adjust font size
 
                                     trailing: GestureDetector(
                                       onTap: () {
                                         if (user?.isFollow ?? false) {
-                                          cubit.add(FollowEvent.removeFollowers(user?.id ?? 0));
+                                          cubit.add(FollowEvent.removeFollowers(
+                                              user?.id ?? 0));
                                         } else {
-                                          cubit.add(FollowEvent.addFollow(user?.id ?? 0));
+                                          cubit.add(FollowEvent.addFollow(
+                                              user?.id ?? 0));
                                         }
                                       },
                                       child: Container(
-                                        padding: const EdgeInsets.symmetric(horizontal: 27, vertical: 11),
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 27, vertical: 11),
                                         decoration: BoxDecoration(
-                                          border: Border.all(color: const Color(0xFF4C0497), width: 1),
-                                          borderRadius: BorderRadius.circular(50),
+                                          border: Border.all(
+                                              color: const Color(0xFF4C0497),
+                                              width: 1),
+                                          borderRadius:
+                                              BorderRadius.circular(50),
                                           gradient: (user?.isFollow ?? false)
                                               ? const LinearGradient(
                                                   begin: Alignment.topCenter,
@@ -191,7 +226,13 @@ class FollowersPage extends StatelessWidget {
                                                     Colors.white,
                                                     Color(0xFF4C0497),
                                                   ],
-                                                  stops: [0.0, 0.0, 0.5, 1.5, 1], // Stops at 0%, 50%, and 100%
+                                                  stops: [
+                                                    0.0,
+                                                    0.0,
+                                                    0.5,
+                                                    1.5,
+                                                    1
+                                                  ], // Stops at 0%, 50%, and 100%
                                                 )
                                               : const LinearGradient(
                                                   begin: Alignment.topCenter,
@@ -207,9 +248,13 @@ class FollowersPage extends StatelessWidget {
                                                 ),
                                         ),
                                         child: TranslateText(
-                                          text: (user?.isFollow ?? false) ? 'following' : 'follow',
+                                          text: (user?.isFollow ?? false)
+                                              ? 'following'
+                                              : 'follow',
                                           styleText: StyleText.h5,
-                                          colorText: (user?.isFollow ?? false) ? Colors.white : const Color(0xFF4C0497),
+                                          colorText: (user?.isFollow ?? false)
+                                              ? Colors.white
+                                              : const Color(0xFF4C0497),
                                           fontWeight: FontWeight.w500,
                                         ),
                                       ),
@@ -220,7 +265,12 @@ class FollowersPage extends StatelessWidget {
                           itemCount: (snapshot.data?.isEmpty ?? true)
                               ? (state.followersUsers?.data?.length ?? 0)
                               : state.followersUsers?.data
-                                  ?.where((element) => element.name!.toString().toLowerCase().contains(snapshot.data.toString().toLowerCase()))
+                                  ?.where((element) => element.name!
+                                      .toString()
+                                      .toLowerCase()
+                                      .contains(snapshot.data
+                                          .toString()
+                                          .toLowerCase()))
                                   .length,
                         ),
                       );

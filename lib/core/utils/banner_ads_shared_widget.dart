@@ -89,6 +89,7 @@ class _BannerAdsSharedWidgetState extends State<BannerAdsSharedWidget> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SmoothPageIndicator(
+
               count: widget.images.length,
               onDotClicked: (index) {
                 controller.animateToPage(index, duration: const Duration(milliseconds: 500), curve: Curves.ease);

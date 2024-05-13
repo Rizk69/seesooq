@@ -36,8 +36,10 @@ class _ShowAdsByHomeScreenState extends State<ShowAdsByHomeScreen> {
         centerTitle: true,
       ),
       body: BlocProvider(
-        create: (context) => ShowAdvertismentCubit()..getAdvertisment(widget.id),
-        child: BlocBuilder<ShowAdvertismentCubit, ShowAdvertismentState>(builder: (context, state) {
+        create: (context) =>
+            ShowAdvertismentCubit()..getAdvertisment(widget.id),
+        child: BlocBuilder<ShowAdvertismentCubit, ShowAdvertismentState>(
+            builder: (context, state) {
           if (state.storyStatus == ShowAdvertismentStatus.loading) {
             return const Center(
               child: CircularProgressIndicator(),
@@ -46,7 +48,7 @@ class _ShowAdsByHomeScreenState extends State<ShowAdsByHomeScreen> {
           if (state.storyStatus == ShowAdvertismentStatus.error) {
             return const SomThingWentWrongWidget();
           }
-
+          print("Rizk ${state.advertisementModel?.data?.album}");
           return Padding(
             padding: const EdgeInsets.all(16.0),
             child: SingleChildScrollView(
@@ -54,7 +56,14 @@ class _ShowAdsByHomeScreenState extends State<ShowAdsByHomeScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Text(state.advertisementModel?.data???'empty',style: TextStyle(color: Colors.black)),
-                  BannerAdsSharedWidget(images: [state.advertisementModel?.data?.mainImage ?? ' '], onPageChanged: (index) {}, height: 250),
+                  BannerAdsSharedWidget(
+                    images: state.advertisementModel?.data?.album ??
+                        [
+                          state.advertisementModel?.data?.mainImage
+                        ], // Use null-aware operators and provide a default value if any property is null
+                    onPageChanged: (index) {},
+                    height: 250,
+                  ),
                   const Gap(
                     25,
                   ),
@@ -81,7 +90,8 @@ class _ShowAdsByHomeScreenState extends State<ShowAdsByHomeScreen> {
                   TranslateText(
                     styleText: StyleText.h3,
                     fontWeight: FontWeight.w700,
-                    text: '${state.advertisementModel?.data?.price.toString().price} JD',
+                    text:
+                        '${state.advertisementModel?.data?.price.toString().price} JD',
                     colorText: HexColor("#4C0497"),
                   ),
                   const Gap(
@@ -91,7 +101,8 @@ class _ShowAdsByHomeScreenState extends State<ShowAdsByHomeScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        SvgCustomImage(image: 'location'.toSvg, width: 20, height: 20),
+                        SvgCustomImage(
+                            image: 'location'.toSvg, width: 20, height: 20),
                         const Gap(
                           5,
                         ),
