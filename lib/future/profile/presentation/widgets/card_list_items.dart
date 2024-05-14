@@ -42,10 +42,10 @@ class CardListItems extends StatelessWidget {
 
         Spacer(),
 
-        Icon(
-          Icons.arrow_forward_ios,
-          color: AppColors.grey.withOpacity(0.7),
-        ),
+        // Icon(
+        //   Icons.arrow_forward_ios,
+        //   color: AppColors.grey.withOpacity(0.7),
+        // ),
       ],
     );
   }

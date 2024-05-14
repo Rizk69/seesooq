@@ -26,63 +26,70 @@ class _AccountMangePageState extends State<AccountMangePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
-        child: Column(
-          children: [
-            HeaderScreens(
-                title: 'account_management',
-                onPressed: () {
-                  context.go(Routes.setting);
-                }),
-            Expanded(
-              child: SingleChildScrollView(
-                child: ListView.separated(
-                  scrollDirection: Axis.vertical,
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: contacts.length,
-                  itemBuilder: (context, index) {
-                    final contact = contacts[index];
-                    return InkWell(
-                      onTap: () {
-                        switch (index) {
-                          case 0:
-                            {
-                              context.go(Routes.changePassword);
-                            }
-                            break;
-                          case 1:
-                            {
-                              context.go(Routes.securityPage);
-                            }
-                            break;
-                          case 2:
-                            {
-                              context.go(Routes.emptyLocationPage);
-                            }
-                            break;
-                          case 3:
-                            {
-                              context.go(Routes.removeAccountPage);
-                            }
-                            break;
+    return SafeArea(
+      child: Scaffold(
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              HeaderScreens(
+                  title: 'account_management',
+                  onPressed: () {
+                    context.pop();
+                  }),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: ListView.separated(
+                    scrollDirection: Axis.vertical,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: contacts.length,
+                    itemBuilder: (context, index) {
+                      final contact = contacts[index];
+                      return InkWell(
+                        onTap: () {
+                          switch (index) {
+                            case 0:
+                              {
+                                context.go(Routes.changePassword);
+                              }
+                              break;
+                            case 1:
+                              {
+                                context.go(Routes.securityPage);
+                              }
+                              break;
+                            case 2:
+                              {
+                                context.go(Routes.emptyLocationPage);
+                              }
+                              break;
+                            case 3:
+                              {
+                                context.go(Routes.removeAccountPage);
+                              }
+                              break;
 
-                          default:
-                            Container();
-                        }
-                      },
-                      child: CardListItems(index: index, indexActive: true, title: contact['title']!, des: contact['des']!, img: titles[index].toSvg),
-                    );
-                  },
-                  separatorBuilder: (context, index) {
-                    return const Gap(24);
-                  },
+                            default:
+                              Container();
+                          }
+                        },
+                        child: CardListItems(
+                            index: index,
+                            indexActive: true,
+                            title: contact['title']!,
+                            des: contact['des']!,
+                            img: titles[index].toSvg),
+                      );
+                    },
+                    separatorBuilder: (context, index) {
+                      return const Gap(24);
+                    },
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
