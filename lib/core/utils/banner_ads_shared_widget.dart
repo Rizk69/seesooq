@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:opensooq/core/utils/cache_network_image.dart';
 import 'package:opensooq/core/utils/hex_color.dart';
 import 'package:opensooq/core/utils/media_query_values.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -33,11 +34,11 @@ class _BannerAdsSharedWidgetState extends State<BannerAdsSharedWidget> {
             onPageChanged: widget.onPageChanged,
             itemBuilder: (context, index) {
               return Container(
-                margin: const EdgeInsets.symmetric(horizontal: 6),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: ClipRRect(
+                  margin: const EdgeInsets.symmetric(horizontal: 6),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: ClipRRect(
                     borderRadius: BorderRadius.circular(12),
                     child: widget.isMemoryImage
                         ? ClipRRect(
@@ -50,12 +51,12 @@ class _BannerAdsSharedWidgetState extends State<BannerAdsSharedWidget> {
                               ),
                             ),
                           )
-                        : widget.images.toString().contains('.svg')
+                        : (widget.images[index]['url'].toString().split('.').lastOrNull == 'svg')
                             ? ClipRRect(
                                 borderRadius: BorderRadius.circular(12),
                                 child: SvgPicture.network(
-                                  widget.images[index],
-                                  fit: BoxFit.cover,
+                                  widget.images[index]['url'],
+                                  fit: BoxFit.contain,
                                   placeholderBuilder: (BuildContext context) => const Center(
                                     child: CircularProgressIndicator(),
                                   ),
@@ -63,18 +64,12 @@ class _BannerAdsSharedWidgetState extends State<BannerAdsSharedWidget> {
                               )
                             : ClipRRect(
                                 borderRadius: BorderRadius.circular(12),
-                                child: Image.network(
-                                  widget.images[index],
-                                  fit: BoxFit.cover,
-                                  loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
-                                    if (loadingProgress == null) return child;
-                                    return const Center(
-                                      child: CircularProgressIndicator(),
-                                    );
-                                  },
+                                child: CacheNetworkImageApp(
+                                  urlImage: widget.images[index]['url'],
+                                  fit: BoxFit.contain,
                                 ),
-                              )),
-              );
+                              ),
+                  ));
             },
             scrollDirection: Axis.horizontal,
             allowImplicitScrolling: false,
@@ -89,7 +84,6 @@ class _BannerAdsSharedWidgetState extends State<BannerAdsSharedWidget> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SmoothPageIndicator(
-
               count: widget.images.length,
               onDotClicked: (index) {
                 controller.animateToPage(index, duration: const Duration(milliseconds: 500), curve: Curves.ease);

@@ -71,6 +71,8 @@ class SingleAdvertisment {
     country = json['country'];
     category = json['category'] != null ? SingleAdvertismentCategory.fromJson(json['category']) : null;
 
+    album = json['album'];
+
     city = json['city'];
     isOffer = json['is_offer'];
     offerPrice = json['offer_price'];
@@ -81,7 +83,6 @@ class SingleAdvertisment {
     twitter = json['twitter'];
     instagram = json['instagram'];
     mainImage = json['main_image'];
-    print('asddddd${json['attributes']}');
 
     attributes = json['attributes'];
 
@@ -112,7 +113,7 @@ class SingleAdvertisment {
   String? twitter;
   String? instagram;
   String? mainImage;
-  List<String>? album;
+  List<dynamic>? album;
   String? video;
   SingleAdvertismentUser? user;
   bool? checkFollwing;
@@ -140,7 +141,7 @@ class SingleAdvertisment {
     String? twitter,
     String? instagram,
     String? mainImage,
-    List<String>? album,
+    List<dynamic>? album,
     String? video,
     SingleAdvertismentUser? user,
     bool? checkFollwing,

@@ -101,17 +101,17 @@ class AddAdsCubit extends Cubit<AddAdsState> {
       attributes.addAll({1: '2'});
     }
 
-    emit(
-      state.copyWith(
-        attributesForm: state.attributesForm.copyWith(
-          images: [convertUrlToFile(data.album ?? '')],
-          title: data.title ?? '',
-          price: data.price.toString(),
-          attributes: attributes,
-        ),
-        images: [ImageFile(UniqueKey().toString(), path: convertUrlToFile(data.album.toString()).path ?? '', name: 'image.jpg', extension: 'jpg')],
-      ),
-    );
+    // emit(
+    //   state.copyWith(
+    //     attributesForm: state.attributesForm.copyWith(
+    //       images: [convertUrlToFile(data.album ?? '')],
+    //       title: data.title ?? '',
+    //       price: data.price.toString(),
+    //       attributes: attributes,
+    //     ),
+    //     images: [ImageFile(UniqueKey().toString(), path: convertUrlToFile(data.album.toString()).path ?? '', name: 'image.jpg', extension: 'jpg')],
+    //   ),
+    // );
 
     print('dskadhjksahdjkas${state.attributesForm.cityId}');
   }

@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:opensooq/future/setting/presentation/cubit/lang_cubit/theme_cubit.dart';
 import 'package:opensooq/future/setting/presentation/cubit/lang_cubit/theme_state.dart';
 import 'package:opensooq/future/setting/presentation/edit_profile/presentation/widgets/header_screen.dart';
+import 'package:opensooq/future/splash/presentation/cubit/lcoale_cubit.dart';
 
 import '../../../config/routes/app_routes.dart';
 import '../../../core/utils/hex_color.dart';
@@ -18,87 +19,84 @@ class ChangeLanguagePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => ThemeCubit(),
-      child: BlocBuilder<ThemeCubit, ThemeState>(
-        builder: (context, state) {
-          final languageCubit = context.read<ThemeCubit>();
-
-          return Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
-            child: Column(
-              children: [
-                HeaderScreens(
-                  title: 'language',
-                  onPressed: () {
-                    context.go(Routes.setting);
-                  },
-                ),
-                const SizedBox(
-                  height: 37,
-                ),
-                buildRow(
-                  context,
-                  languageCubit,
-                  'arabic',
-                  'assets/images/svg/lan.svg',
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                buildRow(
-                  context,
-                  languageCubit,
-                  'english',
-                  'assets/images/svg/lan.svg',
-                ),
-              ],
-            ),
-          );
-        },
+    return SafeArea(
+      child: BlocProvider(
+        create: (context) => ThemeCubit(),
+        child: BlocBuilder<LocaleCubit, LocaleState>(
+          builder: (context, state) {
+            final languageCubit = context.read<ThemeCubit>();
+            print(state.locale.languageCode);
+            return Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
+              child: Column(
+                children: [
+                  HeaderScreens(
+                    title: 'language',
+                    onPressed: () {
+                      context.go(Routes.setting);
+                    },
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  buildRow(
+                    context,
+                    state,
+                    'english',
+                    'assets/images/svg/lan.svg',
+                    state.locale.languageCode == 'en_US',
+                  ),
+                ],
+              ),
+            );
+          },
+        ),
       ),
     );
   }
 
   Widget buildRow(
     BuildContext context,
-    ThemeCubit languageCubit,
+    LocaleState state,
     String title,
     String img,
+    bool value,
   ) {
-    return Row(
-      children: [
-        Switch(
-          thumbColor: const MaterialStatePropertyAll<Color>(Colors.white),
-          inactiveTrackColor: Colors.grey,
-          trackOutlineColor: const MaterialStatePropertyAll<Color>(Colors.transparent),
-          value: languageCubit.state.selectedLanguage.contains(title),
-          onChanged: (value) {
-            languageCubit.toggleLanguage(title);
-          },
+    return ListTile(
+      contentPadding: const EdgeInsets.all(0),
+      trailing: Switch(
+        thumbColor: const MaterialStatePropertyAll<Color>(Colors.white),
+        inactiveTrackColor: Colors.grey,
+        trackOutlineColor: const MaterialStatePropertyAll<Color>(Colors.transparent),
+        value: value,
+        onChanged: (value) {
+          print(value);
+          if (value) {
+            context.setLocale(const Locale('en', 'US'));
+            context.read<LocaleCubit>().changeLang('en_US');
+          } else {
+            context.setLocale(const Locale('ar', 'JO'));
+            context.read<LocaleCubit>().changeLang('ar_JO');
+          }
+        },
+      ),
+      leading: CircleAvatar(
+        backgroundColor: HexColor('#F9F9F9'),
+        radius: 25,
+        child: SvgCustomImage(
+          image: img,
+          width: 25,
+          height: 25,
         ),
-        const Spacer(),
-        Text(
-          title.tr(),
-          style: const TextStyle(
-            fontSize: 18,
-            color: Colors.black,
-            fontWeight: FontWeight.w700,
-          ),
+      ),
+      title: Text(
+        title.tr(),
+        style: const TextStyle(
+          fontSize: 18,
+          color: Colors.black,
+          fontWeight: FontWeight.w700,
         ),
-        const SizedBox(
-          width: 20,
-        ),
-        CircleAvatar(
-          backgroundColor: HexColor('#F9F9F9'),
-          radius: 25,
-          child: SvgCustomImage(
-            image: img,
-            width: 25,
-            height: 25,
-          ),
-        ),
-      ],
+      ),
     );
   }
 }

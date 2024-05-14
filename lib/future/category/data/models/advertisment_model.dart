@@ -256,7 +256,7 @@ class Data {
   String? youtube;
   String? twitter;
   String? instagram;
-  String? album;
+  List<dynamic>? album;
   String? video;
   User? user;
   dynamic checkFollwing;
@@ -285,7 +285,7 @@ class Data {
     String? youtube,
     String? twitter,
     String? instagram,
-    String? album,
+    List<dynamic>? album,
     String? video,
     User? user,
     bool? checkFollwing,

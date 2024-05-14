@@ -1,7 +1,9 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -131,29 +133,59 @@ class SignUpCubit extends Cubit<SignUpState> with ChangeNotifier {
   }
 
   Future<void> loginWithSocial(String socialId) async {
-    final response = await signUpRepository.loginInFromSocial(
-      token: 'sadsad11',
-      deviceId: '111221',
-      device: 'android11',
-      socialId: socialId,
-    );
+    if (Platform.isAndroid) {
+      deviceInfo.androidInfo.then((value) async {
+        final response = await signUpRepository.loginInFromSocial(
+          token: await FirebaseMessaging.instance.getToken() ?? '',
+          deviceId: value.serialNumber,
+          device: value.model,
+          socialId: socialId,
+        );
 
-    response.fold(
-      (l) {
-        emit(state.copyWith(signUpStatus: SignUpStatus.error));
-      },
-      (r) {
-        emit(state.copyWith(
-          signUpStatus: SignUpStatus.social,
-        ));
-        signUpRepository.cacheUserModel(
-            userLocalModel: UserLocalModel(
-          token: r.token,
-          user: r.user,
-        ));
-        notifyListeners();
-      },
-    );
+        response.fold(
+          (l) {
+            emit(state.copyWith(signUpStatus: SignUpStatus.error));
+          },
+          (r) {
+            emit(state.copyWith(
+              signUpStatus: SignUpStatus.social,
+            ));
+            signUpRepository.cacheUserModel(
+                userLocalModel: UserLocalModel(
+              token: r.token,
+              user: r.user,
+            ));
+            notifyListeners();
+          },
+        );
+      });
+    } else {
+      deviceInfo.iosInfo.then((value) async {
+        final response = await signUpRepository.loginInFromSocial(
+          token: await FirebaseMessaging.instance.getToken() ?? '',
+          deviceId: value.identifierForVendor.toString(),
+          device: value.model,
+          socialId: socialId,
+        );
+
+        response.fold(
+          (l) {
+            emit(state.copyWith(signUpStatus: SignUpStatus.error));
+          },
+          (r) {
+            emit(state.copyWith(
+              signUpStatus: SignUpStatus.social,
+            ));
+            signUpRepository.cacheUserModel(
+                userLocalModel: UserLocalModel(
+              token: r.token,
+              user: r.user,
+            ));
+            notifyListeners();
+          },
+        );
+      });
+    }
   }
 
   Future<void> signUpFromApple() async {

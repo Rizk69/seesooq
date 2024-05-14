@@ -9,7 +9,6 @@ import 'package:opensooq/core/utils/media_query_values.dart';
 import 'package:opensooq/future/myads/bloc/myads_state.dart';
 import 'package:opensooq/future/setting/presentation/edit_profile/presentation/widgets/header_screen.dart';
 
-import '../../../../config/routes/app_routes.dart';
 import '../../../../core/widget/text_translate_manager.dart';
 import '../../bloc/myads_bloc.dart';
 
@@ -198,8 +197,9 @@ class MyAdsPage extends StatelessWidget {
                                     child: Row(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
+                                        // yazan turk 77
                                         CachedNetworkImage(
-                                          imageUrl: item.album ?? '',
+                                          imageUrl: 'item.album ?? ' '',
                                           fit: BoxFit.fill,
                                           height: 120,
                                           width: 120,

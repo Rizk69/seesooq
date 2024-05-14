@@ -51,11 +51,9 @@ void main() async {
     sound: true,
   );
 
-  print('${await FirebaseMessaging.instance.getToken()}');
-
   runApp(
     EasyLocalization(
-        supportedLocales: const [Locale('ar', 'JO')],
+        supportedLocales: const [Locale('ar', 'JO'), Locale('en', 'US')],
         path: 'assets/translations',
 
         // <-- change the path of the translation files
