@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$FollowState {
   FollowersStatus get followersStatus => throw _privateConstructorUsedError;
   FollowingStatus get followingStatus => throw _privateConstructorUsedError;
+  AddFollowStatus get addFollowStatus => throw _privateConstructorUsedError;
   FollowersModel? get followersUsers => throw _privateConstructorUsedError;
   FollowersModel? get filterFollowersUsers =>
       throw _privateConstructorUsedError;
@@ -37,6 +38,7 @@ abstract class $FollowStateCopyWith<$Res> {
   $Res call(
       {FollowersStatus followersStatus,
       FollowingStatus followingStatus,
+      AddFollowStatus addFollowStatus,
       FollowersModel? followersUsers,
       FollowersModel? filterFollowersUsers,
       FollowersModel? followingUsers});
@@ -57,6 +59,7 @@ class _$FollowStateCopyWithImpl<$Res, $Val extends FollowState>
   $Res call({
     Object? followersStatus = null,
     Object? followingStatus = null,
+    Object? addFollowStatus = null,
     Object? followersUsers = freezed,
     Object? filterFollowersUsers = freezed,
     Object? followingUsers = freezed,
@@ -70,6 +73,10 @@ class _$FollowStateCopyWithImpl<$Res, $Val extends FollowState>
           ? _value.followingStatus
           : followingStatus // ignore: cast_nullable_to_non_nullable
               as FollowingStatus,
+      addFollowStatus: null == addFollowStatus
+          ? _value.addFollowStatus
+          : addFollowStatus // ignore: cast_nullable_to_non_nullable
+              as AddFollowStatus,
       followersUsers: freezed == followersUsers
           ? _value.followersUsers
           : followersUsers // ignore: cast_nullable_to_non_nullable
@@ -97,6 +104,7 @@ abstract class _$$FollowStateImplCopyWith<$Res>
   $Res call(
       {FollowersStatus followersStatus,
       FollowingStatus followingStatus,
+      AddFollowStatus addFollowStatus,
       FollowersModel? followersUsers,
       FollowersModel? filterFollowersUsers,
       FollowersModel? followingUsers});
@@ -115,6 +123,7 @@ class __$$FollowStateImplCopyWithImpl<$Res>
   $Res call({
     Object? followersStatus = null,
     Object? followingStatus = null,
+    Object? addFollowStatus = null,
     Object? followersUsers = freezed,
     Object? filterFollowersUsers = freezed,
     Object? followingUsers = freezed,
@@ -128,6 +137,10 @@ class __$$FollowStateImplCopyWithImpl<$Res>
           ? _value.followingStatus
           : followingStatus // ignore: cast_nullable_to_non_nullable
               as FollowingStatus,
+      addFollowStatus: null == addFollowStatus
+          ? _value.addFollowStatus
+          : addFollowStatus // ignore: cast_nullable_to_non_nullable
+              as AddFollowStatus,
       followersUsers: freezed == followersUsers
           ? _value.followersUsers
           : followersUsers // ignore: cast_nullable_to_non_nullable
@@ -150,6 +163,7 @@ class _$FollowStateImpl implements _FollowState {
   const _$FollowStateImpl(
       {this.followersStatus = FollowersStatus.initial,
       this.followingStatus = FollowingStatus.initial,
+      this.addFollowStatus = AddFollowStatus.initial,
       this.followersUsers = null,
       this.filterFollowersUsers = null,
       this.followingUsers = null});
@@ -162,6 +176,9 @@ class _$FollowStateImpl implements _FollowState {
   final FollowingStatus followingStatus;
   @override
   @JsonKey()
+  final AddFollowStatus addFollowStatus;
+  @override
+  @JsonKey()
   final FollowersModel? followersUsers;
   @override
   @JsonKey()
@@ -172,7 +189,7 @@ class _$FollowStateImpl implements _FollowState {
 
   @override
   String toString() {
-    return 'FollowState(followersStatus: $followersStatus, followingStatus: $followingStatus, followersUsers: $followersUsers, filterFollowersUsers: $filterFollowersUsers, followingUsers: $followingUsers)';
+    return 'FollowState(followersStatus: $followersStatus, followingStatus: $followingStatus, addFollowStatus: $addFollowStatus, followersUsers: $followersUsers, filterFollowersUsers: $filterFollowersUsers, followingUsers: $followingUsers)';
   }
 
   @override
@@ -184,6 +201,8 @@ class _$FollowStateImpl implements _FollowState {
                 other.followersStatus == followersStatus) &&
             (identical(other.followingStatus, followingStatus) ||
                 other.followingStatus == followingStatus) &&
+            (identical(other.addFollowStatus, addFollowStatus) ||
+                other.addFollowStatus == addFollowStatus) &&
             (identical(other.followersUsers, followersUsers) ||
                 other.followersUsers == followersUsers) &&
             (identical(other.filterFollowersUsers, filterFollowersUsers) ||
@@ -194,7 +213,7 @@ class _$FollowStateImpl implements _FollowState {
 
   @override
   int get hashCode => Object.hash(runtimeType, followersStatus, followingStatus,
-      followersUsers, filterFollowersUsers, followingUsers);
+      addFollowStatus, followersUsers, filterFollowersUsers, followingUsers);
 
   @JsonKey(ignore: true)
   @override
@@ -207,6 +226,7 @@ abstract class _FollowState implements FollowState {
   const factory _FollowState(
       {final FollowersStatus followersStatus,
       final FollowingStatus followingStatus,
+      final AddFollowStatus addFollowStatus,
       final FollowersModel? followersUsers,
       final FollowersModel? filterFollowersUsers,
       final FollowersModel? followingUsers}) = _$FollowStateImpl;
@@ -215,6 +235,8 @@ abstract class _FollowState implements FollowState {
   FollowersStatus get followersStatus;
   @override
   FollowingStatus get followingStatus;
+  @override
+  AddFollowStatus get addFollowStatus;
   @override
   FollowersModel? get followersUsers;
   @override

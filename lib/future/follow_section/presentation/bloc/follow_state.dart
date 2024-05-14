@@ -7,11 +7,14 @@ enum FollowersStatus { initial, loading, loaded, error, empty }
 
 enum FollowingStatus { initial, loading, loaded, error, empty }
 
+enum AddFollowStatus { success, error, initial, loading }
+
 @freezed
 class FollowState with _$FollowState {
   const factory FollowState({
     @Default(FollowersStatus.initial) FollowersStatus followersStatus,
     @Default(FollowingStatus.initial) FollowingStatus followingStatus,
+    @Default(AddFollowStatus.initial) AddFollowStatus addFollowStatus,
     @Default(null) FollowersModel? followersUsers,
     @Default(null) FollowersModel? filterFollowersUsers,
     @Default(null) FollowersModel? followingUsers,

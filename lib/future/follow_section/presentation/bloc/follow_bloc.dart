@@ -29,42 +29,36 @@ class FollowBloc extends Bloc<FollowEvent, FollowState> {
     result.fold((error) {
       print('error ${error.message}');
       emit(state.copyWith(followersStatus: FollowersStatus.error));
-    },
-        (followers) => emit(state.copyWith(
-            followersStatus: FollowersStatus.loaded,
-            followersUsers: followers)));
+    }, (followers) => emit(state.copyWith(followersStatus: FollowersStatus.loaded, followersUsers: followers)));
   }
 
   Future<void> _getFollowing(Emitter<FollowState> emit) async {
     emit(state.copyWith(followingStatus: FollowingStatus.loading));
     final result = await followRepository.getFollowings();
-    result.fold(
-        (error) => emit(state.copyWith(followingStatus: FollowingStatus.error)),
-        (following) => emit(state.copyWith(
-            followingStatus: FollowingStatus.loaded,
-            followingUsers: following)));
+    result.fold((error) => emit(state.copyWith(followingStatus: FollowingStatus.error)),
+        (following) => emit(state.copyWith(followingStatus: FollowingStatus.loaded, followingUsers: following)));
   }
 
   Future<void> _addFollow(Emitter<FollowState> emit, {required int id}) async {
+    emit(state.copyWith(addFollowStatus: AddFollowStatus.loading));
     final result = await followRepository.makeFollow(id: id);
     result.fold((error) {
       showError(error.message.toString());
     }, (followers) {
+      emit(state.copyWith(addFollowStatus: AddFollowStatus.success));
       showSuccess(
         'Added Successfully',
       );
     });
   }
 
-  Future<void> _removeFollowers(Emitter<FollowState> emit,
-      {required int id}) async {
+  Future<void> _removeFollowers(Emitter<FollowState> emit, {required int id}) async {
     // emit(state.copyWith(status: FollowStatus.loading));
     final result = await followRepository.removeFollower(id: id);
     // result.fold((error) => emit(state.copyWith(status: FollowStatus.error)), (followers) => {});
   }
 
-  Future<void> _removeFollowing(Emitter<FollowState> emit,
-      {required int id}) async {
+  Future<void> _removeFollowing(Emitter<FollowState> emit, {required int id}) async {
     // emit(state.copyWith(status: FollowStatus.loading));
     // final result = await followRepository.removeFollowing(id: id);
     // result.fold((error) => emit(state.copyWith(status: FollowStatus.error)), (followers) => emit(state.copyWith()));
@@ -75,19 +69,16 @@ class FollowBloc extends Bloc<FollowEvent, FollowState> {
   // Debounce duration
   final Duration _debounceTime = const Duration(milliseconds: 600);
 
-  Future<void> _searchFollowers(Emitter<FollowState> emit,
-      {required String query}) async {
+  Future<void> _searchFollowers(Emitter<FollowState> emit, {required String query}) async {
     _searchQueryController.add(query);
 
     // check if stream is closed
   }
 
-  _searchFollowersEmit(Emitter<FollowState> emit,
-      {required String query}) async {
+  _searchFollowersEmit(Emitter<FollowState> emit, {required String query}) async {
     FollowersModel temp = state.followersUsers!;
     if (query.isNotEmpty) {
-      final ss =
-          temp.data!.where((element) => element.name!.contains(query)).toList();
+      final ss = temp.data!.where((element) => element.name!.contains(query)).toList();
       emit(state.copyWith(filterFollowersUsers: FollowersModel(data: ss)));
     }
   }

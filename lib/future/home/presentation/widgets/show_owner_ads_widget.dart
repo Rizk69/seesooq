@@ -55,69 +55,58 @@ class ShowOwnerAdsWidget extends StatelessWidget {
             ],
           ), // Adjust font size
 
-          trailing: BlocBuilder<FollowBloc, FollowState>(
+          trailing: BlocConsumer<FollowBloc, FollowState>(
+            listener: (context, state) => {
+              if (state.addFollowStatus == AddFollowStatus.success)
+                {
+                  cubit.advertisementModel?.data?.checkFollwing = true,
+                }
+            },
             builder: (context, state) {
               var cubitFollowBloc = FollowBloc.get(context);
               return GestureDetector(
                 onTap: () {
                   if (cubit.advertisementModel?.data?.checkFollwing ?? false) {
-                    cubitFollowBloc.add(
-                        FollowEvent.removeFollowers(user?.id?.toInt() ?? 0));
+                    cubitFollowBloc.add(FollowEvent.removeFollowers(user?.id?.toInt() ?? 0));
                   } else {
-                    cubitFollowBloc
-                        .add(FollowEvent.addFollow(user?.id?.toInt() ?? 0));
+                    cubitFollowBloc.add(FollowEvent.addFollow(user?.id?.toInt() ?? 0));
                   }
                 },
                 child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 27, vertical: 11),
+                  padding: const EdgeInsets.symmetric(horizontal: 27, vertical: 11),
                   decoration: BoxDecoration(
-                    border:
-                        Border.all(color: const Color(0xFF4C0497), width: 1),
+                    border: Border.all(color: const Color(0xFF4C0497), width: 1),
                     borderRadius: BorderRadius.circular(50),
-                    gradient:
-                        (cubit.advertisementModel?.data?.checkFollwing ?? true)
-                            ? const LinearGradient(
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
-                                colors: [
-                                  Color(0xFF4C0497),
-                                  Color(0xFF4C0497),
-                                  Color(0xFF4C0497),
-                                  Colors.white,
-                                  Color(0xFF4C0497),
-                                ],
-                                stops: [
-                                  0.0,
-                                  0.0,
-                                  0.5,
-                                  1.5,
-                                  1
-                                ], // Stops at 0%, 50%, and 100%
-                              )
-                            : const LinearGradient(
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
-                                colors: [
-                                  Colors.white,
-                                  Colors.white,
-                                ],
-                                stops: [
-                                  0.0,
-                                  0.0,
-                                ], // Stops at 0%, 50%, and 100%
-                              ),
+                    gradient: (cubit.advertisementModel?.data?.checkFollwing ?? true)
+                        ? const LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              Color(0xFF4C0497),
+                              Color(0xFF4C0497),
+                              Color(0xFF4C0497),
+                              Colors.white,
+                              Color(0xFF4C0497),
+                            ],
+                            stops: [0.0, 0.0, 0.5, 1.5, 1], // Stops at 0%, 50%, and 100%
+                          )
+                        : const LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              Colors.white,
+                              Colors.white,
+                            ],
+                            stops: [
+                              0.0,
+                              0.0,
+                            ], // Stops at 0%, 50%, and 100%
+                          ),
                   ),
                   child: TranslateText(
-                    text:
-                        (cubit.advertisementModel?.data?.checkFollwing ?? true)
-                            ? 'following'
-                            : 'follow',
+                    text: (cubit.advertisementModel?.data?.checkFollwing ?? true) ? 'following' : 'follow',
                     styleText: StyleText.h5,
-                    colorText:
-                        (cubit.advertisementModel?.data?.checkFollwing ?? false)
-                            ? Colors.white
-                            : const Color(0xFF4C0497),
+                    colorText: (cubit.advertisementModel?.data?.checkFollwing ?? false) ? Colors.white : const Color(0xFF4C0497),
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -132,14 +121,10 @@ class ShowOwnerAdsWidget extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  itemsRow(
-                      title: cubit.advertisementModel?.data?.visits ?? '',
-                      icon: Icons.remove_red_eye_outlined),
+                  itemsRow(title: cubit.advertisementModel?.data?.visits ?? '', icon: Icons.remove_red_eye_outlined),
 
                   // itemsRow(title: cubit.advertisementModel?.data?.offerStartDatetime ?? '', icon: Icons.date_range),
-                  itemsRow(
-                      title: cubit.advertisementModel?.data?.createdAt ?? '',
-                      icon: Icons.access_time_rounded),
+                  itemsRow(title: cubit.advertisementModel?.data?.createdAt ?? '', icon: Icons.access_time_rounded),
                 ],
               ),
               const Gap(15),

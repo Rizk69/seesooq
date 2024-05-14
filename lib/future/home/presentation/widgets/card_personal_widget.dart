@@ -1,4 +1,3 @@
-import 'package:dartz/dartz.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,8 +13,7 @@ import '../../../../config/routes/app_routes.dart';
 enum CardPersonalWidgetType { home, drawer }
 
 class CardPersonalWidget extends StatelessWidget {
-  const CardPersonalWidget(
-      {super.key, required this.bodyText, required this.type});
+  const CardPersonalWidget({super.key, required this.bodyText, required this.type});
 
   final String bodyText;
 
@@ -24,6 +22,7 @@ class CardPersonalWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, HomeState>(builder: (context, state) {
+      print('state.userLocalModel?.user?.name: ${state.userLocalModel?.token}');
       bool isGuest = state.userLocalModel?.user?.name?.isEmpty ?? true;
       String userName = isGuest ? "Guest" : state.userLocalModel!.user!.name!;
       return Row(
@@ -52,16 +51,13 @@ class CardPersonalWidget extends StatelessWidget {
                           child: TranslateText(
                               maxLines: 1,
                               styleText: StyleText.h4,
-                              colorText: type == CardPersonalWidgetType.drawer
-                                  ? Colors.white
-                                  : null,
+                              colorText: type == CardPersonalWidgetType.drawer ? Colors.white : null,
                               text: 'welcomeName'.tr(args: [userName])),
                         ),
                         const SizedBox(
                           width: 5,
                         ),
-                        if (type == CardPersonalWidgetType.home)
-                          SvgPicture.asset('hey'.toSvg),
+                        if (type == CardPersonalWidgetType.home) SvgPicture.asset('hey'.toSvg),
                       ],
                     ),
                   ),
@@ -71,18 +67,13 @@ class CardPersonalWidget extends StatelessWidget {
                       TranslateText(
                         styleText: StyleText.h5,
                         text: bodyText.tr(),
-                        colorText: type == CardPersonalWidgetType.drawer
-                            ? Colors.white
-                            : null,
+                        colorText: type == CardPersonalWidgetType.drawer ? Colors.white : null,
                       ),
                       if (type == CardPersonalWidgetType.drawer) ...[
                         const SizedBox(
                           width: 5,
                         ),
-                        Align(
-                            alignment: Alignment.topCenter,
-                            child: Image.asset('gold'.toPng,
-                                width: 16, height: 16)),
+                        Align(alignment: Alignment.topCenter, child: Image.asset('gold'.toPng, width: 16, height: 16)),
                       ],
                     ],
                   ),
@@ -108,8 +99,7 @@ class CardPersonalWidget extends StatelessWidget {
                         height: 20,
                       ),
                       style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all(Colors.white),
+                        backgroundColor: MaterialStateProperty.all(Colors.white),
                       ),
                     ),
                   ],
@@ -121,9 +111,9 @@ class CardPersonalWidget extends StatelessWidget {
     });
   }
 }
+
 class CardPersonalProfileWidget extends StatelessWidget {
-  const CardPersonalProfileWidget(
-      {super.key, required this.bodyText, required this.type});
+  const CardPersonalProfileWidget({super.key, required this.bodyText, required this.type});
 
   final String bodyText;
 
@@ -160,16 +150,13 @@ class CardPersonalProfileWidget extends StatelessWidget {
                           child: TranslateText(
                               maxLines: 1,
                               styleText: StyleText.h4,
-                              colorText: type == CardPersonalWidgetType.drawer
-                                  ? Colors.white
-                                  : null,
+                              colorText: type == CardPersonalWidgetType.drawer ? Colors.white : null,
                               text: 'welcomeName'.tr(args: [userName])),
                         ),
                         const SizedBox(
                           width: 5,
                         ),
-                        if (type == CardPersonalWidgetType.home)
-                          SvgPicture.asset('hey'.toSvg),
+                        if (type == CardPersonalWidgetType.home) SvgPicture.asset('hey'.toSvg),
                       ],
                     ),
                   ),
@@ -179,18 +166,13 @@ class CardPersonalProfileWidget extends StatelessWidget {
                       TranslateText(
                         styleText: StyleText.h5,
                         text: bodyText.tr(),
-                        colorText: type == CardPersonalWidgetType.drawer
-                            ? Colors.white
-                            : null,
+                        colorText: type == CardPersonalWidgetType.drawer ? Colors.white : null,
                       ),
                       if (type == CardPersonalWidgetType.drawer) ...[
                         const SizedBox(
                           width: 5,
                         ),
-                        Align(
-                            alignment: Alignment.topCenter,
-                            child: Image.asset('gold'.toPng,
-                                width: 16, height: 16)),
+                        Align(alignment: Alignment.topCenter, child: Image.asset('gold'.toPng, width: 16, height: 16)),
                       ],
                     ],
                   ),
@@ -217,8 +199,7 @@ class CardPersonalProfileWidget extends StatelessWidget {
                         height: 20,
                       ),
                       style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all(Colors.white),
+                        backgroundColor: MaterialStateProperty.all(Colors.white),
                       ),
                     ),
                   ],

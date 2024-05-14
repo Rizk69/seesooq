@@ -45,7 +45,6 @@ class LoginCubit extends Cubit<LoginState> with ChangeNotifier {
             loginModel: r,
           ),
         );
-        notifyListeners();
       },
     );
 

@@ -23,9 +23,7 @@ class HomeCubit extends Cubit<HomeState> with ChangeNotifier {
   }
 
   void updateUserLocal(UserLocalModel? userLocalModel) {
-    if (userLocalModel?.token != null) {
-      emit(state.copyWith(userLocalModel: userLocalModel));
-    }
+    emit(state.copyWith(userLocalModel: userLocalModel));
   }
 
   void streamController(DirectionUser directionUser) {
