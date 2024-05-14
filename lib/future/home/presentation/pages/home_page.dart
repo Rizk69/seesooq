@@ -65,7 +65,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         },
         child: Scaffold(
           key: _scaffoldKey,
-          appBar: AppBarHomePageWidget(scaffoldKey: _scaffoldKey),
+          appBar: AppBarHomePageWidget(scaffoldKey: _scaffoldKey, isGust: cubit.state.userLocalModel?.user?.name
+              ?.isEmpty ??
+              true),
           drawer: Drawer(
             backgroundColor: Colors.white,
             surfaceTintColor: Colors.white,

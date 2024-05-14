@@ -17,7 +17,8 @@ import 'package:opensooq/future/home/presentation/cubit/home_cubit.dart';
 import 'package:opensooq/future/home/presentation/cubit/home_state.dart';
 
 class BookingPostWidget extends StatelessWidget {
-  const BookingPostWidget({super.key});
+  const BookingPostWidget({super.key, required this.isGust});
+  final bool isGust;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,11 @@ class BookingPostWidget extends StatelessWidget {
           if (state.advertisementOffer?.data?.isNotEmpty ?? false)
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.0),
-              child: TranslateText(styleText: StyleText.h4, fontSize: 18, fontWeight: FontWeight.w500, text: 'furnitureOffers'),
+              child: TranslateText(
+                  styleText: StyleText.h4,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500,
+                  text: 'furnitureOffers'),
             ),
           const SizedBox(
             height: 10,
@@ -43,7 +48,10 @@ class BookingPostWidget extends StatelessWidget {
                       key,
                       InkWell(
                           onTap: () {
-                            context.pushNamed('view_ads_home', extra: item.id.toString());
+                            if (!isGust) {
+                              context.pushNamed('view_ads_home',
+                                  extra: item.id.toString());
+                            }
                           },
                           child: SizedBox(
                             width: context.width * 0.7,
@@ -59,14 +67,23 @@ class BookingPostWidget extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(8),
                                       child: Stack(
                                         children: [
-                                          (item.album?.firstOrNull['url'].toString().split('.').lastOrNull) == 'svg'
+                                          (item.album?.firstOrNull['url']
+                                                      .toString()
+                                                      .split('.')
+                                                      .lastOrNull) ==
+                                                  'svg'
                                               ? SvgPicture.network(
-                                                  item.album?.firstOrNull['url'].toString() ?? '',
+                                                  item.album?.firstOrNull['url']
+                                                          .toString() ??
+                                                      '',
                                                   height: context.height * 0.20,
                                                   fit: BoxFit.contain,
                                                 )
                                               : CacheNetworkImageApp(
-                                                  urlImage: item.album?.firstOrNull['url'].toString() ?? '',
+                                                  urlImage: item.album
+                                                          ?.firstOrNull['url']
+                                                          .toString() ??
+                                                      '',
                                                   fit: BoxFit.cover,
                                                   height: context.height * 0.20,
                                                 ),
@@ -75,33 +92,54 @@ class BookingPostWidget extends StatelessWidget {
                                             top: 10,
                                             child: IconButton(
                                               onPressed: () {
-                                                if (item.checkIfFavourite ?? false) {
-                                                  FavoriteCubit.get(context).removeFav(
+                                                if (item.checkIfFavourite ??
+                                                    false) {
+                                                  FavoriteCubit.get(context)
+                                                      .removeFav(
                                                     idFav: item.id.toString(),
                                                     isOutSide: true,
                                                     index: key,
                                                   );
                                                 } else {
-                                                  FavoriteCubit.get(context).addFav(
-                                                      idFav: item.id.toString(),
-                                                      index: key,
-                                                      favData: FavData(
-                                                        adId: item.id,
-                                                        title: item.title,
-                                                        price: item.price,
-                                                        createdAt: item.createdAt,
-                                                        city: item.city,
-                                                        mainImage: item.album?.firstOrNull['url'] ?? '',
-                                                      ));
+                                                  FavoriteCubit.get(context)
+                                                      .addFav(
+                                                          idFav: item.id
+                                                              .toString(),
+                                                          index: key,
+                                                          favData: FavData(
+                                                            adId: item.id,
+                                                            title: item.title,
+                                                            price: item.price,
+                                                            createdAt:
+                                                                item.createdAt,
+                                                            city: item.city,
+                                                            mainImage: item
+                                                                        .album
+                                                                        ?.firstOrNull[
+                                                                    'url'] ??
+                                                                '',
+                                                          ));
                                                 }
                                               },
                                               style: ButtonStyle(
-                                                padding: MaterialStateProperty.all<EdgeInsetsGeometry>(const EdgeInsets.all(0)),
-                                                backgroundColor: MaterialStateProperty.all<Color>(Colors.red.withOpacity(0.5)),
+                                                padding: MaterialStateProperty
+                                                    .all<EdgeInsetsGeometry>(
+                                                        const EdgeInsets.all(
+                                                            0)),
+                                                backgroundColor:
+                                                    MaterialStateProperty
+                                                        .all<Color>(Colors.red
+                                                            .withOpacity(0.5)),
                                               ),
                                               icon: Icon(
-                                                (item.checkIfFavourite as bool) ? Icons.favorite : Icons.favorite_border,
-                                                color: (item.checkIfFavourite as bool) ? Colors.red : Colors.redAccent.withOpacity(0.5),
+                                                (item.checkIfFavourite as bool)
+                                                    ? Icons.favorite
+                                                    : Icons.favorite_border,
+                                                color: (item.checkIfFavourite
+                                                        as bool)
+                                                    ? Colors.red
+                                                    : Colors.redAccent
+                                                        .withOpacity(0.5),
                                                 size: 25,
                                               ),
                                             ),
@@ -110,33 +148,44 @@ class BookingPostWidget extends StatelessWidget {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.symmetric(horizontal: 0.0, vertical: 0),
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 0.0, vertical: 0),
                                       child: Column(
                                         children: [
                                           const Gap(10),
                                           Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
                                             children: [
                                               Expanded(
                                                 child: Column(
-                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
                                                   children: [
                                                     TranslateText(
                                                       styleText: StyleText.h5,
                                                       maxLines: 1,
-                                                      textAlign: TextAlign.start,
-                                                      colorText: HexColor('#200E32'),
-                                                      fontWeight: FontWeight.w500,
-                                                      text: item.title.toString(),
+                                                      textAlign:
+                                                          TextAlign.start,
+                                                      colorText:
+                                                          HexColor('#200E32'),
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      text:
+                                                          item.title.toString(),
                                                     ),
                                                     const Gap(5),
                                                     TranslateText(
                                                       styleText: StyleText.h6,
-                                                      fontWeight: FontWeight.w500,
+                                                      fontWeight:
+                                                          FontWeight.w500,
                                                       fontSize: 14,
-                                                      colorText: AppColors.primary,
-                                                      text: "${item.price.toString().price} JD",
+                                                      colorText:
+                                                          AppColors.primary,
+                                                      text:
+                                                          "${item.price.toString().price} JD",
                                                     ),
                                                   ],
                                                 ),
@@ -146,37 +195,50 @@ class BookingPostWidget extends StatelessWidget {
                                           const Gap(8),
                                           Row(
                                             mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                            crossAxisAlignment: CrossAxisAlignment.end,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.end,
                                             children: [
                                               Row(
-                                                crossAxisAlignment: CrossAxisAlignment.center,
-                                                mainAxisAlignment: MainAxisAlignment.start,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
                                                 children: [
                                                   SvgCustomImage(
-                                                      image: 'time_booking'.toSvg,
+                                                      image:
+                                                          'time_booking'.toSvg,
                                                       width: 20,
                                                       height: 20,
-                                                      color: Theme.of(context).colorScheme.primary),
+                                                      color: Theme.of(context)
+                                                          .colorScheme
+                                                          .primary),
                                                   const SizedBox(
                                                     width: 5,
                                                   ),
                                                   TranslateText(
                                                     styleText: StyleText.h6,
                                                     fontWeight: FontWeight.w400,
-                                                    text: item.createdAt.toString().removeAgo,
+                                                    text: item.createdAt
+                                                        .toString()
+                                                        .removeAgo,
                                                     maxLines: 2,
                                                   ),
                                                 ],
                                               ),
                                               Row(
-                                                crossAxisAlignment: CrossAxisAlignment.center,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
                                                 children: [
                                                   SvgCustomImage(
-                                                    image: 'location_boking'.toSvg,
+                                                    image:
+                                                        'location_boking'.toSvg,
                                                     width: 20,
                                                     height: 20,
-                                                    color: Theme.of(context).colorScheme.primary,
+                                                    color: Theme.of(context)
+                                                        .colorScheme
+                                                        .primary,
                                                   ),
                                                   const Gap(5),
                                                   TranslateText(
@@ -195,20 +257,28 @@ class BookingPostWidget extends StatelessWidget {
                                               Expanded(
                                                 child: Container(
                                                   alignment: Alignment.center,
-                                                  padding: const EdgeInsets.all(8),
+                                                  padding:
+                                                      const EdgeInsets.all(8),
                                                   decoration: BoxDecoration(
                                                     color: HexColor('#F5F5F5'),
-                                                    borderRadius: BorderRadius.circular(10),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
                                                   ),
                                                   child: Row(
-                                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                                    mainAxisAlignment: MainAxisAlignment.center,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
                                                     children: [
                                                       SvgCustomImage(
                                                         image: 'call_cat'.toSvg,
                                                         width: 20,
                                                         height: 20,
-                                                        color: HexColor('#F05A35'),
+                                                        color:
+                                                            HexColor('#F05A35'),
                                                       ),
                                                       const SizedBox(
                                                         width: 4,
@@ -225,20 +295,29 @@ class BookingPostWidget extends StatelessWidget {
                                               Expanded(
                                                 child: Container(
                                                   alignment: Alignment.center,
-                                                  padding: const EdgeInsets.all(8),
+                                                  padding:
+                                                      const EdgeInsets.all(8),
                                                   decoration: BoxDecoration(
                                                     color: HexColor('#F5F5F5'),
-                                                    borderRadius: BorderRadius.circular(10),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
                                                   ),
                                                   child: Row(
-                                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                                    mainAxisAlignment: MainAxisAlignment.center,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
                                                     children: [
                                                       SvgCustomImage(
-                                                        image: 'message_cat'.toSvg,
+                                                        image:
+                                                            'message_cat'.toSvg,
                                                         width: 20,
                                                         height: 20,
-                                                        color: HexColor('#F05A35'),
+                                                        color:
+                                                            HexColor('#F05A35'),
                                                       ),
                                                       const SizedBox(
                                                         width: 4,

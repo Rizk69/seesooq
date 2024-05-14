@@ -26,11 +26,13 @@ class CategoryView extends StatelessWidget {
                       categoryName: state.category[index].name ?? '',
                       logo: state.category[index].logo ?? '',
                       categoryId: state.category[index].id.toString() ?? '',
+                      isGust: false,
                     ),
                     childCount: state.category.length,
                   ),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: context.withFormFactor(onMobile: 4, onTablet: 6, onDesktop: 8)!,
+                    crossAxisCount: context.withFormFactor(
+                        onMobile: 4, onTablet: 6, onDesktop: 8)!,
                     childAspectRatio: 0.8,
                   ),
                 )

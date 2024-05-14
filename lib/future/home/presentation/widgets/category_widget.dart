@@ -11,7 +11,8 @@ import 'package:opensooq/future/category/presentation/cubit/category_state.dart'
 import 'package:opensooq/future/home/presentation/widgets/category_item_widget.dart';
 
 class CategoryWidget extends StatelessWidget {
-  const CategoryWidget({super.key});
+  const CategoryWidget({super.key, required this.isGust});
+  final bool isGust;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +37,9 @@ class CategoryWidget extends StatelessWidget {
                       ),
                       InkWell(
                         onTap: () {
-                          context.goNamed(Routes.categoryView);
+                          if (!isGust) {
+                            context.goNamed(Routes.categoryView);
+                          }
                         },
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -93,6 +96,7 @@ class CategoryWidget extends StatelessWidget {
                     children: [
                       ...state.category.map((e) {
                         return CategoryItemWidget(
+                          isGust: isGust,
                           categoryName: e.name ?? '',
                           logo: e.logo ?? '',
                           categoryId: e.id.toString() ?? '',

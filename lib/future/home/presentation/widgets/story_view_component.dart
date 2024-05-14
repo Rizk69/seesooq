@@ -202,11 +202,15 @@ class _StoryViewComponentState extends State<StoryViewComponent> {
             const SizedBox(
               height: 15,
             ),
-            const Column(
+             Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CategoryWidget(),
-                  BookingPostWidget(),
+                  CategoryWidget(isGust: widget.cubit.state.userLocalModel?.user?.name
+                      ?.isEmpty ??
+                      true),
+                  BookingPostWidget(isGust: widget.cubit.state.userLocalModel?.user?.name
+                      ?.isEmpty ??
+                      true),
                 ])
           ]
         ],

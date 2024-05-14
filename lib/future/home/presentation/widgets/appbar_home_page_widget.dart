@@ -5,14 +5,15 @@ import 'package:opensooq/config/routes/app_routes.dart';
 import 'package:opensooq/core/utils/hex_color.dart';
 import 'package:opensooq/core/utils/media_query_values.dart';
 
-class AppBarHomePageWidget extends StatefulWidget implements PreferredSizeWidget {
-  const AppBarHomePageWidget({Key? key, required this.scaffoldKey})
-      : preferredSize = const Size.fromHeight(kToolbarHeight),
-        super(key: key);
+class AppBarHomePageWidget extends StatefulWidget
+    implements PreferredSizeWidget {
+  const AppBarHomePageWidget({super.key, required this.scaffoldKey, required this.isGust})
+      : preferredSize = const Size.fromHeight(kToolbarHeight);
   final GlobalKey<ScaffoldState> scaffoldKey;
 
   @override
   final Size preferredSize; // default is 56.0
+  final bool isGust;
 
   @override
   AppBarHomePageWidgetState createState() => AppBarHomePageWidgetState();
@@ -38,13 +39,15 @@ class AppBarHomePageWidgetState extends State<AppBarHomePageWidget> {
                           backgroundColor: MaterialStateProperty.all(
                             HexColor('#F5F5F5'),
                           ),
-                          shape: MaterialStateProperty.all(const RoundedRectangleBorder(
+                          shape: MaterialStateProperty.all(
+                              const RoundedRectangleBorder(
                             borderRadius: BorderRadius.all(Radius.circular(5)),
                           )),
                         ),
                         padding: const EdgeInsets.all(10),
                         visualDensity: VisualDensity.compact,
                         onPressed: () {
+                          if(!widget.isGust){
                           switch (index) {
                             case 0:
                               widget.scaffoldKey.currentState!.openDrawer();
@@ -55,7 +58,7 @@ class AppBarHomePageWidgetState extends State<AppBarHomePageWidget> {
 
                             default:
                           }
-                        },
+                        }},
                         icon: SvgPicture.asset(
                           actions[index].toSvg,
                           width: 20,

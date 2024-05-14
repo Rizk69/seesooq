@@ -7,18 +7,22 @@ import 'package:opensooq/core/utils/app_colors.dart';
 import 'package:opensooq/core/widget/text_translate_manager.dart';
 
 class CategoryItemWidget extends StatelessWidget {
-  const CategoryItemWidget({super.key, required this.categoryName, required this.logo, required this.categoryId});
+  const CategoryItemWidget({super.key, required this.categoryName, required this.logo, required this.categoryId, required this.isGust});
   final String categoryName;
   final String logo;
   final String categoryId;
+  final bool isGust;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => context.goNamed(
+      onTap: () {
+      if (!isGust) {
+
+        context.goNamed(
         Routes.detailsCategoryView,
         queryParameters: <String, String>{'categoryName': categoryName, 'categoryId': categoryId},
-      ),
+      );}},
       child: Column(
         children: [
           Container(

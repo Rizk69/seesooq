@@ -33,9 +33,11 @@ class _AppWithNavBarState extends State<AppWithNavBar> {
           listener: (context, state) {},
           builder: (context, state) {
             var cubit = HomeCubit.get(context);
+            var gust = cubit.state.userLocalModel?.user?.name?.isEmpty ?? true;
             return Scaffold(
               body: widget.navigationShell,
-              bottomNavigationBar: KeyboardVisibilityBuilder(builder: (context, visible) {
+              bottomNavigationBar:
+                  KeyboardVisibilityBuilder(builder: (context, visible) {
                 return visible
                     ? const SizedBox.shrink()
                     : BottomNavigationBar(
@@ -45,13 +47,19 @@ class _AppWithNavBarState extends State<AppWithNavBar> {
                             icon: Icon(Icons.home),
                             label: 'الرئيسية',
                           ),
-                          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'البحث'),
-                          BottomNavigationBarItem(icon: Icon(Icons.add), label: 'أضف إعلان'),
-                          BottomNavigationBarItem(icon: Icon(Icons.message), label: 'الرسائل'),
-                          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'حسابي'),
+                          BottomNavigationBarItem(
+                              icon: Icon(Icons.search), label: 'البحث'),
+                          BottomNavigationBarItem(
+                              icon: Icon(Icons.add), label: 'أضف إعلان'),
+                          BottomNavigationBarItem(
+                              icon: Icon(Icons.message), label: 'الرسائل'),
+                          BottomNavigationBarItem(
+                              icon: Icon(Icons.person), label: 'حسابي'),
                         ],
                         onTap: (index) {
-                          _onTap(context, index);
+                          if (!gust) {
+                            _onTap(context, index);
+                          }
                         },
                         currentIndex: widget.navigationShell.currentIndex,
                       );
@@ -83,7 +91,9 @@ bool hiddenNavbar(index, String path) {
   print(path);
   return index == 2
       ? true
-      : path.contains('notification') || path.contains(Routes.categoryView) || path.contains(Routes.detailsCategoryView)
+      : path.contains('notification') ||
+              path.contains(Routes.categoryView) ||
+              path.contains(Routes.detailsCategoryView)
           ? true
           : path.contains('location')
               ? true
@@ -101,7 +111,8 @@ class BNBCustomPainter extends CustomPainter {
     path.moveTo(0, 0); // Start
     path.quadraticBezierTo(size.width * 0.25, 0, size.width * 0.35, 0);
     path.quadraticBezierTo(size.width * 0.40, 0, size.width * 0.40, 10);
-    path.arcToPoint(Offset(size.width * 0.60, 10), radius: const Radius.circular(45.0), clockwise: false);
+    path.arcToPoint(Offset(size.width * 0.60, 10),
+        radius: const Radius.circular(45.0), clockwise: false);
     path.quadraticBezierTo(size.width * 0.60, 0, size.width * 0.65, 0);
     path.quadraticBezierTo(size.width * 0.20, 0, size.width, 0);
     path.lineTo(size.width, size.height);
