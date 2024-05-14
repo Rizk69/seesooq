@@ -23,7 +23,9 @@ class HomeCubit extends Cubit<HomeState> with ChangeNotifier {
   }
 
   void updateUserLocal(UserLocalModel? userLocalModel) {
-    emit(state.copyWith(userLocalModel: userLocalModel));
+    if (userLocalModel?.token != null) {
+      emit(state.copyWith(userLocalModel: userLocalModel));
+    }
   }
 
   void streamController(DirectionUser directionUser) {
@@ -43,8 +45,7 @@ class HomeCubit extends Cubit<HomeState> with ChangeNotifier {
               emit(state.copyWith(advertisementOffer: r));
               scrollController = ScrollController();
               scrollController.addListener(() {
-                if (scrollController.position.pixels ==
-                    scrollController.position.maxScrollExtent) {
+                if (scrollController.position.pixels == scrollController.position.maxScrollExtent) {
                   if (hasMoreItems) {
                     paginationAdvertisement(subCategory: '1');
                   }
@@ -62,8 +63,7 @@ class HomeCubit extends Cubit<HomeState> with ChangeNotifier {
               emit(state.copyWith(bannersModel: r));
               scrollController = ScrollController();
               scrollController.addListener(() {
-                if (scrollController.position.pixels ==
-                    scrollController.position.maxScrollExtent) {
+                if (scrollController.position.pixels == scrollController.position.maxScrollExtent) {
                   if (hasMoreItems) {}
                 }
               });
@@ -87,10 +87,7 @@ class HomeCubit extends Cubit<HomeState> with ChangeNotifier {
               }, (r) {
                 emit(state.copyWith(
                   advertisementOffer: AdvertisementModel(
-                    data: [
-                      ...state.advertisementOffer?.data ?? [],
-                      ...r.data ?? []
-                    ],
+                    data: [...state.advertisementOffer?.data ?? [], ...r.data ?? []],
                     meta: r.meta,
                   ),
                 ));
@@ -125,9 +122,7 @@ class HomeCubit extends Cubit<HomeState> with ChangeNotifier {
   void toggleLikeInOffer(int index) {
     List<Data> list = List.from(state.advertisementOffer?.data ?? []);
     // list[index].checkIfFavourite = !(list[index].checkIfFavourite ?? false);
-    emit(state.copyWith(
-        advertisementOffer: AdvertisementModel(
-            data: list, meta: state.advertisementOffer?.meta)));
+    emit(state.copyWith(advertisementOffer: AdvertisementModel(data: list, meta: state.advertisementOffer?.meta)));
   }
 
   resetPagination() {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:opensooq/config/routes/app_routes.dart';
 import 'package:opensooq/core/widget/text_translate_manager.dart';
-import 'package:opensooq/future/login/presentation/cubit/login_cubit.dart';
 
 void showLoginOrGuestDialog(BuildContext context) {
   showDialog(
@@ -33,7 +33,7 @@ void showLoginOrGuestDialog(BuildContext context) {
             onPressed: () {
               Navigator.of(context).pop();
               // Navigator.of(context).pushNamed(Routes.login);
-              context.read<LoginCubit>().goToLogin();
+              context.goNamed(Routes.login);
             },
             child: const TranslateText(
               text: 'Log In',

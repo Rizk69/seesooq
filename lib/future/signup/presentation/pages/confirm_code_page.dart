@@ -24,6 +24,12 @@ class ConfirmCodePage extends StatefulWidget {
 class _ConfirmCodePageState extends State<ConfirmCodePage> {
   final GlobalKey<FormState> _key = GlobalKey<FormState>();
   TextEditingController textEditingController = TextEditingController();
+  @override
+  dispose() {
+    textEditingController.dispose();
+
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -88,6 +94,7 @@ class _ConfirmCodePageState extends State<ConfirmCodePage> {
                   children: [
                     PinCodeTextField(
                       appContext: context,
+                      autoDisposeControllers: false,
                       pastedTextStyle: TextStyle(
                         color: Colors.green.shade600,
                         fontWeight: FontWeight.bold,

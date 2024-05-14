@@ -96,7 +96,13 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LoginCubit, LoginState>(builder: (context, state) {
+    return BlocConsumer<LoginCubit, LoginState>(listener: (context, state) {
+      if (state.loginStatus == LoginStatus.success) {
+        context.goNamed(
+          Routes.home,
+        );
+      }
+    }, builder: (context, state) {
       return Scaffold(
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 32),
@@ -238,6 +244,7 @@ class _LoginPageState extends State<LoginPage> {
                     InkWell(
                       onTap: () {
                         context.read<LoginCubit>().loginAsGuest();
+                        context.goNamed(Routes.home);
                       },
                       splashColor: Theme.of(context).colorScheme.secondary,
                       child: Semantics(
@@ -261,7 +268,7 @@ class _LoginPageState extends State<LoginPage> {
                         );
                       }
                     },
-                    child:  SignUpWithSocialMediaWidget(text: 'textLogin'.tr())),
+                    child: SignUpWithSocialMediaWidget(text: 'textLogin'.tr())),
                 SizedBox(height: context.height * 0.02),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

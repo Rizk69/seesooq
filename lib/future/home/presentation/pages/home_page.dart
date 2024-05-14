@@ -16,6 +16,7 @@ import 'package:opensooq/future/home/presentation/widgets/card_personal_widget.d
 import 'package:opensooq/future/home/presentation/widgets/my_option_drawer_widget.dart';
 import 'package:opensooq/future/home/presentation/widgets/story_view_component.dart';
 import 'package:opensooq/future/login/presentation/cubit/login_cubit.dart';
+import 'package:opensooq/future/signup/presentation/cubit/signup_cubit.dart';
 import 'package:opensooq/future/user_local_model.dart';
 
 class HomePage extends StatefulWidget {
@@ -49,9 +50,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           HomeCubit.get(context).streamController(DirectionUser.reverse);
         }
       });
-
+    SignUpCubit.get(context).errorController?.close();
     super.initState();
-
   }
 
   @override
@@ -123,9 +123,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               onRefresh: () async {
                 StoryUserCubit.get(context).getUsersStories();
               },
-              child:
-
-              SingleChildScrollView(
+              child: SingleChildScrollView(
                   physics: const AlwaysScrollableScrollPhysics(),
                   controller: scrollController,
                   padding: const EdgeInsets.only(bottom: 10),
