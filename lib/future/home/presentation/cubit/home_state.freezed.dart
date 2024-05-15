@@ -17,33 +17,23 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$HomeState {
   int get index => throw _privateConstructorUsedError;
-  DirectionUser get directionUser => throw _privateConstructorUsedError;
   UserLocalModel? get userLocalModel => throw _privateConstructorUsedError;
-  AdvertisementModel? get advertisementOffer =>
-      throw _privateConstructorUsedError;
+  AdvertisementModel? get advertisementOffer => throw _privateConstructorUsedError;
   BannersModel? get bannersModel => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $HomeStateCopyWith<HomeState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $HomeStateCopyWith<HomeState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $HomeStateCopyWith<$Res> {
-  factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
-      _$HomeStateCopyWithImpl<$Res, HomeState>;
+  factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) = _$HomeStateCopyWithImpl<$Res, HomeState>;
   @useResult
-  $Res call(
-      {int index,
-      DirectionUser directionUser,
-      UserLocalModel? userLocalModel,
-      AdvertisementModel? advertisementOffer,
-      BannersModel? bannersModel});
+  $Res call({int index, UserLocalModel? userLocalModel, AdvertisementModel? advertisementOffer, BannersModel? bannersModel});
 }
 
 /// @nodoc
-class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
-    implements $HomeStateCopyWith<$Res> {
+class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState> implements $HomeStateCopyWith<$Res> {
   _$HomeStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -55,7 +45,6 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   @override
   $Res call({
     Object? index = null,
-    Object? directionUser = null,
     Object? userLocalModel = freezed,
     Object? advertisementOffer = freezed,
     Object? bannersModel = freezed,
@@ -65,10 +54,6 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
               as int,
-      directionUser: null == directionUser
-          ? _value.directionUser
-          : directionUser // ignore: cast_nullable_to_non_nullable
-              as DirectionUser,
       userLocalModel: freezed == userLocalModel
           ? _value.userLocalModel
           : userLocalModel // ignore: cast_nullable_to_non_nullable
@@ -86,34 +71,21 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
 }
 
 /// @nodoc
-abstract class _$$HomeStateImplCopyWith<$Res>
-    implements $HomeStateCopyWith<$Res> {
-  factory _$$HomeStateImplCopyWith(
-          _$HomeStateImpl value, $Res Function(_$HomeStateImpl) then) =
-      __$$HomeStateImplCopyWithImpl<$Res>;
+abstract class _$$HomeStateImplCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
+  factory _$$HomeStateImplCopyWith(_$HomeStateImpl value, $Res Function(_$HomeStateImpl) then) = __$$HomeStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int index,
-      DirectionUser directionUser,
-      UserLocalModel? userLocalModel,
-      AdvertisementModel? advertisementOffer,
-      BannersModel? bannersModel});
+  $Res call({int index, UserLocalModel? userLocalModel, AdvertisementModel? advertisementOffer, BannersModel? bannersModel});
 }
 
 /// @nodoc
-class __$$HomeStateImplCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$HomeStateImpl>
-    implements _$$HomeStateImplCopyWith<$Res> {
-  __$$HomeStateImplCopyWithImpl(
-      _$HomeStateImpl _value, $Res Function(_$HomeStateImpl) _then)
-      : super(_value, _then);
+class __$$HomeStateImplCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res, _$HomeStateImpl> implements _$$HomeStateImplCopyWith<$Res> {
+  __$$HomeStateImplCopyWithImpl(_$HomeStateImpl _value, $Res Function(_$HomeStateImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? index = null,
-    Object? directionUser = null,
     Object? userLocalModel = freezed,
     Object? advertisementOffer = freezed,
     Object? bannersModel = freezed,
@@ -123,10 +95,6 @@ class __$$HomeStateImplCopyWithImpl<$Res>
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
               as int,
-      directionUser: null == directionUser
-          ? _value.directionUser
-          : directionUser // ignore: cast_nullable_to_non_nullable
-              as DirectionUser,
       userLocalModel: freezed == userLocalModel
           ? _value.userLocalModel
           : userLocalModel // ignore: cast_nullable_to_non_nullable
@@ -146,19 +114,11 @@ class __$$HomeStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$HomeStateImpl implements _HomeState {
-  const _$HomeStateImpl(
-      {this.index = 0,
-      this.directionUser = DirectionUser.reverse,
-      this.userLocalModel = null,
-      this.advertisementOffer = null,
-      this.bannersModel = null});
+  const _$HomeStateImpl({this.index = 0, this.userLocalModel = null, this.advertisementOffer = null, this.bannersModel = null});
 
   @override
   @JsonKey()
   final int index;
-  @override
-  @JsonKey()
-  final DirectionUser directionUser;
   @override
   @JsonKey()
   final UserLocalModel? userLocalModel;
@@ -171,7 +131,7 @@ class _$HomeStateImpl implements _HomeState {
 
   @override
   String toString() {
-    return 'HomeState(index: $index, directionUser: $directionUser, userLocalModel: $userLocalModel, advertisementOffer: $advertisementOffer, bannersModel: $bannersModel)';
+    return 'HomeState(index: $index, userLocalModel: $userLocalModel, advertisementOffer: $advertisementOffer, bannersModel: $bannersModel)';
   }
 
   @override
@@ -180,39 +140,29 @@ class _$HomeStateImpl implements _HomeState {
         (other.runtimeType == runtimeType &&
             other is _$HomeStateImpl &&
             (identical(other.index, index) || other.index == index) &&
-            (identical(other.directionUser, directionUser) ||
-                other.directionUser == directionUser) &&
-            (identical(other.userLocalModel, userLocalModel) ||
-                other.userLocalModel == userLocalModel) &&
-            (identical(other.advertisementOffer, advertisementOffer) ||
-                other.advertisementOffer == advertisementOffer) &&
-            (identical(other.bannersModel, bannersModel) ||
-                other.bannersModel == bannersModel));
+            (identical(other.userLocalModel, userLocalModel) || other.userLocalModel == userLocalModel) &&
+            (identical(other.advertisementOffer, advertisementOffer) || other.advertisementOffer == advertisementOffer) &&
+            (identical(other.bannersModel, bannersModel) || other.bannersModel == bannersModel));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, index, directionUser,
-      userLocalModel, advertisementOffer, bannersModel);
+  int get hashCode => Object.hash(runtimeType, index, userLocalModel, advertisementOffer, bannersModel);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$HomeStateImplCopyWith<_$HomeStateImpl> get copyWith =>
-      __$$HomeStateImplCopyWithImpl<_$HomeStateImpl>(this, _$identity);
+  _$$HomeStateImplCopyWith<_$HomeStateImpl> get copyWith => __$$HomeStateImplCopyWithImpl<_$HomeStateImpl>(this, _$identity);
 }
 
 abstract class _HomeState implements HomeState {
   const factory _HomeState(
       {final int index,
-      final DirectionUser directionUser,
       final UserLocalModel? userLocalModel,
       final AdvertisementModel? advertisementOffer,
       final BannersModel? bannersModel}) = _$HomeStateImpl;
 
   @override
   int get index;
-  @override
-  DirectionUser get directionUser;
   @override
   UserLocalModel? get userLocalModel;
   @override
@@ -221,6 +171,5 @@ abstract class _HomeState implements HomeState {
   BannersModel? get bannersModel;
   @override
   @JsonKey(ignore: true)
-  _$$HomeStateImplCopyWith<_$HomeStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$HomeStateImplCopyWith<_$HomeStateImpl> get copyWith => throw _privateConstructorUsedError;
 }

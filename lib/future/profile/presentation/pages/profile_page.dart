@@ -14,7 +14,6 @@ import 'package:opensooq/core/widget/text_translate_manager.dart';
 import 'package:opensooq/future/home/presentation/cubit/home_cubit.dart';
 import 'package:opensooq/future/home/presentation/widgets/my_option_drawer_widget.dart';
 import 'package:opensooq/future/login/presentation/cubit/login_cubit.dart';
-import 'package:opensooq/future/login/presentation/cubit/login_state.dart';
 import 'package:opensooq/future/profile/cubit/profile_cubit/profile_cubit.dart';
 import 'package:opensooq/future/profile/cubit/profile_cubit/profile_state.dart';
 import 'package:opensooq/future/profile/presentation/widgets/header_profile.dart';
@@ -77,8 +76,7 @@ class _ProfilePageState extends State<ProfilePage> {
             children: [
               const SizedBox(height: 10),
               Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
@@ -128,8 +126,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 color: Colors.grey.withOpacity(0.5),
                                 spreadRadius: 0.5,
                                 blurRadius: 0.5,
-                                offset: const Offset(
-                                    0, 0.5), // changes position of shadow
+                                offset: const Offset(0, 0.5), // changes position of shadow
                               ),
                             ],
                           ),
@@ -222,8 +219,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             ),
                             leading: CircleAvatar(
                               radius: 25,
-                              backgroundColor:
-                                  HexColor('#4C0497').withOpacity(0.1),
+                              backgroundColor: HexColor('#4C0497').withOpacity(0.1),
                               child: Image.asset(
                                 _iconTitles()[index],
                                 width: 35,
@@ -283,8 +279,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         context.pushNamed(Routes.wallet);
                       } else if (titles[index].toString() == 'package_drawer') {
                         context.pushNamed(Routes.packages);
-                      } else if (titles[index].toString() ==
-                          'favorite_drawer') {
+                      } else if (titles[index].toString() == 'favorite_drawer') {
                         context.pushNamed(Routes.favorite);
                       } else if (titles[index].toString() == 'setting_drawer') {
                         context.pushNamed(Routes.setting);
@@ -292,7 +287,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         context.pushNamed(Routes.blogsRoute);
                       } else if (titles[index].toString() == 'logout') {
                         LoginCubit.get(context).deleteLocalUser().then((value) {
-                          context.pushNamed(Routes.login);
+                          context.goNamed(Routes.login);
                         });
                       }
                     },

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:opensooq/config/routes/go_redirect.dart';
 import 'package:opensooq/config/routes/redirect/auth_redirect.dart';
@@ -22,6 +23,7 @@ import 'package:opensooq/future/favorite/presentation/pages/route/favorite_route
 import 'package:opensooq/future/follow_section/presentation/page/followers_page.dart';
 import 'package:opensooq/future/follow_section/presentation/page/following_page.dart';
 import 'package:opensooq/future/home/data/models/users_story_model.dart';
+import 'package:opensooq/future/home/presentation/cubit/home_cubit.dart';
 import 'package:opensooq/future/home/presentation/pages/advertisment_view.dart';
 import 'package:opensooq/future/home/presentation/pages/design_story_page.dart';
 import 'package:opensooq/future/home/presentation/pages/home_page.dart';
@@ -133,7 +135,7 @@ final GoRouter router = GoRouter(
   routes: [
     StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {
-          return AppWithNavBar(navigationShell: navigationShell);
+          return BlocProvider(create: (context) => HomeCubit(), child: AppWithNavBar(navigationShell: navigationShell));
         },
         branches: [
           StatefulShellBranch(navigatorKey: sectionANavigatorKey, routes: [

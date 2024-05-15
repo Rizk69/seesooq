@@ -16,9 +16,7 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 
 @LazySingleton()
 class LoginCubit extends Cubit<LoginState> with ChangeNotifier {
-  LoginCubit(this.loginRepository, this.forGetPasswordUserUseCase, this.changePasswordUserUseCase) : super(const LoginState()) {
-    getLocalUser();
-  }
+  LoginCubit(this.loginRepository, this.forGetPasswordUserUseCase, this.changePasswordUserUseCase) : super(const LoginState());
   final LoginRepository loginRepository;
   final ForGetPasswordUserUseCase forGetPasswordUserUseCase;
   final ChangePasswordUserUseCase changePasswordUserUseCase;
@@ -127,7 +125,6 @@ class LoginCubit extends Cubit<LoginState> with ChangeNotifier {
   }
 
   Future<void> deleteLocalUser() async {
-    print('deleteLocalUser');
     final user = await loginRepository.deleteUserLocal();
 
     user.fold(

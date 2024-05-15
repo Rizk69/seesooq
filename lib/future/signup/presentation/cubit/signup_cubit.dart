@@ -113,26 +113,28 @@ class SignUpCubit extends Cubit<SignUpState> with ChangeNotifier {
       final userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
 
       if (userCredential.additionalUserInfo?.isNewUser ?? false) {
+        print('userCredential.user?.email ${credential.secret}');
         final response = await signUpRepository.signUpFromSocial(
-            socialId: userCredential.credential?.accessToken ?? '',
-            email: userCredential.user?.email ?? '',
-            name: userCredential.user?.displayName ?? '');
+            socialId: userCredential.user?.uid ?? '', email: 'yazanturkdsa111d@gmail.com', name: userCredential.user?.displayName ?? '');
 
         response.fold(
           (l) {
             emit(state.copyWith(signUpStatus: SignUpStatus.error));
           },
           (r) {
-            loginWithSocial(userCredential.credential?.accessToken ?? '');
+            loginWithSocial(userCredential.user?.uid ?? '');
           },
         );
       } else {
-        loginWithSocial(userCredential.credential?.accessToken ?? '');
+        loginWithSocial(userCredential.user?.uid ?? '');
       }
     } catch (error) {}
   }
 
   Future<void> loginWithSocial(String socialId) async {
+    emit(state.copyWith(
+      signUpStatus: SignUpStatus.loading,
+    ));
     if (Platform.isAndroid) {
       deviceInfo.androidInfo.then((value) async {
         final response = await signUpRepository.loginInFromSocial(
@@ -150,6 +152,7 @@ class SignUpCubit extends Cubit<SignUpState> with ChangeNotifier {
             emit(state.copyWith(
               signUpStatus: SignUpStatus.social,
             ));
+            print('sdmajdhkjasd${r.token}');
             signUpRepository.cacheUserModel(
                 userLocalModel: UserLocalModel(
               token: r.token,
@@ -170,12 +173,14 @@ class SignUpCubit extends Cubit<SignUpState> with ChangeNotifier {
 
         response.fold(
           (l) {
+            print('sdmajdhkjasd');
             emit(state.copyWith(signUpStatus: SignUpStatus.error));
           },
           (r) {
             emit(state.copyWith(
               signUpStatus: SignUpStatus.social,
             ));
+
             signUpRepository.cacheUserModel(
                 userLocalModel: UserLocalModel(
               token: r.token,
@@ -198,7 +203,6 @@ class SignUpCubit extends Cubit<SignUpState> with ChangeNotifier {
       );
 
       final user = credential;
-      if (user.familyName?.isNotEmpty ?? false) {}
 
       final userApple = await FirebaseAuth.instance.signInWithCredential(
         OAuthProvider('apple.com').credential(
@@ -206,12 +210,24 @@ class SignUpCubit extends Cubit<SignUpState> with ChangeNotifier {
           accessToken: credential.authorizationCode,
         ),
       );
-      print(userApple.additionalUserInfo?.isNewUser);
 
-      print(user);
-    } catch (error) {
-      print(error);
-    }
+      if (userApple.additionalUserInfo?.isNewUser ?? false) {
+        final response = await signUpRepository.signUpFromSocial(
+            socialId: user.userIdentifier ?? '', email: userApple.user?.email ?? '', name: "${user.givenName} ${user.familyName}");
+
+        response.fold(
+          (l) {
+            emit(state.copyWith(signUpStatus: SignUpStatus.error));
+          },
+          (r) {
+            loginWithSocial(user.userIdentifier ?? '');
+          },
+        );
+      } else {
+        print('user.userIdentifier ${user.userIdentifier}');
+        loginWithSocial(user.userIdentifier ?? '');
+      }
+    } catch (error) {}
   }
 }
 

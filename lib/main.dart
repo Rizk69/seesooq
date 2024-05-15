@@ -50,7 +50,6 @@ void main() async {
     provisional: false,
     sound: true,
   );
-
   runApp(
     EasyLocalization(
         supportedLocales: const [Locale('ar', 'JO'), Locale('en', 'US')],

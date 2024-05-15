@@ -56,7 +56,7 @@ class MyOptionDrawerWidget extends StatelessWidget {
                 context.pushNamed(Routes.blogsRoute);
               } else if (titles[index].toString() == 'logout') {
                 LoginCubit.get(context).deleteLocalUser().then((value) {
-                  context.pushNamed(Routes.login);
+                  context.goNamed(Routes.login);
                 });
               }
             },

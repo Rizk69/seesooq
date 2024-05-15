@@ -9,7 +9,6 @@ import 'package:opensooq/future/category_product/presentation/cubit/category_pro
 import 'package:opensooq/future/favorite/presentation/cubit/favorite_cubit.dart';
 import 'package:opensooq/future/follow_section/presentation/bloc/follow_bloc.dart';
 import 'package:opensooq/future/follow_section/presentation/bloc/follow_event.dart';
-import 'package:opensooq/future/home/presentation/cubit/home_cubit.dart';
 import 'package:opensooq/future/home/presentation/cubit/story_user_cubit.dart';
 import 'package:opensooq/future/login/presentation/cubit/login_cubit.dart';
 import 'package:opensooq/future/notification/presentation/cubit/notification_cubit.dart';
@@ -31,14 +30,13 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => di.sl<LocaleCubit>()..init()),
-        BlocProvider(create: (context) => HomeCubit()),
         BlocProvider(create: (context) => di.sl<NotificationCubit>()..initialize()),
         BlocProvider(create: (context) => di.sl<LoginCubit>()),
         BlocProvider(create: (context) => di.sl<CategoryProductCubit>()),
         BlocProvider(create: (context) => di.sl<CategoryCubit>()),
         BlocProvider(create: (context) => di.sl<SignUpCubit>()),
         BlocProvider(create: (context) => FavoriteCubit()..getFav()),
-        BlocProvider(create: (context) => WalletCubit()..getWallet(userId: HomeCubit.get(context).state.userLocalModel?.user?.id.toString() ?? '')),
+        BlocProvider(create: (context) => WalletCubit()..getWallet(userId: '1')),
         BlocProvider(
             create: (context) => ReelsBloc()
               ..add(const ReelsEvent.getReels())

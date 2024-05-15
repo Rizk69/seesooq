@@ -3,24 +3,27 @@ import 'package:injectable/injectable.dart';
 import 'package:opensooq/core/error/failures.dart';
 import 'package:opensooq/core/network/network_info.dart';
 import 'package:opensooq/future/category/data/models/advertisment_model.dart';
+import 'package:opensooq/future/home/data/data_sources/home_user_local_data_source.dart';
 import 'package:opensooq/future/home/data/data_sources/home_user_remote_data_source.dart';
 import 'package:opensooq/future/home/data/models/banners_model.dart';
 import 'package:opensooq/future/home/data/models/my_story_model.dart';
 import 'package:opensooq/future/home/data/models/single_advertisment_model.dart';
 import 'package:opensooq/future/home/data/models/users_story_model.dart';
 import 'package:opensooq/future/signup/data/repositories/signup_repository.dart';
+import 'package:opensooq/future/user_local_model.dart';
 
 abstract class HomeUserRepo {
   Future<Either<Failures, String>> createMyStory({required String image, required String caption});
 
   Future<Either<Failures, String>> viewStory({required int storyId});
+  Future<Either<Failures, UserLocalModel>> getUserLocal();
 
   Future<Either<Failures, MyStoryModel>> getMyStory();
 
   Future<Either<Failures, UsersStoryModel>> getUsersStory();
 
   Future<Either<Failures, AdvertisementModel>> getOfferAds({required int categoryId, required int page});
-  Future<Either<Failures, BannersModel>> getBanners({ required int page});
+  Future<Either<Failures, BannersModel>> getBanners({required int page});
 
   Future<Either<Failures, void>> deleteMyStory({required int id});
 
@@ -31,10 +34,12 @@ abstract class HomeUserRepo {
 class HomeUserRepoImpl implements HomeUserRepo {
   final NetworkInfo networkInfo;
   final HomeUserRemoteDataSource homeUserRemoteDataSource;
+  final HomeUserLocalDataSource localDataSource;
 
   HomeUserRepoImpl(
     this.networkInfo,
     this.homeUserRemoteDataSource,
+    this.localDataSource,
   );
 
   @override
@@ -82,7 +87,12 @@ class HomeUserRepoImpl implements HomeUserRepo {
   @override
   Future<Either<Failures, BannersModel>> getBanners({required int page}) {
     return executeAndCatchError(() async => await homeUserRemoteDataSource.getBanners(
-      page: page,
-    ));
+          page: page,
+        ));
+  }
+
+  @override
+  Future<Either<Failures, UserLocalModel>> getUserLocal() {
+    return executeAndCatchError(() async => await localDataSource.getUserLocal());
   }
 }

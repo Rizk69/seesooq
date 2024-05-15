@@ -5,13 +5,10 @@ import 'package:opensooq/future/user_local_model.dart';
 
 part 'home_state.freezed.dart';
 
-enum DirectionUser { reverse, forward }
-
 @freezed
 class HomeState with _$HomeState {
   const factory HomeState({
     @Default(0) int index,
-    @Default(DirectionUser.reverse) DirectionUser directionUser,
     @Default(null) UserLocalModel? userLocalModel,
     @Default(null) AdvertisementModel? advertisementOffer,
     @Default(null) BannersModel? bannersModel,

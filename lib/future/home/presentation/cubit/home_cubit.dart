@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,8 +12,12 @@ import 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> with ChangeNotifier {
   HomeCubit() : super(const HomeState()) {
-    getAdvertisementOffer();
-    getBanners();
+    print('HomeCubit');
+    Future.wait([
+      getUserLocal(),
+      getAdvertisementOffer(),
+      getBanners(),
+    ]);
   }
 
   HomeUserRepo homeRepo = di.sl<HomeUserRepo>();
@@ -26,8 +32,14 @@ class HomeCubit extends Cubit<HomeState> with ChangeNotifier {
     emit(state.copyWith(userLocalModel: userLocalModel));
   }
 
-  void streamController(DirectionUser directionUser) {
-    emit(state.copyWith(directionUser: directionUser));
+  Future<void> getUserLocal() async {
+    final userLocalModel = await homeRepo.getUserLocal();
+    userLocalModel.fold((l) {
+      print('oaoaoaooa${l}');
+    }, (r) {
+      print('oaoaoaooa${r}');
+      emit(state.copyWith(userLocalModel: r));
+    });
   }
 
   ScrollController scrollController = ScrollController();

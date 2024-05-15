@@ -12,9 +12,14 @@ import '../../../../config/routes/app_routes.dart';
 import '../../../../core/utils/hex_color.dart';
 import '../../../../core/widget/text_translate_manager.dart';
 
-class EmptyMyReelsView extends StatelessWidget {
+class EmptyMyReelsView extends StatefulWidget {
   const EmptyMyReelsView({super.key});
 
+  @override
+  State<EmptyMyReelsView> createState() => _EmptyMyReelsViewState();
+}
+
+class _EmptyMyReelsViewState extends State<EmptyMyReelsView> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -39,9 +44,14 @@ class EmptyMyReelsView extends StatelessWidget {
   }
 }
 
-class MyReelsView extends StatelessWidget {
+class MyReelsView extends StatefulWidget {
   const MyReelsView({super.key});
 
+  @override
+  State<MyReelsView> createState() => _MyReelsViewState();
+}
+
+class _MyReelsViewState extends State<MyReelsView> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(

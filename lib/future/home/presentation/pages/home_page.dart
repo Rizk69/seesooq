@@ -1,6 +1,5 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:opensooq/core/utils/app_colors.dart';
@@ -14,9 +13,7 @@ import 'package:opensooq/future/home/presentation/widgets/appbar_home_page_widge
 import 'package:opensooq/future/home/presentation/widgets/card_personal_widget.dart';
 import 'package:opensooq/future/home/presentation/widgets/my_option_drawer_widget.dart';
 import 'package:opensooq/future/home/presentation/widgets/story_view_component.dart';
-import 'package:opensooq/future/login/presentation/cubit/login_cubit.dart';
 import 'package:opensooq/future/signup/presentation/cubit/signup_cubit.dart';
-import 'package:opensooq/future/user_local_model.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -26,7 +23,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
-  late ScrollController scrollController;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   late Animation<double> translateBetween;
@@ -34,22 +30,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   @override
   void initState() {
-    print('dskajdhjksahjdjksa${LoginCubit.get(context).state.loginModel?.user?.name}');
-    HomeCubit.get(context).updateUserLocal(UserLocalModel(
-        user: UserDataModel(
-            id: LoginCubit.get(context).state.loginModel?.user?.id,
-            name: LoginCubit.get(context).state.loginModel?.user?.name,
-            email: LoginCubit.get(context).state.loginModel?.user?.email,
-            phone: LoginCubit.get(context).state.loginModel?.user?.phone ?? '')));
+    // HomeCubit.get(context).updateUserLocal(UserLocalModel(
+    //     user: UserDataModel(
+    //         id: LoginCubit.get(context).state.loginModel?.user?.id,
+    //         name: LoginCubit.get(context).state.loginModel?.user?.name,
+    //         email: LoginCubit.get(context).state.loginModel?.user?.email,
+    //         phone: LoginCubit.get(context).state.loginModel?.user?.phone ?? '')));
     customAnimationController = AnimationController(vsync: this, duration: const Duration(milliseconds: 100));
-    scrollController = ScrollController()
-      ..addListener(() {
-        if (scrollController.position.userScrollDirection == ScrollDirection.forward) {
-          HomeCubit.get(context).streamController(DirectionUser.forward);
-        } else if (scrollController.position.userScrollDirection == ScrollDirection.reverse) {
-          HomeCubit.get(context).streamController(DirectionUser.reverse);
-        }
-      });
+
     SignUpCubit.get(context).errorController?.close();
     super.initState();
   }
@@ -65,9 +53,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         },
         child: Scaffold(
           key: _scaffoldKey,
-          appBar: AppBarHomePageWidget(scaffoldKey: _scaffoldKey, isGust: cubit.state.userLocalModel?.user?.name
-              ?.isEmpty ??
-              true),
+          appBar: AppBarHomePageWidget(scaffoldKey: _scaffoldKey, isGust: cubit.state.userLocalModel?.user?.name?.isEmpty ?? true),
           drawer: Drawer(
             backgroundColor: Colors.white,
             surfaceTintColor: Colors.white,
@@ -126,7 +112,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               },
               child: SingleChildScrollView(
                   physics: const AlwaysScrollableScrollPhysics(),
-                  controller: scrollController,
                   padding: const EdgeInsets.only(bottom: 10),
                   child: StoryViewComponent(
                     cubit: cubit,

@@ -12,9 +12,14 @@ import '../../../../config/routes/app_routes.dart';
 import '../../../../core/utils/hex_color.dart';
 import '../../../../core/widget/text_translate_manager.dart';
 
-class EmptyReelsView extends StatelessWidget {
+class EmptyReelsView extends StatefulWidget {
   const EmptyReelsView({super.key});
 
+  @override
+  State<EmptyReelsView> createState() => _EmptyReelsViewState();
+}
+
+class _EmptyReelsViewState extends State<EmptyReelsView> {
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -62,7 +67,7 @@ class ReelsView extends StatelessWidget {
             isExtended: true,
             backgroundColor: const Color(0XFFF05A35),
             onPressed: () {
-              context.goNamed(Routes.myReels);
+              context.pushNamed(Routes.myReels);
             },
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(50),
