@@ -80,6 +80,7 @@ dependencies:
   file_picker: ^5.3.3
   #  geocoding: ^2.1.1
   flutter_easyloading: ^3.0.5
+  video_compress: ^3.1.2
   google_places_flutter_api: ^1.0.2
   sign_in_with_apple: ^5.0.0
   live_activities: ^1.7.5

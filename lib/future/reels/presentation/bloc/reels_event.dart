@@ -15,7 +15,7 @@ class ReelsEvent with _$ReelsEvent {
 
   //delete this line
   const factory ReelsEvent.deleteReel(String id) = _DeleteReel;
-  const factory ReelsEvent.likeReel(String id) = _LikeReel;
+  const factory ReelsEvent.addFavReel(String id, int index) = _AddFavReel;
   const factory ReelsEvent.unlikeReel(String id) = _UnlikeReel;
   const factory ReelsEvent.replyReel(String id, String comment) = _ReplyReel;
   const factory ReelsEvent.shareReel(String id) = _ShareReel;

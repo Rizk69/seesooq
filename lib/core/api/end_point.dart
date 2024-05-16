@@ -61,4 +61,5 @@ class EndPoint {
   static const String getMyReels = 'my-reels';
   static const String createReel = 'create/reel';
   static const String deleteReel = 'delete/reel/{id}';
+  static const String likeReel = 'add-reel-to-favourites/{id}';
 }

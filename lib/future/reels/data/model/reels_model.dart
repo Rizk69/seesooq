@@ -47,13 +47,31 @@ class Reels {
   final String? video;
   @JsonKey(name: 'create_at')
   final String? createAt;
+  @JsonKey(name: 'is_favourite')
+  int? isFav;
 
   Reels({
     this.id,
     this.video,
     this.createAt,
+    this.isFav,
   });
 
   factory Reels.fromJson(Map<String, dynamic> json) => _$ReelsFromJson(json);
   Map<String, dynamic> toJson() => _$ReelsToJson(this);
+
+  // copyWithReels
+  Reels copyWithReels({
+    int? id,
+    String? video,
+    String? createAt,
+    int? isFav,
+  }) {
+    return Reels(
+      id: id ?? this.id,
+      video: video ?? this.video,
+      createAt: createAt ?? this.createAt,
+      isFav: isFav ?? this.isFav,
+    );
+  }
 }

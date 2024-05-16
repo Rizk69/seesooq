@@ -26,16 +26,10 @@ class _EmptyMyReelsViewState extends State<EmptyMyReelsView> {
       children: [
         const Center(child: AnimatedCheck(img: "assets/images/videoreels.png")),
         const Gap(20),
-        Center(
-            child: titleText(
-                'empty_reels_title', HexColor('#4C0497'), StyleText.h4)),
+        Center(child: titleText('empty_reels_title', HexColor('#4C0497'), StyleText.h4)),
         const Gap(10),
-        Center(
-            child:
-                titleText('des_location', HexColor('#707070'), StyleText.h5)),
-        Center(
-            child:
-                titleText('des_location1', HexColor('#707070'), StyleText.h5)),
+        Center(child: titleText('des_location', HexColor('#707070'), StyleText.h5)),
+        Center(child: titleText('des_location1', HexColor('#707070'), StyleText.h5)),
       ],
     );
   }
@@ -79,8 +73,7 @@ class _MyReelsViewState extends State<MyReelsView> {
                 }
                 return Expanded(
                   child: GridView.builder(
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       crossAxisSpacing: 10,
                       mainAxisSpacing: 10,
@@ -92,8 +85,7 @@ class _MyReelsViewState extends State<MyReelsView> {
 
                       return InkWell(
                         onTap: () {
-                          context.goNamed(Routes.myReelView,
-                              extra: state.myReels?.myReels);
+                          context.goNamed(Routes.myReelView, extra: state.myReels?.myReels?[index]);
                         },
                         child: Container(
                           decoration: BoxDecoration(
@@ -119,19 +111,15 @@ class _MyReelsViewState extends State<MyReelsView> {
                                   right: 10,
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       const SizedBox(width: 10),
                                       Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             reel.createAt ?? '',
-                                            style: const TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 12),
+                                            style: const TextStyle(color: Colors.white, fontSize: 12),
                                           ),
                                           Row(
                                             children: [
@@ -144,11 +132,8 @@ class _MyReelsViewState extends State<MyReelsView> {
                                                 width: 10,
                                               ),
                                               Text(
-                                                reel.viewersCount.toString() ??
-                                                    '0',
-                                                style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 12),
+                                                reel.viewersCount.toString() ?? '0',
+                                                style: TextStyle(color: Colors.white, fontSize: 12),
                                               ),
                                             ],
                                           ),
@@ -162,9 +147,7 @@ class _MyReelsViewState extends State<MyReelsView> {
                                   right: 10,
                                   child: InkWell(
                                     onTap: () {
-                                      ReelsBloc.get(context).add(
-                                          ReelsEvent.deleteReel(
-                                              reel.id.toString()));
+                                      ReelsBloc.get(context).add(ReelsEvent.deleteReel(reel.id.toString()));
                                     },
                                     child: Container(
                                       padding: const EdgeInsets.all(8),

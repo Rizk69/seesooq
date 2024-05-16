@@ -7,6 +7,7 @@ import 'package:opensooq/future/reels/data/model/reels_model.dart';
 abstract class ReelsRemoteDataSource {
   Future<ReelsModel> getReels();
   Future<MyReelsModel> getMyReels();
+  Future<void> likeReel({required String id});
   Future<void> viewReel({required String id});
 
   Future<void> createReel({
@@ -50,5 +51,10 @@ class ReelsRemoteDataSourceImpl extends ReelsRemoteDataSource {
   @override
   Future<void> deleteReel({required String id}) {
     return api.deleteReel(id: id);
+  }
+
+  @override
+  Future<void> likeReel({required String id}) {
+    return api.likeReel(id: id);
   }
 }

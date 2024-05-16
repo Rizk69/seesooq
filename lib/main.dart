@@ -7,6 +7,7 @@ import 'package:hive/hive.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:multi_image_picker_view/multi_image_picker_view.dart';
 import 'package:opensooq/app.dart';
+import 'package:opensooq/core/service/local_notification_service.dart';
 import 'package:opensooq/core/utils/bloc_observe.dart';
 import 'package:opensooq/firebase_options.dart';
 import 'package:opensooq/future/user_local_model.dart';
@@ -44,10 +45,15 @@ void main() async {
   Hive.registerAdapter(UserDataModelAdapter());
   Bloc.observer = MyBlocObserver();
 
+  print('FirebaseMessaging: ${await FirebaseMessaging.instance.getToken()}');
+
+  LocalNotificationService.preStart();
+
   FirebaseMessaging.instance.requestPermission(
     alert: true,
     badge: true,
-    provisional: false,
+    provisional: true,
+    criticalAlert: true,
     sound: true,
   );
   runApp(
@@ -60,4 +66,8 @@ void main() async {
         child: const MyApp()),
   );
 }
+
 //Locale('en', 'US'),
+firebaseMessagingBackgroundHandler() {
+  print('Handling a background message ');
+}

@@ -49,7 +49,6 @@ class _ReelsListWidgetState extends State<ReelsListWidget> {
                 child: Stack(
                   children: [
                     Container(
-                      width: MediaQuery.of(context).size.width / 2.4,
                       height: MediaQuery.of(context).size.height / 3.5,
                       decoration: BoxDecoration(
                         image: DecorationImage(
@@ -104,22 +103,6 @@ class _ReelsListWidgetState extends State<ReelsListWidget> {
                               ],
                             ),
                           ],
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      top: 10,
-                      right: 10,
-                      child: Container(
-                        padding: const EdgeInsets.all(8),
-                        decoration: const BoxDecoration(
-                          color: Colors.white,
-                          shape: BoxShape.circle,
-                        ),
-                        child: const Icon(
-                          Icons.favorite_border,
-                          color: Colors.red,
-                          size: 20,
                         ),
                       ),
                     ),

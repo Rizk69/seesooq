@@ -9,6 +9,7 @@ import 'package:opensooq/future/signup/data/repositories/signup_repository.dart'
 abstract class ReelsRepository {
   Future<Either<Failures, ReelsModel>> getReels();
   Future<Either<Failures, MyReelsModel>> getMyReels();
+  Future<Either<Failures, void>> likeReel({required String id});
   Future<Either<Failures, void>> viewReel({required String id});
 
   Future<Either<Failures, void>> createReel({
@@ -47,5 +48,10 @@ class ReelsRepositoryImpl extends ReelsRepository {
   @override
   Future<Either<Failures, void>> deleteReel({required String id}) {
     return executeAndCatchError(() async => await remoteDataSource.deleteReel(id: id));
+  }
+
+  @override
+  Future<Either<Failures, void>> likeReel({required String id}) {
+    return executeAndCatchError(() async => await remoteDataSource.likeReel(id: id));
   }
 }

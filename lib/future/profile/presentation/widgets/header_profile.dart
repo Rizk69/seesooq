@@ -20,8 +20,8 @@ class HeaderProfile extends StatelessWidget {
           begin: Alignment.topCenter,
         ),
       ),
-      child: const CardPersonalProfileWidget(
-        bodyText: 'yazan turk',
+      child: CardPersonalProfileWidget(
+        bodyText: user?.email ?? '',
         type: CardPersonalWidgetType.drawer,
       ),
     );

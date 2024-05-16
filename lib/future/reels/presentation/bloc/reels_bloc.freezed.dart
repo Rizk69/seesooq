@@ -25,7 +25,7 @@ mixin _$ReelsEvent {
     required TResult Function() createReel,
     required TResult Function() getMyReels,
     required TResult Function(String id) deleteReel,
-    required TResult Function(String id) likeReel,
+    required TResult Function(String id, int index) addFavReel,
     required TResult Function(String id) unlikeReel,
     required TResult Function(String id, String comment) replyReel,
     required TResult Function(String id) shareReel,
@@ -40,7 +40,7 @@ mixin _$ReelsEvent {
     TResult? Function()? createReel,
     TResult? Function()? getMyReels,
     TResult? Function(String id)? deleteReel,
-    TResult? Function(String id)? likeReel,
+    TResult? Function(String id, int index)? addFavReel,
     TResult? Function(String id)? unlikeReel,
     TResult? Function(String id, String comment)? replyReel,
     TResult? Function(String id)? shareReel,
@@ -55,7 +55,7 @@ mixin _$ReelsEvent {
     TResult Function()? createReel,
     TResult Function()? getMyReels,
     TResult Function(String id)? deleteReel,
-    TResult Function(String id)? likeReel,
+    TResult Function(String id, int index)? addFavReel,
     TResult Function(String id)? unlikeReel,
     TResult Function(String id, String comment)? replyReel,
     TResult Function(String id)? shareReel,
@@ -71,7 +71,7 @@ mixin _$ReelsEvent {
     required TResult Function(_CreateReel value) createReel,
     required TResult Function(_GetMyReels value) getMyReels,
     required TResult Function(_DeleteReel value) deleteReel,
-    required TResult Function(_LikeReel value) likeReel,
+    required TResult Function(_AddFavReel value) addFavReel,
     required TResult Function(_UnlikeReel value) unlikeReel,
     required TResult Function(_ReplyReel value) replyReel,
     required TResult Function(_ShareReel value) shareReel,
@@ -86,7 +86,7 @@ mixin _$ReelsEvent {
     TResult? Function(_CreateReel value)? createReel,
     TResult? Function(_GetMyReels value)? getMyReels,
     TResult? Function(_DeleteReel value)? deleteReel,
-    TResult? Function(_LikeReel value)? likeReel,
+    TResult? Function(_AddFavReel value)? addFavReel,
     TResult? Function(_UnlikeReel value)? unlikeReel,
     TResult? Function(_ReplyReel value)? replyReel,
     TResult? Function(_ShareReel value)? shareReel,
@@ -101,7 +101,7 @@ mixin _$ReelsEvent {
     TResult Function(_CreateReel value)? createReel,
     TResult Function(_GetMyReels value)? getMyReels,
     TResult Function(_DeleteReel value)? deleteReel,
-    TResult Function(_LikeReel value)? likeReel,
+    TResult Function(_AddFavReel value)? addFavReel,
     TResult Function(_UnlikeReel value)? unlikeReel,
     TResult Function(_ReplyReel value)? replyReel,
     TResult Function(_ShareReel value)? shareReel,
@@ -173,7 +173,7 @@ class _$GetReelsImpl implements _GetReels {
     required TResult Function() createReel,
     required TResult Function() getMyReels,
     required TResult Function(String id) deleteReel,
-    required TResult Function(String id) likeReel,
+    required TResult Function(String id, int index) addFavReel,
     required TResult Function(String id) unlikeReel,
     required TResult Function(String id, String comment) replyReel,
     required TResult Function(String id) shareReel,
@@ -191,7 +191,7 @@ class _$GetReelsImpl implements _GetReels {
     TResult? Function()? createReel,
     TResult? Function()? getMyReels,
     TResult? Function(String id)? deleteReel,
-    TResult? Function(String id)? likeReel,
+    TResult? Function(String id, int index)? addFavReel,
     TResult? Function(String id)? unlikeReel,
     TResult? Function(String id, String comment)? replyReel,
     TResult? Function(String id)? shareReel,
@@ -209,7 +209,7 @@ class _$GetReelsImpl implements _GetReels {
     TResult Function()? createReel,
     TResult Function()? getMyReels,
     TResult Function(String id)? deleteReel,
-    TResult Function(String id)? likeReel,
+    TResult Function(String id, int index)? addFavReel,
     TResult Function(String id)? unlikeReel,
     TResult Function(String id, String comment)? replyReel,
     TResult Function(String id)? shareReel,
@@ -231,7 +231,7 @@ class _$GetReelsImpl implements _GetReels {
     required TResult Function(_CreateReel value) createReel,
     required TResult Function(_GetMyReels value) getMyReels,
     required TResult Function(_DeleteReel value) deleteReel,
-    required TResult Function(_LikeReel value) likeReel,
+    required TResult Function(_AddFavReel value) addFavReel,
     required TResult Function(_UnlikeReel value) unlikeReel,
     required TResult Function(_ReplyReel value) replyReel,
     required TResult Function(_ShareReel value) shareReel,
@@ -249,7 +249,7 @@ class _$GetReelsImpl implements _GetReels {
     TResult? Function(_CreateReel value)? createReel,
     TResult? Function(_GetMyReels value)? getMyReels,
     TResult? Function(_DeleteReel value)? deleteReel,
-    TResult? Function(_LikeReel value)? likeReel,
+    TResult? Function(_AddFavReel value)? addFavReel,
     TResult? Function(_UnlikeReel value)? unlikeReel,
     TResult? Function(_ReplyReel value)? replyReel,
     TResult? Function(_ShareReel value)? shareReel,
@@ -267,7 +267,7 @@ class _$GetReelsImpl implements _GetReels {
     TResult Function(_CreateReel value)? createReel,
     TResult Function(_GetMyReels value)? getMyReels,
     TResult Function(_DeleteReel value)? deleteReel,
-    TResult Function(_LikeReel value)? likeReel,
+    TResult Function(_AddFavReel value)? addFavReel,
     TResult Function(_UnlikeReel value)? unlikeReel,
     TResult Function(_ReplyReel value)? replyReel,
     TResult Function(_ShareReel value)? shareReel,
@@ -329,7 +329,7 @@ class _$RefreshReelsImpl implements _RefreshReels {
     required TResult Function() createReel,
     required TResult Function() getMyReels,
     required TResult Function(String id) deleteReel,
-    required TResult Function(String id) likeReel,
+    required TResult Function(String id, int index) addFavReel,
     required TResult Function(String id) unlikeReel,
     required TResult Function(String id, String comment) replyReel,
     required TResult Function(String id) shareReel,
@@ -347,7 +347,7 @@ class _$RefreshReelsImpl implements _RefreshReels {
     TResult? Function()? createReel,
     TResult? Function()? getMyReels,
     TResult? Function(String id)? deleteReel,
-    TResult? Function(String id)? likeReel,
+    TResult? Function(String id, int index)? addFavReel,
     TResult? Function(String id)? unlikeReel,
     TResult? Function(String id, String comment)? replyReel,
     TResult? Function(String id)? shareReel,
@@ -365,7 +365,7 @@ class _$RefreshReelsImpl implements _RefreshReels {
     TResult Function()? createReel,
     TResult Function()? getMyReels,
     TResult Function(String id)? deleteReel,
-    TResult Function(String id)? likeReel,
+    TResult Function(String id, int index)? addFavReel,
     TResult Function(String id)? unlikeReel,
     TResult Function(String id, String comment)? replyReel,
     TResult Function(String id)? shareReel,
@@ -387,7 +387,7 @@ class _$RefreshReelsImpl implements _RefreshReels {
     required TResult Function(_CreateReel value) createReel,
     required TResult Function(_GetMyReels value) getMyReels,
     required TResult Function(_DeleteReel value) deleteReel,
-    required TResult Function(_LikeReel value) likeReel,
+    required TResult Function(_AddFavReel value) addFavReel,
     required TResult Function(_UnlikeReel value) unlikeReel,
     required TResult Function(_ReplyReel value) replyReel,
     required TResult Function(_ShareReel value) shareReel,
@@ -405,7 +405,7 @@ class _$RefreshReelsImpl implements _RefreshReels {
     TResult? Function(_CreateReel value)? createReel,
     TResult? Function(_GetMyReels value)? getMyReels,
     TResult? Function(_DeleteReel value)? deleteReel,
-    TResult? Function(_LikeReel value)? likeReel,
+    TResult? Function(_AddFavReel value)? addFavReel,
     TResult? Function(_UnlikeReel value)? unlikeReel,
     TResult? Function(_ReplyReel value)? replyReel,
     TResult? Function(_ShareReel value)? shareReel,
@@ -423,7 +423,7 @@ class _$RefreshReelsImpl implements _RefreshReels {
     TResult Function(_CreateReel value)? createReel,
     TResult Function(_GetMyReels value)? getMyReels,
     TResult Function(_DeleteReel value)? deleteReel,
-    TResult Function(_LikeReel value)? likeReel,
+    TResult Function(_AddFavReel value)? addFavReel,
     TResult Function(_UnlikeReel value)? unlikeReel,
     TResult Function(_ReplyReel value)? replyReel,
     TResult Function(_ShareReel value)? shareReel,
@@ -485,7 +485,7 @@ class _$LoadMoreReelsImpl implements _LoadMoreReels {
     required TResult Function() createReel,
     required TResult Function() getMyReels,
     required TResult Function(String id) deleteReel,
-    required TResult Function(String id) likeReel,
+    required TResult Function(String id, int index) addFavReel,
     required TResult Function(String id) unlikeReel,
     required TResult Function(String id, String comment) replyReel,
     required TResult Function(String id) shareReel,
@@ -503,7 +503,7 @@ class _$LoadMoreReelsImpl implements _LoadMoreReels {
     TResult? Function()? createReel,
     TResult? Function()? getMyReels,
     TResult? Function(String id)? deleteReel,
-    TResult? Function(String id)? likeReel,
+    TResult? Function(String id, int index)? addFavReel,
     TResult? Function(String id)? unlikeReel,
     TResult? Function(String id, String comment)? replyReel,
     TResult? Function(String id)? shareReel,
@@ -521,7 +521,7 @@ class _$LoadMoreReelsImpl implements _LoadMoreReels {
     TResult Function()? createReel,
     TResult Function()? getMyReels,
     TResult Function(String id)? deleteReel,
-    TResult Function(String id)? likeReel,
+    TResult Function(String id, int index)? addFavReel,
     TResult Function(String id)? unlikeReel,
     TResult Function(String id, String comment)? replyReel,
     TResult Function(String id)? shareReel,
@@ -543,7 +543,7 @@ class _$LoadMoreReelsImpl implements _LoadMoreReels {
     required TResult Function(_CreateReel value) createReel,
     required TResult Function(_GetMyReels value) getMyReels,
     required TResult Function(_DeleteReel value) deleteReel,
-    required TResult Function(_LikeReel value) likeReel,
+    required TResult Function(_AddFavReel value) addFavReel,
     required TResult Function(_UnlikeReel value) unlikeReel,
     required TResult Function(_ReplyReel value) replyReel,
     required TResult Function(_ShareReel value) shareReel,
@@ -561,7 +561,7 @@ class _$LoadMoreReelsImpl implements _LoadMoreReels {
     TResult? Function(_CreateReel value)? createReel,
     TResult? Function(_GetMyReels value)? getMyReels,
     TResult? Function(_DeleteReel value)? deleteReel,
-    TResult? Function(_LikeReel value)? likeReel,
+    TResult? Function(_AddFavReel value)? addFavReel,
     TResult? Function(_UnlikeReel value)? unlikeReel,
     TResult? Function(_ReplyReel value)? replyReel,
     TResult? Function(_ShareReel value)? shareReel,
@@ -579,7 +579,7 @@ class _$LoadMoreReelsImpl implements _LoadMoreReels {
     TResult Function(_CreateReel value)? createReel,
     TResult Function(_GetMyReels value)? getMyReels,
     TResult Function(_DeleteReel value)? deleteReel,
-    TResult Function(_LikeReel value)? likeReel,
+    TResult Function(_AddFavReel value)? addFavReel,
     TResult Function(_UnlikeReel value)? unlikeReel,
     TResult Function(_ReplyReel value)? replyReel,
     TResult Function(_ShareReel value)? shareReel,
@@ -667,7 +667,7 @@ class _$ViewReelImpl implements _ViewReel {
     required TResult Function() createReel,
     required TResult Function() getMyReels,
     required TResult Function(String id) deleteReel,
-    required TResult Function(String id) likeReel,
+    required TResult Function(String id, int index) addFavReel,
     required TResult Function(String id) unlikeReel,
     required TResult Function(String id, String comment) replyReel,
     required TResult Function(String id) shareReel,
@@ -685,7 +685,7 @@ class _$ViewReelImpl implements _ViewReel {
     TResult? Function()? createReel,
     TResult? Function()? getMyReels,
     TResult? Function(String id)? deleteReel,
-    TResult? Function(String id)? likeReel,
+    TResult? Function(String id, int index)? addFavReel,
     TResult? Function(String id)? unlikeReel,
     TResult? Function(String id, String comment)? replyReel,
     TResult? Function(String id)? shareReel,
@@ -703,7 +703,7 @@ class _$ViewReelImpl implements _ViewReel {
     TResult Function()? createReel,
     TResult Function()? getMyReels,
     TResult Function(String id)? deleteReel,
-    TResult Function(String id)? likeReel,
+    TResult Function(String id, int index)? addFavReel,
     TResult Function(String id)? unlikeReel,
     TResult Function(String id, String comment)? replyReel,
     TResult Function(String id)? shareReel,
@@ -725,7 +725,7 @@ class _$ViewReelImpl implements _ViewReel {
     required TResult Function(_CreateReel value) createReel,
     required TResult Function(_GetMyReels value) getMyReels,
     required TResult Function(_DeleteReel value) deleteReel,
-    required TResult Function(_LikeReel value) likeReel,
+    required TResult Function(_AddFavReel value) addFavReel,
     required TResult Function(_UnlikeReel value) unlikeReel,
     required TResult Function(_ReplyReel value) replyReel,
     required TResult Function(_ShareReel value) shareReel,
@@ -743,7 +743,7 @@ class _$ViewReelImpl implements _ViewReel {
     TResult? Function(_CreateReel value)? createReel,
     TResult? Function(_GetMyReels value)? getMyReels,
     TResult? Function(_DeleteReel value)? deleteReel,
-    TResult? Function(_LikeReel value)? likeReel,
+    TResult? Function(_AddFavReel value)? addFavReel,
     TResult? Function(_UnlikeReel value)? unlikeReel,
     TResult? Function(_ReplyReel value)? replyReel,
     TResult? Function(_ShareReel value)? shareReel,
@@ -761,7 +761,7 @@ class _$ViewReelImpl implements _ViewReel {
     TResult Function(_CreateReel value)? createReel,
     TResult Function(_GetMyReels value)? getMyReels,
     TResult Function(_DeleteReel value)? deleteReel,
-    TResult Function(_LikeReel value)? likeReel,
+    TResult Function(_AddFavReel value)? addFavReel,
     TResult Function(_UnlikeReel value)? unlikeReel,
     TResult Function(_ReplyReel value)? replyReel,
     TResult Function(_ShareReel value)? shareReel,
@@ -828,7 +828,7 @@ class _$CreateReelImpl implements _CreateReel {
     required TResult Function() createReel,
     required TResult Function() getMyReels,
     required TResult Function(String id) deleteReel,
-    required TResult Function(String id) likeReel,
+    required TResult Function(String id, int index) addFavReel,
     required TResult Function(String id) unlikeReel,
     required TResult Function(String id, String comment) replyReel,
     required TResult Function(String id) shareReel,
@@ -846,7 +846,7 @@ class _$CreateReelImpl implements _CreateReel {
     TResult? Function()? createReel,
     TResult? Function()? getMyReels,
     TResult? Function(String id)? deleteReel,
-    TResult? Function(String id)? likeReel,
+    TResult? Function(String id, int index)? addFavReel,
     TResult? Function(String id)? unlikeReel,
     TResult? Function(String id, String comment)? replyReel,
     TResult? Function(String id)? shareReel,
@@ -864,7 +864,7 @@ class _$CreateReelImpl implements _CreateReel {
     TResult Function()? createReel,
     TResult Function()? getMyReels,
     TResult Function(String id)? deleteReel,
-    TResult Function(String id)? likeReel,
+    TResult Function(String id, int index)? addFavReel,
     TResult Function(String id)? unlikeReel,
     TResult Function(String id, String comment)? replyReel,
     TResult Function(String id)? shareReel,
@@ -886,7 +886,7 @@ class _$CreateReelImpl implements _CreateReel {
     required TResult Function(_CreateReel value) createReel,
     required TResult Function(_GetMyReels value) getMyReels,
     required TResult Function(_DeleteReel value) deleteReel,
-    required TResult Function(_LikeReel value) likeReel,
+    required TResult Function(_AddFavReel value) addFavReel,
     required TResult Function(_UnlikeReel value) unlikeReel,
     required TResult Function(_ReplyReel value) replyReel,
     required TResult Function(_ShareReel value) shareReel,
@@ -904,7 +904,7 @@ class _$CreateReelImpl implements _CreateReel {
     TResult? Function(_CreateReel value)? createReel,
     TResult? Function(_GetMyReels value)? getMyReels,
     TResult? Function(_DeleteReel value)? deleteReel,
-    TResult? Function(_LikeReel value)? likeReel,
+    TResult? Function(_AddFavReel value)? addFavReel,
     TResult? Function(_UnlikeReel value)? unlikeReel,
     TResult? Function(_ReplyReel value)? replyReel,
     TResult? Function(_ShareReel value)? shareReel,
@@ -922,7 +922,7 @@ class _$CreateReelImpl implements _CreateReel {
     TResult Function(_CreateReel value)? createReel,
     TResult Function(_GetMyReels value)? getMyReels,
     TResult Function(_DeleteReel value)? deleteReel,
-    TResult Function(_LikeReel value)? likeReel,
+    TResult Function(_AddFavReel value)? addFavReel,
     TResult Function(_UnlikeReel value)? unlikeReel,
     TResult Function(_ReplyReel value)? replyReel,
     TResult Function(_ShareReel value)? shareReel,
@@ -984,7 +984,7 @@ class _$GetMyReelsImpl implements _GetMyReels {
     required TResult Function() createReel,
     required TResult Function() getMyReels,
     required TResult Function(String id) deleteReel,
-    required TResult Function(String id) likeReel,
+    required TResult Function(String id, int index) addFavReel,
     required TResult Function(String id) unlikeReel,
     required TResult Function(String id, String comment) replyReel,
     required TResult Function(String id) shareReel,
@@ -1002,7 +1002,7 @@ class _$GetMyReelsImpl implements _GetMyReels {
     TResult? Function()? createReel,
     TResult? Function()? getMyReels,
     TResult? Function(String id)? deleteReel,
-    TResult? Function(String id)? likeReel,
+    TResult? Function(String id, int index)? addFavReel,
     TResult? Function(String id)? unlikeReel,
     TResult? Function(String id, String comment)? replyReel,
     TResult? Function(String id)? shareReel,
@@ -1020,7 +1020,7 @@ class _$GetMyReelsImpl implements _GetMyReels {
     TResult Function()? createReel,
     TResult Function()? getMyReels,
     TResult Function(String id)? deleteReel,
-    TResult Function(String id)? likeReel,
+    TResult Function(String id, int index)? addFavReel,
     TResult Function(String id)? unlikeReel,
     TResult Function(String id, String comment)? replyReel,
     TResult Function(String id)? shareReel,
@@ -1042,7 +1042,7 @@ class _$GetMyReelsImpl implements _GetMyReels {
     required TResult Function(_CreateReel value) createReel,
     required TResult Function(_GetMyReels value) getMyReels,
     required TResult Function(_DeleteReel value) deleteReel,
-    required TResult Function(_LikeReel value) likeReel,
+    required TResult Function(_AddFavReel value) addFavReel,
     required TResult Function(_UnlikeReel value) unlikeReel,
     required TResult Function(_ReplyReel value) replyReel,
     required TResult Function(_ShareReel value) shareReel,
@@ -1060,7 +1060,7 @@ class _$GetMyReelsImpl implements _GetMyReels {
     TResult? Function(_CreateReel value)? createReel,
     TResult? Function(_GetMyReels value)? getMyReels,
     TResult? Function(_DeleteReel value)? deleteReel,
-    TResult? Function(_LikeReel value)? likeReel,
+    TResult? Function(_AddFavReel value)? addFavReel,
     TResult? Function(_UnlikeReel value)? unlikeReel,
     TResult? Function(_ReplyReel value)? replyReel,
     TResult? Function(_ShareReel value)? shareReel,
@@ -1078,7 +1078,7 @@ class _$GetMyReelsImpl implements _GetMyReels {
     TResult Function(_CreateReel value)? createReel,
     TResult Function(_GetMyReels value)? getMyReels,
     TResult Function(_DeleteReel value)? deleteReel,
-    TResult Function(_LikeReel value)? likeReel,
+    TResult Function(_AddFavReel value)? addFavReel,
     TResult Function(_UnlikeReel value)? unlikeReel,
     TResult Function(_ReplyReel value)? replyReel,
     TResult Function(_ShareReel value)? shareReel,
@@ -1166,7 +1166,7 @@ class _$DeleteReelImpl implements _DeleteReel {
     required TResult Function() createReel,
     required TResult Function() getMyReels,
     required TResult Function(String id) deleteReel,
-    required TResult Function(String id) likeReel,
+    required TResult Function(String id, int index) addFavReel,
     required TResult Function(String id) unlikeReel,
     required TResult Function(String id, String comment) replyReel,
     required TResult Function(String id) shareReel,
@@ -1184,7 +1184,7 @@ class _$DeleteReelImpl implements _DeleteReel {
     TResult? Function()? createReel,
     TResult? Function()? getMyReels,
     TResult? Function(String id)? deleteReel,
-    TResult? Function(String id)? likeReel,
+    TResult? Function(String id, int index)? addFavReel,
     TResult? Function(String id)? unlikeReel,
     TResult? Function(String id, String comment)? replyReel,
     TResult? Function(String id)? shareReel,
@@ -1202,7 +1202,7 @@ class _$DeleteReelImpl implements _DeleteReel {
     TResult Function()? createReel,
     TResult Function()? getMyReels,
     TResult Function(String id)? deleteReel,
-    TResult Function(String id)? likeReel,
+    TResult Function(String id, int index)? addFavReel,
     TResult Function(String id)? unlikeReel,
     TResult Function(String id, String comment)? replyReel,
     TResult Function(String id)? shareReel,
@@ -1224,7 +1224,7 @@ class _$DeleteReelImpl implements _DeleteReel {
     required TResult Function(_CreateReel value) createReel,
     required TResult Function(_GetMyReels value) getMyReels,
     required TResult Function(_DeleteReel value) deleteReel,
-    required TResult Function(_LikeReel value) likeReel,
+    required TResult Function(_AddFavReel value) addFavReel,
     required TResult Function(_UnlikeReel value) unlikeReel,
     required TResult Function(_ReplyReel value) replyReel,
     required TResult Function(_ShareReel value) shareReel,
@@ -1242,7 +1242,7 @@ class _$DeleteReelImpl implements _DeleteReel {
     TResult? Function(_CreateReel value)? createReel,
     TResult? Function(_GetMyReels value)? getMyReels,
     TResult? Function(_DeleteReel value)? deleteReel,
-    TResult? Function(_LikeReel value)? likeReel,
+    TResult? Function(_AddFavReel value)? addFavReel,
     TResult? Function(_UnlikeReel value)? unlikeReel,
     TResult? Function(_ReplyReel value)? replyReel,
     TResult? Function(_ShareReel value)? shareReel,
@@ -1260,7 +1260,7 @@ class _$DeleteReelImpl implements _DeleteReel {
     TResult Function(_CreateReel value)? createReel,
     TResult Function(_GetMyReels value)? getMyReels,
     TResult Function(_DeleteReel value)? deleteReel,
-    TResult Function(_LikeReel value)? likeReel,
+    TResult Function(_AddFavReel value)? addFavReel,
     TResult Function(_UnlikeReel value)? unlikeReel,
     TResult Function(_ReplyReel value)? replyReel,
     TResult Function(_ShareReel value)? shareReel,
@@ -1283,65 +1283,73 @@ abstract class _DeleteReel implements ReelsEvent {
 }
 
 /// @nodoc
-abstract class _$$LikeReelImplCopyWith<$Res> {
-  factory _$$LikeReelImplCopyWith(
-          _$LikeReelImpl value, $Res Function(_$LikeReelImpl) then) =
-      __$$LikeReelImplCopyWithImpl<$Res>;
+abstract class _$$AddFavReelImplCopyWith<$Res> {
+  factory _$$AddFavReelImplCopyWith(
+          _$AddFavReelImpl value, $Res Function(_$AddFavReelImpl) then) =
+      __$$AddFavReelImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String id});
+  $Res call({String id, int index});
 }
 
 /// @nodoc
-class __$$LikeReelImplCopyWithImpl<$Res>
-    extends _$ReelsEventCopyWithImpl<$Res, _$LikeReelImpl>
-    implements _$$LikeReelImplCopyWith<$Res> {
-  __$$LikeReelImplCopyWithImpl(
-      _$LikeReelImpl _value, $Res Function(_$LikeReelImpl) _then)
+class __$$AddFavReelImplCopyWithImpl<$Res>
+    extends _$ReelsEventCopyWithImpl<$Res, _$AddFavReelImpl>
+    implements _$$AddFavReelImplCopyWith<$Res> {
+  __$$AddFavReelImplCopyWithImpl(
+      _$AddFavReelImpl _value, $Res Function(_$AddFavReelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = null,
+    Object? index = null,
   }) {
-    return _then(_$LikeReelImpl(
+    return _then(_$AddFavReelImpl(
       null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
 
 /// @nodoc
 
-class _$LikeReelImpl implements _LikeReel {
-  const _$LikeReelImpl(this.id);
+class _$AddFavReelImpl implements _AddFavReel {
+  const _$AddFavReelImpl(this.id, this.index);
 
   @override
   final String id;
+  @override
+  final int index;
 
   @override
   String toString() {
-    return 'ReelsEvent.likeReel(id: $id)';
+    return 'ReelsEvent.addFavReel(id: $id, index: $index)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LikeReelImpl &&
-            (identical(other.id, id) || other.id == id));
+            other is _$AddFavReelImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.index, index) || other.index == index));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id);
+  int get hashCode => Object.hash(runtimeType, id, index);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LikeReelImplCopyWith<_$LikeReelImpl> get copyWith =>
-      __$$LikeReelImplCopyWithImpl<_$LikeReelImpl>(this, _$identity);
+  _$$AddFavReelImplCopyWith<_$AddFavReelImpl> get copyWith =>
+      __$$AddFavReelImplCopyWithImpl<_$AddFavReelImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1353,12 +1361,12 @@ class _$LikeReelImpl implements _LikeReel {
     required TResult Function() createReel,
     required TResult Function() getMyReels,
     required TResult Function(String id) deleteReel,
-    required TResult Function(String id) likeReel,
+    required TResult Function(String id, int index) addFavReel,
     required TResult Function(String id) unlikeReel,
     required TResult Function(String id, String comment) replyReel,
     required TResult Function(String id) shareReel,
   }) {
-    return likeReel(id);
+    return addFavReel(id, index);
   }
 
   @override
@@ -1371,12 +1379,12 @@ class _$LikeReelImpl implements _LikeReel {
     TResult? Function()? createReel,
     TResult? Function()? getMyReels,
     TResult? Function(String id)? deleteReel,
-    TResult? Function(String id)? likeReel,
+    TResult? Function(String id, int index)? addFavReel,
     TResult? Function(String id)? unlikeReel,
     TResult? Function(String id, String comment)? replyReel,
     TResult? Function(String id)? shareReel,
   }) {
-    return likeReel?.call(id);
+    return addFavReel?.call(id, index);
   }
 
   @override
@@ -1389,14 +1397,14 @@ class _$LikeReelImpl implements _LikeReel {
     TResult Function()? createReel,
     TResult Function()? getMyReels,
     TResult Function(String id)? deleteReel,
-    TResult Function(String id)? likeReel,
+    TResult Function(String id, int index)? addFavReel,
     TResult Function(String id)? unlikeReel,
     TResult Function(String id, String comment)? replyReel,
     TResult Function(String id)? shareReel,
     required TResult orElse(),
   }) {
-    if (likeReel != null) {
-      return likeReel(id);
+    if (addFavReel != null) {
+      return addFavReel(id, index);
     }
     return orElse();
   }
@@ -1411,12 +1419,12 @@ class _$LikeReelImpl implements _LikeReel {
     required TResult Function(_CreateReel value) createReel,
     required TResult Function(_GetMyReels value) getMyReels,
     required TResult Function(_DeleteReel value) deleteReel,
-    required TResult Function(_LikeReel value) likeReel,
+    required TResult Function(_AddFavReel value) addFavReel,
     required TResult Function(_UnlikeReel value) unlikeReel,
     required TResult Function(_ReplyReel value) replyReel,
     required TResult Function(_ShareReel value) shareReel,
   }) {
-    return likeReel(this);
+    return addFavReel(this);
   }
 
   @override
@@ -1429,12 +1437,12 @@ class _$LikeReelImpl implements _LikeReel {
     TResult? Function(_CreateReel value)? createReel,
     TResult? Function(_GetMyReels value)? getMyReels,
     TResult? Function(_DeleteReel value)? deleteReel,
-    TResult? Function(_LikeReel value)? likeReel,
+    TResult? Function(_AddFavReel value)? addFavReel,
     TResult? Function(_UnlikeReel value)? unlikeReel,
     TResult? Function(_ReplyReel value)? replyReel,
     TResult? Function(_ShareReel value)? shareReel,
   }) {
-    return likeReel?.call(this);
+    return addFavReel?.call(this);
   }
 
   @override
@@ -1447,25 +1455,27 @@ class _$LikeReelImpl implements _LikeReel {
     TResult Function(_CreateReel value)? createReel,
     TResult Function(_GetMyReels value)? getMyReels,
     TResult Function(_DeleteReel value)? deleteReel,
-    TResult Function(_LikeReel value)? likeReel,
+    TResult Function(_AddFavReel value)? addFavReel,
     TResult Function(_UnlikeReel value)? unlikeReel,
     TResult Function(_ReplyReel value)? replyReel,
     TResult Function(_ShareReel value)? shareReel,
     required TResult orElse(),
   }) {
-    if (likeReel != null) {
-      return likeReel(this);
+    if (addFavReel != null) {
+      return addFavReel(this);
     }
     return orElse();
   }
 }
 
-abstract class _LikeReel implements ReelsEvent {
-  const factory _LikeReel(final String id) = _$LikeReelImpl;
+abstract class _AddFavReel implements ReelsEvent {
+  const factory _AddFavReel(final String id, final int index) =
+      _$AddFavReelImpl;
 
   String get id;
+  int get index;
   @JsonKey(ignore: true)
-  _$$LikeReelImplCopyWith<_$LikeReelImpl> get copyWith =>
+  _$$AddFavReelImplCopyWith<_$AddFavReelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1540,7 +1550,7 @@ class _$UnlikeReelImpl implements _UnlikeReel {
     required TResult Function() createReel,
     required TResult Function() getMyReels,
     required TResult Function(String id) deleteReel,
-    required TResult Function(String id) likeReel,
+    required TResult Function(String id, int index) addFavReel,
     required TResult Function(String id) unlikeReel,
     required TResult Function(String id, String comment) replyReel,
     required TResult Function(String id) shareReel,
@@ -1558,7 +1568,7 @@ class _$UnlikeReelImpl implements _UnlikeReel {
     TResult? Function()? createReel,
     TResult? Function()? getMyReels,
     TResult? Function(String id)? deleteReel,
-    TResult? Function(String id)? likeReel,
+    TResult? Function(String id, int index)? addFavReel,
     TResult? Function(String id)? unlikeReel,
     TResult? Function(String id, String comment)? replyReel,
     TResult? Function(String id)? shareReel,
@@ -1576,7 +1586,7 @@ class _$UnlikeReelImpl implements _UnlikeReel {
     TResult Function()? createReel,
     TResult Function()? getMyReels,
     TResult Function(String id)? deleteReel,
-    TResult Function(String id)? likeReel,
+    TResult Function(String id, int index)? addFavReel,
     TResult Function(String id)? unlikeReel,
     TResult Function(String id, String comment)? replyReel,
     TResult Function(String id)? shareReel,
@@ -1598,7 +1608,7 @@ class _$UnlikeReelImpl implements _UnlikeReel {
     required TResult Function(_CreateReel value) createReel,
     required TResult Function(_GetMyReels value) getMyReels,
     required TResult Function(_DeleteReel value) deleteReel,
-    required TResult Function(_LikeReel value) likeReel,
+    required TResult Function(_AddFavReel value) addFavReel,
     required TResult Function(_UnlikeReel value) unlikeReel,
     required TResult Function(_ReplyReel value) replyReel,
     required TResult Function(_ShareReel value) shareReel,
@@ -1616,7 +1626,7 @@ class _$UnlikeReelImpl implements _UnlikeReel {
     TResult? Function(_CreateReel value)? createReel,
     TResult? Function(_GetMyReels value)? getMyReels,
     TResult? Function(_DeleteReel value)? deleteReel,
-    TResult? Function(_LikeReel value)? likeReel,
+    TResult? Function(_AddFavReel value)? addFavReel,
     TResult? Function(_UnlikeReel value)? unlikeReel,
     TResult? Function(_ReplyReel value)? replyReel,
     TResult? Function(_ShareReel value)? shareReel,
@@ -1634,7 +1644,7 @@ class _$UnlikeReelImpl implements _UnlikeReel {
     TResult Function(_CreateReel value)? createReel,
     TResult Function(_GetMyReels value)? getMyReels,
     TResult Function(_DeleteReel value)? deleteReel,
-    TResult Function(_LikeReel value)? likeReel,
+    TResult Function(_AddFavReel value)? addFavReel,
     TResult Function(_UnlikeReel value)? unlikeReel,
     TResult Function(_ReplyReel value)? replyReel,
     TResult Function(_ShareReel value)? shareReel,
@@ -1735,7 +1745,7 @@ class _$ReplyReelImpl implements _ReplyReel {
     required TResult Function() createReel,
     required TResult Function() getMyReels,
     required TResult Function(String id) deleteReel,
-    required TResult Function(String id) likeReel,
+    required TResult Function(String id, int index) addFavReel,
     required TResult Function(String id) unlikeReel,
     required TResult Function(String id, String comment) replyReel,
     required TResult Function(String id) shareReel,
@@ -1753,7 +1763,7 @@ class _$ReplyReelImpl implements _ReplyReel {
     TResult? Function()? createReel,
     TResult? Function()? getMyReels,
     TResult? Function(String id)? deleteReel,
-    TResult? Function(String id)? likeReel,
+    TResult? Function(String id, int index)? addFavReel,
     TResult? Function(String id)? unlikeReel,
     TResult? Function(String id, String comment)? replyReel,
     TResult? Function(String id)? shareReel,
@@ -1771,7 +1781,7 @@ class _$ReplyReelImpl implements _ReplyReel {
     TResult Function()? createReel,
     TResult Function()? getMyReels,
     TResult Function(String id)? deleteReel,
-    TResult Function(String id)? likeReel,
+    TResult Function(String id, int index)? addFavReel,
     TResult Function(String id)? unlikeReel,
     TResult Function(String id, String comment)? replyReel,
     TResult Function(String id)? shareReel,
@@ -1793,7 +1803,7 @@ class _$ReplyReelImpl implements _ReplyReel {
     required TResult Function(_CreateReel value) createReel,
     required TResult Function(_GetMyReels value) getMyReels,
     required TResult Function(_DeleteReel value) deleteReel,
-    required TResult Function(_LikeReel value) likeReel,
+    required TResult Function(_AddFavReel value) addFavReel,
     required TResult Function(_UnlikeReel value) unlikeReel,
     required TResult Function(_ReplyReel value) replyReel,
     required TResult Function(_ShareReel value) shareReel,
@@ -1811,7 +1821,7 @@ class _$ReplyReelImpl implements _ReplyReel {
     TResult? Function(_CreateReel value)? createReel,
     TResult? Function(_GetMyReels value)? getMyReels,
     TResult? Function(_DeleteReel value)? deleteReel,
-    TResult? Function(_LikeReel value)? likeReel,
+    TResult? Function(_AddFavReel value)? addFavReel,
     TResult? Function(_UnlikeReel value)? unlikeReel,
     TResult? Function(_ReplyReel value)? replyReel,
     TResult? Function(_ShareReel value)? shareReel,
@@ -1829,7 +1839,7 @@ class _$ReplyReelImpl implements _ReplyReel {
     TResult Function(_CreateReel value)? createReel,
     TResult Function(_GetMyReels value)? getMyReels,
     TResult Function(_DeleteReel value)? deleteReel,
-    TResult Function(_LikeReel value)? likeReel,
+    TResult Function(_AddFavReel value)? addFavReel,
     TResult Function(_UnlikeReel value)? unlikeReel,
     TResult Function(_ReplyReel value)? replyReel,
     TResult Function(_ShareReel value)? shareReel,
@@ -1924,7 +1934,7 @@ class _$ShareReelImpl implements _ShareReel {
     required TResult Function() createReel,
     required TResult Function() getMyReels,
     required TResult Function(String id) deleteReel,
-    required TResult Function(String id) likeReel,
+    required TResult Function(String id, int index) addFavReel,
     required TResult Function(String id) unlikeReel,
     required TResult Function(String id, String comment) replyReel,
     required TResult Function(String id) shareReel,
@@ -1942,7 +1952,7 @@ class _$ShareReelImpl implements _ShareReel {
     TResult? Function()? createReel,
     TResult? Function()? getMyReels,
     TResult? Function(String id)? deleteReel,
-    TResult? Function(String id)? likeReel,
+    TResult? Function(String id, int index)? addFavReel,
     TResult? Function(String id)? unlikeReel,
     TResult? Function(String id, String comment)? replyReel,
     TResult? Function(String id)? shareReel,
@@ -1960,7 +1970,7 @@ class _$ShareReelImpl implements _ShareReel {
     TResult Function()? createReel,
     TResult Function()? getMyReels,
     TResult Function(String id)? deleteReel,
-    TResult Function(String id)? likeReel,
+    TResult Function(String id, int index)? addFavReel,
     TResult Function(String id)? unlikeReel,
     TResult Function(String id, String comment)? replyReel,
     TResult Function(String id)? shareReel,
@@ -1982,7 +1992,7 @@ class _$ShareReelImpl implements _ShareReel {
     required TResult Function(_CreateReel value) createReel,
     required TResult Function(_GetMyReels value) getMyReels,
     required TResult Function(_DeleteReel value) deleteReel,
-    required TResult Function(_LikeReel value) likeReel,
+    required TResult Function(_AddFavReel value) addFavReel,
     required TResult Function(_UnlikeReel value) unlikeReel,
     required TResult Function(_ReplyReel value) replyReel,
     required TResult Function(_ShareReel value) shareReel,
@@ -2000,7 +2010,7 @@ class _$ShareReelImpl implements _ShareReel {
     TResult? Function(_CreateReel value)? createReel,
     TResult? Function(_GetMyReels value)? getMyReels,
     TResult? Function(_DeleteReel value)? deleteReel,
-    TResult? Function(_LikeReel value)? likeReel,
+    TResult? Function(_AddFavReel value)? addFavReel,
     TResult? Function(_UnlikeReel value)? unlikeReel,
     TResult? Function(_ReplyReel value)? replyReel,
     TResult? Function(_ShareReel value)? shareReel,
@@ -2018,7 +2028,7 @@ class _$ShareReelImpl implements _ShareReel {
     TResult Function(_CreateReel value)? createReel,
     TResult Function(_GetMyReels value)? getMyReels,
     TResult Function(_DeleteReel value)? deleteReel,
-    TResult Function(_LikeReel value)? likeReel,
+    TResult Function(_AddFavReel value)? addFavReel,
     TResult Function(_UnlikeReel value)? unlikeReel,
     TResult Function(_ReplyReel value)? replyReel,
     TResult Function(_ShareReel value)? shareReel,
@@ -2045,6 +2055,7 @@ mixin _$ReelsState {
   ReelsModel? get reels => throw _privateConstructorUsedError;
   MyReelsModel? get myReels => throw _privateConstructorUsedError;
   ReelsStatus get status => throw _privateConstructorUsedError;
+  LikeReelStatus get likeReelStatus => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ReelsStateCopyWith<ReelsState> get copyWith =>
@@ -2057,7 +2068,11 @@ abstract class $ReelsStateCopyWith<$Res> {
           ReelsState value, $Res Function(ReelsState) then) =
       _$ReelsStateCopyWithImpl<$Res, ReelsState>;
   @useResult
-  $Res call({ReelsModel? reels, MyReelsModel? myReels, ReelsStatus status});
+  $Res call(
+      {ReelsModel? reels,
+      MyReelsModel? myReels,
+      ReelsStatus status,
+      LikeReelStatus likeReelStatus});
 }
 
 /// @nodoc
@@ -2076,6 +2091,7 @@ class _$ReelsStateCopyWithImpl<$Res, $Val extends ReelsState>
     Object? reels = freezed,
     Object? myReels = freezed,
     Object? status = null,
+    Object? likeReelStatus = null,
   }) {
     return _then(_value.copyWith(
       reels: freezed == reels
@@ -2090,6 +2106,10 @@ class _$ReelsStateCopyWithImpl<$Res, $Val extends ReelsState>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as ReelsStatus,
+      likeReelStatus: null == likeReelStatus
+          ? _value.likeReelStatus
+          : likeReelStatus // ignore: cast_nullable_to_non_nullable
+              as LikeReelStatus,
     ) as $Val);
   }
 }
@@ -2102,7 +2122,11 @@ abstract class _$$ReelsStateImplCopyWith<$Res>
       __$$ReelsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ReelsModel? reels, MyReelsModel? myReels, ReelsStatus status});
+  $Res call(
+      {ReelsModel? reels,
+      MyReelsModel? myReels,
+      ReelsStatus status,
+      LikeReelStatus likeReelStatus});
 }
 
 /// @nodoc
@@ -2119,6 +2143,7 @@ class __$$ReelsStateImplCopyWithImpl<$Res>
     Object? reels = freezed,
     Object? myReels = freezed,
     Object? status = null,
+    Object? likeReelStatus = null,
   }) {
     return _then(_$ReelsStateImpl(
       reels: freezed == reels
@@ -2133,6 +2158,10 @@ class __$$ReelsStateImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as ReelsStatus,
+      likeReelStatus: null == likeReelStatus
+          ? _value.likeReelStatus
+          : likeReelStatus // ignore: cast_nullable_to_non_nullable
+              as LikeReelStatus,
     ));
   }
 }
@@ -2143,7 +2172,8 @@ class _$ReelsStateImpl implements _ReelsState {
   const _$ReelsStateImpl(
       {this.reels = null,
       this.myReels = null,
-      this.status = ReelsStatus.initial});
+      this.status = ReelsStatus.initial,
+      this.likeReelStatus = LikeReelStatus.initial});
 
   @override
   @JsonKey()
@@ -2154,10 +2184,13 @@ class _$ReelsStateImpl implements _ReelsState {
   @override
   @JsonKey()
   final ReelsStatus status;
+  @override
+  @JsonKey()
+  final LikeReelStatus likeReelStatus;
 
   @override
   String toString() {
-    return 'ReelsState(reels: $reels, myReels: $myReels, status: $status)';
+    return 'ReelsState(reels: $reels, myReels: $myReels, status: $status, likeReelStatus: $likeReelStatus)';
   }
 
   @override
@@ -2167,11 +2200,14 @@ class _$ReelsStateImpl implements _ReelsState {
             other is _$ReelsStateImpl &&
             (identical(other.reels, reels) || other.reels == reels) &&
             (identical(other.myReels, myReels) || other.myReels == myReels) &&
-            (identical(other.status, status) || other.status == status));
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.likeReelStatus, likeReelStatus) ||
+                other.likeReelStatus == likeReelStatus));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, reels, myReels, status);
+  int get hashCode =>
+      Object.hash(runtimeType, reels, myReels, status, likeReelStatus);
 
   @JsonKey(ignore: true)
   @override
@@ -2184,7 +2220,8 @@ abstract class _ReelsState implements ReelsState {
   const factory _ReelsState(
       {final ReelsModel? reels,
       final MyReelsModel? myReels,
-      final ReelsStatus status}) = _$ReelsStateImpl;
+      final ReelsStatus status,
+      final LikeReelStatus likeReelStatus}) = _$ReelsStateImpl;
 
   @override
   ReelsModel? get reels;
@@ -2192,6 +2229,8 @@ abstract class _ReelsState implements ReelsState {
   MyReelsModel? get myReels;
   @override
   ReelsStatus get status;
+  @override
+  LikeReelStatus get likeReelStatus;
   @override
   @JsonKey(ignore: true)
   _$$ReelsStateImplCopyWith<_$ReelsStateImpl> get copyWith =>

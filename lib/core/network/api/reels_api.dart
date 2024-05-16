@@ -24,8 +24,12 @@ abstract class ReelsApi {
   Future<void> createReel({
     @Body() required dynamic body,
   });
-  @GET(EndPoint.deleteReel)
+  @DELETE(EndPoint.deleteReel)
   Future<void> deleteReel({
+    @Path() required String id,
+  });
+  @POST(EndPoint.likeReel)
+  Future<void> likeReel({
     @Path() required String id,
   });
 

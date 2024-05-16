@@ -27,7 +27,7 @@ class _EmptyReelsViewState extends State<EmptyReelsView> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Center(child: AnimatedCheck(img: "assets/images/videoreels.png")),
+          Center(child: AnimatedCheck(img: "videoreels".toPng)),
           const SizedBox(
             height: 34,
           ),
@@ -90,7 +90,6 @@ class ReelsView extends StatelessWidget {
                 },
               ),
               const SizedBox(height: 20),
-
               BlocBuilder<ReelsBloc, ReelsState>(
                 builder: (context, state) {
                   if (state.reels?.userReels?.isEmpty ?? true) {

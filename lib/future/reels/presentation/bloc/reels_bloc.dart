@@ -5,6 +5,7 @@ import 'package:opensooq/di.dart' as di;
 import 'package:opensooq/future/reels/data/model/my_reels_model.dart';
 import 'package:opensooq/future/reels/data/model/reels_model.dart';
 import 'package:opensooq/future/reels/data/reels_repository/reels_repository.dart';
+import 'package:video_compress/video_compress.dart';
 
 part 'reels_bloc.freezed.dart';
 part 'reels_event.dart';
@@ -25,7 +26,9 @@ class ReelsBloc extends Bloc<ReelsEvent, ReelsState> {
         deleteReel: (id) async {
           await _deleteReel(id, emit);
         },
-        likeReel: (id) {},
+        addFavReel: (id, index) async {
+          await _likeReel(emit, id, index);
+        },
         unlikeReel: (id) {},
         replyReel: (id, comment) {},
         shareReel: (id) {},
@@ -53,9 +56,15 @@ class ReelsBloc extends Bloc<ReelsEvent, ReelsState> {
   }
 
   Future<void> _createReel() async {
-    _getVideoFromPhone().then((value) {
-      if (value != null) {
-        _reelsRepository.createReel(video: value.files.single.path!, description: 'hellow world');
+    _getVideoFromPhone().then((value) async {
+      MediaInfo? mediaInfo = await VideoCompress.compressVideo(
+        value!.files.single.path!,
+        quality: VideoQuality.MediumQuality,
+        deleteOrigin: false,
+      );
+
+      if (mediaInfo?.path != null) {
+        _reelsRepository.createReel(video: mediaInfo!.path!, description: 'hellow world');
       }
     });
   }
@@ -67,6 +76,18 @@ class ReelsBloc extends Bloc<ReelsEvent, ReelsState> {
         (reels) => emit(
               state.copyWith(myReels: reels),
             ));
+  }
+
+  Future<void> _likeReel(Emitter emit, String id, int index) async {
+    final response = await _reelsRepository.likeReel(id: id);
+    response.fold((error) {
+      print('error$error');
+    }, (reels) {
+      List<UserReels>? temp = List.from(state.reels?.userReels ?? []);
+      // temp[index] = temp[index].reels[0].
+
+      emit(state.copyWith(likeReelStatus: LikeReelStatus.liked));
+    });
   }
 
   Future<FilePickerResult?> _getVideoFromPhone() async {
