@@ -9,6 +9,7 @@ import 'package:opensooq/core/widget/text_translate_manager.dart';
 import 'package:opensooq/future/reels/data/model/my_reels_model.dart';
 import 'package:opensooq/future/reels/presentation/bloc/reels_bloc.dart';
 import 'package:story_view/story_view.dart';
+
 class ViewMyReel extends StatefulWidget {
   const ViewMyReel({super.key, required this.reels});
 
@@ -40,7 +41,7 @@ class _ViewMyReelState extends State<ViewMyReel> {
                     context: context,
                     shape: const RoundedRectangleBorder(
                       borderRadius:
-                      BorderRadius.vertical(top: Radius.circular(0.0)),
+                          BorderRadius.vertical(top: Radius.circular(0.0)),
                     ),
                     builder: (context) {
                       return Column(
@@ -72,58 +73,58 @@ class _ViewMyReelState extends State<ViewMyReel> {
                               fontWeight: FontWeight.w400,
                             ),
                           ),
-                          // ...widget.reels
-                          //     .map((e) => SizedBox(
-                          //   height: 50,
-                          //   child: ListTile(
-                          //       leading: CircleAvatar(
-                          //         radius: 20,
-                          //         backgroundImage: NetworkImage(
-                          //             e['image'] ?? ''),
-                          //       ),
-                          //       title: Text(
-                          //           e['name'].toString() ?? ''),
-                          //       subtitle:
-                          //       const Text('Add Time Here'),
-                          //       trailing: Row(
-                          //         mainAxisSize: MainAxisSize.min,
-                          //         children: [
-                          //           Container(
-                          //             padding:
-                          //             const EdgeInsets.all(8),
-                          //             decoration: BoxDecoration(
-                          //               shape: BoxShape.circle,
-                          //               color: Colors.grey
-                          //                   .withOpacity(0.6),
-                          //             ),
-                          //             child: const Icon(
-                          //               Icons.message,
-                          //               color: Colors.white,
-                          //               size: 15,
-                          //             ),
-                          //           ),
-                          //           const SizedBox(
-                          //             width: 10,
-                          //           ),
-                          //           Container(
-                          //             padding:
-                          //             const EdgeInsets.all(8),
-                          //             decoration: BoxDecoration(
-                          //               shape: BoxShape.circle,
-                          //               color: Colors.grey
-                          //                   .withOpacity(0.6),
-                          //             ),
-                          //             child: const Icon(
-                          //               Icons.call,
-                          //               color: Colors.white,
-                          //               size: 15,
-                          //             ),
-                          //           ),
-                          //         ],
-                          //       )),
-                          // ))
-                          //     .toList() ??
-                          //     [],
+                          ...widget.reels.first.viewers
+                                  ?.map((e) => SizedBox(
+                                        height: 50,
+                                        child: ListTile(
+                                            leading: CircleAvatar(
+                                              radius: 20,
+                                              backgroundImage:
+                                                  NetworkImage(e.image ?? ''),
+                                            ),
+                                            title:
+                                                Text(e.name.toString() ?? ''),
+                                            subtitle:
+                                                const Text('Add Time Here'),
+                                            trailing: Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                Container(
+                                                  padding:
+                                                      const EdgeInsets.all(8),
+                                                  decoration: BoxDecoration(
+                                                    shape: BoxShape.circle,
+                                                    color: Colors.grey
+                                                        .withOpacity(0.6),
+                                                  ),
+                                                  child: const Icon(
+                                                    Icons.message,
+                                                    color: Colors.white,
+                                                    size: 15,
+                                                  ),
+                                                ),
+                                                const SizedBox(
+                                                  width: 10,
+                                                ),
+                                                Container(
+                                                  padding:
+                                                      const EdgeInsets.all(8),
+                                                  decoration: BoxDecoration(
+                                                    shape: BoxShape.circle,
+                                                    color: Colors.grey
+                                                        .withOpacity(0.6),
+                                                  ),
+                                                  child: const Icon(
+                                                    Icons.call,
+                                                    color: Colors.white,
+                                                    size: 15,
+                                                  ),
+                                                ),
+                                              ],
+                                            )),
+                                      ))
+                                  .toList() ??
+                              [],
                           const SizedBox(
                             height: 40,
                           )
@@ -144,9 +145,9 @@ class _ViewMyReelState extends State<ViewMyReel> {
             },
             storyItems: widget.reels
                 .map((e) => StoryItem.pageVideo(
-              e.video!,
-              controller: controller,
-            ))
+                      e.video!,
+                      controller: controller,
+                    ))
                 .toList(),
           ),
         ),
