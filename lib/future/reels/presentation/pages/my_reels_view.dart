@@ -26,10 +26,16 @@ class _EmptyMyReelsViewState extends State<EmptyMyReelsView> {
       children: [
         const Center(child: AnimatedCheck(img: "assets/images/videoreels.png")),
         const Gap(20),
-        Center(child: titleText('empty_reels_title', HexColor('#4C0497'), StyleText.h4)),
+        Center(
+            child: titleText(
+                'empty_reels_title', HexColor('#4C0497'), StyleText.h4)),
         const Gap(10),
-        Center(child: titleText('des_location', HexColor('#707070'), StyleText.h5)),
-        Center(child: titleText('des_location1', HexColor('#707070'), StyleText.h5)),
+        Center(
+            child:
+                titleText('des_location', HexColor('#707070'), StyleText.h5)),
+        Center(
+            child:
+                titleText('des_location1', HexColor('#707070'), StyleText.h5)),
       ],
     );
   }
@@ -66,14 +72,15 @@ class _MyReelsViewState extends State<MyReelsView> {
                   context.go(Routes.reels);
                 },
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 20),
               BlocBuilder<ReelsBloc, ReelsState>(builder: (context, state) {
                 if (state.myReels?.myReels?.isEmpty ?? true) {
                   return const EmptyMyReelsView();
                 }
                 return Expanded(
                   child: GridView.builder(
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       crossAxisSpacing: 10,
                       mainAxisSpacing: 10,
@@ -83,83 +90,98 @@ class _MyReelsViewState extends State<MyReelsView> {
                     itemBuilder: (context, index) {
                       final MyReels reel = state.myReels!.myReels![index];
 
-                      return Container(
-                        decoration: BoxDecoration(
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Colors.grey,
-                              offset: Offset(1, 2),
-                              blurRadius: 9,
-                            )
-                          ],
-                          borderRadius: BorderRadius.circular(25),
-                          border: Border.all(
-                            color: Colors.white,
-                            width: 5,
+                      return InkWell(
+                        onTap: () {
+                          context.goNamed(Routes.myReelView,
+                              extra: state.myReels?.myReels);
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            boxShadow: const [
+                              BoxShadow(
+                                color: Colors.grey,
+                                offset: Offset(1, 2),
+                                blurRadius: 9,
+                              )
+                            ],
+                            borderRadius: BorderRadius.circular(25),
+                            border: Border.all(
+                              color: Colors.white,
+                              width: 5,
+                            ),
                           ),
-                        ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(19),
-                          child: Stack(
-                            children: [
-                              Positioned(
-                                bottom: 15,
-                                right: 10,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const SizedBox(width: 10),
-                                    Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          reel.createAt ?? '',
-                                          style: const TextStyle(color: Colors.white, fontSize: 12),
-                                        ),
-                                        Row(
-                                          children: [
-                                            const Icon(
-                                              Icons.remove_red_eye_outlined,
-                                              size: 15,
-                                              color: Colors.white,
-                                            ),
-                                            const SizedBox(
-                                              width: 10,
-                                            ),
-                                            Text(
-                                              reel.viewersCount.toString() ?? '0',
-                                              style: TextStyle(color: Colors.white, fontSize: 12),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ],
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(19),
+                            child: Stack(
+                              children: [
+                                Positioned(
+                                  bottom: 15,
+                                  right: 10,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const SizedBox(width: 10),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            reel.createAt ?? '',
+                                            style: const TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 12),
+                                          ),
+                                          Row(
+                                            children: [
+                                              const Icon(
+                                                Icons.remove_red_eye_outlined,
+                                                size: 15,
+                                                color: Colors.white,
+                                              ),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              Text(
+                                                reel.viewersCount.toString() ??
+                                                    '0',
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 12),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              Positioned(
-                                top: 10,
-                                right: 10,
-                                child: InkWell(
-                                  onTap: () {
-                                    ReelsBloc.get(context).add(ReelsEvent.deleteReel(reel.id.toString()));
-                                  },
-                                  child: Container(
-                                    padding: const EdgeInsets.all(8),
-                                    decoration: const BoxDecoration(
-                                      color: Colors.white,
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: const Icon(
-                                      Icons.delete,
-                                      color: Colors.red,
-                                      size: 20,
+                                Positioned(
+                                  top: 10,
+                                  right: 10,
+                                  child: InkWell(
+                                    onTap: () {
+                                      ReelsBloc.get(context).add(
+                                          ReelsEvent.deleteReel(
+                                              reel.id.toString()));
+                                    },
+                                    child: Container(
+                                      padding: const EdgeInsets.all(8),
+                                      decoration: const BoxDecoration(
+                                        color: Colors.white,
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: const Icon(
+                                        Icons.delete,
+                                        color: Colors.red,
+                                        size: 20,
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       );

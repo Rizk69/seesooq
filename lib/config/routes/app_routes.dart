@@ -73,6 +73,7 @@ class Routes {
   static const String myAds = 'myAds';
   static const String reels = '/reels';
   static const String reelView = 'reelView';
+  static const String myReelView = 'myReelView';
   static const String search = '/search';
   static const String myReels = 'myReels';
   static const String setting = '/setting';

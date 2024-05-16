@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:opensooq/future/reels/data/model/reels_model.dart';
 import 'package:opensooq/future/reels/presentation/bloc/reels_bloc.dart';
 import 'package:story_view/story_view.dart';
@@ -29,7 +30,8 @@ class _ViewReelState extends State<ViewReel> {
               }
             },
             onStoryShow: (value, index) {
-              ReelsBloc.get(context).add(ReelsEvent.viewReel(widget.reels[index].id.toString()));
+              ReelsBloc.get(context)
+                  .add(ReelsEvent.viewReel(widget.reels[index].id.toString()));
             },
             progressPosition: ProgressPosition.top,
             onComplete: () {
@@ -47,3 +49,5 @@ class _ViewReelState extends State<ViewReel> {
     });
   }
 }
+
+

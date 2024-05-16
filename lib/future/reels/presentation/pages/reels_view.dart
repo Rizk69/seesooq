@@ -89,6 +89,8 @@ class ReelsView extends StatelessWidget {
                   context.go(Routes.home);
                 },
               ),
+              const SizedBox(height: 20),
+
               BlocBuilder<ReelsBloc, ReelsState>(
                 builder: (context, state) {
                   if (state.reels?.userReels?.isEmpty ?? true) {
