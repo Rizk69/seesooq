@@ -25,4 +25,9 @@ class FavRepositoryImpl implements FavRepository {
   Future<Either<Failures, String>> removeFav({required String id}) async {
     return executeAndCatchError(() => _remoteDataSource.removeFav(id: id));
   }
+
+  @override
+  Future<Either<Failures, FavModel>> getReelsFav() {
+    return executeAndCatchError(() => _remoteDataSource.getReelsFav());
+  }
 }

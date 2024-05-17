@@ -5,6 +5,7 @@ import '../model/fav_model.dart';
 
 abstract class FavRemoteDataSource {
   Future<FavModel> getFav();
+  Future<FavModel> getReelsFav();
   Future<String> sendFav({required String id});
   Future<String> removeFav({required String id});
 }
@@ -26,5 +27,11 @@ class FavRemoteDataSourceImpl implements FavRemoteDataSource {
   @override
   Future<String> removeFav({required String id}) async {
     return await api.removeFav(id: id);
+  }
+
+  @override
+  Future<FavModel> getReelsFav()async {
+    return await api.getReelsFav();
+
   }
 }

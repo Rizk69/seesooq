@@ -17,6 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$FavoriteState {
   FavoriteStatus get status => throw _privateConstructorUsedError;
+  FavoriteReelsStatus get favoriteReelsStatus =>
+      throw _privateConstructorUsedError;
   AddFavoriteStatus get addFavoriteStatus => throw _privateConstructorUsedError;
   List<FavData> get favoriteList => throw _privateConstructorUsedError;
   int get indexFavoriteView => throw _privateConstructorUsedError;
@@ -35,6 +37,7 @@ abstract class $FavoriteStateCopyWith<$Res> {
   @useResult
   $Res call(
       {FavoriteStatus status,
+      FavoriteReelsStatus favoriteReelsStatus,
       AddFavoriteStatus addFavoriteStatus,
       List<FavData> favoriteList,
       int indexFavoriteView,
@@ -55,6 +58,7 @@ class _$FavoriteStateCopyWithImpl<$Res, $Val extends FavoriteState>
   @override
   $Res call({
     Object? status = null,
+    Object? favoriteReelsStatus = null,
     Object? addFavoriteStatus = null,
     Object? favoriteList = null,
     Object? indexFavoriteView = null,
@@ -65,6 +69,10 @@ class _$FavoriteStateCopyWithImpl<$Res, $Val extends FavoriteState>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as FavoriteStatus,
+      favoriteReelsStatus: null == favoriteReelsStatus
+          ? _value.favoriteReelsStatus
+          : favoriteReelsStatus // ignore: cast_nullable_to_non_nullable
+              as FavoriteReelsStatus,
       addFavoriteStatus: null == addFavoriteStatus
           ? _value.addFavoriteStatus
           : addFavoriteStatus // ignore: cast_nullable_to_non_nullable
@@ -95,6 +103,7 @@ abstract class _$$FavoriteStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {FavoriteStatus status,
+      FavoriteReelsStatus favoriteReelsStatus,
       AddFavoriteStatus addFavoriteStatus,
       List<FavData> favoriteList,
       int indexFavoriteView,
@@ -113,6 +122,7 @@ class __$$FavoriteStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? status = null,
+    Object? favoriteReelsStatus = null,
     Object? addFavoriteStatus = null,
     Object? favoriteList = null,
     Object? indexFavoriteView = null,
@@ -123,6 +133,10 @@ class __$$FavoriteStateImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as FavoriteStatus,
+      favoriteReelsStatus: null == favoriteReelsStatus
+          ? _value.favoriteReelsStatus
+          : favoriteReelsStatus // ignore: cast_nullable_to_non_nullable
+              as FavoriteReelsStatus,
       addFavoriteStatus: null == addFavoriteStatus
           ? _value.addFavoriteStatus
           : addFavoriteStatus // ignore: cast_nullable_to_non_nullable
@@ -148,6 +162,7 @@ class __$$FavoriteStateImplCopyWithImpl<$Res>
 class _$FavoriteStateImpl implements _FavoriteState {
   const _$FavoriteStateImpl(
       {this.status = FavoriteStatus.initial,
+      this.favoriteReelsStatus = FavoriteReelsStatus.initial,
       this.addFavoriteStatus = AddFavoriteStatus.initial,
       final List<FavData> favoriteList = const [],
       this.indexFavoriteView = 0,
@@ -157,6 +172,9 @@ class _$FavoriteStateImpl implements _FavoriteState {
   @override
   @JsonKey()
   final FavoriteStatus status;
+  @override
+  @JsonKey()
+  final FavoriteReelsStatus favoriteReelsStatus;
   @override
   @JsonKey()
   final AddFavoriteStatus addFavoriteStatus;
@@ -178,7 +196,7 @@ class _$FavoriteStateImpl implements _FavoriteState {
 
   @override
   String toString() {
-    return 'FavoriteState(status: $status, addFavoriteStatus: $addFavoriteStatus, favoriteList: $favoriteList, indexFavoriteView: $indexFavoriteView, indexStatusView: $indexStatusView)';
+    return 'FavoriteState(status: $status, favoriteReelsStatus: $favoriteReelsStatus, addFavoriteStatus: $addFavoriteStatus, favoriteList: $favoriteList, indexFavoriteView: $indexFavoriteView, indexStatusView: $indexStatusView)';
   }
 
   @override
@@ -187,6 +205,8 @@ class _$FavoriteStateImpl implements _FavoriteState {
         (other.runtimeType == runtimeType &&
             other is _$FavoriteStateImpl &&
             (identical(other.status, status) || other.status == status) &&
+            (identical(other.favoriteReelsStatus, favoriteReelsStatus) ||
+                other.favoriteReelsStatus == favoriteReelsStatus) &&
             (identical(other.addFavoriteStatus, addFavoriteStatus) ||
                 other.addFavoriteStatus == addFavoriteStatus) &&
             const DeepCollectionEquality()
@@ -201,6 +221,7 @@ class _$FavoriteStateImpl implements _FavoriteState {
   int get hashCode => Object.hash(
       runtimeType,
       status,
+      favoriteReelsStatus,
       addFavoriteStatus,
       const DeepCollectionEquality().hash(_favoriteList),
       indexFavoriteView,
@@ -216,6 +237,7 @@ class _$FavoriteStateImpl implements _FavoriteState {
 abstract class _FavoriteState implements FavoriteState {
   const factory _FavoriteState(
       {final FavoriteStatus status,
+      final FavoriteReelsStatus favoriteReelsStatus,
       final AddFavoriteStatus addFavoriteStatus,
       final List<FavData> favoriteList,
       final int indexFavoriteView,
@@ -223,6 +245,8 @@ abstract class _FavoriteState implements FavoriteState {
 
   @override
   FavoriteStatus get status;
+  @override
+  FavoriteReelsStatus get favoriteReelsStatus;
   @override
   AddFavoriteStatus get addFavoriteStatus;
   @override

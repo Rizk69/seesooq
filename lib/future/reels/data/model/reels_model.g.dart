@@ -39,10 +39,12 @@ Reels _$ReelsFromJson(Map<String, dynamic> json) => Reels(
       id: json['id'] as int?,
       video: json['video'] as String?,
       createAt: json['create_at'] as String?,
+      isFav: json['is_favourite'] as int?,
     );
 
 Map<String, dynamic> _$ReelsToJson(Reels instance) => <String, dynamic>{
       'id': instance.id,
       'video': instance.video,
       'create_at': instance.createAt,
+      'is_favourite': instance.isFav,
     };

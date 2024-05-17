@@ -42,6 +42,7 @@ class EndPoint {
   static const String deleteAccount = 'delete_profile';
 
   static const String getFav = 'my-favourite';
+  static const String getReelsFav = 'my-favourite-reel';
   static const String storePayment = 'payment/store';
   // subscription
   static const String addFav = 'add-to-favourites/{id}';

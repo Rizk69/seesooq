@@ -53,16 +53,19 @@ class FavoritePage extends StatelessWidget {
             size: 30,
           ),
           style: ButtonStyle(
-            padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.symmetric(vertical: 15, horizontal: 5)),
+            padding: MaterialStateProperty.all<EdgeInsets>(
+                const EdgeInsets.symmetric(vertical: 15, horizontal: 5)),
             visualDensity: VisualDensity.compact,
-            backgroundColor: MaterialStateProperty.all<Color>(HexColor("#F5F5F5")),
+            backgroundColor:
+                MaterialStateProperty.all<Color>(HexColor("#F5F5F5")),
           ),
           color: HexColor("#4C0497"),
           padding: EdgeInsets.zero,
           visualDensity: VisualDensity.compact,
         ),
       ),
-      body: BlocBuilder<FavoriteCubit, FavoriteState>(builder: (context, state) {
+      body:
+          BlocBuilder<FavoriteCubit, FavoriteState>(builder: (context, state) {
         return RefreshIndicator.adaptive(
           onRefresh: () async {
             FavoriteCubit.get(context).getFav();
@@ -99,7 +102,8 @@ class FavoritePage extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: InkWell(
                         onTap: () {
-                          context.pushNamed('view_ads_home', extra: item.adId.toString());
+                          context.pushNamed('view_ads_home',
+                              extra: item.adId.toString());
                         },
                         child: SizedBox(
                           child: Card(
@@ -121,17 +125,24 @@ class FavoritePage extends StatelessWidget {
                                         //   fit: BoxFit.cover,
                                         // )
                                         //     : CacheNetworkImageApp(
-                                        item.mainImage.toString().contains('.svg')
+                                        item.mainImage
+                                                .toString()
+                                                .contains('.svg')
                                             ? SvgPicture.network(
                                                 item.mainImage.toString() ?? '',
                                                 fit: BoxFit.contain,
                                                 height: context.height * 0.20,
-                                                placeholderBuilder: (BuildContext context) => const Center(
-                                                  child: CircularProgressIndicator(),
+                                                placeholderBuilder:
+                                                    (BuildContext context) =>
+                                                        const Center(
+                                                  child:
+                                                      CircularProgressIndicator(),
                                                 ),
                                               )
                                             : CacheNetworkImageApp(
-                                                urlImage: item.mainImage.toString() ?? '',
+                                                urlImage:
+                                                    item.mainImage.toString() ??
+                                                        '',
                                                 fit: BoxFit.cover,
                                                 height: context.height * 0.20,
                                               ),
@@ -139,9 +150,15 @@ class FavoritePage extends StatelessWidget {
                                           right: 10,
                                           top: 10,
                                           child: InkWell(
-                                            borderRadius: BorderRadius.circular(15),
+                                            borderRadius:
+                                                BorderRadius.circular(15),
                                             onTap: () {
-                                              FavoriteCubit.get(context).removeFav(idFav: item.adId.toString(), index: index, isOutSide: false);
+                                              FavoriteCubit.get(context)
+                                                  .removeFav(
+                                                      idFav:
+                                                          item.adId.toString(),
+                                                      index: index,
+                                                      isOutSide: false);
                                             },
                                             child: Container(
                                               padding: const EdgeInsets.all(8),
@@ -161,23 +178,28 @@ class FavoritePage extends StatelessWidget {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 0.0, vertical: 0),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 0.0, vertical: 0),
                                     child: Column(
                                       children: [
                                         const Gap(10),
                                         Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
                                           children: [
                                             Expanded(
                                               child: Column(
-                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
                                                 children: [
                                                   TranslateText(
                                                     styleText: StyleText.h5,
                                                     maxLines: 1,
                                                     textAlign: TextAlign.start,
-                                                    colorText: HexColor('#200E32'),
+                                                    colorText:
+                                                        HexColor('#200E32'),
                                                     fontWeight: FontWeight.w500,
                                                     text: item.title ?? '',
                                                   ),
@@ -186,8 +208,10 @@ class FavoritePage extends StatelessWidget {
                                                     styleText: StyleText.h6,
                                                     fontWeight: FontWeight.w500,
                                                     fontSize: 14,
-                                                    colorText: AppColors.primary,
-                                                    text: "JD ${item.price?.toString().price ?? 0}",
+                                                    colorText:
+                                                        AppColors.primary,
+                                                    text:
+                                                        "JD ${item.price?.toString().price ?? 0}",
                                                   ),
                                                 ],
                                               ),
@@ -197,15 +221,24 @@ class FavoritePage extends StatelessWidget {
                                         const Gap(8),
                                         Row(
                                           mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                          crossAxisAlignment: CrossAxisAlignment.end,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.end,
                                           children: [
                                             Row(
-                                              crossAxisAlignment: CrossAxisAlignment.center,
-                                              mainAxisAlignment: MainAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
                                               children: [
                                                 SvgCustomImage(
-                                                    image: 'time_booking'.toSvg, width: 20, height: 20, color: Theme.of(context).colorScheme.primary),
+                                                    image: 'time_booking'.toSvg,
+                                                    width: 20,
+                                                    height: 20,
+                                                    color: Theme.of(context)
+                                                        .colorScheme
+                                                        .primary),
                                                 const SizedBox(
                                                   width: 5,
                                                 ),
@@ -219,13 +252,17 @@ class FavoritePage extends StatelessWidget {
                                             ),
                                             if (item.city != null)
                                               Row(
-                                                crossAxisAlignment: CrossAxisAlignment.center,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
                                                 children: [
                                                   SvgCustomImage(
-                                                    image: 'location_boking'.toSvg,
+                                                    image:
+                                                        'location_boking'.toSvg,
                                                     width: 20,
                                                     height: 20,
-                                                    color: Theme.of(context).colorScheme.primary,
+                                                    color: Theme.of(context)
+                                                        .colorScheme
+                                                        .primary,
                                                   ),
                                                   const Gap(5),
                                                   TranslateText(
@@ -248,20 +285,28 @@ class FavoritePage extends StatelessWidget {
                                                 },
                                                 child: Container(
                                                   alignment: Alignment.center,
-                                                  padding: const EdgeInsets.all(8),
+                                                  padding:
+                                                      const EdgeInsets.all(8),
                                                   decoration: BoxDecoration(
                                                     color: HexColor('#F5F5F5'),
-                                                    borderRadius: BorderRadius.circular(10),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
                                                   ),
                                                   child: Row(
-                                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                                    mainAxisAlignment: MainAxisAlignment.center,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
                                                     children: [
                                                       SvgCustomImage(
                                                         image: 'call_cat'.toSvg,
                                                         width: 20,
                                                         height: 20,
-                                                        color: HexColor('#F05A35'),
+                                                        color:
+                                                            HexColor('#F05A35'),
                                                       ),
                                                       const SizedBox(
                                                         width: 4,
@@ -279,20 +324,26 @@ class FavoritePage extends StatelessWidget {
                                             Expanded(
                                               child: Container(
                                                 alignment: Alignment.center,
-                                                padding: const EdgeInsets.all(8),
+                                                padding:
+                                                    const EdgeInsets.all(8),
                                                 decoration: BoxDecoration(
                                                   color: HexColor('#F5F5F5'),
-                                                  borderRadius: BorderRadius.circular(10),
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
                                                 ),
                                                 child: Row(
-                                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.center,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
                                                   children: [
                                                     SvgCustomImage(
-                                                      image: 'message_cat'.toSvg,
+                                                      image:
+                                                          'message_cat'.toSvg,
                                                       width: 20,
                                                       height: 20,
-                                                      color: HexColor('#F05A35'),
+                                                      color:
+                                                          HexColor('#F05A35'),
                                                     ),
                                                     const SizedBox(
                                                       width: 4,
