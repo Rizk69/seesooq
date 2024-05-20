@@ -1,6 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
@@ -12,6 +15,7 @@ import 'package:opensooq/future/favorite/data/model/fav_model.dart';
 import 'package:opensooq/future/favorite/presentation/cubit/favorite_cubit.dart';
 import 'package:opensooq/future/favorite/presentation/cubit/favorite_state.dart';
 import 'package:opensooq/future/favorite/presentation/widgets/tab_controller.dart';
+import 'package:opensooq/future/reels/data/model/reels_model.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/cache_network_image.dart';
@@ -53,16 +57,19 @@ class FavoritePage extends StatelessWidget {
             size: 30,
           ),
           style: ButtonStyle(
-            padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.symmetric(vertical: 15, horizontal: 5)),
+            padding: MaterialStateProperty.all<EdgeInsets>(
+                const EdgeInsets.symmetric(vertical: 15, horizontal: 5)),
             visualDensity: VisualDensity.compact,
-            backgroundColor: MaterialStateProperty.all<Color>(HexColor("#F5F5F5")),
+            backgroundColor:
+                MaterialStateProperty.all<Color>(HexColor("#F5F5F5")),
           ),
           color: HexColor("#4C0497"),
           padding: EdgeInsets.zero,
           visualDensity: VisualDensity.compact,
         ),
       ),
-      body: BlocBuilder<FavoriteCubit, FavoriteState>(builder: (context, state) {
+      body:
+          BlocBuilder<FavoriteCubit, FavoriteState>(builder: (context, state) {
         return RefreshIndicator.adaptive(
           onRefresh: () async {
             FavoriteCubit.get(context).getFav();
@@ -101,7 +108,8 @@ class FavoritePage extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: InkWell(
                         onTap: () {
-                          context.pushNamed('view_ads_home', extra: item.adId.toString());
+                          context.pushNamed('view_ads_home',
+                              extra: item.adId.toString());
                         },
                         child: SizedBox(
                           child: Card(
@@ -123,17 +131,24 @@ class FavoritePage extends StatelessWidget {
                                         //   fit: BoxFit.cover,
                                         // )
                                         //     : CacheNetworkImageApp(
-                                        item.mainImage.toString().contains('.svg')
+                                        item.mainImage
+                                                .toString()
+                                                .contains('.svg')
                                             ? SvgPicture.network(
                                                 item.mainImage.toString() ?? '',
                                                 fit: BoxFit.contain,
                                                 height: context.height * 0.20,
-                                                placeholderBuilder: (BuildContext context) => const Center(
-                                                  child: CircularProgressIndicator(),
+                                                placeholderBuilder:
+                                                    (BuildContext context) =>
+                                                        const Center(
+                                                  child:
+                                                      CircularProgressIndicator(),
                                                 ),
                                               )
                                             : CacheNetworkImageApp(
-                                                urlImage: item.mainImage.toString() ?? '',
+                                                urlImage:
+                                                    item.mainImage.toString() ??
+                                                        '',
                                                 fit: BoxFit.cover,
                                                 height: context.height * 0.20,
                                               ),
@@ -141,9 +156,15 @@ class FavoritePage extends StatelessWidget {
                                           right: 10,
                                           top: 10,
                                           child: InkWell(
-                                            borderRadius: BorderRadius.circular(15),
+                                            borderRadius:
+                                                BorderRadius.circular(15),
                                             onTap: () {
-                                              FavoriteCubit.get(context).removeFav(idFav: item.adId.toString(), index: index, isOutSide: false);
+                                              FavoriteCubit.get(context)
+                                                  .removeFav(
+                                                      idFav:
+                                                          item.adId.toString(),
+                                                      index: index,
+                                                      isOutSide: false);
                                             },
                                             child: Container(
                                               padding: const EdgeInsets.all(8),
@@ -163,23 +184,28 @@ class FavoritePage extends StatelessWidget {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 0.0, vertical: 0),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 0.0, vertical: 0),
                                     child: Column(
                                       children: [
                                         const Gap(10),
                                         Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
                                           children: [
                                             Expanded(
                                               child: Column(
-                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
                                                 children: [
                                                   TranslateText(
                                                     styleText: StyleText.h5,
                                                     maxLines: 1,
                                                     textAlign: TextAlign.start,
-                                                    colorText: HexColor('#200E32'),
+                                                    colorText:
+                                                        HexColor('#200E32'),
                                                     fontWeight: FontWeight.w500,
                                                     text: item.title ?? '',
                                                   ),
@@ -188,8 +214,10 @@ class FavoritePage extends StatelessWidget {
                                                     styleText: StyleText.h6,
                                                     fontWeight: FontWeight.w500,
                                                     fontSize: 14,
-                                                    colorText: AppColors.primary,
-                                                    text: "JD ${item.price?.toString().price ?? 0}",
+                                                    colorText:
+                                                        AppColors.primary,
+                                                    text:
+                                                        "JD ${item.price?.toString().price ?? 0}",
                                                   ),
                                                 ],
                                               ),
@@ -199,15 +227,24 @@ class FavoritePage extends StatelessWidget {
                                         const Gap(8),
                                         Row(
                                           mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                          crossAxisAlignment: CrossAxisAlignment.end,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.end,
                                           children: [
                                             Row(
-                                              crossAxisAlignment: CrossAxisAlignment.center,
-                                              mainAxisAlignment: MainAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
                                               children: [
                                                 SvgCustomImage(
-                                                    image: 'time_booking'.toSvg, width: 20, height: 20, color: Theme.of(context).colorScheme.primary),
+                                                    image: 'time_booking'.toSvg,
+                                                    width: 20,
+                                                    height: 20,
+                                                    color: Theme.of(context)
+                                                        .colorScheme
+                                                        .primary),
                                                 const SizedBox(
                                                   width: 5,
                                                 ),
@@ -221,13 +258,17 @@ class FavoritePage extends StatelessWidget {
                                             ),
                                             if (item.city != null)
                                               Row(
-                                                crossAxisAlignment: CrossAxisAlignment.center,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
                                                 children: [
                                                   SvgCustomImage(
-                                                    image: 'location_boking'.toSvg,
+                                                    image:
+                                                        'location_boking'.toSvg,
                                                     width: 20,
                                                     height: 20,
-                                                    color: Theme.of(context).colorScheme.primary,
+                                                    color: Theme.of(context)
+                                                        .colorScheme
+                                                        .primary,
                                                   ),
                                                   const Gap(5),
                                                   TranslateText(
@@ -250,20 +291,28 @@ class FavoritePage extends StatelessWidget {
                                                 },
                                                 child: Container(
                                                   alignment: Alignment.center,
-                                                  padding: const EdgeInsets.all(8),
+                                                  padding:
+                                                      const EdgeInsets.all(8),
                                                   decoration: BoxDecoration(
                                                     color: HexColor('#F5F5F5'),
-                                                    borderRadius: BorderRadius.circular(10),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
                                                   ),
                                                   child: Row(
-                                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                                    mainAxisAlignment: MainAxisAlignment.center,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
                                                     children: [
                                                       SvgCustomImage(
                                                         image: 'call_cat'.toSvg,
                                                         width: 20,
                                                         height: 20,
-                                                        color: HexColor('#F05A35'),
+                                                        color:
+                                                            HexColor('#F05A35'),
                                                       ),
                                                       const SizedBox(
                                                         width: 4,
@@ -281,20 +330,26 @@ class FavoritePage extends StatelessWidget {
                                             Expanded(
                                               child: Container(
                                                 alignment: Alignment.center,
-                                                padding: const EdgeInsets.all(8),
+                                                padding:
+                                                    const EdgeInsets.all(8),
                                                 decoration: BoxDecoration(
                                                   color: HexColor('#F5F5F5'),
-                                                  borderRadius: BorderRadius.circular(10),
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
                                                 ),
                                                 child: Row(
-                                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.center,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
                                                   children: [
                                                     SvgCustomImage(
-                                                      image: 'message_cat'.toSvg,
+                                                      image:
+                                                          'message_cat'.toSvg,
                                                       width: 20,
                                                       height: 20,
-                                                      color: HexColor('#F05A35'),
+                                                      color:
+                                                          HexColor('#F05A35'),
                                                     ),
                                                     const SizedBox(
                                                       width: 4,
@@ -323,7 +378,136 @@ class FavoritePage extends StatelessWidget {
               ),
               //
               if (state.indexStatusView == 1) ...[
-                Text(state.favReelsModel?.data?.firstOrNull?.video.toString() ?? ''),
+                // Text(state.favReelsModel?.data?.firstOrNull?.video.toString() ??
+                //     ''),
+                SizedBox(
+                  height: 300,
+                  child: AlignedGridView.count(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                    scrollDirection: Axis.vertical,
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        onTap: () {
+                          context.goNamed(
+                            Routes.reelView,
+                            extra: [
+                              Reels(
+                                  id: state.favReelsModel?.data?[index].reelId
+                                      ?.toInt(),
+                                  createAt: state
+                                      .favReelsModel?.data?[index].createdAt,
+                                  isFav: 0,
+                                  video:
+                                      state.favReelsModel?.data?[index].video)
+                            ],
+                          );
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            boxShadow: const [
+                              BoxShadow(
+                                color: Colors.grey,
+                                offset: Offset(1, 2),
+                                blurRadius: 9,
+                              )
+                            ],
+                            borderRadius: BorderRadius.circular(25),
+                            border: Border.all(
+                              color: Colors.white,
+                              width: 5,
+                            ),
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(19),
+                            child: Stack(
+                              children: [
+                                Container(
+                                  height:
+                                      MediaQuery.of(context).size.height / 3.5,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      colorFilter: ColorFilter.mode(
+                                        Colors.black.withOpacity(0.5),
+                                        BlendMode.darken,
+                                      ),
+                                      filterQuality: FilterQuality.high,
+                                      image: NetworkImage(
+                                        state.favReelsModel?.data?[index].user
+                                                ?.image ??
+                                            '',
+                                      ),
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                                Positioned(
+                                  bottom: 15,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(30),
+                                          child: CacheNetworkImageApp(
+                                            urlImage: state
+                                                    .favReelsModel
+                                                    ?.data?[index]
+                                                    .user
+                                                    ?.image ??
+                                                '',
+                                            width: 50,
+                                            height: 50,
+                                          ),
+                                        ),
+                                        const SizedBox(width: 10),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            TranslateText(
+                                              text: state
+                                                      .favReelsModel
+                                                      ?.data?[index]
+                                                      .user
+                                                      ?.name ??
+                                                  '',
+                                              styleText: StyleText.h6,
+                                              colorText: Colors.white,
+                                              textDecoration:
+                                                  TextDecoration.none,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 14,
+                                            ),
+                                            // TranslateText(
+                                            //   text: 'widget.reels[index].userReels?.name ?? ' '',
+                                            //   styleText: StyleText.h6,
+                                            //   colorText: Colors.white,
+                                            //   textDecoration: TextDecoration.none,
+                                            //   fontWeight: FontWeight.bold,
+                                            //   fontSize: 14,
+                                            // ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                    itemCount: state.favReelsModel?.data?.length,
+                  ),
+                )
               ]
             ]),
           ),
