@@ -1,16 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:opensooq/core/utils/extensions.dart';
-
-import '../../../data/models/notification_model.dart';
+import 'package:opensooq/future/notification/data/models/notification_response_model.dart';
 
 class NotificationItemWidget extends StatelessWidget {
-  final NotificationModel? notificationModel;
+  final Notifications? notificationModel;
 
-
-  const NotificationItemWidget(this.notificationModel,
-      {Key? key})
-      : super(key: key);
+  const NotificationItemWidget(this.notificationModel, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +19,7 @@ class NotificationItemWidget extends StatelessWidget {
                 alignment: AlignmentDirectional.topEnd,
                 children: [
                   Card(
-                    color: notificationModel!.readStatus == 1
-                        ? Colors.white
-                        : null,
+                    color: notificationModel!.readAt == 1 ? Colors.white : null,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
@@ -37,14 +30,12 @@ class NotificationItemWidget extends StatelessWidget {
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(10),
                                 child: CachedNetworkImage(
-                                  imageUrl:
-                                      notificationModel?.url??'',
+                                  imageUrl: notificationModel?.url ?? '',
                                   width: 50,
                                   fit: BoxFit.cover,
                                   height: 100,
                                   errorWidget: (context, s, w) {
-                                    return Image.asset(
-                                        'assets/images/person.jpeg');
+                                    return Image.asset('assets/images/person.jpeg');
                                   },
                                 ),
                               )),
@@ -55,10 +46,7 @@ class NotificationItemWidget extends StatelessWidget {
                                 Text(notificationModel!.title ?? '',
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headlineSmall!
-                                        .copyWith(fontWeight: FontWeight.w500)),
+                                    style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.w500)),
                                 // Padding(
                                 //   padding: const EdgeInsets.all(4.0),
                                 //   child: Text(
@@ -76,7 +64,7 @@ class NotificationItemWidget extends StatelessWidget {
                                 //   height: 5,
                                 // ),
                                 Text(
-                                  notificationModel?.createdAt?.shortMonthDateFromUTC()??'',
+                                  notificationModel?.createdAt ?? '',
                                   style: Theme.of(context).textTheme.bodyLarge,
                                 ),
                               ],
@@ -86,7 +74,7 @@ class NotificationItemWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                  if (notificationModel!.readStatus != 1)
+                  if (notificationModel!.readAt != 1)
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Icon(

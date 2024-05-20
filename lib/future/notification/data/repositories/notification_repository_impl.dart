@@ -3,27 +3,24 @@ import 'package:injectable/injectable.dart';
 import 'package:opensooq/core/error/failures.dart';
 import 'package:opensooq/core/network/network_info.dart';
 import 'package:opensooq/future/notification/data/datasources/notification_remote_data_source.dart';
+import 'package:opensooq/future/notification/data/models/notification_response_model.dart';
 import 'package:opensooq/future/notification/domain/repositories/notification_repository.dart';
 
 import '../../../../core/error/error_handler.dart';
-import '../models/notification_model.dart';
 
 @Injectable(as: NotificationRepository)
 class NotificationRepositoryImpl implements NotificationRepository {
   final NetworkInfo networkInfo;
   final NotificationRemoteDataSource getUserRemoteDataSource;
 
-  NotificationRepositoryImpl(
-      {required this.networkInfo, required this.getUserRemoteDataSource});
+  NotificationRepositoryImpl({required this.networkInfo, required this.getUserRemoteDataSource});
 
   @override
-  Future<Either<Failures, List<NotificationModel>>> getUserNotification(
-      {required String page}) async {
+  Future<Either<Failures, NotificationResponseModel>> getUserNotification({required String page}) async {
     if (await networkInfo.isConnected) {
       try {
-        final response =
-            await getUserRemoteDataSource.getNotificationUser(page: page);
-        return Right(response.notifications!);
+        final response = await getUserRemoteDataSource.getNotificationUser(page: page);
+        return Right(response);
       } catch (e) {
         return Left(ErrorHandler.handleError(e));
       }

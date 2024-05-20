@@ -46,13 +46,13 @@ class _FavApi implements FavApi {
   }
 
   @override
-  Future<FavModel> getReelsFav() async {
+  Future<FavReelsModel> getReelsFav() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _result =
-        await _dio.fetch<Map<String, dynamic>>(_setStreamType<FavModel>(Options(
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<FavReelsModel>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -68,7 +68,7 @@ class _FavApi implements FavApi {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = await compute(deserializeFavModel, _result.data!);
+    final value = await compute(deserializeFavReelsModel, _result.data!);
     return value;
   }
 

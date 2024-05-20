@@ -35,7 +35,10 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => di.sl<CategoryProductCubit>()),
         BlocProvider(create: (context) => di.sl<CategoryCubit>()),
         BlocProvider(create: (context) => di.sl<SignUpCubit>()),
-        BlocProvider(create: (context) => FavoriteCubit()..getFav()),
+        BlocProvider(
+            create: (context) => FavoriteCubit()
+              ..getFav()
+              ..getReelsFav()),
         BlocProvider(create: (context) => WalletCubit()..getWallet(userId: '1')),
         BlocProvider(
             create: (context) => ReelsBloc()

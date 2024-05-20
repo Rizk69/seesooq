@@ -33,7 +33,7 @@ class _NotificationApi implements NotificationApi {
     )
             .compose(
               _dio.options,
-              'user-notifications',
+              'notifications',
               queryParameters: queryParameters,
               data: _data,
             )

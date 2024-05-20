@@ -85,7 +85,7 @@ class _MyReelsViewState extends State<MyReelsView> {
 
                       return InkWell(
                         onTap: () {
-                          context.goNamed(Routes.myReelView, extra: state.myReels?.myReels?[index]);
+                          context.pushNamed(Routes.myReelView, extra: state.myReels?.myReels?[index]);
                         },
                         child: Container(
                           decoration: BoxDecoration(

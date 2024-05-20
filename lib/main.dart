@@ -2,16 +2,15 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:multi_image_picker_view/multi_image_picker_view.dart';
 import 'package:opensooq/app.dart';
 import 'package:opensooq/core/service/local_notification_service.dart';
-import 'package:opensooq/core/utils/bloc_observe.dart';
 import 'package:opensooq/firebase_options.dart';
 import 'package:opensooq/future/user_local_model.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:pusher_channels_flutter/pusher_channels_flutter.dart';
 
 import 'di.dart' as di;
 
@@ -43,9 +42,45 @@ void main() async {
   Hive.init(dir.path);
   Hive.registerAdapter(UserLocalModelAdapter());
   Hive.registerAdapter(UserDataModelAdapter());
-  Bloc.observer = MyBlocObserver();
+  // Bloc.observer = MyBlocObserver();
 
   print('FirebaseMessaging: ${await FirebaseMessaging.instance.getToken()}');
+
+  PusherChannelsFlutter pusher = PusherChannelsFlutter.getInstance();
+  try {
+    await pusher.init(
+      apiKey: '5b9aed07ae9caa868b10',
+      cluster: 'ap1',
+      onConnectionStateChange: (currentState, previousState) {
+        print('State changed from $previousState to $currentState');
+      },
+      onError: (message, code, error) {
+        print('Error: $message');
+      },
+      onSubscriptionSucceeded: (channelName, data) {
+        print('Subscribed to $channelName');
+      },
+      onEvent: (event) {},
+      onSubscriptionError: (message, error) {
+        print('Subscription error: $message');
+      },
+      onDecryptionFailure: (event, reason) {
+        print('Decryption failed: $reason');
+      },
+      onMemberAdded: (channelName, member) {
+        print('Member added: $member');
+      },
+      onMemberRemoved: (channelName, member) {
+        print('Member removed: $member');
+      },
+      // authEndpoint: "<Your Authendpoint>",
+      // onAuthorizer: onAuthorizer
+    );
+    await pusher.subscribe(channelName: 'presence-chatbox');
+    await pusher.connect();
+  } catch (e) {
+    print("ERROR: $e");
+  }
 
   LocalNotificationService.preStart();
 

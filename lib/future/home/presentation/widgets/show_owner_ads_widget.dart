@@ -66,8 +66,9 @@ class ShowOwnerAdsWidget extends StatelessWidget {
               var cubitFollowBloc = FollowBloc.get(context);
               return GestureDetector(
                 onTap: () {
+                  print('cubit.advertisementModel?.data?.checkFollwing ${cubit.advertisementModel?.data?.checkFollwing}');
                   if (cubit.advertisementModel?.data?.checkFollwing ?? false) {
-                    cubitFollowBloc.add(FollowEvent.removeFollowers(user?.id?.toInt() ?? 0));
+                    cubitFollowBloc.add(FollowEvent.removeFollowing(user?.id?.toInt() ?? 0));
                   } else {
                     cubitFollowBloc.add(FollowEvent.addFollow(user?.id?.toInt() ?? 0));
                   }

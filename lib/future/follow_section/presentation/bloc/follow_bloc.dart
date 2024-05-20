@@ -60,9 +60,10 @@ class FollowBloc extends Bloc<FollowEvent, FollowState> {
 
   Future<void> _removeFollowing(Emitter<FollowState> emit, {required int id}) async {
     // emit(state.copyWith(status: FollowStatus.loading));
-    // final result = await followRepository.removeFollowing(id: id);
+    final result = await followRepository.removeFollowing(id: id);
     // result.fold((error) => emit(state.copyWith(status: FollowStatus.error)), (followers) => emit(state.copyWith()));
   }
+
   final _searchQueryController = BehaviorSubject<String>();
   Stream<String> get searchQuery => _searchQueryController.stream;
 

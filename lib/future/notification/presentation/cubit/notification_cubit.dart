@@ -4,7 +4,6 @@ import 'package:injectable/injectable.dart';
 import 'package:opensooq/future/notification/presentation/cubit/notification_state.dart';
 
 import '../../../../core/utils/app_constants.dart';
-import '../../data/models/notification_model.dart';
 import '../../domain/usecases/get_notification_usecase.dart';
 
 @Injectable()
@@ -33,32 +32,25 @@ class NotificationCubit extends Cubit<NotificationState> {
     page = 1;
     hasMoreItems = true;
     emit(state.copyWith(notificationStatus: NotificationStatus.loading));
-    await getUserNotificationsUseCase
-        .call(const GetUserNotificationsParams())
-        .then((value) => value.fold((l) {
-      _notificationState = _notificationState.copyWith(
-          notificationStatus: NotificationStatus.error);
-            }, (r) {
-              if (state.notificationUser.isEmpty && r.isEmpty) {
-
-                _notificationState = _notificationState.copyWith(
-                    notificationStatus: NotificationStatus.error);
-              }
-              _updateNotificationList(r);
-              if (r.length < AppConstants.itemsPerPage) {
-                hasMoreItems = false;
-              }
-              onSuccess();
-            }));
+    await getUserNotificationsUseCase.call(const GetUserNotificationsParams()).then((value) => value.fold((l) {
+          _notificationState = _notificationState.copyWith(notificationStatus: NotificationStatus.error);
+        }, (r) {
+          print('NotificationCubit: ${r.data?.notifications?.length}');
+          if ((state.notificationUser?.data?.notifications?.isEmpty ?? true) && (r.data?.notifications?.isEmpty ?? true)) {
+            _notificationState = _notificationState.copyWith(notificationStatus: NotificationStatus.error);
+          }
+          _notificationState = _notificationState.copyWith(notificationUser: r);
+          if ((r.data?.notifications?.length ?? 0) < AppConstants.itemsPerPage) {
+            hasMoreItems = false;
+          }
+          onSuccess();
+        }));
   }
 
-  _updateNotificationList(List<NotificationModel> r) {
-    final unreadNotifications =
-        r.where((element) => element.readStatus != 1).toList();
-    _notificationState = _notificationState.copyWith(
-        notificationUser: r, unreadNotifications: unreadNotifications);
-
-  }
+  // _updateNotificationList(List<Notifications> r) {
+  //   final unreadNotifications = r.where((element) => element.readAt != 1).toList();
+  //   _notificationState = _notificationState.copyWith(notificationUser: No, unreadNotifications: unreadNotifications);
+  // }
 
   // void readAllNotifications() {
   //   readAllNotificationsUseCase(NoParams()).then((value) => value.fold(
@@ -94,26 +86,26 @@ class NotificationCubit extends Cubit<NotificationState> {
   //   }
   // }
 
-  loadMore() async {
-    if (hasMoreItems && !_notificationState.loadingMore) {
-      page++;
-      _notificationState = _notificationState.copyWith(loadingMore: true);
-      onSuccess();
-      var newList = (await getUserNotificationsUseCase
-              .call(GetUserNotificationsParams(page: page.toString())))
-          .fold((l) => <NotificationModel>[], (r) => r);
-      if (newList.isEmpty || newList.length < AppConstants.itemsPerPage) {
-        hasMoreItems = false;
-      }
-      if (_notificationState.loadingMore) {
-        var previousList =
-            List<NotificationModel>.from(_notificationState.notificationUser);
-        _updateNotificationList([...previousList, ...newList]);
-        _notificationState = _notificationState.copyWith(loadingMore: false);
-        onSuccess();
-      }
-    }
-  }
+  // loadMore() async {
+  //   if (hasMoreItems && !_notificationState.loadingMore) {
+  //     page++;
+  //     _notificationState = _notificationState.copyWith(loadingMore: true);
+  //     onSuccess();
+  //     var newList = (await getUserNotificationsUseCase
+  //             .call(GetUserNotificationsParams(page: page.toString())))
+  //         .fold((l) => <Notifications>[], (r) => r);
+  //     if (newList.isEmpty || newList.length < AppConstants.itemsPerPage) {
+  //       hasMoreItems = false;
+  //     }
+  //     if (_notificationState.loadingMore) {
+  //       var previousList =
+  //           List<Notifications>.from(_notificationState.notificationUser);
+  //       _updateNotificationList([...previousList, ...newList]);
+  //       _notificationState = _notificationState.copyWith(loadingMore: false);
+  //       onSuccess();
+  //     }
+  //   }
+  // }
 
   void checkPermissionsNotification() async {
     FirebaseMessaging messaging = FirebaseMessaging.instance;
@@ -130,8 +122,7 @@ class NotificationCubit extends Cubit<NotificationState> {
 
     if (settings.authorizationStatus == AuthorizationStatus.authorized) {
       print('User granted permission');
-    } else if (settings.authorizationStatus ==
-        AuthorizationStatus.provisional) {
+    } else if (settings.authorizationStatus == AuthorizationStatus.provisional) {
       print('User granted provisional permission');
     } else {
       print('User declined or has not accepted permission');

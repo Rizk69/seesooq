@@ -3,6 +3,7 @@ import 'package:injectable/injectable.dart';
 import 'package:opensooq/core/error/failures.dart';
 import 'package:opensooq/future/favorite/data/data_sorces/fav_remot_data_sorces.dart';
 import 'package:opensooq/future/favorite/data/model/fav_model.dart';
+import 'package:opensooq/future/favorite/data/model/fav_reels_model.dart';
 import 'package:opensooq/future/favorite/data/repositories/fav_repository.dart';
 import 'package:opensooq/future/signup/data/repositories/signup_repository.dart';
 
@@ -27,7 +28,7 @@ class FavRepositoryImpl implements FavRepository {
   }
 
   @override
-  Future<Either<Failures, FavModel>> getReelsFav() {
+  Future<Either<Failures, FavReelsModel>> getReelsFav() {
     return executeAndCatchError(() => _remoteDataSource.getReelsFav());
   }
 }

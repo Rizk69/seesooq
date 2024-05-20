@@ -1,7 +1,7 @@
 class EndPoint {
   static const String baseUrl = 'https://seesooq.com/api/';
   static const String googleMapPlace = 'https://maps.googleapis.com/maps/api';
-  static const String userNotifications = 'user-notifications';
+  static const String userNotifications = 'notifications';
   static const String signUpUser = 'register';
   static const String getPackagesM = 'getPackages';
   static const String getWallet = 'users/{userId}/wallet/balance';

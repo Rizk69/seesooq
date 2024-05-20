@@ -1,11 +1,12 @@
 import 'package:injectable/injectable.dart';
 import 'package:opensooq/core/network/api/fav_api.dart';
+import 'package:opensooq/future/favorite/data/model/fav_reels_model.dart';
 
 import '../model/fav_model.dart';
 
 abstract class FavRemoteDataSource {
   Future<FavModel> getFav();
-  Future<FavModel> getReelsFav();
+  Future<FavReelsModel> getReelsFav();
   Future<String> sendFav({required String id});
   Future<String> removeFav({required String id});
 }
@@ -30,8 +31,7 @@ class FavRemoteDataSourceImpl implements FavRemoteDataSource {
   }
 
   @override
-  Future<FavModel> getReelsFav()async {
+  Future<FavReelsModel> getReelsFav() async {
     return await api.getReelsFav();
-
   }
 }

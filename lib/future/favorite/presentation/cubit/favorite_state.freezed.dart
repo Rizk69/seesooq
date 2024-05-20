@@ -21,6 +21,7 @@ mixin _$FavoriteState {
       throw _privateConstructorUsedError;
   AddFavoriteStatus get addFavoriteStatus => throw _privateConstructorUsedError;
   List<FavData> get favoriteList => throw _privateConstructorUsedError;
+  FavReelsModel? get favReelsModel => throw _privateConstructorUsedError;
   int get indexFavoriteView => throw _privateConstructorUsedError;
   int get indexStatusView => throw _privateConstructorUsedError;
 
@@ -40,6 +41,7 @@ abstract class $FavoriteStateCopyWith<$Res> {
       FavoriteReelsStatus favoriteReelsStatus,
       AddFavoriteStatus addFavoriteStatus,
       List<FavData> favoriteList,
+      FavReelsModel? favReelsModel,
       int indexFavoriteView,
       int indexStatusView});
 }
@@ -61,6 +63,7 @@ class _$FavoriteStateCopyWithImpl<$Res, $Val extends FavoriteState>
     Object? favoriteReelsStatus = null,
     Object? addFavoriteStatus = null,
     Object? favoriteList = null,
+    Object? favReelsModel = freezed,
     Object? indexFavoriteView = null,
     Object? indexStatusView = null,
   }) {
@@ -81,6 +84,10 @@ class _$FavoriteStateCopyWithImpl<$Res, $Val extends FavoriteState>
           ? _value.favoriteList
           : favoriteList // ignore: cast_nullable_to_non_nullable
               as List<FavData>,
+      favReelsModel: freezed == favReelsModel
+          ? _value.favReelsModel
+          : favReelsModel // ignore: cast_nullable_to_non_nullable
+              as FavReelsModel?,
       indexFavoriteView: null == indexFavoriteView
           ? _value.indexFavoriteView
           : indexFavoriteView // ignore: cast_nullable_to_non_nullable
@@ -106,6 +113,7 @@ abstract class _$$FavoriteStateImplCopyWith<$Res>
       FavoriteReelsStatus favoriteReelsStatus,
       AddFavoriteStatus addFavoriteStatus,
       List<FavData> favoriteList,
+      FavReelsModel? favReelsModel,
       int indexFavoriteView,
       int indexStatusView});
 }
@@ -125,6 +133,7 @@ class __$$FavoriteStateImplCopyWithImpl<$Res>
     Object? favoriteReelsStatus = null,
     Object? addFavoriteStatus = null,
     Object? favoriteList = null,
+    Object? favReelsModel = freezed,
     Object? indexFavoriteView = null,
     Object? indexStatusView = null,
   }) {
@@ -145,6 +154,10 @@ class __$$FavoriteStateImplCopyWithImpl<$Res>
           ? _value._favoriteList
           : favoriteList // ignore: cast_nullable_to_non_nullable
               as List<FavData>,
+      favReelsModel: freezed == favReelsModel
+          ? _value.favReelsModel
+          : favReelsModel // ignore: cast_nullable_to_non_nullable
+              as FavReelsModel?,
       indexFavoriteView: null == indexFavoriteView
           ? _value.indexFavoriteView
           : indexFavoriteView // ignore: cast_nullable_to_non_nullable
@@ -165,6 +178,7 @@ class _$FavoriteStateImpl implements _FavoriteState {
       this.favoriteReelsStatus = FavoriteReelsStatus.initial,
       this.addFavoriteStatus = AddFavoriteStatus.initial,
       final List<FavData> favoriteList = const [],
+      this.favReelsModel = null,
       this.indexFavoriteView = 0,
       this.indexStatusView = 0})
       : _favoriteList = favoriteList;
@@ -189,6 +203,9 @@ class _$FavoriteStateImpl implements _FavoriteState {
 
   @override
   @JsonKey()
+  final FavReelsModel? favReelsModel;
+  @override
+  @JsonKey()
   final int indexFavoriteView;
   @override
   @JsonKey()
@@ -196,7 +213,7 @@ class _$FavoriteStateImpl implements _FavoriteState {
 
   @override
   String toString() {
-    return 'FavoriteState(status: $status, favoriteReelsStatus: $favoriteReelsStatus, addFavoriteStatus: $addFavoriteStatus, favoriteList: $favoriteList, indexFavoriteView: $indexFavoriteView, indexStatusView: $indexStatusView)';
+    return 'FavoriteState(status: $status, favoriteReelsStatus: $favoriteReelsStatus, addFavoriteStatus: $addFavoriteStatus, favoriteList: $favoriteList, favReelsModel: $favReelsModel, indexFavoriteView: $indexFavoriteView, indexStatusView: $indexStatusView)';
   }
 
   @override
@@ -211,6 +228,8 @@ class _$FavoriteStateImpl implements _FavoriteState {
                 other.addFavoriteStatus == addFavoriteStatus) &&
             const DeepCollectionEquality()
                 .equals(other._favoriteList, _favoriteList) &&
+            (identical(other.favReelsModel, favReelsModel) ||
+                other.favReelsModel == favReelsModel) &&
             (identical(other.indexFavoriteView, indexFavoriteView) ||
                 other.indexFavoriteView == indexFavoriteView) &&
             (identical(other.indexStatusView, indexStatusView) ||
@@ -224,6 +243,7 @@ class _$FavoriteStateImpl implements _FavoriteState {
       favoriteReelsStatus,
       addFavoriteStatus,
       const DeepCollectionEquality().hash(_favoriteList),
+      favReelsModel,
       indexFavoriteView,
       indexStatusView);
 
@@ -240,6 +260,7 @@ abstract class _FavoriteState implements FavoriteState {
       final FavoriteReelsStatus favoriteReelsStatus,
       final AddFavoriteStatus addFavoriteStatus,
       final List<FavData> favoriteList,
+      final FavReelsModel? favReelsModel,
       final int indexFavoriteView,
       final int indexStatusView}) = _$FavoriteStateImpl;
 
@@ -251,6 +272,8 @@ abstract class _FavoriteState implements FavoriteState {
   AddFavoriteStatus get addFavoriteStatus;
   @override
   List<FavData> get favoriteList;
+  @override
+  FavReelsModel? get favReelsModel;
   @override
   int get indexFavoriteView;
   @override

@@ -4,6 +4,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:multi_image_picker_view/multi_image_picker_view.dart';
 import 'package:opensooq/core/utils/cache_helper.dart';
 import 'package:opensooq/core/utils/loadin_app.dart';
@@ -65,8 +66,27 @@ class AddAdsCubit extends Cubit<AddAdsState> {
     if (pickedImages) {
       List<File> files = controller.images.map((e) => File(e.path.toString())).toList();
 
+      for (var i = 0; i < files.length; i++) {
+        final compressedFile = await testCompressFile(files[i]);
+        if (compressedFile != null) {
+          files[i] = File(files[i].path)..writeAsBytesSync(compressedFile, flush: true);
+        }
+      }
+
       emit(state.copyWith(images: controller.images as List<ImageFile>, attributesForm: state.attributesForm.copyWith(images: files)));
     }
+  }
+
+  Future<Uint8List?> testCompressFile(File file) async {
+    var result = await FlutterImageCompress.compressWithFile(
+      file.absolute.path,
+      minWidth: 2300,
+      minHeight: 1500,
+      quality: 90,
+      rotate: 0,
+    );
+
+    return result;
   }
 
   void removePhoto({required int index}) async {

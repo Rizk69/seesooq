@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:opensooq/future/favorite/data/model/fav_model.dart';
+import 'package:opensooq/future/favorite/data/model/fav_reels_model.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../../api/end_point.dart';
@@ -17,7 +18,7 @@ abstract class FavApi {
   @GET(EndPoint.getFav)
   Future<FavModel> getFav();
   @GET(EndPoint.getReelsFav)
-  Future<FavModel> getReelsFav();
+  Future<FavReelsModel> getReelsFav();
   @GET(EndPoint.removeFav)
   Future<String> removeFav({@Path() required String id});
 
