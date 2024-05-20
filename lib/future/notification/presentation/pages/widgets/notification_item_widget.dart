@@ -1,11 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:opensooq/core/utils/hex_color.dart';
 import 'package:opensooq/future/notification/data/models/notification_response_model.dart';
 
 class NotificationItemWidget extends StatelessWidget {
   final Notifications? notificationModel;
 
-  const NotificationItemWidget(this.notificationModel, {Key? key}) : super(key: key);
+  const NotificationItemWidget(this.notificationModel, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class NotificationItemWidget extends StatelessWidget {
                 alignment: AlignmentDirectional.topEnd,
                 children: [
                   Card(
-                    color: notificationModel!.readAt == 1 ? Colors.white : null,
+                    color: notificationModel!.readAt == 1 ? Colors.white : HexColor('#F5F5F5'),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
@@ -75,12 +76,15 @@ class NotificationItemWidget extends StatelessWidget {
                     ),
                   ),
                   if (notificationModel!.readAt != 1)
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Icon(
-                        Icons.circle,
-                        color: Theme.of(context).colorScheme.primary,
-                        size: 18,
+                    Positioned(
+                      top: 20,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Icon(
+                          Icons.circle,
+                          color: Theme.of(context).colorScheme.primary,
+                          size: 18,
+                        ),
                       ),
                     )
                 ],

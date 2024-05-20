@@ -212,5 +212,7 @@
   "jd": "JD",
   "location": "Location",
   "attributes": "Attributes",
-  "publish": "Publish"
+  "publish": "Publish",
+  "MarkAllRead": "Mark all as read"
+
 }

@@ -78,329 +78,330 @@ class FavoritePage extends StatelessWidget {
             child: Column(children: [
               const SegmentedButtonFavWidget(),
               const Gap(10),
-              if (state.favoriteList.isEmpty)
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Gap(context.height * 0.15),
-                    if (state.indexStatusView == 0) ...[
-                      SvgPicture.asset(
-                        'favorite_drawer'.toSvg,
-                        width: context.width * 0.3,
-                        height: context.height * 0.2,
-                      ),
-                      const Gap(10),
-                      TranslateText(
-                        styleText: StyleText.h4,
-                        text: 'empty_favorite',
-                        colorText: HexColor('#200E32'),
-                      ),
-                    ]
-                  ],
-                ),
-              ListView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  final FavData item = state.favoriteList[index];
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: InkWell(
-                        onTap: () {
-                          context.pushNamed('view_ads_home',
-                              extra: item.adId.toString());
-                        },
-                        child: SizedBox(
-                          child: Card(
-                            color: Theme.of(context).cardColor,
-                            shadowColor: Colors.grey,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(8),
-                                    child: Stack(
-                                      children: [
-                                        // item.album?.split('.').last == 'svg'
-                                        //     ? SvgPicture.network(
-                                        //   item.album.toString() ?? '',
-                                        //   height: context.height * 0.20,
-                                        //   fit: BoxFit.cover,
-                                        // )
-                                        //     : CacheNetworkImageApp(
-                                        item.mainImage
-                                                .toString()
-                                                .contains('.svg')
-                                            ? SvgPicture.network(
-                                                item.mainImage.toString() ?? '',
-                                                fit: BoxFit.contain,
-                                                height: context.height * 0.20,
-                                                placeholderBuilder:
-                                                    (BuildContext context) =>
-                                                        const Center(
-                                                  child:
-                                                      CircularProgressIndicator(),
+              if (state.favoriteList.isEmpty) ...[                Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Gap(context.height * 0.15),
+                  if (state.indexStatusView == 0) ...[
+                    SvgPicture.asset(
+                      'favorite_drawer'.toSvg,
+                      width: context.width * 0.3,
+                      height: context.height * 0.2,
+                    ),
+                    const Gap(10),
+                    TranslateText(
+                      styleText: StyleText.h4,
+                      text: 'empty_favorite',
+                      colorText: HexColor('#200E32'),
+                    ),
+                  ]
+                ],
+              ),
+                ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    final FavData item = state.favoriteList[index];
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: InkWell(
+                          onTap: () {
+                            context.pushNamed('view_ads_home',
+                                extra: item.adId.toString());
+                          },
+                          child: SizedBox(
+                            child: Card(
+                              color: Theme.of(context).cardColor,
+                              shadowColor: Colors.grey,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(8),
+                                      child: Stack(
+                                        children: [
+                                          // item.album?.split('.').last == 'svg'
+                                          //     ? SvgPicture.network(
+                                          //   item.album.toString() ?? '',
+                                          //   height: context.height * 0.20,
+                                          //   fit: BoxFit.cover,
+                                          // )
+                                          //     : CacheNetworkImageApp(
+                                          item.mainImage
+                                              .toString()
+                                              .contains('.svg')
+                                              ? SvgPicture.network(
+                                            item.mainImage.toString() ?? '',
+                                            fit: BoxFit.contain,
+                                            height: context.height * 0.20,
+                                            placeholderBuilder:
+                                                (BuildContext context) =>
+                                            const Center(
+                                              child:
+                                              CircularProgressIndicator(),
+                                            ),
+                                          )
+                                              : CacheNetworkImageApp(
+                                            urlImage:
+                                            item.mainImage.toString() ??
+                                                '',
+                                            fit: BoxFit.cover,
+                                            height: context.height * 0.20,
+                                          ),
+                                          Positioned(
+                                            right: 10,
+                                            top: 10,
+                                            child: InkWell(
+                                              borderRadius:
+                                              BorderRadius.circular(15),
+                                              onTap: () {
+                                                FavoriteCubit.get(context)
+                                                    .removeFav(
+                                                    idFav:
+                                                    item.adId.toString(),
+                                                    index: index,
+                                                    isOutSide: false);
+                                              },
+                                              child: Container(
+                                                padding: const EdgeInsets.all(8),
+                                                decoration: BoxDecoration(
+                                                  color: HexColor('#F05A35'),
+                                                  shape: BoxShape.circle,
                                                 ),
-                                              )
-                                            : CacheNetworkImageApp(
-                                                urlImage:
-                                                    item.mainImage.toString() ??
-                                                        '',
-                                                fit: BoxFit.cover,
-                                                height: context.height * 0.20,
-                                              ),
-                                        Positioned(
-                                          right: 10,
-                                          top: 10,
-                                          child: InkWell(
-                                            borderRadius:
-                                                BorderRadius.circular(15),
-                                            onTap: () {
-                                              FavoriteCubit.get(context)
-                                                  .removeFav(
-                                                      idFav:
-                                                          item.adId.toString(),
-                                                      index: index,
-                                                      isOutSide: false);
-                                            },
-                                            child: Container(
-                                              padding: const EdgeInsets.all(8),
-                                              decoration: BoxDecoration(
-                                                color: HexColor('#F05A35'),
-                                                shape: BoxShape.circle,
-                                              ),
-                                              child: SvgPicture.asset(
-                                                'fav'.toSvg,
-                                                width: 15,
-                                                height: 15,
+                                                child: SvgPicture.asset(
+                                                  'fav'.toSvg,
+                                                  width: 15,
+                                                  height: 15,
+                                                ),
                                               ),
                                             ),
                                           ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 0.0, vertical: 0),
-                                    child: Column(
-                                      children: [
-                                        const Gap(10),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            Expanded(
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  TranslateText(
-                                                    styleText: StyleText.h5,
-                                                    maxLines: 1,
-                                                    textAlign: TextAlign.start,
-                                                    colorText:
-                                                        HexColor('#200E32'),
-                                                    fontWeight: FontWeight.w500,
-                                                    text: item.title ?? '',
-                                                  ),
-                                                  const Gap(5),
-                                                  TranslateText(
-                                                    styleText: StyleText.h6,
-                                                    fontWeight: FontWeight.w500,
-                                                    fontSize: 14,
-                                                    colorText:
-                                                        AppColors.primary,
-                                                    text:
-                                                        "JD ${item.price?.toString().price ?? 0}",
-                                                  ),
-                                                ],
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 0.0, vertical: 0),
+                                      child: Column(
+                                        children: [
+                                          const Gap(10),
+                                          Row(
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                            crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                            children: [
+                                              Expanded(
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                                  children: [
+                                                    TranslateText(
+                                                      styleText: StyleText.h5,
+                                                      maxLines: 1,
+                                                      textAlign: TextAlign.start,
+                                                      colorText:
+                                                      HexColor('#200E32'),
+                                                      fontWeight: FontWeight.w500,
+                                                      text: item.title ?? '',
+                                                    ),
+                                                    const Gap(5),
+                                                    TranslateText(
+                                                      styleText: StyleText.h6,
+                                                      fontWeight: FontWeight.w500,
+                                                      fontSize: 14,
+                                                      colorText:
+                                                      AppColors.primary,
+                                                      text:
+                                                      "JD ${item.price?.toString().price ?? 0}",
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
-                                            ),
-                                          ],
-                                        ),
-                                        const Gap(8),
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.end,
-                                          children: [
-                                            Row(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              children: [
-                                                SvgCustomImage(
-                                                    image: 'time_booking'.toSvg,
-                                                    width: 20,
-                                                    height: 20,
-                                                    color: Theme.of(context)
-                                                        .colorScheme
-                                                        .primary),
-                                                const SizedBox(
-                                                  width: 5,
-                                                ),
-                                                TranslateText(
-                                                  styleText: StyleText.h6,
-                                                  fontWeight: FontWeight.w400,
-                                                  text: item.createdAt ?? '',
-                                                  maxLines: 2,
-                                                ),
-                                              ],
-                                            ),
-                                            if (item.city != null)
+                                            ],
+                                          ),
+                                          const Gap(8),
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                            crossAxisAlignment:
+                                            CrossAxisAlignment.end,
+                                            children: [
                                               Row(
                                                 crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
+                                                CrossAxisAlignment.center,
+                                                mainAxisAlignment:
+                                                MainAxisAlignment.start,
                                                 children: [
                                                   SvgCustomImage(
-                                                    image:
-                                                        'location_boking'.toSvg,
-                                                    width: 20,
-                                                    height: 20,
-                                                    color: Theme.of(context)
-                                                        .colorScheme
-                                                        .primary,
+                                                      image: 'time_booking'.toSvg,
+                                                      width: 20,
+                                                      height: 20,
+                                                      color: Theme.of(context)
+                                                          .colorScheme
+                                                          .primary),
+                                                  const SizedBox(
+                                                    width: 5,
                                                   ),
-                                                  const Gap(5),
                                                   TranslateText(
                                                     styleText: StyleText.h6,
                                                     fontWeight: FontWeight.w400,
-                                                    text: item.city ?? '',
+                                                    text: item.createdAt ?? '',
                                                     maxLines: 2,
                                                   ),
                                                 ],
-                                              )
-                                          ],
-                                        ),
-                                        const Gap(10),
-                                        Row(
-                                          children: [
-                                            Expanded(
-                                              child: InkWell(
-                                                onTap: () {
-                                                  callNumber(item.phone ?? '');
-                                                },
+                                              ),
+                                              if (item.city != null)
+                                                Row(
+                                                  crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                                  children: [
+                                                    SvgCustomImage(
+                                                      image:
+                                                      'location_boking'.toSvg,
+                                                      width: 20,
+                                                      height: 20,
+                                                      color: Theme.of(context)
+                                                          .colorScheme
+                                                          .primary,
+                                                    ),
+                                                    const Gap(5),
+                                                    TranslateText(
+                                                      styleText: StyleText.h6,
+                                                      fontWeight: FontWeight.w400,
+                                                      text: item.city ?? '',
+                                                      maxLines: 2,
+                                                    ),
+                                                  ],
+                                                )
+                                            ],
+                                          ),
+                                          const Gap(10),
+                                          Row(
+                                            children: [
+                                              Expanded(
+                                                child: InkWell(
+                                                  onTap: () {
+                                                    callNumber(item.phone ?? '');
+                                                  },
+                                                  child: Container(
+                                                    alignment: Alignment.center,
+                                                    padding:
+                                                    const EdgeInsets.all(8),
+                                                    decoration: BoxDecoration(
+                                                      color: HexColor('#F5F5F5'),
+                                                      borderRadius:
+                                                      BorderRadius.circular(
+                                                          10),
+                                                    ),
+                                                    child: Row(
+                                                      crossAxisAlignment:
+                                                      CrossAxisAlignment
+                                                          .center,
+                                                      mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .center,
+                                                      children: [
+                                                        SvgCustomImage(
+                                                          image: 'call_cat'.toSvg,
+                                                          width: 20,
+                                                          height: 20,
+                                                          color:
+                                                          HexColor('#F05A35'),
+                                                        ),
+                                                        const SizedBox(
+                                                          width: 4,
+                                                        ),
+                                                        TranslateText(
+                                                          styleText: StyleText.h5,
+                                                          text: 'call'.tr(),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              const Gap(10),
+                                              Expanded(
                                                 child: Container(
                                                   alignment: Alignment.center,
                                                   padding:
-                                                      const EdgeInsets.all(8),
+                                                  const EdgeInsets.all(8),
                                                   decoration: BoxDecoration(
                                                     color: HexColor('#F5F5F5'),
                                                     borderRadius:
-                                                        BorderRadius.circular(
-                                                            10),
+                                                    BorderRadius.circular(10),
                                                   ),
                                                   child: Row(
                                                     crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .center,
+                                                    CrossAxisAlignment.center,
                                                     mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
+                                                    MainAxisAlignment.center,
                                                     children: [
                                                       SvgCustomImage(
-                                                        image: 'call_cat'.toSvg,
+                                                        image:
+                                                        'message_cat'.toSvg,
                                                         width: 20,
                                                         height: 20,
                                                         color:
-                                                            HexColor('#F05A35'),
+                                                        HexColor('#F05A35'),
                                                       ),
                                                       const SizedBox(
                                                         width: 4,
                                                       ),
                                                       TranslateText(
                                                         styleText: StyleText.h5,
-                                                        text: 'call'.tr(),
+                                                        text: 'message'.tr(),
                                                       ),
                                                     ],
                                                   ),
                                                 ),
                                               ),
-                                            ),
-                                            const Gap(10),
-                                            Expanded(
-                                              child: Container(
-                                                alignment: Alignment.center,
-                                                padding:
-                                                    const EdgeInsets.all(8),
-                                                decoration: BoxDecoration(
-                                                  color: HexColor('#F5F5F5'),
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                ),
-                                                child: Row(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.center,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    SvgCustomImage(
-                                                      image:
-                                                          'message_cat'.toSvg,
-                                                      width: 20,
-                                                      height: 20,
-                                                      color:
-                                                          HexColor('#F05A35'),
-                                                    ),
-                                                    const SizedBox(
-                                                      width: 4,
-                                                    ),
-                                                    TranslateText(
-                                                      styleText: StyleText.h5,
-                                                      text: 'message'.tr(),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        )
-                                      ],
-                                    ),
-                                  )
-                                ],
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                        )),
-                  );
-                },
-                itemCount: state.favoriteList.length,
-              ),
+                          )),
+                    );
+                  },
+                  itemCount: state.favoriteList.length,
+                ),],
+
               //
-              if (state.indexStatusView == 1) ...[
-                // Text(state.favReelsModel?.data?.firstOrNull?.video.toString() ??
-                //     ''),
-                SizedBox(
-                  height: 300,
+              if (state.indexStatusView == 1 &&
+                  state.favReelsModel?.data != null &&
+                  state.favReelsModel!.data!.isNotEmpty) ...[
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
                   child: AlignedGridView.count(
+                    shrinkWrap: true,
                     crossAxisCount: 2,
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10,
                     scrollDirection: Axis.vertical,
                     itemBuilder: (context, index) {
+                      final reelData = state.favReelsModel?.data?[index];
+                      if (reelData == null) return Container();
+
                       return InkWell(
                         onTap: () {
-                          context.goNamed(
+                          context.pushNamed(
                             Routes.reelView,
                             extra: [
                               Reels(
-                                  id: state.favReelsModel?.data?[index].reelId
-                                      ?.toInt(),
-                                  createAt: state
-                                      .favReelsModel?.data?[index].createdAt,
+                                  id: reelData.reelId?.toInt(),
+                                  createAt: reelData.createdAt,
                                   isFav: 0,
-                                  video:
-                                      state.favReelsModel?.data?[index].video)
+                                  video: reelData.video)
                             ],
                           );
                         },
@@ -425,7 +426,7 @@ class FavoritePage extends StatelessWidget {
                               children: [
                                 Container(
                                   height:
-                                      MediaQuery.of(context).size.height / 3.5,
+                                  MediaQuery.of(context).size.height / 3.5,
                                   decoration: BoxDecoration(
                                     image: DecorationImage(
                                       colorFilter: ColorFilter.mode(
@@ -434,9 +435,8 @@ class FavoritePage extends StatelessWidget {
                                       ),
                                       filterQuality: FilterQuality.high,
                                       image: NetworkImage(
-                                        state.favReelsModel?.data?[index].user
-                                                ?.image ??
-                                            '',
+                                        reelData.user?.image ??
+                                            'https://example.com/default_image.png',
                                       ),
                                       fit: BoxFit.cover,
                                     ),
@@ -447,21 +447,15 @@ class FavoritePage extends StatelessWidget {
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
+                                      mainAxisAlignment: MainAxisAlignment.start,
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      CrossAxisAlignment.start,
                                       children: [
                                         ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(30),
+                                          borderRadius: BorderRadius.circular(30),
                                           child: CacheNetworkImageApp(
-                                            urlImage: state
-                                                    .favReelsModel
-                                                    ?.data?[index]
-                                                    .user
-                                                    ?.image ??
-                                                '',
+                                            urlImage: reelData.user?.image ??
+                                                'https://example.com/default_image.png',
                                             width: 50,
                                             height: 50,
                                           ),
@@ -469,30 +463,17 @@ class FavoritePage extends StatelessWidget {
                                         const SizedBox(width: 10),
                                         Column(
                                           crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                                          CrossAxisAlignment.start,
                                           children: [
                                             TranslateText(
-                                              text: state
-                                                      .favReelsModel
-                                                      ?.data?[index]
-                                                      .user
-                                                      ?.name ??
-                                                  '',
+                                              text: reelData.user?.name ??
+                                                  'Unknown User',
                                               styleText: StyleText.h6,
                                               colorText: Colors.white,
-                                              textDecoration:
-                                                  TextDecoration.none,
+                                              textDecoration: TextDecoration.none,
                                               fontWeight: FontWeight.bold,
                                               fontSize: 14,
                                             ),
-                                            // TranslateText(
-                                            //   text: 'widget.reels[index].userReels?.name ?? ' '',
-                                            //   styleText: StyleText.h6,
-                                            //   colorText: Colors.white,
-                                            //   textDecoration: TextDecoration.none,
-                                            //   fontWeight: FontWeight.bold,
-                                            //   fontSize: 14,
-                                            // ),
                                           ],
                                         ),
                                       ],
@@ -505,7 +486,7 @@ class FavoritePage extends StatelessWidget {
                         ),
                       );
                     },
-                    itemCount: state.favReelsModel?.data?.length,
+                    itemCount: state.favReelsModel?.data?.length ?? 0,
                   ),
                 )
               ]

@@ -40,7 +40,9 @@ class SegmentedButtonFavWidget extends StatelessWidget {
                               )
                             : null,
 
-                        color: index == cubit.state.indexStatusView ? null : Colors.white,
+                        color: index == cubit.state.indexStatusView
+                            ? null
+                            : Colors.white,
                         // shado white color
 
                         boxShadow: index != cubit.state.indexStatusView
@@ -49,8 +51,10 @@ class SegmentedButtonFavWidget extends StatelessWidget {
                                     color: Colors.black54, // shadow color
                                     blurRadius: 10, // shadow radius
                                     offset: Offset(1, 4), // shadow offset
-                                    spreadRadius: 0.1, // The amount the box should be inflated prior to applying the blur
-                                    blurStyle: BlurStyle.normal // set blur style
+                                    spreadRadius:
+                                        0.1, // The amount the box should be inflated prior to applying the blur
+                                    blurStyle:
+                                        BlurStyle.normal // set blur style
                                     ),
                               ]
                             : null,
@@ -60,7 +64,9 @@ class SegmentedButtonFavWidget extends StatelessWidget {
                         child: TranslateText(
                           text: titleFav[index],
                           styleText: StyleText.h6,
-                          colorText: index == cubit.state.indexStatusView ? Colors.white : Colors.black,
+                          colorText: index == cubit.state.indexStatusView
+                              ? Colors.white
+                              : Colors.black,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
