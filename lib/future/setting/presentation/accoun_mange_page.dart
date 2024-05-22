@@ -51,22 +51,22 @@ class _AccountMangePageState extends State<AccountMangePage> {
                           switch (index) {
                             case 0:
                               {
-                                context.go(Routes.changePassword);
+                                context.pushNamed(Routes.changePassword);
                               }
                               break;
                             case 1:
                               {
-                                context.go(Routes.securityPage);
+                                context.pushNamed(Routes.securityPage);
                               }
                               break;
                             case 2:
                               {
-                                context.go(Routes.emptyLocationPage);
+                                context.pushNamed(Routes.emptyLocationPage);
                               }
                               break;
                             case 3:
                               {
-                                context.go(Routes.removeAccountPage);
+                                context.pushNamed(Routes.removeAccountPage);
                               }
                               break;
 
@@ -74,12 +74,8 @@ class _AccountMangePageState extends State<AccountMangePage> {
                               Container();
                           }
                         },
-                        child: CardListItems(
-                            index: index,
-                            indexActive: true,
-                            title: contact['title']!,
-                            des: contact['des']!,
-                            img: titles[index].toSvg),
+                        child:
+                            CardListItems(index: index, indexActive: true, title: contact['title']!, des: contact['des']!, img: titles[index].toSvg),
                       );
                     },
                     separatorBuilder: (context, index) {

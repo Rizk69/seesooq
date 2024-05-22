@@ -32,8 +32,8 @@ class ReelsBloc extends Bloc<ReelsEvent, ReelsState> {
         unlikeReel: (id) {},
         replyReel: (id, comment) {},
         shareReel: (id) {},
-        viewReel: (id) async {
-          await _viewReel(id);
+        viewReel: (id, indexPage) async {
+          await _viewReel(id, indexPage, emit);
         },
         createReel: () async => _createReel(),
         getMyReels: () async {
@@ -51,7 +51,8 @@ class ReelsBloc extends Bloc<ReelsEvent, ReelsState> {
     );
   }
 
-  Future<void> _viewReel(String id) async {
+  Future<void> _viewReel(String id, indexPage, Emitter emit) async {
+    emit(state.copyWith(page: indexPage));
     await _reelsRepository.viewReel(id: id);
   }
 

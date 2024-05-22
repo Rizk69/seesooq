@@ -40,8 +40,7 @@ class _ViewMyReelState extends State<ViewMyReel> {
                     showModalBottomSheet(
                       context: context,
                       shape: const RoundedRectangleBorder(
-                        borderRadius:
-                            BorderRadius.vertical(top: Radius.circular(0.0)),
+                        borderRadius: BorderRadius.vertical(top: Radius.circular(0.0)),
                       ),
                       builder: (context) {
                         return Column(
@@ -50,8 +49,7 @@ class _ViewMyReelState extends State<ViewMyReel> {
                           children: [
                             Container(
                               width: context.width,
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 16),
+                              padding: const EdgeInsets.symmetric(horizontal: 16),
                               height: 50,
                               alignment: Alignment.centerLeft,
                               decoration: BoxDecoration(
@@ -66,9 +64,7 @@ class _ViewMyReelState extends State<ViewMyReel> {
                                 ),
                               ),
                               child: TranslateText(
-                                text: 'viewedPeople'.tr(args: [
-                                  widget.reels.viewersCount.toString()
-                                ]),
+                                text: 'viewedPeople'.tr(args: [widget.reels.viewersCount.toString()]),
                                 styleText: StyleText.h5,
                                 colorText: Colors.white,
                                 fontWeight: FontWeight.w400,
@@ -80,23 +76,18 @@ class _ViewMyReelState extends State<ViewMyReel> {
                                           child: ListTile(
                                               leading: CircleAvatar(
                                                 radius: 20,
-                                                backgroundImage:
-                                                    NetworkImage(e.image ?? ''),
+                                                backgroundImage: NetworkImage(e.image ?? ''),
                                               ),
-                                              title:
-                                                  Text(e.name.toString() ?? ''),
-                                              subtitle:
-                                                  const Text('Add Time Here'),
+                                              title: Text(e.name.toString() ?? ''),
+                                              subtitle: const Text('Add Time Here'),
                                               trailing: Row(
                                                 mainAxisSize: MainAxisSize.min,
                                                 children: [
                                                   Container(
-                                                    padding:
-                                                        const EdgeInsets.all(8),
+                                                    padding: const EdgeInsets.all(8),
                                                     decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
-                                                      color: Colors.grey
-                                                          .withOpacity(0.6),
+                                                      color: Colors.grey.withOpacity(0.6),
                                                     ),
                                                     child: const Icon(
                                                       Icons.message,
@@ -108,12 +99,10 @@ class _ViewMyReelState extends State<ViewMyReel> {
                                                     width: 10,
                                                   ),
                                                   Container(
-                                                    padding:
-                                                        const EdgeInsets.all(8),
+                                                    padding: const EdgeInsets.all(8),
                                                     decoration: BoxDecoration(
                                                       shape: BoxShape.circle,
-                                                      color: Colors.grey
-                                                          .withOpacity(0.6),
+                                                      color: Colors.grey.withOpacity(0.6),
                                                     ),
                                                     child: const Icon(
                                                       Icons.call,
@@ -139,8 +128,7 @@ class _ViewMyReelState extends State<ViewMyReel> {
                 }
               },
               onStoryShow: (value, index) {
-                ReelsBloc.get(context)
-                    .add(ReelsEvent.viewReel(widget.reels.id.toString()));
+                ReelsBloc.get(context).add(ReelsEvent.viewReel(widget.reels.id.toString(), index));
               },
               progressPosition: ProgressPosition.top,
               onComplete: () {

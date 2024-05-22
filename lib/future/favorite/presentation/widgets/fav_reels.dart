@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:go_router/go_router.dart';
 import 'package:opensooq/config/routes/app_routes.dart';
 import 'package:opensooq/core/utils/cache_network_image.dart';
 import 'package:opensooq/core/widget/text_translate_manager.dart';
+import 'package:opensooq/future/favorite/presentation/cubit/favorite_cubit.dart';
 import 'package:opensooq/future/favorite/presentation/cubit/favorite_state.dart';
 import 'package:opensooq/future/reels/data/model/reels_model.dart';
 
@@ -29,98 +31,108 @@ class FavoriteReels extends StatelessWidget {
             onTap: () {
               context.pushNamed(
                 Routes.reelView,
-                extra: [
-                  Reels(
-                      id: reelData.reelId?.toInt(),
-                      createAt: reelData.createdAt,
-                      isFav: 0,
-                      video: reelData.video)
-                ],
+                extra: [Reels(id: reelData.reelId?.toInt(), createAt: reelData.createdAt, isFav: 0, video: reelData.video)],
               );
             },
-            child: Container(
-              decoration: BoxDecoration(
-                boxShadow: const [
-                  BoxShadow(
-                    color: Colors.grey,
-                    offset: Offset(1, 2),
-                    blurRadius: 9,
-                  )
-                ],
-                borderRadius: BorderRadius.circular(25),
-                border: Border.all(
-                  color: Colors.white,
-                  width: 5,
-                ),
-              ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(19),
-                child: Stack(
-                  children: [
-                    Container(
-                      height:
-                      MediaQuery.of(context).size.height /
-                          3.5,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          colorFilter: ColorFilter.mode(
-                            Colors.black.withOpacity(0.5),
-                            BlendMode.darken,
-                          ),
-                          filterQuality: FilterQuality.high,
-                          image: NetworkImage(
-                            reelData.user?.image ??
-                                'https://example.com/default_image.png',
-                          ),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
+            child: Stack(
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.grey,
+                        offset: Offset(1, 2),
+                        blurRadius: 9,
+                      )
+                    ],
+                    borderRadius: BorderRadius.circular(25),
+                    border: Border.all(
+                      color: Colors.white,
+                      width: 5,
                     ),
-                    Positioned(
-                      bottom: 15,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          mainAxisAlignment:
-                          MainAxisAlignment.start,
-                          crossAxisAlignment:
-                          CrossAxisAlignment.start,
-                          children: [
-                            ClipRRect(
-                              borderRadius:
-                              BorderRadius.circular(30),
-                              child: CacheNetworkImageApp(
-                                urlImage: reelData
-                                    .user?.image ??
-                                    'https://example.com/default_image.png',
-                                width: 50,
-                                height: 50,
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(19),
+                    child: Stack(
+                      children: [
+                        Container(
+                          height: MediaQuery.of(context).size.height / 3.5,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              colorFilter: ColorFilter.mode(
+                                Colors.black.withOpacity(0.5),
+                                BlendMode.darken,
                               ),
+                              filterQuality: FilterQuality.high,
+                              image: NetworkImage(
+                                reelData.user?.image ?? 'https://example.com/default_image.png',
+                              ),
+                              fit: BoxFit.cover,
                             ),
-                            const SizedBox(width: 10),
-                            Column(
-                              crossAxisAlignment:
-                              CrossAxisAlignment.start,
+                          ),
+                        ),
+                        Positioned(
+                          bottom: 15,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                TranslateText(
-                                  text: reelData.user?.name ??
-                                      'Unknown User',
-                                  styleText: StyleText.h6,
-                                  colorText: Colors.white,
-                                  textDecoration:
-                                  TextDecoration.none,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 14,
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(30),
+                                  child: CacheNetworkImageApp(
+                                    urlImage: reelData.user?.image ?? 'https://example.com/default_image.png',
+                                    width: 50,
+                                    height: 50,
+                                  ),
+                                ),
+                                const SizedBox(width: 10),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    TranslateText(
+                                      text: reelData.user?.name ?? 'Unknown User',
+                                      styleText: StyleText.h6,
+                                      colorText: Colors.white,
+                                      textDecoration: TextDecoration.none,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 14,
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
-                          ],
+                          ),
                         ),
+                      ],
+                    ),
+                  ),
+                ),
+                Positioned(
+                  top: 10,
+                  right: 10,
+                  child: InkWell(
+                    onTap: () {
+                      context.read<FavoriteCubit>().removeFavReel(
+                            idFav: reelData.reelId.toString() ?? '',
+                            index: index,
+                          );
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                      child: const Icon(
+                        Icons.favorite,
+                        color: Colors.red,
                       ),
                     ),
-                  ],
+                  ),
                 ),
-              ),
+              ],
             ),
           );
         },

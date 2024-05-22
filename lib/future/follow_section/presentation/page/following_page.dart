@@ -83,11 +83,7 @@ class FollowingPage extends StatelessWidget {
 
                             trailing: GestureDetector(
                               onTap: () {
-                                if (user?.isFollow ?? false) {
-                                  cubit.add(FollowEvent.removeFollowers(user?.id ?? 0));
-                                } else {
-                                  cubit.add(FollowEvent.addFollow(user?.id ?? 0));
-                                }
+                                cubit.add(FollowEvent.removeFollowers(user?.id ?? 0));
                               },
                               child: Container(
                                 padding: const EdgeInsets.symmetric(horizontal: 27, vertical: 11),
@@ -121,7 +117,7 @@ class FollowingPage extends StatelessWidget {
                                         ),
                                 ),
                                 child: TranslateText(
-                                  text: (user?.isFollow ?? false) ? '${user?.isFollow}' : '${user?.isFollow}',
+                                  text: 'Unfollow',
                                   styleText: StyleText.h5,
                                   colorText: (user?.isFollow ?? false) ? Colors.white : const Color(0xFF4C0497),
                                   fontWeight: FontWeight.w500,

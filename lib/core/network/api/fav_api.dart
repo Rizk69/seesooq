@@ -21,6 +21,8 @@ abstract class FavApi {
   Future<FavReelsModel> getReelsFav();
   @GET(EndPoint.removeFav)
   Future<String> removeFav({@Path() required String id});
+  @DELETE(EndPoint.removeFavReel)
+  Future<String> removeFavReel({@Path() required String id});
 
   @GET(EndPoint.addFav)
   Future<String> sendFav({@Path() required String id});

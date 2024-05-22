@@ -6,7 +6,7 @@ class ReelsEvent with _$ReelsEvent {
   const factory ReelsEvent.refreshReels() = _RefreshReels;
   const factory ReelsEvent.loadMoreReels() = _LoadMoreReels;
 
-  const factory ReelsEvent.viewReel(String id) = _ViewReel;
+  const factory ReelsEvent.viewReel(String id, int indexPage) = _ViewReel;
 
   // createReel
   const factory ReelsEvent.createReel() = _CreateReel;

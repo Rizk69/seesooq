@@ -11,5 +11,6 @@ class ReelsState with _$ReelsState {
     @Default(null) MyReelsModel? myReels,
     @Default(ReelsStatus.initial) ReelsStatus status,
     @Default(LikeReelStatus.initial) LikeReelStatus likeReelStatus,
+    @Default(0) int page,
   }) = _ReelsState;
 }

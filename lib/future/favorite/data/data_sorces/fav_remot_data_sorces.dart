@@ -9,6 +9,7 @@ abstract class FavRemoteDataSource {
   Future<FavReelsModel> getReelsFav();
   Future<String> sendFav({required String id});
   Future<String> removeFav({required String id});
+  Future<String> removeFavReel({required String id});
 }
 
 @LazySingleton(as: FavRemoteDataSource)
@@ -33,5 +34,11 @@ class FavRemoteDataSourceImpl implements FavRemoteDataSource {
   @override
   Future<FavReelsModel> getReelsFav() async {
     return await api.getReelsFav();
+  }
+
+  @override
+  Future<String> removeFavReel({required String id}) async {
+    // TODO: implement removeFavReel
+    return await api.removeFavReel(id: id);
   }
 }

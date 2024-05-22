@@ -48,6 +48,7 @@ class EndPoint {
   static const String addFav = 'add-to-favourites/{id}';
   static const String getBrands = 'brands';
   static const String removeFav = 'remove-from-favourites/{id}';
+  static const String removeFavReel = 'remove-reel-from-favourites/{id}';
   static const String getFollowers = 'followers';
   static const String getFollowings = 'followings';
   static const String makeFollow = 'follow/{idMF}';

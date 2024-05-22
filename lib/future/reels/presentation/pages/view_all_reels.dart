@@ -20,6 +20,18 @@ class _ViewReelState extends State<ViewReel> {
     return BlocBuilder<ReelsBloc, ReelsState>(builder: (context, state) {
       return SafeArea(
         child: Scaffold(
+          appBar: AppBar(
+              backgroundColor: Colors.black,
+              leading: Row(
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      context.read<ReelsBloc>().add(ReelsEvent.addFavReel(widget.reels[state.page].id.toString() ?? '', 0));
+                    },
+                    icon: const Icon(Icons.favorite),
+                  ),
+                ],
+              )),
           body: StoryView(
             controller: controller,
             inline: false,
@@ -29,7 +41,7 @@ class _ViewReelState extends State<ViewReel> {
               }
             },
             onStoryShow: (value, index) {
-              ReelsBloc.get(context).add(ReelsEvent.viewReel(widget.reels[index].id.toString()));
+              ReelsBloc.get(context).add(ReelsEvent.viewReel(widget.reels[index].id.toString(), index));
             },
             progressPosition: ProgressPosition.top,
             onComplete: () {

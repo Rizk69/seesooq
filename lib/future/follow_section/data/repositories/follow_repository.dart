@@ -25,14 +25,7 @@ class FollowRepositoryImpl implements FollowRepository {
     return executeAndCatchError(() async {
       final result = await _remoteDataSource.getFollowers();
       // add 6 users to the list
-      List<Data> users = [
-        Data(id: 1, name: 'yazan turk', email: '', phone: '', image: '', isFollow: true),
-        Data(id: 2, name: 'Ahmed Bassam', email: '', phone: '', image: '', isFollow: true),
-        Data(id: 3, name: 'Suha mohammad', email: '', phone: '', image: '', isFollow: true),
-        Data(id: 4, name: 'aya Ali', email: '', phone: '', image: '', isFollow: true),
-        Data(id: 5, name: 'Adel turk', email: '', phone: '', image: '', isFollow: true),
-      ];
-      result.data?.addAll(users);
+
       return (result);
     });
   }

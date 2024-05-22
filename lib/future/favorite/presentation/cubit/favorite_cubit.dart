@@ -3,7 +3,9 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:opensooq/core/utils/loadin_app.dart';
 import 'package:opensooq/di.dart' as di;
 import 'package:opensooq/future/favorite/data/model/fav_model.dart';
+import 'package:opensooq/future/favorite/data/model/fav_reels_model.dart';
 import 'package:opensooq/future/favorite/domain/use_cases/add_fav_usecase.dart';
+import 'package:opensooq/future/favorite/domain/use_cases/delete_fav_reel_usecase.dart';
 import 'package:opensooq/future/favorite/domain/use_cases/delete_fav_usecase.dart';
 import 'package:opensooq/future/favorite/domain/use_cases/fav_reels_usecase.dart';
 import 'package:opensooq/future/favorite/domain/use_cases/fav_usecase.dart';
@@ -16,6 +18,7 @@ class FavoriteCubit extends Cubit<FavoriteState> {
   final FavReelsUseCase getFavReelsUseCase = di.sl();
   final DeleteFavUseCase deleteFavUseCase = di.sl();
   final AddFavUseCase addFavUseCase = di.sl();
+  final DeleteFavReelUseCase removeFavReelUseCase = di.sl();
 
   FavoriteCubit() : super(const FavoriteState());
 
@@ -62,6 +65,7 @@ class FavoriteCubit extends Cubit<FavoriteState> {
   }
 
   Future<void> removeFav({required String idFav, required int index, required bool isOutSide}) async {
+    // isOutSide is a boolean that is used to determine if the function is called from the outside or FavPage
     loadingWidget();
     final result = await deleteFavUseCase(idFav);
     result.fold(
@@ -82,6 +86,30 @@ class FavoriteCubit extends Cubit<FavoriteState> {
         dismissLoading();
       },
     );
+  }
+
+  Future<void> removeFavReel({
+    required String idFav,
+    required int index,
+  }) async {
+    // isOutSide is a boolean that is used to determine if the function is called from the outside or FavPage
+    loadingWidget();
+    final result = await removeFavReelUseCase(idFav);
+    result.fold(
+      (error) {
+        showError(error.message.toString());
+      },
+      (favModel) {
+        List<Data> list = List.from(state.favReelsModel?.data ?? []);
+        list.where((element) => element.reelId.toString() == idFav).toList().forEach((element) {
+          list.remove(element);
+        });
+        emit(state.copyWith(favReelsModel: FavReelsModel(data: list), addFavoriteStatus: AddFavoriteStatus.loaded));
+
+        showSuccess('Removed from favorite');
+      },
+    );
+    dismissLoading();
   }
 
   Future<void> addFav({required String idFav, required FavData favData, required int index}) async {

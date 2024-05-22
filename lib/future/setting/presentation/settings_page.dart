@@ -61,61 +61,61 @@ class _SettingsPageState extends State<SettingsPage> {
                             switch (index) {
                               case 0:
                                 {
-                                  context.goNamed(Routes.accountMangePage);
+                                  context.pushNamed(Routes.accountMangePage);
                                 }
                                 break;
                               case 1:
                                 {
-                                  context.goNamed(
+                                  context.pushNamed(
                                     Routes.notificationPage,
                                   );
                                 }
                                 break;
                               case 2:
                                 {
-                                  context.goNamed(
+                                  context.pushNamed(
                                     Routes.changeLanguagePage,
                                   );
                                 }
                                 break;
                               case 3:
                                 {
-                                  context.goNamed(
+                                  context.pushNamed(
                                     Routes.changeThemePage,
                                   );
                                 }
                                 break;
                               case 4:
                                 {
-                                  context.goNamed(
+                                  context.pushNamed(
                                     Routes.privacyScreen,
                                   );
                                 }
                                 break;
                               case 5:
                                 {
-                                  context.goNamed(
+                                  context.pushNamed(
                                     Routes.termsConditionsScreen,
                                   );
                                 }
                                 break;
                               case 6:
                                 {
-                                  context.goNamed(
+                                  context.pushNamed(
                                     Routes.lookAtMarket,
                                   );
                                 }
                                 break;
                               case 7:
                                 {
-                                  context.goNamed(
+                                  context.pushNamed(
                                     Routes.connectWithUsPage,
                                   );
                                 }
                                 break;
                               case 8:
                                 {
-                                  context.goNamed(
+                                  context.pushNamed(
                                     Routes.frequentlyAskedQuestions,
                                   );
                                 }

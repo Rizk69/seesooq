@@ -21,7 +21,7 @@ mixin _$ReelsEvent {
     required TResult Function() getReels,
     required TResult Function() refreshReels,
     required TResult Function() loadMoreReels,
-    required TResult Function(String id) viewReel,
+    required TResult Function(String id, int indexPage) viewReel,
     required TResult Function() createReel,
     required TResult Function() getMyReels,
     required TResult Function(String id) deleteReel,
@@ -36,7 +36,7 @@ mixin _$ReelsEvent {
     TResult? Function()? getReels,
     TResult? Function()? refreshReels,
     TResult? Function()? loadMoreReels,
-    TResult? Function(String id)? viewReel,
+    TResult? Function(String id, int indexPage)? viewReel,
     TResult? Function()? createReel,
     TResult? Function()? getMyReels,
     TResult? Function(String id)? deleteReel,
@@ -51,7 +51,7 @@ mixin _$ReelsEvent {
     TResult Function()? getReels,
     TResult Function()? refreshReels,
     TResult Function()? loadMoreReels,
-    TResult Function(String id)? viewReel,
+    TResult Function(String id, int indexPage)? viewReel,
     TResult Function()? createReel,
     TResult Function()? getMyReels,
     TResult Function(String id)? deleteReel,
@@ -169,7 +169,7 @@ class _$GetReelsImpl implements _GetReels {
     required TResult Function() getReels,
     required TResult Function() refreshReels,
     required TResult Function() loadMoreReels,
-    required TResult Function(String id) viewReel,
+    required TResult Function(String id, int indexPage) viewReel,
     required TResult Function() createReel,
     required TResult Function() getMyReels,
     required TResult Function(String id) deleteReel,
@@ -187,7 +187,7 @@ class _$GetReelsImpl implements _GetReels {
     TResult? Function()? getReels,
     TResult? Function()? refreshReels,
     TResult? Function()? loadMoreReels,
-    TResult? Function(String id)? viewReel,
+    TResult? Function(String id, int indexPage)? viewReel,
     TResult? Function()? createReel,
     TResult? Function()? getMyReels,
     TResult? Function(String id)? deleteReel,
@@ -205,7 +205,7 @@ class _$GetReelsImpl implements _GetReels {
     TResult Function()? getReels,
     TResult Function()? refreshReels,
     TResult Function()? loadMoreReels,
-    TResult Function(String id)? viewReel,
+    TResult Function(String id, int indexPage)? viewReel,
     TResult Function()? createReel,
     TResult Function()? getMyReels,
     TResult Function(String id)? deleteReel,
@@ -325,7 +325,7 @@ class _$RefreshReelsImpl implements _RefreshReels {
     required TResult Function() getReels,
     required TResult Function() refreshReels,
     required TResult Function() loadMoreReels,
-    required TResult Function(String id) viewReel,
+    required TResult Function(String id, int indexPage) viewReel,
     required TResult Function() createReel,
     required TResult Function() getMyReels,
     required TResult Function(String id) deleteReel,
@@ -343,7 +343,7 @@ class _$RefreshReelsImpl implements _RefreshReels {
     TResult? Function()? getReels,
     TResult? Function()? refreshReels,
     TResult? Function()? loadMoreReels,
-    TResult? Function(String id)? viewReel,
+    TResult? Function(String id, int indexPage)? viewReel,
     TResult? Function()? createReel,
     TResult? Function()? getMyReels,
     TResult? Function(String id)? deleteReel,
@@ -361,7 +361,7 @@ class _$RefreshReelsImpl implements _RefreshReels {
     TResult Function()? getReels,
     TResult Function()? refreshReels,
     TResult Function()? loadMoreReels,
-    TResult Function(String id)? viewReel,
+    TResult Function(String id, int indexPage)? viewReel,
     TResult Function()? createReel,
     TResult Function()? getMyReels,
     TResult Function(String id)? deleteReel,
@@ -481,7 +481,7 @@ class _$LoadMoreReelsImpl implements _LoadMoreReels {
     required TResult Function() getReels,
     required TResult Function() refreshReels,
     required TResult Function() loadMoreReels,
-    required TResult Function(String id) viewReel,
+    required TResult Function(String id, int indexPage) viewReel,
     required TResult Function() createReel,
     required TResult Function() getMyReels,
     required TResult Function(String id) deleteReel,
@@ -499,7 +499,7 @@ class _$LoadMoreReelsImpl implements _LoadMoreReels {
     TResult? Function()? getReels,
     TResult? Function()? refreshReels,
     TResult? Function()? loadMoreReels,
-    TResult? Function(String id)? viewReel,
+    TResult? Function(String id, int indexPage)? viewReel,
     TResult? Function()? createReel,
     TResult? Function()? getMyReels,
     TResult? Function(String id)? deleteReel,
@@ -517,7 +517,7 @@ class _$LoadMoreReelsImpl implements _LoadMoreReels {
     TResult Function()? getReels,
     TResult Function()? refreshReels,
     TResult Function()? loadMoreReels,
-    TResult Function(String id)? viewReel,
+    TResult Function(String id, int indexPage)? viewReel,
     TResult Function()? createReel,
     TResult Function()? getMyReels,
     TResult Function(String id)? deleteReel,
@@ -602,7 +602,7 @@ abstract class _$$ViewReelImplCopyWith<$Res> {
           _$ViewReelImpl value, $Res Function(_$ViewReelImpl) then) =
       __$$ViewReelImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String id});
+  $Res call({String id, int indexPage});
 }
 
 /// @nodoc
@@ -617,12 +617,17 @@ class __$$ViewReelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
+    Object? indexPage = null,
   }) {
     return _then(_$ViewReelImpl(
       null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      null == indexPage
+          ? _value.indexPage
+          : indexPage // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -630,14 +635,16 @@ class __$$ViewReelImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ViewReelImpl implements _ViewReel {
-  const _$ViewReelImpl(this.id);
+  const _$ViewReelImpl(this.id, this.indexPage);
 
   @override
   final String id;
+  @override
+  final int indexPage;
 
   @override
   String toString() {
-    return 'ReelsEvent.viewReel(id: $id)';
+    return 'ReelsEvent.viewReel(id: $id, indexPage: $indexPage)';
   }
 
   @override
@@ -645,11 +652,13 @@ class _$ViewReelImpl implements _ViewReel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ViewReelImpl &&
-            (identical(other.id, id) || other.id == id));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.indexPage, indexPage) ||
+                other.indexPage == indexPage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id);
+  int get hashCode => Object.hash(runtimeType, id, indexPage);
 
   @JsonKey(ignore: true)
   @override
@@ -663,7 +672,7 @@ class _$ViewReelImpl implements _ViewReel {
     required TResult Function() getReels,
     required TResult Function() refreshReels,
     required TResult Function() loadMoreReels,
-    required TResult Function(String id) viewReel,
+    required TResult Function(String id, int indexPage) viewReel,
     required TResult Function() createReel,
     required TResult Function() getMyReels,
     required TResult Function(String id) deleteReel,
@@ -672,7 +681,7 @@ class _$ViewReelImpl implements _ViewReel {
     required TResult Function(String id, String comment) replyReel,
     required TResult Function(String id) shareReel,
   }) {
-    return viewReel(id);
+    return viewReel(id, indexPage);
   }
 
   @override
@@ -681,7 +690,7 @@ class _$ViewReelImpl implements _ViewReel {
     TResult? Function()? getReels,
     TResult? Function()? refreshReels,
     TResult? Function()? loadMoreReels,
-    TResult? Function(String id)? viewReel,
+    TResult? Function(String id, int indexPage)? viewReel,
     TResult? Function()? createReel,
     TResult? Function()? getMyReels,
     TResult? Function(String id)? deleteReel,
@@ -690,7 +699,7 @@ class _$ViewReelImpl implements _ViewReel {
     TResult? Function(String id, String comment)? replyReel,
     TResult? Function(String id)? shareReel,
   }) {
-    return viewReel?.call(id);
+    return viewReel?.call(id, indexPage);
   }
 
   @override
@@ -699,7 +708,7 @@ class _$ViewReelImpl implements _ViewReel {
     TResult Function()? getReels,
     TResult Function()? refreshReels,
     TResult Function()? loadMoreReels,
-    TResult Function(String id)? viewReel,
+    TResult Function(String id, int indexPage)? viewReel,
     TResult Function()? createReel,
     TResult Function()? getMyReels,
     TResult Function(String id)? deleteReel,
@@ -710,7 +719,7 @@ class _$ViewReelImpl implements _ViewReel {
     required TResult orElse(),
   }) {
     if (viewReel != null) {
-      return viewReel(id);
+      return viewReel(id, indexPage);
     }
     return orElse();
   }
@@ -775,9 +784,11 @@ class _$ViewReelImpl implements _ViewReel {
 }
 
 abstract class _ViewReel implements ReelsEvent {
-  const factory _ViewReel(final String id) = _$ViewReelImpl;
+  const factory _ViewReel(final String id, final int indexPage) =
+      _$ViewReelImpl;
 
   String get id;
+  int get indexPage;
   @JsonKey(ignore: true)
   _$$ViewReelImplCopyWith<_$ViewReelImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -824,7 +835,7 @@ class _$CreateReelImpl implements _CreateReel {
     required TResult Function() getReels,
     required TResult Function() refreshReels,
     required TResult Function() loadMoreReels,
-    required TResult Function(String id) viewReel,
+    required TResult Function(String id, int indexPage) viewReel,
     required TResult Function() createReel,
     required TResult Function() getMyReels,
     required TResult Function(String id) deleteReel,
@@ -842,7 +853,7 @@ class _$CreateReelImpl implements _CreateReel {
     TResult? Function()? getReels,
     TResult? Function()? refreshReels,
     TResult? Function()? loadMoreReels,
-    TResult? Function(String id)? viewReel,
+    TResult? Function(String id, int indexPage)? viewReel,
     TResult? Function()? createReel,
     TResult? Function()? getMyReels,
     TResult? Function(String id)? deleteReel,
@@ -860,7 +871,7 @@ class _$CreateReelImpl implements _CreateReel {
     TResult Function()? getReels,
     TResult Function()? refreshReels,
     TResult Function()? loadMoreReels,
-    TResult Function(String id)? viewReel,
+    TResult Function(String id, int indexPage)? viewReel,
     TResult Function()? createReel,
     TResult Function()? getMyReels,
     TResult Function(String id)? deleteReel,
@@ -980,7 +991,7 @@ class _$GetMyReelsImpl implements _GetMyReels {
     required TResult Function() getReels,
     required TResult Function() refreshReels,
     required TResult Function() loadMoreReels,
-    required TResult Function(String id) viewReel,
+    required TResult Function(String id, int indexPage) viewReel,
     required TResult Function() createReel,
     required TResult Function() getMyReels,
     required TResult Function(String id) deleteReel,
@@ -998,7 +1009,7 @@ class _$GetMyReelsImpl implements _GetMyReels {
     TResult? Function()? getReels,
     TResult? Function()? refreshReels,
     TResult? Function()? loadMoreReels,
-    TResult? Function(String id)? viewReel,
+    TResult? Function(String id, int indexPage)? viewReel,
     TResult? Function()? createReel,
     TResult? Function()? getMyReels,
     TResult? Function(String id)? deleteReel,
@@ -1016,7 +1027,7 @@ class _$GetMyReelsImpl implements _GetMyReels {
     TResult Function()? getReels,
     TResult Function()? refreshReels,
     TResult Function()? loadMoreReels,
-    TResult Function(String id)? viewReel,
+    TResult Function(String id, int indexPage)? viewReel,
     TResult Function()? createReel,
     TResult Function()? getMyReels,
     TResult Function(String id)? deleteReel,
@@ -1162,7 +1173,7 @@ class _$DeleteReelImpl implements _DeleteReel {
     required TResult Function() getReels,
     required TResult Function() refreshReels,
     required TResult Function() loadMoreReels,
-    required TResult Function(String id) viewReel,
+    required TResult Function(String id, int indexPage) viewReel,
     required TResult Function() createReel,
     required TResult Function() getMyReels,
     required TResult Function(String id) deleteReel,
@@ -1180,7 +1191,7 @@ class _$DeleteReelImpl implements _DeleteReel {
     TResult? Function()? getReels,
     TResult? Function()? refreshReels,
     TResult? Function()? loadMoreReels,
-    TResult? Function(String id)? viewReel,
+    TResult? Function(String id, int indexPage)? viewReel,
     TResult? Function()? createReel,
     TResult? Function()? getMyReels,
     TResult? Function(String id)? deleteReel,
@@ -1198,7 +1209,7 @@ class _$DeleteReelImpl implements _DeleteReel {
     TResult Function()? getReels,
     TResult Function()? refreshReels,
     TResult Function()? loadMoreReels,
-    TResult Function(String id)? viewReel,
+    TResult Function(String id, int indexPage)? viewReel,
     TResult Function()? createReel,
     TResult Function()? getMyReels,
     TResult Function(String id)? deleteReel,
@@ -1357,7 +1368,7 @@ class _$AddFavReelImpl implements _AddFavReel {
     required TResult Function() getReels,
     required TResult Function() refreshReels,
     required TResult Function() loadMoreReels,
-    required TResult Function(String id) viewReel,
+    required TResult Function(String id, int indexPage) viewReel,
     required TResult Function() createReel,
     required TResult Function() getMyReels,
     required TResult Function(String id) deleteReel,
@@ -1375,7 +1386,7 @@ class _$AddFavReelImpl implements _AddFavReel {
     TResult? Function()? getReels,
     TResult? Function()? refreshReels,
     TResult? Function()? loadMoreReels,
-    TResult? Function(String id)? viewReel,
+    TResult? Function(String id, int indexPage)? viewReel,
     TResult? Function()? createReel,
     TResult? Function()? getMyReels,
     TResult? Function(String id)? deleteReel,
@@ -1393,7 +1404,7 @@ class _$AddFavReelImpl implements _AddFavReel {
     TResult Function()? getReels,
     TResult Function()? refreshReels,
     TResult Function()? loadMoreReels,
-    TResult Function(String id)? viewReel,
+    TResult Function(String id, int indexPage)? viewReel,
     TResult Function()? createReel,
     TResult Function()? getMyReels,
     TResult Function(String id)? deleteReel,
@@ -1546,7 +1557,7 @@ class _$UnlikeReelImpl implements _UnlikeReel {
     required TResult Function() getReels,
     required TResult Function() refreshReels,
     required TResult Function() loadMoreReels,
-    required TResult Function(String id) viewReel,
+    required TResult Function(String id, int indexPage) viewReel,
     required TResult Function() createReel,
     required TResult Function() getMyReels,
     required TResult Function(String id) deleteReel,
@@ -1564,7 +1575,7 @@ class _$UnlikeReelImpl implements _UnlikeReel {
     TResult? Function()? getReels,
     TResult? Function()? refreshReels,
     TResult? Function()? loadMoreReels,
-    TResult? Function(String id)? viewReel,
+    TResult? Function(String id, int indexPage)? viewReel,
     TResult? Function()? createReel,
     TResult? Function()? getMyReels,
     TResult? Function(String id)? deleteReel,
@@ -1582,7 +1593,7 @@ class _$UnlikeReelImpl implements _UnlikeReel {
     TResult Function()? getReels,
     TResult Function()? refreshReels,
     TResult Function()? loadMoreReels,
-    TResult Function(String id)? viewReel,
+    TResult Function(String id, int indexPage)? viewReel,
     TResult Function()? createReel,
     TResult Function()? getMyReels,
     TResult Function(String id)? deleteReel,
@@ -1741,7 +1752,7 @@ class _$ReplyReelImpl implements _ReplyReel {
     required TResult Function() getReels,
     required TResult Function() refreshReels,
     required TResult Function() loadMoreReels,
-    required TResult Function(String id) viewReel,
+    required TResult Function(String id, int indexPage) viewReel,
     required TResult Function() createReel,
     required TResult Function() getMyReels,
     required TResult Function(String id) deleteReel,
@@ -1759,7 +1770,7 @@ class _$ReplyReelImpl implements _ReplyReel {
     TResult? Function()? getReels,
     TResult? Function()? refreshReels,
     TResult? Function()? loadMoreReels,
-    TResult? Function(String id)? viewReel,
+    TResult? Function(String id, int indexPage)? viewReel,
     TResult? Function()? createReel,
     TResult? Function()? getMyReels,
     TResult? Function(String id)? deleteReel,
@@ -1777,7 +1788,7 @@ class _$ReplyReelImpl implements _ReplyReel {
     TResult Function()? getReels,
     TResult Function()? refreshReels,
     TResult Function()? loadMoreReels,
-    TResult Function(String id)? viewReel,
+    TResult Function(String id, int indexPage)? viewReel,
     TResult Function()? createReel,
     TResult Function()? getMyReels,
     TResult Function(String id)? deleteReel,
@@ -1930,7 +1941,7 @@ class _$ShareReelImpl implements _ShareReel {
     required TResult Function() getReels,
     required TResult Function() refreshReels,
     required TResult Function() loadMoreReels,
-    required TResult Function(String id) viewReel,
+    required TResult Function(String id, int indexPage) viewReel,
     required TResult Function() createReel,
     required TResult Function() getMyReels,
     required TResult Function(String id) deleteReel,
@@ -1948,7 +1959,7 @@ class _$ShareReelImpl implements _ShareReel {
     TResult? Function()? getReels,
     TResult? Function()? refreshReels,
     TResult? Function()? loadMoreReels,
-    TResult? Function(String id)? viewReel,
+    TResult? Function(String id, int indexPage)? viewReel,
     TResult? Function()? createReel,
     TResult? Function()? getMyReels,
     TResult? Function(String id)? deleteReel,
@@ -1966,7 +1977,7 @@ class _$ShareReelImpl implements _ShareReel {
     TResult Function()? getReels,
     TResult Function()? refreshReels,
     TResult Function()? loadMoreReels,
-    TResult Function(String id)? viewReel,
+    TResult Function(String id, int indexPage)? viewReel,
     TResult Function()? createReel,
     TResult Function()? getMyReels,
     TResult Function(String id)? deleteReel,
@@ -2056,6 +2067,7 @@ mixin _$ReelsState {
   MyReelsModel? get myReels => throw _privateConstructorUsedError;
   ReelsStatus get status => throw _privateConstructorUsedError;
   LikeReelStatus get likeReelStatus => throw _privateConstructorUsedError;
+  int get page => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ReelsStateCopyWith<ReelsState> get copyWith =>
@@ -2072,7 +2084,8 @@ abstract class $ReelsStateCopyWith<$Res> {
       {ReelsModel? reels,
       MyReelsModel? myReels,
       ReelsStatus status,
-      LikeReelStatus likeReelStatus});
+      LikeReelStatus likeReelStatus,
+      int page});
 }
 
 /// @nodoc
@@ -2092,6 +2105,7 @@ class _$ReelsStateCopyWithImpl<$Res, $Val extends ReelsState>
     Object? myReels = freezed,
     Object? status = null,
     Object? likeReelStatus = null,
+    Object? page = null,
   }) {
     return _then(_value.copyWith(
       reels: freezed == reels
@@ -2110,6 +2124,10 @@ class _$ReelsStateCopyWithImpl<$Res, $Val extends ReelsState>
           ? _value.likeReelStatus
           : likeReelStatus // ignore: cast_nullable_to_non_nullable
               as LikeReelStatus,
+      page: null == page
+          ? _value.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -2126,7 +2144,8 @@ abstract class _$$ReelsStateImplCopyWith<$Res>
       {ReelsModel? reels,
       MyReelsModel? myReels,
       ReelsStatus status,
-      LikeReelStatus likeReelStatus});
+      LikeReelStatus likeReelStatus,
+      int page});
 }
 
 /// @nodoc
@@ -2144,6 +2163,7 @@ class __$$ReelsStateImplCopyWithImpl<$Res>
     Object? myReels = freezed,
     Object? status = null,
     Object? likeReelStatus = null,
+    Object? page = null,
   }) {
     return _then(_$ReelsStateImpl(
       reels: freezed == reels
@@ -2162,6 +2182,10 @@ class __$$ReelsStateImplCopyWithImpl<$Res>
           ? _value.likeReelStatus
           : likeReelStatus // ignore: cast_nullable_to_non_nullable
               as LikeReelStatus,
+      page: null == page
+          ? _value.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -2173,7 +2197,8 @@ class _$ReelsStateImpl implements _ReelsState {
       {this.reels = null,
       this.myReels = null,
       this.status = ReelsStatus.initial,
-      this.likeReelStatus = LikeReelStatus.initial});
+      this.likeReelStatus = LikeReelStatus.initial,
+      this.page = 0});
 
   @override
   @JsonKey()
@@ -2187,10 +2212,13 @@ class _$ReelsStateImpl implements _ReelsState {
   @override
   @JsonKey()
   final LikeReelStatus likeReelStatus;
+  @override
+  @JsonKey()
+  final int page;
 
   @override
   String toString() {
-    return 'ReelsState(reels: $reels, myReels: $myReels, status: $status, likeReelStatus: $likeReelStatus)';
+    return 'ReelsState(reels: $reels, myReels: $myReels, status: $status, likeReelStatus: $likeReelStatus, page: $page)';
   }
 
   @override
@@ -2202,12 +2230,13 @@ class _$ReelsStateImpl implements _ReelsState {
             (identical(other.myReels, myReels) || other.myReels == myReels) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.likeReelStatus, likeReelStatus) ||
-                other.likeReelStatus == likeReelStatus));
+                other.likeReelStatus == likeReelStatus) &&
+            (identical(other.page, page) || other.page == page));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, reels, myReels, status, likeReelStatus);
+      Object.hash(runtimeType, reels, myReels, status, likeReelStatus, page);
 
   @JsonKey(ignore: true)
   @override
@@ -2221,7 +2250,8 @@ abstract class _ReelsState implements ReelsState {
       {final ReelsModel? reels,
       final MyReelsModel? myReels,
       final ReelsStatus status,
-      final LikeReelStatus likeReelStatus}) = _$ReelsStateImpl;
+      final LikeReelStatus likeReelStatus,
+      final int page}) = _$ReelsStateImpl;
 
   @override
   ReelsModel? get reels;
@@ -2231,6 +2261,8 @@ abstract class _ReelsState implements ReelsState {
   ReelsStatus get status;
   @override
   LikeReelStatus get likeReelStatus;
+  @override
+  int get page;
   @override
   @JsonKey(ignore: true)
   _$$ReelsStateImplCopyWith<_$ReelsStateImpl> get copyWith =>
