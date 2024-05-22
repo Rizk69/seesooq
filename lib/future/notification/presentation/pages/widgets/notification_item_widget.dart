@@ -20,7 +20,9 @@ class NotificationItemWidget extends StatelessWidget {
                 alignment: AlignmentDirectional.topEnd,
                 children: [
                   Card(
-                    color: notificationModel!.readAt == 1 ? Colors.white : HexColor('#F5F5F5'),
+                    color: notificationModel!.readAt == 1
+                        ? Colors.white
+                        : HexColor('#F5F5F5'),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
@@ -28,18 +30,11 @@ class NotificationItemWidget extends StatelessWidget {
                         children: [
                           Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: CachedNetworkImage(
-                                  imageUrl: notificationModel?.url ?? '',
-                                  width: 50,
-                                  fit: BoxFit.cover,
-                                  height: 100,
-                                  errorWidget: (context, s, w) {
-                                    return Image.asset('assets/images/person.jpeg');
-                                  },
-                                ),
-                              )),
+                              child: CircleAvatar(
+                                  radius: 25,
+                                  backgroundImage: CachedNetworkImageProvider(
+                                    notificationModel?.url ?? '',
+                                  ))),
                           Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,7 +42,10 @@ class NotificationItemWidget extends StatelessWidget {
                                 Text(notificationModel!.title ?? '',
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
-                                    style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.w500)),
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineSmall!
+                                        .copyWith(fontWeight: FontWeight.w500)),
                                 // Padding(
                                 //   padding: const EdgeInsets.all(4.0),
                                 //   child: Text(
@@ -65,7 +63,7 @@ class NotificationItemWidget extends StatelessWidget {
                                 //   height: 5,
                                 // ),
                                 Text(
-                                  notificationModel?.createdAt ?? '',
+                                  notificationModel?.createdAt.getShortDate() ?? '',
                                   style: Theme.of(context).textTheme.bodyLarge,
                                 ),
                               ],
@@ -90,5 +88,12 @@ class NotificationItemWidget extends StatelessWidget {
                 ],
               ),
             ));
+  }
+
+}
+extension ConvertStringToShortData on String? {
+  String getShortDate () {
+    final date = DateTime.parse(this??'');
+    return '${date.day}/${date.month}/${date.year}  ${date.hour}:${date.minute}' ;
   }
 }
