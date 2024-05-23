@@ -14,38 +14,40 @@ class ChangePasswordPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 15),
-        child: Column(
-          children: [
-            HeaderScreens(
-                title: 'change_password',
-                onPressed: () {
-                  context.go(Routes.accountMangePage);
-                }),
-            const SizedBox(height: 20),
-            titleText('new_change_password'),
-            const SizedBox(height: 10),
-            CustomTextFormFiledPasswrd(
-              title: 'enter_new_change_password'.tr(),
-              imgIconSvg: "assets/images/svg/password.svg",
-            ),
-            const SizedBox(height: 24),
-            titleText('confirm_password'),
-            const SizedBox(height: 10),
-            CustomTextFormFiledPasswrd(
-              title: 're-enter_Password'.tr(),
-              imgIconSvg: "assets/images/svg/password.svg",
-            ),
-            Spacer(),
-            InkWell(
-              onTap: () {
-                context.go(Routes.sucssesChangePasswordPage);
-              },
-              child: ButtomsCustom(title: 'save_Password'.tr()),
-            )
-          ],
+    return SafeArea(
+      child: Scaffold(
+        body: Padding(
+          padding: const EdgeInsets.all(8),
+          child: Column(
+            children: [
+              HeaderScreens(
+                  title: 'change_password',
+                  onPressed: () {
+                    context.pop();
+                  }),
+              const SizedBox(height: 20),
+              titleText('new_change_password'),
+              const SizedBox(height: 10),
+              CustomTextFormFiledPasswrd(
+                title: 'enter_new_change_password'.tr(),
+                imgIconSvg: "assets/images/svg/password.svg",
+              ),
+              const SizedBox(height: 24),
+              titleText('confirm_password'),
+              const SizedBox(height: 10),
+              CustomTextFormFiledPasswrd(
+                title: 're-enter_Password'.tr(),
+                imgIconSvg: "assets/images/svg/password.svg",
+              ),
+              Spacer(),
+              InkWell(
+                onTap: () {
+                  context.go(Routes.sucssesChangePasswordPage);
+                },
+                child: ButtomsCustom(title: 'save_Password'.tr()),
+              )
+            ],
+          ),
         ),
       ),
     );

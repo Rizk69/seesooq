@@ -27,7 +27,7 @@ class EmptyLocationPage extends StatelessWidget {
           HeaderScreens(
               title: 'address',
               onPressed: () {
-                context.go(Routes.accountMangePage);
+                context.pop();
               }),
           SizedBox(
             height: MediaQuery.of(context).size.height / 4.3,
@@ -47,7 +47,7 @@ class EmptyLocationPage extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              context.go(Routes.addLocationUser);
+              context.pushNamed(Routes.addLocationUser);
             },
             child: Container(
               width: 200,
@@ -117,7 +117,7 @@ class AddLocationUser extends StatelessWidget {
             HeaderScreens(
                 title: 'add_title',
                 onPressed: () {
-                  context.go(Routes.accountMangePage);
+                  context.pop();
                 }),
             const SizedBox(
               height: 37,
@@ -137,7 +137,7 @@ class AddLocationUser extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: () {
-                      context.go(Routes.sucssesAddLocationPage);
+                      context.pushNamed(Routes.sucssesAddLocationPage);
                     },
                     child: ButtomsCustom(title: 'add_title'.tr()),
                   )

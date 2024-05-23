@@ -30,6 +30,7 @@ class SegmentedButtonFavWidget extends StatelessWidget {
                     child: Container(
                       width: 100,
                       height: 50,
+
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       decoration: BoxDecoration(
                         gradient: index == cubit.state.indexStatusView

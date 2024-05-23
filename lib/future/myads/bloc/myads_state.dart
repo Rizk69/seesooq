@@ -5,8 +5,8 @@ part 'myads_state.freezed.dart';
 
 @freezed
 class MyAdsState with _$MyAdsState {
-  const factory MyAdsState.initState() = _InitState;
-  const factory MyAdsState.loading() = _Loading;
-  const factory MyAdsState.loaded({required MyAdsModel advertisementModel}) = _Loaded;
-  const factory MyAdsState.error({required String message}) = _Error;
+  const factory MyAdsState.initState() = MyAdsStateInitState;
+  const factory MyAdsState.loading() = MyAdsStateLoading;
+  const factory MyAdsState.loaded({required MyAdsModel advertisementModel}) = MyAdsStateLoaded;
+  const factory MyAdsState.error({required String message}) = MyAdsStateError;
 }

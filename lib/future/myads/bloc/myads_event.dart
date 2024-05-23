@@ -13,6 +13,7 @@ class EditMyadsEvent extends MyadsEvent {
 
 class DeleteMyadsEvent extends MyadsEvent {
   final String id;
+  final int index;
 
-  DeleteMyadsEvent({required this.id});
+  DeleteMyadsEvent({required this.id, required this.index});
 }

@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:opensooq/core/error/failures.dart';
+import 'package:opensooq/core/helper/success_model.dart';
 import 'package:opensooq/future/category/data/models/advertisment_model.dart';
 import 'package:opensooq/future/signup/data/repositories/signup_repository.dart';
 
@@ -8,7 +9,7 @@ import '../data_sorces/my_ads_remot_data_sorces.dart';
 
 abstract class MyAdsRepository {
   Future<Either<Failures, MyAdsModel>> getMyAds();
-  Future<Either<Failures, bool>> deleteMyAds({required int id});
+  Future<Either<Failures, SuccessModel>> deleteMyAds({required int id});
 }
 
 @LazySingleton(as: MyAdsRepository)
@@ -24,7 +25,8 @@ class MyAdsRepositoryImpl implements MyAdsRepository {
   }
 
   @override
-  Future<Either<Failures, bool>> deleteMyAds({required int id}) async {
-    return executeAndCatchError<bool>(() async => await myAdsRemoteDataSource.deleteMyAds(id: id));
+  Future<Either<Failures, SuccessModel>> deleteMyAds({required int id}) async {
+     final response = await myAdsRemoteDataSource.deleteMyAds(id: id);
+      return Right(response);
   }
 }

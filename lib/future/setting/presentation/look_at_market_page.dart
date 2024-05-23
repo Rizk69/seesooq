@@ -17,69 +17,71 @@ class LookAtMarketPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              HeaderScreens(
-                title: 'market_watch',
-                onPressed: () {
-                  context.go(Routes.setting);
-                },
-              ),
-              const SizedBox(height: 25),
-              BlocProvider(
-                create: (context) => AboutUsCubit()..getAboutUs(),
-                child: BlocBuilder<AboutUsCubit,AboutUsState>(
-                    builder: (context, state) {
-                  if (state.aboutUsStatus == AboutUsStatus.loading) {
-                    return const Center(child: CircularProgressIndicator());
-                  }
-
-                  if (state.aboutUsStatus == AboutUsStatus.error) {
-                    return const Center(child: Text('Error'));
-                  }
-                  if (state.aboutUsStatus == AboutUsStatus.loaded &&
-                      state.aboutUs != null) {
-                    return ListView.builder(
-                      shrinkWrap: true,
-                      itemBuilder: (context, index) {
-                        DataOfSetting items =
-                            state.aboutUs!.data!.data![index];
-                        return _customPolicy(
-                            title: items.title ?? '',
-                            description: items.description ?? '');
-                      },
-                      itemCount: state.aboutUs!.data!.data!.length,
-                    );
-                  }
-                  return const SizedBox();
-                }),
-              ),
-              Text(
-                'contact_us'.tr(),
-                textAlign: TextAlign.start,
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.black,
-                  fontWeight: FontWeight.w700,
+    return SafeArea(
+      child: Scaffold(
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(8),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                HeaderScreens(
+                  title: 'market_watch',
+                  onPressed: () {
+                    context.pop();
+                  },
                 ),
-              ),
-              SizedBox(
-                height: 24,
-              ),
-              Row(
-                children: [
-                  _customCard(img: 'assets/images/svg/insicons.svg'),
-                  _customCard(img: 'assets/images/svg/facicons.svg'),
-                  _customCard(img: 'assets/images/svg/mobileicons.svg'),
-                  _customCard(img: 'assets/images/svg/emailicons.svg')
-                ],
-              ),
-            ],
+                const SizedBox(height: 25),
+                BlocProvider(
+                  create: (context) => AboutUsCubit()..getAboutUs(),
+                  child: BlocBuilder<AboutUsCubit,AboutUsState>(
+                      builder: (context, state) {
+                    if (state.aboutUsStatus == AboutUsStatus.loading) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
+
+                    if (state.aboutUsStatus == AboutUsStatus.error) {
+                      return const Center(child: Text('Error'));
+                    }
+                    if (state.aboutUsStatus == AboutUsStatus.loaded &&
+                        state.aboutUs != null) {
+                      return ListView.builder(
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          DataOfSetting items =
+                              state.aboutUs!.data!.data![index];
+                          return _customPolicy(
+                              title: items.title ?? '',
+                              description: items.description ?? '');
+                        },
+                        itemCount: state.aboutUs!.data!.data!.length,
+                      );
+                    }
+                    return const SizedBox();
+                  }),
+                ),
+                Text(
+                  'contact_us'.tr(),
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                SizedBox(
+                  height: 24,
+                ),
+                Row(
+                  children: [
+                    _customCard(img: 'assets/images/svg/insicons.svg'),
+                    _customCard(img: 'assets/images/svg/facicons.svg'),
+                    _customCard(img: 'assets/images/svg/mobileicons.svg'),
+                    _customCard(img: 'assets/images/svg/emailicons.svg')
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

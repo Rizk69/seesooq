@@ -7,13 +7,17 @@ import '../widget/text_translate_manager.dart';
 
 class CustomButtonSheetRemove extends StatelessWidget {
   final String textToRemove;
-  final VoidCallback onPressed;
-  const CustomButtonSheetRemove({super.key, required this.textToRemove, required this.onPressed});
+  final Function onPressed;
+  CustomButtonSheetRemove({
+    super.key,
+    required this.textToRemove,
+    required this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.5,
+      height: MediaQuery.of(context).size.height * 0.6,
       child: Padding(
         padding: const EdgeInsets.all(15),
         child: Column(
@@ -33,12 +37,18 @@ class CustomButtonSheetRemove extends StatelessWidget {
             const SizedBox(
               height: 25,
             ),
-            Center(child: titleText(textToRemove, HexColor('#DC3545'), StyleText.h4)),
+            Center(
+                child:
+                    titleText(textToRemove, HexColor('#DC3545'), StyleText.h4)),
             const SizedBox(
               height: 10,
             ),
-            Center(child: titleText(textToRemove, HexColor('#707070'), StyleText.h5)),
-            Center(child: titleText(textToRemove, HexColor('#707070'), StyleText.h5)),
+            Center(
+                child:
+                    titleText(textToRemove, HexColor('#707070'), StyleText.h5)),
+            Center(
+                child:
+                    titleText(textToRemove, HexColor('#707070'), StyleText.h5)),
             const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -53,7 +63,9 @@ class CustomButtonSheetRemove extends StatelessWidget {
                           vertical: 10,
                         ),
                         decoration: BoxDecoration(
-                            color: Colors.white, borderRadius: BorderRadius.circular(15), border: Border.all(color: Colors.red, width: 2)),
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(15),
+                            border: Border.all(color: Colors.red, width: 2)),
                         child: Center(
                           child: titleText('Cancel', Colors.red, StyleText.h4),
                         ),
@@ -64,12 +76,16 @@ class CustomButtonSheetRemove extends StatelessWidget {
                 ),
                 Expanded(
                   child: InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      onPressed();
+                    },
                     child: Container(
                       padding: const EdgeInsets.symmetric(
                         vertical: 10,
                       ),
-                      decoration: BoxDecoration(color: Colors.red, borderRadius: BorderRadius.circular(15)),
+                      decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(15)),
                       child: Center(
                         child: titleText('delete', Colors.white, StyleText.h4),
                       ),

@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:opensooq/core/helper/success_model.dart';
 import 'package:opensooq/future/category/data/models/advertisment_model.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -21,6 +22,6 @@ abstract class MyAdsApi {
     // TODO: all,active,inactive,pending,accepted
   });
 
-  @POST(EndPoint.deleteMyAds)
-  Future<bool> deleteMyAds({@Body() required int id});
+  @DELETE(EndPoint.deleteMyAds)
+  Future<SuccessModel> deleteMyAds({@Path('id') required int id});
 }

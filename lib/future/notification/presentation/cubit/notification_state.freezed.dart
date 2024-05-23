@@ -16,24 +16,32 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$NotificationState {
-  NotificationResponseModel? get notificationUser => throw _privateConstructorUsedError;
+  NotificationResponseModel? get notificationUser =>
+      throw _privateConstructorUsedError;
   bool get loadingMore => throw _privateConstructorUsedError;
-  NotificationStatus get notificationStatus => throw _privateConstructorUsedError;
+  NotificationStatus get notificationStatus =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $NotificationStateCopyWith<NotificationState> get copyWith => throw _privateConstructorUsedError;
+  $NotificationStateCopyWith<NotificationState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $NotificationStateCopyWith<$Res> {
-  factory $NotificationStateCopyWith(NotificationState value, $Res Function(NotificationState) then) =
+  factory $NotificationStateCopyWith(
+          NotificationState value, $Res Function(NotificationState) then) =
       _$NotificationStateCopyWithImpl<$Res, NotificationState>;
   @useResult
-  $Res call({NotificationResponseModel? notificationUser, bool loadingMore, NotificationStatus notificationStatus});
+  $Res call(
+      {NotificationResponseModel? notificationUser,
+      bool loadingMore,
+      NotificationStatus notificationStatus});
 }
 
 /// @nodoc
-class _$NotificationStateCopyWithImpl<$Res, $Val extends NotificationState> implements $NotificationStateCopyWith<$Res> {
+class _$NotificationStateCopyWithImpl<$Res, $Val extends NotificationState>
+    implements $NotificationStateCopyWith<$Res> {
   _$NotificationStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -66,18 +74,26 @@ class _$NotificationStateCopyWithImpl<$Res, $Val extends NotificationState> impl
 }
 
 /// @nodoc
-abstract class _$$NotificationStateImplCopyWith<$Res> implements $NotificationStateCopyWith<$Res> {
-  factory _$$NotificationStateImplCopyWith(_$NotificationStateImpl value, $Res Function(_$NotificationStateImpl) then) =
+abstract class _$$NotificationStateImplCopyWith<$Res>
+    implements $NotificationStateCopyWith<$Res> {
+  factory _$$NotificationStateImplCopyWith(_$NotificationStateImpl value,
+          $Res Function(_$NotificationStateImpl) then) =
       __$$NotificationStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({NotificationResponseModel? notificationUser, bool loadingMore, NotificationStatus notificationStatus});
+  $Res call(
+      {NotificationResponseModel? notificationUser,
+      bool loadingMore,
+      NotificationStatus notificationStatus});
 }
 
 /// @nodoc
-class __$$NotificationStateImplCopyWithImpl<$Res> extends _$NotificationStateCopyWithImpl<$Res, _$NotificationStateImpl>
+class __$$NotificationStateImplCopyWithImpl<$Res>
+    extends _$NotificationStateCopyWithImpl<$Res, _$NotificationStateImpl>
     implements _$$NotificationStateImplCopyWith<$Res> {
-  __$$NotificationStateImplCopyWithImpl(_$NotificationStateImpl _value, $Res Function(_$NotificationStateImpl) _then) : super(_value, _then);
+  __$$NotificationStateImplCopyWithImpl(_$NotificationStateImpl _value,
+      $Res Function(_$NotificationStateImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -105,8 +121,13 @@ class __$$NotificationStateImplCopyWithImpl<$Res> extends _$NotificationStateCop
 
 /// @nodoc
 
-class _$NotificationStateImpl with DiagnosticableTreeMixin implements _NotificationState {
-  const _$NotificationStateImpl({this.notificationUser = null, this.loadingMore = false, this.notificationStatus = NotificationStatus.initial});
+class _$NotificationStateImpl
+    with DiagnosticableTreeMixin
+    implements _NotificationState {
+  const _$NotificationStateImpl(
+      {this.notificationUser = null,
+      this.loadingMore = false,
+      this.notificationStatus = NotificationStatus.initial});
 
   @override
   @JsonKey()
@@ -138,19 +159,24 @@ class _$NotificationStateImpl with DiagnosticableTreeMixin implements _Notificat
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NotificationStateImpl &&
-            (identical(other.notificationUser, notificationUser) || other.notificationUser == notificationUser) &&
-            (identical(other.loadingMore, loadingMore) || other.loadingMore == loadingMore) &&
-            (identical(other.notificationStatus, notificationStatus) || other.notificationStatus == notificationStatus));
+            (identical(other.notificationUser, notificationUser) ||
+                other.notificationUser == notificationUser) &&
+            (identical(other.loadingMore, loadingMore) ||
+                other.loadingMore == loadingMore) &&
+            (identical(other.notificationStatus, notificationStatus) ||
+                other.notificationStatus == notificationStatus));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, notificationUser, loadingMore, notificationStatus);
+  int get hashCode => Object.hash(
+      runtimeType, notificationUser, loadingMore, notificationStatus);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$NotificationStateImplCopyWith<_$NotificationStateImpl> get copyWith =>
-      __$$NotificationStateImplCopyWithImpl<_$NotificationStateImpl>(this, _$identity);
+      __$$NotificationStateImplCopyWithImpl<_$NotificationStateImpl>(
+          this, _$identity);
 }
 
 abstract class _NotificationState implements NotificationState {
@@ -167,5 +193,6 @@ abstract class _NotificationState implements NotificationState {
   NotificationStatus get notificationStatus;
   @override
   @JsonKey(ignore: true)
-  _$$NotificationStateImplCopyWith<_$NotificationStateImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$NotificationStateImplCopyWith<_$NotificationStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

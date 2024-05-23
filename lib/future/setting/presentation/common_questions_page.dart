@@ -16,7 +16,7 @@ class CommonQuestionsPage extends StatelessWidget {
           HeaderScreens(
               title: 'الأسئلة الشائعة',
               onPressed: () {
-                context.go(Routes.setting);
+                context.pop();
               }),
         ],
       ),

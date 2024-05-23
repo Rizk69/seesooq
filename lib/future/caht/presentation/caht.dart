@@ -20,7 +20,7 @@ class ChatPage extends StatelessWidget {
         floatingActionButtonLocation: FloatingActionButtonLocation.miniStartFloat,
         floatingActionButton: InkWell(
           onTap: () {
-            context.goNamed(Routes.newChatPage);
+            context.pushNamed(Routes.newChatPage);
           },
           child: Container(
             padding: const EdgeInsets.all(15),
@@ -37,7 +37,7 @@ class ChatPage extends StatelessWidget {
                 HeaderScreens(
                   title: 'الرسائل',
                   onPressed: () {
-                    context.goNamed(Routes.home);
+                    context.pushNamed(Routes.home);
                   },
                 ),
                 const SizedBox(height: 30),

@@ -15,44 +15,46 @@ class NotificationSettingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => NotificationCubit(),
-      child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
-          child: BlocBuilder<NotificationCubit, NotificationState>(
-            builder: (context, state) {
-              final notificationCubit = context.read<NotificationCubit>();
+      child: SafeArea(
+        child: Scaffold(
+          body: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: BlocBuilder<NotificationCubit, NotificationState>(
+              builder: (context, state) {
+                final notificationCubit = context.read<NotificationCubit>();
 
-              return Column(
-                children: [
-                  HeaderScreens(
-                    title: 'notifications',
-                    onPressed: () {
-                      context.go(Routes.setting);
-                    },
-                  ),
-                  const SizedBox(
-                    height: 37,
-                  ),
-                  buildRow(
-                      context, notificationCubit, 'العنصر الأول', 'assets/images/svg/notification.svg', 'عنوان رئيسي 1', 'وصف إعداد الإشعار الأول'),
-                  const SizedBox(
-                    height: 25,
-                  ),
-                  buildRow(
-                      context, notificationCubit, 'العنصر الثاني', 'assets/images/svg/notification.svg', 'عنوان رئيسي 2', 'وصف إعداد الإشعار الثاني'),
-                  const SizedBox(
-                    height: 25,
-                  ),
-                  buildRow(
-                      context, notificationCubit, 'العنصر الثالث', 'assets/images/svg/notification.svg', 'عنوان رئيسي 3', 'وصف إعداد الإشعار الثالث'),
-                  const SizedBox(
-                    height: 25,
-                  ),
-                  buildRow(
-                      context, notificationCubit, 'العنصر الرابع', 'assets/images/svg/notification.svg', 'عنوان رئيسي 4', 'وصف إعداد الإشعار الرابع'),
-                ],
-              );
-            },
+                return Column(
+                  children: [
+                    HeaderScreens(
+                      title: 'notifications',
+                      onPressed: () {
+                        context.pop();
+                      },
+                    ),
+                    const SizedBox(
+                      height: 37,
+                    ),
+                    buildRow(
+                        context, notificationCubit, 'العنصر الأول', 'assets/images/svg/notification.svg', 'عنوان رئيسي 1', 'وصف إعداد الإشعار الأول'),
+                    const SizedBox(
+                      height: 25,
+                    ),
+                    buildRow(
+                        context, notificationCubit, 'العنصر الثاني', 'assets/images/svg/notification.svg', 'عنوان رئيسي 2', 'وصف إعداد الإشعار الثاني'),
+                    const SizedBox(
+                      height: 25,
+                    ),
+                    buildRow(
+                        context, notificationCubit, 'العنصر الثالث', 'assets/images/svg/notification.svg', 'عنوان رئيسي 3', 'وصف إعداد الإشعار الثالث'),
+                    const SizedBox(
+                      height: 25,
+                    ),
+                    buildRow(
+                        context, notificationCubit, 'العنصر الرابع', 'assets/images/svg/notification.svg', 'عنوان رئيسي 4', 'وصف إعداد الإشعار الرابع'),
+                  ],
+                );
+              },
+            ),
           ),
         ),
       ),

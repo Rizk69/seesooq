@@ -26,7 +26,7 @@ class RemoveAccountPage extends StatelessWidget {
             child: BlocConsumer<ReasonDeletionsCubit, ReasonDeletionsState>(listener: (context, state) {
               if (state.deleteAccountStatus == DeleteAccountStatus.success) {
                 LoginCubit.get(context).deleteLocalUser().whenComplete(() {
-                  context.goNamed(Routes.sucssesRemoveAccountPage);
+                  context.pushNamed(Routes.sucssesRemoveAccountPage);
                 });
               }
             }, builder: (context, state) {
@@ -37,7 +37,7 @@ class RemoveAccountPage extends StatelessWidget {
                     HeaderScreens(
                         title: 'reason_for_deleting',
                         onPressed: () {
-                          context.go(Routes.accountMangePage);
+                          context.pop();
                         }),
                     const SizedBox(height: 37),
                     Builder(

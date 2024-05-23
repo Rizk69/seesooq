@@ -50,6 +50,7 @@
   "uploadAds": "Include Some details",
   "uploadPhoto": "Upload UP TO {length} PHOTOS",
   "brand": "Brand{star}",
+  "brandAds": "Brand",
   "model": "Model{star}",
   "price": "Price{star}",
   "memberLogin": "Hello dear customer, log in",

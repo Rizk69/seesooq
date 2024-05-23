@@ -27,13 +27,13 @@ class ChangeLanguagePage extends StatelessWidget {
             final languageCubit = context.read<ThemeCubit>();
             print(state.locale.languageCode);
             return Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
+              padding: const EdgeInsets.all(8),
               child: Column(
                 children: [
                   HeaderScreens(
                     title: 'language',
                     onPressed: () {
-                      context.go(Routes.setting);
+                      context.pop();
                     },
                   ),
                   const SizedBox(

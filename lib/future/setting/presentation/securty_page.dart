@@ -24,7 +24,7 @@ class SecurityPage extends StatelessWidget {
                 HeaderScreens(
                     title: 'privacy',
                     onPressed: () {
-                      context.go(Routes.accountMangePage);
+                      context.pop();
                     }),
                 const SizedBox(
                   height: 37,

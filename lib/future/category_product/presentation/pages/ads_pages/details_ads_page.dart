@@ -33,7 +33,7 @@ class _DetailsAdsPageState extends State<DetailsAdsPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-             TranslateText(
+            TranslateText(
               text: 'adsName',
               styleText: StyleText.h4,
               fontSize: 16,
@@ -68,7 +68,8 @@ class _DetailsAdsPageState extends State<DetailsAdsPage> {
               textInputAction: TextInputAction.newline,
               maxLine: 3,
               onChanged: (value) {
-                AddAdsCubit.get(context).updateDescriptionForm(value.toString());
+                AddAdsCubit.get(context)
+                    .updateDescriptionForm(value.toString());
               },
             ),
             const SizedBox(
@@ -85,17 +86,26 @@ class _DetailsAdsPageState extends State<DetailsAdsPage> {
             CustomTextFormFiled(
               prefixIcon: false,
               textEditingController: cubit.price,
-              textInputType: const TextInputType.numberWithOptions(decimal: true),
+              textInputType:
+                  const TextInputType.numberWithOptions(decimal: true),
               textInputAction: TextInputAction.done,
-              textFormatters: [FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,2}'))],
+              textFormatters: [
+                FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,2}'))
+              ],
               onChanged: (value) {
                 if (value.toString().isNotEmpty) {
-                  AddAdsCubit.get(context).updatePriceForm(num.parse(value.toString()));
+                  AddAdsCubit.get(context)
+                      .updatePriceForm(num.parse(value.toString()));
                 }
               },
             ),
             const SizedBox(
               height: 20,
+            ),
+            TranslateText(
+              text: 'brandAds',
+              styleText: StyleText.h4,
+              fontSize: 16,
             ),
             if (state.brandAdsModel?.data?.isNotEmpty ?? false)
               DropdownButton<String>(
@@ -110,7 +120,9 @@ class _DetailsAdsPageState extends State<DetailsAdsPage> {
                   cubit.updateBrandForm(brandId: value.toString());
                 },
                 isExpanded: true,
-                value: state.attributesForm.brandId.isEmpty ? '1' : state.attributesForm.brandId,
+                value: state.attributesForm.brandId.isEmpty
+                    ? '1'
+                    : state.attributesForm.brandId,
               ),
             ...state.attributesAdsModel?.attributes
                     ?.map((e) => DynamicFormWidget(

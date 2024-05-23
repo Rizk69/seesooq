@@ -176,183 +176,282 @@ class MyAdsPage extends StatelessWidget {
                             ),
                         loaded: (data) {
                           return Expanded(
-                            child: ListView.builder(
-                              itemBuilder: (context, index) {
-                                var item = data.advertisementModel!.data![index];
-                                return Container(
-                                  margin: const EdgeInsets.symmetric(vertical: 10),
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(20),
-                                    boxShadow: const [
-                                      BoxShadow(
-                                        color: Colors.grey,
-                                        blurRadius: 8,
-                                        spreadRadius: 1,
-                                      )
-                                    ],
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(12.0),
-                                    child: Row(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        // yazan turk 77
-                                        CachedNetworkImage(
-                                          imageUrl: 'item.album ?? ' '',
-                                          fit: BoxFit.fill,
-                                          height: 120,
-                                          width: 120,
-                                          errorWidget: (context, error, stackTrace) {
-                                            return const Icon(
-                                              Icons.error,
-                                              color: Colors.red,
-                                            );
-                                          },
+                            child: data.advertisementModel!.data!.isEmpty
+                                ? Center(
+                                    child: Container(),
+                                  )
+                                : ListView.builder(
+                                    itemBuilder: (context, index) {
+                                      var item =
+                                          data.advertisementModel!.data![index];
+                                      return Container(
+                                        margin: const EdgeInsets.symmetric(
+                                            vertical: 10),
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          boxShadow: const [
+                                            BoxShadow(
+                                              color: Colors.grey,
+                                              blurRadius: 8,
+                                              spreadRadius: 1,
+                                            )
+                                          ],
                                         ),
-                                        const SizedBox(width: 10),
-                                        Expanded(
-                                          child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            mainAxisAlignment: MainAxisAlignment.start,
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(12.0),
+                                          child: Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
                                             children: [
-                                              Row(
-                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                children: [
-                                                  titleText(item.title ?? '', Colors.black, StyleText.h5),
-                                                  Row(
-                                                    mainAxisAlignment: MainAxisAlignment.end,
-                                                    children: [
-                                                      IconButton(
-                                                        padding: const EdgeInsets.all(0),
-                                                        style: const ButtonStyle(
-                                                          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                                                        ),
-                                                        onPressed: () {
-                                                          // CategoryProductCubit.get(context)
-                                                          //     .selectCategory(subCategory: item.category?.id.toString() ?? '');
-                                                          // context.pushNamed(Routes.uploadPhoto, extra: {
-                                                          //   'categoryName': data.advertisementModel?.data?[index].category?.id.toString(),
-                                                          //   'details': "Cars For Sales",
-                                                          //   'data': data.advertisementModel?.data?[index],
-                                                          // });
-                                                        },
-                                                        icon: SvgPicture.asset(
-                                                          'edit_profile'.toSvg,
-                                                          height: 20,
-                                                          color: Colors.red,
-                                                        ),
-                                                      ),
-                                                      IconButton(
-                                                        style: const ButtonStyle(
-                                                          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                                                        ),
-                                                        onPressed: () {
-                                                          showBottomSheet(
-                                                            context: context,
-                                                            builder: (context) =>
-                                                                CustomButtonSheetRemove(textToRemove: 'deleteAds', onPressed: () {}),
-                                                          );
-                                                        },
-                                                        icon: SvgPicture.asset(
-                                                          'assets/images/svg/icons_ads/deleteIcon.svg',
-                                                          height: 20,
-                                                          color: Colors.red,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
+                                              // yazan turk 77
+                                              CachedNetworkImage(
+                                                imageUrl: 'item.album ?? ' '',
+                                                fit: BoxFit.fill,
+                                                height: 120,
+                                                width: 120,
+                                                errorWidget: (context, error,
+                                                    stackTrace) {
+                                                  return const Icon(
+                                                    Icons.error,
+                                                    color: Colors.red,
+                                                  );
+                                                },
                                               ),
-                                              const SizedBox(
-                                                height: 8,
-                                              ),
-                                              titleText('${item.price.toString().price} JD', HexColor('4C0497'), StyleText.h5),
-                                              const SizedBox(
-                                                height: 8,
-                                              ),
-                                              Row(
-                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                children: [
-                                                  Expanded(
-                                                    child: Row(
+                                              const SizedBox(width: 10),
+                                              Expanded(
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
+                                                  children: [
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceBetween,
                                                       children: [
-                                                        const Icon(Icons.remove_red_eye_outlined, color: Colors.grey),
-                                                        titleText('${item.visits}', Colors.grey, StyleText.h6),
+                                                        titleText(
+                                                            item.title ?? '',
+                                                            Colors.black,
+                                                            StyleText.h5),
+                                                        Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .end,
+                                                          children: [
+                                                            // IconButton(
+                                                            //   padding: const EdgeInsets.all(0),
+                                                            //   style: const ButtonStyle(
+                                                            //     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                                                            //   ),
+                                                            //   onPressed: () {
+                                                            //     // CategoryProductCubit.get(context)
+                                                            //     //     .selectCategory(subCategory: item.category?.id.toString() ?? '');
+                                                            //     // context.pushNamed(Routes.uploadPhoto, extra: {
+                                                            //     //   'categoryName': data.advertisementModel?.data?[index].category?.id.toString(),
+                                                            //     //   'details': "Cars For Sales",
+                                                            //     //   'data': data.advertisementModel?.data?[index],
+                                                            //     // });
+                                                            //   },
+                                                            //   icon: SvgPicture.asset(
+                                                            //     'edit_profile'.toSvg,
+                                                            //     height: 20,
+                                                            //     color: Colors.red,
+                                                            //   ),
+                                                            // ),
+                                                            IconButton(
+                                                              style:
+                                                                  const ButtonStyle(
+                                                                tapTargetSize:
+                                                                    MaterialTapTargetSize
+                                                                        .shrinkWrap,
+                                                              ),
+                                                              onPressed: () {
+                                                                showBottomSheet(
+                                                                  context:
+                                                                      context,
+                                                                  builder: (BuildContext
+                                                                          bottomSheetContext) =>
+                                                                      CustomButtonSheetRemove(
+                                                                          textToRemove:
+                                                                              'delete Ads',
+                                                                          onPressed:
+                                                                              () {
+                                                                            context.read<MyadsBloc>().add(DeleteMyadsEvent(
+                                                                                index: index,
+                                                                                id: item.id.toString()));
+                                                                            bottomSheetContext.pop();
+                                                                          }),
+                                                                );
+                                                              },
+                                                              icon: SvgPicture
+                                                                  .asset(
+                                                                'assets/images/svg/icons_ads/deleteIcon.svg',
+                                                                height: 20,
+                                                                color:
+                                                                    Colors.red,
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
                                                       ],
                                                     ),
-                                                  ),
-                                                  Expanded(
-                                                    flex: 2,
-                                                    child: Row(
-                                                      mainAxisAlignment: MainAxisAlignment.end,
+                                                    const SizedBox(
+                                                      height: 8,
+                                                    ),
+                                                    titleText(
+                                                        '${item.price.toString().price} JD',
+                                                        HexColor('4C0497'),
+                                                        StyleText.h5),
+                                                    const SizedBox(
+                                                      height: 8,
+                                                    ),
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceBetween,
                                                       children: [
-                                                        const Icon(Icons.date_range, color: Colors.grey),
-                                                        Flexible(child: titleText(item.createdAt.toString(), Colors.grey, StyleText.h6)),
+                                                        Expanded(
+                                                          child: Row(
+                                                            children: [
+                                                              const Icon(
+                                                                  Icons
+                                                                      .remove_red_eye_outlined,
+                                                                  color: Colors
+                                                                      .grey),
+                                                              titleText(
+                                                                  '${item.visits}',
+                                                                  Colors.grey,
+                                                                  StyleText.h6),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                        Expanded(
+                                                          flex: 2,
+                                                          child: Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .end,
+                                                            children: [
+                                                              const Icon(
+                                                                  Icons
+                                                                      .date_range,
+                                                                  color: Colors
+                                                                      .grey),
+                                                              Flexible(
+                                                                  child: titleText(
+                                                                      item.createdAt
+                                                                          .toString(),
+                                                                      Colors
+                                                                          .grey,
+                                                                      StyleText
+                                                                          .h6)),
+                                                            ],
+                                                          ),
+                                                        )
                                                       ],
                                                     ),
-                                                  )
-                                                ],
-                                              ),
-                                              const SizedBox(
-                                                height: 12,
-                                              ),
-                                              Row(
-                                                children: [
-                                                  Expanded(
-                                                    child: Container(
-                                                      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-                                                      decoration: BoxDecoration(
-                                                        borderRadius: BorderRadius.circular(12),
-                                                        color: HexColor('E6EFD9'),
-                                                      ),
-                                                      child: Center(
-                                                        child: TranslateText(
-                                                          styleText: StyleText.h4,
-                                                          fontSize: 16,
-                                                          text: item.status ?? '',
-                                                          colorText: HexColor('7CA73C'),
-                                                        ),
-                                                      ),
+                                                    const SizedBox(
+                                                      height: 12,
                                                     ),
-                                                  ),
-                                                  SizedBox(
-                                                    width: 10,
-                                                  ),
-                                                  Expanded(
-                                                    child: Container(
-                                                      padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-                                                      decoration: BoxDecoration(
-                                                        borderRadius: BorderRadius.circular(12),
-                                                        color: HexColor('E6EFD9'),
-                                                      ),
-                                                      child: Center(
-                                                        child: TranslateText(
-                                                          styleText: StyleText.h4,
-                                                          fontSize: 16,
-                                                          text: item.active ?? '',
-                                                          colorText: HexColor('7CA73C'),
+                                                    Row(
+                                                      children: [
+                                                        Expanded(
+                                                          child: Container(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .symmetric(
+                                                                    horizontal:
+                                                                        25,
+                                                                    vertical:
+                                                                        10),
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          12),
+                                                              color: HexColor(
+                                                                  'E6EFD9'),
+                                                            ),
+                                                            child: Center(
+                                                              child:
+                                                                  TranslateText(
+                                                                styleText:
+                                                                    StyleText
+                                                                        .h4,
+                                                                fontSize: 16,
+                                                                text:
+                                                                    item.status ??
+                                                                        '',
+                                                                colorText:
+                                                                    HexColor(
+                                                                        '7CA73C'),
+                                                              ),
+                                                            ),
+                                                          ),
                                                         ),
-                                                      ),
-                                                    ),
-                                                  )
-                                                ],
-                                              )
+                                                        SizedBox(
+                                                          width: 10,
+                                                        ),
+                                                        Expanded(
+                                                          child: Container(
+                                                            padding: EdgeInsets
+                                                                .symmetric(
+                                                                    horizontal:
+                                                                        25,
+                                                                    vertical:
+                                                                        10),
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          12),
+                                                              color: HexColor(
+                                                                  'E6EFD9'),
+                                                            ),
+                                                            child: Center(
+                                                              child:
+                                                                  TranslateText(
+                                                                styleText:
+                                                                    StyleText
+                                                                        .h4,
+                                                                fontSize: 16,
+                                                                text:
+                                                                    item.active ??
+                                                                        '',
+                                                                colorText:
+                                                                    HexColor(
+                                                                        '7CA73C'),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        )
+                                                      ],
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
                                             ],
                                           ),
                                         ),
-                                      ],
-                                    ),
+                                      );
+                                    },
+                                    itemCount:
+                                        data.advertisementModel!.data!.length,
                                   ),
-                                );
-                              },
-                              itemCount: data.advertisementModel!.data!.length,
-                            ),
                           );
                         },
-                        error: (message) => Center(
-                              child: Text(message),
-                            ));
+                        error: (message) {
+                          return message != "null"
+                              ? Center(
+                                  child: Text(message),
+                                )
+                              : Container();
+                        });
                   },
                 ),
               )

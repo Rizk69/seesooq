@@ -17,44 +17,46 @@ class TermsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              HeaderScreens(
-                title: 'privacy_policy',
-                onPressed: () {
-                  context.go(Routes.setting);
-                },
-              ),
-              const SizedBox(height: 25),
-              BlocProvider(
-                create: (context) => PrivacyPolicyCubit()..getPrivacyPolicy(),
-                child: BlocBuilder<PrivacyPolicyCubit, PrivacyPolicyState>(builder: (context, state) {
-                  if (state.privacyPolicyStatus == PrivacyPolicyStatus.loading) {
-                    return const Center(child: CircularProgressIndicator());
-                  }
+    return SafeArea(
+      child: Scaffold(
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(8),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                HeaderScreens(
+                  title: 'privacy_policy',
+                  onPressed: () {
+                    context.pop();
+                  },
+                ),
+                const SizedBox(height: 25),
+                BlocProvider(
+                  create: (context) => PrivacyPolicyCubit()..getPrivacyPolicy(),
+                  child: BlocBuilder<PrivacyPolicyCubit, PrivacyPolicyState>(builder: (context, state) {
+                    if (state.privacyPolicyStatus == PrivacyPolicyStatus.loading) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
 
-                  if (state.privacyPolicyStatus == PrivacyPolicyStatus.error) {
-                    return const Center(child: Text('Error'));
-                  }
-                  if (state.privacyPolicyStatus == PrivacyPolicyStatus.loaded && state.privacyPolicyModel != null) {
-                    return ListView.builder(
-                      shrinkWrap: true,
-                      itemBuilder: (context, index) {
-                        DataOfSetting items = state.privacyPolicyModel!.data!.data![index];
-                        return _customPolicy(title: items.title ?? '', description: items.description ?? '');
-                      },
-                      itemCount: state.privacyPolicyModel!.data!.data!.length,
-                    );
-                  }
-                  return const SizedBox();
-                }),
-              )
-            ],
+                    if (state.privacyPolicyStatus == PrivacyPolicyStatus.error) {
+                      return const Center(child: Text('Error'));
+                    }
+                    if (state.privacyPolicyStatus == PrivacyPolicyStatus.loaded && state.privacyPolicyModel != null) {
+                      return ListView.builder(
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          DataOfSetting items = state.privacyPolicyModel!.data!.data![index];
+                          return _customPolicy(title: items.title ?? '', description: items.description ?? '');
+                        },
+                        itemCount: state.privacyPolicyModel!.data!.data!.length,
+                      );
+                    }
+                    return const SizedBox();
+                  }),
+                )
+              ],
+            ),
           ),
         ),
       ),
@@ -108,7 +110,7 @@ class TermsConditionsScreen extends StatelessWidget {
               HeaderScreens(
                 title: 'terms_and_conditions',
                 onPressed: () {
-                  context.go(Routes.setting);
+                  context.pop();
                 },
               ),
               const SizedBox(height: 25),

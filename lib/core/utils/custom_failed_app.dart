@@ -156,6 +156,7 @@ class _CustomTextFormFiledState extends State<CustomTextFormFiled> {
       onChanged: widget.onChanged,
       textInputAction: widget.textInputAction,
       inputFormatters: widget.textFormatters,
+
       maxLines: widget.maxLine ?? 1,
       controller: widget.textEditingController,
       keyboardType: widget.textInputType ?? TextInputType.text,
@@ -181,10 +182,18 @@ class _CustomTextFormFiledState extends State<CustomTextFormFiled> {
                   ),
                 )
               : null,
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide(
+              color: Colors.grey,
+              width: 2.0,
+            ),
+          ),
           prefixIconConstraints: const BoxConstraints(maxWidth: 45),
           isDense: true,
           contentPadding: const EdgeInsets.all(16)),
       style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontSize: 14),
+
     );
   }
 }

@@ -19,14 +19,14 @@ class FrequentlyAskedQuestionsPage extends StatelessWidget {
       child: Scaffold(
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
+            padding: const EdgeInsets.all(8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 HeaderScreens(
                     title: 'fAQs',
                     onPressed: () {
-                      context.go(Routes.setting);
+                      context.pop();
                     }),
                 const SizedBox(height: 40),
                 BlocProvider(

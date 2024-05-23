@@ -22,135 +22,137 @@ class ConnectWithUsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => ContactUsCubit(),
-      child: Scaffold(
-        body: SingleChildScrollView(
-          child: BlocBuilder<ContactUsCubit, ContactUsState>(
-            builder: (context, state) {
-              var cubit = ContactUsCubit.get(context);
+      child: SafeArea(
+        child: Scaffold(
+          body: SingleChildScrollView(
+            child: BlocBuilder<ContactUsCubit, ContactUsState>(
+              builder: (context, state) {
+                var cubit = ContactUsCubit.get(context);
 
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    HeaderScreens(
-                        title: 'contact_us',
-                        onPressed: () {
-                          context.go(Routes.setting);
-                        }),
-                    const SizedBox(height: 40),
-                    titleText('full_name'),
-                    const SizedBox(height: 10),
-                    TextFormFiledCustom(
-                      controller: TextEditingController(text: ''),
-                      hintText: 'enter_your_full_name'.tr(),
-                      imgIconSvg: "assets/images/svg/person.svg",
-                      lines: 1,
-                    ),
-                    const SizedBox(height: 24),
-                    titleText('enter_email'),
-                    const SizedBox(height: 10),
-                    TextFormFiledCustom(
-                      controller: TextEditingController(text: ''),
-                      hintText: 'enter_email',
-                      imgIconSvg: "assets/images/svg/email.svg",
-                      lines: 1,
-                    ),
-                    const SizedBox(height: 24),
-                    titleText('mobile_number'),
-                    const SizedBox(height: 10),
-                    Row(
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            showCountryPicker(
-                              context: context,
-                              showPhoneCode: true,
-                              useSafeArea: true,
-                              countryListTheme: CountryListThemeData(
-                                flagSize: 25,
-                                borderRadius: BorderRadius.circular(20),
-                                backgroundColor: Colors.white,
-                                textStyle: const TextStyle(fontSize: 16),
-                                bottomSheetHeight: MediaQuery.of(context).size.height * 0.7,
-                              ),
-                              favorite: [
-                                '+962',
-                                'JO',
-                                '+966',
-                                'SA',
-                                '+20',
-                                'EG',
-                                '+963',
-                                'SY',
-                              ],
-                              onSelect: (Country country) {
-                                cubit.updateCountry(
-                                  countryCode: country.phoneCode,
-                                  countryFlag: country.countryCode,
-                                );
-                              },
-                            );
-                          },
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 8),
-                            height: 50,
-                            decoration: BoxDecoration(
-                              color: HexColor('#F5F5F5'),
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                // CountryFlag.fromCountryCode(
-                                //   state.countryFlag,
-                                //   width: 30,
-                                //   height: 30,
-                                //   borderRadius: 10,
-                                // ),
-                                const SizedBox(width: 8),
-                                // Text(
-                                //   state.countryCode,
-                                //   style: const TextStyle(fontSize: 16),
-                                // ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 15),
-                        Expanded(
-                          child: TextFormFiledCustom(
-                            controller: TextEditingController(text: ''),
-                            hintText: 'mobile_number',
-                            imgIconSvg: "assets/images/svg/phone.svg",
-                            lines: 1,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 24),
-                    titleText('message'),
-                    const SizedBox(height: 10),
-                    TextFormFiledCustom(
-                      controller: TextEditingController(text: ''),
-                      hintText: 'enter_message'.tr(),
-                      imgIconSvg: "assets/images/svg/message.svg",
-                      lines: 5,
-                    ),
-                    const SizedBox(height: 24),
-                    SizedBox(
-                        width: MediaQuery.of(context).size.width,
-                        child: CustomButtonWidget(
-                          color: Colors.white,
-                          text: 'send'.tr(),
+                return Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      HeaderScreens(
+                          title: 'contact_us',
                           onPressed: () {
-                            context.goNamed(Routes.sucssesConnectWithUsPage);
-                          },
-                        ))
-                  ],
-                ),
-              );
-            },
+                            context.pop();
+                          }),
+                      const SizedBox(height: 40),
+                      titleText('full_name'),
+                      const SizedBox(height: 10),
+                      TextFormFiledCustom(
+                        controller: TextEditingController(text: ''),
+                        hintText: 'enter_your_full_name'.tr(),
+                        imgIconSvg: "assets/images/svg/person.svg",
+                        lines: 1,
+                      ),
+                      const SizedBox(height: 24),
+                      titleText('enter_email'),
+                      const SizedBox(height: 10),
+                      TextFormFiledCustom(
+                        controller: TextEditingController(text: ''),
+                        hintText: 'enter_email',
+                        imgIconSvg: "assets/images/svg/email.svg",
+                        lines: 1,
+                      ),
+                      const SizedBox(height: 24),
+                      titleText('mobile_number'),
+                      const SizedBox(height: 10),
+                      Row(
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              showCountryPicker(
+                                context: context,
+                                showPhoneCode: true,
+                                useSafeArea: true,
+                                countryListTheme: CountryListThemeData(
+                                  flagSize: 25,
+                                  borderRadius: BorderRadius.circular(20),
+                                  backgroundColor: Colors.white,
+                                  textStyle: const TextStyle(fontSize: 16),
+                                  bottomSheetHeight: MediaQuery.of(context).size.height * 0.7,
+                                ),
+                                favorite: [
+                                  '+962',
+                                  'JO',
+                                  '+966',
+                                  'SA',
+                                  '+20',
+                                  'EG',
+                                  '+963',
+                                  'SY',
+                                ],
+                                onSelect: (Country country) {
+                                  cubit.updateCountry(
+                                    countryCode: country.phoneCode,
+                                    countryFlag: country.countryCode,
+                                  );
+                                },
+                              );
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 8),
+                              height: 50,
+                              decoration: BoxDecoration(
+                                color: HexColor('#F5F5F5'),
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  // CountryFlag.fromCountryCode(
+                                  //   state.countryFlag,
+                                  //   width: 30,
+                                  //   height: 30,
+                                  //   borderRadius: 10,
+                                  // ),
+                                  const SizedBox(width: 8),
+                                  // Text(
+                                  //   state.countryCode,
+                                  //   style: const TextStyle(fontSize: 16),
+                                  // ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 15),
+                          Expanded(
+                            child: TextFormFiledCustom(
+                              controller: TextEditingController(text: ''),
+                              hintText: 'mobile_number',
+                              imgIconSvg: "assets/images/svg/phone.svg",
+                              lines: 1,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 24),
+                      titleText('message'),
+                      const SizedBox(height: 10),
+                      TextFormFiledCustom(
+                        controller: TextEditingController(text: ''),
+                        hintText: 'enter_message'.tr(),
+                        imgIconSvg: "assets/images/svg/message.svg",
+                        lines: 5,
+                      ),
+                      const SizedBox(height: 24),
+                      SizedBox(
+                          width: MediaQuery.of(context).size.width,
+                          child: CustomButtonWidget(
+                            color: Colors.white,
+                            text: 'send'.tr(),
+                            onPressed: () {
+                              context.goNamed(Routes.sucssesConnectWithUsPage);
+                            },
+                          ))
+                    ],
+                  ),
+                );
+              },
+            ),
           ),
         ),
       ),

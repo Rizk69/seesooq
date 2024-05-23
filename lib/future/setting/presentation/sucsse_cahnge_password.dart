@@ -48,7 +48,7 @@ class SucssesChangePasswordPage extends StatelessWidget {
                 color: Colors.white,
                 text: 'متابعة إلى الصفحة الرئيسية',
                 onPressed: () {
-                  context.go(Routes.home);
+                  context.pushNamed(Routes.home);
                 },
               )),
         )

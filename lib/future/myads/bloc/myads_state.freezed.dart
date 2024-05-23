@@ -43,26 +43,26 @@ mixin _$MyAdsState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitState value) initState,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Error value) error,
+    required TResult Function(MyAdsStateInitState value) initState,
+    required TResult Function(MyAdsStateLoading value) loading,
+    required TResult Function(MyAdsStateLoaded value) loaded,
+    required TResult Function(MyAdsStateError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitState value)? initState,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Error value)? error,
+    TResult? Function(MyAdsStateInitState value)? initState,
+    TResult? Function(MyAdsStateLoading value)? loading,
+    TResult? Function(MyAdsStateLoaded value)? loaded,
+    TResult? Function(MyAdsStateError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitState value)? initState,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
+    TResult Function(MyAdsStateInitState value)? initState,
+    TResult Function(MyAdsStateLoading value)? loading,
+    TResult Function(MyAdsStateLoaded value)? loaded,
+    TResult Function(MyAdsStateError value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -87,25 +87,25 @@ class _$MyAdsStateCopyWithImpl<$Res, $Val extends MyAdsState>
 }
 
 /// @nodoc
-abstract class _$$InitStateImplCopyWith<$Res> {
-  factory _$$InitStateImplCopyWith(
-          _$InitStateImpl value, $Res Function(_$InitStateImpl) then) =
-      __$$InitStateImplCopyWithImpl<$Res>;
+abstract class _$$MyAdsStateInitStateImplCopyWith<$Res> {
+  factory _$$MyAdsStateInitStateImplCopyWith(_$MyAdsStateInitStateImpl value,
+          $Res Function(_$MyAdsStateInitStateImpl) then) =
+      __$$MyAdsStateInitStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InitStateImplCopyWithImpl<$Res>
-    extends _$MyAdsStateCopyWithImpl<$Res, _$InitStateImpl>
-    implements _$$InitStateImplCopyWith<$Res> {
-  __$$InitStateImplCopyWithImpl(
-      _$InitStateImpl _value, $Res Function(_$InitStateImpl) _then)
+class __$$MyAdsStateInitStateImplCopyWithImpl<$Res>
+    extends _$MyAdsStateCopyWithImpl<$Res, _$MyAdsStateInitStateImpl>
+    implements _$$MyAdsStateInitStateImplCopyWith<$Res> {
+  __$$MyAdsStateInitStateImplCopyWithImpl(_$MyAdsStateInitStateImpl _value,
+      $Res Function(_$MyAdsStateInitStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$InitStateImpl implements _InitState {
-  const _$InitStateImpl();
+class _$MyAdsStateInitStateImpl implements MyAdsStateInitState {
+  const _$MyAdsStateInitStateImpl();
 
   @override
   String toString() {
@@ -115,7 +115,8 @@ class _$InitStateImpl implements _InitState {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitStateImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$MyAdsStateInitStateImpl);
   }
 
   @override
@@ -161,10 +162,10 @@ class _$InitStateImpl implements _InitState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitState value) initState,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Error value) error,
+    required TResult Function(MyAdsStateInitState value) initState,
+    required TResult Function(MyAdsStateLoading value) loading,
+    required TResult Function(MyAdsStateLoaded value) loaded,
+    required TResult Function(MyAdsStateError value) error,
   }) {
     return initState(this);
   }
@@ -172,10 +173,10 @@ class _$InitStateImpl implements _InitState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitState value)? initState,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Error value)? error,
+    TResult? Function(MyAdsStateInitState value)? initState,
+    TResult? Function(MyAdsStateLoading value)? loading,
+    TResult? Function(MyAdsStateLoaded value)? loaded,
+    TResult? Function(MyAdsStateError value)? error,
   }) {
     return initState?.call(this);
   }
@@ -183,10 +184,10 @@ class _$InitStateImpl implements _InitState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitState value)? initState,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
+    TResult Function(MyAdsStateInitState value)? initState,
+    TResult Function(MyAdsStateLoading value)? loading,
+    TResult Function(MyAdsStateLoaded value)? loaded,
+    TResult Function(MyAdsStateError value)? error,
     required TResult orElse(),
   }) {
     if (initState != null) {
@@ -196,30 +197,30 @@ class _$InitStateImpl implements _InitState {
   }
 }
 
-abstract class _InitState implements MyAdsState {
-  const factory _InitState() = _$InitStateImpl;
+abstract class MyAdsStateInitState implements MyAdsState {
+  const factory MyAdsStateInitState() = _$MyAdsStateInitStateImpl;
 }
 
 /// @nodoc
-abstract class _$$LoadingImplCopyWith<$Res> {
-  factory _$$LoadingImplCopyWith(
-          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
-      __$$LoadingImplCopyWithImpl<$Res>;
+abstract class _$$MyAdsStateLoadingImplCopyWith<$Res> {
+  factory _$$MyAdsStateLoadingImplCopyWith(_$MyAdsStateLoadingImpl value,
+          $Res Function(_$MyAdsStateLoadingImpl) then) =
+      __$$MyAdsStateLoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$MyAdsStateCopyWithImpl<$Res, _$LoadingImpl>
-    implements _$$LoadingImplCopyWith<$Res> {
-  __$$LoadingImplCopyWithImpl(
-      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
+class __$$MyAdsStateLoadingImplCopyWithImpl<$Res>
+    extends _$MyAdsStateCopyWithImpl<$Res, _$MyAdsStateLoadingImpl>
+    implements _$$MyAdsStateLoadingImplCopyWith<$Res> {
+  __$$MyAdsStateLoadingImplCopyWithImpl(_$MyAdsStateLoadingImpl _value,
+      $Res Function(_$MyAdsStateLoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$LoadingImpl implements _Loading {
-  const _$LoadingImpl();
+class _$MyAdsStateLoadingImpl implements MyAdsStateLoading {
+  const _$MyAdsStateLoadingImpl();
 
   @override
   String toString() {
@@ -229,7 +230,7 @@ class _$LoadingImpl implements _Loading {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingImpl);
+        (other.runtimeType == runtimeType && other is _$MyAdsStateLoadingImpl);
   }
 
   @override
@@ -275,10 +276,10 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitState value) initState,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Error value) error,
+    required TResult Function(MyAdsStateInitState value) initState,
+    required TResult Function(MyAdsStateLoading value) loading,
+    required TResult Function(MyAdsStateLoaded value) loaded,
+    required TResult Function(MyAdsStateError value) error,
   }) {
     return loading(this);
   }
@@ -286,10 +287,10 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitState value)? initState,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Error value)? error,
+    TResult? Function(MyAdsStateInitState value)? initState,
+    TResult? Function(MyAdsStateLoading value)? loading,
+    TResult? Function(MyAdsStateLoaded value)? loaded,
+    TResult? Function(MyAdsStateError value)? error,
   }) {
     return loading?.call(this);
   }
@@ -297,10 +298,10 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitState value)? initState,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
+    TResult Function(MyAdsStateInitState value)? initState,
+    TResult Function(MyAdsStateLoading value)? loading,
+    TResult Function(MyAdsStateLoaded value)? loaded,
+    TResult Function(MyAdsStateError value)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -310,25 +311,25 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements MyAdsState {
-  const factory _Loading() = _$LoadingImpl;
+abstract class MyAdsStateLoading implements MyAdsState {
+  const factory MyAdsStateLoading() = _$MyAdsStateLoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$LoadedImplCopyWith<$Res> {
-  factory _$$LoadedImplCopyWith(
-          _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
-      __$$LoadedImplCopyWithImpl<$Res>;
+abstract class _$$MyAdsStateLoadedImplCopyWith<$Res> {
+  factory _$$MyAdsStateLoadedImplCopyWith(_$MyAdsStateLoadedImpl value,
+          $Res Function(_$MyAdsStateLoadedImpl) then) =
+      __$$MyAdsStateLoadedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({MyAdsModel advertisementModel});
 }
 
 /// @nodoc
-class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$MyAdsStateCopyWithImpl<$Res, _$LoadedImpl>
-    implements _$$LoadedImplCopyWith<$Res> {
-  __$$LoadedImplCopyWithImpl(
-      _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
+class __$$MyAdsStateLoadedImplCopyWithImpl<$Res>
+    extends _$MyAdsStateCopyWithImpl<$Res, _$MyAdsStateLoadedImpl>
+    implements _$$MyAdsStateLoadedImplCopyWith<$Res> {
+  __$$MyAdsStateLoadedImplCopyWithImpl(_$MyAdsStateLoadedImpl _value,
+      $Res Function(_$MyAdsStateLoadedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -336,7 +337,7 @@ class __$$LoadedImplCopyWithImpl<$Res>
   $Res call({
     Object? advertisementModel = null,
   }) {
-    return _then(_$LoadedImpl(
+    return _then(_$MyAdsStateLoadedImpl(
       advertisementModel: null == advertisementModel
           ? _value.advertisementModel
           : advertisementModel // ignore: cast_nullable_to_non_nullable
@@ -347,8 +348,8 @@ class __$$LoadedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl({required this.advertisementModel});
+class _$MyAdsStateLoadedImpl implements MyAdsStateLoaded {
+  const _$MyAdsStateLoadedImpl({required this.advertisementModel});
 
   @override
   final MyAdsModel advertisementModel;
@@ -362,7 +363,7 @@ class _$LoadedImpl implements _Loaded {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LoadedImpl &&
+            other is _$MyAdsStateLoadedImpl &&
             (identical(other.advertisementModel, advertisementModel) ||
                 other.advertisementModel == advertisementModel));
   }
@@ -373,8 +374,9 @@ class _$LoadedImpl implements _Loaded {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
-      __$$LoadedImplCopyWithImpl<_$LoadedImpl>(this, _$identity);
+  _$$MyAdsStateLoadedImplCopyWith<_$MyAdsStateLoadedImpl> get copyWith =>
+      __$$MyAdsStateLoadedImplCopyWithImpl<_$MyAdsStateLoadedImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -416,10 +418,10 @@ class _$LoadedImpl implements _Loaded {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitState value) initState,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Error value) error,
+    required TResult Function(MyAdsStateInitState value) initState,
+    required TResult Function(MyAdsStateLoading value) loading,
+    required TResult Function(MyAdsStateLoaded value) loaded,
+    required TResult Function(MyAdsStateError value) error,
   }) {
     return loaded(this);
   }
@@ -427,10 +429,10 @@ class _$LoadedImpl implements _Loaded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitState value)? initState,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Error value)? error,
+    TResult? Function(MyAdsStateInitState value)? initState,
+    TResult? Function(MyAdsStateLoading value)? loading,
+    TResult? Function(MyAdsStateLoaded value)? loaded,
+    TResult? Function(MyAdsStateError value)? error,
   }) {
     return loaded?.call(this);
   }
@@ -438,10 +440,10 @@ class _$LoadedImpl implements _Loaded {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitState value)? initState,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
+    TResult Function(MyAdsStateInitState value)? initState,
+    TResult Function(MyAdsStateLoading value)? loading,
+    TResult Function(MyAdsStateLoaded value)? loaded,
+    TResult Function(MyAdsStateError value)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -451,31 +453,31 @@ class _$LoadedImpl implements _Loaded {
   }
 }
 
-abstract class _Loaded implements MyAdsState {
-  const factory _Loaded({required final MyAdsModel advertisementModel}) =
-      _$LoadedImpl;
+abstract class MyAdsStateLoaded implements MyAdsState {
+  const factory MyAdsStateLoaded(
+      {required final MyAdsModel advertisementModel}) = _$MyAdsStateLoadedImpl;
 
   MyAdsModel get advertisementModel;
   @JsonKey(ignore: true)
-  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
+  _$$MyAdsStateLoadedImplCopyWith<_$MyAdsStateLoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ErrorImplCopyWith<$Res> {
-  factory _$$ErrorImplCopyWith(
-          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
-      __$$ErrorImplCopyWithImpl<$Res>;
+abstract class _$$MyAdsStateErrorImplCopyWith<$Res> {
+  factory _$$MyAdsStateErrorImplCopyWith(_$MyAdsStateErrorImpl value,
+          $Res Function(_$MyAdsStateErrorImpl) then) =
+      __$$MyAdsStateErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$MyAdsStateCopyWithImpl<$Res, _$ErrorImpl>
-    implements _$$ErrorImplCopyWith<$Res> {
-  __$$ErrorImplCopyWithImpl(
-      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
+class __$$MyAdsStateErrorImplCopyWithImpl<$Res>
+    extends _$MyAdsStateCopyWithImpl<$Res, _$MyAdsStateErrorImpl>
+    implements _$$MyAdsStateErrorImplCopyWith<$Res> {
+  __$$MyAdsStateErrorImplCopyWithImpl(
+      _$MyAdsStateErrorImpl _value, $Res Function(_$MyAdsStateErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -483,7 +485,7 @@ class __$$ErrorImplCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$ErrorImpl(
+    return _then(_$MyAdsStateErrorImpl(
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -494,8 +496,8 @@ class __$$ErrorImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ErrorImpl implements _Error {
-  const _$ErrorImpl({required this.message});
+class _$MyAdsStateErrorImpl implements MyAdsStateError {
+  const _$MyAdsStateErrorImpl({required this.message});
 
   @override
   final String message;
@@ -509,7 +511,7 @@ class _$ErrorImpl implements _Error {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ErrorImpl &&
+            other is _$MyAdsStateErrorImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -519,8 +521,9 @@ class _$ErrorImpl implements _Error {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
-      __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
+  _$$MyAdsStateErrorImplCopyWith<_$MyAdsStateErrorImpl> get copyWith =>
+      __$$MyAdsStateErrorImplCopyWithImpl<_$MyAdsStateErrorImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -562,10 +565,10 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitState value) initState,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Error value) error,
+    required TResult Function(MyAdsStateInitState value) initState,
+    required TResult Function(MyAdsStateLoading value) loading,
+    required TResult Function(MyAdsStateLoaded value) loaded,
+    required TResult Function(MyAdsStateError value) error,
   }) {
     return error(this);
   }
@@ -573,10 +576,10 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitState value)? initState,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Error value)? error,
+    TResult? Function(MyAdsStateInitState value)? initState,
+    TResult? Function(MyAdsStateLoading value)? loading,
+    TResult? Function(MyAdsStateLoaded value)? loaded,
+    TResult? Function(MyAdsStateError value)? error,
   }) {
     return error?.call(this);
   }
@@ -584,10 +587,10 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitState value)? initState,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
+    TResult Function(MyAdsStateInitState value)? initState,
+    TResult Function(MyAdsStateLoading value)? loading,
+    TResult Function(MyAdsStateLoaded value)? loaded,
+    TResult Function(MyAdsStateError value)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -597,11 +600,12 @@ class _$ErrorImpl implements _Error {
   }
 }
 
-abstract class _Error implements MyAdsState {
-  const factory _Error({required final String message}) = _$ErrorImpl;
+abstract class MyAdsStateError implements MyAdsState {
+  const factory MyAdsStateError({required final String message}) =
+      _$MyAdsStateErrorImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+  _$$MyAdsStateErrorImplCopyWith<_$MyAdsStateErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -64,6 +64,8 @@ class AdvertisementModel {
     map['message'] = message;
     return map;
   }
+
+
 }
 
 class Meta {
@@ -364,6 +366,11 @@ class Data {
     map['created_at'] = createdAt;
     return map;
   }
+
+
+
+
+
 }
 
 class User {
@@ -555,4 +562,12 @@ class MyAdsModel {
 
   factory MyAdsModel.fromJson(Map<String, dynamic> json) => _$MyAdsModelFromJson(json);
   Map<String, dynamic> toJson() => _$MyAdsModelToJson(this);
+
+  copyWith({
+    AdvertisementModel? advertisementModel,
+  }) {
+    return MyAdsModel(
+      advertisementModel: advertisementModel ?? this.advertisementModel,
+    );
+  }
 }

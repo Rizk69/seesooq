@@ -1,5 +1,7 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:meta/meta.dart';
+import 'package:opensooq/core/utils/loadin_app.dart';
 import 'package:opensooq/di.dart' as di;
 import 'package:opensooq/future/myads/bloc/myads_state.dart';
 import 'package:opensooq/future/myads/data/repositories/my_ads_repository.dart';
@@ -20,14 +22,14 @@ class MyadsBloc extends Bloc<MyadsEvent, MyAdsState> {
     on<EditMyadsEvent>((event, emit) {
       // TODO: implement event handler
     });
-    on<DeleteMyadsEvent>((event, emit) {
-      // TODO: implement event handler
+    on<DeleteMyadsEvent>((event, emit) async {
+      await _deleteMyads(event.id, emit, event.index);
     });
   }
 
   final MyAdsRepository myAdsRepository = di.sl<MyAdsRepository>();
 
-  Future<void> _getMyads(Emitter emit) async {
+  Future<void> _getMyads(Emitter<MyAdsState> emit) async {
     final response = await myAdsRepository.getMyAds();
     response.fold(
       (l) {
@@ -46,24 +48,46 @@ class MyadsBloc extends Bloc<MyadsEvent, MyAdsState> {
       },
     );
   }
+
+  Future<void> _deleteMyads(
+      String id, Emitter<MyAdsState> emit, int index) async {
+    try {
+      if (state is! MyAdsStateLoaded) {
+        emit(const MyAdsState.error(message: 'Invalid state'));
+        return;
+      }
+
+      emit(const MyAdsState.loading());
+      final response = await myAdsRepository.deleteMyAds(id: int.parse(id));
+      response.fold(
+        (l) {
+          print('Error: ${l.message}');
+          emit(MyAdsState.error(message: l.message.toString()));
+        },
+        (r) {
+          EasyLoading.showSuccess(r.success!);
+
+          List<Data> updatedList = List<Data>.from((state as MyAdsStateLoaded)
+              .advertisementModel
+              .advertisementModel!
+              .data!)
+            ..removeAt(index);
+
+          AdvertisementModel newAdvertisementModel =
+              AdvertisementModel(data: updatedList);
+
+          MyAdsModel updatedModel = (state as MyAdsStateLoaded)
+              .advertisementModel
+              .copyWith(advertisementModel: newAdvertisementModel);
+
+          emit(MyAdsState.loaded(advertisementModel: updatedModel));
+        },
+      );
+    } catch (e) {
+      print('Unexpected error: $e');
+      emit(MyAdsState.error(message: 'An unexpected error occurred'));
+    } finally {
+      EasyLoading.dismiss();
+    }
+  }
 }
-// https://fcm.googleapis.com/fcm/send
-//{
-//   "to":"c86M0G3m3EDFhh9_bFD9Zh:APA91bEBLI4cDRsoBkhKu-f58Hm0Covp4ZsNOriM7HO-J8OyM1eKtg0TEdnL7ffoMNEnCctTNoHsx5_FzbRr6G6bQ_wsnck2PZbC5-h3BNcwMB2PFkdxoBymTIu6Xv-OFB-hTw31SoKD",
-//   "notification": {
-//     "title": "New Job Assign",
-//     "body":"AHmad"
-//   },
-//
-//
-//
-//    "aps" : {
-//       "alert": {
-//           "uuid": "982cf533-7b1b-4cf6-a6e0-004aab68c503",
-//           "incoming_caller_id": "1",
-//           "incoming_caller_name": "yaseen"
-//         }
-//
-//    }
-//
-// }
