@@ -214,6 +214,11 @@
   "location": "Location",
   "attributes": "Attributes",
   "publish": "Publish",
+  "deleteAds": "Delete Ads",
+  "desDeleteAds": "Do You Want to Remove the Ads",
+  "delete": "Delete",
+  "cancel": "Cancel",
+
   "MarkAllRead": "Mark all as read"
 
 }

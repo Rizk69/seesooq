@@ -276,14 +276,14 @@ class MyAdsPage extends StatelessWidget {
                                                                           bottomSheetContext) =>
                                                                       CustomButtonSheetRemove(
                                                                           textToRemove:
-                                                                              'delete Ads',
+                                                                              'deleteAds',
                                                                           onPressed:
                                                                               () {
                                                                             context.read<MyadsBloc>().add(DeleteMyadsEvent(
                                                                                 index: index,
                                                                                 id: item.id.toString()));
                                                                             bottomSheetContext.pop();
-                                                                          }),
+                                                                          }, desToRemove: 'desDeleteAds',),
                                                                 );
                                                               },
                                                               icon: SvgPicture

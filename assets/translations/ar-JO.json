@@ -143,5 +143,11 @@
   "attributes": "السمات",
   "publish": "نشر",
   "MarkAllRead": "تعليم الكل كمقروء",
+  "deleteAds": "حذف الأعلان",
+  "delete": "حذف",
+  "cancel": "الغاء",
+
+  "desDeleteAds": "هل تريد حذف الأعلان",
+
   "brandAds": "العلامة التجارية"
 }

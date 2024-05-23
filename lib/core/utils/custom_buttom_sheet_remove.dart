@@ -7,11 +7,12 @@ import '../widget/text_translate_manager.dart';
 
 class CustomButtonSheetRemove extends StatelessWidget {
   final String textToRemove;
+  final String desToRemove;
   final Function onPressed;
-  CustomButtonSheetRemove({
+  const CustomButtonSheetRemove({
     super.key,
     required this.textToRemove,
-    required this.onPressed,
+    required this.onPressed, required this.desToRemove,
   });
 
   @override
@@ -45,10 +46,10 @@ class CustomButtonSheetRemove extends StatelessWidget {
             ),
             Center(
                 child:
-                    titleText(textToRemove, HexColor('#707070'), StyleText.h5)),
-            Center(
-                child:
-                    titleText(textToRemove, HexColor('#707070'), StyleText.h5)),
+                    titleText(desToRemove, HexColor('#707070'), StyleText.h5)),
+            // Center(
+            //     child:
+            //         titleText(textToRemove, HexColor('#707070'), StyleText.h5)),
             const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -67,7 +68,7 @@ class CustomButtonSheetRemove extends StatelessWidget {
                             borderRadius: BorderRadius.circular(15),
                             border: Border.all(color: Colors.red, width: 2)),
                         child: Center(
-                          child: titleText('Cancel', Colors.red, StyleText.h4),
+                          child: titleText('cancel', Colors.red, StyleText.h4),
                         ),
                       )),
                 ),
