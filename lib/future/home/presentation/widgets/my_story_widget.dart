@@ -13,7 +13,8 @@ class MyStoryWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<StoryUserCubit, StoryUserState>(listener: (context, state) {
+    return BlocConsumer<StoryUserCubit, StoryUserState>(
+        listener: (context, state) {
       if (state.createStoryStatus == CreateStoryStatus.picked) {
         context.pushNamed(Routes.designStory);
       }
@@ -26,7 +27,8 @@ class MyStoryWidget extends StatelessWidget {
                 onTap: () {
                   if (!isGust) {
                     if (state.storyItems.isNotEmpty) {
-                      StoryUserCubit.get(context).updateStatusOpening(statusOpening: StatusOpening.me);
+                      StoryUserCubit.get(context)
+                          .updateStatusOpening(statusOpening: StatusOpening.me);
                       context.goNamed(Routes.storyView, extra: {'': ""});
                     } else {
                       print('pick image${state.storyItems.isNotEmpty}');
@@ -59,11 +61,16 @@ class MyStoryWidget extends StatelessWidget {
                   right: 0,
                   child: InkWell(
                     onTap: () {
-                      StoryUserCubit.get(context).pickImage();
+                      if (!isGust) {
+                        StoryUserCubit.get(context).pickImage();
+                      }
                     },
                     child: Container(
                       padding: const EdgeInsets.all(5),
-                      decoration: BoxDecoration(shape: BoxShape.circle, color: HexColor('F05A35'), boxShadow: const [BoxShadow(color: Colors.white)]),
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: HexColor('F05A35'),
+                          boxShadow: const [BoxShadow(color: Colors.white)]),
                       child: const Icon(
                         Icons.add,
                         color: Colors.white,

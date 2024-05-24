@@ -14,7 +14,8 @@ import '../../../../config/routes/app_routes.dart';
 enum CardPersonalWidgetType { home, drawer }
 
 class CardPersonalWidget extends StatelessWidget {
-  const CardPersonalWidget({super.key, required this.bodyText, required this.type});
+  const CardPersonalWidget(
+      {super.key, required this.bodyText, required this.type});
 
   final String bodyText;
 
@@ -50,7 +51,10 @@ class CardPersonalWidget extends StatelessWidget {
                         'welcomeName'.tr(
                           args: [userName],
                         ),
-                        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+                        style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
@@ -67,13 +71,18 @@ class CardPersonalWidget extends StatelessWidget {
                     TranslateText(
                       styleText: StyleText.h5,
                       text: bodyText.tr(),
-                      colorText: type == CardPersonalWidgetType.drawer ? Colors.white : null,
+                      colorText: type == CardPersonalWidgetType.drawer
+                          ? Colors.white
+                          : null,
                     ),
                     if (type == CardPersonalWidgetType.drawer) ...[
                       const SizedBox(
                         width: 5,
                       ),
-                      Align(alignment: Alignment.topCenter, child: Image.asset('gold'.toPng, width: 16, height: 16)),
+                      Align(
+                          alignment: Alignment.topCenter,
+                          child:
+                              Image.asset('gold'.toPng, width: 16, height: 16)),
                     ],
                   ],
                 ),
@@ -87,7 +96,8 @@ class CardPersonalWidget extends StatelessWidget {
 }
 
 class CardPersonalProfileWidget extends StatelessWidget {
-  const CardPersonalProfileWidget({super.key, required this.bodyText, required this.type});
+  const CardPersonalProfileWidget(
+      {super.key, required this.bodyText, required this.type});
 
   final String bodyText;
 
@@ -124,13 +134,16 @@ class CardPersonalProfileWidget extends StatelessWidget {
                           child: TranslateText(
                               maxLines: 1,
                               styleText: StyleText.h4,
-                              colorText: type == CardPersonalWidgetType.drawer ? Colors.white : null,
+                              colorText: type == CardPersonalWidgetType.drawer
+                                  ? Colors.white
+                                  : null,
                               text: 'welcomeName'.tr(args: [userName])),
                         ),
                         const SizedBox(
                           width: 5,
                         ),
-                        if (type == CardPersonalWidgetType.home) SvgPicture.asset('hey'.toSvg),
+                        if (type == CardPersonalWidgetType.home)
+                          SvgPicture.asset('hey'.toSvg),
                       ],
                     ),
                   ),
@@ -140,13 +153,18 @@ class CardPersonalProfileWidget extends StatelessWidget {
                       TranslateText(
                         styleText: StyleText.h5,
                         text: bodyText.tr(),
-                        colorText: type == CardPersonalWidgetType.drawer ? Colors.white : null,
+                        colorText: type == CardPersonalWidgetType.drawer
+                            ? Colors.white
+                            : null,
                       ),
                       if (type == CardPersonalWidgetType.drawer) ...[
                         const SizedBox(
                           width: 5,
                         ),
-                        Align(alignment: Alignment.topCenter, child: Image.asset('gold'.toPng, width: 16, height: 16)),
+                        Align(
+                            alignment: Alignment.topCenter,
+                            child: Image.asset('gold'.toPng,
+                                width: 16, height: 16)),
                       ],
                     ],
                   ),
@@ -165,7 +183,9 @@ class CardPersonalProfileWidget extends StatelessWidget {
                   children: [
                     IconButton(
                       onPressed: () {
-                        context.goNamed(Routes.editProfile);
+                        if (!isGuest) {
+                          context.goNamed(Routes.editProfile);
+                        }
                       },
                       icon: SvgPicture.asset(
                         'edit_profile'.toSvg,
@@ -173,7 +193,8 @@ class CardPersonalProfileWidget extends StatelessWidget {
                         height: 20,
                       ),
                       style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(Colors.white),
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.white),
                       ),
                     ),
                   ],

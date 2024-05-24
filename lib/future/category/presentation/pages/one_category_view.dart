@@ -362,12 +362,14 @@ class _OneCategoryViewState extends State<OneCategoryView> {
                     ),
                   ),
                 ),
+
                 SliverPadding(
                   padding: const EdgeInsets.symmetric(vertical: 0.0, horizontal: 4),
                   sliver: SliverList.separated(
                     itemBuilder: (context, index) {
-                      var item = state.advertisementModel!.data![index];
+                      print('item.album.toString() ${state.advertisementModel!.data!.length}');
 
+                      var item = state.advertisementModel!.data![index];
                       return InkWell(
                         onTap: () {
                           context.pushNamed('view_ads_home', extra: item.id.toString());

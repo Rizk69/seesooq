@@ -30,12 +30,12 @@ import 'package:opensooq/core/network/api/reels_api.dart' as _i50;
 import 'package:opensooq/core/network/api/setting_api.dart' as _i53;
 import 'package:opensooq/core/network/api/signup_api.dart' as _i56;
 import 'package:opensooq/core/network/api/wallet_api.dart' as _i58;
-import 'package:opensooq/core/network/dio_factory.dart' as _i96;
+import 'package:opensooq/core/network/dio_factory.dart' as _i97;
 import 'package:opensooq/core/network/mock_interceptor.dart' as _i6;
 import 'package:opensooq/core/network/network_info.dart' as _i8;
 import 'package:opensooq/core/utils/cache_helper.dart' as _i10;
 import 'package:opensooq/core/utils/navigator.dart' as _i7;
-import 'package:opensooq/di.dart' as _i95;
+import 'package:opensooq/di.dart' as _i96;
 import 'package:opensooq/future/blogs/data/data_sorces/blogs_remote_data_sorces.dart'
     as _i64;
 import 'package:opensooq/future/blogs/data/repositories/blogs_repository.dart'
@@ -46,7 +46,7 @@ import 'package:opensooq/future/category/data/repositories/category_repository.d
     as _i70;
 import 'package:opensooq/future/category/domain/filter_usecase.dart' as _i78;
 import 'package:opensooq/future/category/presentation/cubit/category_cubit.dart'
-    as _i92;
+    as _i93;
 import 'package:opensooq/future/category/presentation/cubit/details_category_cubit.dart'
     as _i76;
 import 'package:opensooq/future/category_product/data/data_sources/category_remote_data_source.dart'
@@ -54,7 +54,7 @@ import 'package:opensooq/future/category_product/data/data_sources/category_remo
 import 'package:opensooq/future/category_product/data/repositories/category_repo.dart'
     as _i69;
 import 'package:opensooq/future/category_product/presentation/cubit/category_product_cubit.dart'
-    as _i93;
+    as _i94;
 import 'package:opensooq/future/favorite/data/data_sorces/fav_remot_data_sorces.dart'
     as _i13;
 import 'package:opensooq/future/favorite/data/repositories/fav_repository.dart'
@@ -126,9 +126,9 @@ import 'package:opensooq/future/packages/domain/repositories/packages_repo.dart'
 import 'package:opensooq/future/packages/domain/use_cases/get_package_usecase.dart'
     as _i80;
 import 'package:opensooq/future/payment_gateway/data/data_sources/payment_gateway_local_data_source.dart'
-    as _i48;
-import 'package:opensooq/future/payment_gateway/data/data_sources/payment_gateway_remote_data_source.dart'
     as _i47;
+import 'package:opensooq/future/payment_gateway/data/data_sources/payment_gateway_remote_data_source.dart'
+    as _i48;
 import 'package:opensooq/future/payment_gateway/data/repositories/payment_repository.dart'
     as _i49;
 import 'package:opensooq/future/reels/data/data_source/reels_remote_data_source.dart'
@@ -144,7 +144,7 @@ import 'package:opensooq/future/signup/data/data_sources/signup_remote_data_sour
 import 'package:opensooq/future/signup/data/repositories/signup_repository.dart'
     as _i90;
 import 'package:opensooq/future/signup/presentation/cubit/signup_cubit.dart'
-    as _i94;
+    as _i95;
 import 'package:opensooq/future/splash/data/datasources/lang_local_data_sourece.dart'
     as _i24;
 import 'package:opensooq/future/splash/data/repositories/locale_repository_impl.dart'
@@ -171,6 +171,8 @@ import 'package:opensooq/future/wallet/domain/use_cases/get_wallet_usecase.dart'
     as _i85;
 import 'package:opensooq/future/wallet/domain/use_cases/store_payment_wallet_usecase.dart'
     as _i91;
+import 'package:opensooq/future/wallet/domain/use_cases/transactions_payment_usecase.dart'
+    as _i92;
 import 'package:shared_preferences/shared_preferences.dart' as _i9;
 
 extension GetItInjectableX on _i1.GetIt {
@@ -270,11 +272,11 @@ extension GetItInjectableX on _i1.GetIt {
         packagesRemoteDataSource: gh<_i43.PackagesRemoteDataSource>()));
     gh.factory<_i46.PaymentApi>(() => _i46.PaymentApi(gh<_i5.Dio>()));
     gh.lazySingleton<_i47.PaymentRemoteDataSource>(
-        () => _i47.PaymentRemoteDataSourceImpl(gh<_i46.PaymentApi>()));
+        () => _i47.PaymentRemoteDataSourceImpl(gh<_i10.CacheHelper>()));
     gh.lazySingleton<_i48.PaymentRemoteDataSource>(
-        () => _i48.PaymentRemoteDataSourceImpl(gh<_i10.CacheHelper>()));
+        () => _i48.PaymentRemoteDataSourceImpl(gh<_i46.PaymentApi>()));
     gh.lazySingleton<_i49.PaymentRepository>(
-        () => _i49.PaymentRepositoryImpl(gh<_i47.PaymentRemoteDataSource>()));
+        () => _i49.PaymentRepositoryImpl(gh<_i48.PaymentRemoteDataSource>()));
     gh.factory<_i50.ReelsApi>(() => _i50.ReelsApi(gh<_i5.Dio>()));
     gh.lazySingleton<_i51.ReelsRemoteDataSource>(
         () => _i51.ReelsRemoteDataSourceImpl(gh<_i50.ReelsApi>()));
@@ -368,16 +370,19 @@ extension GetItInjectableX on _i1.GetIt {
     gh.lazySingleton<_i91.StorePaymentWalletUseCase>(() =>
         _i91.StorePaymentWalletUseCase(
             walletRepository: gh<_i60.WalletRepository>()));
-    gh.factory<_i92.CategoryCubit>(
-        () => _i92.CategoryCubit(categoryRepo: gh<_i69.CategoryRepo>()));
-    gh.factory<_i93.CategoryProductCubit>(
-        () => _i93.CategoryProductCubit(categoryRepo: gh<_i69.CategoryRepo>()));
-    gh.lazySingleton<_i94.SignUpCubit>(
-        () => _i94.SignUpCubit(gh<_i90.SignUpRepository>()));
+    gh.lazySingleton<_i92.TransactionsPaymentUseCase>(() =>
+        _i92.TransactionsPaymentUseCase(
+            walletRepository: gh<_i60.WalletRepository>()));
+    gh.factory<_i93.CategoryCubit>(
+        () => _i93.CategoryCubit(categoryRepo: gh<_i69.CategoryRepo>()));
+    gh.factory<_i94.CategoryProductCubit>(
+        () => _i94.CategoryProductCubit(categoryRepo: gh<_i69.CategoryRepo>()));
+    gh.lazySingleton<_i95.SignUpCubit>(
+        () => _i95.SignUpCubit(gh<_i90.SignUpRepository>()));
     return this;
   }
 }
 
-class _$RegisterModule extends _i95.RegisterModule {}
+class _$RegisterModule extends _i96.RegisterModule {}
 
-class _$DioFactory extends _i96.DioFactory {}
+class _$DioFactory extends _i97.DioFactory {}

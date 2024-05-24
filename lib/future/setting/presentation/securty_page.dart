@@ -17,51 +17,53 @@ class SecurityPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => SecurityCubit(),
-      child: Scaffold(
-          body: Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
-              child: Column(children: [
-                HeaderScreens(
-                    title: 'privacy',
-                    onPressed: () {
-                      context.pop();
-                    }),
-                const SizedBox(
-                  height: 37,
-                ),
-                Row(
-                  children: [
-                    BlocBuilder<SecurityCubit, SecurityState>(
-                      builder: (context, state) {
-                        return Switch(
-                          materialTapTargetSize: MaterialTapTargetSize.padded,
-                          value: state is ToggleOnState,
-                          onChanged: (value) {
-                            context.read<SecurityCubit>().toggle();
-                          },
-                        );
-                      },
-                    ),
-                    const Spacer(),
-                    contactText(
-                      title: 'privacy'.tr(),
-                      des: 'privacy_phone'.tr(),
-                    ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    CircleAvatar(
-                      backgroundColor: HexColor('#F9F9F9'),
-                      radius: 25,
-                      child: const SvgCustomImage(
-                        image: 'assets/images/svg/security.svg',
-                        width: 25,
-                        height: 25,
+      child: SafeArea(
+        child: Scaffold(
+            body: Padding(
+                padding: const EdgeInsets.all(8),
+                child: Column(children: [
+                  HeaderScreens(
+                      title: 'privacy',
+                      onPressed: () {
+                        context.pop();
+                      }),
+                  const SizedBox(
+                    height: 37,
+                  ),
+                  Row(
+                    children: [
+                      BlocBuilder<SecurityCubit, SecurityState>(
+                        builder: (context, state) {
+                          return Switch(
+                            materialTapTargetSize: MaterialTapTargetSize.padded,
+                            value: state is ToggleOnState,
+                            onChanged: (value) {
+                              context.read<SecurityCubit>().toggle();
+                            },
+                          );
+                        },
                       ),
-                    ),
-                  ],
-                )
-              ]))),
+                      const Spacer(),
+                      contactText(
+                        title: 'privacy'.tr(),
+                        des: 'privacy_phone'.tr(),
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      CircleAvatar(
+                        backgroundColor: HexColor('#F9F9F9'),
+                        radius: 25,
+                        child: const SvgCustomImage(
+                          image: 'assets/images/svg/security.svg',
+                          width: 25,
+                          height: 25,
+                        ),
+                      ),
+                    ],
+                  )
+                ]))),
+      ),
     );
   }
 
