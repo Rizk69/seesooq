@@ -146,60 +146,27 @@ class _ProfilePageState extends State<ProfilePage> {
                                   }
                                   break;
                                 case 2:
-                                  {
-                                    showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return const AlertDialog(
-                                          backgroundColor: Colors.black,
-                                          content: Text('2'),
-                                          // Add AlertDialog content here for index 0
-                                        );
-                                      },
-                                    );
-                                  }
+                                  {}
                                   // Handle action for index 2
                                   break;
                                 case 3:
-                                  {
-                                    showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return const AlertDialog(
-                                          backgroundColor: Colors.black,
-                                          content: Text('3'),
-                                          // Add AlertDialog content here for index 0
-                                        );
-                                      },
-                                    );
-                                  }
+                                  {}
                                   break;
                                 case 4:
-                                  {
-                                    showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return const AlertDialog(
-                                          backgroundColor: Colors.black,
-                                          content: Text('4'),
-                                          // Add AlertDialog content here for index 0
-                                        );
-                                      },
-                                    );
-                                  }
+                                  {}
                                   break;
                                 case 5:
                                   {
-                                    showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return const AlertDialog(
-                                          backgroundColor: Colors.black,
-                                          content: Text('5'),
-                                          // Add AlertDialog content here for index 0
-                                        );
-                                      },
-                                    );
+                                    // showDialog(
+                                    //   context: context,
+                                    //   builder: (BuildContext context) {
+                                    //     return const AlertDialog(
+                                    //       backgroundColor: Colors.black,
+                                    //       content: Text('5'),
+                                    //       // Add AlertDialog content here for index 0
+                                    //     );
+                                    //   },
+                                    // );
                                   }
                                   break;
 
@@ -314,7 +281,9 @@ class _ProfilePageState extends State<ProfilePage> {
                       backgroundColor: HexColor('#F9F9F9'),
                       radius: 25,
                       child: SvgCustomImage(
-                        image:user!=null? titles[index].toSvg:titles[index].replaceAll('logout', 'login').toSvg,
+                        image: user != null
+                            ? titles[index].toSvg
+                            : titles[index].replaceAll('logout', 'login').toSvg,
                         width: 25,
                         height: 25,
                       ),
