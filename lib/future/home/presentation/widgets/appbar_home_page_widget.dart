@@ -51,9 +51,9 @@ class AppBarHomePageWidgetState extends State<AppBarHomePageWidget> {
                           switch (index) {
                             case 0:
                               widget.scaffoldKey.currentState!.openDrawer();
+                            // case 1:
+                            //   print('ssss');
                             case 1:
-                              print('ssss');
-                            case 2:
                               context.goNamed(Routes.notification);
 
                             default:
@@ -135,4 +135,6 @@ class AppBarHomePageWidgetState extends State<AppBarHomePageWidget> {
   }
 }
 
-List<String> actions = ['menu', 'message', 'notification'];
+List<String> actions = ['menu',
+  // 'message',
+  'notification'];
