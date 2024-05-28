@@ -8,8 +8,14 @@ import 'package:opensooq/core/widget/text_translate_manager.dart';
 import 'package:opensooq/future/signup/presentation/cubit/signup_cubit.dart';
 
 class SignUpWithSocialMediaWidget extends StatelessWidget {
-  const SignUpWithSocialMediaWidget({super.key, required this.text});
+  const SignUpWithSocialMediaWidget(
+      {super.key,
+      required this.text,
+      required this.isAndroid,
+      required this.isIos});
   final String text;
+  final bool isAndroid;
+  final bool isIos;
 
   @override
   Widget build(BuildContext context) {
@@ -35,45 +41,49 @@ class SignUpWithSocialMediaWidget extends StatelessWidget {
             const SizedBox(
               width: 15,
             ),
-            Flexible(
-              fit: FlexFit.tight,
-              child: InkWell(
-                onTap: () {
-                  SignUpCubit.get(context).signUpFromGoogle();
-                },
-                child: Container(
-                  height: 60,
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: HexColor('#F5F5F5').withOpacity(0.6),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: SvgPicture.asset('google'.toSvg),
-                ),
-              ),
-            ),
+            isAndroid
+                ? Flexible(
+                    fit: FlexFit.tight,
+                    child: InkWell(
+                      onTap: () {
+                        SignUpCubit.get(context).signUpFromGoogle();
+                      },
+                      child: Container(
+                        height: 60,
+                        padding: const EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          color: HexColor('#F5F5F5').withOpacity(0.6),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: SvgPicture.asset('google'.toSvg),
+                      ),
+                    ),
+                  )
+                : const SizedBox(),
             const SizedBox(
               width: 15,
             ),
-            Flexible(
-              fit: FlexFit.tight,
-              child: InkWell(
-                onTap: () {
-                  SignUpCubit.get(context).signUpFromApple();
-                },
-                child: Container(
-                  height: 60,
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: HexColor('#F5F5F5').withOpacity(0.6),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: SvgPicture.asset(
-                    'apple'.toSvg,
-                  ),
-                ),
-              ),
-            ),
+            isIos
+                ? Flexible(
+                    fit: FlexFit.tight,
+                    child: InkWell(
+                      onTap: () {
+                        SignUpCubit.get(context).signUpFromApple();
+                      },
+                      child: Container(
+                        height: 60,
+                        padding: const EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          color: HexColor('#F5F5F5').withOpacity(0.6),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: SvgPicture.asset(
+                          'apple'.toSvg,
+                        ),
+                      ),
+                    ),
+                  )
+                : const SizedBox(),
           ],
         )
       ],
