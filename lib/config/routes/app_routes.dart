@@ -268,7 +268,7 @@ final GoRouter router = GoRouter(
                       ]),
                 ]),
           ]),
-          StatefulShellBranch(routes: [ChatRoute()]),
+          // StatefulShellBranch(routes: [ChatRoute()]),
           StatefulShellBranch(routes: [
             ProfileRoute(),
           ]),

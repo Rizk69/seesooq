@@ -48,11 +48,13 @@ class _AppWithNavBarState extends State<AppWithNavBar> {
                           ),
                           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'البحث'),
                           BottomNavigationBarItem(icon: Icon(Icons.add), label: 'أضف إعلان'),
-                          BottomNavigationBarItem(icon: Icon(Icons.message), label: 'الرسائل'),
+                          // BottomNavigationBarItem(icon: Icon(Icons.message), label: 'الرسائل'),
                           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'حسابي'),
                         ],
                         onTap: (index) {
-                          if (!gust) {
+                          // index0,4
+
+                          if (!gust || index == 3 || index == 0) {
                             _onTap(context, index);
                           }
                         },

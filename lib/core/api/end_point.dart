@@ -44,6 +44,7 @@ class EndPoint {
   static const String getFav = 'my-favourite';
   static const String getReelsFav = 'my-favourite-reel';
   static const String storePayment = 'payment/store';
+  static const String transactionsPayment = 'transactions';
   // subscription
   static const String addFav = 'add-to-favourites/{id}';
   static const String getBrands = 'brands';

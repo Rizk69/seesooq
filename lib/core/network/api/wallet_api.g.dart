@@ -74,6 +74,38 @@ class _WalletApi implements WalletApi {
     return value;
   }
 
+  @override
+  Future<TransactionModel> transactionsPayment({
+    String? fromDate,
+    String? toDate,
+    String? typePayment,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = fromDate;
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<TransactionModel>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'transactions',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = await compute(deserializeTransactionModel, _result.data!);
+    return value;
+  }
+
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
         !(requestOptions.responseType == ResponseType.bytes ||

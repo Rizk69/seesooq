@@ -40,7 +40,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     var user = FirebaseAuth.instance.currentUser;
-
+//is guest
     // return BlocBuilder<LoginCubit, LoginState>(builder: (context, state) {
     return BlocProvider(
       create: (context) => ProfileCubit()..getStatistic(),
@@ -76,7 +76,8 @@ class _ProfilePageState extends State<ProfilePage> {
             children: [
               const SizedBox(height: 10),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
@@ -105,7 +106,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   }
 
                   if (state.profileStatus == ProfileStatus.error) {
-                    return const Center(child: Text('Error'));
+                    return const Center(child: Text('no data found'));
                   }
                   if (state.profileStatus == ProfileStatus.loaded) {
                     var model = state.statisticModel;
@@ -126,7 +127,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                 color: Colors.grey.withOpacity(0.5),
                                 spreadRadius: 0.5,
                                 blurRadius: 0.5,
-                                offset: const Offset(0, 0.5), // changes position of shadow
+                                offset: const Offset(
+                                    0, 0.5), // changes position of shadow
                               ),
                             ],
                           ),
@@ -144,60 +146,27 @@ class _ProfilePageState extends State<ProfilePage> {
                                   }
                                   break;
                                 case 2:
-                                  {
-                                    showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return const AlertDialog(
-                                          backgroundColor: Colors.black,
-                                          content: Text('2'),
-                                          // Add AlertDialog content here for index 0
-                                        );
-                                      },
-                                    );
-                                  }
+                                  {}
                                   // Handle action for index 2
                                   break;
                                 case 3:
-                                  {
-                                    showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return const AlertDialog(
-                                          backgroundColor: Colors.black,
-                                          content: Text('3'),
-                                          // Add AlertDialog content here for index 0
-                                        );
-                                      },
-                                    );
-                                  }
+                                  {}
                                   break;
                                 case 4:
-                                  {
-                                    showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return const AlertDialog(
-                                          backgroundColor: Colors.black,
-                                          content: Text('4'),
-                                          // Add AlertDialog content here for index 0
-                                        );
-                                      },
-                                    );
-                                  }
+                                  {}
                                   break;
                                 case 5:
                                   {
-                                    showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return const AlertDialog(
-                                          backgroundColor: Colors.black,
-                                          content: Text('5'),
-                                          // Add AlertDialog content here for index 0
-                                        );
-                                      },
-                                    );
+                                    // showDialog(
+                                    //   context: context,
+                                    //   builder: (BuildContext context) {
+                                    //     return const AlertDialog(
+                                    //       backgroundColor: Colors.black,
+                                    //       content: Text('5'),
+                                    //       // Add AlertDialog content here for index 0
+                                    //     );
+                                    //   },
+                                    // );
                                   }
                                   break;
 
@@ -219,7 +188,8 @@ class _ProfilePageState extends State<ProfilePage> {
                             ),
                             leading: CircleAvatar(
                               radius: 25,
-                              backgroundColor: HexColor('#4C0497').withOpacity(0.1),
+                              backgroundColor:
+                                  HexColor('#4C0497').withOpacity(0.1),
                               child: Image.asset(
                                 _iconTitles()[index],
                                 width: 35,
@@ -260,7 +230,9 @@ class _ProfilePageState extends State<ProfilePage> {
                 itemBuilder: (context, index) {
                   return ListTile(
                     title: GradientText(
-                      titles[index].tr(),
+                      user != null
+                          ? titles[index].tr()
+                          : titles[index].replaceAll('logout', 'login').tr(),
                       gradient: LinearGradient(
                         colors: [
                           AppColors.grey.withOpacity(0.7),
@@ -271,6 +243,19 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                     ),
                     onTap: () {
+                      //is guest
+                      if (user == null) {
+                        //change logout to login
+
+                        if (titles[index].toString() == 'logout') {
+                          LoginCubit.get(context)
+                              .deleteLocalUser()
+                              .then((value) {
+                            context.goNamed(Routes.login);
+                          });
+                        }
+                        return;
+                      }
                       if (titles[index].toString() == 'ads_drawer') {
                         context.pushNamed(Routes.myAds);
                       } else if (titles[index].toString() == 'reels_drawer') {
@@ -279,7 +264,8 @@ class _ProfilePageState extends State<ProfilePage> {
                         context.pushNamed(Routes.wallet);
                       } else if (titles[index].toString() == 'package_drawer') {
                         context.pushNamed(Routes.packages);
-                      } else if (titles[index].toString() == 'favorite_drawer') {
+                      } else if (titles[index].toString() ==
+                          'favorite_drawer') {
                         context.pushNamed(Routes.favorite);
                       } else if (titles[index].toString() == 'setting_drawer') {
                         context.pushNamed(Routes.setting);
@@ -295,7 +281,9 @@ class _ProfilePageState extends State<ProfilePage> {
                       backgroundColor: HexColor('#F9F9F9'),
                       radius: 25,
                       child: SvgCustomImage(
-                        image: titles[index].toSvg,
+                        image: user != null
+                            ? titles[index].toSvg
+                            : titles[index].replaceAll('logout', 'login').toSvg,
                         width: 25,
                         height: 25,
                       ),

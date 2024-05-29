@@ -47,7 +47,7 @@ class AppBarHomePageWidgetState extends State<AppBarHomePageWidget> {
                         padding: const EdgeInsets.all(10),
                         visualDensity: VisualDensity.compact,
                         onPressed: () {
-                          // if(!widget.isGust){
+                          if(!widget.isGust){
                           switch (index) {
                             case 0:
                               widget.scaffoldKey.currentState!.openDrawer();
@@ -58,7 +58,7 @@ class AppBarHomePageWidgetState extends State<AppBarHomePageWidget> {
 
                             default:
                           }
-                        // }
+                        }
                           },
                         icon: SvgPicture.asset(
                           actions[index].toSvg,
