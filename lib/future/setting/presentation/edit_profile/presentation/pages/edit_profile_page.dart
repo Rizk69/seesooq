@@ -23,7 +23,11 @@ class EditProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<EditProfileCubit, EditProfileState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state.statusEditUser == StatusEditUser.success) {
+          HomeCubit.get(context).getUserLocal();
+        }
+      },
       builder: (context, state) {
         var cubit = EditProfileCubit.get(context);
         var userLocalModel = HomeCubit.get(context).state.userLocalModel!;

@@ -42,40 +42,43 @@ class _DynamicFormWidgetState extends State<DynamicFormWidget> {
               const SizedBox(
                 height: 10,
               ),
-              CustomDropdown<Children>.search(
-                  items: widget.options.map((children) => children).toList(),
-                  key: const Key('dropdown'),
-                  initialItem: widget.options
-                      .where((element) =>
-                          state.attributesForm.attributes.containsKey(widget.optionId) &&
-                          element.id == state.attributesForm.attributes[widget.optionId])
-                      .firstOrNull,
-                  validator: (value) => value == null ? 'Please select a value' : null,
-                  expandedHeaderPadding: const EdgeInsets.all(10),
-                  listItemBuilder: (context, item, isSelected, onItemSelect) => InkWell(
-                        onTap: onItemSelect,
-                        child: TranslateText(
-                          text: item.title ?? '',
-                          styleText: StyleText.h6,
-                          fontSize: 17,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                  hintText: widget.name,
-                  headerBuilder: (context, selectedItem) => TranslateText(
-                        text: selectedItem.title ?? '',
-                        styleText: StyleText.h6,
-                        fontSize: 17,
-                        fontWeight: FontWeight.w400,
-                      ),
-                  onChanged: (value) {
-                    var cubit = AddAdsCubit.get(context);
-                    cubit.updateAttributesForm(attributes: {widget.optionId: value.id?.toInt() ?? 0});
-                  },
-                  hideSelectedFieldWhenExpanded: true,
-                  decoration: const CustomDropdownDecoration(
-                    hintStyle: TextStyle(color: Colors.grey),
-                  )),
+              CustomDropdown.search(
+                items: widget.options.map((children) => children).toList(),
+                initialItem: widget.options
+                    .where((element) =>
+                        state.attributesForm.attributes.containsKey(widget.optionId) &&
+                        element.id == state.attributesForm.attributes[widget.optionId])
+                    .firstOrNull,
+                validator: (value) => value == null ? 'Please select a value' : null,
+                expandedHeaderPadding: const EdgeInsets.all(10),
+                listItemBuilder: (context, item, isSelected, onItemSelect) => InkWell(
+                  onTap: onItemSelect,
+                  child: TranslateText(
+                    text: item.title ?? '',
+                    styleText: StyleText.h6,
+                    fontSize: 17,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+                hintText: widget.name,
+                headerBuilder: (context, selectedItem) => TranslateText(
+                  text: selectedItem.title ?? '',
+                  styleText: StyleText.h6,
+                  fontSize: 17,
+                  fontWeight: FontWeight.w400,
+                ),
+                onChanged: (value) {
+                  var cubit = AddAdsCubit.get(context);
+                  cubit.updateAttributesForm(attributes: {widget.optionId: value.id?.toInt() ?? 0});
+                },
+                canCloseOutsideBounds: true,
+                searchHintText: 'Search ...',
+                hideSelectedFieldWhenExpanded: true,
+                decoration: const CustomDropdownDecoration(
+                  hintStyle: TextStyle(color: Colors.grey),
+                ),
+                validateOnChange: false,
+              ),
             ],
             if (widget.options.isNotEmpty && widget.type == 'radio') ...[
               TranslateText(

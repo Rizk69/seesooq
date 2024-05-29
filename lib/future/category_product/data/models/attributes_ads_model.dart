@@ -1,3 +1,5 @@
+import 'package:animated_custom_dropdown/custom_dropdown.dart';
+
 AttributesAdsModel deserializeAttributesAdsModel(Map<String, dynamic> json) => AttributesAdsModel.fromJson(json);
 Map<String, dynamic> serializeAttributesAdsModel(AttributesAdsModel object) => object.toJson();
 List<AttributesAdsModel> deserializeAttributesAdsModelList(List<Map<String, dynamic>> json) =>
@@ -103,7 +105,7 @@ class Attributes {
   }
 }
 
-class Children {
+class Children with CustomDropdownListFilter {
   Children({
     this.id,
     this.title,
@@ -147,5 +149,10 @@ class Children {
       map['children'] = children?.map((v) => v.toJson()).toList();
     }
     return map;
+  }
+
+  @override
+  bool filter(String query) {
+    return title!.toLowerCase().contains(query.toLowerCase());
   }
 }

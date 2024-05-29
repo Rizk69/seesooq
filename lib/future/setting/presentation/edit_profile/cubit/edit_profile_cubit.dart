@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:opensooq/di.dart' as di;
+import 'package:opensooq/future/setting/data/data_sources/setting_local_data_source.dart';
 import 'package:opensooq/future/setting/data/repositories/setting_repository.dart';
+import 'package:opensooq/future/user_local_model.dart';
 
 import 'edit_profile_state.dart';
 
@@ -12,6 +14,7 @@ class EditProfileCubit extends Cubit<EditProfileState> {
 
   static EditProfileCubit get(context) => BlocProvider.of(context);
   final SettingRepository settingRepository = di.sl<SettingRepository>();
+  final SettingLocalDataSource settingLocalDataSource = di.sl<SettingLocalDataSource>();
 
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
@@ -46,12 +49,23 @@ class EditProfileCubit extends Cubit<EditProfileState> {
           statusEditUser: StatusEditUser.error,
         ),
       ),
-      (right) => emit(
-        state.copyWith(
-          editUserModel: right,
-          statusEditUser: StatusEditUser.success,
-        ),
-      ),
+      (userModel) async {
+        UserLocalModel? user = UserLocalModel(
+            user: UserDataModel(name: userModel.user?.name, email: userModel.user?.email, id: userModel.user?.id, phone: userModel.user?.phone));
+        await updateLocalUser(user);
+        emit(
+          state.copyWith(
+            editUserModel: userModel,
+            statusEditUser: StatusEditUser.success,
+          ),
+        );
+      },
     );
+  }
+
+  Future<void> updateLocalUser(UserLocalModel userModel) async {
+    final user = await settingLocalDataSource.getUserToLocal();
+    UserLocalModel? userLocalModel = userModel..token = user?.token;
+    await settingLocalDataSource.saveUserToLocal(userLocalModel: userLocalModel);
   }
 }

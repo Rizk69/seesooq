@@ -12,13 +12,22 @@ class CacheHelper {
   );
 
   Future<T?> hiveGetDataById<T>(int id) async {
-    var i = await Hive.openBox<T>('user');
+    Box<T>? i;
+    if (!Hive.isBoxOpen('user')) {
+      i = await Hive.openBox<T>('user');
+    } else {
+      i = Hive.box<T>('user');
+    }
     return i.get(id);
   }
 
   Future<void> hivePutData<T>(T object, String boxName) async {
     try {
-      var i = await Hive.openBox<T>(boxName);
+      Box<T>? i;
+      if (!Hive.isBoxOpen(boxName)) {
+        await Hive.openBox<T>(boxName);
+      }
+      i = Hive.box<T>(boxName);
       await i.put(0, object);
     } catch (e) {
       debugPrint(e.toString());

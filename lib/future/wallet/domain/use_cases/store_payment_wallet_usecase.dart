@@ -53,6 +53,8 @@ class StorePaymentParams extends Equatable {
       'transaction_data': transactionData,
       'package_id': packageId,
       'currency': currency,
+      // deposit, withdrawal
+      'type_payment': type == 'wallet_recharge' ? 'withdrawal' : 'deposit',
     };
   }
 
