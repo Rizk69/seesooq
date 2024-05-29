@@ -54,7 +54,7 @@ class _AppWithNavBarState extends State<AppWithNavBar> {
                         onTap: (index) {
                           // index0,4
 
-                          if (!gust || index == 3 || index == 0) {
+                          if (!gust || index == 0) {
                             _onTap(context, index);
                           }
                         },

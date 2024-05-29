@@ -12,72 +12,114 @@ import 'package:opensooq/future/home/presentation/cubit/home_cubit.dart';
 import 'package:opensooq/future/login/presentation/cubit/login_cubit.dart';
 
 class MyOptionDrawerWidget extends StatelessWidget {
-  const MyOptionDrawerWidget({super.key, required this.cubit, required this.scaffoldKey});
+  const MyOptionDrawerWidget(
+      {super.key, required this.cubit, required this.scaffoldKey});
 
   final HomeCubit cubit;
   final GlobalKey<ScaffoldState> scaffoldKey;
-
   @override
   Widget build(BuildContext context) {
+    var isGust = cubit.state.userLocalModel?.user?.name?.isEmpty ?? true;
+
     return Expanded(
       child: ListView.separated(
-        itemCount: titles.length,
+        itemCount: isGust ? 1 : titles.length,
         itemBuilder: (context, index) {
-          return ListTile(
-            title: GradientText(
-              titles[index].tr(),
-              gradient: LinearGradient(
-                colors: [
-                  AppColors.grey.withOpacity(0.7),
-                  HexColor('#000000').withOpacity(0.7),
-                ],
-                begin: Alignment.bottomCenter,
-                end: Alignment.topCenter,
-              ),
-            ),
-            onTap: () {
-              cubit.updateIndex(index);
+          return isGust
+              ? ListTile(
+                  title: GradientText(
+                    'login'.tr(),
+                    gradient: LinearGradient(
+                      colors: [
+                        AppColors.grey.withOpacity(0.7),
+                        HexColor('#000000').withOpacity(0.7),
+                      ],
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter,
+                    ),
+                  ),
+                  onTap: () {
+                    cubit.updateIndex(index);
 
-              scaffoldKey.currentState!.closeDrawer();
+                    scaffoldKey.currentState!.closeDrawer();
 
-              if (titles[index].toString() == 'ads_drawer') {
-                context.pushNamed(Routes.myAds);
-              } else if (titles[index].toString() == 'reels_drawer') {
-                context.pushNamed(Routes.reels);
-              } else if (titles[index].toString() == 'wallet_drawer') {
-                context.pushNamed(Routes.wallet);
-              } else if (titles[index].toString() == 'package_drawer') {
-                context.pushNamed(Routes.packages);
-              } else if (titles[index].toString() == 'favorite_drawer') {
-                context.pushNamed(Routes.favorite);
-              } else if (titles[index].toString() == 'setting_drawer') {
-                context.pushNamed(Routes.setting);
-              } else if (titles[index].toString() == 'blogs_drawer') {
-                context.pushNamed(Routes.blogsRoute);
-              } else if (titles[index].toString() == 'logout') {
-                LoginCubit.get(context).deleteLocalUser().then((value) {
-                  context.goNamed(Routes.login);
-                });
-              }
-            },
-            leading: CircleAvatar(
-              backgroundColor: HexColor('#F9F9F9'),
-              radius: 20,
-              child: SvgCustomImage(
-                image: titles[index].toSvg,
-                width: 20,
-                height: 20,
-              ),
-            ),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-            horizontalTitleGap: 6,
-            trailing: Icon(
-              Icons.arrow_forward_ios,
-              color: AppColors.grey.withOpacity(0.7),
-            ),
-          );
+                    LoginCubit.get(context).deleteLocalUser().then((value) {
+                      context.goNamed(Routes.login);
+                    });
+                  },
+                  leading: CircleAvatar(
+                    backgroundColor: HexColor('#F9F9F9'),
+                    radius: 20,
+                    child: SvgCustomImage(
+                      image: 'login'.toSvg,
+                      width: 20,
+                      height: 20,
+                    ),
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  horizontalTitleGap: 6,
+                  trailing: Icon(
+                    Icons.arrow_forward_ios,
+                    color: AppColors.grey.withOpacity(0.7),
+                  ),
+                )
+              : ListTile(
+                  title: GradientText(
+                    titles[index].tr(),
+                    gradient: LinearGradient(
+                      colors: [
+                        AppColors.grey.withOpacity(0.7),
+                        HexColor('#000000').withOpacity(0.7),
+                      ],
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter,
+                    ),
+                  ),
+                  onTap: () {
+                    cubit.updateIndex(index);
+
+                    scaffoldKey.currentState!.closeDrawer();
+
+                    if (titles[index].toString() == 'ads_drawer') {
+                      context.pushNamed(Routes.myAds);
+                    } else if (titles[index].toString() == 'reels_drawer') {
+                      context.pushNamed(Routes.reels);
+                    } else if (titles[index].toString() == 'wallet_drawer') {
+                      context.pushNamed(Routes.wallet);
+                    } else if (titles[index].toString() == 'package_drawer') {
+                      context.pushNamed(Routes.packages);
+                    } else if (titles[index].toString() == 'favorite_drawer') {
+                      context.pushNamed(Routes.favorite);
+                    } else if (titles[index].toString() == 'setting_drawer') {
+                      context.pushNamed(Routes.setting);
+                    } else if (titles[index].toString() == 'blogs_drawer') {
+                      context.pushNamed(Routes.blogsRoute);
+                    } else if (titles[index].toString() == 'logout') {
+                      LoginCubit.get(context).deleteLocalUser().then((value) {
+                        context.goNamed(Routes.login);
+                      });
+                    }
+                  },
+                  leading: CircleAvatar(
+                    backgroundColor: HexColor('#F9F9F9'),
+                    radius: 20,
+                    child: SvgCustomImage(
+                      image: titles[index].toSvg,
+                      width: 20,
+                      height: 20,
+                    ),
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  horizontalTitleGap: 6,
+                  trailing: Icon(
+                    Icons.arrow_forward_ios,
+                    color: AppColors.grey.withOpacity(0.7),
+                  ),
+                );
         },
         separatorBuilder: (context, index) {
           return const Gap(10);

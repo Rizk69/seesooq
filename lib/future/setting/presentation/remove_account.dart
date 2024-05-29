@@ -78,7 +78,7 @@ class RemoveAccountPage extends StatelessWidget {
                                     value: reason.id,
                                     groupValue: state.selectedReason,
                                     onChanged: (value) {
-                                      // context.read<ReasonDeletionsCubit>().selectReason(value!);
+                                      context.read<ReasonDeletionsCubit>().selectReason(value!);
                                     },
                                   ),
                                 ),

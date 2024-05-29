@@ -7,7 +7,8 @@ import 'package:opensooq/core/utils/media_query_values.dart';
 
 class AppBarHomePageWidget extends StatefulWidget
     implements PreferredSizeWidget {
-  const AppBarHomePageWidget({super.key, required this.scaffoldKey, required this.isGust})
+  const AppBarHomePageWidget(
+      {super.key, required this.scaffoldKey, required this.isGust})
       : preferredSize = const Size.fromHeight(kToolbarHeight);
   final GlobalKey<ScaffoldState> scaffoldKey;
 
@@ -47,19 +48,27 @@ class AppBarHomePageWidgetState extends State<AppBarHomePageWidget> {
                         padding: const EdgeInsets.all(10),
                         visualDensity: VisualDensity.compact,
                         onPressed: () {
-                          if(!widget.isGust){
-                          switch (index) {
-                            case 0:
-                              widget.scaffoldKey.currentState!.openDrawer();
-                            // case 1:
-                            //   print('ssss');
-                            case 1:
-                              context.goNamed(Routes.notification);
+                          if (!widget.isGust) {
+                            switch (index) {
 
-                            default:
+                              case 0:
+                                widget.scaffoldKey.currentState!.openDrawer();
+                              // case 1:
+                              //   print('ssss');
+                              case 1:
+                                context.goNamed(Routes.notification);
+
+                              default:
+                            }
+                          }else{
+                            switch (index) {
+                              case 0:
+                                widget.scaffoldKey.currentState!.openDrawer();
+
+                              default:
+                            }
                           }
-                        }
-                          },
+                        },
                         icon: SvgPicture.asset(
                           actions[index].toSvg,
                           width: 20,
@@ -135,6 +144,8 @@ class AppBarHomePageWidgetState extends State<AppBarHomePageWidget> {
   }
 }
 
-List<String> actions = ['menu',
+List<String> actions = [
+  'menu',
   // 'message',
-  'notification'];
+  'notification'
+];

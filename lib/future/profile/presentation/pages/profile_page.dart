@@ -230,9 +230,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 itemBuilder: (context, index) {
                   return ListTile(
                     title: GradientText(
-                      user != null
-                          ? titles[index].tr()
-                          : titles[index].replaceAll('logout', 'login').tr(),
+                      titles[index].tr(),
                       gradient: LinearGradient(
                         colors: [
                           AppColors.grey.withOpacity(0.7),
@@ -244,18 +242,17 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                     onTap: () {
                       //is guest
-                      if (user == null) {
-                        //change logout to login
-
-                        if (titles[index].toString() == 'logout') {
-                          LoginCubit.get(context)
-                              .deleteLocalUser()
-                              .then((value) {
-                            context.goNamed(Routes.login);
-                          });
-                        }
-                        return;
-                      }
+                      // if (user == null) {
+                      //
+                      //   if (titles[index].toString() == 'logout') {
+                      //     LoginCubit.get(context)
+                      //         .deleteLocalUser()
+                      //         .then((value) {
+                      //       context.goNamed(Routes.login);
+                      //     });
+                      //   }
+                      //   return;
+                      // }
                       if (titles[index].toString() == 'ads_drawer') {
                         context.pushNamed(Routes.myAds);
                       } else if (titles[index].toString() == 'reels_drawer') {
@@ -281,9 +278,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       backgroundColor: HexColor('#F9F9F9'),
                       radius: 25,
                       child: SvgCustomImage(
-                        image: user != null
-                            ? titles[index].toSvg
-                            : titles[index].replaceAll('logout', 'login').toSvg,
+                        image: titles[index].toSvg,
                         width: 25,
                         height: 25,
                       ),

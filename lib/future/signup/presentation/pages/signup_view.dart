@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:country_flags/country_flags.dart';
 import 'package:country_picker/country_picker.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -296,7 +295,11 @@ class _SignUpViewState extends State<SignUpView> {
                     ),
                   ),
                   SizedBox(height: context.height * 0.02),
-                  SignUpWithSocialMediaWidget(text: 'textSingUp'.tr(), isAndroid: Platform.isAndroid, isIos: Platform.isAndroid,),
+                  SignUpWithSocialMediaWidget(
+                    text: 'textSingUp'.tr(),
+                    isAndroid: Platform.isAndroid,
+                    isIos: Platform.isIOS,
+                  ),
                   SizedBox(height: context.height * 0.02),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
