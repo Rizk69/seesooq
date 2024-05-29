@@ -12,7 +12,6 @@ class NotificationEmpty extends StatelessWidget {
       fillOverscroll: true,
       child: Center(
         child: Column(
-
           children: [
             const SizedBox(
               height: 50,
@@ -27,14 +26,14 @@ class NotificationEmpty extends StatelessWidget {
             ),
             Text(
               'emptyNotification',
-              style: Theme.of(context).textTheme.headline6,
+              style: Theme.of(context).textTheme.bodySmall,
             ),
             const SizedBox(
               height: 20,
             ),
             Text(
               'emptyNotificationDescription',
-              style: Theme.of(context).textTheme.bodyText2,
+              style: Theme.of(context).textTheme.bodySmall,
               textAlign: TextAlign.center,
             ),
           ],

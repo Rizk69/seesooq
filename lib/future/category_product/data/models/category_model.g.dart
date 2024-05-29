@@ -33,7 +33,7 @@ Map<String, dynamic> _$DataCategoryUpdatedToJson(
 
 CategoryDataModel _$CategoryDataModelFromJson(Map<String, dynamic> json) =>
     CategoryDataModel(
-      id: json['id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
       name: json['title'] as String?,
       content: json['content'] as String?,
       logo: json['logo'] as String?,

@@ -18,10 +18,10 @@ Map<String, dynamic> _$BlogsToJson(Blogs instance) => <String, dynamic>{
 
 BlogsData _$BlogsDataFromJson(Map<String, dynamic> json) => BlogsData(
       json['title'] as String?,
-      json['id'] as int?,
+      (json['id'] as num?)?.toInt(),
       json['shortDescription'] as String?,
       json['description'] as String?,
-      json['visits'] as int?,
+      (json['visits'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$BlogsDataToJson(BlogsData instance) => <String, dynamic>{

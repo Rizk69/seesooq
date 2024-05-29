@@ -20,10 +20,10 @@ Map<String, dynamic> _$MyReelsModelToJson(MyReelsModel instance) =>
     };
 
 MyReels _$MyReelsFromJson(Map<String, dynamic> json) => MyReels(
-      id: json['id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
       video: json['video'] as String?,
       createAt: json['create_at'] as String?,
-      viewersCount: json['viewers_count'] as int?,
+      viewersCount: (json['viewers_count'] as num?)?.toInt(),
       viewers: (json['viewers'] as List<dynamic>?)
           ?.map((e) => ViewersModel.fromJson(e as Map<String, dynamic>))
           .toList(),

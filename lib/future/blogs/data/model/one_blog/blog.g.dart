@@ -8,10 +8,10 @@ part of 'blog.dart';
 
 OneBlog _$OneBlogFromJson(Map<String, dynamic> json) => OneBlog(
       json['title'] as String?,
-      json['id'] as int?,
+      (json['id'] as num?)?.toInt(),
       json['brief_description'] as String?,
       json['description'] as String?,
-      json['visits'] as int?,
+      (json['visits'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$OneBlogToJson(OneBlog instance) => <String, dynamic>{

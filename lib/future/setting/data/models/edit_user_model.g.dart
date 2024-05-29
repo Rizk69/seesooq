@@ -23,7 +23,7 @@ UpdateUserData _$UpdateUserDataFromJson(Map<String, dynamic> json) =>
       json['name'] as String,
       json['email'] as String,
       json['phone'] as String,
-      json['id'] as int?,
+      (json['id'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$UpdateUserDataToJson(UpdateUserData instance) =>

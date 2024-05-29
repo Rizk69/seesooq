@@ -21,7 +21,7 @@ Map<String, dynamic> _$UsersStoryModelToJson(UsersStoryModel instance) =>
     };
 
 InfoData _$InfoDataFromJson(Map<String, dynamic> json) => InfoData(
-      userId: json['id'] as int?,
+      userId: (json['id'] as num?)?.toInt(),
       image: json['image'] as String?,
       name: json['name'] as String?,
       stories: (json['stories'] as List<dynamic>?)

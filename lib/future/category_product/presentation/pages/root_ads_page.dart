@@ -24,10 +24,7 @@ class _RootAdsPageState extends State<RootAdsPage> {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          if (!(GoRouterState.of(context)
-                  .fullPath
-                  ?.contains(Routes.uploadPhoto) ??
-              true))
+          if (!(GoRouterState.of(context).fullPath?.contains(Routes.uploadPhoto) ?? true))
             SliverAppBar(
                 automaticallyImplyLeading: false,
                 centerTitle: true,
@@ -35,9 +32,7 @@ class _RootAdsPageState extends State<RootAdsPage> {
                 surfaceTintColor: Colors.white,
                 toolbarHeight: kToolbarHeight + 40,
                 flexibleSpace: EasyStepper(
-                  activeStep: widget.statefulNavigationShell.currentIndex == 4
-                      ? 0
-                      : widget.statefulNavigationShell.currentIndex,
+                  activeStep: widget.statefulNavigationShell.currentIndex == 4 ? 0 : widget.statefulNavigationShell.currentIndex,
                   unreachedStepTextColor: Colors.grey,
                   finishedStepTextColor: AppColors.primary,
                   activeStepBackgroundColor: AppColors.primary.withOpacity(0.1),
@@ -49,11 +44,7 @@ class _RootAdsPageState extends State<RootAdsPage> {
                   unreachedStepBorderType: BorderType.normal,
                   showLoadingAnimation: false,
                   steps: [
-                    EasyStep(
-                        title: "adDetails".tr(),
-                        icon: const Icon(
-                            CupertinoIcons.arrow_up_left_arrow_down_right),
-                        enabled: true),
+                    EasyStep(title: "adDetails".tr(), icon: const Icon(CupertinoIcons.arrow_up_left_arrow_down_right), enabled: true),
                     EasyStep(
                       title: "locationDetails".tr(),
                       icon: const Icon(
@@ -70,25 +61,16 @@ class _RootAdsPageState extends State<RootAdsPage> {
                     ),
                   ],
                   direction: Axis.horizontal,
-                  lineType: LineType.normal,
-                  activeLineColor: AppColors.primary,
                   activeStepIconColor: AppColors.primary,
-                  unreachedLineColor: AppColors.grey.withOpacity(0.5),
                 )),
           SliverFillRemaining(
             hasScrollBody: true,
             fillOverscroll: true,
             child: BlocProvider(
               create: (context) => AddAdsCubit(categoryRepo: di.sl())
-                ..selectSubCategory(
-                    subCategory: CategoryProductCubit.get(context)
-                        .state
-                        .selectedSubCategory)
+                ..selectSubCategory(subCategory: CategoryProductCubit.get(context).state.selectedSubCategory)
                 ..getAttributesForAds()
-                ..getBrands(
-                    subCategory: CategoryProductCubit.get(context)
-                        .state
-                        .selectedSubCategory),
+                ..getBrands(subCategory: CategoryProductCubit.get(context).state.selectedSubCategory),
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: widget.statefulNavigationShell,
