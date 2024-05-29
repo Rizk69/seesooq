@@ -7,7 +7,7 @@ part of 'viewers_model.dart';
 // **************************************************************************
 
 ViewersModel _$ViewersModelFromJson(Map<String, dynamic> json) => ViewersModel(
-      id: json['id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
       name: json['name'] as String?,
       phone: json['phone'] as String?,
       email: json['email'] as String?,

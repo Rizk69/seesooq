@@ -29,7 +29,7 @@ Map<String, dynamic> _$BannerDataToJson(BannerData instance) =>
     };
 
 Banners _$BannersFromJson(Map<String, dynamic> json) => Banners(
-      id: json['id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
       link: json['link'] as String?,
       image: json['image'] as String?,
       title: json['title'] as String?,

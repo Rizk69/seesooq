@@ -106,7 +106,7 @@ Map<String, dynamic> _$UserLocalModelToJson(UserLocalModel instance) =>
 
 UserDataModel _$UserDataModelFromJson(Map<String, dynamic> json) =>
     UserDataModel(
-      id: json['id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
       name: json['name'] as String?,
       phone: json['phone'] as String?,
       email: json['email'] as String?,

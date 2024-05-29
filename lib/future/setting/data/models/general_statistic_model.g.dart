@@ -10,11 +10,13 @@ GeneralStatisticModel _$GeneralStatisticModelFromJson(
         Map<String, dynamic> json) =>
     GeneralStatisticModel(
       countAccountView: json['count_account_view'] as String?,
-      countFollowing: json['count_following'] as int?,
-      countFollowers: json['count_followers'] as int?,
-      countAccountRatings: json['count_account_Ratings'] as int?,
-      countAdvertisementNumbers: json['count_advertisement_numbers'] as int?,
-      countAdvertisementViews: json['count_advertisement_views'] as int?,
+      countFollowing: (json['count_following'] as num?)?.toInt(),
+      countFollowers: (json['count_followers'] as num?)?.toInt(),
+      countAccountRatings: (json['count_account_Ratings'] as num?)?.toInt(),
+      countAdvertisementNumbers:
+          (json['count_advertisement_numbers'] as num?)?.toInt(),
+      countAdvertisementViews:
+          (json['count_advertisement_views'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$GeneralStatisticModelToJson(
