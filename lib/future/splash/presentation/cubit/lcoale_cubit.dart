@@ -49,7 +49,7 @@ class LocaleCubit extends Cubit<LocaleState> {
         debugPrint('errorGettingLanguage$_');
       },
       (value) {
-        debugPrint('$value');
+        debugPrint('aaaaaaaaaa$value');
         currentLangCode = value!;
         emit(state.copyWith(locale: Locale(currentLangCode)));
       },

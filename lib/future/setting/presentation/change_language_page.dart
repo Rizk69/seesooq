@@ -70,7 +70,6 @@ class ChangeLanguagePage extends StatelessWidget {
         trackOutlineColor: const MaterialStatePropertyAll<Color>(Colors.transparent),
         value: value,
         onChanged: (value) {
-          print(value);
           if (value) {
             context.setLocale(const Locale('en', 'US'));
             context.read<LocaleCubit>().changeLang('en_US');
@@ -78,6 +77,9 @@ class ChangeLanguagePage extends StatelessWidget {
             context.setLocale(const Locale('ar', 'JO'));
             context.read<LocaleCubit>().changeLang('ar_JO');
           }
+          Future.delayed(const Duration(milliseconds: 500), () {
+            context.goNamed(Routes.loginSplash);
+          });
         },
       ),
       leading: CircleAvatar(

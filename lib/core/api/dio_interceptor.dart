@@ -18,7 +18,7 @@ class CustomInterceptors extends Interceptor {
     headers.addAll({
       'accept': 'application/json',
       'Authorization': 'Bearer ${user?.token ?? ''}',
-      'App-Language': 'en',
+      'App-Language': cacheHelper.getData(key: AppStrings.locale) == 'ar_JO' ? 'ar' : 'en',
       'user_type': cacheHelper.getData(key: AppStrings.userType) ?? 'user',
     });
     options.headers = headers;

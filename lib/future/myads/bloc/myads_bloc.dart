@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:meta/meta.dart';
 import 'package:opensooq/core/utils/loadin_app.dart';
 import 'package:opensooq/di.dart' as di;
@@ -49,45 +48,29 @@ class MyadsBloc extends Bloc<MyadsEvent, MyAdsState> {
     );
   }
 
-  Future<void> _deleteMyads(
-      String id, Emitter<MyAdsState> emit, int index) async {
-    try {
-      if (state is! MyAdsStateLoaded) {
-        emit(const MyAdsState.error(message: 'Invalid state'));
-        return;
-      }
-
-      emit(const MyAdsState.loading());
-      final response = await myAdsRepository.deleteMyAds(id: int.parse(id));
-      response.fold(
-        (l) {
-          print('Error: ${l.message}');
-          emit(MyAdsState.error(message: l.message.toString()));
-        },
-        (r) {
-          EasyLoading.showSuccess(r.success!);
-
-          List<Data> updatedList = List<Data>.from((state as MyAdsStateLoaded)
-              .advertisementModel
-              .advertisementModel!
-              .data!)
-            ..removeAt(index);
-
-          AdvertisementModel newAdvertisementModel =
-              AdvertisementModel(data: updatedList);
-
-          MyAdsModel updatedModel = (state as MyAdsStateLoaded)
-              .advertisementModel
-              .copyWith(advertisementModel: newAdvertisementModel);
-
-          emit(MyAdsState.loaded(advertisementModel: updatedModel));
-        },
-      );
-    } catch (e) {
-      print('Unexpected error: $e');
-      emit(MyAdsState.error(message: 'An unexpected error occurred'));
-    } finally {
-      EasyLoading.dismiss();
+  Future<void> _deleteMyads(String id, Emitter<MyAdsState> emit, int index) async {
+    if (state is! MyAdsStateLoaded) {
+      emit(const MyAdsState.error(message: 'Invalid state'));
+      return;
     }
+
+    emit(const MyAdsState.loading());
+    final response = await myAdsRepository.deleteMyAds(id: int.parse(id));
+    response.fold(
+      (l) {
+        showError(l.message.toString());
+        emit(MyAdsState.error(message: l.message.toString()));
+      },
+      (r) {
+        List<Data> updatedList = List<Data>.from((state as MyAdsStateLoaded).advertisementModel.advertisementModel!.data!)..removeAt(index);
+
+        AdvertisementModel newAdvertisementModel = AdvertisementModel(data: updatedList);
+
+        MyAdsModel updatedModel = (state as MyAdsStateLoaded).advertisementModel.copyWith(advertisementModel: newAdvertisementModel);
+
+        emit(MyAdsState.loaded(advertisementModel: updatedModel));
+      },
+    );
+    dismissLoading();
   }
 }
