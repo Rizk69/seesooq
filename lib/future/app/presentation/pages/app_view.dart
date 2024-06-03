@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:opensooq/config/routes/app_routes.dart';
+import 'package:opensooq/core/utils/media_query_values.dart';
+import 'package:opensooq/core/widget/text_translate_manager.dart';
 import 'package:opensooq/future/home/presentation/cubit/home_cubit.dart';
 import 'package:opensooq/future/home/presentation/cubit/home_state.dart';
+import 'package:opensooq/future/home/presentation/cubit/story_user_cubit.dart';
+import 'package:touchable/touchable.dart';
 
 class AppWithNavBar extends StatefulWidget {
   const AppWithNavBar({
@@ -20,6 +24,8 @@ class AppWithNavBar extends StatefulWidget {
 }
 
 class _AppWithNavBarState extends State<AppWithNavBar> {
+  bool isShow = false;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -35,32 +41,237 @@ class _AppWithNavBarState extends State<AppWithNavBar> {
             var cubit = HomeCubit.get(context);
             var gust = cubit.state.userLocalModel?.user?.name?.isEmpty ?? true;
             return Scaffold(
-              body: widget.navigationShell,
-              bottomNavigationBar: KeyboardVisibilityBuilder(builder: (context, visible) {
-                return visible
-                    ? const SizedBox.shrink()
-                    : BottomNavigationBar(
-                        elevation: 10,
-                        items: const [
-                          BottomNavigationBarItem(
-                            icon: Icon(Icons.home),
-                            label: 'الرئيسية',
+              body: Stack(
+                children: [
+                  widget.navigationShell,
+                  Positioned(
+                    bottom: 50,
+                    left: 0,
+                    right: 0,
+                    child: AnimatedOpacity(
+                      duration: const Duration(milliseconds: 400),
+                      opacity: isShow ? 1 : 0,
+                      child: Visibility(
+                        visible: isShow,
+                        child: Container(
+                          margin: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.25),
+                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [const Color(0xff4C0497), const Color(0xff4C0497).withOpacity(0.5)],
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                            ),
+                            borderRadius: BorderRadius.circular(50),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 5,
+                                blurRadius: 7,
+                                offset: const Offset(0, 3), // changes position of shadow
+                              ),
+                            ],
                           ),
-                          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'البحث'),
-                          BottomNavigationBarItem(icon: Icon(Icons.add), label: 'أضف إعلان'),
-                          // BottomNavigationBarItem(icon: Icon(Icons.message), label: 'الرسائل'),
-                          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'حسابي'),
-                        ],
-                        onTap: (index) {
-                          // index0,4
-
-                          if (!gust || index == 0) {
-                            _onTap(context, index);
-                          }
-                        },
-                        currentIndex: widget.navigationShell.currentIndex,
-                      );
-              }),
+                          width: MediaQuery.of(context).size.width * 0.4,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              InkWell(
+                                child: Container(
+                                    padding: const EdgeInsets.all(10),
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(40),
+                                    ),
+                                    child: const Icon(Icons.camera_alt_rounded, color: Color(0xff4C0497), size: 25)),
+                                onTap: () {
+                                  if (!gust) {
+                                    StoryUserCubit.get(context).pickImage();
+                                  }
+                                  isShow = false;
+                                  setState(() {});
+                                },
+                              ),
+                              InkWell(
+                                child: Container(
+                                    padding: const EdgeInsets.all(10),
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(40),
+                                    ),
+                                    child: const Icon(Icons.add_circle, color: Color(0xff4C0497), size: 25)),
+                                onTap: () {
+                                  if (!gust) {
+                                    context.pushNamed(
+                                      Routes.categoryProductPage,
+                                    );
+                                    isShow = false;
+                                    setState(() {});
+                                  }
+                                },
+                              ),
+                              InkWell(
+                                child: Container(
+                                    padding: const EdgeInsets.all(10),
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(40),
+                                    ),
+                                    child: const Icon(Icons.my_library_books_rounded, color: Color(0xff4C0497), size: 25)),
+                                onTap: () {
+                                  if (!gust) {
+                                    context.pushNamed(
+                                      Routes.myAds,
+                                    );
+                                    isShow = false;
+                                    setState(() {});
+                                  }
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+              bottomNavigationBar: CustomPaint(
+                  size: const Size.fromHeight(80),
+                  painter: BNBCustomPainter(context: context),
+                  child: SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.1,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.4,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Column(
+                                children: [
+                                  IconButton(
+                                    icon: SvgPicture.asset(
+                                      'home_page'.toSvg,
+                                      height: 30,
+                                      color: widget.navigationShell.currentIndex == 0 ? null : Colors.grey,
+                                    ),
+                                    onPressed: () {
+                                      if (!gust) {
+                                        _onTap(context, 0);
+                                      }
+                                    },
+                                  ),
+                                  const TranslateText(
+                                    text: 'home',
+                                    styleText: StyleText.h5,
+                                  )
+                                ],
+                              ),
+                              Column(
+                                children: [
+                                  IconButton(
+                                    icon: SvgPicture.asset(
+                                      'reels_drawer'.toSvg,
+                                      height: 30,
+                                      color: widget.navigationShell.currentIndex == 1 ? null : Colors.grey,
+                                    ),
+                                    onPressed: () {
+                                      if (!gust) {
+                                        _onTap(context, 1);
+                                      }
+                                    },
+                                  ),
+                                  const TranslateText(
+                                    text: 'reel',
+                                    styleText: StyleText.h5,
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        const Spacer(),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.4,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Column(
+                                children: [
+                                  IconButton(
+                                    icon: SvgPicture.asset(
+                                      'wallet_drawer'.toSvg,
+                                      height: 30,
+                                      color: widget.navigationShell.currentIndex == 2 ? null : Colors.grey,
+                                    ),
+                                    onPressed: () {
+                                      if (!gust) {
+                                        _onTap(context, 2);
+                                      }
+                                    },
+                                  ),
+                                  const TranslateText(
+                                    text: 'wallet_drawer',
+                                    styleText: StyleText.h5,
+                                  )
+                                ],
+                              ),
+                              Column(
+                                children: [
+                                  IconButton(
+                                    icon: SvgPicture.asset(
+                                      'profile_icon'.toSvg,
+                                      height: 30,
+                                      color: widget.navigationShell.currentIndex == 3 ? Color(0xff4C0497) : Colors.grey,
+                                    ),
+                                    onPressed: () {
+                                      if (!gust) {
+                                        _onTap(context, 3);
+                                      }
+                                    },
+                                  ),
+                                  const TranslateText(
+                                    text: 'profile',
+                                    styleText: StyleText.h5,
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  )),
+              floatingActionButton: InkWell(
+                onTap: () {
+                  setState(() {
+                    isShow = !isShow;
+                  });
+                },
+                child: CircleAvatar(
+                  radius: 40,
+                  backgroundColor: Colors.white,
+                  child: AnimatedRotation(
+                    duration: const Duration(milliseconds: 400),
+                    turns: isShow ? 1 : 0,
+                    curve: Curves.easeIn,
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 120),
+                      curve: Curves.easeIn,
+                      width: isShow ? 50 : 60,
+                      child: SvgPicture.asset(
+                        'add_ads_icon_home'.toSvg,
+                        fit: BoxFit.contain,
+                        height: 90,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             );
           }),
     );
@@ -96,8 +307,14 @@ bool hiddenNavbar(index, String path) {
 }
 
 class BNBCustomPainter extends CustomPainter {
+  final BuildContext context;
+
+  BNBCustomPainter({required this.context});
+
   @override
   void paint(Canvas canvas, Size size) {
+    var myCanvas = TouchyCanvas(context, canvas);
+
     Paint paint = Paint()
       ..color = Colors.white
       ..style = PaintingStyle.fill;
@@ -113,6 +330,16 @@ class BNBCustomPainter extends CustomPainter {
     path.lineTo(0, size.height);
     path.lineTo(0, 20);
     canvas.drawShadow(path, Colors.black, 5, true);
+    // draw Circle on center
+    canvas.drawCircle(
+      Offset(size.width * 0.50, 0),
+      35,
+      paint,
+    );
+
+    // circle just click event
+    // click event
+
     canvas.drawPath(path, paint);
   }
 
@@ -121,3 +348,26 @@ class BNBCustomPainter extends CustomPainter {
     return false;
   }
 }
+//BottomNavigationBar(
+//                             elevation: 0,
+//                             backgroundColor: Colors.transparent,
+//
+//                             items: const [
+//                               BottomNavigationBarItem(
+//                                 icon: Icon(Icons.home),
+//                                 label: 'الرئيسية',
+//                               ),
+//                               BottomNavigationBarItem(icon: Icon(Icons.search), label: 'البحث'),
+//                               BottomNavigationBarItem(icon: Icon(Icons.add), label: 'أضف إعلان'),
+//                               // BottomNavigationBarItem(icon: Icon(Icons.message), label: 'الرسائل'),
+//                               BottomNavigationBarItem(icon: Icon(Icons.person), label: 'حسابي'),
+//                             ],
+//                             onTap: (index) {
+//                               // index0,4
+//
+//                               if (!gust || index == 0) {
+//                                 _onTap(context, index);
+//                               }
+//                             },
+//                             currentIndex: widget.navigationShell.currentIndex,
+//                           );

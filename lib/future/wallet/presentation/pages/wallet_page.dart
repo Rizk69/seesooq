@@ -1,4 +1,4 @@
-import 'package:easy_localization/easy_localization.dart';
+import 'package:easy_localization/easy_localization.dart' as easy;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -13,7 +13,6 @@ import 'package:opensooq/core/widget/custom_app_bar.dart';
 import 'package:opensooq/core/widget/text_translate_manager.dart';
 import 'package:opensooq/future/wallet/presentation/cubit/wallet_cubit.dart';
 import 'package:opensooq/future/wallet/presentation/cubit/wallet_state.dart';
-import 'package:opensooq/future/wallet/presentation/widgets/transaction_widget.dart';
 
 enum TypeTransaction { wallet, package }
 
@@ -62,6 +61,7 @@ class _WalletPageState extends State<WalletPage> {
                 height: isOrientation ? context.width * 0.2 : context.height * 0.2,
                 width: context.width,
                 child: Stack(
+                  alignment: Alignment.centerLeft,
                   children: [
                     Positioned(
                       bottom: 0,
@@ -132,7 +132,7 @@ class _WalletPageState extends State<WalletPage> {
                             ),
                             const TranslateText(
                               styleText: StyleText.h4,
-                              text: 'Balance Now',
+                              text: 'balanceAvailable',
                               colorText: Colors.white,
                             ),
                             const SizedBox(
@@ -205,22 +205,22 @@ class _WalletPageState extends State<WalletPage> {
                       },
                       color: Colors.white,
                     )),
-                    const Gap(20),
-                    Expanded(
-                        child: CustomButtonWidget(
-                      text: 'charge_wallet',
-                      onPressed: () {},
-                      color: HexColor('#200E32'),
-                      disableBorder: Border.all(
-                        color: HexColor('#4C0497'),
-                        width: 1,
-                      ),
-                      backgroundColor: Colors.white,
-                    )),
+                    // const Gap(20),
+                    // Expanded(
+                    //     child: CustomButtonWidget(
+                    //   text: 'charge_wallet',
+                    //   onPressed: () {},
+                    //   color: HexColor('#200E32'),
+                    //   disableBorder: Border.all(
+                    //     color: HexColor('#4C0497'),
+                    //     width: 1,
+                    //   ),
+                    //   backgroundColor: Colors.white,
+                    // )),
                   ],
                 ),
               ),
-              const TransactionWidget(),
+              // const TransactionWidget(),
             ],
           ),
         ),

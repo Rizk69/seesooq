@@ -21,6 +21,12 @@ class ViewMyReel extends StatefulWidget {
 class _ViewMyReelState extends State<ViewMyReel> {
   final StoryController controller = StoryController();
   final PageController pageController = PageController();
+
+  @override
+  initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ReelsBloc, ReelsState>(builder: (context, state) {
@@ -128,6 +134,8 @@ class _ViewMyReelState extends State<ViewMyReel> {
                 }
               },
               onStoryShow: (value, index) {
+                // if my reel is viewed
+
                 ReelsBloc.get(context).add(ReelsEvent.viewReel(widget.reels.id.toString(), index));
               },
               progressPosition: ProgressPosition.top,
@@ -138,7 +146,7 @@ class _ViewMyReelState extends State<ViewMyReel> {
                 StoryItem.pageVideo(
                   widget.reels.video!.toString(),
                   controller: controller,
-                  duration: const Duration(seconds: 10),
+                  duration: const Duration(seconds: 40),
                   caption: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

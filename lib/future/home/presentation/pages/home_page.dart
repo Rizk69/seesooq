@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -101,21 +100,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               ),
             ),
           ),
-          body: Scrollable(
-            physics: const BouncingScrollPhysics(),
-            clipBehavior: Clip.antiAliasWithSaveLayer,
-            dragStartBehavior: DragStartBehavior.start,
-            scrollBehavior: const MaterialScrollBehavior(),
-            viewportBuilder: (context, position) => RefreshIndicator(
-              onRefresh: () async {
-                StoryUserCubit.get(context).getUsersStories();
-              },
-              child: SingleChildScrollView(
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  padding: const EdgeInsets.only(bottom: 10),
-                  child: StoryViewComponent(
-                    cubit: cubit,
-                  )),
+          body: RefreshIndicator(
+            onRefresh: () async {
+              StoryUserCubit.get(context).getUsersStories();
+            },
+            child: StoryViewComponent(
+              cubit: cubit,
             ),
           ),
         ),

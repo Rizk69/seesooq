@@ -7,7 +7,6 @@ import 'package:opensooq/di.dart' as di;
 import 'package:opensooq/future/app/presentation/pages/app_view.dart';
 import 'package:opensooq/future/blogs/presentatin/pages/route/blogs_route.dart';
 import 'package:opensooq/future/caht/presentation/chat_massage_page.dart';
-import 'package:opensooq/future/caht/route/chat_route.dart';
 import 'package:opensooq/future/category/presentation/pages/routes/category_route.dart';
 import 'package:opensooq/future/category_product/presentation/pages/category_product_page.dart';
 import 'package:opensooq/future/category_product/presentation/pages/details_categoey_page.dart';
@@ -17,7 +16,6 @@ import 'package:opensooq/future/category_product/presentation/pages/route/detail
 import 'package:opensooq/future/category_product/presentation/pages/route/location_details_ads_route.dart';
 import 'package:opensooq/future/category_product/presentation/pages/route/personal_info_route.dart';
 import 'package:opensooq/future/category_product/presentation/pages/route/review_ads_route.dart';
-import 'package:opensooq/future/category_product/presentation/pages/route/uploade_photo_route.dart';
 import 'package:opensooq/future/category_product/presentation/pages/route/view_ads_route.dart';
 import 'package:opensooq/future/favorite/presentation/pages/route/favorite_route.dart';
 import 'package:opensooq/future/follow_section/presentation/page/followers_page.dart';
@@ -35,7 +33,7 @@ import 'package:opensooq/future/login/presentation/pages/route/login_splash_rout
 import 'package:opensooq/future/notification/presentation/pages/view/notification_page.dart';
 import 'package:opensooq/future/packages/presentation/pages/route/packages_route.dart';
 import 'package:opensooq/future/profile/presentation/profile_route.dart';
-import 'package:opensooq/future/search/presentation/pages/search_page.dart';
+import 'package:opensooq/future/reels/presentation/pages/my_reels_view.dart';
 import 'package:opensooq/future/setting/presentation/accoun_mange_page.dart';
 import 'package:opensooq/future/setting/presentation/add_location_user.dart';
 import 'package:opensooq/future/setting/presentation/change_password_screen.dart';
@@ -47,7 +45,9 @@ import 'package:opensooq/future/setting/presentation/settings_page.dart';
 import 'package:opensooq/future/signup/presentation/cubit/signup_cubit.dart';
 import 'package:opensooq/future/splash/presentation/screens/introduction_page.dart';
 import 'package:opensooq/future/wallet/presentation/pages/route/wallet_route.dart';
+import 'package:opensooq/future/wallet/presentation/pages/wallet_page.dart';
 
+import '../../future/category_product/presentation/pages/route/uploade_photo_route.dart';
 import '../../future/myads/routing/ads_route.dart';
 import '../../future/reels/routing/reels_route.dart';
 import '../../future/setting/presentation/Connect_with_us.dart';
@@ -63,6 +63,7 @@ class Routes {
   static const String signUp = 'signUp';
   static const String packages = 'packages';
   static const String wallet = 'wallet';
+  static const String walletHome = '/walletHome';
   static const String paymentGateway = 'paymentGateway';
   static const String paymentSuccess = 'paymentSuccess';
   static const String confirmCode = 'confirmCode';
@@ -72,6 +73,7 @@ class Routes {
   static const String favorite = 'favorite';
   static const String myAds = 'myAds';
   static const String reels = '/reels';
+  static const String reelsHome = '/reelsHome';
   static const String reelView = 'reelView';
   static const String myReelView = 'myReelView';
   static const String search = '/search';
@@ -126,23 +128,17 @@ class Routes {
   static const String oneCategoryView = 'oneCategoryView';
 }
 
-final GlobalKey<NavigatorState> rootNavigatorKey =
-    GlobalKey<NavigatorState>(debugLabel: 'root');
-final GlobalKey<NavigatorState> sectionANavigatorKey =
-    GlobalKey<NavigatorState>(debugLabel: 'sectionANav');
-final GlobalKey<NavigatorState> addsNavKey =
-    GlobalKey<NavigatorState>(debugLabel: 'adsNav');
+final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
+final GlobalKey<NavigatorState> sectionANavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'sectionANav');
+final GlobalKey<NavigatorState> addsNavKey = GlobalKey<NavigatorState>(debugLabel: 'adsNav');
 final GoRouter router = GoRouter(
   initialLocation: Routes.loginSplash,
   navigatorKey: rootNavigatorKey,
-  refreshListenable:
-      Listenable.merge([di.sl<LoginCubit>(), di.sl<SignUpCubit>()]),
+  refreshListenable: Listenable.merge([di.sl<LoginCubit>(), di.sl<SignUpCubit>()]),
   routes: [
     StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {
-          return BlocProvider(
-              create: (context) => HomeCubit(),
-              child: AppWithNavBar(navigationShell: navigationShell));
+          return BlocProvider(create: (context) => HomeCubit(), child: AppWithNavBar(navigationShell: navigationShell));
         },
         branches: [
           StatefulShellBranch(navigatorKey: sectionANavigatorKey, routes: [
@@ -153,8 +149,7 @@ final GoRouter router = GoRouter(
                 pageBuilder: (context, state) {
                   return CustomTransitionPage(
                     child: const HomePage(),
-                    transitionsBuilder:
-                        (context, animation, secondaryAnimation, child) {
+                    transitionsBuilder: (context, animation, secondaryAnimation, child) {
                       return FadeTransition(
                         opacity: animation,
                         child: child,
@@ -187,8 +182,7 @@ final GoRouter router = GoRouter(
                     pageBuilder: (context, state) {
                       return CustomTransitionPage(
                         child: const NotificationPage(),
-                        transitionsBuilder:
-                            (context, animation, secondaryAnimation, child) {
+                        transitionsBuilder: (context, animation, secondaryAnimation, child) {
                           return FadeTransition(
                             opacity: animation,
                             child: child,
@@ -201,13 +195,12 @@ final GoRouter router = GoRouter(
           ]),
           StatefulShellBranch(routes: [
             GoRoute(
-              path: Routes.search,
-              name: Routes.search,
+              path: Routes.reelsHome,
+              name: Routes.reelsHome,
               pageBuilder: (context, state) {
                 return CustomTransitionPage(
-                  child: const SearchPage(),
-                  transitionsBuilder:
-                      (context, animation, secondaryAnimation, child) {
+                  child: const MyReelsView(),
+                  transitionsBuilder: (context, animation, secondaryAnimation, child) {
                     return RotationTransition(
                       turns: animation,
                       alignment: Alignment.center,
@@ -220,75 +213,93 @@ final GoRouter router = GoRouter(
             ),
           ]),
           StatefulShellBranch(routes: [
-            ShellRoute(
-                builder: (context, state, child) {
-                  final data = (state.extra == null)
-                      ? {'categoryName': 'category'}
-                      : state.extra as Map<String, dynamic>;
-                  return RootCategory(
-                      title: data['categoryName'] ?? '', child: child);
-                },
-                routes: [
-                  GoRoute(
-                      path: Routes.categoryProductPage,
-                      name: Routes.categoryProductPage,
-                      pageBuilder: (context, state) => const NoTransitionPage(
-                            child: CategoryProductPage(),
-                          ),
-                      routes: [
-                        ReviewAdsRoute(),
-                        GoRoute(
-                            path: Routes.detailsCategoryPage,
-                            name: Routes.detailsCategoryPage,
-                            pageBuilder: (context, state) {
-                              var data = (state.extra == null)
-                                  ? {"categoryName": '', "categoryId": ''}
-                                  : state.extra as Map<String, dynamic>;
-                              return NoTransitionPage(
-                                child: DetailsCategoryProductPage(
-                                    categoryName: data['categoryName'] ?? '',
-                                    categoryId:
-                                        data['categoryId'].toString() ?? ''),
-                              );
-                            },
-                            routes: [
-                              StatefulShellRoute.indexedStack(
-                                branches: [
-                                  DetailsAdsRoute(),
-                                  LocationDetailsAdsRoute(),
-                                  PersonalInfoAdsRoute(),
-                                  ViewAdsRoute(),
-                                  UploadPhotoRoute(),
-                                  // GoRoute(
-                                  //     path: Routes.uploadPhoto,
-                                  //     name: Routes.uploadPhoto,
-                                  //     pageBuilder: (context, state) {
-                                  //       var extra = state.extra == null
-                                  //           ? {}
-                                  //           : state.extra as Map<String, dynamic>;
-                                  //       return NoTransitionPage(
-                                  //           child: UploadPhotoPage(
-                                  //             categoryName: extra['categoryName'] ?? '',
-                                  //             details: extra['details'] ?? '',
-                                  //           ));
-                                  //     },
-                                  //     routes: [
-                                  //
-                                  //     ]),
-                                ],
-                                builder: (context, state, navigationShell) {
-                                  return RootAdsPage(
-                                      statefulNavigationShell: navigationShell);
-                                },
-                              ),
-                            ]),
-                      ]),
-                ]),
+            GoRoute(
+              path: Routes.walletHome,
+              name: Routes.walletHome,
+              pageBuilder: (context, state) {
+                return CustomTransitionPage(
+                  child: const WalletPage(),
+                  transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                    return RotationTransition(
+                      turns: animation,
+                      alignment: Alignment.center,
+                      filterQuality: FilterQuality.high,
+                      child: child,
+                    );
+                  },
+                );
+              },
+            ),
           ]),
+
           // StatefulShellBranch(routes: [ChatRoute()]),
           StatefulShellBranch(routes: [
             ProfileRoute(),
           ]),
+        ]),
+    ShellRoute(
+        builder: (context, state, child) {
+          final data = (state.extra == null) ? {'categoryName': 'category'} : state.extra as Map<String, dynamic>;
+          return RootCategory(title: data['categoryName'] ?? '', child: child);
+        },
+        routes: [
+          GoRoute(
+              path: Routes.categoryProductPage,
+              name: Routes.categoryProductPage,
+              pageBuilder: (context, state) => CustomTransitionPage(
+                    child: const CategoryProductPage(),
+                    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                      return SlideTransition(
+                        position: Tween<Offset>(
+                          begin: const Offset(0.0, -1.0),
+                          end: Offset.zero,
+                        ).animate(animation),
+                        child: child,
+                      );
+                    },
+                  ),
+              routes: [
+                ReviewAdsRoute(),
+                GoRoute(
+                    path: Routes.detailsCategoryPage,
+                    name: Routes.detailsCategoryPage,
+                    pageBuilder: (context, state) {
+                      var data = (state.extra == null) ? {"categoryName": '', "categoryId": ''} : state.extra as Map<String, dynamic>;
+                      return NoTransitionPage(
+                        child: DetailsCategoryProductPage(categoryName: data['categoryName'] ?? '', categoryId: data['categoryId'].toString() ?? ''),
+                      );
+                    },
+                    routes: [
+                      StatefulShellRoute.indexedStack(
+                        branches: [
+                          DetailsAdsRoute(),
+                          LocationDetailsAdsRoute(),
+                          PersonalInfoAdsRoute(),
+                          ViewAdsRoute(),
+                          UploadPhotoRoute(),
+                          // GoRoute(
+                          //     path: Routes.uploadPhoto,
+                          //     name: Routes.uploadPhoto,
+                          //     pageBuilder: (context, state) {
+                          //       var extra = state.extra == null
+                          //           ? {}
+                          //           : state.extra as Map<String, dynamic>;
+                          //       return NoTransitionPage(
+                          //           child: UploadPhotoPage(
+                          //             categoryName: extra['categoryName'] ?? '',
+                          //             details: extra['details'] ?? '',
+                          //           ));
+                          //     },
+                          //     routes: [
+                          //
+                          //     ]),
+                        ],
+                        builder: (context, state, navigationShell) {
+                          return RootAdsPage(statefulNavigationShell: navigationShell);
+                        },
+                      ),
+                    ]),
+              ]),
         ]),
     LoginSplashRoute(),
     LoginRoute(),
@@ -305,13 +316,9 @@ final GoRouter router = GoRouter(
           final data = (state.extra as Map<String, dynamic>);
           return CustomTransitionPage(
             child: StoryViewWidget(
-                userStory:
-                    data.containsKey('userStory') ? data['userStory'] : [],
-                infoData: data.containsKey('infoData')
-                    ? data['infoData']
-                    : InfoData()),
-            transitionsBuilder:
-                (context, animation, secondaryAnimation, child) {
+                userStory: data.containsKey('userStory') ? data['userStory'] : [],
+                infoData: data.containsKey('infoData') ? data['infoData'] : InfoData()),
+            transitionsBuilder: (context, animation, secondaryAnimation, child) {
               return FadeTransition(
                 opacity: animation,
                 child: child,

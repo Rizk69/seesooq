@@ -12,6 +12,8 @@
   "fullName": "الاسم الكامل",
   "emailHint": "البريد الإلكتروني أو رقم الهاتف ",
 
+  "reel": "ريلز",
+
   "hintForgetPassword": "ادخل بريدك الالكتروني حتى نتمكن من إرسال رمز لتغيير كلمة السر",
   "classification": "التصنيف",
   "search classification": "تصنيف البحث",
@@ -37,6 +39,7 @@
   "ads_drawer": "اعلاناتي",
   "favorite_drawer": "المفضله",
   "wallet_drawer": "المحفظه",
+  "balanceAvailable": "الرصيد المتاح",
   "package_drawer": "الباقات",
   "auction_drawer": "المزادات",
   "booking_drawer": "الحجوزات",

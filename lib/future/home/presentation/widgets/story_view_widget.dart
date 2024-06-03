@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:easy_localization/easy_localization.dart';
+import 'package:easy_localization/easy_localization.dart' as easy_localization;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,150 +26,135 @@ class StoryViewWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     //
     return Scaffold(
-      body: BlocBuilder<StoryUserCubit, StoryUserState>(
-          builder: (context, state) {
-        print(state.storyModel?.stories?.length);
+      body: BlocBuilder<StoryUserCubit, StoryUserState>(builder: (context, state) {
         var cubit = StoryUserCubit.get(context);
-        var storyItems = userStory.isEmpty
-            ? (state.storyModel?.stories?[state.selectedStoryIndex])
-            : userStory[0];
+        var storyItems = userStory.isEmpty ? (state.storyModel?.stories?[state.selectedStoryIndex]) : userStory[0];
         return Stack(
           children: [
-            StoryView(
-              storyItems: state.statusOpening == StatusOpening.me
-                  ? state.storyItems
-                  : state.storyUsers,
-              controller: controller,
+            Directionality(
+              textDirection: TextDirection.ltr,
+              child: StoryView(
+                storyItems: state.statusOpening == StatusOpening.me ? state.storyItems : state.storyUsers,
+                controller: controller,
 
-              // pass controller here too
-              repeat: true,
-              inline: true,
+                // pass controller here too
+                repeat: true,
+                inline: true,
 
-              // should the stories be slid forever
-              onStoryShow: (s, a) {
-                if (state.statusOpening == StatusOpening.me) {
-                  cubit.selectStory(state.storyItems.indexOf(s));
-                } else {
-                  cubit.selectStory(state.storyUsers.indexOf(s));
-                  cubit.viewStory(
-                      id: int.parse(storyItems?.id.toString() ?? '0'));
-                }
+                // should the stories be slid forever
+                onStoryShow: (s, a) {
+                  if (state.statusOpening == StatusOpening.me) {
+                    cubit.selectStory(state.storyItems.indexOf(s));
+                  } else {
+                    cubit.selectStory(state.storyUsers.indexOf(s));
+                    cubit.viewStory(id: int.parse(storyItems?.id.toString() ?? '0'));
+                  }
 
-                // get current story index
-              },
+                  // get current story index
+                },
 
-              onComplete: () {
-                context.goNamed(Routes.home);
-                cubit.selectStory(0);
-              },
-
-              onVerticalSwipeComplete: (direction) {
-                if (direction == Direction.down) {
+                onComplete: () {
                   context.goNamed(Routes.home);
                   cubit.selectStory(0);
-                } else {
-                  if (storyItems?.viewers?.isNotEmpty ?? false) {
-                    controller.pause();
+                },
 
-                    showModalBottomSheet(
-                      context: context,
-                      shape: const RoundedRectangleBorder(
-                        borderRadius:
-                            BorderRadius.vertical(top: Radius.circular(0.0)),
-                      ),
-                      builder: (context) {
-                        return Column(
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              width: context.width,
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 16),
-                              height: 50,
-                              alignment: Alignment.centerLeft,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                gradient: LinearGradient(
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                  colors: [
-                                    HexColor('#4C0497'),
-                                    HexColor('#4C0497').withOpacity(0.5),
-                                  ],
+                onVerticalSwipeComplete: (direction) {
+                  if (direction == Direction.down) {
+                    context.goNamed(Routes.home);
+                    cubit.selectStory(0);
+                  } else {
+                    if (storyItems?.viewers?.isNotEmpty ?? false) {
+                      controller.pause();
+
+                      showModalBottomSheet(
+                        context: context,
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(top: Radius.circular(0.0)),
+                        ),
+                        builder: (context) {
+                          return Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                width: context.width,
+                                padding: const EdgeInsets.symmetric(horizontal: 16),
+                                height: 50,
+                                alignment: Alignment.centerLeft,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  gradient: LinearGradient(
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                    colors: [
+                                      HexColor('#4C0497'),
+                                      HexColor('#4C0497').withOpacity(0.5),
+                                    ],
+                                  ),
+                                ),
+                                child: TranslateText(
+                                  text: 'viewedPeople'.tr(args: [storyItems?.viewers?.length.toString() ?? '0']),
+                                  styleText: StyleText.h5,
+                                  colorText: Colors.white,
+                                  fontWeight: FontWeight.w400,
                                 ),
                               ),
-                              child: TranslateText(
-                                text: 'viewedPeople'.tr(args: [
-                                  storyItems?.viewers?.length.toString() ?? '0'
-                                ]),
-                                styleText: StyleText.h5,
-                                colorText: Colors.white,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                            ...storyItems?.viewers
-                                    ?.map((e) => SizedBox(
-                                          height: 50,
-                                          child: ListTile(
-                                              leading: CircleAvatar(
-                                                radius: 20,
-                                                backgroundImage: NetworkImage(
-                                                    e['image'] ?? ''),
-                                              ),
-                                              title: Text(
-                                                  e['name'].toString() ?? ''),
-                                              subtitle:
-                                                  const Text('Add Time Here'),
-                                              trailing: Row(
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: [
-                                                  Container(
-                                                    padding:
-                                                        const EdgeInsets.all(8),
-                                                    decoration: BoxDecoration(
-                                                      shape: BoxShape.circle,
-                                                      color: Colors.grey
-                                                          .withOpacity(0.6),
+                              ...storyItems?.viewers
+                                      ?.map((e) => SizedBox(
+                                            height: 50,
+                                            child: ListTile(
+                                                leading: CircleAvatar(
+                                                  radius: 20,
+                                                  backgroundImage: NetworkImage(e['image'] ?? ''),
+                                                ),
+                                                title: Text(e['name'].toString() ?? ''),
+                                                subtitle: const Text('Add Time Here'),
+                                                trailing: Row(
+                                                  mainAxisSize: MainAxisSize.min,
+                                                  children: [
+                                                    Container(
+                                                      padding: const EdgeInsets.all(8),
+                                                      decoration: BoxDecoration(
+                                                        shape: BoxShape.circle,
+                                                        color: Colors.grey.withOpacity(0.6),
+                                                      ),
+                                                      child: const Icon(
+                                                        Icons.message,
+                                                        color: Colors.white,
+                                                        size: 15,
+                                                      ),
                                                     ),
-                                                    child: const Icon(
-                                                      Icons.message,
-                                                      color: Colors.white,
-                                                      size: 15,
+                                                    const SizedBox(
+                                                      width: 10,
                                                     ),
-                                                  ),
-                                                  const SizedBox(
-                                                    width: 10,
-                                                  ),
-                                                  Container(
-                                                    padding:
-                                                        const EdgeInsets.all(8),
-                                                    decoration: BoxDecoration(
-                                                      shape: BoxShape.circle,
-                                                      color: Colors.grey
-                                                          .withOpacity(0.6),
+                                                    Container(
+                                                      padding: const EdgeInsets.all(8),
+                                                      decoration: BoxDecoration(
+                                                        shape: BoxShape.circle,
+                                                        color: Colors.grey.withOpacity(0.6),
+                                                      ),
+                                                      child: const Icon(
+                                                        Icons.call,
+                                                        color: Colors.white,
+                                                        size: 15,
+                                                      ),
                                                     ),
-                                                    child: const Icon(
-                                                      Icons.call,
-                                                      color: Colors.white,
-                                                      size: 15,
-                                                    ),
-                                                  ),
-                                                ],
-                                              )),
-                                        ))
-                                    .toList() ??
-                                [],
-                            const SizedBox(
-                              height: 40,
-                            )
-                          ],
-                        );
-                      },
-                    );
+                                                  ],
+                                                )),
+                                          ))
+                                      .toList() ??
+                                  [],
+                              const SizedBox(
+                                height: 40,
+                              )
+                            ],
+                          );
+                        },
+                      );
+                    }
                   }
-                }
-              },
+                },
+              ),
             ),
             Positioned(
               top: 80,
@@ -179,9 +164,7 @@ class StoryViewWidget extends StatelessWidget {
                 child: ListTile(
                   leading: CircleAvatar(
                     radius: 30,
-                    backgroundImage: infoData.image == null
-                        ? null
-                        : NetworkImage(infoData.image ?? ''),
+                    backgroundImage: infoData.image == null ? null : NetworkImage(infoData.image ?? ''),
                   ),
                   visualDensity: VisualDensity.comfortable,
                   minLeadingWidth: 10,
@@ -219,8 +202,7 @@ class StoryViewWidget extends StatelessWidget {
                                       ),
                                       CupertinoActionSheetAction(
                                         onPressed: () {
-                                          StoryUserCubit.get(context)
-                                              .deleteMyStory();
+                                          StoryUserCubit.get(context).deleteMyStory();
                                           Navigator.pop(context);
                                         },
                                         child: const Text('Delete...'),
@@ -255,10 +237,7 @@ class StoryViewWidget extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      TranslateText(
-                          styleText: StyleText.h5,
-                          text: storyItems?.viewers?.length.toString() ?? '0',
-                          colorText: Colors.white),
+                      TranslateText(styleText: StyleText.h5, text: storyItems?.viewers?.length.toString() ?? '0', colorText: Colors.white),
                       IconButton(
                         icon: const Icon(
                           Icons.visibility_rounded,
