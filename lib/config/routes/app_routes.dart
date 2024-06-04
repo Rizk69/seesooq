@@ -31,6 +31,7 @@ import 'package:opensooq/future/login/presentation/cubit/login_cubit.dart';
 import 'package:opensooq/future/login/presentation/pages/route/login_route.dart';
 import 'package:opensooq/future/login/presentation/pages/route/login_splash_route.dart';
 import 'package:opensooq/future/notification/presentation/pages/view/notification_page.dart';
+import 'package:opensooq/future/on_boarding/presentation/on_boarding__route.dart';
 import 'package:opensooq/future/packages/presentation/pages/route/packages_route.dart';
 import 'package:opensooq/future/profile/presentation/profile_route.dart';
 import 'package:opensooq/future/reels/presentation/pages/my_reels_view.dart';
@@ -100,6 +101,8 @@ class Routes {
   static const String designStory = '/designStory';
   static const String forgetPasswordPRoute = 'forgetPasswordPage';
   static const String loginSplash = '/';
+  static const String onboarding = '/onboarding';
+
   static const String introductionPage = '/introductionPage';
   static const String editProfile = 'editProfile';
   static const String followersView = '/followersView';
@@ -302,6 +305,7 @@ final GoRouter router = GoRouter(
               ]),
         ]),
     LoginSplashRoute(),
+    OnBoardingRoute(),
     LoginRoute(),
     ReelsRoute(),
     GoRoute(

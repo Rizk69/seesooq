@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:opensooq/config/routes/app_routes.dart';
+import 'package:opensooq/core/utils/alert_gust.dart';
 import 'package:opensooq/core/utils/media_query_values.dart';
 import 'package:opensooq/core/widget/text_translate_manager.dart';
 import 'package:opensooq/future/home/presentation/cubit/home_cubit.dart';
@@ -54,12 +55,18 @@ class _AppWithNavBarState extends State<AppWithNavBar> {
                       child: Visibility(
                         visible: isShow,
                         child: Container(
-                          margin: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.25),
-                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                          margin: EdgeInsets.symmetric(
+                              horizontal:
+                                  MediaQuery.of(context).size.width * 0.25),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 10),
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
-                              colors: [const Color(0xff4C0497), const Color(0xff4C0497).withOpacity(0.5)],
+                              colors: [
+                                const Color(0xff4C0497),
+                                const Color(0xff4C0497).withOpacity(0.5)
+                              ],
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
                             ),
@@ -69,7 +76,8 @@ class _AppWithNavBarState extends State<AppWithNavBar> {
                                 color: Colors.grey.withOpacity(0.5),
                                 spreadRadius: 5,
                                 blurRadius: 7,
-                                offset: const Offset(0, 3), // changes position of shadow
+                                offset: const Offset(
+                                    0, 3), // changes position of shadow
                               ),
                             ],
                           ),
@@ -84,10 +92,13 @@ class _AppWithNavBarState extends State<AppWithNavBar> {
                                       color: Colors.white,
                                       borderRadius: BorderRadius.circular(40),
                                     ),
-                                    child: const Icon(Icons.camera_alt_rounded, color: Color(0xff4C0497), size: 25)),
+                                    child: const Icon(Icons.camera_alt_rounded,
+                                        color: Color(0xff4C0497), size: 25)),
                                 onTap: () {
                                   if (!gust) {
                                     StoryUserCubit.get(context).pickImage();
+                                  } else {
+                                    showLoginOrGuestDialog(context);
                                   }
                                   isShow = false;
                                   setState(() {});
@@ -100,7 +111,8 @@ class _AppWithNavBarState extends State<AppWithNavBar> {
                                       color: Colors.white,
                                       borderRadius: BorderRadius.circular(40),
                                     ),
-                                    child: const Icon(Icons.add_circle, color: Color(0xff4C0497), size: 25)),
+                                    child: const Icon(Icons.add_circle,
+                                        color: Color(0xff4C0497), size: 25)),
                                 onTap: () {
                                   if (!gust) {
                                     context.pushNamed(
@@ -108,6 +120,8 @@ class _AppWithNavBarState extends State<AppWithNavBar> {
                                     );
                                     isShow = false;
                                     setState(() {});
+                                  } else {
+                                    showLoginOrGuestDialog(context);
                                   }
                                 },
                               ),
@@ -118,7 +132,10 @@ class _AppWithNavBarState extends State<AppWithNavBar> {
                                       color: Colors.white,
                                       borderRadius: BorderRadius.circular(40),
                                     ),
-                                    child: const Icon(Icons.my_library_books_rounded, color: Color(0xff4C0497), size: 25)),
+                                    child: const Icon(
+                                        Icons.my_library_books_rounded,
+                                        color: Color(0xff4C0497),
+                                        size: 25)),
                                 onTap: () {
                                   if (!gust) {
                                     context.pushNamed(
@@ -126,6 +143,8 @@ class _AppWithNavBarState extends State<AppWithNavBar> {
                                     );
                                     isShow = false;
                                     setState(() {});
+                                  } else {
+                                    showLoginOrGuestDialog(context);
                                   }
                                 },
                               ),
@@ -137,12 +156,13 @@ class _AppWithNavBarState extends State<AppWithNavBar> {
                   )
                 ],
               ),
-              floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+              floatingActionButtonLocation:
+                  FloatingActionButtonLocation.centerDocked,
               bottomNavigationBar: CustomPaint(
                   size: const Size.fromHeight(80),
                   painter: BNBCustomPainter(context: context),
                   child: SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.1,
+                    height: MediaQuery.of(context).size.height * 0.12,
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -157,11 +177,17 @@ class _AppWithNavBarState extends State<AppWithNavBar> {
                                     icon: SvgPicture.asset(
                                       'home_page'.toSvg,
                                       height: 30,
-                                      color: widget.navigationShell.currentIndex == 0 ? null : Colors.grey,
+                                      color:
+                                          widget.navigationShell.currentIndex ==
+                                                  0
+                                              ? null
+                                              : Colors.grey,
                                     ),
                                     onPressed: () {
                                       if (!gust) {
                                         _onTap(context, 0);
+                                      } else {
+                                        showLoginOrGuestDialog(context);
                                       }
                                     },
                                   ),
@@ -177,11 +203,17 @@ class _AppWithNavBarState extends State<AppWithNavBar> {
                                     icon: SvgPicture.asset(
                                       'reels_drawer'.toSvg,
                                       height: 30,
-                                      color: widget.navigationShell.currentIndex == 1 ? null : Colors.grey,
+                                      color:
+                                          widget.navigationShell.currentIndex ==
+                                                  1
+                                              ? null
+                                              : Colors.grey,
                                     ),
                                     onPressed: () {
                                       if (!gust) {
                                         _onTap(context, 1);
+                                      } else {
+                                        showLoginOrGuestDialog(context);
                                       }
                                     },
                                   ),
@@ -206,11 +238,17 @@ class _AppWithNavBarState extends State<AppWithNavBar> {
                                     icon: SvgPicture.asset(
                                       'wallet_drawer'.toSvg,
                                       height: 30,
-                                      color: widget.navigationShell.currentIndex == 2 ? null : Colors.grey,
+                                      color:
+                                          widget.navigationShell.currentIndex ==
+                                                  2
+                                              ? null
+                                              : Colors.grey,
                                     ),
                                     onPressed: () {
                                       if (!gust) {
                                         _onTap(context, 2);
+                                      } else {
+                                        showLoginOrGuestDialog(context);
                                       }
                                     },
                                   ),
@@ -226,11 +264,17 @@ class _AppWithNavBarState extends State<AppWithNavBar> {
                                     icon: SvgPicture.asset(
                                       'profile_icon'.toSvg,
                                       height: 30,
-                                      color: widget.navigationShell.currentIndex == 3 ? Color(0xff4C0497) : Colors.grey,
+                                      color:
+                                          widget.navigationShell.currentIndex ==
+                                                  3
+                                              ? Color(0xff4C0497)
+                                              : Colors.grey,
                                     ),
                                     onPressed: () {
                                       if (!gust) {
                                         _onTap(context, 3);
+                                      } else {
+                                        showLoginOrGuestDialog(context);
                                       }
                                     },
                                   ),
@@ -299,7 +343,9 @@ bool hiddenNavbar(index, String path) {
   print(path);
   return index == 2
       ? true
-      : path.contains('notification') || path.contains(Routes.categoryView) || path.contains(Routes.detailsCategoryView)
+      : path.contains('notification') ||
+              path.contains(Routes.categoryView) ||
+              path.contains(Routes.detailsCategoryView)
           ? true
           : path.contains('location')
               ? true
@@ -323,7 +369,8 @@ class BNBCustomPainter extends CustomPainter {
     path.moveTo(0, 0); // Start
     path.quadraticBezierTo(size.width * 0.25, 0, size.width * 0.35, 0);
     path.quadraticBezierTo(size.width * 0.40, 0, size.width * 0.40, 10);
-    path.arcToPoint(Offset(size.width * 0.60, 10), radius: const Radius.circular(45.0), clockwise: false);
+    path.arcToPoint(Offset(size.width * 0.60, 10),
+        radius: const Radius.circular(45.0), clockwise: false);
     path.quadraticBezierTo(size.width * 0.60, 0, size.width * 0.65, 0);
     path.quadraticBezierTo(size.width * 0.20, 0, size.width, 0);
     path.lineTo(size.width, size.height);

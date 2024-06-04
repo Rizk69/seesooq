@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:opensooq/config/routes/app_routes.dart';
+import 'package:opensooq/core/utils/alert_gust.dart';
 import 'package:opensooq/core/utils/app_colors.dart';
 import 'package:opensooq/core/widget/text_translate_manager.dart';
 import 'package:opensooq/future/category/presentation/cubit/category_cubit.dart';
@@ -39,6 +40,8 @@ class CategoryWidget extends StatelessWidget {
                         onTap: () {
                           if (!isGust) {
                             context.goNamed(Routes.categoryView);
+                          }else{
+                            showLoginOrGuestDialog(context);
                           }
                         },
                         child: Row(

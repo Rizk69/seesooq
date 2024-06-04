@@ -3,11 +3,17 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:opensooq/config/routes/app_routes.dart';
+import 'package:opensooq/core/utils/alert_gust.dart';
 import 'package:opensooq/core/utils/app_colors.dart';
 import 'package:opensooq/core/widget/text_translate_manager.dart';
 
 class CategoryItemWidget extends StatelessWidget {
-  const CategoryItemWidget({super.key, required this.categoryName, required this.logo, required this.categoryId, required this.isGust});
+  const CategoryItemWidget(
+      {super.key,
+      required this.categoryName,
+      required this.logo,
+      required this.categoryId,
+      required this.isGust});
   final String categoryName;
   final String logo;
   final String categoryId;
@@ -17,12 +23,18 @@ class CategoryItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-      if (!isGust) {
-
-        context.goNamed(
-        Routes.detailsCategoryView,
-        queryParameters: <String, String>{'categoryName': categoryName, 'categoryId': categoryId},
-      );}},
+        if (!isGust) {
+          context.goNamed(
+            Routes.detailsCategoryView,
+            queryParameters: <String, String>{
+              'categoryName': categoryName,
+              'categoryId': categoryId
+            },
+          );
+        }else{
+          showLoginOrGuestDialog(context);
+        }
+      },
       child: Column(
         children: [
           Container(

@@ -35,7 +35,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     //         name: LoginCubit.get(context).state.loginModel?.user?.name,
     //         email: LoginCubit.get(context).state.loginModel?.user?.email,
     //         phone: LoginCubit.get(context).state.loginModel?.user?.phone ?? '')));
-    customAnimationController = AnimationController(vsync: this, duration: const Duration(milliseconds: 100));
+    customAnimationController = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 100));
 
     SignUpCubit.get(context).errorController?.close();
     super.initState();
@@ -46,13 +47,16 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     return BlocBuilder<HomeCubit, HomeState>(builder: (context, state) {
       var cubit = HomeCubit.get(context);
       return BlocListener<FavoriteCubit, FavoriteState>(
-        listenWhen: (previous, current) => current.addFavoriteStatus == AddFavoriteStatus.loaded,
+        listenWhen: (previous, current) =>
+            current.addFavoriteStatus == AddFavoriteStatus.loaded,
         listener: (context, favState) {
           cubit.toggleLikeInOffer(favState.indexFavoriteView);
         },
         child: Scaffold(
           key: _scaffoldKey,
-          appBar: AppBarHomePageWidget(scaffoldKey: _scaffoldKey, isGust: cubit.state.userLocalModel?.user?.name?.isEmpty ?? true),
+          appBar: AppBarHomePageWidget(
+              scaffoldKey: _scaffoldKey,
+              isGust: cubit.state.userLocalModel?.user?.name?.isEmpty ?? true),
           drawer: Drawer(
             backgroundColor: Colors.white,
             surfaceTintColor: Colors.white,
@@ -100,12 +104,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               ),
             ),
           ),
-          body: RefreshIndicator(
-            onRefresh: () async {
-              StoryUserCubit.get(context).getUsersStories();
-            },
-            child: StoryViewComponent(
-              cubit: cubit,
+          body: SingleChildScrollView(
+            child: RefreshIndicator(
+              onRefresh: () async {
+                StoryUserCubit.get(context).getUsersStories();
+              },
+              child: StoryViewComponent(
+                cubit: cubit,
+              ),
             ),
           ),
         ),

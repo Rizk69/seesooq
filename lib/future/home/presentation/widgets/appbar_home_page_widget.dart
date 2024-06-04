@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:opensooq/config/routes/app_routes.dart';
+import 'package:opensooq/core/utils/alert_gust.dart';
 import 'package:opensooq/core/utils/hex_color.dart';
 import 'package:opensooq/core/utils/media_query_values.dart';
 
@@ -50,7 +51,6 @@ class AppBarHomePageWidgetState extends State<AppBarHomePageWidget> {
                         onPressed: () {
                           if (!widget.isGust) {
                             switch (index) {
-
                               case 0:
                                 widget.scaffoldKey.currentState!.openDrawer();
                               // case 1:
@@ -60,10 +60,12 @@ class AppBarHomePageWidgetState extends State<AppBarHomePageWidget> {
 
                               default:
                             }
-                          }else{
+                          } else {
                             switch (index) {
                               case 0:
                                 widget.scaffoldKey.currentState!.openDrawer();
+                              case 1:
+                                showLoginOrGuestDialog(context);
 
                               default:
                             }

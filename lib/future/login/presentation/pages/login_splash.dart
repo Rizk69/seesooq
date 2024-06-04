@@ -5,6 +5,7 @@ import 'package:opensooq/config/routes/app_routes.dart';
 import 'package:opensooq/core/utils/hex_color.dart';
 import 'package:opensooq/core/utils/media_query_values.dart';
 import 'package:opensooq/core/widget/text_translate_manager.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginSplash extends StatefulWidget {
   const LoginSplash({super.key});
@@ -16,14 +17,60 @@ class LoginSplash extends StatefulWidget {
 class _LoginSplashState extends State<LoginSplash> {
   final GlobalKey _one = GlobalKey();
   final GlobalKey _two = GlobalKey();
-
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 2), () {
-      context.goNamed(Routes.home);
+    print('isFirstTime');
+
+    _checkFirstTimeUser();
+  }
+
+  Future<void> _checkFirstTimeUser() async {
+    final prefs = await SharedPreferences.getInstance();
+    final isFirstTime = prefs.getBool('isFirstTime') ?? true;
+    if (isFirstTime) {
+      await prefs.setBool('isFirstTime', false);
+      _navigateToOnboarding();
+    } else {
+      _navigateToLogin();
+    }
+  }
+
+  void _navigateToOnboarding() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.goNamed(Routes.onboarding);
     });
   }
+
+  void _navigateToLogin() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.goNamed(Routes.login);
+    });
+  }
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   Future.delayed(const Duration(seconds: 2), _checkFirstTimeUser
+  //
+  //       //() {
+  //
+  //       //
+  //       //  }
+  //       );
+  // }
+  //
+  // Future<void> _checkFirstTimeUser() async {
+  //   final prefs = await SharedPreferences.getInstance();
+  //   final isFirstTime = prefs.getBool('isFirstTime') ?? true;
+  //
+  //   if (isFirstTime) {
+  //     await prefs.setBool('isFirstTime', false);
+  //     context.goNamed(Routes.onboarding);
+  //   } else {
+  //     context.goNamed(Routes.loginSplash);
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {

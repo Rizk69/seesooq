@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
+import 'package:opensooq/core/utils/alert_gust.dart';
 import 'package:opensooq/core/utils/app_colors.dart';
 import 'package:opensooq/core/utils/cache_network_image.dart';
 import 'package:opensooq/core/utils/hex_color.dart';
@@ -51,6 +52,8 @@ class BookingPostWidget extends StatelessWidget {
                             if (!isGust) {
                               context.pushNamed('view_ads_home',
                                   extra: item.id.toString());
+                            }else{
+                              showLoginOrGuestDialog(context);
                             }
                           },
                           child: SizedBox(
