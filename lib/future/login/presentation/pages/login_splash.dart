@@ -27,7 +27,8 @@ class _LoginSplashState extends State<LoginSplash> {
 
   Future<void> _checkFirstTimeUser() async {
     final prefs = await SharedPreferences.getInstance();
-    final isFirstTime = prefs.getBool('isFirstTime') ?? true;
+    final isFirstTime = true; //
+        //prefs.getBool('isFirstTime') ?? true;
     if (isFirstTime) {
       await prefs.setBool('isFirstTime', false);
       _navigateToOnboarding();
